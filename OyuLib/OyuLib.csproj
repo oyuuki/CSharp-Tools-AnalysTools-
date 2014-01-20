@@ -45,9 +45,10 @@
     <Compile Include="OyuFile\FileUtil.cs" />
     <Compile Include="OyuFile\Xml\XmlSerializerManager.cs" />
     <Compile Include="OyuFile\Xml\XmlValueTypeKeyAndValue.cs" />
-    <Compile Include="String\Replace\ReplaceLogic\ReplaceAbs.cs" />
+    <Compile Include="String\Replace\ReplaceLogic\ReplaceLogicAbs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="String\Replace\ReplaceLogic\ReplaceText.cs" />
+    <Compile Include="String\Replace\ReplaceLogic\ReplaceLogicText.cs" />
+    <Compile Include="String\Replace\Replacer\Replacer.cs" />
     <Compile Include="String\Replace\Replacer\ReplacerAbs.cs" />
     <Compile Include="String\Text\OyuText.cs" />
     <Compile Include="Util.cs" />

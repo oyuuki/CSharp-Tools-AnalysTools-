@@ -5,13 +5,21 @@ using System.Text;
 
 namespace OyuLib.String.Replace.ReplaceLogic
 {
-    public class ReplaceText : ReplaceAbs
+    public class ReplaceLogicText : ReplaceLogicAbs
     {
         #region Constructor
+
+
+        public ReplaceLogicText()
+            : base()
+        {
+
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceText(string stringReplacing, string stringWillBeReplace)
+        public ReplaceLogicText(string stringReplacing, string stringWillBeReplace)
             : base(stringReplacing, stringWillBeReplace)
         {
         }

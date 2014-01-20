@@ -6,7 +6,7 @@ namespace OyuLib.String.Replace.ReplaceLogic
     /// <summary>
     /// 
     /// </summary>
-    public abstract class ReplaceAbs
+    public abstract class ReplaceLogicAbs
     {
         #region instanceVal
 
@@ -52,7 +52,15 @@ namespace OyuLib.String.Replace.ReplaceLogic
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceAbs(string stringReplacing, string stringWillBeReplace)
+        public ReplaceLogicAbs()
+        {
+
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ReplaceLogicAbs(string stringReplacing, string stringWillBeReplace)
         {
             this._stringReplacing = stringReplacing;
             this._stringWillBeReplace = stringWillBeReplace;
