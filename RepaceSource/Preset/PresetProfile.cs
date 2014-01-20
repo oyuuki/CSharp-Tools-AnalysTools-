@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 using CommonCompornent;
 using ConstAttribute;
 using RepaceSource.ComboBoxEnum;
@@ -19,6 +19,11 @@ namespace RepaceSource.Preset
         /// </summary>
         protected EnumLungPreset _presetEnum = EnumLungPreset.None;
 
+        /// <summary>
+        /// Number of Preset
+        /// </summary>
+        protected EnumLungExtensionpreset _presetExtensionEnum = EnumLungExtensionpreset.None;
+
         #endregion
 
         #region Constructor
@@ -26,9 +31,10 @@ namespace RepaceSource.Preset
         /// <summary>
         /// Constructor
         /// </summary>
-        public PresetProfile(EnumLungPreset presetEnum)
+        public PresetProfile(string constValue)
         {
-            this._presetEnum = presetEnum;
+            this._presetEnum = ConstAttributeManager<EnumLungPreset>.GetEnumValue(constValue);
+            this._presetExtensionEnum = ConstAttributeManager<EnumLungExtensionpreset>.GetEnumValue(constValue); 
         }
 
         /// <summary>
@@ -64,6 +70,15 @@ namespace RepaceSource.Preset
         public string GetPresetNumber()
         {
             return ConstAttributeManager<EnumLungPreset>.GetConstByEnumValue(this._presetEnum);
+        }
+
+        /// <summary>
+        /// Get The Unique Number of Preset
+        /// </summary>
+        /// <returns></returns>
+        public string GetFileExtension()
+        {
+            return ConstAttributeManager<EnumLungExtensionpreset>.GetValueByEnumValue(this._presetExtensionEnum);
         }
         
         #endregion

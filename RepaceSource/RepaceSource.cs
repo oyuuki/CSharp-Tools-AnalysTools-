@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
-
+using OyuLib.String.Replace.Replacer;
 using RepaceSource.ComboBoxEnum;
 using OyuLib.OyuFile;
+using OyuLib.String.Replace;
+using RepaceSource.Preset;
 
 namespace RepaceSource
 {
@@ -38,7 +42,7 @@ namespace RepaceSource
 
         private void ShowPresetOption()
         {
-            var form = new PresetOption(this.exComboBox1.GetSelectedItemEnum<EnumLungPreset>());
+            var form = new PresetOption(this.exComboBox1.GetSelectedItemKey());
             form.ShowDialog();
         }
 
@@ -53,11 +57,6 @@ namespace RepaceSource
                 return false;
             }
 
-            if (!FileUtil.IsExistFileCheck(this.extxtProFolder.Text))
-            {
-                return false;
-            }
-
             return true;
         }
 
@@ -68,12 +67,55 @@ namespace RepaceSource
                 return;
             }
 
-            foreach (var filePathString in FileUtil.GetFilePathList(extxtProFolder.GetTrimedText()))
+            this.ReplaceSourceProcNormal();
+        }
+
+        private void ReplaceSourceProcNormal()
+        {
+            string retString = string.Empty;
+
+            foreach (var filePathString in FileUtil.GetFileList(extxtProFolder.GetTrimedText(), new PresetProfile(this.exComboBox1.GetSelectedItemKey()).GetFileExtension()))
             {
                 var sourceText = FileUtil.GetAllTextShiftJIS(filePathString);
 
+                sourceText = this.ReplaceSourceProcNormal2(sourceText);
 
+                //書き込むファイルが既に存在している場合は、上書きする
+                System.IO.StreamWriter sw = new System.IO.StreamWriter(
+                    filePathString + "back.vb",
+                    true,
+                    System.Text.Encoding.GetEncoding("shift_jis"));
+                //TextBox1.Textの内容を書き込む
+                sw.Write(sourceText);
+                //閉じる
+                sw.Close();
             }
+        }
+
+        private string ReplaceSourceProcNormal2(string sourceText)
+        {
+            PresetOption op = new PresetOption(this.exComboBox1.GetSelectedItemKey());
+
+            op.Show();
+            op.Hide();
+            
+            foreach (DataGridViewRow row in op.GetDgvRows())
+            {
+                var paramList = new List<string>();
+
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.ColumnIndex > 0)
+                    {
+                        paramList.Add(cell.Value.ToString());
+                    }
+                }
+
+                Replacer rep = new Replacer(sourceText, paramList.ToArray());
+                sourceText = rep.GetReplacedText();
+            }
+
+            return sourceText;
         }
 
         #endregion

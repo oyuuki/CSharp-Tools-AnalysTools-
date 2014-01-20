@@ -9,7 +9,7 @@ using RepaceSource.ComboBoxEnum;
 
 namespace RepaceSource.Preset
 {
-    abstract class PresetProfileDgv : PresetProfile
+    abstract class PresetProfileDgv
     {
         #region Const
 
@@ -26,6 +26,8 @@ namespace RepaceSource.Preset
         #endregion
 
         #region InstanceVal
+
+        protected PresetProfile _prof = null;
 
         /// <summary>
         /// 
@@ -56,18 +58,31 @@ namespace RepaceSource.Preset
         /// Constructor
         /// </summary>
         public PresetProfileDgv(
-            EnumLungPreset presetEnum,
+            PresetProfile prof,
             string uniqueFileNamepart,
             ExDataGridViewControl exDgv,
             string keyColName,
             params string[] colNameArray)
-            : base(presetEnum)
         {
-
+            this._prof = prof;
             this._uniqueFileName = uniqueFileNamepart;
             this._exDgv = exDgv;
             this._keyColName = keyColName;
             this._colNameArray = colNameArray;
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public PresetProfileDgv(
+            string constValue,
+            string uniqueFileNamepart,
+            ExDataGridViewControl exDgv,
+            string keyColName,
+            params string[] colNameArray)
+            : this(new PresetProfile(constValue), uniqueFileNamepart, exDgv, keyColName, colNameArray)
+        {
+            
         }
 
         #endregion
@@ -86,6 +101,13 @@ namespace RepaceSource.Preset
             set { this._colNameArray = value; }
         }
 
+        public PresetProfile Prof
+        {
+            get { return this._prof; }
+            set { this._prof = value; }
+        }
+
+
         #endregion
 
         #region Method
@@ -98,7 +120,7 @@ namespace RepaceSource.Preset
         /// <returns></returns>
         public string GetXmlFileNameWithOutExtension()
         {
-            return CONST_PRESET_FILENAME_PART1 + _uniqueFileName + this.GetPresetName();
+            return CONST_PRESET_FILENAME_PART1 + _uniqueFileName + this._prof.GetPresetName();
         }
 
         public void WriteDataToXmlFromDgv()

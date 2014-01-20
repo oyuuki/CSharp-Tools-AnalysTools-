@@ -28,10 +28,10 @@ namespace RepaceSource
         }
 
 
-        public PresetOption(EnumLungPreset enmPreset)
+        public PresetOption(string constValue)
             : this()
         {
-            this._preset = new PresetProfileDgvXml(enmPreset, "Option", this.exDgvReplaceText, CONST_COLNAME_NO);
+            this._preset = new PresetProfileDgvXml(constValue, "Option", this.exDgvReplaceText, CONST_COLNAME_NO);
         }
 
         #endregion
@@ -40,7 +40,7 @@ namespace RepaceSource
 
         private void exComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this._preset.PresetEnum = this.exComboBox1.GetSelectedItemEnum<EnumLungPreset>();
+            this._preset.Prof = new PresetProfile(this.exComboBox1.GetSelectedItemKey());
             this._preset.ReadDataToDgv();
         }
 
@@ -79,12 +79,14 @@ namespace RepaceSource
 
         #region method
 
+        #region private
+
         private void InitializeCompornentOriginal()
         {
             exComboBox1.SetItemsFromEnumValue<EnumLungPreset>(true);
 
             this._preset.ReadDataToDgv();
-            this.exComboBox1.SetSelectedIndexBykey(this._preset.GetPresetNumber());            
+            this.exComboBox1.SetSelectedIndexBykey(this._preset.Prof.GetPresetNumber());            
         }
 
         private void SaveDataToXml()
@@ -94,7 +96,7 @@ namespace RepaceSource
 
         private void ShowSpecial()
         {
-            var form = new Special(this.exComboBox1.GetSelectedItemEnum<EnumLungPreset>());
+            var form = new Special(this.exComboBox1.GetSelectedItemKey());
             form.ShowDialog();
         }
 
@@ -110,6 +112,15 @@ namespace RepaceSource
 
         #endregion
 
-        
+        #region Public
+
+        public DataGridViewRowCollection GetDgvRows()
+        {
+            return this.exDgvReplaceText.Rows;
+        }
+
+        #endregion
+
+        #endregion
     }
 }

@@ -27,10 +27,10 @@ namespace RepaceSource
             InitializeComponent();
         }
 
-        public Special(EnumLungPreset enmPreset)
+        public Special(string constValue)
             : this()
         {
-            this._preset =  new PresetProfileDgvXmlAndImmutableData(enmPreset, "SpecialOption", this.exDgvSpe, CONST_COLNAME_NO);
+            this._preset = new PresetProfileDgvXmlAndImmutableData(constValue, "SpecialOption", this.exDgvSpe, CONST_COLNAME_NO);
         }
 
         #endregion
@@ -66,9 +66,11 @@ namespace RepaceSource
 
         #region method
 
+        #region private
+
         private void InitializeCompornentOriginal()
         {
-            this.lblPreset.Text = this._preset.GetPresetName();
+            this.lblPreset.Text = this._preset.Prof.GetPresetName();
             this._preset.ReadDataToDgv();
         }
 
@@ -87,6 +89,17 @@ namespace RepaceSource
             this.exDgvSpe.Rows.Add(countAddRow);
         }
 
-        #endregion        
+        #endregion
+
+        #region Public
+
+        public DataGridViewRowCollection GetDgvRows()
+        {
+            return this.exDgvSpe.Rows;
+        }
+
+        #endregion
+
+        #endregion
     }
 }

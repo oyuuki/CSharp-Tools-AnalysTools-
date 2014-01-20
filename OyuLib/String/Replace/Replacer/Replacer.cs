@@ -10,7 +10,7 @@ using OyuLib;
 
 namespace OyuLib.String.Replace.Replacer
 {
-    public abstract class Replacer : ReplacerAbs<ReplaceLogicText>
+    public class Replacer : ReplacerAbs<ReplaceLogicText>
     {
         #region constructor
 

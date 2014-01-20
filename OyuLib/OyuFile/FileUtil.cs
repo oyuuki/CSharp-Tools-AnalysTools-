@@ -46,6 +46,26 @@ namespace OyuLib.OyuFile
             return File.Exists(filePath);
         }
 
+        public static string[] GetFileList(string folderPath, string extensionPattern)
+        {
+            var retList = new List<string>();
+
+            foreach (var fileName in Directory.GetFiles(folderPath))
+            {
+                if (IsIncludeExtension(fileName, extensionPattern))
+                {
+                    retList.Add(Path.Combine(folderPath, fileName));
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        public static bool IsIncludeExtension(string fileName, string extension)
+        {
+            return extension.Trim().Equals(Path.GetExtension(fileName));
+        }
+
         #endregion
 
         #region GetFilePathList

@@ -29,7 +29,21 @@ namespace OyuLib.String.Text
 
         public LineCode LineCode
         {
-            get { return this._lineCode; }
+            get
+            {
+                LineCode retLineCode = null;
+
+                if (this.IsSetLineCode())
+                {
+                    retLineCode = this._lineCode;
+                }
+                else
+                {
+                    retLineCode = new LineCode();
+                }
+
+                return retLineCode;
+            }
             set { this._lineCode = value; }
         }
 
@@ -40,22 +54,6 @@ namespace OyuLib.String.Text
         public string[] GetLineArray()
         {
             return CharManager<LineCode>.GetSpilitString(this._text);
-        }
-
-        private LineCode GetLineCode()
-        {
-            LineCode retLineCode = null;
-
-            if (this.IsSetLineCode())
-            {
-                retLineCode = this._lineCode;
-            }
-            else
-            {
-                retLineCode = new LineCode();
-            }
-
-            return retLineCode;
         }
 
         private bool IsSetLineCode()

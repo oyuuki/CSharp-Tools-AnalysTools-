@@ -17,12 +17,12 @@ namespace RepaceSource.Preset
         /// Constructor
         /// </summary>
         public PresetProfileDgvXmlAndImmutableData(
-            EnumLungPreset presetEnum,
+            string constValue,
             string uniqueFileNamepart,
             ExDataGridViewControl exDgv,
             string keyColName,
             params string[] colNameArray)
-            : base(presetEnum, uniqueFileNamepart, exDgv, keyColName, colNameArray)
+            : base(constValue, uniqueFileNamepart, exDgv, keyColName, colNameArray)
         {
 
         }

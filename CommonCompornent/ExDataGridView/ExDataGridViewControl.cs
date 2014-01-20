@@ -305,6 +305,30 @@ namespace CommonCompornent
 
         #endregion
 
+        #region GetCellsArray
+
+        public string[][] GetCellsValueArray(params string[] paramColName)
+        {
+            string[] colNameArray = GetColNameArray(paramColName);
+            var retList = new List<string[]>();
+
+            foreach (DataGridViewRow row in this.Rows)
+            {
+                var cellValues = new List<string>();
+
+                foreach (var colName in colNameArray)
+                {
+                    cellValues.Add(this.GetStringValue(colName, row.Index));
+                }    
+
+                retList.Add(cellValues.ToArray());
+            }
+
+            return retList.ToArray();
+        }
+
+        #endregion
+
         #region Read
 
         /// <summary>

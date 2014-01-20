@@ -9,11 +9,11 @@ namespace RepaceSource.ComboBoxEnum
 {
     public enum EnumLungPreset
     {
-        [ConstValue("0", "")]
+        [ConstValue(EnumConstValue.CONST_NONE, "")]
         None,
-        [ConstValue("1", "VB.NET")]
+        [ConstValue(EnumConstValue.CONST_VBDOTNET, "VB.NET")]
         VbDotNet,
-        [ConstValue("2", "C#")]
+        [ConstValue(EnumConstValue.CONST_CSHARP, "C#")]
         CSharp        
     }
 }
