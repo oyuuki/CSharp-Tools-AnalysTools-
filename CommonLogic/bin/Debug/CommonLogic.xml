@@ -1,0 +1,190 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+CommonLogic
+</name>
+</assembly>
+<members>
+<member name="F:CommonLogic.DBControlManagerUtil._connection">
+	<summary>
+ DB接続
+ </summary>
+	<remarks></remarks>
+</member><member name="F:CommonLogic.DBControlManagerUtil._transaction">
+	<summary>
+ トランザクション
+ </summary>
+	<remarks></remarks>
+</member><member name="F:CommonLogic.DBControlManagerUtil._oracleSid">
+	<summary>
+ オラクルインスタンスID
+ </summary>
+	<remarks></remarks>
+</member><member name="F:CommonLogic.DBControlManagerUtil._loginUserName">
+	<summary>
+ ログインユーザ名
+ </summary>
+	<remarks></remarks>
+</member><member name="F:CommonLogic.DBControlManagerUtil._password">
+	<summary>
+ パスワード
+ </summary>
+	<remarks></remarks>
+</member><member name="P:CommonLogic.DBControlManagerUtil.Connection">
+	<summary>
+ DB接続インスタンスを取得、設定する
+ </summary>
+	<value>DB接続インスタンス</value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:CommonLogic.DBControlManagerUtil.Transaction">
+	<summary>
+ DB接続インスタンスを取得、設定する
+ </summary>
+	<value>DB接続インスタンス</value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.#ctor">
+	<summary>
+	</summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.#ctor(System.String,System.String)">
+	<summary>
+ コンストラクタ
+ Oracle接続情報を引数から受け取り
+ インスタンスに保持する
+ </summary>
+	<param name="loginUserName">ユーザー名</param>
+	<param name="password">パスワード</param>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.Dispose">
+	<summary>
+ Disposeメソッド
+ オブジェクトが破棄された時、処理を行う
+ </summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.GetConnectionString">
+	<summary>
+ コンストラクタに設定した情報を使ってOracleに接続し、
+ その接続を返します。
+ </summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.Open">
+	<summary>
+ コンストラクタに設定した情報を使ってOracleに接続する
+ </summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.GetOpenCon">
+	<summary>
+ コンストラクタに設定した情報を使ってOracleに接続し、
+ その接続を返します。
+ </summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.Close">
+	<summary>
+ Oracleの接続を切断する
+ </summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.BeginTran">
+	<summary>
+ トランザクションを開始する
+ </summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.Commit">
+	<summary>
+ トランザクションをコミットする
+ </summary>
+	<remarks></remarks>
+</member><member name="M:CommonLogic.DBControlManagerUtil.RollBack">
+	<summary>
+ トランザクションをロールバックする
+ </summary>
+	<remarks></remarks>
+</member><member name="T:CommonLogic.DBControlManagerUtil">
+	<summary>
+ DBへの操作を行うクラス
+ </summary>
+	<remarks></remarks>
+</member><member name="P:CommonLogic.My.Resources.Resources.ResourceManager">
+	<summary>
+  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+</summary>
+</member><member name="P:CommonLogic.My.Resources.Resources.Culture">
+	<summary>
+  厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+</summary>
+</member><member name="T:CommonLogic.My.Resources.Resources">
+	<summary>
+  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+</summary>
+</member><member name="M:CommonLogic.VBStrings.LeftB(System.String,System.Int32)">
+ -----------------------------------------------------------------------------------------
+ <summary>
+     文字列の左端から指定したバイト数分の文字列を返します。</summary>
+	<param name="stTarget">
+     取り出す元になる文字列。</param>
+	<param name="iByteSize">
+     取り出すバイト数。</param>
+	<returns>
+     左端から指定されたバイト数分の文字列。</returns>
+ -----------------------------------------------------------------------------------------
+
+</member><member name="M:CommonLogic.VBStrings.MidB(System.String,System.Int32)">
+ -----------------------------------------------------------------------------------------
+ <summary>
+     文字列の指定されたバイト位置以降のすべての文字列を返します。</summary>
+	<param name="stTarget">
+     取り出す元になる文字列。</param>
+	<param name="iStart">
+     取り出しを開始する位置。</param>
+	<returns>
+     指定されたバイト位置以降のすべての文字列。</returns>
+ -----------------------------------------------------------------------------------------
+
+</member><member name="M:CommonLogic.VBStrings.MidB(System.String,System.Int32,System.Int32)">
+ -----------------------------------------------------------------------------------------
+ <summary>
+     文字列の指定されたバイト位置から、指定されたバイト数分の文字列を返します。</summary>
+	<param name="stTarget">
+     取り出す元になる文字列。</param>
+	<param name="iStart">
+     取り出しを開始する位置。</param>
+	<param name="iByteSize">
+     取り出すバイト数。</param>
+	<returns>
+     指定されたバイト位置から指定されたバイト数分の文字列。</returns>
+ -----------------------------------------------------------------------------------------
+
+</member><member name="M:CommonLogic.VBStrings.RightB(System.String,System.Int32)">
+ -----------------------------------------------------------------------------------------
+ <summary>
+     文字列の右端から指定されたバイト数分の文字列を返します。</summary>
+	<param name="stTarget">
+     取り出す元になる文字列。</param>
+	<param name="iByteSize">
+     取り出すバイト数。</param>
+	<returns>
+     右端から指定されたバイト数分の文字列。</returns>
+ -----------------------------------------------------------------------------------------
+
+</member><member name="T:CommonLogic.VBStrings">
+ -----------------------------------------------------------------------------------------
+ <summary>
+     Microsoft.VisualBasic.Strings をカバーした静的クラスです。
+ </summary>
+ -----------------------------------------------------------------------------------------
+
+</member><member name="M:CommonLogic.SqlServerDBCOntrolManager.#ctor(System.String,System.String,System.String,System.String)">
+	<summary>
+ コンストラクタ
+ Oracle接続情報を引数から受け取り
+ インスタンスに保持する
+ </summary>
+	<param name="loginUserName">ユーザー名</param>
+	<param name="password">パスワード</param>
+	<remarks></remarks>
+</member>
+</members>
+</doc>

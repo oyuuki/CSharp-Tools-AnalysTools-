@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{497504A2-030B-4013-B115-87D71E1886A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AnalysSourceCode</RootNamespace>
+    <AssemblyName>AnalysSourceCode</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnalysSourceCodeManager.cs" />
+    <Compile Include="Enum\EnumImeMode.cs" />
+    <Compile Include="Enum\EnumReadOnly.cs" />
+    <Compile Include="Enum\EnumTranceType.cs" />
+    <Compile Include="Generate\GeneralObject.cs" />
+    <Compile Include="Generate\InputItem.cs" />
+    <Compile Include="Generate\InputItemCodeGeneraterFromSource.cs" />
+    <Compile Include="Generate\InputItemCodeGeneraterFromVBSource.cs" />
+    <Compile Include="Generate\InputItemGenerater.cs" />
+    <Compile Include="Generate\InputItemVBSourceGenerater.cs" />
+    <Compile Include="Generate\SourceCodePart.cs" />
+    <Compile Include="Generate\VBSourceCodePart.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConstAttribute\ConstAttribute.csproj">
+      <Project>{3A665CC1-DE55-4FA0-ABF8-067760007EDB}</Project>
+      <Name>ConstAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileUtilLibrary\FileUtilLibrary.csproj">
+      <Project>{B1549B29-E413-4B61-80E2-52325DCDD47F}</Project>
+      <Name>FileUtilLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

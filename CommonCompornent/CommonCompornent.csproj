@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{39CDDA16-3C24-4C3A-B489-8FF769C729E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CommonCompornent</RootNamespace>
+    <AssemblyName>CommonCompornent</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExButton\ExLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExButton\ExLabel.Designer.cs">
+      <DependentUpon>ExLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExButton\ExDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExButton\ExDialogButton.Designer.cs">
+      <DependentUpon>ExDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExButton\ExFileDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExButton\ExFileDialogButton.Designer.cs">
+      <DependentUpon>ExFileDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExButton\ExFolderDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExButton\ExFolderDialogButton.Designer.cs">
+      <DependentUpon>ExFolderDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExButton\ExVBFileDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExButton\ExVBFileDialogButton.Designer.cs">
+      <DependentUpon>ExVBFileDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExComboBox.Designer.cs">
+      <DependentUpon>ExComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExDataGridView\Cell\CellValue.cs" />
+    <Compile Include="ExDataGridView\Manager\ExDataGridViewAdmissionControlManager.cs" />
+    <Compile Include="ExDataGridView\Util\Admission\DataGridViewAdmissionCopyPasteControl.cs" />
+    <Compile Include="ExDataGridView\Util\Admission\DataGridViewAdmissionMoveCurrentControl.cs" />
+    <Compile Include="IValidateInputData.cs" />
+    <Compile Include="KeyUtil.cs" />
+    <Compile Include="ExDataGridView\Events\ExDataGridViewCellEventValue.cs" />
+    <Compile Include="ExDataGridView\Events\ExDataGridViewEventDictionary.cs" />
+    <Compile Include="ExDataGridView\Manager\ExDataGridViewEventManager.cs" />
+    <Compile Include="ExDataGridView\Events\ExDataGridViewEventTemplate.cs" />
+    <Compile Include="ExDataGridView\Events\ExDataGridViewEventValue.cs" />
+    <Compile Include="ExDataGridView\Events\ExDelegateClass.cs" />
+    <Compile Include="ExDataGridView\Events\EnumDGVEvent.cs" />
+    <Compile Include="ExButton\ExButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExButton\ExButton.Designer.cs">
+      <DependentUpon>ExButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExDataGridView\ExDataGridViewControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExDataGridView\ExDataGridViewControl.Designer.cs">
+      <DependentUpon>ExDataGridViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExListBox.Designer.cs">
+      <DependentUpon>ExListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExTextBox.Designer.cs">
+      <DependentUpon>ExTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logic\DialogUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Logic\Type\TypeUtil.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="exComboBox.resx">
+      <DependentUpon>ExComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExDataGridView\ExDataGridViewControl.resx">
+      <DependentUpon>ExDataGridViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConstAttribute\ConstAttribute.csproj">
+      <Project>{3a665cc1-de55-4fa0-abf8-067760007edb}</Project>
+      <Name>ConstAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileUtilLibrary\FileUtilLibrary.csproj">
+      <Project>{B1549B29-E413-4B61-80E2-52325DCDD47F}</Project>
+      <Name>FileUtilLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="Freemarket4ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Freemarket4ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.AnalysVBFormApl.Properties.Settings.GlobalReference.Default.Freemarket4ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" PropertyReference="ApplicationSettings.AnalysVBFormApl.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>/* カラム定義情報を取得 */
+SELECT          DB_NAME() AS db_name, SCHEMA_NAME(tables.schema_id) AS schema_name, 
+                      tables.name AS table_name, columns.name AS column_name, 
+                      columns.column_id AS ordinal_position, 
+                      CAST(CASE WHEN pk_cols.key_ordinal IS NOT NULL THEN 1 ELSE 0 END AS bit)
+                       AS is_primary_key, pk_cols.constraint_name AS pk_constraint_name, 
+                      pk_cols.key_ordinal AS pk_key_ordinal, 
+                      CAST(CASE WHEN uq_cols.key_ordinal IS NOT NULL THEN 1 ELSE 0 END AS bit)
+                       AS is_unique_key, uq_cols.constraint_name AS uq_constraint_name, 
+                      uq_cols.key_ordinal AS uq_key_ordinal, TYPE_NAME(columns.system_type_id) 
+                      AS column_data_type, defaultConstraints.definition AS column_default, 
+                      columns.is_nullable, columns.max_length, columns.precision, columns.scale, 
+                      extProp.value AS column_comment
+FROM            sys.tables AS tables INNER JOIN
+                      sys.columns AS columns ON 
+                      tables.object_id = columns.object_id LEFT OUTER JOIN
+                      sys.sysconstraints AS constraints ON columns.object_id = constraints.id AND 
+                      columns.column_id = constraints.colid AND 
+                      constraints.status &amp; 2069 = 2069 LEFT OUTER JOIN
+                      sys.default_constraints AS defaultConstraints ON 
+                      constraints.constid = defaultConstraints.object_id AND 
+                      tables.schema_id = defaultConstraints.schema_id LEFT OUTER JOIN
+                      sys.extended_properties AS extProp ON extProp.class = 1 AND 
+                      columns.object_id = extProp.major_id AND 
+                      columns.column_id = extProp.minor_id LEFT OUTER JOIN
+                          (SELECT          key_const.name AS constraint_name, idx_cols.key_ordinal, 
+                                                    cols.name AS col_name, cols.object_id AS col_object_id, 
+                                                    cols.column_id AS col_column_id
+                             FROM             sys.tables AS tbls INNER JOIN
+                                                    sys.key_constraints AS key_const ON 
+                                                    tbls.object_id = key_const.parent_object_id AND 
+                                                    key_const.type = 'PK' INNER JOIN
+                                                    sys.index_columns AS idx_cols ON 
+                                                    key_const.parent_object_id = idx_cols.object_id AND 
+                                                    key_const.unique_index_id = idx_cols.index_id INNER JOIN
+                                                    sys.columns AS cols ON idx_cols.object_id = cols.object_id AND
+                                                     idx_cols.column_id = cols.column_id) AS pk_cols ON 
+                      columns.object_id = pk_cols.col_object_id AND 
+                      columns.column_id = pk_cols.col_column_id LEFT OUTER JOIN
+                          (SELECT          key_const.name AS constraint_name, idx_cols.key_ordinal, 
+                                                    cols.name AS col_name, cols.object_id AS col_object_id, 
+                                                    cols.column_id AS col_column_id
+                             FROM             sys.tables AS tbls INNER JOIN
+                                                    sys.key_constraints AS key_const ON 
+                                                    tbls.object_id = key_const.parent_object_id AND 
+                                                    key_const.type = 'UQ' INNER JOIN
+                                                    sys.index_columns AS idx_cols ON 
+                                                    key_const.parent_object_id = idx_cols.object_id AND 
+                                                    key_const.unique_index_id = idx_cols.index_id INNER JOIN
+                                                    sys.columns AS cols ON idx_cols.object_id = cols.object_id AND
+                                                     idx_cols.column_id = cols.column_id) AS uq_cols ON 
+                      columns.object_id = uq_cols.col_object_id AND 
+                      columns.column_id = uq_cols.col_column_id
+WHERE           (tables.name = ?) AND (columns.name = ?)
+ORDER BY     db_name, schema_name, table_name, ordinal_position</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="name" DataSourceName="FreeMarket4.sys.tables" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="name" Precision="0" Scale="0" Size="256" SourceColumn="table_name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Param2" ColumnName="name" DataSourceName="FreeMarket4.sys.columns" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="name1" Precision="0" Scale="0" Size="256" SourceColumn="column_name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="db_name" DataSetColumn="db_name" />
+              <Mapping SourceColumn="schema_name" DataSetColumn="schema_name" />
+              <Mapping SourceColumn="table_name" DataSetColumn="table_name" />
+              <Mapping SourceColumn="column_name" DataSetColumn="column_name" />
+              <Mapping SourceColumn="ordinal_position" DataSetColumn="ordinal_position" />
+              <Mapping SourceColumn="is_primary_key" DataSetColumn="is_primary_key" />
+              <Mapping SourceColumn="pk_constraint_name" DataSetColumn="pk_constraint_name" />
+              <Mapping SourceColumn="pk_key_ordinal" DataSetColumn="pk_key_ordinal" />
+              <Mapping SourceColumn="is_unique_key" DataSetColumn="is_unique_key" />
+              <Mapping SourceColumn="uq_constraint_name" DataSetColumn="uq_constraint_name" />
+              <Mapping SourceColumn="uq_key_ordinal" DataSetColumn="uq_key_ordinal" />
+              <Mapping SourceColumn="column_data_type" DataSetColumn="column_data_type" />
+              <Mapping SourceColumn="column_default" DataSetColumn="column_default" />
+              <Mapping SourceColumn="is_nullable" DataSetColumn="is_nullable" />
+              <Mapping SourceColumn="max_length" DataSetColumn="max_length" />
+              <Mapping SourceColumn="precision" DataSetColumn="precision" />
+              <Mapping SourceColumn="scale" DataSetColumn="scale" />
+              <Mapping SourceColumn="column_comment" DataSetColumn="column_comment" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="db_name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndb_name" msprop:Generator_ColumnPropNameInRow="db_name" msprop:Generator_ColumnPropNameInTable="db_nameColumn" msprop:Generator_UserColumnName="db_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schema_name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnschema_name" msprop:Generator_ColumnPropNameInRow="schema_name" msprop:Generator_ColumnPropNameInTable="schema_nameColumn" msprop:Generator_UserColumnName="schema_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="table_name" msprop:Generator_ColumnVarNameInTable="columntable_name" msprop:Generator_ColumnPropNameInRow="table_name" msprop:Generator_ColumnPropNameInTable="table_nameColumn" msprop:Generator_UserColumnName="table_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="column_name" msprop:Generator_ColumnVarNameInTable="columncolumn_name" msprop:Generator_ColumnPropNameInRow="column_name" msprop:Generator_ColumnPropNameInTable="column_nameColumn" msprop:Generator_UserColumnName="column_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ordinal_position" msprop:Generator_ColumnVarNameInTable="columnordinal_position" msprop:Generator_ColumnPropNameInRow="ordinal_position" msprop:Generator_ColumnPropNameInTable="ordinal_positionColumn" msprop:Generator_UserColumnName="ordinal_position" type="xs:int" />
+              <xs:element name="is_primary_key" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnis_primary_key" msprop:Generator_ColumnPropNameInRow="is_primary_key" msprop:Generator_ColumnPropNameInTable="is_primary_keyColumn" msprop:Generator_UserColumnName="is_primary_key" type="xs:boolean" minOccurs="0" />
+              <xs:element name="pk_constraint_name" msprop:Generator_ColumnVarNameInTable="columnpk_constraint_name" msprop:Generator_ColumnPropNameInRow="pk_constraint_name" msprop:Generator_ColumnPropNameInTable="pk_constraint_nameColumn" msprop:Generator_UserColumnName="pk_constraint_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="pk_key_ordinal" msprop:Generator_ColumnVarNameInTable="columnpk_key_ordinal" msprop:Generator_ColumnPropNameInRow="pk_key_ordinal" msprop:Generator_ColumnPropNameInTable="pk_key_ordinalColumn" msprop:Generator_UserColumnName="pk_key_ordinal" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="is_unique_key" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnis_unique_key" msprop:Generator_ColumnPropNameInRow="is_unique_key" msprop:Generator_ColumnPropNameInTable="is_unique_keyColumn" msprop:Generator_UserColumnName="is_unique_key" type="xs:boolean" minOccurs="0" />
+              <xs:element name="uq_constraint_name" msprop:Generator_ColumnVarNameInTable="columnuq_constraint_name" msprop:Generator_ColumnPropNameInRow="uq_constraint_name" msprop:Generator_ColumnPropNameInTable="uq_constraint_nameColumn" msprop:Generator_UserColumnName="uq_constraint_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="uq_key_ordinal" msprop:Generator_ColumnVarNameInTable="columnuq_key_ordinal" msprop:Generator_ColumnPropNameInRow="uq_key_ordinal" msprop:Generator_ColumnPropNameInTable="uq_key_ordinalColumn" msprop:Generator_UserColumnName="uq_key_ordinal" type="xs:unsignedByte" minOccurs="0" />
+              <xs:element name="column_data_type" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncolumn_data_type" msprop:Generator_ColumnPropNameInRow="column_data_type" msprop:Generator_ColumnPropNameInTable="column_data_typeColumn" msprop:Generator_UserColumnName="column_data_type" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="column_default" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncolumn_default" msprop:Generator_ColumnPropNameInRow="column_default" msprop:Generator_ColumnPropNameInTable="column_defaultColumn" msprop:Generator_UserColumnName="column_default" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1073741823" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="is_nullable" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnis_nullable" msprop:Generator_ColumnPropNameInRow="is_nullable" msprop:Generator_ColumnPropNameInTable="is_nullableColumn" msprop:Generator_UserColumnName="is_nullable" type="xs:boolean" minOccurs="0" />
+              <xs:element name="max_length" msprop:Generator_ColumnVarNameInTable="columnmax_length" msprop:Generator_ColumnPropNameInRow="max_length" msprop:Generator_ColumnPropNameInTable="max_lengthColumn" msprop:Generator_UserColumnName="max_length" type="xs:short" />
+              <xs:element name="precision" msprop:Generator_ColumnVarNameInTable="columnprecision" msprop:Generator_ColumnPropNameInRow="precision" msprop:Generator_ColumnPropNameInTable="precisionColumn" msprop:Generator_UserColumnName="precision" type="xs:unsignedByte" />
+              <xs:element name="scale" msprop:Generator_ColumnVarNameInTable="columnscale" msprop:Generator_ColumnPropNameInRow="scale" msprop:Generator_ColumnPropNameInTable="scaleColumn" msprop:Generator_UserColumnName="scale" type="xs:unsignedByte" />
+              <xs:element name="column_comment" msdata:DataType="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msprop:Generator_ColumnVarNameInTable="columncolumn_comment" msprop:Generator_ColumnPropNameInRow="column_comment" msprop:Generator_ColumnPropNameInTable="column_commentColumn" msprop:Generator_UserColumnName="column_comment" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
