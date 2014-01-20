@@ -12,7 +12,7 @@ using CommonCompornent.ExDataGridView.Events;
 using CommonCompornent.ExDataGridView.Util;
 using CommonCompornent.ExDataGridView.Util.Admission;
 
-using FileUtilLibrary.Xml;
+using OyuLib.OyuFile.Xml;
 
 namespace CommonCompornent
 {

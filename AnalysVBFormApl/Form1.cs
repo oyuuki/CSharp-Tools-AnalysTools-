@@ -21,8 +21,8 @@ using AnalysSourceCode.Enum;
 
 using ConstAttribute;
 
-using FileUtilLibrary;
-using FileUtilLibrary.Xml;
+using OyuLib.OyuFile;
+using OyuLib.OyuFile.Xml;
 
 using AnalysVBFormApl.Interface;
 

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 
 using AnalysSourceCode.Generate;
-using FileUtilLibrary;
+using OyuLib.OyuFile;
+
 
 namespace AnalysSourceCode
 {

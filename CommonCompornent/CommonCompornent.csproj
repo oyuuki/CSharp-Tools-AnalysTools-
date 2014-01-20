@@ -132,9 +132,9 @@
       <Project>{3a665cc1-de55-4fa0-abf8-067760007edb}</Project>
       <Name>ConstAttribute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\FileUtilLibrary\FileUtilLibrary.csproj">
-      <Project>{B1549B29-E413-4B61-80E2-52325DCDD47F}</Project>
-      <Name>FileUtilLibrary</Name>
+    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
+      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
+      <Name>OyuLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

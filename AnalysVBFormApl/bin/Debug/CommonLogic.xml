@@ -6,7 +6,29 @@ CommonLogic
 </name>
 </assembly>
 <members>
-<member name="F:CommonLogic.DBControlManagerUtil._connection">
+<member name="P:CommonLogic.My.Resources.Resources.ResourceManager">
+	<summary>
+  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
+</summary>
+</member><member name="P:CommonLogic.My.Resources.Resources.Culture">
+	<summary>
+  厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+</summary>
+</member><member name="T:CommonLogic.My.Resources.Resources">
+	<summary>
+  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+</summary>
+</member><member name="M:CommonLogic.SqlServerDBCOntrolManager.#ctor(System.String,System.String,System.String,System.String)">
+	<summary>
+ コンストラクタ
+ Oracle接続情報を引数から受け取り
+ インスタンスに保持する
+ </summary>
+	<param name="loginUserName">ユーザー名</param>
+	<param name="password">パスワード</param>
+	<remarks></remarks>
+</member><member name="F:CommonLogic.DBControlManagerUtil._connection">
 	<summary>
  DB接続
  </summary>
@@ -106,19 +128,6 @@ CommonLogic
  DBへの操作を行うクラス
  </summary>
 	<remarks></remarks>
-</member><member name="P:CommonLogic.My.Resources.Resources.ResourceManager">
-	<summary>
-  このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
-</summary>
-</member><member name="P:CommonLogic.My.Resources.Resources.Culture">
-	<summary>
-  厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
-  現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
-</summary>
-</member><member name="T:CommonLogic.My.Resources.Resources">
-	<summary>
-  ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
-</summary>
 </member><member name="M:CommonLogic.VBStrings.LeftB(System.String,System.Int32)">
  -----------------------------------------------------------------------------------------
  <summary>
@@ -176,15 +185,6 @@ CommonLogic
  </summary>
  -----------------------------------------------------------------------------------------
 
-</member><member name="M:CommonLogic.SqlServerDBCOntrolManager.#ctor(System.String,System.String,System.String,System.String)">
-	<summary>
- コンストラクタ
- Oracle接続情報を引数から受け取り
- インスタンスに保持する
- </summary>
-	<param name="loginUserName">ユーザー名</param>
-	<param name="password">パスワード</param>
-	<remarks></remarks>
 </member>
 </members>
 </doc>

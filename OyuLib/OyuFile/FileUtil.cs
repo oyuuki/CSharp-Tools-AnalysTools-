@@ -5,7 +5,7 @@ using System.Text;
 
 using System.IO;
 
-namespace FileUtilLibrary
+namespace OyuLib.OyuFile
 {
     public static class FileUtil
     {

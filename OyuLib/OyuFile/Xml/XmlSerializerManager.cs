@@ -6,7 +6,10 @@ using System.Text;
 using System.Reflection;
 using System.IO;
 
-namespace FileUtilLibrary.Xml
+using OyuLib.OyuFile;
+
+
+namespace OyuLib.OyuFile.Xml
 {
     public static class XmlSerializerManager
     {

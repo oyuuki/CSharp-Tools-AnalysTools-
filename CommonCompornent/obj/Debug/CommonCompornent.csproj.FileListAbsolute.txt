@@ -34,12 +34,12 @@ C:\Users\PASEO\Desktop\Paseo\98_ツール\Mytools\CommonCompornent\obj\Debug\Com
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\CommonCompornent.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\CommonCompornent.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\ConstAttribute.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\FileUtilLibrary.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\ConstAttribute.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\FileUtilLibrary.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\obj\Debug\CommonCompornent.csprojResolveAssemblyReference.cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\obj\Debug\CommonCompornent.ExComboBox.resources
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\obj\Debug\CommonCompornent.ExDataGridViewControl.resources
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\obj\Debug\CommonCompornent.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\obj\Debug\CommonCompornent.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\obj\Debug\CommonCompornent.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\OyuLib.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CommonCompornent\bin\Debug\OyuLib.pdb

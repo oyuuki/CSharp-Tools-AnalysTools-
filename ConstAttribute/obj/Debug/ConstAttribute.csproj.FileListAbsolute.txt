@@ -7,3 +7,7 @@ C:\Users\PASEO\Desktop\Paseo\98_ツール\AnalysVBFormApl\ConstAttribute\bin\Deb
 C:\Users\PASEO\Desktop\Paseo\98_ツール\AnalysVBFormApl\ConstAttribute\bin\Debug\ConstAttribute.pdb
 C:\Users\PASEO\Desktop\Paseo\98_ツール\AnalysVBFormApl\ConstAttribute\obj\Debug\ConstAttribute.dll
 C:\Users\PASEO\Desktop\Paseo\98_ツール\AnalysVBFormApl\ConstAttribute\obj\Debug\ConstAttribute.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\ConstAttribute\bin\Debug\ConstAttribute.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\ConstAttribute\bin\Debug\ConstAttribute.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\ConstAttribute\obj\Debug\ConstAttribute.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\ConstAttribute\obj\Debug\ConstAttribute.pdb

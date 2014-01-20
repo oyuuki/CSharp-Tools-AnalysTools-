@@ -7,7 +7,7 @@ using System.Reflection;
 
 using AnalysSourceCode;
 
-using FileUtilLibrary;
+using OyuLib.OyuFile;
 
 namespace AnalysSourceCode.Generate
 {
