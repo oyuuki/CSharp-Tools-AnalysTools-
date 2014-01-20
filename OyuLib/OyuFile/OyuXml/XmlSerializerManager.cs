@@ -9,7 +9,7 @@ using System.IO;
 using OyuLib.OyuFile;
 
 
-namespace OyuLib.OyuFile.Xml
+namespace OyuLib.OyuFile.OyuXml
 {
     public static class XmlSerializerManager
     {

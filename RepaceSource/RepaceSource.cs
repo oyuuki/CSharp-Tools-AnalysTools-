@@ -115,6 +115,8 @@ namespace RepaceSource
                 sourceText = rep.GetReplacedText();
             }
 
+            op.Close();
+
             return sourceText;
         }
 
@@ -124,12 +126,12 @@ namespace RepaceSource
 
         private void extxtProFolder_TextChanged(object sender, EventArgs e)
         {
-            this.ReplaceSourceProc();
+            
         }
 
         private void exComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.ReplaceSourceProc();
+            
         }
 
         private void exBtnExecute_Click(object sender, EventArgs e)

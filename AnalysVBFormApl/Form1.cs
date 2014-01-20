@@ -22,7 +22,7 @@ using AnalysSourceCode.Enum;
 using ConstAttribute;
 
 using OyuLib.OyuFile;
-using OyuLib.OyuFile.Xml;
+using OyuLib.OyuFile.OyuXml;
 
 using AnalysVBFormApl.Interface;
 

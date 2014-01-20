@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.OyuFile.Xml
+namespace OyuLib.OyuFile.OyuXml
 {
     public class XmlValueTypeKeyAndValue
     {

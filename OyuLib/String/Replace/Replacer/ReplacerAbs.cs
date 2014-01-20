@@ -26,6 +26,11 @@ namespace OyuLib.String.Replace.Replacer
         /// </summary>
         protected object[] _objArray = null;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        protected bool isOutLog = false;
+
         #endregion
 
         #region constructor
@@ -73,6 +78,14 @@ namespace OyuLib.String.Replace.Replacer
             T rep = this.GetReplaceClass();
             var retArray = this.ReplaceProc(rep);
             return string.Join(this._text.LineCode.GetCharCodeString(), retArray);
+        }
+
+        private void OutLog()
+        {
+            if (this.isOutLog)
+            {
+
+            }
         }
 
         public abstract string[] ReplaceProc(T rep);
