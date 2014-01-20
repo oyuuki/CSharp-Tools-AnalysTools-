@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 using RepaceSource.ComboBoxEnum;
-using FileUtilLibrary;
+using OyuLib.OyuFile;
 
 namespace RepaceSource
 {
@@ -53,7 +53,7 @@ namespace RepaceSource
                 return false;
             }
 
-            if (!FileUtilLibrary.FileUtil.IsExistFileCheck(this.extxtProFolder.Text))
+            if (!FileUtil.IsExistFileCheck(this.extxtProFolder.Text))
             {
                 return false;
             }

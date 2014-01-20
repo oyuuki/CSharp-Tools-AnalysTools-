@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FileUtilLibrary">
-      <HintPath>..\FileUtilLibrary\bin\Debug\FileUtilLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -111,6 +108,10 @@
     <ProjectReference Include="..\ConstAttribute\ConstAttribute.csproj">
       <Project>{3a665cc1-de55-4fa0-abf8-067760007edb}</Project>
       <Name>ConstAttribute</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
+      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
+      <Name>OyuLib</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
