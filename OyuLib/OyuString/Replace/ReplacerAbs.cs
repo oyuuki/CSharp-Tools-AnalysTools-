@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-using OyuLib.String.Replace.ReplaceLogic;
-using OyuLib.String.Text;
+using OyuLib.OyuString.Text;
 using OyuLib;
 
-namespace OyuLib.String.Replace.Replacer
+namespace OyuLib.OyuString.Replace
 {
     public abstract class ReplacerAbs<T>
         where T : ReplaceLogicAbs, new()
@@ -29,7 +29,7 @@ namespace OyuLib.String.Replace.Replacer
         /// <summary>
         /// 
         /// </summary>
-        protected bool isOutLog = false;
+        protected bool isOutLog = true;
 
         #endregion
 
@@ -57,6 +57,12 @@ namespace OyuLib.String.Replace.Replacer
             set { this._isRegexincludePettern = value; }
         }
 
+        public bool IsOutLog
+        {
+            get { return this.isOutLog; }
+            set { this.isOutLog = value; }
+        }
+
         #endregion
 
         #region method
@@ -82,8 +88,9 @@ namespace OyuLib.String.Replace.Replacer
 
         private void OutLog()
         {
-            if (this.isOutLog)
+            if (this.IsOutLog)
             {
+
 
             }
         }

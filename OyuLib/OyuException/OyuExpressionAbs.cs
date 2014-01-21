@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.OyuFile.OyuText
+namespace OyuLib.OyuException
 {
-    public class LogFile : TextFile
+    abstract class OyuExpressionAbs : Exception
     {
-        #region constructor
+        #region Constructor
 
-        public LogFile(string filePath)
-            : base(filePath)
+        public OyuExpressionAbs(string message)
         {
             
         }
@@ -19,6 +18,7 @@ namespace OyuLib.OyuFile.OyuText
 
         #region Method
 
+        
 
 
         #endregion

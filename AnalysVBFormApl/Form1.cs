@@ -22,7 +22,6 @@ using AnalysSourceCode.Enum;
 using ConstAttribute;
 
 using OyuLib.OyuFile;
-using OyuLib.OyuFile.OyuXml;
 
 using AnalysVBFormApl.Interface;
 
@@ -372,7 +371,7 @@ namespace AnalysVBFormApl
             DataGridViewCellEventArgs ee = (DataGridViewCellEventArgs)e;
 
             string searchText = this.exDataGridView1.GetStringValue(COLUMNNAME_COLID, ee.RowIndex);
-            string[] sourceArray = FileUtil.GetAllTextShiftJIS(this.exTxtSourcepath.Text).Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            string[] sourceArray = new TextFile(this.exTxtSourcepath.Text).GetAllReadText().Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
             List<Form1ToForm2> retList = new List<Form1ToForm2>();
 

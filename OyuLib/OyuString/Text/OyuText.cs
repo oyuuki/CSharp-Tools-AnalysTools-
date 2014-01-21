@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using OyuLib.OyuChar;
 
-namespace OyuLib.String.Text
+namespace OyuLib.OyuString.Text
 {
     public class OyuText
     {
@@ -12,7 +12,7 @@ namespace OyuLib.String.Text
 
         private string _text = string.Empty;
 
-        private LineCode _lineCode = null;
+        private LineCharCode _lineCode = null;
 
         #endregion
 
@@ -27,11 +27,11 @@ namespace OyuLib.String.Text
 
         #region Property
 
-        public LineCode LineCode
+        public LineCharCode LineCode
         {
             get
             {
-                LineCode retLineCode = null;
+                LineCharCode retLineCode = null;
 
                 if (this.IsSetLineCode())
                 {
@@ -39,7 +39,7 @@ namespace OyuLib.String.Text
                 }
                 else
                 {
-                    retLineCode = new LineCode();
+                    retLineCode = new LineCharCode();
                 }
 
                 return retLineCode;
@@ -53,7 +53,7 @@ namespace OyuLib.String.Text
 
         public string[] GetLineArray()
         {
-            return CharManager<LineCode>.GetSpilitString(this._text);
+            return new CharCodeManager(this.LineCode).GetSpilitString(this._text);
         }
 
         private bool IsSetLineCode()

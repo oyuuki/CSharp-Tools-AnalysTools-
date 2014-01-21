@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace OyuLib.String.Replace.ReplaceLogic
+namespace OyuLib.OyuString.Replace
 {
     /// <summary>
     /// 
@@ -60,10 +60,10 @@ namespace OyuLib.String.Replace.ReplaceLogic
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceLogicAbs(string stringReplacing, string stringWillBeReplace)
+        public ReplaceLogicAbs(string stringWillBeReplace, string stringReplacing)
         {
-            this._stringReplacing = stringReplacing;
             this._stringWillBeReplace = stringWillBeReplace;
+            this._stringReplacing = stringReplacing;
         }
 
         #endregion

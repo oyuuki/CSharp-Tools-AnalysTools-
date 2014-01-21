@@ -18,7 +18,7 @@ namespace OyuLib.OyuFile
         /// <summary>
         /// Set The WriteMode of Text(true:Append, false:Overwrite)
         /// </summary>
-        private bool _isAppendText = false;
+        private bool _isAppendMode = false;
 
         #endregion
 
@@ -29,20 +29,34 @@ namespace OyuLib.OyuFile
             this._filePath = filePath;
         }
 
+        public FileAbs(string filePath, bool isAppendMode)
+        {
+            this._filePath = filePath;
+            this._isAppendMode = isAppendMode;
+        }
+
         #endregion
 
         #region Property
 
-        public bool IsAppendText
+        protected string FilePath
         {
-            get { return this._isAppendText; }
-            set { this._isAppendText = value; }
+            get { return this._filePath; }
+            set { this._filePath = value; }
+        }
+
+        public bool IsAppendMode
+        {
+            get { return this._isAppendMode; }
+            set { this._isAppendMode = value; }
         }
 
         #endregion
 
 
         #region Method
+
+        #region Public
 
         /// <summary>
         /// Check the File Exists
@@ -52,6 +66,32 @@ namespace OyuLib.OyuFile
         {
             return File.Exists(this._filePath);
         }
+
+
+        #endregion
+
+        #region protected
+
+        protected void CreateNewFile()
+        {
+            File.Create(this.FilePath).Close();
+        }
+
+        #region Exception
+
+        protected void ThrowExNotExistFile()
+        {
+            throw new Exception("ファイルが存在しません。ファイルパス" + this.FilePath);
+        }
+
+        protected void ThrowExAlreadyExistFile()
+        {
+            throw new Exception("ファイルがすでに存在します。ファイルパス" + this.FilePath);
+        }
+
+        #endregion
+
+        #endregion
 
         #endregion
     }

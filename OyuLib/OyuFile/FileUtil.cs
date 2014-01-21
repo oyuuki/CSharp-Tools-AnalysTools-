@@ -8,36 +8,9 @@ using System.IO;
 namespace OyuLib.OyuFile
 {
     public static class FileUtil
-    {
-        #region const
-
-        private const string ENCODING_SHIFT_JIS = "Shift_JIS";
-
-        #endregion
-
+    {        
         #region method
 
-        #region gettext
-
-        /// <summary>
-        /// Get All Text From TextFile
-        /// </summary>
-        /// <param name="filePath"></param>
-        public static string GetAllTextShiftJIS(string filePath)
-        {
-            return GetAllText(filePath, ENCODING_SHIFT_JIS);
-        }
-
-        /// <summary>
-        /// Get All Text using encode shift_jis From TextFile 
-        /// </summary>
-        /// <param name="filePath"></param>
-        private static string GetAllText(string filePath, string encodeString)
-        {
-            return File.ReadAllText(filePath, Encoding.GetEncoding(encodeString));
-        }
-
-        #endregion
 
         #region Check
 

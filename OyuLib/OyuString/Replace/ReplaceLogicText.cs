@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.String.Replace.ReplaceLogic
+namespace OyuLib.OyuString.Replace
 {
     public class ReplaceLogicText : ReplaceLogicAbs
     {
@@ -19,8 +19,8 @@ namespace OyuLib.String.Replace.ReplaceLogic
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceLogicText(string stringReplacing, string stringWillBeReplace)
-            : base(stringReplacing, stringWillBeReplace)
+        public ReplaceLogicText(string stringWillBeReplace, string stringReplacing)
+            : base(stringWillBeReplace, stringReplacing)
         {
         }
 

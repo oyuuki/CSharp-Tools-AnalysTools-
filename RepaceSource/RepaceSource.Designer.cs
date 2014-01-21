@@ -37,8 +37,10 @@
             this.exBtnExecute = new CommonCompornent.ExButton.ExButton(this.components);
             this.exButton1 = new CommonCompornent.ExButton.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColLineNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOldText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNewText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exBtnSaveLog = new CommonCompornent.ExButton.ExButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.exDgvLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +87,7 @@
             this.exDgvLog.ColumnNamesortAsNumber = new string[0];
             this.exDgvLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColNo,
+            this.ColLineNumber,
             this.ColOldText,
             this.ColNewText});
             this.exDgvLog.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
@@ -92,7 +95,7 @@
             this.exDgvLog.Location = new System.Drawing.Point(12, 37);
             this.exDgvLog.Name = "exDgvLog";
             this.exDgvLog.RowTemplate.Height = 21;
-            this.exDgvLog.Size = new System.Drawing.Size(804, 344);
+            this.exDgvLog.Size = new System.Drawing.Size(833, 344);
             this.exDgvLog.TabIndex = 4;
             this.exDgvLog.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.exDgvLog_RowsAdded);
             // 
@@ -123,6 +126,13 @@
             this.ColNo.ReadOnly = true;
             this.ColNo.Width = 35;
             // 
+            // ColLineNumber
+            // 
+            this.ColLineNumber.HeaderText = "行";
+            this.ColLineNumber.Name = "ColLineNumber";
+            this.ColLineNumber.ReadOnly = true;
+            this.ColLineNumber.Width = 35;
+            // 
             // ColOldText
             // 
             this.ColOldText.HeaderText = "変更前";
@@ -137,11 +147,22 @@
             this.ColNewText.ReadOnly = true;
             this.ColNewText.Width = 350;
             // 
+            // exBtnSaveLog
+            // 
+            this.exBtnSaveLog.Location = new System.Drawing.Point(535, 387);
+            this.exBtnSaveLog.Name = "exBtnSaveLog";
+            this.exBtnSaveLog.Size = new System.Drawing.Size(126, 23);
+            this.exBtnSaveLog.TabIndex = 8;
+            this.exBtnSaveLog.Text = "実行";
+            this.exBtnSaveLog.UseVisualStyleBackColor = true;
+            this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
+            // 
             // RepaceSource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 412);
+            this.ClientSize = new System.Drawing.Size(857, 412);
+            this.Controls.Add(this.exBtnSaveLog);
             this.Controls.Add(this.exButton1);
             this.Controls.Add(this.exBtnExecute);
             this.Controls.Add(this.exDgvLog);
@@ -167,8 +188,10 @@
         private CommonCompornent.ExButton.ExButton exBtnExecute;
         private CommonCompornent.ExButton.ExButton exButton1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColLineNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColOldText;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNewText;
+        private CommonCompornent.ExButton.ExButton exBtnSaveLog;
     }
 }
 

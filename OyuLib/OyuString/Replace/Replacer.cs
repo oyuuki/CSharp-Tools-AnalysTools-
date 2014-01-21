@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-using OyuLib.String.Replace.Replacer;
-using OyuLib.String.Replace.ReplaceLogic;
-using OyuLib.String.Text;
+using OyuLib.OyuFile;
+using OyuLib.OyuString.Replace;
+using OyuLib.OyuString.Text;
 using OyuLib;
 
-namespace OyuLib.String.Replace.Replacer
+namespace OyuLib.OyuString.Replace
 {
     public class Replacer : ReplacerAbs<ReplaceLogicText>
     {
         #region constructor
+
+        public Replacer(TextFile textFile, object[] objArray)
+            : base(textFile.GetOyuTextFromFile(), objArray)
+        {
+
+        }
 
         public Replacer(OyuText text, object[] objArray)
             : base(text, objArray)

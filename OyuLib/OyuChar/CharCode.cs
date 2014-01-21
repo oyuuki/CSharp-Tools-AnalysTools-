@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ConstAttribute;
 
 namespace OyuLib.OyuChar
 {
-    public abstract class CharCode
+    public class CharCode
     {
         #region instanceVal
 
@@ -25,13 +26,19 @@ namespace OyuLib.OyuChar
             this._charCode = Convert.ToChar(stringCode);
         }
 
+        public CharCode(CharCodeKind charCodeKind)
+            : this(ConstAttributeManager<CharCodeKind>.GetValueByEnumValue(charCodeKind))
+        {
+
+        }
+
         #endregion
 
         #region Method
 
-        #region abstract
+        #region virtual
 
-        public string GetCharCodeString()
+        public virtual string GetCharCodeString()
         {
             return Convert.ToString(this._charCode);
         }

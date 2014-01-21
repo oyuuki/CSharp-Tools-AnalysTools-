@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.OyuFile.CharSet
+namespace OyuLib.OyuFile
 {
-    class EnumCharSetValue
+    class CharSetValue
     {
         public const string CONST_CHARSET_NONE = "0";
         public const string CONST_CHARSET_NONE_NAME = "";

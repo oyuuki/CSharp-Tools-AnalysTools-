@@ -2,19 +2,19 @@
 <ArrayOfXmlValueTypeKeyAndValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <XmlValueTypeKeyAndValue>
     <Key>1</Key>
-    <Value>ColNo1q2w3e4r5t6y1,ColTargetText1q2w3e4r5t6yPublic Const ,ColReplaceText1q2w3e4r5t6yうふふ</Value>
+    <Value>ColNo1q2w3e4r5t6y1,ColTargetText1q2w3e4r5t6yPrivate Const,ColReplaceText1q2w3e4r5t6yうふふ</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>3</Key>
-    <Value>ColNo1q2w3e4r5t6y3,ColTargetText1q2w3e4r5t6ytest,ColReplaceText1q2w3e4r5t6yPublic Const </Value>
+    <Value>ColNo1q2w3e4r5t6y3,ColTargetText1q2w3e4r5t6yコード,ColReplaceText1q2w3e4r5t6yOyuCode</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>10</Key>
-    <Value>ColNo1q2w3e4r5t6y10,ColTargetText1q2w3e4r5t6ytest,ColReplaceText1q2w3e4r5t6ytest2</Value>
+    <Value>ColNo1q2w3e4r5t6y10,ColTargetText1q2w3e4r5t6yPrivate Const,ColReplaceText1q2w3e4r5t6yはは</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>2</Key>
-    <Value>ColNo1q2w3e4r5t6y2,ColTargetText1q2w3e4r5t6ytest,ColReplaceText1q2w3e4r5t6ytest2</Value>
+    <Value>ColNo1q2w3e4r5t6y2,ColTargetText1q2w3e4r5t6ytest,ColReplaceText1q2w3e4r5t6yPrivate Const</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>4</Key>

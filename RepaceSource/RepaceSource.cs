@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
-using OyuLib.String.Replace.Replacer;
+using OyuLib.OyuString.Replace;
+using OyuLib.OyuString.Text;
 using RepaceSource.ComboBoxEnum;
 using OyuLib.OyuFile;
-using OyuLib.String.Replace;
 using RepaceSource.Preset;
 
 namespace RepaceSource
@@ -15,6 +15,10 @@ namespace RepaceSource
         #region const
 
         private const string CONST_COLNAME_NO = "ColNo";
+        private const string CONST_COLNAME_LINENUMBER = "ColLineNumber";
+        private const string CONST_COLNAME_OLDTEXT = "ColOldText";
+        private const string CONST_COLNAME_NEWTEXT = "ColNewText";
+        
 
         #endregion
 
@@ -76,24 +80,37 @@ namespace RepaceSource
 
             foreach (var filePathString in FileUtil.GetFileList(extxtProFolder.GetTrimedText(), new PresetProfile(this.exComboBox1.GetSelectedItemKey()).GetFileExtension()))
             {
-                var sourceText = FileUtil.GetAllTextShiftJIS(filePathString);
+                TextFile sourceFile = new TextFile(filePathString);
 
-                sourceText = this.ReplaceSourceProcNormal2(sourceText);
+                OyuText befSourceText = sourceFile.GetOyuTextFromFile();
 
-                //書き込むファイルが既に存在している場合は、上書きする
-                System.IO.StreamWriter sw = new System.IO.StreamWriter(
-                    filePathString + "back.vb",
-                    true,
-                    System.Text.Encoding.GetEncoding("shift_jis"));
-                //TextBox1.Textの内容を書き込む
-                sw.Write(sourceText);
-                //閉じる
-                sw.Close();
+                var sourceText = this.ReplaceSourceProcNormal2(filePathString);
+
+                var replaceFodelrpath = Path.Combine(Path.GetDirectoryName(filePathString), "Replaced");
+                var replacefileName = Path.GetFileName(filePathString);
+
+                Directory.CreateDirectory(replaceFodelrpath);
+
+                using(var tFile = new TextFile(Path.Combine(replaceFodelrpath, replacefileName)))
+                {
+                    tFile.OpenFileForse();
+                    tFile.Write(sourceText);
+                    this.AddLogForNormalReplace(new OyuText(sourceText), befSourceText);
+                }
             }
         }
 
-        private string ReplaceSourceProcNormal2(string sourceText)
+        private string ReplaceSourceProcNormal2(string filePathString)
         {
+
+            TextFile sourceFile = new TextFile(filePathString);
+
+            OyuText befSourceText = sourceFile.GetOyuTextFromFile();
+
+            string retSourceText = sourceFile.GetAllReadText();
+
+            
+
             PresetOption op = new PresetOption(this.exComboBox1.GetSelectedItemKey());
 
             op.Show();
@@ -111,13 +128,32 @@ namespace RepaceSource
                     }
                 }
 
-                Replacer rep = new Replacer(sourceText, paramList.ToArray());
-                sourceText = rep.GetReplacedText();
+                Replacer rep = new Replacer(new TextFile(filePathString), paramList.ToArray());
+
+                retSourceText = rep.GetReplacedText();
             }
 
             op.Close();
 
-            return sourceText;
+            return retSourceText;
+        }
+
+        private void AddLogForNormalReplace(OyuText NowText, OyuText BefText)
+        {
+            string[] nowTextArray = NowText.GetLineArray();
+            string[] befTextArray = BefText.GetLineArray();
+
+            for (int index = 0; index < nowTextArray.Length; index++)
+            {
+                if (!nowTextArray[index].Equals(befTextArray[index]))
+                {
+                    int rowIndex = this.exDgvLog.Rows.Add();
+
+                    this.exDgvLog[CONST_COLNAME_LINENUMBER, rowIndex].Value = index + 1;
+                    this.exDgvLog[CONST_COLNAME_NEWTEXT, rowIndex].Value = nowTextArray[index];
+                    this.exDgvLog[CONST_COLNAME_OLDTEXT, rowIndex].Value = befTextArray[index];
+                }
+            }
         }
 
         #endregion
@@ -147,6 +183,11 @@ namespace RepaceSource
         private void exButton1_Click(object sender, EventArgs e)
         {
             this.ShowPresetOption();
+        }
+
+        private void exBtnSaveLog_Click(object sender, EventArgs e)
+        {
+            this.exDgvLog.StoreDatatoXml(DateTime.Now.ToString("yyyyMMddHHmmss") + "ReplaceLog", CONST_COLNAME_NO);
         }
 
         #endregion

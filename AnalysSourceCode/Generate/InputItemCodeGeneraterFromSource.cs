@@ -48,12 +48,14 @@ namespace AnalysSourceCode.Generate
         public static T GetInstanceOfFile<T>(string filePath)
            where T : InputItemCodeGeneraterFromSource, new()
         {
-            if (!FileUtil.IsExistFileCheck(filePath))
+            TextFile tFile = new TextFile(filePath);
+
+            if (!tFile.IsExist())
             {
                 return null;
             }
 
-            return Construct<T>(FileUtil.GetAllTextShiftJIS(filePath));
+            return Construct<T>(tFile.GetAllReadText());
         }
 
         private static T Construct<T>(string arg)
