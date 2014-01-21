@@ -11,38 +11,17 @@ namespace OyuLib.OyuString.Replace
         #region instanceVal
 
         /// <summary>
-        /// The String replacing 
+        /// 
         /// </summary>
-        private string _stringReplacing = string.Empty;
-
-        /// <summary>
-        /// The String that will be replace
-        /// </summary>
-        private string _stringWillBeReplace = string.Empty;
-
-        /// <summary>
-        /// Prove that String Either include regex or not
-        /// </summary>
-        private bool _isRegexincludePettern = false;
+        private ReplaceInfo _reInfo = null;
 
         #endregion
 
         #region property
 
-        protected string StringReplacing
+        public ReplaceInfo ReInfo
         {
-            get { return this._stringReplacing; }
-        }
-
-        protected string StringWillBeReplace
-        {
-            get { return this._stringWillBeReplace; }
-        }
-
-        public bool IsRegexincludePettern
-        {
-            get { return this._isRegexincludePettern; }
-            set { this._isRegexincludePettern = value; }
+            get { return this._reInfo; }
         }
 
         #endregion
@@ -61,41 +40,24 @@ namespace OyuLib.OyuString.Replace
         /// Constructor
         /// </summary>
         public ReplaceLogicAbs(string stringWillBeReplace, string stringReplacing)
+            : this(new ReplaceInfo(stringWillBeReplace, stringReplacing))
         {
-            this._stringWillBeReplace = stringWillBeReplace;
-            this._stringReplacing = stringReplacing;
+            
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ReplaceLogicAbs(ReplaceInfo reInfo)
+        {
+            this._reInfo = reInfo;
         }
 
         #endregion
 
         #region Method
 
-        #region protected
-
-        public string GetReplaceTextProc(string replaceText)
-        {
-            if (this.IsRegexincludePettern)
-            {
-                return this.GetReplaceTextProcRegex(replaceText);
-            }
-            else
-            {
-                return this.GetReplaceTextProcNormal(replaceText);
-            }
-        }
-
-        private string GetReplaceTextProcNormal(string replaceText)
-        {
-            return replaceText.Replace(this.StringWillBeReplace, this.StringReplacing);    
-        }
-
-        private string GetReplaceTextProcRegex(string replaceText)
-        {
-            return Regex.Replace(replaceText,StringWillBeReplace,StringReplacing);
-        }
-
-        #endregion
-
+        
         #region abstruct
 
         public abstract string GetReplacedText(string replaceText);

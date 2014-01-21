@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using OyuLib.OyuString.Replace;
@@ -18,6 +19,8 @@ namespace RepaceSource
         private const string CONST_COLNAME_LINENUMBER = "ColLineNumber";
         private const string CONST_COLNAME_OLDTEXT = "ColOldText";
         private const string CONST_COLNAME_NEWTEXT = "ColNewText";
+        private const string CONST_COLNAME_REPLACESTRING = "ColReplaceString";
+        
         
 
         #endregion
@@ -78,13 +81,18 @@ namespace RepaceSource
         {
             string retString = string.Empty;
 
+            PresetOption op = new PresetOption(this.exComboBox1.GetSelectedItemKey());
+
+            op.Show();
+
+
             foreach (var filePathString in FileUtil.GetFileList(extxtProFolder.GetTrimedText(), new PresetProfile(this.exComboBox1.GetSelectedItemKey()).GetFileExtension()))
             {
                 TextFile sourceFile = new TextFile(filePathString);
 
                 OyuText befSourceText = sourceFile.GetOyuTextFromFile();
 
-                var sourceText = this.ReplaceSourceProcNormal2(filePathString);
+                var sourceText = this.ReplaceSourceProcNormal2(filePathString, op.GetDgvRows());
 
                 var replaceFodelrpath = Path.Combine(Path.GetDirectoryName(filePathString), "Replaced");
                 var replacefileName = Path.GetFileName(filePathString);
@@ -94,13 +102,14 @@ namespace RepaceSource
                 using(var tFile = new TextFile(Path.Combine(replaceFodelrpath, replacefileName)))
                 {
                     tFile.OpenFileForse();
-                    tFile.Write(sourceText);
-                    this.AddLogForNormalReplace(new OyuText(sourceText), befSourceText);
+                    tFile.Write(sourceText);   
                 }
             }
+
+            op.Show();
         }
 
-        private string ReplaceSourceProcNormal2(string filePathString)
+        private string ReplaceSourceProcNormal2(string filePathString, DataGridViewRowCollection col)
         {
 
             TextFile sourceFile = new TextFile(filePathString);
@@ -109,36 +118,27 @@ namespace RepaceSource
 
             string retSourceText = sourceFile.GetAllReadText();
 
-            
 
-            PresetOption op = new PresetOption(this.exComboBox1.GetSelectedItemKey());
+            var replaceplaceList = new List<int[]>();
 
-            op.Show();
-            op.Hide();
-            
-            foreach (DataGridViewRow row in op.GetDgvRows())
+            foreach (DataGridViewRow row in col)
             {
                 var paramList = new List<string>();
 
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    if (cell.ColumnIndex > 0)
-                    {
-                        paramList.Add(cell.Value.ToString());
-                    }
-                }
+                paramList.Add(row.Cells[1].Value.ToString());
+                paramList.Add(row.Cells[2].Value.ToString());                
 
-                Replacer rep = new Replacer(new TextFile(filePathString), paramList.ToArray());
-
+                ReplacerText rep = new ReplacerText(new OyuText(retSourceText), paramList.ToArray());
                 retSourceText = rep.GetReplacedText();
+                replaceplaceList.Add(rep.GetReplacedNumberArray());
             }
 
-            op.Close();
+            this.AddLogForNormalReplace(new OyuText(retSourceText), befSourceText, replaceplaceList.ToArray(), col);
 
             return retSourceText;
         }
 
-        private void AddLogForNormalReplace(OyuText NowText, OyuText BefText)
+        private void AddLogForNormalReplace(OyuText NowText, OyuText BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col)
         {
             string[] nowTextArray = NowText.GetLineArray();
             string[] befTextArray = BefText.GetLineArray();
@@ -148,12 +148,45 @@ namespace RepaceSource
                 if (!nowTextArray[index].Equals(befTextArray[index]))
                 {
                     int rowIndex = this.exDgvLog.Rows.Add();
+                    int lineNumber = index + 1;
 
-                    this.exDgvLog[CONST_COLNAME_LINENUMBER, rowIndex].Value = index + 1;
+                    this.exDgvLog[CONST_COLNAME_LINENUMBER, rowIndex].Value = lineNumber;
                     this.exDgvLog[CONST_COLNAME_NEWTEXT, rowIndex].Value = nowTextArray[index];
                     this.exDgvLog[CONST_COLNAME_OLDTEXT, rowIndex].Value = befTextArray[index];
+                    this.exDgvLog[CONST_COLNAME_REPLACESTRING, rowIndex].Value = 
+                        this.GetTextOfReplacePlaceNumber(lineNumber, rePlacePlaceArray, col);
                 }
             }
+        }
+
+        private string GetTextOfReplacePlaceNumber(int lineNumber, int[][] ReplacePlaceArray,  DataGridViewRowCollection col)
+        {
+            var retString = string.Empty;
+            
+            for (int replaceStringIndex = 0; replaceStringIndex < col.Count; replaceStringIndex++)
+            {
+                int any = -1;
+
+                if((any = Array.IndexOf(ReplacePlaceArray[replaceStringIndex], lineNumber)) >= 0)
+                {
+                    DataGridViewRow row = col.SharedRow(replaceStringIndex);
+                    retString = retString + row.Cells[1].Value + "→" + row.Cells[2].Value + "：";
+
+                    object countString = row.Cells[3].Value;
+
+                    if (countString == null || string.IsNullOrWhiteSpace(countString.ToString()))
+                    {
+                        row.Cells[3].Value = 1;
+                    }
+                    else
+                    {
+                        row.Cells[3].Value = int.Parse(countString.ToString()) + 1;
+                    }
+                    
+                }
+            }
+
+            return retString;
         }
 
         #endregion

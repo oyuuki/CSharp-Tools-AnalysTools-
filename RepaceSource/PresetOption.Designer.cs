@@ -39,6 +39,7 @@
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTargetText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColReplaceText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.exDgvReplaceText)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,13 +70,14 @@
             this.exDgvReplaceText.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColNo,
             this.ColTargetText,
-            this.ColReplaceText});
+            this.ColReplaceText,
+            this.ColCount});
             this.exDgvReplaceText.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.exDgvReplaceText.IsSkipFocusReadOnlyCell = false;
             this.exDgvReplaceText.Location = new System.Drawing.Point(12, 32);
             this.exDgvReplaceText.Name = "exDgvReplaceText";
             this.exDgvReplaceText.RowTemplate.Height = 21;
-            this.exDgvReplaceText.Size = new System.Drawing.Size(765, 344);
+            this.exDgvReplaceText.Size = new System.Drawing.Size(871, 344);
             this.exDgvReplaceText.TabIndex = 6;
             this.exDgvReplaceText.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.exDgvReplaceText_RowsAdded);
             // 
@@ -138,11 +140,18 @@
             this.ColReplaceText.Name = "ColReplaceText";
             this.ColReplaceText.Width = 350;
             // 
+            // ColCount
+            // 
+            this.ColCount.HeaderText = "置換数";
+            this.ColCount.Name = "ColCount";
+            this.ColCount.ReadOnly = true;
+            this.ColCount.Width = 70;
+            // 
             // PresetOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(788, 422);
+            this.ClientSize = new System.Drawing.Size(898, 422);
             this.Controls.Add(this.exAddRow);
             this.Controls.Add(this.exBtnExecute);
             this.Controls.Add(this.exBtnReturn);
@@ -171,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTargetText;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColReplaceText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCount;
     }
 }

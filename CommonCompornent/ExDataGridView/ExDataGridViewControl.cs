@@ -175,6 +175,18 @@ namespace CommonCompornent
 
         #endregion
 
+        #region ClearValuesOfCol
+
+        public void ClearValuesOfCol(string colName)
+        {
+            foreach (DataGridViewRow row in this.Rows)
+            {
+                row.Cells[colName].Value = string.Empty;
+            }
+        }
+
+        #endregion
+
         #region Clear
 
         public void ClearValueOfRow(int rowIndex)

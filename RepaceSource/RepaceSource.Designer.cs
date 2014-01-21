@@ -36,11 +36,12 @@
             this.exDgvLog = new CommonCompornent.ExDataGridViewControl(this.components);
             this.exBtnExecute = new CommonCompornent.ExButton.ExButton(this.components);
             this.exButton1 = new CommonCompornent.ExButton.ExButton(this.components);
+            this.exBtnSaveLog = new CommonCompornent.ExButton.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLineNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOldText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNewText = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exBtnSaveLog = new CommonCompornent.ExButton.ExButton(this.components);
+            this.ColReplaceString = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.exDgvLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,13 +90,14 @@
             this.ColNo,
             this.ColLineNumber,
             this.ColOldText,
-            this.ColNewText});
+            this.ColNewText,
+            this.ColReplaceString});
             this.exDgvLog.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.exDgvLog.IsSkipFocusReadOnlyCell = false;
             this.exDgvLog.Location = new System.Drawing.Point(12, 37);
             this.exDgvLog.Name = "exDgvLog";
             this.exDgvLog.RowTemplate.Height = 21;
-            this.exDgvLog.Size = new System.Drawing.Size(833, 344);
+            this.exDgvLog.Size = new System.Drawing.Size(1141, 344);
             this.exDgvLog.TabIndex = 4;
             this.exDgvLog.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.exDgvLog_RowsAdded);
             // 
@@ -118,6 +120,16 @@
             this.exButton1.Text = "プリセット設定";
             this.exButton1.UseVisualStyleBackColor = true;
             this.exButton1.Click += new System.EventHandler(this.exButton1_Click);
+            // 
+            // exBtnSaveLog
+            // 
+            this.exBtnSaveLog.Location = new System.Drawing.Point(535, 387);
+            this.exBtnSaveLog.Name = "exBtnSaveLog";
+            this.exBtnSaveLog.Size = new System.Drawing.Size(126, 23);
+            this.exBtnSaveLog.TabIndex = 8;
+            this.exBtnSaveLog.Text = "実行";
+            this.exBtnSaveLog.UseVisualStyleBackColor = true;
+            this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
             // 
             // ColNo
             // 
@@ -147,21 +159,18 @@
             this.ColNewText.ReadOnly = true;
             this.ColNewText.Width = 350;
             // 
-            // exBtnSaveLog
+            // ColReplaceString
             // 
-            this.exBtnSaveLog.Location = new System.Drawing.Point(535, 387);
-            this.exBtnSaveLog.Name = "exBtnSaveLog";
-            this.exBtnSaveLog.Size = new System.Drawing.Size(126, 23);
-            this.exBtnSaveLog.TabIndex = 8;
-            this.exBtnSaveLog.Text = "実行";
-            this.exBtnSaveLog.UseVisualStyleBackColor = true;
-            this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
+            this.ColReplaceString.HeaderText = "変更元文字列";
+            this.ColReplaceString.Name = "ColReplaceString";
+            this.ColReplaceString.ReadOnly = true;
+            this.ColReplaceString.Width = 300;
             // 
             // RepaceSource
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(857, 412);
+            this.ClientSize = new System.Drawing.Size(1165, 412);
             this.Controls.Add(this.exBtnSaveLog);
             this.Controls.Add(this.exButton1);
             this.Controls.Add(this.exBtnExecute);
@@ -187,11 +196,12 @@
         private CommonCompornent.ExDataGridViewControl exDgvLog;
         private CommonCompornent.ExButton.ExButton exBtnExecute;
         private CommonCompornent.ExButton.ExButton exButton1;
+        private CommonCompornent.ExButton.ExButton exBtnSaveLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColLineNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColOldText;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNewText;
-        private CommonCompornent.ExButton.ExButton exBtnSaveLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColReplaceString;
     }
 }
 

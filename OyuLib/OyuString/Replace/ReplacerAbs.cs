@@ -26,11 +26,6 @@ namespace OyuLib.OyuString.Replace
         /// </summary>
         protected object[] _objArray = null;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        protected bool isOutLog = true;
-
         #endregion
 
         #region constructor
@@ -57,22 +52,21 @@ namespace OyuLib.OyuString.Replace
             set { this._isRegexincludePettern = value; }
         }
 
-        public bool IsOutLog
-        {
-            get { return this.isOutLog; }
-            set { this.isOutLog = value; }
-        }
-
         #endregion
 
         #region method
 
+        #region Public
+
         public T GetReplaceClass()
         {
             T rep = Util.GetInstance<T>(this._objArray);
-            rep.IsRegexincludePettern = this.IsRegexincludePettern;
-
             return rep;
+        }
+
+        public ReplaceInfo GetReplaceInfo()
+        {
+            return this.GetReplaceClass().ReInfo;
         }
 
         /// <summary>
@@ -86,16 +80,26 @@ namespace OyuLib.OyuString.Replace
             return string.Join(this._text.LineCode.GetCharCodeString(), retArray);
         }
 
-        private void OutLog()
+        /// <summary>
+        /// Replace text that exchanged to the Array
+        /// </summary>
+        /// <returns></returns>
+        public int[] GetReplacedNumberArray()
         {
-            if (this.IsOutLog)
-            {
-
-
-            }
+            T rep = this.GetReplaceClass();
+            return this.GetReplaceNumberProc(rep);
+            
         }
 
-        public abstract string[] ReplaceProc(T rep);
+        #endregion
+
+        #region Abstruct
+
+        protected abstract string[] ReplaceProc(T rep);
+
+        protected abstract int[] GetReplaceNumberProc(T rep);
+
+        #endregion
 
         #endregion
     }
