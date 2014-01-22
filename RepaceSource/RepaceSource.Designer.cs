@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.exComboBox1 = new OyuLib.OyuWindows.Interface.ExComboBox();
-            this.extxtProFolder = new OyuLib.OyuWindows.Interface.ExTextBox(this.components);
-            this.exProFolderDialogButton = new OyuLib.OyuWindows.Interface.ExButton.ExFolderDialogButton(this.components);
-            this.exDgvLog = new OyuLib.OyuWindows.Interface.ExDataGridView.ExDataGridViewControl(this.components);
-            this.exBtnExecute = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
-            this.exButton1 = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
-            this.exBtnSaveLog = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exComboBox1 = new OyuLib.Windows.Forms.ExComboBox();
+            this.extxtProFolder = new OyuLib.Windows.Forms.ExTextBox(this.components);
+            this.exProFolderDialogButton = new OyuLib.Windows.Forms.ExFolderDialogButton(this.components);
+            this.exDgvLog = new OyuLib.Windows.Forms.DataGridView.ExDataGridViewControl(this.components);
+            this.exBtnExecute = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exBtnSaveLog = new OyuLib.Windows.Forms.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLineNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOldText = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -189,14 +189,14 @@
 
         #endregion
 
-        private OyuLib.OyuWindows.Interface.ExButton.ExFolderDialogButton exProFolderDialogButton;
-        private OyuLib.OyuWindows.Interface.ExTextBox extxtProFolder;
-        private OyuLib.OyuWindows.Interface.ExComboBox exComboBox1;
+        private OyuLib.Windows.Forms.ExFolderDialogButton exProFolderDialogButton;
+        private OyuLib.Windows.Forms.ExTextBox extxtProFolder;
+        private OyuLib.Windows.Forms.ExComboBox exComboBox1;
         private System.Windows.Forms.Label label1;
-        private OyuLib.OyuWindows.Interface.ExDataGridView.ExDataGridViewControl exDgvLog;
-        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnExecute;
-        private OyuLib.OyuWindows.Interface.ExButton.ExButton exButton1;
-        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnSaveLog;
+        private OyuLib.Windows.Forms.DataGridView.ExDataGridViewControl exDgvLog;
+        private OyuLib.Windows.Forms.ExButton exBtnExecute;
+        private OyuLib.Windows.Forms.ExButton exButton1;
+        private OyuLib.Windows.Forms.ExButton exBtnSaveLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColLineNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColOldText;

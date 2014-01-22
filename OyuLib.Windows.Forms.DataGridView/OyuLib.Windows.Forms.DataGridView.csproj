@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B11D04A4-C034-4873-B1D5-62D9B7B6BFE7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OyuLib.Windows.Forms.DataGridView</RootNamespace>
+    <AssemblyName>OyuLib.Windows.Forms.DataGridView</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CellValue.cs" />
+    <Compile Include="EnumDGVEvent.cs" />
+    <Compile Include="ExDataGridViewCellEventValue.cs" />
+    <Compile Include="ExDataGridViewEventDictionary.cs" />
+    <Compile Include="ExDataGridViewEventTemplate.cs" />
+    <Compile Include="ExDataGridViewEventValue.cs" />
+    <Compile Include="ExDelegateClass.cs" />
+    <Compile Include="ExDataGridViewControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExDataGridViewControl.Designer.cs">
+      <DependentUpon>ExDataGridViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExDataGridViewAdmissionControlManager.cs" />
+    <Compile Include="ExDataGridViewEventManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataGridViewAdmissionCopyPasteControl.cs" />
+    <Compile Include="DataGridViewAdmissionMoveCurrentControl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExDataGridViewControl.resx">
+      <DependentUpon>ExDataGridViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OyuLib.Windows\OyuLib.Windows.Forms.csproj">
+      <Project>{fc9ccfc1-71fd-41ff-abdb-60cb9b6204a6}</Project>
+      <Name>OyuLib.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Xml\OyuLib.Xml.csproj">
+      <Project>{0dfb964d-54b4-4596-afee-c49a9dca9228}</Project>
+      <Name>OyuLib.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
+      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
+      <Name>OyuLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -43,6 +43,12 @@
     <Compile Include="XmlSerializerManager.cs" />
     <Compile Include="XmlValueTypeKeyAndValue.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
+      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
+      <Name>OyuLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

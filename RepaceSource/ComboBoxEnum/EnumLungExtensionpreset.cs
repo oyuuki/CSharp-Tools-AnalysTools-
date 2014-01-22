@@ -1,4 +1,4 @@
-﻿using OyuLib.OyuAttribute;
+﻿using OyuLib;
 
 namespace RepaceSource.ComboBoxEnum
 {

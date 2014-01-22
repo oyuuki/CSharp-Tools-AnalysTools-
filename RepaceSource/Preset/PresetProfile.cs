@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using OyuLib.OyuWindows.Interface;
-using OyuLib.OyuAttribute;
+﻿
+using OyuLib;
 using RepaceSource.ComboBoxEnum;
 
 namespace RepaceSource.Preset

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 
 using System.IO;
 using System.Windows.Forms;
-using OyuLib.IO.File;
-using OyuLib.IO.File.TextFile;
+using OyuLib.IO;
 using OyuLib.Text;
 using OyuLib.Text.Replace;
 using RepaceSource.ComboBoxEnum;

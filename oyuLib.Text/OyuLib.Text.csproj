@@ -39,11 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Replace\ReplaceInfo.cs" />
-    <Compile Include="Replace\ReplaceLogicAbs.cs" />
-    <Compile Include="Replace\ReplaceLogicText.cs" />
-    <Compile Include="Replace\ReplacerAbs.cs" />
-    <Compile Include="Replace\ReplacerText.cs" />
     <Compile Include="Sentence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

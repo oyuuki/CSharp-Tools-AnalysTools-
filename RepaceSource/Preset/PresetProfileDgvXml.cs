@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using OyuLib.OyuWindows.Interface.ExDataGridView;
+using OyuLib.Windows.Forms.DataGridView;
 
 namespace RepaceSource.Preset
 {

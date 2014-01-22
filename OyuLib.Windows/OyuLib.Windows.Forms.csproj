@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FC9CCFC1-71FD-41FF-ABDB-60CB9B6204A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OyuLib.Windows.Forms</RootNamespace>
+    <AssemblyName>OyuLib.Windows.Forms</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExButton.Designer.cs">
+      <DependentUpon>ExButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExDialogButton.Designer.cs">
+      <DependentUpon>ExDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExFileDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExFileDialogButton.Designer.cs">
+      <DependentUpon>ExFileDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExFolderDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExFolderDialogButton.Designer.cs">
+      <DependentUpon>ExFolderDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExLabel.Designer.cs">
+      <DependentUpon>ExLabel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExVBFileDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExVBFileDialogButton.Designer.cs">
+      <DependentUpon>ExVBFileDialogButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="exComboBox.Designer.cs">
+      <DependentUpon>ExComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExListBox.Designer.cs">
+      <DependentUpon>ExListBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExTextBox.Designer.cs">
+      <DependentUpon>ExTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DialogUtil.cs" />
+    <Compile Include="IValidateInputData.cs" />
+    <Compile Include="KeyUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="exComboBox.resx">
+      <DependentUpon>ExComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
+      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
+      <Name>OyuLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

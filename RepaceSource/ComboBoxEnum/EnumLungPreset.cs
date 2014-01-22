@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using OyuLib.OyuAttribute;
+using OyuLib;
 
 namespace RepaceSource.ComboBoxEnum
 {

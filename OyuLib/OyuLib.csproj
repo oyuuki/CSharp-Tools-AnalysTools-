@@ -41,111 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArrayUtil.cs" />
-    <Compile Include="OyuAttribute\ConstAttributeManager.cs" />
-    <Compile Include="OyuAttribute\ConstValueAttribute.cs" />
-    <Compile Include="OyuCharCode\CharCode.cs" />
-    <Compile Include="OyuCharCode\CharCodeKind.cs" />
-    <Compile Include="OyuCharCode\CharCodeKindValue.cs" />
-    <Compile Include="OyuCharCode\CharCodeManager.cs" />
-    <Compile Include="OyuCharCode\LineCharCodeKind.cs" />
-    <Compile Include="OyuCharCode\LineCharCodeKindValue.cs" />
-    <Compile Include="OyuCharCode\LineCharCode.cs" />
-    <Compile Include="OyuConsole\ConcoleManager.cs" />
-    <Compile Include="OyuDB\SqlServerDBCOntrolManager.cs" />
-    <Compile Include="OyuDB\DBControlManagerUtil.cs" />
-    <Compile Include="OyuException\ExpressionAbs.cs" />
-    <Compile Include="OyuWindows\Compornent\ExButton\ExButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExButton.Designer.cs">
-      <DependentUpon>ExButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExDialogButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExDialogButton.Designer.cs">
-      <DependentUpon>ExDialogButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExFileDialogButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExFileDialogButton.Designer.cs">
-      <DependentUpon>ExFileDialogButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExFolderDialogButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExFolderDialogButton.Designer.cs">
-      <DependentUpon>ExFolderDialogButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExLabel.Designer.cs">
-      <DependentUpon>ExLabel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExVBFileDialogButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExButton\ExVBFileDialogButton.Designer.cs">
-      <DependentUpon>ExVBFileDialogButton.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExComboBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\exComboBox.Designer.cs">
-      <DependentUpon>ExComboBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Cell\CellValue.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Events\EnumDGVEvent.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Events\ExDataGridViewCellEventValue.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Events\ExDataGridViewEventDictionary.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Events\ExDataGridViewEventTemplate.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Events\ExDataGridViewEventValue.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Events\ExDelegateClass.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\ExDataGridViewControl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\ExDataGridViewControl.Designer.cs">
-      <DependentUpon>ExDataGridViewControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Manager\ExDataGridViewAdmissionControlManager.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Manager\ExDataGridViewEventManager.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Util\Admission\DataGridViewAdmissionCopyPasteControl.cs" />
-    <Compile Include="OyuWindows\Compornent\ExDataGridView\Util\Admission\DataGridViewAdmissionMoveCurrentControl.cs" />
-    <Compile Include="OyuWindows\Compornent\ExListBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExListBox.Designer.cs">
-      <DependentUpon>ExListBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="OyuWindows\Compornent\ExTextBox.Designer.cs">
-      <DependentUpon>ExTextBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OyuWindows\Interface\IValidateInputData.cs" />
-    <Compile Include="OyuWindows\KeyUtil.cs" />
-    <Compile Include="OyuWindows\Compornent\Logic\DialogUtil.cs" />
-    <Compile Include="OyuWindows\Compornent\Logic\TypeUtil.cs" />
+    <Compile Include="CharCode.cs" />
+    <Compile Include="CharCodeKind.cs" />
+    <Compile Include="CharCodeKindValue.cs" />
+    <Compile Include="CharCodeManager.cs" />
+    <Compile Include="ConstAttributeManager.cs" />
+    <Compile Include="ConstValueAttribute.cs" />
+    <Compile Include="LineCharCode.cs" />
+    <Compile Include="LineCharCodeKind.cs" />
+    <Compile Include="LineCharCodeKindValue.cs" />
+    <Compile Include="ConcoleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeUtil.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="OyuWindows\Compornent\exComboBox.resx">
-      <DependentUpon>ExComboBox.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OyuWindows\Compornent\ExDataGridView\ExDataGridViewControl.resx">
-      <DependentUpon>ExDataGridViewControl.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OyuLib.Xml\OyuLib.Xml.csproj">
-      <Project>{0dfb964d-54b4-4596-afee-c49a9dca9228}</Project>
-      <Name>OyuLib.Xml</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

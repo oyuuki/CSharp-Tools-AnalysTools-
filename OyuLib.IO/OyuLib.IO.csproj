@@ -39,24 +39,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="File\FileAbs.cs" />
-    <Compile Include="File\FileUtil.cs" />
-    <Compile Include="File\TextFile\CharSet.cs" />
-    <Compile Include="File\TextFile\CharSetValue.cs" />
-    <Compile Include="File\TextFile\SeparateTextFile.cs" />
-    <Compile Include="File\TextFile\TextFile.cs" />
+    <Compile Include="FileAbs.cs" />
+    <Compile Include="FileUtil.cs" />
+    <Compile Include="CharSet.cs" />
+    <Compile Include="CharSetValue.cs" />
+    <Compile Include="SeparateTextFile.cs" />
+    <Compile Include="TextFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\oyuLib.Text\OyuLib.Text.csproj">
-      <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
-      <Name>OyuLib.Text</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

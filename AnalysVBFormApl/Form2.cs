@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using OyuLib.DB;
-using OyuLib.OyuConsole;
-using OyuLib.OyuWindows.Interface.ExDataGridView.Events;
+using OyuLib;
+using OyuLib.Data.DB;
+using OyuLib.Windows.Forms.DataGridView;
 using AnalysisVBFormApl.Interface;
 
 
@@ -158,8 +158,8 @@ namespace AnalysisVBFormApl
         private void exButton2_Click(object sender, EventArgs e)
         {
             
-            using (SqlServerDBCOntrolManager manager =
-                new SqlServerDBCOntrolManager(AnalysisVBFormApl.Properties.Settings.Default.DbUserId,
+            using (DBControlManagerUtilSqlServer manager =
+                new DBControlManagerUtilSqlServer(AnalysisVBFormApl.Properties.Settings.Default.DbUserId,
                                             AnalysisVBFormApl.Properties.Settings.Default.DBUserPassword,
                                             AnalysisVBFormApl.Properties.Settings.Default.DBServerName,
                                             AnalysisVBFormApl.Properties.Settings.Default.DBName))

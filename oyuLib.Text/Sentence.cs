@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using OyuLib.OyuCharCode;
 
 namespace OyuLib.Text
 {

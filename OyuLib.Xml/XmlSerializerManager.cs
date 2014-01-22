@@ -32,7 +32,7 @@ namespace OyuLib.Xml
             {
                 return new T[] { };
             }
-
+            
             //保存した内容を復元する
             System.Xml.Serialization.XmlSerializer serializer2 =
                 new System.Xml.Serialization.XmlSerializer(typeof(T[]));
