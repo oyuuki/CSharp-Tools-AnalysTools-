@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using AnalysisSourceCode.Field.WindowsForm;
-using OyuLib.OyuIO.OyuFile;
+using OyuLib.AnalysisSourceCode.Field.WindowsForm;
 
-namespace AnalysisSourceCode
+namespace OyuLib.AnalysisSourceCode.Field.WindowsForm
 {
     /// <summary>
     /// Manage to analys VBCode
@@ -41,9 +41,9 @@ namespace AnalysisSourceCode
         /// </summary>
         public WindowsFormFieldItem[] ExecAnalysToInputItemInfos()
         {
-            if (FileUtil.IsExistFileCheck(this._filePath))
+            if (File.Exists(this._filePath))
             {
-                WinFrmFieldItemCodeGeneraterFromVBSource gene = WinFrmFieldItemCodeGeneraterFromSource.GetInstanceOfFile<WinFrmFieldItemCodeGeneraterFromVBSource>(this._filePath);
+                WinFrmFieldItemCodeGeneraterFromVBSource gene = WinFrmFieldItemCodeGeneraterFromSource.GetInstanceOfFile<WinFrmFieldItemCodeGeneraterFromVBSource>(File.ReadAllText(this._filePath));
                 WindowsFormFieldItem[] array = gene.GetItemInfos<WinFrmFieldGeneraterFromVBSource>();
                 return array;
             }

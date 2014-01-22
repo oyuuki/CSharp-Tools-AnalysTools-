@@ -31,3 +31,11 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\RepaceSource.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.AnalysisSourceCode.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.IO.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Text.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Xml.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.AnalysisSourceCode.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.IO.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Text.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Xml.pdb

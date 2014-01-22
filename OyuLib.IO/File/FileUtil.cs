@@ -5,18 +5,17 @@ using System.Text;
 
 using System.IO;
 
-namespace OyuLib.OyuIO.OyuFile
+namespace OyuLib.IO.File
 {
     public static class FileUtil
     {        
         #region method
 
-
         #region Check
 
         public static bool IsExistFileCheck(string filePath)
         {
-            return File.Exists(filePath);
+            return System.IO.File.Exists(filePath);
         }
 
         public static string[] GetFileList(string folderPath, string extensionPattern)

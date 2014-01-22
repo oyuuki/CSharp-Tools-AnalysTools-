@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.OyuIO.OyuFile
+namespace OyuLib.IO.File
 {
     public class FileAbs
     {
@@ -64,7 +64,7 @@ namespace OyuLib.OyuIO.OyuFile
         /// <returns></returns>
         public bool IsExist()
         {
-            return File.Exists(this._filePath);
+            return System.IO.File.Exists(this._filePath);
         }
 
 
@@ -74,7 +74,7 @@ namespace OyuLib.OyuIO.OyuFile
 
         protected void CreateNewFile()
         {
-            File.Create(this.FilePath).Close();
+            System.IO.File.Create(this.FilePath).Close();
         }
 
         #region Exception

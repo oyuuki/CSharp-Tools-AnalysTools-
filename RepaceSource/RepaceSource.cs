@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 using System.IO;
 using System.Windows.Forms;
-using OyuLib.OyuIO.OyuFile;
-using OyuLib.OyuIO.OyuFile.OyuTextFile;
-using OyuLib.OyuText;
-using OyuLib.OyuText.Replace;
+using OyuLib.IO.File;
+using OyuLib.IO.File.TextFile;
+using OyuLib.Text;
+using OyuLib.Text.Replace;
 using RepaceSource.ComboBoxEnum;
 using RepaceSource.Preset;
 
@@ -91,7 +91,7 @@ namespace RepaceSource
             {
                 TextFile sourceFile = new TextFile(filePathString);
 
-                Sentence befSourceText = sourceFile.GetOyuTextFromFile();
+                Sentence befSourceText = new Sentence(sourceFile.GetAllReadText());
 
                 var sourceText = this.ReplaceSourceProcNormal2(filePathString, op.GetDgvRows());
 
@@ -115,7 +115,7 @@ namespace RepaceSource
 
             TextFile sourceFile = new TextFile(filePathString);
 
-            Sentence befSourceText = sourceFile.GetOyuTextFromFile();
+            Sentence befSourceText = new Sentence(sourceFile.GetAllReadText());
 
             string retSourceText = sourceFile.GetAllReadText();
 

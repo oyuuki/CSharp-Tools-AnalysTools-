@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using OyuLib.OyuCharCode;
 
-namespace OyuLib.OyuIO.OyuFile.OyuTextFile
+namespace OyuLib.IO.File.TextFile
 {
     public class SeparateTextFile : TextFile
     {

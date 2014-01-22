@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using OyuLib.OyuCharCode;
 
-namespace OyuLib.OyuText
+namespace OyuLib.Text
 {
     public class Sentence
     {

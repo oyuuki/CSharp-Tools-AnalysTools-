@@ -1,6 +1,6 @@
 ﻿
 
-namespace OyuLib.OyuText.Replace
+namespace OyuLib.Text.Replace
 {
     public abstract class ReplacerAbs<T>
         where T : ReplaceLogicAbs, new()

@@ -1,5 +1,5 @@
 ﻿
-namespace OyuLib.OyuText.Replace
+namespace OyuLib.Text.Replace
 {
     public class ReplaceInfo
     {

@@ -9,20 +9,20 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using System.IO;
-using OyuLib.OyuIO.OyuFile.OyuTextFile;
-using OyuLib.OyuIO.OyuFile.Xml;
+using OyuLib.IO.File.TextFile;
 using OyuLib.OyuWindows;
 using OyuLib.OyuWindows.Interface.ExDataGridView.Events;
 
 
-using AnalysisSourceCode;
+using OyuLib.AnalysisSourceCode;
 
 using OyuLib.OyuAttribute;
 
 using AnalysisVBFormApl.Interface;
 
 using OyuLib.OyuWindows.Interface.Logic;
-using AnalysisSourceCode.Field.WindowsForm;
+using OyuLib.AnalysisSourceCode.Field.WindowsForm;
+using OyuLib.Xml;
 
 namespace AnalysisVBFormApl
 {

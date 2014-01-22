@@ -1,4 +1,4 @@
-﻿namespace OyuLib.OyuText.Replace
+﻿namespace OyuLib.Text.Replace
 {
     /// <summary>
     /// 

@@ -5,13 +5,13 @@ using System.Text;
 
 using System.Reflection;
 
-namespace AnalysisSourceCode.Field
+namespace OyuLib.AnalysisSourceCode.Field
 {
-    public abstract class SourceCodePart : InputFieldItem
+    public abstract class InputFieldItemSourceCode : InputFieldItem
     {
         #region instance
 
-        protected List<SourceCodePart> _childparts = null;
+        protected List<InputFieldItemSourceCode> _childparts = null;
 
         #endregion
 
@@ -20,7 +20,7 @@ namespace AnalysisSourceCode.Field
         /// <summary>
         /// constractor
         /// </summary>
-        public SourceCodePart()
+        public InputFieldItemSourceCode()
         {
 
         }
@@ -28,10 +28,10 @@ namespace AnalysisSourceCode.Field
         /// <summary>
         /// constractor
         /// </summary>
-        public SourceCodePart(string sourceText, int hierarchyIndex, string itemSignature)
+        public InputFieldItemSourceCode(string sourceText, int hierarchyIndex, string itemSignature)
             : base(sourceText, hierarchyIndex, itemSignature)
         {
-            this._childparts = new List<SourceCodePart>();
+            this._childparts = new List<InputFieldItemSourceCode>();
             this._itemSignature = itemSignature + "." + this.GetHashCode().ToString();
             this.Init();
         }
@@ -57,13 +57,13 @@ namespace AnalysisSourceCode.Field
             return this._itemSignature;
         }
 
-        public SourceCodePart[] GetPartArray()
+        public InputFieldItemSourceCode[] GetPartArray()
         {
-            List<SourceCodePart> retList = new List<SourceCodePart>();
+            List<InputFieldItemSourceCode> retList = new List<InputFieldItemSourceCode>();
             retList.Add(this);
-            List<SourceCodePart> childList = new List<SourceCodePart>(this.GetChildParts());
+            List<InputFieldItemSourceCode> childList = new List<InputFieldItemSourceCode>(this.GetChildParts());
 
-            foreach (SourceCodePart part in childList.ToArray())
+            foreach (InputFieldItemSourceCode part in childList.ToArray())
             {
                 retList.Add(part);
             }
@@ -84,9 +84,9 @@ namespace AnalysisSourceCode.Field
 
         #region protected
 
-        protected SourceCodePart[] GetChildparts()
+        protected InputFieldItemSourceCode[] GetChildparts()
         {
-            return this._childparts.ToArray<SourceCodePart>();
+            return this._childparts.ToArray<InputFieldItemSourceCode>();
         }
 
         public string[] GetTextArray()
@@ -100,10 +100,10 @@ namespace AnalysisSourceCode.Field
 
         protected string[] GetChildPartsTextArray()
         {
-            List<SourceCodePart> childList = new List<SourceCodePart>(this.GetChildParts());
+            List<InputFieldItemSourceCode> childList = new List<InputFieldItemSourceCode>(this.GetChildParts());
             List<string> retList = new List<string>();
 
-            foreach (SourceCodePart part in childList.ToArray())
+            foreach (InputFieldItemSourceCode part in childList.ToArray())
             {
                 retList.Add(part.GetSourcePartText());
             }
@@ -111,11 +111,11 @@ namespace AnalysisSourceCode.Field
             return retList.ToArray();
         }
 
-        protected SourceCodePart[] GetChildParts()
+        protected InputFieldItemSourceCode[] GetChildParts()
         {
-            List<SourceCodePart> retList = new List<SourceCodePart>();
+            List<InputFieldItemSourceCode> retList = new List<InputFieldItemSourceCode>();
 
-            foreach (SourceCodePart part in this._childparts)
+            foreach (InputFieldItemSourceCode part in this._childparts)
             {
                 if (!part.GetIshaveChild())
                 {
@@ -147,7 +147,7 @@ namespace AnalysisSourceCode.Field
         }
 
         protected T AddChild<T>(string text)
-            where T : SourceCodePart, new()
+            where T : InputFieldItemSourceCode, new()
         {
             Type type = typeof(T);
             ConstructorInfo ctor = type.GetConstructor(new Type[] { typeof(string), typeof(int), typeof(string) });

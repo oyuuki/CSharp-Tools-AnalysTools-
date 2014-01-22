@@ -54,16 +54,6 @@
     <Compile Include="OyuDB\SqlServerDBCOntrolManager.cs" />
     <Compile Include="OyuDB\DBControlManagerUtil.cs" />
     <Compile Include="OyuException\ExpressionAbs.cs" />
-    <Compile Include="OyuIO\OyuFile\OyuTextFile\CharSetValue.cs" />
-    <Compile Include="OyuIO\OyuFile\FileAbs.cs" />
-    <Compile Include="OyuIO\OyuFile\FileUtil.cs" />
-    <Compile Include="OyuIO\OyuFile\OyuTextFile\CharSet.cs" />
-    <Compile Include="OyuIO\OyuFile\OyuTextFile\SeparateTextFile.cs" />
-    <Compile Include="OyuIO\OyuFile\OyuTextFile\TextFile.cs" />
-    <Compile Include="OyuIO\OyuFile\Xml\XmlSerializerManager.cs" />
-    <Compile Include="OyuIO\OyuFile\Xml\XmlValueTypeKeyAndValue.cs" />
-    <Compile Include="OyuText\Replace\ReplaceInfo.cs" />
-    <Compile Include="OyuText\Replace\ReplaceLogicAbs.cs" />
     <Compile Include="OyuWindows\Compornent\ExButton\ExButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -140,10 +130,6 @@
     <Compile Include="OyuWindows\Compornent\Logic\DialogUtil.cs" />
     <Compile Include="OyuWindows\Compornent\Logic\TypeUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OyuText\Replace\ReplaceLogicText.cs" />
-    <Compile Include="OyuText\Replace\ReplacerText.cs" />
-    <Compile Include="OyuText\Replace\ReplacerAbs.cs" />
-    <Compile Include="OyuText\Sentence.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +139,12 @@
     <EmbeddedResource Include="OyuWindows\Compornent\ExDataGridView\ExDataGridViewControl.resx">
       <DependentUpon>ExDataGridViewControl.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OyuLib.Xml\OyuLib.Xml.csproj">
+      <Project>{0dfb964d-54b4-4596-afee-c49a9dca9228}</Project>
+      <Name>OyuLib.Xml</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

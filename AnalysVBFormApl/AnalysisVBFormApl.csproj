@@ -112,9 +112,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnalysSourceCode\AnalysSourceCode.csproj">
+    <ProjectReference Include="..\AnalysSourceCode\OyuLib.AnalysisSourceCode.csproj">
       <Project>{497504A2-030B-4013-B115-87D71E1886A7}</Project>
-      <Name>AnalysSourceCode</Name>
+      <Name>OyuLib.AnalysisSourceCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.IO\OyuLib.IO.csproj">
+      <Project>{db36f088-321b-42e7-aadc-4762e9f98205}</Project>
+      <Name>OyuLib.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\oyuLib.Text\OyuLib.Text.csproj">
+      <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
+      <Name>OyuLib.Text</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Xml\OyuLib.Xml.csproj">
+      <Project>{0dfb964d-54b4-4596-afee-c49a9dca9228}</Project>
+      <Name>OyuLib.Xml</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>

@@ -103,6 +103,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AnalysSourceCode\OyuLib.AnalysisSourceCode.csproj">
+      <Project>{497504a2-030b-4013-b115-87d71e1886a7}</Project>
+      <Name>OyuLib.AnalysisSourceCode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.IO\OyuLib.IO.csproj">
+      <Project>{db36f088-321b-42e7-aadc-4762e9f98205}</Project>
+      <Name>OyuLib.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\oyuLib.Text\OyuLib.Text.csproj">
+      <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
+      <Name>OyuLib.Text</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Xml\OyuLib.Xml.csproj">
+      <Project>{0dfb964d-54b4-4596-afee-c49a9dca9228}</Project>
+      <Name>OyuLib.Xml</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>

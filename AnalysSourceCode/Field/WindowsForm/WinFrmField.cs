@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AnalysisSourceCode.Field.WindowsForm
+namespace OyuLib.AnalysisSourceCode.Field.WindowsForm
 {
     /// <summary>
     /// InputItem info of DisplaySource

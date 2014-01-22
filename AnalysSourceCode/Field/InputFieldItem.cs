@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AnalysisSourceCode.Field
+namespace OyuLib.AnalysisSourceCode.Field
 {
     public abstract class InputFieldItem
     {

@@ -5,7 +5,7 @@ using System.Text;
 
 using OyuLib.OyuAttribute;
 
-namespace AnalysisSourceCode
+namespace OyuLib.AnalysisSourceCode
 {
     public enum KindImeMode
     {

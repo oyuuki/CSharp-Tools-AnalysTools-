@@ -1,17 +1,10 @@
 ﻿using System.Collections.Generic;
-using OyuLib.OyuIO.OyuFile.OyuTextFile;
 
-namespace OyuLib.OyuText.Replace
+namespace OyuLib.Text.Replace
 {
     public class ReplacerText : ReplacerAbs<ReplaceLogicText>
     {
         #region constructor
-
-        public ReplacerText(TextFile textFile, object[] objArray)
-            : base(textFile.GetOyuTextFromFile(), objArray)
-        {
-
-        }
 
         public ReplacerText(Sentence text, object[] objArray)
             : base(text, objArray)

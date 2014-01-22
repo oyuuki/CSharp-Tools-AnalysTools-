@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AnalysisSourceCode.Field.WindowsForm
+namespace OyuLib.AnalysisSourceCode.Field.WindowsForm
 {
     class WinFrmFieldItemCodeGeneraterFromVBSource : WinFrmFieldItemCodeGeneraterFromSource
     {
@@ -44,9 +44,9 @@ namespace AnalysisSourceCode.Field.WindowsForm
         #region override
 
 
-        protected override SourceCodePart GetSourceCodePart()
+        protected override InputFieldItemSourceCode GetSourceCodePart()
         {
-            return new VBSourceCodePart(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
+            return new InputFieldItemVBSourceCode(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
         }
         
         #endregion

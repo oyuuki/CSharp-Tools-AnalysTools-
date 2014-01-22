@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.OyuIO.OyuFile.OyuTextFile
+namespace OyuLib.IO.File.TextFile
 {
     class CharSetValue
     {

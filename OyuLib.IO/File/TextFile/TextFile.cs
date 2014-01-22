@@ -3,9 +3,8 @@ using System.IO;
 using System.Text;
 
 using OyuLib.OyuAttribute;
-using OyuLib.OyuText;
 
-namespace OyuLib.OyuIO.OyuFile.OyuTextFile
+namespace OyuLib.IO.File.TextFile
 {
     public class TextFile : FileAbs, IDisposable
     {
@@ -125,12 +124,7 @@ namespace OyuLib.OyuIO.OyuFile.OyuTextFile
         /// </summary>
         public string GetAllReadText()
         {
-            return File.ReadAllText(this.FilePath, this.GetEncoding());
-        }
-
-        public Sentence GetOyuTextFromFile()
-        {
-            return new Sentence(this.GetAllReadText());   
+            return System.IO.File.ReadAllText(this.FilePath, this.GetEncoding());
         }
 
         public void Close()

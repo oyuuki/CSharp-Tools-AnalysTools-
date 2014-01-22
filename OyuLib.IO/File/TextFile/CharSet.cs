@@ -5,7 +5,7 @@ using System.Text;
 
 using OyuLib.OyuAttribute;
 
-namespace OyuLib.OyuIO.OyuFile.OyuTextFile
+namespace OyuLib.IO.File.TextFile
 {
     public enum CharSet
     {

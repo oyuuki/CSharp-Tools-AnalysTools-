@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 
 using System.Reflection;
-using OyuLib.OyuIO.OyuFile.OyuTextFile;
 
-namespace AnalysisSourceCode.Field.WindowsForm
+namespace OyuLib.AnalysisSourceCode.Field.WindowsForm
 {
     /// <summary>
     /// class is All Sourcecode parent
@@ -40,17 +39,10 @@ namespace AnalysisSourceCode.Field.WindowsForm
 
         #region getInstance
 
-        public static T GetInstanceOfFile<T>(string filePath)
+        public static T GetInstanceOfFile<T>(string sourceText)
            where T : WinFrmFieldItemCodeGeneraterFromSource, new()
         {
-            TextFile tFile = new TextFile(filePath);
-
-            if (!tFile.IsExist())
-            {
-                return null;
-            }
-
-            return Construct<T>(tFile.GetAllReadText());
+            return Construct<T>(sourceText);
         }
 
         private static T Construct<T>(string arg)
@@ -76,10 +68,10 @@ namespace AnalysisSourceCode.Field.WindowsForm
         public WindowsFormFieldItem[] GetItemInfos<T>()
             where T : WinFrmFieldGenerater, new()
         {
-            SourceCodePart[] partArray = this.GetSourceCodePart().GetPartArray();
+            InputFieldItemSourceCode[] partArray = this.GetSourceCodePart().GetPartArray();
             List<WindowsFormFieldItem> retList = new List<WindowsFormFieldItem>();
 
-            foreach (SourceCodePart part in partArray)
+            foreach (InputFieldItemSourceCode part in partArray)
             {
                 T inputItemgene = ConstructItemInput<T>(part);
 
@@ -89,7 +81,7 @@ namespace AnalysisSourceCode.Field.WindowsForm
             return retList.ToArray();
         }
 
-        private static T ConstructItemInput<T>(SourceCodePart part)
+        private static T ConstructItemInput<T>(InputFieldItemSourceCode part)
             where T : WinFrmFieldGenerater, new()
         {
             Type type = typeof(T);
@@ -103,7 +95,7 @@ namespace AnalysisSourceCode.Field.WindowsForm
 
         #region abstract
 
-        protected abstract SourceCodePart GetSourceCodePart();
+        protected abstract InputFieldItemSourceCode GetSourceCodePart();
 
         #endregion
 

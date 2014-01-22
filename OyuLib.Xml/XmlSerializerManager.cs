@@ -6,7 +6,7 @@ using System.Text;
 using System.Reflection;
 using System.IO;
 
-namespace OyuLib.OyuIO.OyuFile.Xml
+namespace OyuLib.Xml
 {
     public static class XmlSerializerManager
     {
@@ -28,7 +28,7 @@ namespace OyuLib.OyuIO.OyuFile.Xml
         {
             string readFilePath = GetFileNameExecDir(fileName);
 
-            if (!FileUtil.IsExistFileCheck(readFilePath))
+            if (!File.Exists(readFilePath))
             {
                 return new T[] { };
             }

@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{497504A2-030B-4013-B115-87D71E1886A7}</ProjectGuid>
+    <ProjectGuid>{DB36F088-321B-42E7-AADC-4762E9F98205}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AnalysisSourceCode</RootNamespace>
-    <AssemblyName>AnalysisSourceCode</AssemblyName>
+    <RootNamespace>OyuLib.IO</RootNamespace>
+    <AssemblyName>OyuLib.IO</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,28 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysSourceCodeManager.cs" />
-    <Compile Include="KindImeMode.cs" />
-    <Compile Include="KindReadOnly.cs" />
-    <Compile Include="KindTranceType.cs" />
-    <Compile Include="Field\InputFieldItem.cs" />
-    <Compile Include="Field\WindowsForm\WinFrmField.cs" />
-    <Compile Include="Field\WindowsForm\WinFrmFieldItemCodeGeneraterFromSource.cs" />
-    <Compile Include="Field\WindowsForm\WinFrmFieldItemCodeGeneraterFromVBSource.cs" />
-    <Compile Include="Field\WindowsForm\WinFrmFieldGenerater.cs" />
-    <Compile Include="Field\WindowsForm\WinFrmFieldGeneraterFromVBSource.cs" />
-    <Compile Include="Field\SourceCodePart.cs" />
-    <Compile Include="Field\VBSourceCodePart.cs" />
+    <Compile Include="File\FileAbs.cs" />
+    <Compile Include="File\FileUtil.cs" />
+    <Compile Include="File\TextFile\CharSet.cs" />
+    <Compile Include="File\TextFile\CharSetValue.cs" />
+    <Compile Include="File\TextFile\SeparateTextFile.cs" />
+    <Compile Include="File\TextFile\TextFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\oyuLib.Text\OyuLib.Text.csproj">
+      <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
+      <Name>OyuLib.Text</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Generate\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

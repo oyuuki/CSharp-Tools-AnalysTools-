@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace OyuLib.OyuText.Replace
+namespace OyuLib.Text.Replace
 {
     public class ReplaceLogicText : ReplaceLogicAbs
     {

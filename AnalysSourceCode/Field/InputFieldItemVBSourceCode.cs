@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AnalysisSourceCode.Field
+namespace OyuLib.AnalysisSourceCode.Field
 {
-    class VBSourceCodePart : SourceCodePart
+    class InputFieldItemVBSourceCode : InputFieldItemSourceCode
     {
         #region const
 
@@ -20,7 +20,7 @@ namespace AnalysisSourceCode.Field
         /// <summary>
         /// constractor
         /// </summary>
-        public VBSourceCodePart()
+        public InputFieldItemVBSourceCode()
             : base()
         {
 
@@ -30,7 +30,7 @@ namespace AnalysisSourceCode.Field
         /// <summary>
         /// constractor
         /// </summary>
-        public VBSourceCodePart(string sourceText, int hierarchyIndex, string itemSignature)
+        public InputFieldItemVBSourceCode(string sourceText, int hierarchyIndex, string itemSignature)
             : base(sourceText, hierarchyIndex, itemSignature)
         {
 
@@ -60,11 +60,11 @@ namespace AnalysisSourceCode.Field
             {
                 string rttt = this._sourceText.Substring(nextBeginIndex);
                 string aarttt = rttt.Substring(rttt.IndexOf(BEGIN));
-                this.ReplaceTextBrank(this.AddChild<VBSourceCodePart>(aarttt));
+                this.ReplaceTextBrank(this.AddChild<InputFieldItemVBSourceCode>(aarttt));
             }
             else
             {
-                this.ReplaceTextBrank(this.AddChild<VBSourceCodePart>(this._sourceText.Substring(beginIndex, endIndex - beginIndex + END.Length)));
+                this.ReplaceTextBrank(this.AddChild<InputFieldItemVBSourceCode>(this._sourceText.Substring(beginIndex, endIndex - beginIndex + END.Length)));
             }
 
 
@@ -76,7 +76,7 @@ namespace AnalysisSourceCode.Field
             return true;
         }
 
-        private void ReplaceTextBrank(VBSourceCodePart part)
+        private void ReplaceTextBrank(InputFieldItemVBSourceCode part)
         {
             foreach (string rep in part.GetTextArray())
             {

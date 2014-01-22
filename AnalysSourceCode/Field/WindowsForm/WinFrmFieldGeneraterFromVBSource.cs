@@ -2,7 +2,7 @@
 
 using OyuLib.OyuAttribute;
 
-namespace AnalysisSourceCode.Field.WindowsForm
+namespace OyuLib.AnalysisSourceCode.Field.WindowsForm
 {
     class WinFrmFieldGeneraterFromVBSource : WinFrmFieldGenerater
     {
