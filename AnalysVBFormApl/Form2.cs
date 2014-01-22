@@ -11,7 +11,7 @@ using CommonCompornent.ExDataGridView.Events;
 using AnalysVBFormApl.Interface;
 using ConsoleUtil;
 
-using CommonLogic;
+using OyuLib.DB;
 using AnalysVBFormApl.DataSet1TableAdapters;
 
 namespace AnalysVBFormApl

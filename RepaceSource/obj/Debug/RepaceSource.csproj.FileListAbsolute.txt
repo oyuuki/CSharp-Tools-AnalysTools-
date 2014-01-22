@@ -30,8 +30,6 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\RepaceSource.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\RepaceSource.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\CommonCompornent.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\ConstAttribute.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\CommonCompornent.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\ConstAttribute.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.pdb

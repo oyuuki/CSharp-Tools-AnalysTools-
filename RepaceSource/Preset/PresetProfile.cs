@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CommonCompornent;
-using ConstAttribute;
+using OyuLib.OyuAttribute;
 using RepaceSource.ComboBoxEnum;
 
 namespace RepaceSource.Preset

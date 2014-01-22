@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-using ConstAttribute;
+using OyuLib.OyuAttribute;
 using OyuLib.OyuString.Text;
 
 namespace OyuLib.OyuFile

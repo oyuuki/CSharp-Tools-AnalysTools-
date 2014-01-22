@@ -120,17 +120,9 @@
       <Project>{39CDDA16-3C24-4C3A-B489-8FF769C729E9}</Project>
       <Name>CommonCompornent</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CommonLogic\CommonLogic.vbproj">
-      <Project>{0b6b9bfe-140c-4be3-b99b-a315ed4722ac}</Project>
-      <Name>CommonLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ConsoleUtil\ConsoleUtil.csproj">
       <Project>{540EA170-447C-4BA3-986A-0F68732CF486}</Project>
       <Name>ConsoleUtil</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ConstAttribute\ConstAttribute.csproj">
-      <Project>{3A665CC1-DE55-4FA0-ABF8-067760007EDB}</Project>
-      <Name>ConstAttribute</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>

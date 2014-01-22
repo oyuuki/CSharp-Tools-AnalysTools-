@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using ConstAttribute;
+using OyuLib.OyuAttribute;
 
 namespace CommonCompornent
 {

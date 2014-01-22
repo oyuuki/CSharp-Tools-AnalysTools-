@@ -19,7 +19,7 @@ using AnalysSourceCode.Generate;
 using AnalysSourceCode;
 using AnalysSourceCode.Enum;
 
-using ConstAttribute;
+using OyuLib.OyuAttribute;
 
 using OyuLib.OyuFile;
 
