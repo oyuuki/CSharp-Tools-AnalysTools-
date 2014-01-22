@@ -161,7 +161,6 @@ namespace OyuLib.Windows.Forms.DataGridView
                 return string.Empty;
             }
 
-
             return value.ToString();
         }
 
@@ -361,7 +360,8 @@ namespace OyuLib.Windows.Forms.DataGridView
 
                 foreach (KeyValuePair<string, string> dicValueDic in dicValue)
                 {
-                    this[dicValueDic.Key, int.Parse(keyHash[keyValue.Key].ToString())].Value = dicValueDic.Value;
+                    TranceDataGridViewCellValue tCell = new TranceDataGridViewCellValue(this[dicValueDic.Key, int.Parse(keyHash[keyValue.Key].ToString())]);
+                    tCell.SetValue(dicValueDic.Value);
                 }
             }
         }
@@ -383,11 +383,13 @@ namespace OyuLib.Windows.Forms.DataGridView
             {
                 var rowIndex = this.Rows.Add();
 
-                Dictionary<string, string> dicValue = this.GetXmlValueDicFromXmlValue(keyValue.Value);
+                Dictionary<string, string> dicValue 
+                    = this.GetXmlValueDicFromXmlValue(keyValue.Value);
 
                 foreach (KeyValuePair<string, string> dicValueDic in dicValue)
                 {
-                    this[dicValueDic.Key, rowIndex].Value = dicValueDic.Value;
+                    TranceDataGridViewCellValue tCell = new TranceDataGridViewCellValue(this[dicValueDic.Key, rowIndex]);
+                    tCell.SetValue(dicValueDic.Value);
                 }
             }
         }
@@ -613,7 +615,8 @@ namespace OyuLib.Windows.Forms.DataGridView
 
             foreach (string colName in colNameArray)
             {
-                valuelist.Add(colName + SEPARATORCOL + this.GetStringValue(colName, rowIndex));
+                TranceDataGridViewCellValue tCell = new TranceDataGridViewCellValue(this[colName, rowIndex]);
+                valuelist.Add(colName + SEPARATORCOL + tCell.GetTrancedValue());
             }
 
             return new XmlValueTypeKeyAndValue(this.GetStringValue(keyColName, rowIndex), string.Join(SEPARATORCOLVALUE, valuelist.ToArray()));

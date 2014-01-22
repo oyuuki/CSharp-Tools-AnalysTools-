@@ -34,21 +34,21 @@
             this.extxtProFolder = new OyuLib.Windows.Forms.ExTextBox(this.components);
             this.exProFolderDialogButton = new OyuLib.Windows.Forms.ExFolderDialogButton(this.components);
             this.exDgvLog = new OyuLib.Windows.Forms.DataGridView.ExDataGridViewControl(this.components);
-            this.exBtnExecute = new OyuLib.Windows.Forms.ExButton(this.components);
-            this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
-            this.exBtnSaveLog = new OyuLib.Windows.Forms.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLineNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOldText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNewText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColReplaceString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exBtnExecute = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exBtnSaveLog = new OyuLib.Windows.Forms.ExButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.exDgvLog)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(442, 15);
+            this.label1.Location = new System.Drawing.Point(782, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 12);
             this.label1.TabIndex = 3;
@@ -58,7 +58,7 @@
             // 
             this.exComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.exComboBox1.FormattingEnabled = true;
-            this.exComboBox1.Location = new System.Drawing.Point(483, 12);
+            this.exComboBox1.Location = new System.Drawing.Point(823, 10);
             this.exComboBox1.Name = "exComboBox1";
             this.exComboBox1.Size = new System.Drawing.Size(191, 20);
             this.exComboBox1.TabIndex = 2;
@@ -101,36 +101,6 @@
             this.exDgvLog.TabIndex = 4;
             this.exDgvLog.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.exDgvLog_RowsAdded);
             // 
-            // exBtnExecute
-            // 
-            this.exBtnExecute.Location = new System.Drawing.Point(690, 387);
-            this.exBtnExecute.Name = "exBtnExecute";
-            this.exBtnExecute.Size = new System.Drawing.Size(126, 23);
-            this.exBtnExecute.TabIndex = 5;
-            this.exBtnExecute.Text = "実行";
-            this.exBtnExecute.UseVisualStyleBackColor = true;
-            this.exBtnExecute.Click += new System.EventHandler(this.exBtnExecute_Click);
-            // 
-            // exButton1
-            // 
-            this.exButton1.Location = new System.Drawing.Point(687, 10);
-            this.exButton1.Name = "exButton1";
-            this.exButton1.Size = new System.Drawing.Size(126, 23);
-            this.exButton1.TabIndex = 7;
-            this.exButton1.Text = "プリセット設定";
-            this.exButton1.UseVisualStyleBackColor = true;
-            this.exButton1.Click += new System.EventHandler(this.exButton1_Click);
-            // 
-            // exBtnSaveLog
-            // 
-            this.exBtnSaveLog.Location = new System.Drawing.Point(535, 387);
-            this.exBtnSaveLog.Name = "exBtnSaveLog";
-            this.exBtnSaveLog.Size = new System.Drawing.Size(126, 23);
-            this.exBtnSaveLog.TabIndex = 8;
-            this.exBtnSaveLog.Text = "実行";
-            this.exBtnSaveLog.UseVisualStyleBackColor = true;
-            this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
-            // 
             // ColNo
             // 
             this.ColNo.HeaderText = "No.";
@@ -165,6 +135,36 @@
             this.ColReplaceString.Name = "ColReplaceString";
             this.ColReplaceString.ReadOnly = true;
             this.ColReplaceString.Width = 300;
+            // 
+            // exBtnExecute
+            // 
+            this.exBtnExecute.Location = new System.Drawing.Point(1027, 387);
+            this.exBtnExecute.Name = "exBtnExecute";
+            this.exBtnExecute.Size = new System.Drawing.Size(126, 23);
+            this.exBtnExecute.TabIndex = 5;
+            this.exBtnExecute.Text = "実行";
+            this.exBtnExecute.UseVisualStyleBackColor = true;
+            this.exBtnExecute.Click += new System.EventHandler(this.exBtnExecute_Click);
+            // 
+            // exButton1
+            // 
+            this.exButton1.Location = new System.Drawing.Point(1027, 8);
+            this.exButton1.Name = "exButton1";
+            this.exButton1.Size = new System.Drawing.Size(126, 23);
+            this.exButton1.TabIndex = 7;
+            this.exButton1.Text = "プリセット設定";
+            this.exButton1.UseVisualStyleBackColor = true;
+            this.exButton1.Click += new System.EventHandler(this.exButton1_Click);
+            // 
+            // exBtnSaveLog
+            // 
+            this.exBtnSaveLog.Location = new System.Drawing.Point(872, 387);
+            this.exBtnSaveLog.Name = "exBtnSaveLog";
+            this.exBtnSaveLog.Size = new System.Drawing.Size(126, 23);
+            this.exBtnSaveLog.TabIndex = 8;
+            this.exBtnSaveLog.Text = "ログ保存";
+            this.exBtnSaveLog.UseVisualStyleBackColor = true;
+            this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
             // 
             // RepaceSource
             // 

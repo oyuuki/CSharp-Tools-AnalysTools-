@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using OyuLib.IO;
 using OyuLib.Text;
 using OyuLib.Text.Replace;
+using OyuLib.Windows.Forms.DataGridView;
 using RepaceSource.ComboBoxEnum;
 using RepaceSource.Preset;
 
@@ -21,8 +22,6 @@ namespace RepaceSource
         private const string CONST_COLNAME_NEWTEXT = "ColNewText";
         private const string CONST_COLNAME_REPLACESTRING = "ColReplaceString";
         
-        
-
         #endregion
 
         #region constructor
@@ -129,6 +128,7 @@ namespace RepaceSource
                 paramList.Add(row.Cells[2].Value.ToString());
 
                 ReplacerText rep = new ReplacerText(new Sentence(retSourceText), paramList.ToArray());
+                rep.IsRegexincludePettern = bool.Parse(new TranceDataGridViewCellValue(row.Cells[4]).GetTrancedValue().ToString());
                 retSourceText = rep.GetReplacedText();
                 replaceplaceList.Add(rep.GetReplacedNumberArray());
             }
