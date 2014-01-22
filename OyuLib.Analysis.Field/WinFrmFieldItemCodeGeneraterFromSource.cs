@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using System.Reflection;
 
-namespace OyuLib.Analysis.Source.Field.WindowsForm
+namespace OyuLib.Analysis.Source.Field
 {
     /// <summary>
     /// class is All Sourcecode parent

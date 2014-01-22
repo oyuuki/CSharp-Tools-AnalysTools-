@@ -15,7 +15,7 @@ using OyuLib.Windows.Forms.DataGridView;
 
 using AnalysisVBFormApl.Interface;
 
-using OyuLib.Analysis.Source.Field.WindowsForm;
+using OyuLib.Analysis.Source.Field;
 using OyuLib.Xml;
 using OyuLib;
 

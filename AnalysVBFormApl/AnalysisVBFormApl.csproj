@@ -112,10 +112,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OyuLib.Analysis.Field.WindowsForm\OyuLib.Analysis.Source.Field.WindowsForm.csproj">
-      <Project>{ef5c8bf3-7ad0-41fc-b84f-83f2898d3e68}</Project>
-      <Name>OyuLib.Analysis.Source.Field.WindowsForm</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OyuLib.Analysis.Field\OyuLib.Analysis.Source.Field.csproj">
       <Project>{0b03c358-8e6a-472e-8171-0b7900579195}</Project>
       <Name>OyuLib.Analysis.Source.Field</Name>

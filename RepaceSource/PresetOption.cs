@@ -17,6 +17,9 @@ namespace RepaceSource
         #region const
 
         private const string CONST_COLNAME_NO = "ColNo";
+        private const string CONST_COLNAME_TARGETTEXT = "ColTargetText";
+        private const string CONST_COLNAME_REPLACETEXT = "ColReplaceText";
+        private const string CONST_COLNAME_ISREGEX = "ColIsRegex";
 
         #endregion
 
@@ -31,7 +34,8 @@ namespace RepaceSource
         public PresetOption(string constValue)
             : this()
         {
-            this._preset = new PresetProfileDgvXml(constValue, "Option", this.exDgvReplaceText, CONST_COLNAME_NO);
+            this._preset = new PresetProfileDgvXml(constValue, "Option", this.exDgvReplaceText, CONST_COLNAME_NO, new string[] { CONST_COLNAME_NO, CONST_COLNAME_TARGETTEXT, CONST_COLNAME_REPLACETEXT, CONST_COLNAME_ISREGEX });
+            this.exDgvReplaceText.ColumnNamesortAsNumber = new string[] { CONST_COLNAME_NO };
         }
 
         #endregion

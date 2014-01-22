@@ -41,6 +41,7 @@
             this.ColReplaceText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColIsRegex = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColMemo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.exDgvReplaceText)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             // 
             // exBtnReturn
             // 
-            this.exBtnReturn.Location = new System.Drawing.Point(686, 387);
+            this.exBtnReturn.Location = new System.Drawing.Point(936, 387);
             this.exBtnReturn.Name = "exBtnReturn";
             this.exBtnReturn.Size = new System.Drawing.Size(126, 23);
             this.exBtnReturn.TabIndex = 8;
@@ -85,7 +86,7 @@
             // 
             // exBtnExecute
             // 
-            this.exBtnExecute.Location = new System.Drawing.Point(839, 387);
+            this.exBtnExecute.Location = new System.Drawing.Point(1089, 387);
             this.exBtnExecute.Name = "exBtnExecute";
             this.exBtnExecute.Size = new System.Drawing.Size(126, 23);
             this.exBtnExecute.TabIndex = 9;
@@ -95,7 +96,7 @@
             // 
             // exAddRow
             // 
-            this.exAddRow.Location = new System.Drawing.Point(839, 9);
+            this.exAddRow.Location = new System.Drawing.Point(1089, 9);
             this.exAddRow.Name = "exAddRow";
             this.exAddRow.Size = new System.Drawing.Size(126, 23);
             this.exAddRow.TabIndex = 10;
@@ -113,13 +114,14 @@
             this.ColTargetText,
             this.ColReplaceText,
             this.ColCount,
-            this.ColIsRegex});
+            this.ColIsRegex,
+            this.ColMemo});
             this.exDgvReplaceText.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.exDgvReplaceText.IsSkipFocusReadOnlyCell = false;
             this.exDgvReplaceText.Location = new System.Drawing.Point(12, 32);
             this.exDgvReplaceText.Name = "exDgvReplaceText";
             this.exDgvReplaceText.RowTemplate.Height = 21;
-            this.exDgvReplaceText.Size = new System.Drawing.Size(953, 344);
+            this.exDgvReplaceText.Size = new System.Drawing.Size(1203, 344);
             this.exDgvReplaceText.TabIndex = 6;
             this.exDgvReplaceText.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.exDgvReplaceText_RowsAdded);
             // 
@@ -157,11 +159,17 @@
             this.ColIsRegex.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ColIsRegex.Width = 80;
             // 
+            // ColMemo
+            // 
+            this.ColMemo.HeaderText = "説明";
+            this.ColMemo.Name = "ColMemo";
+            this.ColMemo.Width = 250;
+            // 
             // PresetOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(977, 422);
+            this.ClientSize = new System.Drawing.Size(1225, 422);
             this.Controls.Add(this.exAddRow);
             this.Controls.Add(this.exBtnExecute);
             this.Controls.Add(this.exBtnReturn);
@@ -192,5 +200,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColReplaceText;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCount;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColIsRegex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColMemo;
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Analysis.Source.Field.WindowsForm
+namespace OyuLib.Analysis.Source.Field
 {
     class WinFrmFieldItemCodeGeneraterFromVBSource : WinFrmFieldItemCodeGeneraterFromSource
     {
