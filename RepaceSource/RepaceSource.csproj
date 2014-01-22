@@ -103,10 +103,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonCompornent\CommonCompornent.csproj">
-      <Project>{39CDDA16-3C24-4C3A-B489-8FF769C729E9}</Project>
-      <Name>CommonCompornent</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>

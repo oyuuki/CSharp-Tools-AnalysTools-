@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.exDgvSpe = new CommonCompornent.ExDataGridViewControl(this.components);
+            this.exDgvSpe = new OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl(this.components);
             this.lblPreset = new System.Windows.Forms.Label();
-            this.exBtnExecute = new CommonCompornent.ExButton.ExButton(this.components);
-            this.exBtnReturn = new CommonCompornent.ExButton.ExButton(this.components);
-            this.exAddRow = new CommonCompornent.ExButton.ExButton(this.components);
+            this.exBtnExecute = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
+            this.exBtnReturn = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
+            this.exAddRow = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColExecuteChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColNewText = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -150,11 +150,11 @@
 
         #endregion
 
-        private CommonCompornent.ExDataGridViewControl exDgvSpe;
+        private OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl exDgvSpe;
         private System.Windows.Forms.Label lblPreset;
-        private CommonCompornent.ExButton.ExButton exBtnExecute;
-        private CommonCompornent.ExButton.ExButton exBtnReturn;
-        private CommonCompornent.ExButton.ExButton exAddRow;
+        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnExecute;
+        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnReturn;
+        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exAddRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColExecuteChk;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNewText;

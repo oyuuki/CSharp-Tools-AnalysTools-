@@ -71,10 +71,8 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\De
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\AnalysVBFormApl.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\AnalysVBFormApl.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\AnalysSourceCode.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\CommonCompornent.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\ConsoleUtil.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\AnalysSourceCode.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\CommonCompornent.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\ConsoleUtil.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysVBFormApl.csprojResolveAssemblyReference.cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysVBFormApl.Form1.resources

@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using CommonCompornent;
-using RepaceSource.ComboBoxEnum;
+using OyuLib.OyuWindows.Compornent.ExDataGridView;
 
 namespace RepaceSource.Preset
 {

@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.exButton2 = new CommonCompornent.ExButton.ExButton(this.components);
-            this.exButton1 = new CommonCompornent.ExButton.ExButton(this.components);
-            this.exDataGridView1 = new CommonCompornent.ExDataGridViewControl(this.components);
-            this.exButton3 = new CommonCompornent.ExButton.ExButton(this.components);
-            this.exDataGridViewControl12222 = new CommonCompornent.ExDataGridViewControl(this.components);
+            this.exButton2 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
+            this.exButton1 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
+            this.exDataGridView1 = new OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl(this.components);
+            this.exButton3 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
+            this.exDataGridViewControl12222 = new OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl(this.components);
             this.ColLineNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGrid = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -207,11 +207,11 @@
 
         #endregion
 
-        private CommonCompornent.ExDataGridViewControl exDataGridView1;
-        private CommonCompornent.ExButton.ExButton exButton1;
-        private CommonCompornent.ExButton.ExButton exButton2;
-        private CommonCompornent.ExButton.ExButton exButton3;
-        private CommonCompornent.ExDataGridViewControl exDataGridViewControl12222;
+        private OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl exDataGridView1;
+        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton1;
+        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton2;
+        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton3;
+        private OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl exDataGridViewControl12222;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColLineNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColType;
         private System.Windows.Forms.DataGridViewButtonColumn ColGrid;

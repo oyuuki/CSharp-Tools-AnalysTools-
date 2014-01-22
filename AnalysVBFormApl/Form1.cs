@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 using System.IO;
 
-using CommonCompornent;
-using CommonCompornent.ExDataGridView.Manager;
-using CommonCompornent.ExDataGridView.Events;
+using OyuLib.OyuWindows.Compornent;
+using OyuLib.OyuWindows.Compornent.ExDataGridView.Manager;
+using OyuLib.OyuWindows.Compornent.ExDataGridView.Events;
 
 using AnalysSourceCode.Generate;
 
@@ -25,7 +25,7 @@ using OyuLib.OyuFile;
 
 using AnalysVBFormApl.Interface;
 
-using CommonCompornent.Logic;
+using OyuLib.OyuWindows.Compornent.Logic;
 
 namespace AnalysVBFormApl
 {

@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
+using OyuLib.OyuWindows.Compornent;
 using OyuLib.OyuWindows.Compornent.Logic;
 
 namespace OyuLib.OyuWindows.Compornent.ExButton

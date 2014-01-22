@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using CommonCompornent.ExDataGridView.Events;
+using OyuLib.OyuWindows.Compornent.ExDataGridView.Events;
 using AnalysVBFormApl.Interface;
 using ConsoleUtil;
 
