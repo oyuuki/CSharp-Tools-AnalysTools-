@@ -5,10 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-using OyuLib.OyuWindows.Compornent;
-using OyuLib.OyuWindows.Compornent.Logic;
+using OyuLib.OyuWindows.Interface;
+using OyuLib.OyuWindows.Interface.Logic;
 
-namespace OyuLib.OyuWindows.Compornent.ExButton
+namespace OyuLib.OyuWindows.Interface.ExButton
 {
     public partial class ExFolderDialogButton : ExDialogButton
     {

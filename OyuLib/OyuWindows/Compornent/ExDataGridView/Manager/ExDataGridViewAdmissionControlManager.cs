@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 using System.Windows.Forms;
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Util.Admission;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Util.Admission;
 
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView.Manager
+namespace OyuLib.OyuWindows.Interface.ExDataGridView.Manager
 {
     /// <summary>
     /// Provide Utility methods for DataGridView KeyDown, keyPress, Keyup

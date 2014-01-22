@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView.Events
+namespace OyuLib.OyuWindows.Interface.ExDataGridView.Events
 {
     /// <summary>
     /// class is provide Event Delegate For ExDataGridView.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView.Events
+namespace OyuLib.OyuWindows.Interface.ExDataGridView.Events
 {
     public enum EnumDGVEvent
     {

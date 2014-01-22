@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using AnalysisSourceCode.Field.WindowsForm;
+using OyuLib.OyuIO.OyuFile;
 
-using AnalysSourceCode.Generate;
-using OyuLib.OyuFile;
-
-
-namespace AnalysSourceCode
+namespace AnalysisSourceCode
 {
     /// <summary>
     /// Manage to analys VBCode
     /// </summary>
-    public class AnalysSourceCodeManager
+    public class AnalysisSourceCodeManager
     {
         #region Instance
 
@@ -29,7 +27,7 @@ namespace AnalysSourceCode
         /// constractor
         /// </summary>
         /// <param name="source"></param>
-        public AnalysSourceCodeManager(string filePath)
+        public AnalysisSourceCodeManager(string filePath)
         {
             this._filePath = filePath;
         }
@@ -41,12 +39,12 @@ namespace AnalysSourceCode
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        public InputItem[] ExecAnalysToInputItemInfos()
+        public WindowsFormFieldItem[] ExecAnalysToInputItemInfos()
         {
             if (FileUtil.IsExistFileCheck(this._filePath))
             {
-                InputItemCodeGeneraterFromVBSource gene = InputItemCodeGeneraterFromSource.GetInstanceOfFile<InputItemCodeGeneraterFromVBSource>(this._filePath);
-                InputItem[] array = gene.GetItemInfos<InputItemVBSourceGenerater>();
+                WinFrmFieldItemCodeGeneraterFromVBSource gene = WinFrmFieldItemCodeGeneraterFromSource.GetInstanceOfFile<WinFrmFieldItemCodeGeneraterFromVBSource>(this._filePath);
+                WindowsFormFieldItem[] array = gene.GetItemInfos<WinFrmFieldGeneraterFromVBSource>();
                 return array;
             }
 

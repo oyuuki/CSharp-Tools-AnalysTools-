@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Text;
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Events;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Events;
 
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView.Manager
+namespace OyuLib.OyuWindows.Interface.ExDataGridView.Manager
 {
     public class ExDataGridViewEventManager
     {

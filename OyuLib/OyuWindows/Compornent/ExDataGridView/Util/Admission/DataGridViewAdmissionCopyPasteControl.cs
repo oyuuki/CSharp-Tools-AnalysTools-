@@ -5,10 +5,10 @@ using System.Text;
 
 using System.Windows.Forms;
 
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Cell;
-using OyuLib.OyuWindows.Compornent.Logic;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Cell;
+using OyuLib.OyuWindows.Interface.Logic;
 
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView.Util.Admission
+namespace OyuLib.OyuWindows.Interface.ExDataGridView.Util.Admission
 {
     class DataGridViewAdmissionCopyPasteControl
     {

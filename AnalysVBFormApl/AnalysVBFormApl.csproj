@@ -8,8 +8,8 @@
     <ProjectGuid>{F7E27B4E-4784-4597-BD91-4014EF883329}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AnalysVBFormApl</RootNamespace>
-    <AssemblyName>AnalysVBFormApl</AssemblyName>
+    <RootNamespace>AnalysisVBFormApl</RootNamespace>
+    <AssemblyName>AnalysisVBFormApl</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -115,10 +115,6 @@
     <ProjectReference Include="..\AnalysSourceCode\AnalysSourceCode.csproj">
       <Project>{497504A2-030B-4013-B115-87D71E1886A7}</Project>
       <Name>AnalysSourceCode</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ConsoleUtil\ConsoleUtil.csproj">
-      <Project>{540EA170-447C-4BA3-986A-0F68732CF486}</Project>
-      <Name>ConsoleUtil</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>

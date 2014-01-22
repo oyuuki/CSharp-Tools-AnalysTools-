@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.OyuWindows.Compornent.ExButton
+namespace OyuLib.OyuWindows.Interface.ExButton
 {
     public partial class ExVBFileDialogButton : ExFileDialogButton
     {

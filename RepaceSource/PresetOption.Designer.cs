@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.exComboBox1 = new OyuLib.OyuWindows.Compornent.ExComboBox();
-            this.exDgvReplaceText = new OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl(this.components);
-            this.exBtnSpecialReplace = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exBtnReturn = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exBtnExecute = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exAddRow = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
+            this.exComboBox1 = new OyuLib.OyuWindows.Interface.ExComboBox();
+            this.exDgvReplaceText = new OyuLib.OyuWindows.Interface.ExDataGridView.ExDataGridViewControl(this.components);
+            this.exBtnSpecialReplace = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exBtnReturn = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exBtnExecute = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exAddRow = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTargetText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColReplaceText = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -171,12 +171,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private OyuLib.OyuWindows.Compornent.ExComboBox exComboBox1;
-        private OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl exDgvReplaceText;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnSpecialReplace;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnReturn;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnExecute;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exAddRow;
+        private OyuLib.OyuWindows.Interface.ExComboBox exComboBox1;
+        private OyuLib.OyuWindows.Interface.ExDataGridView.ExDataGridViewControl exDgvReplaceText;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnSpecialReplace;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnReturn;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnExecute;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exAddRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTargetText;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColReplaceText;

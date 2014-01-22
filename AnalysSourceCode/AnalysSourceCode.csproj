@@ -8,8 +8,8 @@
     <ProjectGuid>{497504A2-030B-4013-B115-87D71E1886A7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AnalysSourceCode</RootNamespace>
-    <AssemblyName>AnalysSourceCode</AssemblyName>
+    <RootNamespace>AnalysisSourceCode</RootNamespace>
+    <AssemblyName>AnalysisSourceCode</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,17 +40,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysSourceCodeManager.cs" />
-    <Compile Include="Enum\EnumImeMode.cs" />
-    <Compile Include="Enum\EnumReadOnly.cs" />
-    <Compile Include="Enum\EnumTranceType.cs" />
-    <Compile Include="Generate\GeneralObject.cs" />
-    <Compile Include="Generate\InputItem.cs" />
-    <Compile Include="Generate\InputItemCodeGeneraterFromSource.cs" />
-    <Compile Include="Generate\InputItemCodeGeneraterFromVBSource.cs" />
-    <Compile Include="Generate\InputItemGenerater.cs" />
-    <Compile Include="Generate\InputItemVBSourceGenerater.cs" />
-    <Compile Include="Generate\SourceCodePart.cs" />
-    <Compile Include="Generate\VBSourceCodePart.cs" />
+    <Compile Include="KindImeMode.cs" />
+    <Compile Include="KindReadOnly.cs" />
+    <Compile Include="KindTranceType.cs" />
+    <Compile Include="Field\InputFieldItem.cs" />
+    <Compile Include="Field\WindowsForm\WinFrmField.cs" />
+    <Compile Include="Field\WindowsForm\WinFrmFieldItemCodeGeneraterFromSource.cs" />
+    <Compile Include="Field\WindowsForm\WinFrmFieldItemCodeGeneraterFromVBSource.cs" />
+    <Compile Include="Field\WindowsForm\WinFrmFieldGenerater.cs" />
+    <Compile Include="Field\WindowsForm\WinFrmFieldGeneraterFromVBSource.cs" />
+    <Compile Include="Field\SourceCodePart.cs" />
+    <Compile Include="Field\VBSourceCodePart.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,7 +59,9 @@
       <Name>OyuLib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Generate\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

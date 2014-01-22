@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace OyuLib.OyuWindows.Compornent
+namespace OyuLib.OyuWindows.Interface
 {
     public partial class ExListBox : ListBox
     {

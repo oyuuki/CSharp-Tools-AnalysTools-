@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 using OyuLib.OyuAttribute;
 
-namespace OyuLib.OyuWindows.Compornent
+namespace OyuLib.OyuWindows.Interface
 {
     public partial class ExComboBox : ComboBox, IValidateInputData
     {

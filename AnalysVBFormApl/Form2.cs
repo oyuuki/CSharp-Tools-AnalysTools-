@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Events;
-using AnalysVBFormApl.Interface;
-using ConsoleUtil;
-
 using OyuLib.DB;
-using AnalysVBFormApl.DataSet1TableAdapters;
+using OyuLib.OyuConsole;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Events;
+using AnalysisVBFormApl.Interface;
 
-namespace AnalysVBFormApl
+
+using AnalysisVBFormApl.DataSet1TableAdapters;
+
+namespace AnalysisVBFormApl
 {
     public partial class Form2 : Form
     {
@@ -136,7 +137,7 @@ namespace AnalysVBFormApl
             DataGridViewCellEventArgs ee = (DataGridViewCellEventArgs)e;
             string lineNumber = this.exDataGridView1.GetStringValue(COLUMNNAME_COLLINENUMBER, ee.RowIndex);
             ConcoleManager.Exec(
-                AnalysVBFormApl.Properties.Settings.Default.SakuraPath, 
+                AnalysisVBFormApl.Properties.Settings.Default.SakuraPath, 
                 this._filePath + " " + "-Y=" + lineNumber);
         }
 
@@ -158,10 +159,10 @@ namespace AnalysVBFormApl
         {
             
             using (SqlServerDBCOntrolManager manager =
-                new SqlServerDBCOntrolManager(AnalysVBFormApl.Properties.Settings.Default.DbUserId,
-                                            AnalysVBFormApl.Properties.Settings.Default.DBUserPassword,
-                                            AnalysVBFormApl.Properties.Settings.Default.DBServerName,
-                                            AnalysVBFormApl.Properties.Settings.Default.DBName))
+                new SqlServerDBCOntrolManager(AnalysisVBFormApl.Properties.Settings.Default.DbUserId,
+                                            AnalysisVBFormApl.Properties.Settings.Default.DBUserPassword,
+                                            AnalysisVBFormApl.Properties.Settings.Default.DBServerName,
+                                            AnalysisVBFormApl.Properties.Settings.Default.DBName))
             {
                 manager.Open();
 

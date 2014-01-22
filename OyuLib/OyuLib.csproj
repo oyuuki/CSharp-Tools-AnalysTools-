@@ -43,26 +43,27 @@
     <Compile Include="ArrayUtil.cs" />
     <Compile Include="OyuAttribute\ConstAttributeManager.cs" />
     <Compile Include="OyuAttribute\ConstValueAttribute.cs" />
-    <Compile Include="OyuChar\CharCode.cs" />
-    <Compile Include="OyuChar\CharCodeKind.cs" />
-    <Compile Include="OyuChar\CharCodeKindValue.cs" />
-    <Compile Include="OyuChar\CharCodeManager.cs" />
-    <Compile Include="OyuChar\LineCharCodeKind.cs" />
-    <Compile Include="OyuChar\LineCharCodeKindValue.cs" />
-    <Compile Include="OyuChar\LineCharCode.cs" />
+    <Compile Include="OyuCharCode\CharCode.cs" />
+    <Compile Include="OyuCharCode\CharCodeKind.cs" />
+    <Compile Include="OyuCharCode\CharCodeKindValue.cs" />
+    <Compile Include="OyuCharCode\CharCodeManager.cs" />
+    <Compile Include="OyuCharCode\LineCharCodeKind.cs" />
+    <Compile Include="OyuCharCode\LineCharCodeKindValue.cs" />
+    <Compile Include="OyuCharCode\LineCharCode.cs" />
+    <Compile Include="OyuConsole\ConcoleManager.cs" />
     <Compile Include="OyuDB\SqlServerDBCOntrolManager.cs" />
     <Compile Include="OyuDB\DBControlManagerUtil.cs" />
-    <Compile Include="OyuException\OyuExpressionAbs.cs" />
-    <Compile Include="OyuFile\CharSetValue.cs" />
-    <Compile Include="OyuFile\FileAbs.cs" />
-    <Compile Include="OyuFile\FileUtil.cs" />
-    <Compile Include="OyuFile\CharSet.cs" />
-    <Compile Include="OyuFile\SeparateTextFile.cs" />
-    <Compile Include="OyuFile\TextFile.cs" />
-    <Compile Include="OyuFile\XmlSerializerManager.cs" />
-    <Compile Include="OyuFile\XmlValueTypeKeyAndValue.cs" />
-    <Compile Include="OyuString\Replace\ReplaceInfo.cs" />
-    <Compile Include="OyuString\Replace\ReplaceLogicAbs.cs" />
+    <Compile Include="OyuException\ExpressionAbs.cs" />
+    <Compile Include="OyuIO\OyuFile\OyuTextFile\CharSetValue.cs" />
+    <Compile Include="OyuIO\OyuFile\FileAbs.cs" />
+    <Compile Include="OyuIO\OyuFile\FileUtil.cs" />
+    <Compile Include="OyuIO\OyuFile\OyuTextFile\CharSet.cs" />
+    <Compile Include="OyuIO\OyuFile\OyuTextFile\SeparateTextFile.cs" />
+    <Compile Include="OyuIO\OyuFile\OyuTextFile\TextFile.cs" />
+    <Compile Include="OyuIO\OyuFile\Xml\XmlSerializerManager.cs" />
+    <Compile Include="OyuIO\OyuFile\Xml\XmlValueTypeKeyAndValue.cs" />
+    <Compile Include="OyuText\Replace\ReplaceInfo.cs" />
+    <Compile Include="OyuText\Replace\ReplaceLogicAbs.cs" />
     <Compile Include="OyuWindows\Compornent\ExButton\ExButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -134,15 +135,15 @@
     <Compile Include="OyuWindows\Compornent\ExTextBox.Designer.cs">
       <DependentUpon>ExTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="OyuWindows\Compornent\IValidateInputData.cs" />
-    <Compile Include="OyuWindows\Compornent\KeyUtil.cs" />
+    <Compile Include="OyuWindows\Interface\IValidateInputData.cs" />
+    <Compile Include="OyuWindows\KeyUtil.cs" />
     <Compile Include="OyuWindows\Compornent\Logic\DialogUtil.cs" />
     <Compile Include="OyuWindows\Compornent\Logic\TypeUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OyuString\Replace\ReplaceLogicText.cs" />
-    <Compile Include="OyuString\Replace\ReplacerText.cs" />
-    <Compile Include="OyuString\Replace\ReplacerAbs.cs" />
-    <Compile Include="OyuString\Text\OyuText.cs" />
+    <Compile Include="OyuText\Replace\ReplaceLogicText.cs" />
+    <Compile Include="OyuText\Replace\ReplacerText.cs" />
+    <Compile Include="OyuText\Replace\ReplacerAbs.cs" />
+    <Compile Include="OyuText\Sentence.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Windows.Forms;
 
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView.Cell
+namespace OyuLib.OyuWindows.Interface.ExDataGridView.Cell
 {
     /// <summary>
     /// the class that  suggest value of CellValue

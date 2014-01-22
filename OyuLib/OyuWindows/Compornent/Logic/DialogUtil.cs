@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Windows.Forms;
 
-namespace OyuLib.OyuWindows.Compornent.Logic
+namespace OyuLib.OyuWindows.Interface.Logic
 {
     /// <summary>
     

@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Windows.Forms;
 
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView.Util.Admission
+namespace OyuLib.OyuWindows.Interface.ExDataGridView.Util.Admission
 {
     class DataGridViewAdmissionMoveCurrentControl
     {

@@ -1,4 +1,4 @@
-﻿namespace AnalysVBFormApl
+﻿namespace AnalysisVBFormApl
 {
     partial class Form1
     {
@@ -33,26 +33,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.chkColorMemo = new System.Windows.Forms.CheckBox();
-            this.exLabel1 = new OyuLib.OyuWindows.Compornent.ExButton.ExLabel(this.components);
-            this.exTxtDBCRUD = new OyuLib.OyuWindows.Compornent.ExTextBox(this.components);
-            this.exBtnCopyMemo = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exBtnReload = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exBtnWrite = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exTxtMemo = new OyuLib.OyuWindows.Compornent.ExTextBox(this.components);
-            this.exTxtSearchText = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exTxtSearch = new OyuLib.OyuWindows.Compornent.ExTextBox(this.components);
-            this.exButton3 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exButton2 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exButton1 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exTextSource = new OyuLib.OyuWindows.Compornent.ExTextBox(this.components);
-            this.lblFileName = new OyuLib.OyuWindows.Compornent.ExButton.ExLabel(this.components);
-            this.exVBFileDialogButton1 = new OyuLib.OyuWindows.Compornent.ExButton.ExVBFileDialogButton(this.components);
-            this.exTxtSourcepath = new OyuLib.OyuWindows.Compornent.ExTextBox(this.components);
-            this.exDataGridView1 = new OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl(this.components);
-            this.exBtnCopyOrino = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exButton4 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exButton5 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
-            this.exButton6 = new OyuLib.OyuWindows.Compornent.ExButton.ExButton(this.components);
+            this.exLabel1 = new OyuLib.OyuWindows.Interface.ExButton.ExLabel(this.components);
+            this.exTxtDBCRUD = new OyuLib.OyuWindows.Interface.ExTextBox(this.components);
+            this.exBtnCopyMemo = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exBtnReload = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exBtnWrite = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exTxtMemo = new OyuLib.OyuWindows.Interface.ExTextBox(this.components);
+            this.exTxtSearchText = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exTxtSearch = new OyuLib.OyuWindows.Interface.ExTextBox(this.components);
+            this.exButton3 = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exButton2 = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exButton1 = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exTextSource = new OyuLib.OyuWindows.Interface.ExTextBox(this.components);
+            this.lblFileName = new OyuLib.OyuWindows.Interface.ExButton.ExLabel(this.components);
+            this.exVBFileDialogButton1 = new OyuLib.OyuWindows.Interface.ExButton.ExVBFileDialogButton(this.components);
+            this.exTxtSourcepath = new OyuLib.OyuWindows.Interface.ExTextBox(this.components);
+            this.exDataGridView1 = new OyuLib.OyuWindows.Interface.ExDataGridView.ExDataGridViewControl(this.components);
+            this.exBtnCopyOrino = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exButton4 = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exButton5 = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
+            this.exButton6 = new OyuLib.OyuWindows.Interface.ExButton.ExButton(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.ColOriginalSortNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Colnumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -504,29 +504,29 @@
 
         #endregion
 
-        private OyuLib.OyuWindows.Compornent.ExTextBox exTxtSourcepath;
-        private OyuLib.OyuWindows.Compornent.ExDataGridView.ExDataGridViewControl exDataGridView1;
+        private OyuLib.OyuWindows.Interface.ExTextBox exTxtSourcepath;
+        private OyuLib.OyuWindows.Interface.ExDataGridView.ExDataGridViewControl exDataGridView1;
         private System.Windows.Forms.Label label1;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExVBFileDialogButton exVBFileDialogButton1;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExLabel lblFileName;
-        private OyuLib.OyuWindows.Compornent.ExTextBox exTextSource;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton1;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton2;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton3;
-        private OyuLib.OyuWindows.Compornent.ExTextBox exTxtSearch;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exTxtSearchText;
+        private OyuLib.OyuWindows.Interface.ExButton.ExVBFileDialogButton exVBFileDialogButton1;
+        private OyuLib.OyuWindows.Interface.ExButton.ExLabel lblFileName;
+        private OyuLib.OyuWindows.Interface.ExTextBox exTextSource;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exButton1;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exButton2;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exButton3;
+        private OyuLib.OyuWindows.Interface.ExTextBox exTxtSearch;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exTxtSearchText;
         private System.Windows.Forms.CheckBox checkBox1;
-        private OyuLib.OyuWindows.Compornent.ExTextBox exTxtMemo;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnWrite;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnReload;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnCopyMemo;
+        private OyuLib.OyuWindows.Interface.ExTextBox exTxtMemo;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnWrite;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnReload;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnCopyMemo;
         private System.Windows.Forms.CheckBox chkColorMemo;
-        private OyuLib.OyuWindows.Compornent.ExTextBox exTxtDBCRUD;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExLabel exLabel1;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exBtnCopyOrino;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton4;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton5;
-        private OyuLib.OyuWindows.Compornent.ExButton.ExButton exButton6;
+        private OyuLib.OyuWindows.Interface.ExTextBox exTxtDBCRUD;
+        private OyuLib.OyuWindows.Interface.ExButton.ExLabel exLabel1;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exBtnCopyOrino;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exButton4;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exButton5;
+        private OyuLib.OyuWindows.Interface.ExButton.ExButton exButton6;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColOriginalSortNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Colnumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTabIndex;

@@ -1,4 +1,4 @@
-﻿namespace OyuLib.OyuWindows.Compornent
+﻿namespace OyuLib.OyuWindows.Interface
 {
     partial class ExListBox
     {

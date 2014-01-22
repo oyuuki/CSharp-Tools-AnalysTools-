@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
+
 using System.IO;
 using System.Windows.Forms;
-using OyuLib.OyuString.Replace;
-using OyuLib.OyuString.Text;
+using OyuLib.OyuIO.OyuFile;
+using OyuLib.OyuIO.OyuFile.OyuTextFile;
+using OyuLib.OyuText;
+using OyuLib.OyuText.Replace;
 using RepaceSource.ComboBoxEnum;
-using OyuLib.OyuFile;
 using RepaceSource.Preset;
 
 namespace RepaceSource
@@ -90,7 +91,7 @@ namespace RepaceSource
             {
                 TextFile sourceFile = new TextFile(filePathString);
 
-                OyuText befSourceText = sourceFile.GetOyuTextFromFile();
+                Sentence befSourceText = sourceFile.GetOyuTextFromFile();
 
                 var sourceText = this.ReplaceSourceProcNormal2(filePathString, op.GetDgvRows());
 
@@ -114,7 +115,7 @@ namespace RepaceSource
 
             TextFile sourceFile = new TextFile(filePathString);
 
-            OyuText befSourceText = sourceFile.GetOyuTextFromFile();
+            Sentence befSourceText = sourceFile.GetOyuTextFromFile();
 
             string retSourceText = sourceFile.GetAllReadText();
 
@@ -126,19 +127,19 @@ namespace RepaceSource
                 var paramList = new List<string>();
 
                 paramList.Add(row.Cells[1].Value.ToString());
-                paramList.Add(row.Cells[2].Value.ToString());                
+                paramList.Add(row.Cells[2].Value.ToString());
 
-                ReplacerText rep = new ReplacerText(new OyuText(retSourceText), paramList.ToArray());
+                ReplacerText rep = new ReplacerText(new Sentence(retSourceText), paramList.ToArray());
                 retSourceText = rep.GetReplacedText();
                 replaceplaceList.Add(rep.GetReplacedNumberArray());
             }
 
-            this.AddLogForNormalReplace(new OyuText(retSourceText), befSourceText, replaceplaceList.ToArray(), col);
+            this.AddLogForNormalReplace(new Sentence(retSourceText), befSourceText, replaceplaceList.ToArray(), col);
 
             return retSourceText;
         }
 
-        private void AddLogForNormalReplace(OyuText NowText, OyuText BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col)
+        private void AddLogForNormalReplace(Sentence NowText, Sentence BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col)
         {
             string[] nowTextArray = NowText.GetLineArray();
             string[] befTextArray = BefText.GetLineArray();

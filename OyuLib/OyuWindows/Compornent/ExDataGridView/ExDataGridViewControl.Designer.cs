@@ -1,4 +1,4 @@
-﻿namespace OyuLib.OyuWindows.Compornent.ExDataGridView
+﻿namespace OyuLib.OyuWindows.Interface.ExDataGridView
 {
     partial class ExDataGridViewControl
     {

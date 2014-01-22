@@ -25,10 +25,10 @@ C:\Users\PASEO\Desktop\Paseo\98_ツール\Mytools\AnalysSourceCode\bin\Debug\Fil
 C:\Users\PASEO\Desktop\Paseo\98_ツール\Mytools\AnalysSourceCode\obj\Debug\AnalysSourceCode.csprojResolveAssemblyReference.cache
 C:\Users\PASEO\Desktop\Paseo\98_ツール\Mytools\AnalysSourceCode\obj\Debug\AnalysSourceCode.dll
 C:\Users\PASEO\Desktop\Paseo\98_ツール\Mytools\AnalysSourceCode\obj\Debug\AnalysSourceCode.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\bin\Debug\AnalysSourceCode.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\bin\Debug\AnalysSourceCode.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\obj\Debug\AnalysSourceCode.csprojResolveAssemblyReference.cache
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\obj\Debug\AnalysSourceCode.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\obj\Debug\AnalysSourceCode.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\bin\Debug\OyuLib.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\bin\Debug\AnalysisSourceCode.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\bin\Debug\AnalysisSourceCode.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\obj\Debug\AnalysisSourceCode.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysSourceCode\obj\Debug\AnalysisSourceCode.pdb

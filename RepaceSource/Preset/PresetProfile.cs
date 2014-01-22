@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OyuLib.OyuWindows.Compornent;
+using OyuLib.OyuWindows.Interface;
 using OyuLib.OyuAttribute;
 using RepaceSource.ComboBoxEnum;
 

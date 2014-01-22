@@ -7,7 +7,7 @@ using System.Text;
 
 using System.Windows.Forms;
 
-namespace OyuLib.OyuWindows.Compornent.ExButton
+namespace OyuLib.OyuWindows.Interface.ExButton
 {
     public abstract partial class ExDialogButton : ExButton
     {

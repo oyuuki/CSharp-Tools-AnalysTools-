@@ -1,4 +1,4 @@
-﻿namespace OyuLib.OyuWindows.Compornent.ExButton
+﻿namespace OyuLib.OyuWindows.Interface.ExButton
 {
     partial class ExDialogButton
     {

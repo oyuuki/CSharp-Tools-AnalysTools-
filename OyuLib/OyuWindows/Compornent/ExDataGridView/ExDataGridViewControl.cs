@@ -6,15 +6,13 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using OyuLib.OyuIO.OyuFile.Xml;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Manager;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Events;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Util;
+using OyuLib.OyuWindows.Interface.ExDataGridView.Util.Admission;
 
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Manager;
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Events;
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Util;
-using OyuLib.OyuWindows.Compornent.ExDataGridView.Util.Admission;
-
-using OyuLib.OyuFile;
-
-namespace OyuLib.OyuWindows.Compornent.ExDataGridView
+namespace OyuLib.OyuWindows.Interface.ExDataGridView
 {
     /// <summary>
     /// DataGridView継承コントロール
