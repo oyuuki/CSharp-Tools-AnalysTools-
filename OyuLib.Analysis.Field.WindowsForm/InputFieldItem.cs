@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Analysis.Field
+namespace OyuLib.Analysis.Source.Field.WindowsForm
 {
     public abstract class InputFieldItem
     {

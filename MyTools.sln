@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Xml", "OyuLib.Xml\Oy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Text.Replace", "OyuLib.Text.Replace\OyuLib.Text.Replace.csproj", "{CDEC7C3B-CAE2-43CA-A91C-243AD1C8E80C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Analysis.Field", "OyuLib.Analysis.Field\OyuLib.Analysis.Field.csproj", "{0B03C358-8E6A-472E-8171-0B7900579195}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Analysis.Source.Field", "OyuLib.Analysis.Field\OyuLib.Analysis.Source.Field.csproj", "{0B03C358-8E6A-472E-8171-0B7900579195}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Analysis.Field.WindowsForm", "OyuLib.Analysis.Field.WindowsForm\OyuLib.Analysis.Field.WindowsForm.csproj", "{EF5C8BF3-7AD0-41FC-B84F-83F2898D3E68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Analysis.Source.Field.WindowsForm", "OyuLib.Analysis.Field.WindowsForm\OyuLib.Analysis.Source.Field.WindowsForm.csproj", "{EF5C8BF3-7AD0-41FC-B84F-83F2898D3E68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Windows.Forms", "OyuLib.Windows\OyuLib.Windows.Forms.csproj", "{FC9CCFC1-71FD-41FF-ABDB-60CB9B6204A6}"
 EndProject

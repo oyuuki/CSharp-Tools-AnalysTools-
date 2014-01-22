@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using OyuLib.Analysis.Field.WindowsForm;
+using OyuLib.Analysis.Source.Field.WindowsForm;
 
-namespace OyuLib.Analysis.Field.WindowsForm
+namespace OyuLib.Analysis.Source.Field.WindowsForm
 {
     /// <summary>
     /// Manage to analys VBCode

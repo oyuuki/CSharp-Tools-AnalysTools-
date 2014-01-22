@@ -1,6 +1,7 @@
 ﻿using System;
+using OyuLib.Analysis.Source.Field;
 
-namespace OyuLib.Analysis.Field.WindowsForm
+namespace OyuLib.Analysis.Source.Field.WindowsForm
 {
     class WinFrmFieldGeneraterFromVBSource : WinFrmFieldGenerater
     {

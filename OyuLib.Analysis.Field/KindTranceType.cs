@@ -1,5 +1,5 @@
 ﻿
-namespace OyuLib.Analysis.Field
+namespace OyuLib.Analysis.Source.Field
 {
     public enum TranceType
     {

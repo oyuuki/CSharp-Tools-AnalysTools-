@@ -5,7 +5,7 @@ using System.Text;
 
 using System.Reflection;
 
-namespace OyuLib.Analysis.Field
+namespace OyuLib.Analysis.Source.Field.WindowsForm
 {
     public abstract class InputFieldItemSourceCode : InputFieldItem
     {
