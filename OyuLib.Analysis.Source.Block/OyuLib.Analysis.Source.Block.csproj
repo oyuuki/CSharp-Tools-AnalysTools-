@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0B03C358-8E6A-472E-8171-0B7900579195}</ProjectGuid>
+    <ProjectGuid>{60DC3925-A6F7-4521-9228-D3C6BD6ED110}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OyuLib.Analysis.Source.Field</RootNamespace>
-    <AssemblyName>OyuLib.Analysis.Source.Field</AssemblyName>
+    <RootNamespace>OyuLib.Analysis.Source.Block</RootNamespace>
+    <AssemblyName>OyuLib.Analysis.Source.Block</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,28 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysVBSourceCodeManager.cs" />
-    <Compile Include="InputFieldItem.cs" />
-    <Compile Include="InputFieldItemSourceCode.cs" />
-    <Compile Include="InputFieldItemVBSourceCode.cs" />
-    <Compile Include="KindImeMode.cs" />
-    <Compile Include="KindReadOnly.cs" />
-    <Compile Include="KindTranceType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WinFrmField.cs" />
-    <Compile Include="WinFrmFieldGenerater.cs" />
-    <Compile Include="WinFrmFieldGeneraterFromVBSource.cs" />
-    <Compile Include="WinFrmFieldItemCodeGeneraterFromSource.cs" />
-    <Compile Include="WinFrmFieldItemCodeGeneraterFromVBSource.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
-      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
-      <Name>OyuLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

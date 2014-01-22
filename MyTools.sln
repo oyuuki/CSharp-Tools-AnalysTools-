@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Windows.Forms.DataGr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Data.DB", "OyuLib.Data.DB\OyuLib.Data.DB.csproj", "{8EEA5E05-187A-4A8A-837B-999AFA436840}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Analysis.Source.Block", "OyuLib.Analysis.Source.Block\OyuLib.Analysis.Source.Block.csproj", "{60DC3925-A6F7-4521-9228-D3C6BD6ED110}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,6 +147,16 @@ Global
 		{8EEA5E05-187A-4A8A-837B-999AFA436840}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8EEA5E05-187A-4A8A-837B-999AFA436840}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8EEA5E05-187A-4A8A-837B-999AFA436840}.Release|x86.ActiveCfg = Release|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
