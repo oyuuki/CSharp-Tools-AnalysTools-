@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
-using System.Net.Mime;
 using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class DocumentItemBody
+    public abstract class Code
     {
         #region InstanceVal
 
-        private Sentence[] _sentenses = null;
-
-        private DocumentItem[] _childDocuments = null;
+        private string _codeLine = string.Empty;
 
         #endregion
 
         #region Constructor
 
-        public DocumentItemBody()
+        public Code()
         {
             
+        }
+
+        public Code(string codeLine)
+        {
+            this._codeLine = codeLine;
         }
 
         #endregion

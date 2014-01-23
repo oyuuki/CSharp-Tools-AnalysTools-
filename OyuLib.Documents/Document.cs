@@ -13,6 +13,8 @@ namespace OyuLib.Documents
 
         private LineCharCode _lineCode = null;
 
+        private DocumentItem[] Documentitems = null;
+
         #endregion
 
         #region constructor
@@ -59,9 +61,26 @@ namespace OyuLib.Documents
 
         #endregion
 
-        #region method
+        #region Method
+
+        #region Public
 
         public string[] GetLineArray()
+        {
+            return this.GetLineArrayProcd();
+        }
+
+        public DocumentitemSentence[] GetSentence()
+        {
+            return (from i in this.GetLineArrayProcd()
+                          select new DocumentitemSentence(i)).ToArray();
+        }
+
+        #endregion
+
+        #region Private
+
+        private string[] GetLineArrayProcd()
         {
             return new CharCodeManager(this.LineCode).GetSpilitString(this._text);
         }
@@ -70,6 +89,8 @@ namespace OyuLib.Documents
         {
             return this._lineCode != null;
         }
+
+        #endregion
 
         #endregion
     }

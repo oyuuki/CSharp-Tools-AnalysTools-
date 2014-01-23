@@ -39,13 +39,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Code.cs" />
+    <Compile Include="CSharpCode.cs" />
+    <Compile Include="CSharpSourceCode.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="DocumentItem.cs" />
-    <Compile Include="DocumentItemBody.cs" />
-    <Compile Include="DocumentItemHead.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sentence.cs" />
-    <Compile Include="Source.cs" />
+    <Compile Include="DocumentitemSentence.cs" />
+    <Compile Include="SourceCode.cs" />
+    <Compile Include="DocumentItemWritting.cs" />
+    <Compile Include="VB6Code.cs" />
+    <Compile Include="VB6SourceCode.cs" />
+    <Compile Include="VBDotNetCode.cs" />
+    <Compile Include="VBDotNetSourceCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">

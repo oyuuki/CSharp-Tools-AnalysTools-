@@ -34,14 +34,15 @@
             this.extxtProFolder = new OyuLib.Windows.Forms.ExTextBox(this.components);
             this.exProFolderDialogButton = new OyuLib.Windows.Forms.ExFolderDialogButton(this.components);
             this.exDgvLog = new OyuLib.Windows.Forms.DataGridView.ExDataGridViewControl(this.components);
+            this.exBtnExecute = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exBtnSaveLog = new OyuLib.Windows.Forms.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLineNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOldText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNewText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColReplaceString = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exBtnExecute = new OyuLib.Windows.Forms.ExButton(this.components);
-            this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
-            this.exBtnSaveLog = new OyuLib.Windows.Forms.ExButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.exDgvLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,6 +89,7 @@
             this.exDgvLog.ColumnNamesortAsNumber = new string[0];
             this.exDgvLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColNo,
+            this.ColFileName,
             this.ColLineNumber,
             this.ColOldText,
             this.ColNewText,
@@ -100,41 +102,6 @@
             this.exDgvLog.Size = new System.Drawing.Size(1141, 344);
             this.exDgvLog.TabIndex = 4;
             this.exDgvLog.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.exDgvLog_RowsAdded);
-            // 
-            // ColNo
-            // 
-            this.ColNo.HeaderText = "No.";
-            this.ColNo.Name = "ColNo";
-            this.ColNo.ReadOnly = true;
-            this.ColNo.Width = 35;
-            // 
-            // ColLineNumber
-            // 
-            this.ColLineNumber.HeaderText = "行";
-            this.ColLineNumber.Name = "ColLineNumber";
-            this.ColLineNumber.ReadOnly = true;
-            this.ColLineNumber.Width = 35;
-            // 
-            // ColOldText
-            // 
-            this.ColOldText.HeaderText = "変更前";
-            this.ColOldText.Name = "ColOldText";
-            this.ColOldText.ReadOnly = true;
-            this.ColOldText.Width = 350;
-            // 
-            // ColNewText
-            // 
-            this.ColNewText.HeaderText = "変更後";
-            this.ColNewText.Name = "ColNewText";
-            this.ColNewText.ReadOnly = true;
-            this.ColNewText.Width = 350;
-            // 
-            // ColReplaceString
-            // 
-            this.ColReplaceString.HeaderText = "変更元文字列";
-            this.ColReplaceString.Name = "ColReplaceString";
-            this.ColReplaceString.ReadOnly = true;
-            this.ColReplaceString.Width = 300;
             // 
             // exBtnExecute
             // 
@@ -165,6 +132,47 @@
             this.exBtnSaveLog.Text = "ログ保存";
             this.exBtnSaveLog.UseVisualStyleBackColor = true;
             this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
+            // 
+            // ColNo
+            // 
+            this.ColNo.HeaderText = "No.";
+            this.ColNo.Name = "ColNo";
+            this.ColNo.ReadOnly = true;
+            this.ColNo.Width = 35;
+            // 
+            // ColFileName
+            // 
+            this.ColFileName.HeaderText = "File";
+            this.ColFileName.Name = "ColFileName";
+            this.ColFileName.ReadOnly = true;
+            // 
+            // ColLineNumber
+            // 
+            this.ColLineNumber.HeaderText = "行";
+            this.ColLineNumber.Name = "ColLineNumber";
+            this.ColLineNumber.ReadOnly = true;
+            this.ColLineNumber.Width = 35;
+            // 
+            // ColOldText
+            // 
+            this.ColOldText.HeaderText = "変更前";
+            this.ColOldText.Name = "ColOldText";
+            this.ColOldText.ReadOnly = true;
+            this.ColOldText.Width = 350;
+            // 
+            // ColNewText
+            // 
+            this.ColNewText.HeaderText = "変更後";
+            this.ColNewText.Name = "ColNewText";
+            this.ColNewText.ReadOnly = true;
+            this.ColNewText.Width = 350;
+            // 
+            // ColReplaceString
+            // 
+            this.ColReplaceString.HeaderText = "変更元文字列";
+            this.ColReplaceString.Name = "ColReplaceString";
+            this.ColReplaceString.ReadOnly = true;
+            this.ColReplaceString.Width = 300;
             // 
             // RepaceSource
             // 
@@ -198,6 +206,7 @@
         private OyuLib.Windows.Forms.ExButton exButton1;
         private OyuLib.Windows.Forms.ExButton exBtnSaveLog;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColFileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColLineNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColOldText;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNewText;

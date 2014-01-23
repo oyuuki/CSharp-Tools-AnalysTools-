@@ -5,23 +5,21 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    class Sentence
+    public class CSharpCode : Code
     {
-        #region instanceVal
-
-        private string _text = string.Empty;
-
-        #endregion
-
         #region Constructor
-
-        public Sentence(string text)
+        public CSharpCode()
+            : base()
         {
-            this._text = text;
+
+        }
+
+        public CSharpCode(string codeLine)
+            : base(codeLine)
+        {
+            
         }
 
         #endregion
-
-
     }
 }

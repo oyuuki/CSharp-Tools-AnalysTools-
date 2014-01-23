@@ -21,6 +21,7 @@ namespace RepaceSource
         private const string CONST_COLNAME_OLDTEXT = "ColOldText";
         private const string CONST_COLNAME_NEWTEXT = "ColNewText";
         private const string CONST_COLNAME_REPLACESTRING = "ColReplaceString";
+        private const string CONST_COLNAME_FILENAME = "ColFileName";
         
         #endregion
 
@@ -78,6 +79,8 @@ namespace RepaceSource
 
         private void ReplaceSourceProcNormal()
         {
+            this.exDgvLog.Rows.Clear();
+
             string retString = string.Empty;
 
             PresetOption op = new PresetOption(this.exComboBox1.GetSelectedItemKey());
@@ -133,12 +136,12 @@ namespace RepaceSource
                 replaceplaceList.Add(rep.GetReplacedNumberArray());
             }
 
-            this.AddLogForNormalReplace(new Document(retSourceText), befSourceText, replaceplaceList.ToArray(), col);
+            this.AddLogForNormalReplace(new Document(retSourceText), befSourceText, replaceplaceList.ToArray(), col, Path.GetFileName(filePathString));
 
             return retSourceText;
         }
 
-        private void AddLogForNormalReplace(Document NowText, Document BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col)
+        private void AddLogForNormalReplace(Document NowText, Document BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col, string fileName)
         {
             string[] nowTextArray = NowText.GetLineArray();
             string[] befTextArray = BefText.GetLineArray();
@@ -155,6 +158,8 @@ namespace RepaceSource
                     this.exDgvLog[CONST_COLNAME_OLDTEXT, rowIndex].Value = befTextArray[index];
                     this.exDgvLog[CONST_COLNAME_REPLACESTRING, rowIndex].Value = 
                         this.GetTextOfReplacePlaceNumber(lineNumber, rePlacePlaceArray, col);
+                    this.exDgvLog[CONST_COLNAME_FILENAME, rowIndex].Value = fileName;
+
                 }
             }
         }

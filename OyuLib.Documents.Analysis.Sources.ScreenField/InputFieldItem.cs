@@ -2,7 +2,7 @@
 
 namespace OyuLib.Documents.Analysis.Sources.ScreenField
 {
-    public abstract class InputFieldItem : Source
+    public abstract class InputFieldItem : VB6SourceCode
     {
         #region Instance
 
