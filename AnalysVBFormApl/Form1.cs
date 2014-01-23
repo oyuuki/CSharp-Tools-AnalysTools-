@@ -8,14 +8,14 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using System.IO;
-using OyuLib.Analysis.Source.Field;
+using OyuLib.Documents.Analysis.Sources.ScreenField;
 using OyuLib.IO;
 using OyuLib.Windows.Forms;
 using OyuLib.Windows.Forms.DataGridView;
 
 using AnalysisVBFormApl.Interface;
 
-using OyuLib.Analysis.Source.Field;
+using OyuLib.Documents.Analysis.Sources.ScreenField;
 using OyuLib.Xml;
 using OyuLib;
 
@@ -332,7 +332,7 @@ namespace AnalysisVBFormApl
             string filePath = exTxtSourcepath.Text;
 
             AnalysisSourceCodeManager ana = new AnalysisSourceCodeManager(filePath);
-            WindowsFormFieldItem[] items = ana.ExecAnalysToInputItemInfos();
+            WinFrmField[] items = ana.ExecAnalysToInputItemInfos();
 
             if (items == null)
             {
@@ -413,17 +413,17 @@ namespace AnalysisVBFormApl
             return retDic;
         }
 
-        private void ShowData(WindowsFormFieldItem[] array)
+        private void ShowData(WinFrmField[] array)
         {
             Dictionary<string, Memo> memoDic = GetMemoDictionalyFromXmlFile();
             
-            foreach (WindowsFormFieldItem value in array)
+            foreach (WinFrmField value in array)
             {
                 this.SetRowData(this.exDataGridView1.Rows.Add(), value, memoDic);
             }
         }
 
-        private void SetRowData(int rowIndex, WindowsFormFieldItem item, Dictionary<string, Memo> dic)
+        private void SetRowData(int rowIndex, WinFrmField item, Dictionary<string, Memo> dic)
         {
             string nameTab = string.Empty;
 

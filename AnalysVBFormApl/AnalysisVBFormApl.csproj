@@ -112,9 +112,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OyuLib.Analysis.Field\OyuLib.Analysis.Source.Field.csproj">
+    <ProjectReference Include="..\OyuLib.Documents.Analysis.Sources.ScreenField\OyuLib.Documents.Analysis.Sources.ScreenField.csproj">
       <Project>{0b03c358-8e6a-472e-8171-0b7900579195}</Project>
-      <Name>OyuLib.Analysis.Source.Field</Name>
+      <Name>OyuLib.Documents.Analysis.Sources.ScreenField</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents.Analysis.Sources\OyuLib.Documents.Analysis.Sources.csproj">
+      <Project>{2bb0f5f4-0234-4c52-907c-5e2347a1129e}</Project>
+      <Name>OyuLib.Documents.Analysis.Sources</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib.Data.DB\OyuLib.Data.DB.csproj">
       <Project>{8eea5e05-187a-4a8a-837b-999afa436840}</Project>
@@ -124,15 +128,15 @@
       <Project>{db36f088-321b-42e7-aadc-4762e9f98205}</Project>
       <Name>OyuLib.IO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\oyuLib.Text\OyuLib.Text.csproj">
+    <ProjectReference Include="..\OyuLib.Documents\OyuLib.Documents.csproj">
       <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
-      <Name>OyuLib.Text</Name>
+      <Name>OyuLib.Documents</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib.Windows.Forms.DataGridView\OyuLib.Windows.Forms.DataGridView.csproj">
       <Project>{b11d04a4-c034-4873-b1d5-62d9b7b6bfe7}</Project>
       <Name>OyuLib.Windows.Forms.DataGridView</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OyuLib.Windows\OyuLib.Windows.Forms.csproj">
+    <ProjectReference Include="..\OyuLib.Windows.Forms\OyuLib.Windows.Forms.csproj">
       <Project>{fc9ccfc1-71fd-41ff-abdb-60cb9b6204a6}</Project>
       <Name>OyuLib.Windows.Forms</Name>
     </ProjectReference>

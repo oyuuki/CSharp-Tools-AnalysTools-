@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using OyuLib.IO;
-using OyuLib.Text;
-using OyuLib.Text.Replace;
+using OyuLib.Documents;
+using OyuLib.Documents.Replace;
 using OyuLib.Windows.Forms.DataGridView;
 using RepaceSource.ComboBoxEnum;
 using RepaceSource.Preset;
@@ -89,7 +89,7 @@ namespace RepaceSource
             {
                 TextFile sourceFile = new TextFile(filePathString);
 
-                Sentence befSourceText = new Sentence(sourceFile.GetAllReadText());
+                Document befSourceText = new Document(sourceFile.GetAllReadText());
 
                 var sourceText = this.ReplaceSourceProcNormal2(filePathString, op.GetDgvRows());
 
@@ -113,7 +113,7 @@ namespace RepaceSource
 
             TextFile sourceFile = new TextFile(filePathString);
 
-            Sentence befSourceText = new Sentence(sourceFile.GetAllReadText());
+            Document befSourceText = new Document(sourceFile.GetAllReadText());
 
             string retSourceText = sourceFile.GetAllReadText();
 
@@ -127,18 +127,18 @@ namespace RepaceSource
                 paramList.Add(row.Cells[1].Value.ToString());
                 paramList.Add(row.Cells[2].Value.ToString());
 
-                ReplacerText rep = new ReplacerText(new Sentence(retSourceText), paramList.ToArray());
+                ReplacerText rep = new ReplacerText(new Document(retSourceText), paramList.ToArray());
                 rep.IsRegexincludePettern = bool.Parse(new TranceDataGridViewCellValue(row.Cells[4]).GetTrancedValue().ToString());
                 retSourceText = rep.GetReplacedText();
                 replaceplaceList.Add(rep.GetReplacedNumberArray());
             }
 
-            this.AddLogForNormalReplace(new Sentence(retSourceText), befSourceText, replaceplaceList.ToArray(), col);
+            this.AddLogForNormalReplace(new Document(retSourceText), befSourceText, replaceplaceList.ToArray(), col);
 
             return retSourceText;
         }
 
-        private void AddLogForNormalReplace(Sentence NowText, Sentence BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col)
+        private void AddLogForNormalReplace(Document NowText, Document BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col)
         {
             string[] nowTextArray = NowText.GetLineArray();
             string[] befTextArray = BefText.GetLineArray();

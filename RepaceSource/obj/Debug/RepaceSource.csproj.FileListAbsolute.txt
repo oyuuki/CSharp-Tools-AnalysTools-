@@ -30,12 +30,8 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\RepaceSource.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.IO.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Text.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Text.Replace.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Xml.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.IO.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Text.Replace.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Text.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Xml.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.exe
@@ -43,3 +39,7 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Windows.Forms.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Windows.Forms.DataGridView.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Windows.Forms.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.Replace.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.Replace.pdb

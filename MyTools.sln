@@ -9,23 +9,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepaceSource", "RepaceSourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib", "OyuLib\OyuLib.csproj", "{DEE62FAB-1A21-47A6-954E-A6AA22F4AE5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Text", "oyuLib.Text\OyuLib.Text.csproj", "{A2351B54-FCC4-4349-9FAD-CEC765B4C378}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Documents", "OyuLib.Documents\OyuLib.Documents.csproj", "{A2351B54-FCC4-4349-9FAD-CEC765B4C378}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.IO", "OyuLib.IO\OyuLib.IO.csproj", "{DB36F088-321B-42E7-AADC-4762E9F98205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Xml", "OyuLib.Xml\OyuLib.Xml.csproj", "{0DFB964D-54B4-4596-AFEE-C49A9DCA9228}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Text.Replace", "OyuLib.Text.Replace\OyuLib.Text.Replace.csproj", "{CDEC7C3B-CAE2-43CA-A91C-243AD1C8E80C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Documents.Replace", "OyuLib.Documents.Replace\OyuLib.Documents.Replace.csproj", "{CDEC7C3B-CAE2-43CA-A91C-243AD1C8E80C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Analysis.Source.Field", "OyuLib.Analysis.Field\OyuLib.Analysis.Source.Field.csproj", "{0B03C358-8E6A-472E-8171-0B7900579195}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Documents.Analysis.Sources.ScreenField", "OyuLib.Documents.Analysis.Sources.ScreenField\OyuLib.Documents.Analysis.Sources.ScreenField.csproj", "{0B03C358-8E6A-472E-8171-0B7900579195}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Windows.Forms", "OyuLib.Windows\OyuLib.Windows.Forms.csproj", "{FC9CCFC1-71FD-41FF-ABDB-60CB9B6204A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Windows.Forms", "OyuLib.Windows.Forms\OyuLib.Windows.Forms.csproj", "{FC9CCFC1-71FD-41FF-ABDB-60CB9B6204A6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Windows.Forms.DataGridView", "OyuLib.Windows.Forms.DataGridView\OyuLib.Windows.Forms.DataGridView.csproj", "{B11D04A4-C034-4873-B1D5-62D9B7B6BFE7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Data.DB", "OyuLib.Data.DB\OyuLib.Data.DB.csproj", "{8EEA5E05-187A-4A8A-837B-999AFA436840}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Analysis.Source.Block", "OyuLib.Analysis.Source.Block\OyuLib.Analysis.Source.Block.csproj", "{60DC3925-A6F7-4521-9228-D3C6BD6ED110}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OyuLib.Documents.Analysis.Sources", "OyuLib.Documents.Analysis.Sources\OyuLib.Documents.Analysis.Sources.csproj", "{2BB0F5F4-0234-4C52-907C-5E2347A1129E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -147,16 +147,16 @@ Global
 		{8EEA5E05-187A-4A8A-837B-999AFA436840}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8EEA5E05-187A-4A8A-837B-999AFA436840}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8EEA5E05-187A-4A8A-837B-999AFA436840}.Release|x86.ActiveCfg = Release|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{60DC3925-A6F7-4521-9228-D3C6BD6ED110}.Release|x86.ActiveCfg = Release|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2BB0F5F4-0234-4C52-907C-5E2347A1129E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
