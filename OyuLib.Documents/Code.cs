@@ -16,12 +16,12 @@ namespace OyuLib.Documents
 
         #region Constructor
 
-        public Code()
+        protected Code()
         {
             
         }
 
-        public Code(string codeLine)
+        protected Code(string codeLine)
         {
             this._codeLine = codeLine;
         }

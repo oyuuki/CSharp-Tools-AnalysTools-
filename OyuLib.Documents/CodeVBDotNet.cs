@@ -5,13 +5,20 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public abstract class DocumentItem
+    public class CodeVBDotNet : Code
     {
         #region Constructor
 
-        protected DocumentItem()
+        public CodeVBDotNet()
+            : base()
         {
 
+        }
+
+        public CodeVBDotNet(string codeLine)
+            : base(codeLine)
+        {
+            
         }
 
         #endregion

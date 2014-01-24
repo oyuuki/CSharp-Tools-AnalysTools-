@@ -10,7 +10,7 @@ namespace RepaceSource
     {
         #region instance
 
-        private PresetProfileDgvXmlAndImmutableData _preset = null;
+        private LanguagePresetProfileDgvXmlAndImmutableData _preset = null;
 
         #endregion
 
@@ -30,7 +30,7 @@ namespace RepaceSource
         public Special(string constValue)
             : this()
         {
-            this._preset = new PresetProfileDgvXmlAndImmutableData(constValue, "SpecialOption", this.exDgvSpe, CONST_COLNAME_NO);
+            this._preset = new LanguagePresetProfileDgvXmlAndImmutableData(constValue, "SpecialOption", this.exDgvSpe, CONST_COLNAME_NO);
         }
 
         #endregion

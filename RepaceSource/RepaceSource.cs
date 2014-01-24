@@ -44,7 +44,7 @@ namespace RepaceSource
         /// </summary>
         private void Init()
         {
-            exComboBox1.SetItemsFromEnumValue<EnumLungPreset>(true);
+            exComboBox1.SetItemsFromEnumValue<LanguagePreset>(true);
         }
 
         private void ShowPresetOption()
@@ -88,7 +88,7 @@ namespace RepaceSource
             op.Show();
 
 
-            foreach (var filePathString in FileUtil.GetFileList(extxtProFolder.GetTrimedText(), new PresetProfile(this.exComboBox1.GetSelectedItemKey()).GetFileExtension()))
+            foreach (var filePathString in FileUtil.GetFileList(extxtProFolder.GetTrimedText(), new LanguagePresetProfile(this.exComboBox1.GetSelectedItemKey()).GetFileExtension()))
             {
                 TextFile sourceFile = new TextFile(filePathString);
 

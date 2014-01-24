@@ -112,17 +112,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OyuLib.Documents.Analysis.Sources.ScreenField\OyuLib.Documents.Analysis.Sources.ScreenField.csproj">
-      <Project>{0b03c358-8e6a-472e-8171-0b7900579195}</Project>
-      <Name>OyuLib.Documents.Analysis.Sources.ScreenField</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OyuLib.Documents.Analysis.Sources\OyuLib.Documents.Analysis.Sources.csproj">
-      <Project>{2bb0f5f4-0234-4c52-907c-5e2347a1129e}</Project>
-      <Name>OyuLib.Documents.Analysis.Sources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OyuLib.Data.DB\OyuLib.Data.DB.csproj">
       <Project>{8eea5e05-187a-4a8a-837b-999afa436840}</Project>
       <Name>OyuLib.Data.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents.Analysis\OyuLib.Documents.Analysis.csproj">
+      <Project>{2bb0f5f4-0234-4c52-907c-5e2347a1129e}</Project>
+      <Name>OyuLib.Documents.Analysis</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib.IO\OyuLib.IO.csproj">
       <Project>{db36f088-321b-42e7-aadc-4762e9f98205}</Project>

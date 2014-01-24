@@ -4,7 +4,7 @@ namespace OyuLib.Documents.Replace
 {
     public class ReplacerText : ReplacerAbs<ReplaceLogicText>
     {
-        #region constructor
+        #region Constructor
 
         public ReplacerText(Document text, object[] objArray)
             : base(text, objArray)
@@ -20,7 +20,9 @@ namespace OyuLib.Documents.Replace
 
         #endregion
 
-        #region overide
+        #region Method
+
+        #region Overide
 
         protected override string[] ReplaceProc(ReplaceLogicText rep)
         {
@@ -51,6 +53,8 @@ namespace OyuLib.Documents.Replace
 
             return retList.ToArray();
         }
+
+        #endregion
 
         #endregion
     }

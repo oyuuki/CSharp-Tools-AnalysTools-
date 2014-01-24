@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A2351B54-FCC4-4349-9FAD-CEC765B4C378}</ProjectGuid>
+    <ProjectGuid>{9E77426D-6396-4241-B88A-1635EED43E3F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OyuLib.Documents</RootNamespace>
-    <AssemblyName>OyuLib.Documents</AssemblyName>
+    <RootNamespace>OyuLib.Documents.Search</RootNamespace>
+    <AssemblyName>OyuLib.Documents.Search</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,25 +38,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code.cs" />
-    <Compile Include="CodeCSharp.cs" />
-    <Compile Include="SourceCSharp.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="DocumentItem.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DocumentitemSentence.cs" />
-    <Compile Include="Source.cs" />
-    <Compile Include="DocumentItemWritting.cs" />
-    <Compile Include="CodeVB6.cs" />
-    <Compile Include="SourceVB6.cs" />
-    <Compile Include="CodeVBDotNet.cs" />
-    <Compile Include="SourceVBDotNet.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
-      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
-      <Name>OyuLib</Name>
-    </ProjectReference>
+    <Compile Include="SearchItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

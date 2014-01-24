@@ -10,7 +10,7 @@ namespace RepaceSource
     {
         #region instance
 
-        private PresetProfileDgvXml _preset = null;
+        private LanguagePresetProfileDgvXml _preset = null;
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace RepaceSource
         public PresetOption(string constValue)
             : this()
         {
-            this._preset = new PresetProfileDgvXml(constValue, "Option", this.exDgvReplaceText, CONST_COLNAME_NO, new string[] { CONST_COLNAME_NO, CONST_COLNAME_TARGETTEXT, CONST_COLNAME_REPLACETEXT, CONST_COLNAME_ISREGEX });
+            this._preset = new LanguagePresetProfileDgvXml(constValue, "Option", this.exDgvReplaceText, CONST_COLNAME_NO, new string[] { CONST_COLNAME_NO, CONST_COLNAME_TARGETTEXT, CONST_COLNAME_REPLACETEXT, CONST_COLNAME_ISREGEX });
             this.exDgvReplaceText.ColumnNamesortAsNumber = new string[] { CONST_COLNAME_NO };
         }
 
@@ -44,7 +44,7 @@ namespace RepaceSource
 
         private void exComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this._preset.Prof = new PresetProfile(this.exComboBox1.GetSelectedItemKey());
+            this._preset.Prof = new LanguagePresetProfile(this.exComboBox1.GetSelectedItemKey());
             this._preset.ReadDataToDgv();
         }
 
@@ -87,7 +87,7 @@ namespace RepaceSource
 
         private void InitializeCompornentOriginal()
         {
-            exComboBox1.SetItemsFromEnumValue<EnumLungPreset>(true);
+            exComboBox1.SetItemsFromEnumValue<LanguagePreset>(true);
 
             this._preset.ReadDataToDgv();
             this.exComboBox1.SetSelectedIndexBykey(this._preset.Prof.GetPresetNumber());            

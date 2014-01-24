@@ -34,15 +34,15 @@
             this.extxtProFolder = new OyuLib.Windows.Forms.ExTextBox(this.components);
             this.exProFolderDialogButton = new OyuLib.Windows.Forms.ExFolderDialogButton(this.components);
             this.exDgvLog = new OyuLib.Windows.Forms.DataGridView.ExDataGridViewControl(this.components);
-            this.exBtnExecute = new OyuLib.Windows.Forms.ExButton(this.components);
-            this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
-            this.exBtnSaveLog = new OyuLib.Windows.Forms.ExButton(this.components);
             this.ColNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColLineNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColOldText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNewText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColReplaceString = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.exBtnExecute = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exBtnSaveLog = new OyuLib.Windows.Forms.ExButton(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.exDgvLog)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,36 +103,6 @@
             this.exDgvLog.TabIndex = 4;
             this.exDgvLog.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.exDgvLog_RowsAdded);
             // 
-            // exBtnExecute
-            // 
-            this.exBtnExecute.Location = new System.Drawing.Point(1027, 387);
-            this.exBtnExecute.Name = "exBtnExecute";
-            this.exBtnExecute.Size = new System.Drawing.Size(126, 23);
-            this.exBtnExecute.TabIndex = 5;
-            this.exBtnExecute.Text = "実行";
-            this.exBtnExecute.UseVisualStyleBackColor = true;
-            this.exBtnExecute.Click += new System.EventHandler(this.exBtnExecute_Click);
-            // 
-            // exButton1
-            // 
-            this.exButton1.Location = new System.Drawing.Point(1027, 8);
-            this.exButton1.Name = "exButton1";
-            this.exButton1.Size = new System.Drawing.Size(126, 23);
-            this.exButton1.TabIndex = 7;
-            this.exButton1.Text = "プリセット設定";
-            this.exButton1.UseVisualStyleBackColor = true;
-            this.exButton1.Click += new System.EventHandler(this.exButton1_Click);
-            // 
-            // exBtnSaveLog
-            // 
-            this.exBtnSaveLog.Location = new System.Drawing.Point(872, 387);
-            this.exBtnSaveLog.Name = "exBtnSaveLog";
-            this.exBtnSaveLog.Size = new System.Drawing.Size(126, 23);
-            this.exBtnSaveLog.TabIndex = 8;
-            this.exBtnSaveLog.Text = "ログ保存";
-            this.exBtnSaveLog.UseVisualStyleBackColor = true;
-            this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
-            // 
             // ColNo
             // 
             this.ColNo.HeaderText = "No.";
@@ -173,6 +143,36 @@
             this.ColReplaceString.Name = "ColReplaceString";
             this.ColReplaceString.ReadOnly = true;
             this.ColReplaceString.Width = 300;
+            // 
+            // exBtnExecute
+            // 
+            this.exBtnExecute.Location = new System.Drawing.Point(1027, 387);
+            this.exBtnExecute.Name = "exBtnExecute";
+            this.exBtnExecute.Size = new System.Drawing.Size(126, 23);
+            this.exBtnExecute.TabIndex = 5;
+            this.exBtnExecute.Text = "実行";
+            this.exBtnExecute.UseVisualStyleBackColor = true;
+            this.exBtnExecute.Click += new System.EventHandler(this.exBtnExecute_Click);
+            // 
+            // exButton1
+            // 
+            this.exButton1.Location = new System.Drawing.Point(1027, 7);
+            this.exButton1.Name = "exButton1";
+            this.exButton1.Size = new System.Drawing.Size(126, 23);
+            this.exButton1.TabIndex = 7;
+            this.exButton1.Text = "プリセット設定";
+            this.exButton1.UseVisualStyleBackColor = true;
+            this.exButton1.Click += new System.EventHandler(this.exButton1_Click);
+            // 
+            // exBtnSaveLog
+            // 
+            this.exBtnSaveLog.Location = new System.Drawing.Point(872, 387);
+            this.exBtnSaveLog.Name = "exBtnSaveLog";
+            this.exBtnSaveLog.Size = new System.Drawing.Size(126, 23);
+            this.exBtnSaveLog.TabIndex = 8;
+            this.exBtnSaveLog.Text = "ログ保存";
+            this.exBtnSaveLog.UseVisualStyleBackColor = true;
+            this.exBtnSaveLog.Click += new System.EventHandler(this.exBtnSaveLog_Click);
             // 
             // RepaceSource
             // 

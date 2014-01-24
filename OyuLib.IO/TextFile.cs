@@ -29,6 +29,18 @@ namespace OyuLib.IO
 
         }
 
+        public TextFile(string filePath, bool isAppendMode, CharSet cSet)
+            : base(filePath, isAppendMode)
+        {
+            this._cSet = cSet;
+        }
+
+        public TextFile(string filePath, CharSet cSet)
+            : base(filePath)
+        {
+            this._cSet = cSet;
+        }
+
         #endregion
 
         #region Property

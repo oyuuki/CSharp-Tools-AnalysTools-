@@ -8,14 +8,12 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using System.IO;
-using OyuLib.Documents.Analysis.Sources.ScreenField;
+using OyuLib.Documents.Analysis;
 using OyuLib.IO;
 using OyuLib.Windows.Forms;
 using OyuLib.Windows.Forms.DataGridView;
 
 using AnalysisVBFormApl.Interface;
-
-using OyuLib.Documents.Analysis.Sources.ScreenField;
 using OyuLib.Xml;
 using OyuLib;
 
@@ -331,8 +329,10 @@ namespace AnalysisVBFormApl
             
             string filePath = exTxtSourcepath.Text;
 
-            AnalysisSourceCodeManager ana = new AnalysisSourceCodeManager(filePath);
-            WinFrmField[] items = ana.ExecAnalysToInputItemInfos();
+            TextFile file = new TextFile(filePath, CharSet.ShiftJis);
+
+            AnalysisManager ana = new AnalysisManager(file.GetAllReadText());
+            WinFrmField[] items = ana.GetAnalysisToWinFrmFields<WinFrmFieldManagerVb6>();
 
             if (items == null)
             {

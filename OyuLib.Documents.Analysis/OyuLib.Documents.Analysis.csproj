@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A2351B54-FCC4-4349-9FAD-CEC765B4C378}</ProjectGuid>
+    <ProjectGuid>{2BB0F5F4-0234-4C52-907C-5E2347A1129E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OyuLib.Documents</RootNamespace>
-    <AssemblyName>OyuLib.Documents</AssemblyName>
+    <RootNamespace>OyuLib.Documents.Analysis</RootNamespace>
+    <AssemblyName>OyuLib.Document.Analysis</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,25 +38,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code.cs" />
-    <Compile Include="CodeCSharp.cs" />
-    <Compile Include="SourceCSharp.cs" />
-    <Compile Include="Document.cs" />
-    <Compile Include="DocumentItem.cs" />
+    <Compile Include="AnalysisManager.cs" />
+    <Compile Include="AnalyzedInputFieldItem.cs" />
+    <Compile Include="AnalyzedVB6InputFieldItem.cs" />
+    <Compile Include="InputFieldItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DocumentitemSentence.cs" />
-    <Compile Include="Source.cs" />
-    <Compile Include="DocumentItemWritting.cs" />
-    <Compile Include="CodeVB6.cs" />
-    <Compile Include="SourceVB6.cs" />
-    <Compile Include="CodeVBDotNet.cs" />
-    <Compile Include="SourceVBDotNet.cs" />
+    <Compile Include="WinFrmField.cs" />
+    <Compile Include="WinFrmFieldExtractor.cs" />
+    <Compile Include="WinFrmFieldExtractorVB6.cs" />
+    <Compile Include="WinFrmFieldKindImeMode.cs" />
+    <Compile Include="WinFrmFieldKindReadOnly.cs" />
+    <Compile Include="WinFrmFieldKindTranceType.cs" />
+    <Compile Include="WinFrmFieldManager.cs" />
+    <Compile Include="WinFrmFieldManagerVb6.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

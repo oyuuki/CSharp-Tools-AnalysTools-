@@ -23,13 +23,13 @@ namespace OyuLib.Documents.Replace
 
         #region constructor
 
-        public ReplacerAbs(string textString, object[] objArray)
+        protected ReplacerAbs(string textString, object[] objArray)
         {
             this._text = new Document(textString);
             this._objArray = objArray;
         }
 
-        public ReplacerAbs(Document text, object[] objArray)
+        protected ReplacerAbs(Document text, object[] objArray)
         {
             this._text = text;
             this._objArray = objArray;

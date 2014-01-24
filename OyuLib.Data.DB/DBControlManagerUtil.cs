@@ -123,7 +123,7 @@ namespace OyuLib.Data.DB
         /// </summary>
         /// <remarks></remarks>
 
-        public DBControlManagerUtil()
+        protected DBControlManagerUtil()
         {
 
         }
@@ -137,7 +137,7 @@ namespace OyuLib.Data.DB
         /// <param name="password">パスワード</param>
         /// <remarks></remarks>
 
-        public DBControlManagerUtil(string loginUserName, string password)
+        protected DBControlManagerUtil(string loginUserName, string password)
         {
             this._loginUserName = loginUserName;
             this._password = password;
@@ -282,6 +282,5 @@ namespace OyuLib.Data.DB
         #endregion
 
         #endregion
-
     }
 }

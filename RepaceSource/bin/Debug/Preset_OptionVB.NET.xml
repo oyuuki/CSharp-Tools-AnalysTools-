@@ -2,6 +2,22 @@
 <ArrayOfXmlValueTypeKeyAndValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <XmlValueTypeKeyAndValue>
     <Key>1</Key>
-    <Value>ColNo1q2w3e4r5t6y1,ColTargetText1q2w3e4r5t6yChangeMade,ColReplaceText1q2w3e4r5t6ytetee,ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y1,ColTargetText1q2w3e4r5t6yLoad\(.*\),ColReplaceText1q2w3e4r5t6y22s2,ColIsRegex1q2w3e4r5t6yTrue</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>2</Key>
+    <Value>ColNo1q2w3e4r5t6y2,ColTargetText1q2w3e4r5t6yCellChange,ColReplaceText1q2w3e4r5t6yss,ColIsRegex1q2w3e4r5t6yFalse</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>3</Key>
+    <Value>ColNo1q2w3e4r5t6y3,ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_ButtonClickedEvent,ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellClickEventArgs,ColIsRegex1q2w3e4r5t6yFalse</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>4</Key>
+    <Value>ColNo1q2w3e4r5t6y4,ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_DblClickEvent,ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellClickEventArgs,ColIsRegex1q2w3e4r5t6yFalse</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>5</Key>
+    <Value>ColNo1q2w3e4r5t6y5,ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_EditModeEvent,ColReplaceText1q2w3e4r5t6ySystem.EventArgs,ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
 </ArrayOfXmlValueTypeKeyAndValue>

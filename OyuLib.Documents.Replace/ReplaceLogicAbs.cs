@@ -28,7 +28,7 @@
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceLogicAbs()
+        protected ReplaceLogicAbs()
         {
 
         }
@@ -36,7 +36,7 @@
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceLogicAbs(string stringWillBeReplace, string stringReplacing)
+        protected ReplaceLogicAbs(string stringWillBeReplace, string stringReplacing)
             : this(new ReplaceInfo(stringWillBeReplace, stringReplacing))
         {
             
