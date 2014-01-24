@@ -38,9 +38,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Searcher.cs" />
     <Compile Include="SearchItem.cs" />
+    <Compile Include="SearchResult.cs" />
+    <Compile Include="SearchResultItem.cs" />
+    <Compile Include="TextSercher.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OyuLib.Collection\OyuLib.Collection.csproj">
+      <Project>{a703a42f-2e68-4589-a1ca-a48d809f0d16}</Project>
+      <Name>OyuLib.Collection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents\OyuLib.Documents.csproj">
+      <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
+      <Name>OyuLib.Documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib\OyuLib.csproj">
+      <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
+      <Name>OyuLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

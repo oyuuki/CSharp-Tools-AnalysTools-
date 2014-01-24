@@ -71,6 +71,11 @@
     </Compile>
     <Compile Include="Interface\Form1ToForm2.cs" />
     <Compile Include="Memo.cs" />
+    <Compile Include="memo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>memo.txt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -144,6 +149,12 @@
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="memo.txt">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>memo.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
