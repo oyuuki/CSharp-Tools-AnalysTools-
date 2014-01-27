@@ -93,7 +93,6 @@ namespace OyuLib.Documents.Analysis
             outCodeInfo = null;
 
 
-
             return false;
         }
 

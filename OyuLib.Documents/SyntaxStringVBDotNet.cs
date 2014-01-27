@@ -25,6 +25,9 @@ namespace OyuLib.Documents
 
         public const string CONST_EVENTS_HANDLES = "Handles";
 
-        
+        public const string CONST_EVENTS_AS = "As";
+
+        public const string CONST_EVENTS_WITHEVENTS = "WithEvents";
+
     }
 }
