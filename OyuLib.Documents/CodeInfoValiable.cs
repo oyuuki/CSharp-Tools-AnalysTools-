@@ -38,5 +38,27 @@ namespace OyuLib.Documents
         }
 
         #endregion
+
+        #region Property
+
+        public string Value
+        {
+            get { return this._value; }
+            set { this._value = value; }
+        }
+
+        public string Name
+        {
+            get { return this._name; }
+            set { this._name = value; }
+        }
+
+        public string TypeName
+        {
+            get { return this._typeName; }
+            set { this._typeName = value; }
+        }
+
+        #endregion
     }
 }

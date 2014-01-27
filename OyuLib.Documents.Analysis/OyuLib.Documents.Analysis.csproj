@@ -42,12 +42,13 @@
     <Compile Include="AnalysisCodeManager.cs" />
     <Compile Include="AnalysisInputFieldItemManager.cs" />
     <Compile Include="AnalysisManager.cs" />
+    <Compile Include="AnalyzedCodeInfo.cs" />
     <Compile Include="AnalyzedInputFieldItem.cs" />
     <Compile Include="AnalyzedVB6InputFieldItem.cs" />
     <Compile Include="CodeInfoExtractor.cs" />
     <Compile Include="InputFieldItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VBDotNetCodeInfoExtractor.cs" />
+    <Compile Include="CodeInfoExtractorVBDotNet.cs" />
     <Compile Include="WinFrmField.cs" />
     <Compile Include="WinFrmFieldExtractor.cs" />
     <Compile Include="WinFrmFieldExtractorVB6.cs" />

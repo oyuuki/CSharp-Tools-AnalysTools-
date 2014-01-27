@@ -9,8 +9,6 @@ namespace OyuLib.Documents
     {
         #region instanceVal
 
-        private string _typeName = string.Empty;
-
         private string _accessModifier = string.Empty;
 
         #endregion
@@ -25,16 +23,25 @@ namespace OyuLib.Documents
 
         public CodeInfoMemberVariable(
             string codeString,
-            string accessModifiers,
             string value,
             string name,
-            string typeName)
-            : base(codeString, accessModifiers, value, name)
+            string typeName,
+            string accessModifiers)
+            : base(codeString, value, name, typeName)
         {
-            this._typeName = typeName;
+            this._accessModifier = accessModifiers;
         }
 
         #endregion
 
+        #region Property
+
+        public string AccessModifier
+        {
+            get { return this._accessModifier; }
+            set { this._accessModifier = value; }
+        }
+
+        #endregion
     }
 }

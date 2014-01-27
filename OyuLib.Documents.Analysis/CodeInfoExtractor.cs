@@ -35,12 +35,37 @@ namespace OyuLib.Documents.Analysis
 
         #region Method
 
+        #region public 
+
+        public CodeInfo GetCodeInfo()
+        {
+            throw new Exception("未実装：ソースのすべてをCodeInfoに変換したものを返す");
+        }
+
+        public CodeInfo[] GetCodeInfoByValName(string valName)
+        {
+            var retList = new List<CodeInfo>();
+
+            CodeInfoMemberVariable val = this.GetCodeInfoMemberVariable(valName, this.Source);
+
+            if (val == null)
+            {
+                return null;
+            }
+
+            retList.Add(this.GetCodeInfoMethodSuggestVal(val, this.Source));
+            retList.Add(this.GetCodeInfoEventMethodSuggestVal(val, this.Source));
+
+            return retList.ToArray();
+        }
+
+        #endregion
+
         #region abstract
 
-        public abstract CodeInfoEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal);
-        public abstract CodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal);
-        public abstract CodeInfoMethod GetCodeInfoMethodSuggestVal(string suggestVal);
-        public abstract CodeInfoMethod GetCodeInfoMethodBlockSuggestVal(string suggestVal, string blockName);
+        public abstract CodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, T source);
+        public abstract CodeInfoMethod GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, T source);
+        public abstract CodeInfoEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, T source);
 
         #endregion
 
