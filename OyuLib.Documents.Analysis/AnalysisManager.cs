@@ -25,8 +25,16 @@ namespace OyuLib.Documents.Analysis
 
         /// <summary>
         /// constractor
+        /// </summary
+        public AnalysisManager()
+        {
+            
+        }
+
+        /// <summary>
+        /// constractor
         /// </summary>
-        /// <param name="source"></param>
+        /// <param name="sourceText"></param>
         public AnalysisManager(string sourceText)
         {
             this._sourceText = sourceText;
@@ -40,20 +48,6 @@ namespace OyuLib.Documents.Analysis
         {
             get { return this._sourceText; }
             set { this._sourceText = value;  }
-        }
-
-        #endregion
-
-        #region Method
-
-        /// <summary>
-        /// Analys Code to item
-        /// </summary>
-        public WinFrmField[] GetAnalysisToWinFrmFields<T>()
-            where T : WinFrmFieldManager, new()
-        {
-            var gene = TypeUtil.GetInstance<T>(new [] { this.SourceText });
-            return gene.GetWinFrmFields<WinFrmFieldExtractorVB6>();
         }
 
         #endregion

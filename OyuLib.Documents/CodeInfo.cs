@@ -5,17 +5,16 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeVBDotNet : Code
+    public abstract class CodeInfo : Code
     {
         #region Constructor
 
-        public CodeVBDotNet()
-            : base()
+        protected CodeInfo()
         {
-
+            
         }
 
-        public CodeVBDotNet(string codeLine)
+        protected CodeInfo(string codeLine)
             : base(codeLine)
         {
             

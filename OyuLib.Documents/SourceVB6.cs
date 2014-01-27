@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class SourceVB6 : Source<CodeVB6>
+    public class SourceVB6 : Source
     {
         #region constractor
 
@@ -26,35 +26,21 @@ namespace OyuLib.Documents
 
         #region Method
 
-        #region override
+        #region Override
 
-        public override string[] GetCodeStringArray()
+        public override string GetCodeEndSeparatorString()
         {
-            var retList = new List<string>();
+            return new LineCharCode().GetCharCodeString();
+        }
 
-            retList.Add(string.Empty);
+        public override string[] GetAccessModifiersString()
+        {
+            return new string[] { "Friend", "Public", "Private" };
+        }
 
-            Func<string, string> proc = (string value) =>
-            {
-                retList[retList.Count - 1] += value;
-
-                if (value.EndsWith("_"))
-                {
-                    retList[retList.Count - 1] = retList[retList.Count - 1].Substring(0,
-                        retList[retList.Count - 1].Length - 1);
-                }
-                else
-                {
-                    retList.Add(string.Empty);
-                }
-
-                return string.Empty;
-            };
-
-            var result = (from str in this.GetLineArray()
-                          select proc(str.Trim()));
-
-            return retList.ToArray();
+        public override string[] GetCodeNextSeparatorStrings()
+        {
+            return new string[] { "_", "," };
         }
 
         #endregion

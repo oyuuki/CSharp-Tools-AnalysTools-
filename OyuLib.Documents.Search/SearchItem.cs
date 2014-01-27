@@ -47,6 +47,12 @@ namespace OyuLib.Documents.Search
 
         #region Property
 
+        public string TargetString
+        {
+            get { return this._targetString; }
+            set { this._targetString = value; }
+        }
+
         public bool IsRegexincludePettern
         {
             get { return this._isRegexincludePettern; }

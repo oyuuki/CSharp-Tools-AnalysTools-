@@ -32,17 +32,22 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisCodeManager.cs" />
+    <Compile Include="AnalysisInputFieldItemManager.cs" />
     <Compile Include="AnalysisManager.cs" />
     <Compile Include="AnalyzedInputFieldItem.cs" />
     <Compile Include="AnalyzedVB6InputFieldItem.cs" />
+    <Compile Include="CodeInfoExtractor.cs" />
     <Compile Include="InputFieldItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VBDotNetCodeInfoExtractor.cs" />
     <Compile Include="WinFrmField.cs" />
     <Compile Include="WinFrmFieldExtractor.cs" />
     <Compile Include="WinFrmFieldExtractorVB6.cs" />
@@ -53,6 +58,10 @@
     <Compile Include="WinFrmFieldManagerVb6.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OyuLib.Documents\OyuLib.Documents.csproj">
+      <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
+      <Name>OyuLib.Documents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>

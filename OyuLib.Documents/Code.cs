@@ -6,24 +6,34 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public abstract class Code
+    public class Code
     {
         #region InstanceVal
 
-        private string _codeLine = string.Empty;
+        private string _codeString = string.Empty;
 
         #endregion
 
         #region Constructor
 
-        protected Code()
+        public Code()
         {
             
         }
 
-        protected Code(string codeLine)
+        public Code(string codeLine)
         {
-            this._codeLine = codeLine;
+            this._codeString = codeLine;
+        }
+
+        #endregion
+
+        #region Property
+
+        public string CodeString
+        {
+            get { return this._codeString; }
+            set { this._codeString = value; }
         }
 
         #endregion

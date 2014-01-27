@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class SourceCSharp : Source<CodeCSharp>
+    public class SourceCSharp : Source
     {
         #region constractor
 
@@ -27,29 +27,19 @@ namespace OyuLib.Documents
 
         #region override
 
-        public override string[] GetCodeStringArray()
+        public override string GetCodeEndSeparatorString()
         {
-            var retList = new List<string>();
+            return new CharCode(";").GetCharCodeString();
+        }
 
-            retList.Add(string.Empty);
+        public override string[] GetAccessModifiersString()
+        {
+            return new string[] { "protected", "Internal", "public", "Private" };
+        }
 
-            // 進捗をパーセント表示するラムダ式  
-            Func<string, string> proc = (string value) =>
-            {
-                retList[retList.Count - 1] += value;
-
-                if (value.EndsWith(";") || value.StartsWith("{") || value.EndsWith("}"))
-                {
-                    retList.Add(string.Empty);
-                }
-
-                return string.Empty;
-            };
-
-            var result = (from str in this.GetLineArray()
-                          select proc(str.Trim()));
-
-            return retList.ToArray();
+        public override string[] GetCodeNextSeparatorStrings()
+        {
+            return null;
         }
 
         #endregion

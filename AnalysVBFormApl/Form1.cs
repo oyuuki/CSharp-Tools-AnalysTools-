@@ -331,8 +331,9 @@ namespace AnalysisVBFormApl
 
             TextFile file = new TextFile(filePath, CharSet.ShiftJis);
 
-            AnalysisManager ana = new AnalysisManager(file.GetAllReadText());
-            WinFrmField[] items = ana.GetAnalysisToWinFrmFields<WinFrmFieldManagerVb6>();
+
+            AnalysisInputFieldItemManager ana = new AnalysisInputFieldItemManager(file.GetAllReadText());
+            WinFrmField[] items = ana.GetSourceAnalysisWinFrmFields<WinFrmFieldManagerVb6>();
 
             if (items == null)
             {

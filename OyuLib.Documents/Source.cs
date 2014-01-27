@@ -5,8 +5,7 @@ using System.Xml.Schema;
 
 namespace OyuLib.Documents
 {
-    public abstract class Source<T> : Document
-        where T : Code, new()
+    public abstract class Source : Document
     {
         #region constractor
 
@@ -44,16 +43,14 @@ namespace OyuLib.Documents
 
         #region Public
 
-
-        public T[] GetCodes()
+        public Code[] GetCodes()
         {
-            var retList = new List<T>();
+            var retList = new List<Code>();
 
-            Func<int, int> func2 = (x) => x * 2;  
-            // 進捗をパーセント表示するラムダ式  
+            
             Func<string, string> proc = (string value) =>
             {
-                retList.Add(TypeUtil.GetInstance<T>(new object[]{ value }));
+                retList.Add(TypeUtil.GetInstance<Code>(new object[]{ value }));
                 return "";
             };
 
@@ -64,11 +61,48 @@ namespace OyuLib.Documents
 
         }
 
+        public string[] GetCodeStringArray()
+        {
+            var retList = new List<string>();
+
+            retList.Add(string.Empty);
+
+            Func<string, string> proc = (string
+                value) =>
+            {
+                retList[retList.Count - 1] += value;
+
+                if (!ArrayUtil.IsIncludeStringEndsWith(this.GetCodeNextSeparatorStrings(), value))
+                {
+                    retList[retList.Count - 1] = retList[retList.Count - 1].Substring(0,
+                        retList[retList.Count - 1].Length - 1);
+                }
+                else
+                {
+                    retList.Add(string.Empty);
+                }
+
+                return string.Empty;
+            };
+
+            var result = (from str in this.GetArrayCodeString()
+                          select proc(str.Trim()));
+
+            return retList.ToArray();
+        }
+
+        private string[] GetArrayCodeString()
+        {
+            return new CharCodeManager(new CharCode(this.GetCodeEndSeparatorString())).GetSpilitString(this.SourceText);
+        }
+
         #endregion
 
         #region Abstract
 
-        public abstract string[] GetCodeStringArray();
+        public abstract string GetCodeEndSeparatorString();
+        public abstract string[] GetAccessModifiersString();
+        public abstract string[] GetCodeNextSeparatorStrings();
 
         #endregion
 

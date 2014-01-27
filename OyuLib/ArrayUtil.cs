@@ -12,5 +12,23 @@ namespace OyuLib
             return array == null || array.Length < 0;
         }
 
+        public static bool IsIncludeStringEndsWith(Array array, string value)
+        {
+            if (array == null)
+            {
+                return false;
+            }
+
+            foreach (string val in array)
+            {
+                if (value.EndsWith(val))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
 }

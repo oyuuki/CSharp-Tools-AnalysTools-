@@ -33,7 +33,7 @@ namespace OyuLib.Documents.Search
 
         #region Constructor
 
-        protected SearchResultItem(int rowNumber,
+        public SearchResultItem(int rowNumber,
                                  int columnNumber,
                                  string targetText,
                                  string findTextLine)

@@ -8,24 +8,12 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Search
 {
-    public class SearchResult : EnumeratorByIndex<SearchResultItem>
+    public class SearchResult : CollectionUserClass<SearchResultItem>
     {
         #region constructor
 
         public SearchResult()
             : base()
-        {
-            
-        }
-
-        public SearchResult(SearchResultItem[] sResultItem)
-            : base(sResultItem)
-        {
-            
-        }
-
-        public SearchResult(SearchResultItem resultItem)
-            : base(resultItem)
         {
             
         }
