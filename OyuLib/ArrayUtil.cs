@@ -7,6 +7,8 @@ namespace OyuLib
 {
     public static class ArrayUtil
     {
+        #region Method
+
         public static bool IsNullOrNoLength(Array array)
         {
             return array == null || array.Length < 0;
@@ -29,6 +31,21 @@ namespace OyuLib
 
             return false;
         }
+
+        public static bool IsIncludeStringsInArray(Array array, string[] value)
+        {
+            foreach (string val in array)
+            {
+                if (val.Equals(value))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        #endregion
 
     }
 }

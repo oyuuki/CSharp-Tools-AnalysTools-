@@ -12,6 +12,8 @@ namespace OyuLib.Documents
 
         private string _codeString = string.Empty;
 
+        private string _codeDelimiter = string.Empty;
+
         #endregion
 
         #region Constructor
@@ -21,9 +23,10 @@ namespace OyuLib.Documents
             
         }
 
-        public Code(string codeLine)
+        public Code(string codeLine, string codeDelimiter)
         {
             this._codeString = codeLine;
+            this._codeDelimiter = codeDelimiter;
         }
 
         #endregion
@@ -34,6 +37,21 @@ namespace OyuLib.Documents
         {
             get { return this._codeString; }
             set { this._codeString = value; }
+        }
+
+        public string CodeDelimiter
+        {
+            get { return this._codeDelimiter; }
+            set { this._codeDelimiter = value; }
+        }
+
+        #endregion
+
+        #region Method
+
+        public string[] GetSpilitByDelimiter()
+        {
+            return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(CodeString);
         }
 
         #endregion

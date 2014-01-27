@@ -9,13 +9,11 @@ namespace OyuLib.Documents
     {
         #region instanceVal
 
-        private string _accessModifier = string.Empty;
+        private readonly int _accessModifier = -1;
 
-        private string _name = string.Empty;
+        private readonly int _name = -1;
 
-        private string _returnTypeName = string.Empty;
-
-        private string _methodBody = string.Empty;
+        private readonly int _returnTypeName = -1;
 
         private CodeInfoValiable[] _paramValiables = null;
 
@@ -31,17 +29,16 @@ namespace OyuLib.Documents
 
         public CodeInfoMethod(
             string codeLine,
-            string accessModifier,
-            string name,
-            string returnTypeName,
-            string methodBody,
+            string codeDelimiter,
+            int accessModifier,
+            int name,
+            int returnTypeName,
             CodeInfoValiable[] paramValiables)
-            : base(codeLine)
+            : base(codeLine, codeDelimiter)
         {
             this._accessModifier = accessModifier;
             this._name = name;
             this._returnTypeName = returnTypeName;
-            this._methodBody = methodBody;
             this._paramValiables = paramValiables;
         }
 
@@ -51,27 +48,19 @@ namespace OyuLib.Documents
 
         public string AccessModifier
         {
-            get { return this._accessModifier; }
-            set { this._accessModifier = value; }
+            get { return this.CodeParts[this._accessModifier]; }
         }
 
         public string Name
         {
-            get { return this._name; }
-            set { this._name = value; }
+            get { return this.CodeParts[this._name]; }
         }
 
         public string ReturnTypeName
         {
-            get { return this._returnTypeName; }
-            set { this._returnTypeName = value; }
+            get { return this.CodeParts[this._returnTypeName]; }
         }
 
-        public string MethodBody
-        {
-            get { return this._methodBody; }
-            set { this._methodBody = value; }
-        }
 
         public CodeInfoValiable[] ParamValiables
         {

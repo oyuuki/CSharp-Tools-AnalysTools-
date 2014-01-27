@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    internal class AnalyzedVB6InputFieldItem : AnalyzedInputFieldItem
+    internal class AnalysisVB6InputFieldItem : AnalysisInputFieldItem
     {
         #region const
 
@@ -20,7 +20,7 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        public AnalyzedVB6InputFieldItem()
+        public AnalysisVB6InputFieldItem()
             : base()
         {
 
@@ -30,7 +30,7 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        public AnalyzedVB6InputFieldItem(string sourceText, int hierarchyIndex, string itemSignature)
+        public AnalysisVB6InputFieldItem(string sourceText, int hierarchyIndex, string itemSignature)
             : base(sourceText, hierarchyIndex, itemSignature)
         {
 
@@ -60,11 +60,11 @@ namespace OyuLib.Documents.Analysis
             {
                 string rttt = this.SourceText.Substring(nextBeginIndex);
                 string aarttt = rttt.Substring(rttt.IndexOf(BEGIN));
-                this.ReplaceTextBrank(this.AddChild<AnalyzedVB6InputFieldItem>(aarttt));
+                this.ReplaceTextBrank(this.AddChild<AnalysisVB6InputFieldItem>(aarttt));
             }
             else
             {
-                this.ReplaceTextBrank(this.AddChild<AnalyzedVB6InputFieldItem>(this.SourceText.Substring(beginIndex, endIndex - beginIndex + END.Length)));
+                this.ReplaceTextBrank(this.AddChild<AnalysisVB6InputFieldItem>(this.SourceText.Substring(beginIndex, endIndex - beginIndex + END.Length)));
             }
 
 
@@ -76,7 +76,7 @@ namespace OyuLib.Documents.Analysis
             return true;
         }
 
-        private void ReplaceTextBrank(AnalyzedVB6InputFieldItem part)
+        private void ReplaceTextBrank(AnalysisVB6InputFieldItem part)
         {
             foreach (string rep in part.GetTextArray())
             {

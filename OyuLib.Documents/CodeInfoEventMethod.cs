@@ -9,9 +9,9 @@ namespace OyuLib.Documents
     {
         #region instanceVal
 
-        private string _eventName = string.Empty;
+        private readonly int _eventName = -1;
 
-        private string _objNamesuggestEvent = string.Empty;
+        private readonly int _objNamesuggestEvent = -1;
         
         #endregion
 
@@ -25,17 +25,31 @@ namespace OyuLib.Documents
 
         public CodeInfoEventMethod(
             string codeLine,
-            string accessModifier,
-            string name,
-            string returnTypeName,
-            string methodBody,
+            string codeDelimiter,
+            int accessModifier,
+            int name,
+            int returnTypeName,
             CodeInfoValiable[] paramValiable,
-            string eventName,
-            string objNamesuggestEvent)
-            : base(codeLine, accessModifier, name, returnTypeName, methodBody, paramValiable)
+            int eventName,
+            int objNamesuggestEvent)
+            : base(codeLine, codeDelimiter, accessModifier, name, returnTypeName, paramValiable)
         {
             this._eventName = eventName;
             this._objNamesuggestEvent = objNamesuggestEvent;
+        }
+
+        #endregion
+
+        #region Property
+
+        public string EventName
+        {
+            get { return this.CodeParts[this._eventName]; }
+        }
+
+        public string ObjNamesuggestEvent
+        {
+            get { return this.CodeParts[this._objNamesuggestEvent]; }
         }
 
         #endregion

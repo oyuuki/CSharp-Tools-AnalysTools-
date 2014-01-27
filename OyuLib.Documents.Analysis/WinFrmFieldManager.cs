@@ -43,10 +43,10 @@ namespace OyuLib.Documents.Analysis
             where T : WinFrmFieldExtractor, new()
         {
 
-            AnalyzedInputFieldItem[] partArray = this.GetSourceCodePart().GetPartArray();
+            AnalysisInputFieldItem[] partArray = this.GetSourceCodePart().GetPartArray();
             List<WinFrmField> retList = new List<WinFrmField>();
 
-            foreach (AnalyzedInputFieldItem part in partArray)
+            foreach (AnalysisInputFieldItem part in partArray)
             {
                 T inputItemgene = ConstructItemInput<T>(part);
 
@@ -56,7 +56,7 @@ namespace OyuLib.Documents.Analysis
             return retList.ToArray();
         }
 
-        private static T ConstructItemInput<T>(AnalyzedInputFieldItem part)
+        private static T ConstructItemInput<T>(AnalysisInputFieldItem part)
             where T : WinFrmFieldExtractor, new()
         {
             Type type = typeof(T);
@@ -70,7 +70,7 @@ namespace OyuLib.Documents.Analysis
 
         #region abstract
 
-        protected abstract AnalyzedInputFieldItem GetSourceCodePart();
+        protected abstract AnalysisInputFieldItem GetSourceCodePart();
 
         #endregion
 

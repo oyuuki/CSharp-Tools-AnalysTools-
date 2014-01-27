@@ -9,11 +9,11 @@ namespace OyuLib.Documents
     {
         #region instanceVal
 
-        private string _value = string.Empty;
+        private readonly int _value = -1;
 
-        private string _name = string.Empty;
+        private readonly int _name = -1;
 
-        private string _typeName = string.Empty;
+        private readonly int _typeName = -1;
 
         #endregion
 
@@ -27,10 +27,11 @@ namespace OyuLib.Documents
 
         public CodeInfoValiable(
             string codeLine,
-            string value,
-            string name,
-            string typeName)
-            : base(codeLine)
+            string codeDelimiter,
+            int value,
+            int name,
+            int typeName)
+            : base(codeLine, codeDelimiter)
         {
             this._value = value;
             this._name = name;
@@ -43,20 +44,17 @@ namespace OyuLib.Documents
 
         public string Value
         {
-            get { return this._value; }
-            set { this._value = value; }
+            get { return this.CodeParts[this._value]; }
         }
 
         public string Name
         {
-            get { return this._name; }
-            set { this._name = value; }
+            get { return this.CodeParts[this._name]; }
         }
 
         public string TypeName
         {
-            get { return this._typeName; }
-            set { this._typeName = value; }
+            get { return this.CodeParts[this._typeName]; }   
         }
 
         #endregion

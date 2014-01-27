@@ -39,12 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalysisCodeInfoVBDotNet.cs" />
     <Compile Include="AnalysisCodeManager.cs" />
     <Compile Include="AnalysisInputFieldItemManager.cs" />
     <Compile Include="AnalysisManager.cs" />
-    <Compile Include="AnalyzedCodeInfo.cs" />
-    <Compile Include="AnalyzedInputFieldItem.cs" />
-    <Compile Include="AnalyzedVB6InputFieldItem.cs" />
+    <Compile Include="AnalysisCodeInfo.cs" />
+    <Compile Include="AnalysisInputFieldItem.cs" />
+    <Compile Include="AnalysisVB6InputFieldItem.cs" />
     <Compile Include="CodeInfoExtractor.cs" />
     <Compile Include="InputFieldItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

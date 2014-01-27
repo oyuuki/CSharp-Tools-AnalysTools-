@@ -43,9 +43,9 @@ namespace OyuLib.Documents.Analysis
 
         #region override
 
-        protected override AnalyzedInputFieldItem GetSourceCodePart()
+        protected override AnalysisInputFieldItem GetSourceCodePart()
         {
-            return new AnalyzedVB6InputFieldItem(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
+            return new AnalysisVB6InputFieldItem(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
         }
         
         #endregion
