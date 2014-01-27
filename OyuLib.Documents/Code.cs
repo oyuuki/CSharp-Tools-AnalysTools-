@@ -49,10 +49,12 @@ namespace OyuLib.Documents
 
         #region Method
 
-        public string[] GetSpilitByDelimiter()
+        public string[] CodeParts()
         {
             return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(CodeString);
         }
+
+
 
         #endregion
     }

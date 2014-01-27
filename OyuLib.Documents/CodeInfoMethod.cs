@@ -28,6 +28,20 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoMethod(
+            Code code,
+            int accessModifier,
+            int name,
+            int returnTypeName,
+            CodeInfoValiable[] paramValiables)
+            : base(code)
+        {
+            this._accessModifier = accessModifier;
+            this._name = name;
+            this._returnTypeName = returnTypeName;
+            this._paramValiables = paramValiables;
+        }
+
+        public CodeInfoMethod(
             string codeLine,
             string codeDelimiter,
             int accessModifier,
@@ -48,17 +62,17 @@ namespace OyuLib.Documents
 
         public string AccessModifier
         {
-            get { return this.CodeParts[this._accessModifier]; }
+            get { return this.Code.CodeParts()[this._accessModifier]; }
         }
 
         public string Name
         {
-            get { return this.CodeParts[this._name]; }
+            get { return this.Code.CodeParts()[this._name]; }
         }
 
         public string ReturnTypeName
         {
-            get { return this.CodeParts[this._returnTypeName]; }
+            get { return this.Code.CodeParts()[this._returnTypeName]; }
         }
 
 

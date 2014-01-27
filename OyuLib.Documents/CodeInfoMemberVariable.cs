@@ -22,6 +22,17 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoMemberVariable(
+            Code code,
+            int value,
+            int name,
+            int typeName,
+            int accessModifiers)
+            : base(code, value, name, typeName)
+        {
+            this._accessModifier = accessModifiers;
+        }
+
+        public CodeInfoMemberVariable(
             string codeString,
             string codeDelimiter,
             int value,
@@ -39,7 +50,7 @@ namespace OyuLib.Documents
 
         public string AccessModifier
         {
-            get { return this.CodeParts[this._accessModifier]; }
+            get { return this.Code.CodeParts()[this._accessModifier]; }
         }
 
         #endregion

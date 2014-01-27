@@ -27,19 +27,9 @@ namespace OyuLib.Documents
 
         #region override
 
-        public override string GetCodeEndSeparatorString()
+        public override SourceRule GetSourceRule()
         {
-            return new CharCode(";").GetCharCodeString();
-        }
-
-        public override string[] GetAccessModifiersString()
-        {
-            return new string[] { "protected", "Internal", "public", "Private" };
-        }
-
-        public override string[] GetCodeNextSeparatorStrings()
-        {
-            return null;
+            return new SourceRuleCSharp();
         }
 
         #endregion

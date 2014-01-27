@@ -47,7 +47,27 @@ namespace OyuLib.Documents.Analysis
 
         public string[] GetCodeParts()
         {
-            return this.Code.GetSpilitByDelimiter();
+            return this.Code.CodeParts();
+        }
+
+        public int GetIndexCodeParts(string value)
+        {
+            return Array.IndexOf(this.GetCodeParts(), value);
+        }
+
+        public int GetIndexCodeParts(string[] values)
+        {
+            foreach (var value in values)
+            {
+                int index = Array.IndexOf(this.GetCodeParts(), value);
+
+                if (index >= 0)
+                {
+                    return index;
+                }
+            }
+
+            return -1;
         }
 
         #endregion

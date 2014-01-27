@@ -38,7 +38,7 @@ namespace OyuLib.Documents.Analysis
         {
             CodeInfo retValue = null;
 
-            if (IsMethod(out retValue))
+            if (this.IsMethod(out retValue))
             {
                 return retValue;
             }
@@ -46,34 +46,56 @@ namespace OyuLib.Documents.Analysis
             return retValue;
         }
 
-        
         private bool IsMethod(out CodeInfo outCodeInfo)
         {
             outCodeInfo = null;
-            string[] codeParts = this.Code.GetSpilitByDelimiter();
+            string[] codeParts = this.Code.CodeParts();
 
-            if (this.IsIncludeStringInCode(new string[] { "Function", "Sub" }))
+            SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
+
+            this.IsIncludeStringInCode(rule.GetMethodHead());
+
+            if (this.IsIncludeStringInCode(rule.GetMethodHead()))
             {
-                
+                int methodHead = this.GetIndexCodeParts(rule.GetMethodHead());
 
+                int accessModifier = this.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
+                int name = methodHead + 1;
+                int typeName = -1;
 
-                if (this.IsIncludeStringInCode(new string[] { "Handles" }))
+                if (this.Code.CodeParts()[methodHead].Equals(SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION))
                 {
-                    outCodeInfo = new CodeInfoEventMethod();
+                    typeName = this.Code.CodeParts().Length - 1;
+                }
+
+                int returnTypeName = -1;
+
+                if (this.IsIncludeStringInCode(new string[] { SyntaxStringVBDotNet.CONST_EVENTS_HANDLES }))
+                {
+                    int eventName = this.Code.CodeParts().Length - 1;
+
+                    outCodeInfo = new CodeInfoEventMethod(this.Code, accessModifier, name, typeName, null, eventName);
+                    return true;
                 }
                 else
                 {
-                    outCodeInfo = new CodeInfoMethod();
+                    
+                    outCodeInfo = new CodeInfoMethod(this.Code, accessModifier, name, typeName, null);
+                    return true;
                 }
             }
+
+            return false;
+        }
+
+        private bool IsMemberVariable(out CodeInfo outCodeInfo)
+        {
+            outCodeInfo = null;
 
 
 
             return false;
         }
-
-
-        
 
         #endregion
 

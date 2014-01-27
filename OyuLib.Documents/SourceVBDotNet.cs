@@ -27,19 +27,9 @@ namespace OyuLib.Documents
 
         #region Override
 
-        public override string GetCodeEndSeparatorString()
+        public override SourceRule GetSourceRule()
         {
-            return new LineCharCode().GetCharCodeString();
-        }
-
-        public override string[] GetAccessModifiersString()
-        {
-            return new string[]{"Friend", "ProtectedFriend","Protected", "Public", "Private"};
-        }
-
-        public override string[] GetCodeNextSeparatorStrings()
-        {
-            return new string[] {"_", ","};
+            return new SourceRuleVBDotNet();
         }
 
         #endregion

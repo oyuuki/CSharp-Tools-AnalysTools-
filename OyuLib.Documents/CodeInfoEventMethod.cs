@@ -9,10 +9,8 @@ namespace OyuLib.Documents
     {
         #region instanceVal
 
-        private readonly int _eventName = -1;
+        private readonly int _eve = -1;
 
-        private readonly int _objNamesuggestEvent = -1;
-        
         #endregion
 
         #region Constructor
@@ -24,32 +22,54 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoEventMethod(
+            Code code,
+            int accessModifier,
+            int name,
+            int returnTypeName,
+            CodeInfoValiable[] paramValiable,
+            int eve)
+            : base(code, accessModifier, name, returnTypeName, paramValiable)
+        {
+            this._eve = eve;
+        }
+
+        public CodeInfoEventMethod(
             string codeLine,
             string codeDelimiter,
             int accessModifier,
             int name,
             int returnTypeName,
             CodeInfoValiable[] paramValiable,
-            int eventName,
-            int objNamesuggestEvent)
+            int eve)
             : base(codeLine, codeDelimiter, accessModifier, name, returnTypeName, paramValiable)
         {
-            this._eventName = eventName;
-            this._objNamesuggestEvent = objNamesuggestEvent;
+            this._eve = eve;
         }
 
         #endregion
 
         #region Property
 
-        public string EventName
+        public string ObjNamesuggestEventName
         {
-            get { return this.CodeParts[this._eventName]; }
+            get { return this.GetEventString()[0]; }
         }
 
-        public string ObjNamesuggestEvent
+        public string EventName
         {
-            get { return this.CodeParts[this._objNamesuggestEvent]; }
+            get { return this.GetEventString()[1]; }
+        }
+
+        #endregion
+
+        #region Method
+
+
+        private string[] GetEventString()
+        {
+            return
+                new CharCodeManager(new CharCode(".")).GetSpilitString(
+                    this.Code.CodeParts()[this._eve]);
         }
 
         #endregion

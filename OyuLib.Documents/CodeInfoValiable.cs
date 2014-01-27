@@ -26,6 +26,18 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoValiable(
+            Code code,
+            int value,
+            int name,
+            int typeName)
+            : base(code)
+        {
+            this._value = value;
+            this._name = name;
+            this._typeName = typeName;
+        }
+
+        public CodeInfoValiable(
             string codeLine,
             string codeDelimiter,
             int value,
@@ -44,17 +56,17 @@ namespace OyuLib.Documents
 
         public string Value
         {
-            get { return this.CodeParts[this._value]; }
+            get { return this.Code.CodeParts()[this._value]; }
         }
 
         public string Name
         {
-            get { return this.CodeParts[this._name]; }
+            get { return this.Code.CodeParts()[this._name]; }
         }
 
         public string TypeName
         {
-            get { return this.CodeParts[this._typeName]; }   
+            get { return this.Code.CodeParts()[this._typeName]; }   
         }
 
         #endregion

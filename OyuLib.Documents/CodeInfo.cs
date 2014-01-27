@@ -32,17 +32,14 @@ namespace OyuLib.Documents
 
         #endregion
 
-        #region Method
+        #region Property
 
-        #region New
-
-        protected string[] CodeParts
+        public Code Code
         {
-            get { return this._code.GetSpilitByDelimiter(); }
+            get { return this._code; }
         }
-        
-        #endregion
 
         #endregion
+
     }
 }

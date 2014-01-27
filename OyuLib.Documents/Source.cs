@@ -5,7 +5,7 @@ using System.Xml.Schema;
 
 namespace OyuLib.Documents
 {
-    public abstract class Source : Document
+    public abstract class Source : Document, ISourceRule
     {
         #region constractor
 
@@ -72,7 +72,7 @@ namespace OyuLib.Documents
             {
                 retList[retList.Count - 1] += value;
 
-                if (!ArrayUtil.IsIncludeStringEndsWith(this.GetCodeNextSeparatorStrings(), value))
+                if (!ArrayUtil.IsIncludeStringEndsWith(this.GetSourceRule().GetCodeNextSeparatorStrings(), value))
                 {
                     retList[retList.Count - 1] = retList[retList.Count - 1].Substring(0,
                         retList[retList.Count - 1].Length - 1);
@@ -93,16 +93,14 @@ namespace OyuLib.Documents
 
         private string[] GetArrayCodeString()
         {
-            return new CharCodeManager(new CharCode(this.GetCodeEndSeparatorString())).GetSpilitString(this.SourceText);
+            return new CharCodeManager(new CharCode(this.GetSourceRule().GetCodeEndSeparatorString())).GetSpilitString(this.SourceText);
         }
 
         #endregion
 
         #region Abstract
 
-        public abstract string GetCodeEndSeparatorString();
-        public abstract string[] GetAccessModifiersString();
-        public abstract string[] GetCodeNextSeparatorStrings();
+        public abstract SourceRule GetSourceRule();
 
         #endregion
 
