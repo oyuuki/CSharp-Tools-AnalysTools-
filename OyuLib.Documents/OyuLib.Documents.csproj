@@ -41,10 +41,12 @@
   <ItemGroup>
     <Compile Include="Code.cs" />
     <Compile Include="CodeInfo.cs" />
+    <Compile Include="CodeInfoComment.cs" />
     <Compile Include="CodeInfoEventMethod.cs" />
     <Compile Include="CodeInfoValiable.cs" />
     <Compile Include="CodeInfoMethod.cs" />
     <Compile Include="ISourceRule.cs" />
+    <Compile Include="CodeInfoOther.cs" />
     <Compile Include="SourceCSharp.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="DocumentItem.cs" />

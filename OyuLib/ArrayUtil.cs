@@ -32,17 +32,62 @@ namespace OyuLib
             return false;
         }
 
-        public static bool IsIncludeStringsInArray(Array array, string[] value)
+        public static bool IsIncludeString(Array array, string value)
         {
+            if (array == null)
+            {
+                return false;
+            }
+
             foreach (string val in array)
             {
-                if (val.Equals(value))
+                if (value.IndexOf(val) >= 0)
                 {
                     return true;
                 }
             }
 
             return false;
+        }
+
+        public static bool IsIncludeStringsInArray(Array array, string[] targetStrings)
+        {
+            foreach (string val in array)
+            {
+                foreach (var tarStr in targetStrings)
+                {
+                    if (val.Equals(tarStr))
+                    {
+                        return true;
+                    }    
+                }
+            }
+
+            return false;
+        }
+
+        public static bool IsIncludeAllStringsInArray(Array array, string[] targetStrings)
+        {
+            foreach (string val in array)
+            {
+                bool isFind = false;
+
+                foreach (var tarStr in targetStrings)
+                {
+                    if (val.Equals(tarStr))
+                    {
+                        isFind = true;
+                        break;
+                    }
+                }
+
+                if (!isFind)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         #endregion

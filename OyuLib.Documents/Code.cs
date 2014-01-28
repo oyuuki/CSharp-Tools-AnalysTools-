@@ -51,7 +51,7 @@ namespace OyuLib.Documents
 
         public string[] CodeParts()
         {
-            return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(CodeString);
+            return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(this.CodeString.Trim());
         }
 
 

@@ -7,8 +7,7 @@ using OyuLib.Documents;
 
 namespace OyuLib.Documents.Analysis
 {
-    public class AnalysisCodeManager<T> : AnalysisManager
-        where T : Source, new()
+    public class AnalysisCodeManager : AnalysisManager
     {
         #region constractor
 
@@ -37,11 +36,29 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        public CodeInfo[] GetVBDotNetSourceAnalysis()
+        public CodeInfo[] GetVBSourceCodeSourceAnalysis()
         {
-            var gene = TypeUtil.GetInstance<T>(new[] { this.SourceText });
-            
-            return null;
+            var source = new SourceVBDotNet(this.SourceText);
+            var isInsiteMethod = false;
+            var retList = new List<CodeInfo>();
+
+            foreach (var code in source.GetCodes())
+            {
+                var ainfo = new AnalysisCodeInfoVBDotNet(code, isInsiteMethod);
+                var codeInfo = ainfo.GetCodeInfo();
+                retList.Add(codeInfo);
+
+                if (codeInfo is CodeInfoEventMethod || codeInfo is CodeInfoMethod)
+                {
+                    isInsiteMethod = true;
+                }
+                else if (ArrayUtil.IsIncludeString(new string[] { "End Sub", "End Function" }, code.CodeString))
+                {
+                    isInsiteMethod = false;
+                }
+            }
+
+            return retList.ToArray();
         }
 
         #endregion

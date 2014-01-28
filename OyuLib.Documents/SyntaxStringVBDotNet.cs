@@ -25,9 +25,20 @@ namespace OyuLib.Documents
 
         public const string CONST_EVENTS_HANDLES = "Handles";
 
-        public const string CONST_EVENTS_AS = "As";
+        public const string CONST_AS = "As";
+
+        public const string CONST_EQUALS = "=";
 
         public const string CONST_EVENTS_WITHEVENTS = "WithEvents";
 
+        public const string CONST_END = "End";
+
+        public const string CONST_EXIT = "Exit";
+
+        public const string CONST_CONST = "Const";
+
+        public const string CONST_UNDERBAR = "_";
+
+        public const string CONST_COMMA = ",";
     }
 }

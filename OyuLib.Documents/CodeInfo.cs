@@ -41,5 +41,20 @@ namespace OyuLib.Documents
 
         #endregion
 
+        #region Method
+
+        #region Override + Absract
+
+        public override string ToString()
+        {
+            return this.GetCodeText();
+        }
+
+        public abstract string GetCodeText();
+
+        #endregion
+
+        #endregion
+
     }
 }

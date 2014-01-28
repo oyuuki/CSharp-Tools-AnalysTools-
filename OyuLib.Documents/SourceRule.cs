@@ -10,6 +10,7 @@ namespace OyuLib.Documents
         #region Abstract
 
         public abstract string GetCodeEndSeparatorString();
+        public abstract string GetCodesSeparatorString();
         public abstract string[] GetAccessModifiersString();
         public abstract string[] GetCodeNextSeparatorStrings();
 

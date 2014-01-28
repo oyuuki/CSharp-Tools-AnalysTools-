@@ -15,6 +15,8 @@ namespace OyuLib.Documents
 
         private readonly int _typeName = -1;
 
+        private bool _isConst = false;
+
         #endregion
 
         #region Constructor
@@ -29,12 +31,14 @@ namespace OyuLib.Documents
             Code code,
             int value,
             int name,
-            int typeName)
+            int typeName,
+            bool isConst)
             : base(code)
         {
             this._value = value;
             this._name = name;
             this._typeName = typeName;
+            this._isConst = isConst;
         }
 
         public CodeInfoValiable(
@@ -42,12 +46,14 @@ namespace OyuLib.Documents
             string codeDelimiter,
             int value,
             int name,
-            int typeName)
+            int typeName,
+            bool isConst)
             : base(codeLine, codeDelimiter)
         {
             this._value = value;
             this._name = name;
             this._typeName = typeName;
+            this._isConst = isConst;
         }
 
         #endregion
@@ -56,7 +62,15 @@ namespace OyuLib.Documents
 
         public string Value
         {
-            get { return this.Code.CodeParts()[this._value]; }
+            get
+            {
+                if (this._value < 0)
+                {
+                    return "(None)";
+                }
+                
+                return this.Code.CodeParts()[this._value];
+            }
         }
 
         public string Name
@@ -68,6 +82,24 @@ namespace OyuLib.Documents
         {
             get { return this.Code.CodeParts()[this._typeName]; }   
         }
+
+        public bool IsConst
+        {
+            get { return this._isConst; }   
+        }
+
+        #endregion
+
+        #region Method
+
+        #region Override
+
+        public override string GetCodeText()
+        {
+            return "ローカル変数名：" + this.Name + "値：" + this.Value + "型名：" + this.TypeName + "CONST?" + this.IsConst;
+        }
+
+        #endregion
 
         #endregion
     }

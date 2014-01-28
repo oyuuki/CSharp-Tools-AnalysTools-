@@ -11,6 +11,8 @@ namespace OyuLib.Documents.Analysis
 
         private Code _code = null;
 
+        private bool _isInsiteMethod = false;
+
         #endregion
 
         #region Constructor
@@ -20,18 +22,29 @@ namespace OyuLib.Documents.Analysis
         }
 
         protected AnalysisCodeInfo(Code code)
+            : this(code, false)
         {
             this._code = code;
+        }
+
+        protected AnalysisCodeInfo(Code code, bool isInsiteMethod)
+        {
+            this._code = code;
+            this._isInsiteMethod = isInsiteMethod;
         }
 
         #endregion
 
         #region Property
 
-        public Code Code
+        protected Code Code
         {
             get { return this._code; }
-            set { this._code = value; }
+        }
+
+        protected bool IsInsiteMethod
+        {
+            get { return this._isInsiteMethod; }
         }
 
         #endregion
@@ -40,9 +53,24 @@ namespace OyuLib.Documents.Analysis
 
         public abstract CodeInfo GetCodeInfo();
 
+        public bool IsFirstStringIsValue(string value)
+        {
+            return this.GetCodeParts()[0].Trim().Equals(value);
+        }
+
         public bool IsIncludeStringInCode(string[] values)
         {
             return ArrayUtil.IsIncludeStringsInArray(this.GetCodeParts(), values);
+        }
+
+        public bool IsIncludeStringInCode(string value)
+        {
+            return this.IsIncludeStringInCode(new string[]{value});
+        }
+
+        public bool IsIncludeAllStringInCode(string[] values)
+        {
+            return ArrayUtil.IsIncludeAllStringsInArray(this.GetCodeParts(), values);
         }
 
         public string[] GetCodeParts()

@@ -8,7 +8,6 @@ namespace OyuLib.Documents
 {
     public class SourceRuleVBDotNet : SourceRule
     {
-
         #region Method
 
         #region override
@@ -20,7 +19,12 @@ namespace OyuLib.Documents
 
         public override string GetCodeEndSeparatorString()
         {
-            return new CharCode(";").GetCharCodeString();
+            return new LineCharCode().GetCharCodeString();
+        }
+
+        public override string GetCodesSeparatorString()
+        {
+            return new CharCode(" ").GetCharCodeString();
         }
 
         public override string[] GetAccessModifiersString()
@@ -36,7 +40,7 @@ namespace OyuLib.Documents
 
         public override string[] GetCodeNextSeparatorStrings()
         {
-            return null;
+            return new string[] { SyntaxStringVBDotNet.CONST_UNDERBAR, SyntaxStringVBDotNet.CONST_COMMA };
         }
 
         #endregion

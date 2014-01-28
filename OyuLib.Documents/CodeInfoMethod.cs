@@ -62,17 +62,38 @@ namespace OyuLib.Documents
 
         public string AccessModifier
         {
-            get { return this.Code.CodeParts()[this._accessModifier]; }
+            get
+            {
+                if (this._accessModifier < 0)
+                {
+                    return "None";
+                }
+
+                return this.Code.CodeParts()[this._accessModifier];
+            }
         }
 
         public string Name
         {
-            get { return this.Code.CodeParts()[this._name]; }
+            get
+            {
+                var locName = this.Code.CodeParts()[this._name];
+
+                return locName.Substring(0, locName.IndexOf("("));
+            }
         }
 
         public string ReturnTypeName
         {
-            get { return this.Code.CodeParts()[this._returnTypeName]; }
+            get
+            {
+                if (this._returnTypeName < 0)
+                {
+                    return "None";
+                }
+
+                return this.Code.CodeParts()[this._returnTypeName];
+            }
         }
 
 
@@ -81,6 +102,19 @@ namespace OyuLib.Documents
             get { return this._paramValiables; }
             set { this._paramValiables = value; }
         }
+
+        #endregion
+
+        #region Method
+
+        #region Override
+
+        public override string GetCodeText()
+        {
+            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + this.Code.CodeString;
+        }
+
+        #endregion
 
         #endregion
     }

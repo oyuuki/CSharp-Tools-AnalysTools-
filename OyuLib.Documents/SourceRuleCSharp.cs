@@ -12,6 +12,11 @@ namespace OyuLib.Documents
             return new CharCode(";").GetCharCodeString();
         }
 
+        public override string GetCodesSeparatorString()
+        {
+            return new CharCode(" ").GetCharCodeString();
+        }
+
         public override string[] GetAccessModifiersString()
         {
             return new string[] { "protected", "Internal", "public", "Private" };

@@ -72,6 +72,16 @@ namespace OyuLib.Documents
                     this.Code.CodeParts()[this._eve]);
         }
 
+        #region override
+
+        public override string GetCodeText()
+        {
+            return "イベントメソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "イベント名：" + this.EventName +
+                   "イベント発生オブジェクト名：" + this.ObjNamesuggestEventName  + this.Code.CodeString;
+        }
+
+        #endregion
+
         #endregion
 
     }

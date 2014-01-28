@@ -50,13 +50,15 @@ namespace OyuLib.Documents
             
             Func<string, string> proc = (string value) =>
             {
-                retList.Add(TypeUtil.GetInstance<Code>(new object[]{ value }));
+                retList.Add(new Code(value,this.GetSourceRule().GetCodesSeparatorString()));
                 return "";
             };
 
-            var result = (from str in this.GetCodeStringArray()
-                select proc(str));
-
+            foreach (var codeStr in this.GetCodeStringArray())
+            {
+                proc(codeStr);
+            }
+            
             return retList.ToArray();
 
         }
@@ -74,19 +76,22 @@ namespace OyuLib.Documents
 
                 if (!ArrayUtil.IsIncludeStringEndsWith(this.GetSourceRule().GetCodeNextSeparatorStrings(), value))
                 {
-                    retList[retList.Count - 1] = retList[retList.Count - 1].Substring(0,
-                        retList[retList.Count - 1].Length - 1);
+                    retList.Add(string.Empty);
                 }
                 else
                 {
-                    retList.Add(string.Empty);
+                    retList[retList.Count - 1] = retList[retList.Count - 1].Substring(0,
+                        retList[retList.Count - 1].Length - 1);
                 }
 
                 return string.Empty;
             };
 
-            var result = (from str in this.GetArrayCodeString()
-                          select proc(str.Trim()));
+
+            foreach (var str in this.GetArrayCodeString())
+            {
+                proc(str);
+            }
 
             return retList.ToArray();
         }
