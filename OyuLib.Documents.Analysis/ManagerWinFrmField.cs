@@ -8,7 +8,7 @@ namespace OyuLib.Documents.Analysis
     /// <summary>
     /// class is All Sourcecode parent
     /// </summary>
-    public abstract class WinFrmFieldManager
+    public abstract class ManagerWinFrmField
     {
         #region Instance
 
@@ -21,12 +21,12 @@ namespace OyuLib.Documents.Analysis
 
         #region Constructor
 
-        protected WinFrmFieldManager(string sourceText)
+        protected ManagerWinFrmField(string sourceText)
         {
             this._sourceText = sourceText;
         }
 
-        protected WinFrmFieldManager()
+        protected ManagerWinFrmField()
         {
 
         }
@@ -43,10 +43,10 @@ namespace OyuLib.Documents.Analysis
             where T : WinFrmFieldExtractor, new()
         {
 
-            AnalysisInputFieldItem[] partArray = this.GetSourceCodePart().GetPartArray();
+            AnalyzerInputFieldItem[] partArray = this.GetSourceCodePart().GetPartArray();
             List<WinFrmField> retList = new List<WinFrmField>();
 
-            foreach (AnalysisInputFieldItem part in partArray)
+            foreach (AnalyzerInputFieldItem part in partArray)
             {
                 T inputItemgene = ConstructItemInput<T>(part);
 
@@ -56,7 +56,7 @@ namespace OyuLib.Documents.Analysis
             return retList.ToArray();
         }
 
-        private static T ConstructItemInput<T>(AnalysisInputFieldItem part)
+        private static T ConstructItemInput<T>(AnalyzerInputFieldItem part)
             where T : WinFrmFieldExtractor, new()
         {
             Type type = typeof(T);
@@ -70,7 +70,7 @@ namespace OyuLib.Documents.Analysis
 
         #region abstract
 
-        protected abstract AnalysisInputFieldItem GetSourceCodePart();
+        protected abstract AnalyzerInputFieldItem GetSourceCodePart();
 
         #endregion
 

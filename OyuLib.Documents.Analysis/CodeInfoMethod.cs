@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents
+namespace OyuLib.Documents.Analysis
 {
     public class CodeInfoMethod : CodeInfo
     {
@@ -62,22 +62,15 @@ namespace OyuLib.Documents
 
         public string AccessModifier
         {
-            get
-            {
-                if (this._accessModifier < 0)
-                {
-                    return "None";
-                }
-
-                return this.Code.CodeParts()[this._accessModifier];
-            }
+            get { return this.GetCodePartsString(this._accessModifier); }   
         }
 
         public string Name
         {
+
             get
             {
-                var locName = this.Code.CodeParts()[this._name];
+                var locName = this.GetCodePartsString(this._name); 
 
                 return locName.Substring(0, locName.IndexOf("("));
             }
@@ -85,15 +78,7 @@ namespace OyuLib.Documents
 
         public string ReturnTypeName
         {
-            get
-            {
-                if (this._returnTypeName < 0)
-                {
-                    return "None";
-                }
-
-                return this.Code.CodeParts()[this._returnTypeName];
-            }
+            get { return this.GetCodePartsString(this._returnTypeName); }   
         }
 
 
@@ -115,6 +100,16 @@ namespace OyuLib.Documents
         }
 
         #endregion
+
+        public override CodeInfo GetCodeInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsCodeInfo()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

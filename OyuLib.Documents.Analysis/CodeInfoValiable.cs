@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents
+namespace OyuLib.Documents.Analysis
 {
     public class CodeInfoValiable : CodeInfo
     {
@@ -97,6 +97,16 @@ namespace OyuLib.Documents
         public override string GetCodeText()
         {
             return "ローカル変数名：" + this.Name + "値：" + this.Value + "型名：" + this.TypeName + "CONST?" + this.IsConst;
+        }
+
+        public override CodeInfo GetCodeInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsCodeInfo()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

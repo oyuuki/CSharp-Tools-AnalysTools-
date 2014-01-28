@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public abstract class AnalysisCodeInfo
+    public abstract class AnalyzerCodeInfo
     {
         #region instanceVal
 
@@ -17,17 +17,17 @@ namespace OyuLib.Documents.Analysis
 
         #region Constructor
 
-        protected AnalysisCodeInfo()
+        protected AnalyzerCodeInfo()
         {
         }
 
-        protected AnalysisCodeInfo(Code code)
+        protected AnalyzerCodeInfo(Code code)
             : this(code, false)
         {
             this._code = code;
         }
 
-        protected AnalysisCodeInfo(Code code, bool isInsiteMethod)
+        protected AnalyzerCodeInfo(Code code, bool isInsiteMethod)
         {
             this._code = code;
             this._isInsiteMethod = isInsiteMethod;

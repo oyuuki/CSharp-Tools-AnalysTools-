@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public class CodeInfoExtractorVBDotNet : CodeInfoExtractor<SourceVBDotNet>
+    public class ExtractorCodeInfoVBDotNet : CodeInfoExtractor<SourceVBDotNet>
     {
         #region constructor
 
-        protected CodeInfoExtractorVBDotNet(SourceVBDotNet source)
+        protected ExtractorCodeInfoVBDotNet(SourceVBDotNet source)
             : base(source)
         {
             

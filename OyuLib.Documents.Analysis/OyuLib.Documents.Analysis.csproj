@@ -30,6 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GrapeCity.ActiveReports.Chart.v7, Version=7.2.8529.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Diagnostics.v7, Version=7.2.8529.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Document.v7, Version=7.2.8529.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.Extensibility.v7, Version=7.2.8529.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
+    <Reference Include="GrapeCity.ActiveReports.v7, Version=7.2.8529.1, Culture=neutral, PublicKeyToken=cc4967777c49a3ff" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -39,25 +44,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysisCodeInfoVBDotNet.cs" />
-    <Compile Include="AnalysisCodeManager.cs" />
-    <Compile Include="AnalysisInputFieldItemManager.cs" />
-    <Compile Include="AnalysisManager.cs" />
-    <Compile Include="AnalysisCodeInfo.cs" />
-    <Compile Include="AnalysisInputFieldItem.cs" />
-    <Compile Include="AnalysisVB6InputFieldItem.cs" />
-    <Compile Include="CodeInfoExtractor.cs" />
+    <Compile Include="AnalyzerCodeInfoVBDotNet.cs" />
+    <Compile Include="ManagerAnalysisCode.cs" />
+    <Compile Include="ManagerAnalysisInputFieldItem.cs" />
+    <Compile Include="ManagerAnalysis.cs" />
+    <Compile Include="AnalyzerCodeInfo.cs" />
+    <Compile Include="AnalyzerInputFieldItem.cs" />
+    <Compile Include="AnalyzerVB6InputFieldItem.cs" />
+    <Compile Include="CodeInfo.cs" />
+    <Compile Include="CodeInfoCallMethod.cs" />
+    <Compile Include="CodeInfoComment.cs" />
+    <Compile Include="CodeInfoEventMethod.cs" />
+    <Compile Include="ExtractorCodeInfo.cs" />
+    <Compile Include="CodeInfoMemberVariable.cs" />
+    <Compile Include="CodeInfoMethod.cs" />
+    <Compile Include="CodeInfoOther.cs" />
+    <Compile Include="CodeInfoParameterValue.cs" />
+    <Compile Include="CodeInfoSubstitution.cs" />
+    <Compile Include="CodeInfoValiable.cs" />
+    <Compile Include="IAnalysisLogic.cs" />
     <Compile Include="InputFieldItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CodeInfoExtractorVBDotNet.cs" />
+    <Compile Include="ExtractorCodeInfoVBDotNet.cs" />
     <Compile Include="WinFrmField.cs" />
     <Compile Include="WinFrmFieldExtractor.cs" />
     <Compile Include="WinFrmFieldExtractorVB6.cs" />
     <Compile Include="WinFrmFieldKindImeMode.cs" />
     <Compile Include="WinFrmFieldKindReadOnly.cs" />
     <Compile Include="WinFrmFieldKindTranceType.cs" />
-    <Compile Include="WinFrmFieldManager.cs" />
-    <Compile Include="WinFrmFieldManagerVb6.cs" />
+    <Compile Include="ManagerWinFrmField.cs" />
+    <Compile Include="ManagerWinFrmFieldVb6.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Documents\OyuLib.Documents.csproj">

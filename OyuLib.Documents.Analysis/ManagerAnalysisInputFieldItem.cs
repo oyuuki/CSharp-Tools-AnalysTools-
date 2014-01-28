@@ -5,14 +5,14 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public class AnalysisInputFieldItemManager : AnalysisManager
+    public class ManagerAnalysisInputFieldItem : ManagerAnalysis
     {
         #region constractor
 
         /// <summary>
         /// constractor
         /// </summary>
-        public AnalysisInputFieldItemManager()
+        public ManagerAnalysisInputFieldItem()
             : base()
         {
         }
@@ -21,7 +21,7 @@ namespace OyuLib.Documents.Analysis
         /// constractor
         /// </summary>
         /// <param name="sourceText"></param>
-        public AnalysisInputFieldItemManager(string sourceText)
+        public ManagerAnalysisInputFieldItem(string sourceText)
             : base(sourceText)
         {
             
@@ -35,7 +35,7 @@ namespace OyuLib.Documents.Analysis
         /// Analys Code to item
         /// </summary>
         public WinFrmField[] GetSourceAnalysisWinFrmFields<T>()
-            where T : WinFrmFieldManager, new()
+            where T : ManagerWinFrmField, new()
         {
             var gene = TypeUtil.GetInstance<T>(new [] { this.SourceText });
             return gene.GetWinFrmFields<WinFrmFieldExtractorVB6>();

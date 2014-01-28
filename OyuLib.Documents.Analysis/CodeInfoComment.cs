@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents
+namespace OyuLib.Documents.Analysis
 {
     public class CodeInfoComment : CodeInfo
     {
@@ -39,6 +39,16 @@ namespace OyuLib.Documents
         public override string GetCodeText()
         {
             return "コメント：" + this.Code.CodeString;
+        }
+
+        public override CodeInfo GetCodeInfo()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool IsCodeInfo()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

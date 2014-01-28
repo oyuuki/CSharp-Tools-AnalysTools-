@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public class WinFrmFieldManagerVb6 : WinFrmFieldManager
+    public class ManagerWinFrmFieldVb6 : ManagerWinFrmField
     {
         #region const
 
@@ -17,12 +17,12 @@ namespace OyuLib.Documents.Analysis
 
         #region constractor
 
-        public WinFrmFieldManagerVb6(string sourceText) : base(sourceText)
+        public ManagerWinFrmFieldVb6(string sourceText) : base(sourceText)
         {
 
         }
 
-        public WinFrmFieldManagerVb6()     
+        public ManagerWinFrmFieldVb6()     
         {
 
         }
@@ -43,9 +43,9 @@ namespace OyuLib.Documents.Analysis
 
         #region override
 
-        protected override AnalysisInputFieldItem GetSourceCodePart()
+        protected override AnalyzerInputFieldItem GetSourceCodePart()
         {
-            return new AnalysisVB6InputFieldItem(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
+            return new AnalyzerVB6InputFieldItem(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
         }
         
         #endregion

@@ -55,6 +55,17 @@ namespace OyuLib
             return paramArray.Select(obj => obj.GetType()).ToArray();
         }
 
+        public static bool IsSameTypeObject(Type type, object obj)
+        {
+            return type.Equals(obj.GetType());
+
+        }
+
+        public static bool IsSameTypesObject(Type[] types, object obj)
+        {
+            return types.Any(type => TypeUtil.IsSameTypeObject(type, obj));
+        }
+
         #endregion
 
         #endregion

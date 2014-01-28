@@ -40,14 +40,14 @@
             this.exListBox1.Location = new System.Drawing.Point(12, 45);
             this.exListBox1.Name = "exListBox1";
             this.exListBox1.ScrollAlwaysVisible = true;
-            this.exListBox1.Size = new System.Drawing.Size(975, 388);
+            this.exListBox1.Size = new System.Drawing.Size(1487, 388);
             this.exListBox1.TabIndex = 1;
             // 
             // exButton1
             // 
             this.exButton1.Location = new System.Drawing.Point(12, 12);
             this.exButton1.Name = "exButton1";
-            this.exButton1.Size = new System.Drawing.Size(975, 27);
+            this.exButton1.Size = new System.Drawing.Size(1487, 27);
             this.exButton1.TabIndex = 0;
             this.exButton1.Text = "exButton1";
             this.exButton1.UseVisualStyleBackColor = true;
@@ -57,7 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 455);
+            this.ClientSize = new System.Drawing.Size(1511, 454);
             this.Controls.Add(this.exListBox1);
             this.Controls.Add(this.exButton1);
             this.Name = "Form1";
