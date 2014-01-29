@@ -52,6 +52,69 @@ namespace TestApp
     
                 this.exListBox1.Items.Add("");
             }
+
+            this.exListBox1.Items.Add("ここまでがフィールドに関連するイベントメソッド抽出処理");
+
+
+            foreach (var name in filedNameList)
+            {
+                this.exListBox1.Items.Add("フィールド：" + name + "に関連する代入一覧");
+
+                var withNextCount = new List<bool>();
+
+                foreach (var value in mana.GetVbSourceCodeAnalysis())
+                {
+                    if (withNextCount.Count > 0 && withNextCount[withNextCount.Count - 1])
+                    {
+                        if (value is CodeInfoSubstitution)
+                        {
+
+                            var a = (CodeInfoSubstitution) value;
+
+                            if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
+                            {
+                                this.exListBox1.Items.Add(value.ToString());
+                            }
+
+                        }
+                        else if (value is CodeInfoCallMethod)
+                        {
+                            this.exListBox1.Items.Add(value.ToString());
+                        }
+                    }
+
+                    if (value is CodeInfoBlockBegin)
+                    {
+                        var blockWithInfo = (CodeInfoBlockBegin) value;
+                        
+                        if (blockWithInfo.StatementObject.Equals(name))
+                        {
+                            this.exListBox1.Items.Add(value.ToString());
+                            withNextCount.Add(true);
+                        }
+                        else
+                        {
+                            withNextCount.Add(false);
+                        }
+                    }
+                    else if (value is CodeInfoBlockEnd)
+                    {
+                        if (withNextCount.Count > 0)
+                        {
+                            if (withNextCount[withNextCount.Count - 1])
+                            {
+                                this.exListBox1.Items.Add(value.ToString());        
+                            }
+
+                            withNextCount.RemoveAt(withNextCount.Count - 1);    
+                        }
+
+                        
+                    }
+                }
+
+                this.exListBox1.Items.Add("");
+            }
         }
 
         private void exButton2_Click(object sender, EventArgs e)
