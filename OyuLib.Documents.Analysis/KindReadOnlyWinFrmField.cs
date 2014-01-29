@@ -1,7 +1,7 @@
 ﻿
 namespace OyuLib.Documents.Analysis
 {
-    public enum ReadOnly
+    public enum KindReadOnlyWinFrmField
     {
         [ConstValue("1", "出")]
         On,

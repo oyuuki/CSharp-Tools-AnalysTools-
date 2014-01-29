@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public abstract class CodeInfoExtractor<T>
+    public abstract class ExtractorCodeInfo<T>
         where T : Source, new()
     {
         #region instanceVal
@@ -16,7 +16,7 @@ namespace OyuLib.Documents.Analysis
 
         #region constructor
 
-        protected CodeInfoExtractor(T source)
+        protected ExtractorCodeInfo(T source)
         {
             this._source = source;
         }

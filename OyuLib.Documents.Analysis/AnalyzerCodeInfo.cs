@@ -100,14 +100,19 @@ namespace OyuLib.Documents.Analysis
             return this.GetCodeParts()[0].Trim().Equals(value);
         }
 
-        protected bool IsIncludeStringInCode(string[] values)
+        protected bool IsIncludeStringInCodeAtLast(string value)
         {
-            return ArrayUtil.IsIncludeStringsInArray(this.GetCodeParts(), values);
+            return ArrayUtil.IsIncludeStringInCodeAtLast(this.GetCodeParts(), value);
+        }
+
+        protected bool IsIncludeSomeStringInCode(string[] values)
+        {
+            return ArrayUtil.IsIncludeSomeStringsInArray(this.GetCodeParts(), values);
         }
 
         protected bool IsIncludeStringInCode(string value)
         {
-            return this.IsIncludeStringInCode(new string[]{value});
+            return this.IsIncludeSomeStringInCode(new string[]{value});
         }
 
         protected bool IsIncludeAllStringInCode(string[] values)
@@ -118,6 +123,10 @@ namespace OyuLib.Documents.Analysis
         protected string[] GetCodeParts()
         {
             return this.Code.CodeParts();
+        }
+        protected int GetCodePartsLength()
+        {
+            return this.GetCodeParts().Length;
         }
 
         protected int GetIndexCodeParts(string value)
@@ -161,6 +170,9 @@ namespace OyuLib.Documents.Analysis
 
         protected abstract CodeInfoCallMethod GetCodeInfoCallMethod();
         protected abstract bool CheckCodeInfoCallMethod();
+
+        protected abstract CodeInfoSubstitution GetCodeInfoSubstitution();
+        protected abstract bool CheckCodeInfoSubstitution();
 
         #endregion
 

@@ -215,7 +215,7 @@ namespace OyuLib.Documents.Analysis
             if (this.GetExType().IndexOf("imDate") >= 0
                     || this.GetExType().IndexOf("imNumber") >= 0)
             {
-                return ConstAttributeManager<WinFrmFieldKindImeMode>.GetConstByEnumValue(WinFrmFieldKindImeMode.Off);
+                return ConstAttributeManager<KindImeModeWinFrmField>.GetConstByEnumValue(KindImeModeWinFrmField.Off);
             }
 
             if (!(retValue = this.GetWinFrmFieldPropertyValue("IMEMode")).Equals(string.Empty))

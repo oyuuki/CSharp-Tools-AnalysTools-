@@ -998,7 +998,7 @@ namespace AnalysisVBFormApl
 
         private void TranceRowTypeValue(ref DataGridViewRow row)
         {
-            row.Cells[COLUMNNAME_COLTYPE].Value = ConstAttributeManager<TranceType>.GetValueSuggestConst(row.Cells[COLUMNNAME_COLTYPE].Value.ToString());
+            row.Cells[COLUMNNAME_COLTYPE].Value = ConstAttributeManager<KindTranceTypeWinFrmField>.GetValueSuggestConst(row.Cells[COLUMNNAME_COLTYPE].Value.ToString());
         }
 
         private void TranceRowlabelValue(ref DataGridViewRow row)
@@ -1061,7 +1061,7 @@ namespace AnalysisVBFormApl
         private string GetTrancedType(int rowIndex)
         {
             // ●属性    型をそのまま出力
-            return ConstAttributeManager<TranceType>.GetValueSuggestConst(this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
+            return ConstAttributeManager<KindTranceTypeWinFrmField>.GetValueSuggestConst(this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
         }
 
         private string GetTrancedSize(int rowIndex)
@@ -1075,13 +1075,13 @@ namespace AnalysisVBFormApl
         {
             // ●書式    条件：TextBoxの場合
             //   ReadOnlyの場合は"-"
-            ReadOnly redOnly = ConstAttributeManager<ReadOnly>.GetEnumValue(this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
+            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
-            TranceType trType = ConstAttributeManager<TranceType>.GetEnumValue(
+            KindTranceTypeWinFrmField trType = ConstAttributeManager<KindTranceTypeWinFrmField>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
 
 
-            if (trType != TranceType.imPostal && redOnly == ReadOnly.On)
+            if (trType != KindTranceTypeWinFrmField.imPostal && redOnly == KindReadOnlyWinFrmField.On)
             {
                 return "-";
             }
@@ -1094,21 +1094,21 @@ namespace AnalysisVBFormApl
         {
             //  ●入力    条件：TextBoxの場合
             //               ReadOnlyであれば"出"
-            TranceType trType = ConstAttributeManager<TranceType>.GetEnumValue(
+            KindTranceTypeWinFrmField trType = ConstAttributeManager<KindTranceTypeWinFrmField>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
-            ReadOnly redOnly = ConstAttributeManager<ReadOnly>.GetEnumValue(
+            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
             string retValue = "-";
 
             switch (trType)
             {
-                case TranceType.ImText:
-                case TranceType.ImNumber:
-                case TranceType.ImDate:
+                case KindTranceTypeWinFrmField.ImText:
+                case KindTranceTypeWinFrmField.ImNumber:
+                case KindTranceTypeWinFrmField.ImDate:
                 
 
-                    if (redOnly == ReadOnly.On)
+                    if (redOnly == KindReadOnlyWinFrmField.On)
                     {
                         retValue = "出";
                     }
@@ -1119,20 +1119,20 @@ namespace AnalysisVBFormApl
 
                     break;
 
-                case TranceType.imPostal:
+                case KindTranceTypeWinFrmField.imPostal:
 
                     retValue = "入出";
                     break;
 
-                case TranceType.OptionButton:
-                case TranceType.ComboBox:
+                case KindTranceTypeWinFrmField.OptionButton:
+                case KindTranceTypeWinFrmField.ComboBox:
 
                     //            条件：OptionButton, ComboBoxの場合
                     //               "入出"
                     retValue = "入出";
                     break;
 
-                case TranceType.Label:
+                case KindTranceTypeWinFrmField.Label:
 
                     //            条件：Labelの場合
                     //               "(タイトル)"の場合"-"
@@ -1159,10 +1159,10 @@ namespace AnalysisVBFormApl
               // OFF,ON,規定値
             string imeStr = ConstAttributeManager<ImeMode>.GetValueSuggestConst(this.exDataGridView1.GetStringValue(COLUMNNAME_COLIMEMODE, rowIndex));
 
-            ReadOnly redOnly = ConstAttributeManager<ReadOnly>.GetEnumValue(
+            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
-            if (redOnly == ReadOnly.On || string.IsNullOrEmpty(imeStr))
+            if (redOnly == KindReadOnlyWinFrmField.On || string.IsNullOrEmpty(imeStr))
             {
                 return "-";
             }
@@ -1181,26 +1181,26 @@ namespace AnalysisVBFormApl
                 return "\"" + name.Replace("(タイトル)", "") + "\"";
             }
 
-            TranceType trType = ConstAttributeManager<TranceType>.GetEnumValue(
+            KindTranceTypeWinFrmField trType = ConstAttributeManager<KindTranceTypeWinFrmField>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
-            ReadOnly redOnly = ConstAttributeManager<ReadOnly>.GetEnumValue(
+            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
             string retValue = string.Empty;
 
             switch (trType)
             {
-                case TranceType.ImText:
-                case TranceType.ImNumber:
-                case TranceType.ImDate:
-                case TranceType.imPostal:
+                case KindTranceTypeWinFrmField.ImText:
+                case KindTranceTypeWinFrmField.ImNumber:
+                case KindTranceTypeWinFrmField.ImDate:
+                case KindTranceTypeWinFrmField.imPostal:
 
                     retValue = this.exDataGridView1.GetStringValue(COLUMNNAME_COLNAME, rowIndex);
-                    retValue += "を表示" + (redOnly == ReadOnly.Off ? "、入力" : "") + "する";
+                    retValue += "を表示" + (redOnly == KindReadOnlyWinFrmField.Off ? "、入力" : "") + "する";
 
                     break;
 
-                case TranceType.ComboBox:
+                case KindTranceTypeWinFrmField.ComboBox:
 
                     //            条件：OptionButton, ComboBoxの場合
                     //               "入出"

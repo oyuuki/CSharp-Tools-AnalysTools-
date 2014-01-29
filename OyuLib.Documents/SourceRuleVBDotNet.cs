@@ -38,6 +38,15 @@ namespace OyuLib.Documents
                 SyntaxStringVBDotNet.CONST_ACCESSMODIFIER_FRIEND,};
         }
 
+        public override string[] GetControlStatementsString()
+        {
+            return new string[] { 
+                SyntaxStringVBDotNet.CONST_IF, 
+                SyntaxStringVBDotNet.CONST_FOR, 
+                SyntaxStringVBDotNet.CONST_WHILE, 
+                SyntaxStringVBDotNet.CONST_DO};
+        }
+
         public override string[] GetCodeNextSeparatorStrings()
         {
             return new string[] { SyntaxStringVBDotNet.CONST_UNDERBAR, SyntaxStringVBDotNet.CONST_COMMA };

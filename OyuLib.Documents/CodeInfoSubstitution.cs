@@ -9,8 +9,8 @@ namespace OyuLib.Documents
     {
         #region instanceVal
 
-        private int rightHandSide = -1;
-        private int leftHandSide = -1;
+        private int _rightHandSide = -1;
+        private int _leftHandSide = -1;
 
         #endregion
 
@@ -23,18 +23,24 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoSubstitution(
-            Code code)
+            Code code,
+            int rightHandSide,
+            int leftHandSide)
             : base(code)
         {
-            
+            this._rightHandSide = rightHandSide;
+            this._leftHandSide = leftHandSide;
         }
 
         public CodeInfoSubstitution(
             string codeLine,
-            string codeDelimiter)
+            string codeDelimiter,
+            int rightHandSide,
+            int leftHandSide)
             : base(codeLine, codeDelimiter)
         {
-            
+            this._rightHandSide = rightHandSide;
+            this._leftHandSide = leftHandSide;
         }
 
         #endregion

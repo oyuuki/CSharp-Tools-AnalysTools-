@@ -33,6 +33,8 @@ namespace OyuLib.Documents
 
         public const string CONST_END = "End";
 
+        public const string CONST_CALLMETHOS_END = ")";
+
         public const string CONST_EXIT = "Exit";
 
         public const string CONST_CONST = "Const";
@@ -40,5 +42,13 @@ namespace OyuLib.Documents
         public const string CONST_UNDERBAR = "_";
 
         public const string CONST_COMMA = ",";
+
+        public const string CONST_IF = "If ";
+
+        public const string CONST_FOR = "For ";
+
+        public const string CONST_WHILE = "While ";
+
+        public const string CONST_DO = "Do ";
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace OyuLib.Documents.Analysis
 {
-    public enum WinFrmFieldKindImeMode
+    public enum KindImeModeWinFrmField
     {
         [ConstValue("0", "規定値")]
         Default,

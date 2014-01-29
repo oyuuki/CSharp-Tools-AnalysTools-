@@ -28,7 +28,7 @@ namespace TestApp
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
 
             var filedNameList = new List<string>();
-            /*
+            
             foreach (var value in mana.GetMemValCodeIndoFiltTypeName("FarPoint.Win.Spread.FpSpread"))
             {
                 this.exListBox1.Items.Add(value.ToString());
@@ -38,7 +38,7 @@ namespace TestApp
             this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
             source = new SourceVBDotNet(new TextFile(@"C:\Users\PASEO\Desktop\FreeMarket.NET\frm002005.vb").GetAllReadText());
-            mana = new AnalysisCodeManager(source.SourceText);
+            mana = new ManagerAnalysisCode(source.SourceText);
 
             foreach (var name in filedNameList)
             {
@@ -51,13 +51,6 @@ namespace TestApp
     
                 this.exListBox1.Items.Add("");
             }
-             * */
-
-            foreach (var value in mana.GetVbSourceCodeAnalysis())
-            {
-                this.exListBox1.Items.Add(value.ToString());
-            }
-
         }
     }
 }

@@ -64,6 +64,7 @@
     <Compile Include="SourceRuleVBDotNet.cs" />
     <Compile Include="SourceVB6.cs" />
     <Compile Include="SourceVBDotNet.cs" />
+    <Compile Include="SyntaxStringCSharp.cs" />
     <Compile Include="SyntaxStringVBDotNet.cs" />
   </ItemGroup>
   <ItemGroup>

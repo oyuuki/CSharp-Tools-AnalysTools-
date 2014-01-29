@@ -1,7 +1,7 @@
 ﻿
 namespace OyuLib.Documents.Analysis
 {
-    public enum TranceType
+    public enum KindTranceTypeWinFrmField
     {
         [ConstValue("VB.CommandButton", "Button")]
         Button = 1,

@@ -19,7 +19,22 @@ namespace OyuLib.Documents
 
         public override string[] GetAccessModifiersString()
         {
-            return new string[] { "protected", "Internal", "public", "Private" };
+            return new string[]
+            {
+                SyntaxStringCSharp.CONST_ACCESSMODIFIER_PUBLIC,
+                SyntaxStringCSharp.CONST_ACCESSMODIFIER_INTERNAL,
+                SyntaxStringCSharp.CONST_ACCESSMODIFIER_PROTECTED, 
+                SyntaxStringCSharp.CONST_ACCESSMODIFIER_PRIVATE
+            };
+        }
+
+        public override string[] GetControlStatementsString()
+        {
+            return new string[] { 
+                SyntaxStringCSharp.CONST_IF, 
+                SyntaxStringCSharp.CONST_FOR, 
+                SyntaxStringCSharp.CONST_WHILE, 
+                SyntaxStringCSharp.CONST_DO};
         }
 
         public override string[] GetCodeNextSeparatorStrings()

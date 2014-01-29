@@ -53,9 +53,9 @@
     <Compile Include="WinFrmField.cs" />
     <Compile Include="ExtractorWinFrmField.cs" />
     <Compile Include="ExtractorWinFrmFieldVB6.cs" />
-    <Compile Include="WinFrmFieldKindImeMode.cs" />
-    <Compile Include="WinFrmFieldKindReadOnly.cs" />
-    <Compile Include="WinFrmFieldKindTranceType.cs" />
+    <Compile Include="KindImeModeWinFrmField.cs" />
+    <Compile Include="KindReadOnlyWinFrmField.cs" />
+    <Compile Include="KindTranceTypeWinFrmField.cs" />
     <Compile Include="ManagerWinFrmField.cs" />
     <Compile Include="ManagerWinFrmFieldVb6.cs" />
   </ItemGroup>

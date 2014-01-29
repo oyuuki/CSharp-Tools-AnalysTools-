@@ -14,6 +14,17 @@ namespace OyuLib
             return array == null || array.Length < 0;
         }
 
+        public static bool IsIncludeStringInCodeAtLast(string[] arrayString, string value)
+        {
+            if (arrayString == null)
+            {
+                return false;
+            }
+
+            return arrayString[arrayString.Length - 1].Equals(value);
+        }
+
+        
         public static bool IsIncludeStringEndsWith(Array array, string value)
         {
             if (array == null)
@@ -50,7 +61,7 @@ namespace OyuLib
             return false;
         }
 
-        public static bool IsIncludeStringsInArray(Array array, string[] targetStrings)
+        public static bool IsIncludeSomeStringsInArray(Array array, string[] targetStrings)
         {
             foreach (string val in array)
             {

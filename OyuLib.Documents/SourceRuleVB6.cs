@@ -25,6 +25,14 @@ namespace OyuLib.Documents
         {
             return new string[] { "Friend", "Public", "Private" };
         }
+        public override string[] GetControlStatementsString()
+        {
+            return new string[] { 
+                SyntaxStringVBDotNet.CONST_IF, 
+                SyntaxStringVBDotNet.CONST_FOR, 
+                SyntaxStringVBDotNet.CONST_WHILE, 
+                SyntaxStringVBDotNet.CONST_DO};
+        }
 
         public override string[] GetCodeNextSeparatorStrings()
         {

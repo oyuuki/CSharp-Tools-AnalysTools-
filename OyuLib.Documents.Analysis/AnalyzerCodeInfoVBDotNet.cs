@@ -43,6 +43,8 @@ namespace OyuLib.Documents.Analysis
 
         #region InnerClass
 
+        #region CommonCodeInfoValiableInfo
+
         private class CommonCodeInfoValiableInfo
         {
             #region InstanceVal
@@ -112,6 +114,10 @@ namespace OyuLib.Documents.Analysis
             #endregion
         }
 
+        #endregion
+
+        #region CommonCodeInfoMethodInfo
+
         private class CommonCodeInfoMethodInfo
         {
             #region InstanceVal
@@ -170,6 +176,8 @@ namespace OyuLib.Documents.Analysis
 
             #endregion
         }
+
+        #endregion
 
         #endregion
 
@@ -232,12 +240,12 @@ namespace OyuLib.Documents.Analysis
             int name = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_AS) - 1;
             int typeName = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_AS) + 1;
 
-            return new CommonCodeInfoValiableInfo(value, equals, isConst, name, typeName); ;
+            return new CommonCodeInfoValiableInfo(value, equals, isConst, name, typeName); 
         }
 
         private bool CheckCommonCodeInfoVariable()
         {
-            if (this.IsIncludeStringInCode(new SourceRuleVBDotNet().GetMethodHead()))
+            if (this.IsIncludeSomeStringInCode(new SourceRuleVBDotNet().GetMethodHead()))
             {
                 return false;
             }
@@ -338,7 +346,7 @@ namespace OyuLib.Documents.Analysis
         {
             var commonInfo = this.GetCommonCodeInfoMethod();
             int eventName = this.Code.CodeParts().Length - 1;
-            return new CodeInfoEventMethod(this.Code, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, null, eventName);
+            return new CodeInfoEventMethod(this.Code, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Valiables, eventName);
         }
 
         #endregion
@@ -347,14 +355,82 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoMethod()
         {
-            return this.CheckCommonCodeInfoMethod() &&
-                   !this.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
+            //・代入コード「=」が存在しない
+            //・コードパーツに"As"、"Sub"、"Function"が含まれない
+            //・最後の文字が")"
+
+            SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
+
+            // No include "As", "Sub", "Function"
+            if (this.IsIncludeSomeStringInCode(
+                new string[]
+                {
+                    SyntaxStringVBDotNet.CONST_AS, 
+                    SyntaxStringVBDotNet.CONST_METHODHEAD_SUB, 
+                    SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION
+                }))
+            {
+                return false;
+            }
+
+            // No Include "="
+            if (this.GetCodePartsLength() >= 3)
+            {
+                if (this.GetCodeParts()[1].Equals(SyntaxStringVBDotNet.CONST_EQUALS))
+                {
+                    return false;    
+                }
+            }
+           
+            // End with ")"
+            if (!this.IsIncludeStringInCodeAtLast(SyntaxStringVBDotNet.CONST_CALLMETHOS_END))
+            {
+                return false;
+            }
+
+            return true;
         }
                           
         protected override CodeInfoMethod GetCodeInfoMethod()
         {
-            var commonInfo = this.GetCommonCodeInfoMethod();
-            return new CodeInfoMethod(this.Code, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, null);
+            return null;
+        }
+
+        #endregion
+
+        #region CodeInfoSubstitution
+
+        protected override bool CheckCodeInfoSubstitution()
+        {
+            SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
+
+            // No Begin with "If ","For ","While ", "Do "
+            if (this.IsIncludeSomeStringInCode(rule.GetControlStatementsString()))
+            {
+                return false;
+            }
+            // No include "As"
+            if (this.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_AS))
+            {
+                return false;
+            }
+
+            // composed right-hand side and lefthand side
+            if (this.GetCodePartsLength() < 3 || !this.GetCodeParts()[1].Equals(SyntaxStringVBDotNet.CONST_EQUALS))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        protected override CodeInfoSubstitution GetCodeInfoSubstitution()
+        {
+            int equals = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_EQUALS);
+            int rightHandSide = equals - 1;
+            int leftHandSide = equals + 1;
+
+            return new CodeInfoSubstitution(this.Code, rightHandSide, leftHandSide); 
         }
 
         #endregion
@@ -362,6 +438,5 @@ namespace OyuLib.Documents.Analysis
         #endregion
 
         #endregion
-
     }
 }

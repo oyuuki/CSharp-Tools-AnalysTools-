@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public class ExtractorCodeInfoVBDotNet : CodeInfoExtractor<SourceVBDotNet>
+    public class ExtractorCodeInfoVBDotNet : ExtractorCodeInfo<SourceVBDotNet>
     {
         #region constructor
 
