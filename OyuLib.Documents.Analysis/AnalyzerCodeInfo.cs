@@ -51,39 +51,81 @@ namespace OyuLib.Documents.Analysis
 
         #region Method
 
-        public abstract CodeInfo GetCodeInfo();
+        #region Public
 
-        public bool IsFirstStringIsValue(string value)
+        public CodeInfo GetCodeInfo()
+        {
+            CodeInfo retValue = null;
+
+            if (this.CheckCodeInfoComment())
+            {
+                return this.GetCodeInfoComment();
+            }
+
+            return this.GetCodeInfoNoIncludeComment();
+        }
+
+        public CodeInfo GetCodeInfoNoIncludeComment()
+        {
+            if (this.CheckCodeInfoEventMethod())
+            {
+                return this.GetCodeInfoEventMethod();
+            }
+            else if (this.CheckCodeInfoVariable())
+            {
+                return this.GetCodeInfoVariable();
+            }
+            else if (this.CheckCodeInfoMemberVariable())
+            {
+                return this.GetCodeInfoMemberVariable();
+            }
+            else if (this.CheckCodeInfoMethod())
+            {
+                return this.GetCodeInfoMethod();
+            }
+            else if (this.CheckCodeInfoCallMethod())
+            {
+                return this.GetCodeInfoCallMethod();
+            }
+            
+            return new CodeInfoOther(this.Code);
+        }
+
+        #endregion
+
+        #region Protected
+
+        protected bool IsFirstStringIsValue(string value)
         {
             return this.GetCodeParts()[0].Trim().Equals(value);
         }
 
-        public bool IsIncludeStringInCode(string[] values)
+        protected bool IsIncludeStringInCode(string[] values)
         {
             return ArrayUtil.IsIncludeStringsInArray(this.GetCodeParts(), values);
         }
 
-        public bool IsIncludeStringInCode(string value)
+        protected bool IsIncludeStringInCode(string value)
         {
             return this.IsIncludeStringInCode(new string[]{value});
         }
 
-        public bool IsIncludeAllStringInCode(string[] values)
+        protected bool IsIncludeAllStringInCode(string[] values)
         {
             return ArrayUtil.IsIncludeAllStringsInArray(this.GetCodeParts(), values);
         }
 
-        public string[] GetCodeParts()
+        protected string[] GetCodeParts()
         {
             return this.Code.CodeParts();
         }
 
-        public int GetIndexCodeParts(string value)
+        protected int GetIndexCodeParts(string value)
         {
             return Array.IndexOf(this.GetCodeParts(), value);
         }
 
-        public int GetIndexCodeParts(string[] values)
+        protected int GetIndexCodeParts(string[] values)
         {
             foreach (var value in values)
             {
@@ -97,6 +139,30 @@ namespace OyuLib.Documents.Analysis
 
             return -1;
         }
+
+        #endregion
+
+        #region Abstract
+
+        protected abstract CodeInfoComment GetCodeInfoComment();
+        protected abstract bool CheckCodeInfoComment();
+
+        protected abstract CodeInfoMethod GetCodeInfoMethod();
+        protected abstract bool CheckCodeInfoMethod();
+
+        protected abstract CodeInfoEventMethod GetCodeInfoEventMethod();
+        protected abstract bool CheckCodeInfoEventMethod();
+
+        protected abstract CodeInfoValiable GetCodeInfoVariable();
+        protected abstract bool CheckCodeInfoVariable();
+
+        protected abstract CodeInfoMemberVariable GetCodeInfoMemberVariable();
+        protected abstract bool CheckCodeInfoMemberVariable();
+
+        protected abstract CodeInfoCallMethod GetCodeInfoCallMethod();
+        protected abstract bool CheckCodeInfoCallMethod();
+
+        #endregion
 
         #endregion
 

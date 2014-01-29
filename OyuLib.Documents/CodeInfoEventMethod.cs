@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents
 {
     public class CodeInfoEventMethod : CodeInfoMethod
     {
@@ -78,16 +78,6 @@ namespace OyuLib.Documents.Analysis
         {
             return "イベントメソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "イベント名：" + this.EventName +
                    "イベント発生オブジェクト名：" + this.ObjNamesuggestEventName  + this.Code.CodeString;
-        }
-
-        public override CodeInfo GetCodeInfo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool IsCodeInfo()
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

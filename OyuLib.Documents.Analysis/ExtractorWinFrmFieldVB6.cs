@@ -3,16 +3,16 @@ using OyuLib.Documents.Analysis;
 
 namespace OyuLib.Documents.Analysis
 {
-    internal class WinFrmFieldExtractorVB6 : WinFrmFieldExtractor
+    internal class ExtractorWinFrmFieldVB6 : ExtractorWinFrmField
     {
         #region constractor
 
-        public WinFrmFieldExtractorVB6()
+        public ExtractorWinFrmFieldVB6()
         {
 
         }
 
-        public WinFrmFieldExtractorVB6(string sourceText, int hierarchyIndex, string itemSignature)
+        public ExtractorWinFrmFieldVB6(string sourceText, int hierarchyIndex, string itemSignature)
             : base(sourceText, hierarchyIndex, itemSignature)
         {
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents
 {
-    public abstract class CodeInfo : IAnalysisLogic
+    public abstract class CodeInfo
     {
         #region instanceVal
 
@@ -69,9 +69,6 @@ namespace OyuLib.Documents.Analysis
         #region Abstract
 
         public abstract string GetCodeText();
-
-        public abstract CodeInfo GetCodeInfo();
-        public abstract bool IsCodeInfo();
 
         #endregion
 

@@ -1104,8 +1104,8 @@ namespace AnalysisVBFormApl
             switch (trType)
             {
                 case TranceType.ImText:
-                case TranceType.imNumber:
-                case TranceType.imDate:
+                case TranceType.ImNumber:
+                case TranceType.ImDate:
                 
 
                     if (redOnly == ReadOnly.On)
@@ -1191,8 +1191,8 @@ namespace AnalysisVBFormApl
             switch (trType)
             {
                 case TranceType.ImText:
-                case TranceType.imNumber:
-                case TranceType.imDate:
+                case TranceType.ImNumber:
+                case TranceType.ImDate:
                 case TranceType.imPostal:
 
                     retValue = this.exDataGridView1.GetStringValue(COLUMNNAME_COLNAME, rowIndex);

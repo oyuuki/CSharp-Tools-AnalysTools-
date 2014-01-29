@@ -38,7 +38,7 @@ namespace OyuLib.Documents.Analysis
             where T : ManagerWinFrmField, new()
         {
             var gene = TypeUtil.GetInstance<T>(new [] { this.SourceText });
-            return gene.GetWinFrmFields<WinFrmFieldExtractorVB6>();
+            return gene.GetWinFrmFields<ExtractorWinFrmFieldVB6>();
         }
 
         #endregion

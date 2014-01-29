@@ -40,7 +40,7 @@ namespace OyuLib.Documents.Analysis
         /// </summary>
         /// <returns></returns>
         public WinFrmField[] GetWinFrmFields<T>()
-            where T : WinFrmFieldExtractor, new()
+            where T : ExtractorWinFrmField, new()
         {
 
             AnalyzerInputFieldItem[] partArray = this.GetSourceCodePart().GetPartArray();
@@ -57,7 +57,7 @@ namespace OyuLib.Documents.Analysis
         }
 
         private static T ConstructItemInput<T>(AnalyzerInputFieldItem part)
-            where T : WinFrmFieldExtractor, new()
+            where T : ExtractorWinFrmField, new()
         {
             Type type = typeof(T);
             ConstructorInfo ctor = type.GetConstructor(new Type[] { typeof(string), typeof(int), typeof(string) });

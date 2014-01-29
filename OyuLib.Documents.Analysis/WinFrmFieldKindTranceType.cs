@@ -10,10 +10,10 @@ namespace OyuLib.Documents.Analysis
         ImText,
         //  imNumber6Ctl.imNumber → TextBox
         [ConstValue("imNumber6Ctl.imNumber", "TextBox")]
-        imDate,
+        ImDate,
         //  imDate6Ctl.imDate     → ComboBox(Calendar)
         [ConstValue("imDate6Ctl.imDate", "ComboBox(Calendar)")]
-        imNumber,
+        ImNumber,
         //  VB.Label              → Label
         [ConstValue("VB.Label", "Label")]
         Label,

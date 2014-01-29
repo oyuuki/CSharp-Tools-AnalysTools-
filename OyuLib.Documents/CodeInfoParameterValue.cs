@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents
 {
     public class CodeInfoParameterValue : CodeInfo
     {
@@ -77,16 +77,6 @@ namespace OyuLib.Documents.Analysis
         public override string GetCodeText()
         {
             return "その他コード：" + this.Code.CodeString;
-        }
-
-        public override CodeInfo GetCodeInfo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override bool IsCodeInfo()
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

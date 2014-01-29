@@ -5,17 +5,17 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public abstract class WinFrmFieldExtractor : InputFieldItem
+    public abstract class ExtractorWinFrmField : InputFieldItem
     {
         #region constractor
 
-        protected WinFrmFieldExtractor(string sourceText, int hierarchyIndex, string itemSignature)
+        protected ExtractorWinFrmField(string sourceText, int hierarchyIndex, string itemSignature)
                 : base(sourceText, hierarchyIndex, itemSignature)
         {
             
         }
 
-        protected WinFrmFieldExtractor()
+        protected ExtractorWinFrmField()
         {
 
         }

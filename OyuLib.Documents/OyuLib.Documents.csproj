@@ -40,6 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code.cs" />
+    <Compile Include="CodeInfo.cs" />
+    <Compile Include="CodeInfoCallMethod.cs" />
+    <Compile Include="CodeInfoComment.cs" />
+    <Compile Include="CodeInfoEventMethod.cs" />
+    <Compile Include="CodeInfoMemberVariable.cs" />
+    <Compile Include="CodeInfoMethod.cs" />
+    <Compile Include="CodeInfoOther.cs" />
+    <Compile Include="CodeInfoParameterValue.cs" />
+    <Compile Include="CodeInfoSubstitution.cs" />
+    <Compile Include="CodeInfoValiable.cs" />
     <Compile Include="ISourceRule.cs" />
     <Compile Include="SourceCSharp.cs" />
     <Compile Include="Document.cs" />
