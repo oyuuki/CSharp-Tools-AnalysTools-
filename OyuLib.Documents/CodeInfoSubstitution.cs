@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoSubstitution : CodeInfo<Code>
+    public class CodeInfoSubstitution : CodeInfo
     {
         #region instanceVal
 
@@ -36,6 +36,16 @@ namespace OyuLib.Documents
 
         #region Property
 
+        public string RightHandSide
+        {
+            get { return this.GetCodePartsString(this._rightHandSide); }
+        }
+
+        public string LeftHandSide
+        {
+            get { return this.GetCodePartsString(this._leftHandSide); }
+        }
+
 
         #endregion
 
@@ -45,7 +55,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "右辺：" + this.CodeString;
+            return "代入式  左辺：" + this.LeftHandSide + " 右辺：" + this.RightHandSide;
         }
 
         #endregion

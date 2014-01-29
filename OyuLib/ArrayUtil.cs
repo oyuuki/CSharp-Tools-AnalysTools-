@@ -24,6 +24,16 @@ namespace OyuLib
             return arrayString[arrayString.Length - 1].Equals(value);
         }
 
+        public static bool IsIncludeStringInCodeEndWithAtLast(string[] arrayString, string value)
+        {
+            if (arrayString == null)
+            {
+                return false;
+            }
+
+            return arrayString[arrayString.Length - 1].EndsWith(value);
+        }
+
         
         public static bool IsIncludeStringEndsWith(Array array, string value)
         {

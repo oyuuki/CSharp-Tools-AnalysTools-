@@ -5,21 +5,36 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoComment : CodeInfo
+    public class CodeInfoBlockEnd : CodeInfo
     {
+        #region instanceVal
+
+        private int _statement = -1;
+
+        #endregion
+
         #region Constructor
 
-        public CodeInfoComment()
+        public CodeInfoBlockEnd()
             : base()
         {
             
         }
 
-        public CodeInfoComment(
+        public CodeInfoBlockEnd(
             Code code)
             : base(code)
         {
-            
+
+        }
+
+        #endregion
+
+        #region property
+
+        public string Statement
+        {
+            get { return this.GetCodePartsString(this._statement); }
         }
 
         #endregion
@@ -30,7 +45,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "コメント：" + this.CodeString;
+            return "Endステートメント：";
         }
 
         #endregion

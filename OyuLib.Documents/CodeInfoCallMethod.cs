@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoCallMethod : CodeInfo<CodeExPartsLogic>
+    public class CodeInfoCallMethod : CodeInfo
     {
         #region instanceVal
 
@@ -61,7 +61,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "呼び出しメソッド名：" + this.CodeString;
+            return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.Paramater;
         }
 
         #endregion

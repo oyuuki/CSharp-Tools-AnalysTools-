@@ -50,5 +50,7 @@ namespace OyuLib.Documents
         public const string CONST_WHILE = "While ";
 
         public const string CONST_DO = "Do ";
+
+        public const string CONST_STATEMENT_WITH = "With";
     }
 }

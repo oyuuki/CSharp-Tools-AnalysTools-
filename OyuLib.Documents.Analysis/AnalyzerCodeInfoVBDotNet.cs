@@ -22,8 +22,8 @@ namespace OyuLib.Documents.Analysis
         /// constractor
         /// </summary>
         /// <param name="code"></param>
-        public AnalyzerCodeInfoVBDotNet(Code code)
-            : base(code)
+        public AnalyzerCodeInfoVBDotNet(string codeString)
+            : base(codeString)
         {
             
         }
@@ -33,8 +33,8 @@ namespace OyuLib.Documents.Analysis
         /// </summary>
         /// <param name="code"></param>
         /// <param name="isInsiteMethod"></param>
-        public AnalyzerCodeInfoVBDotNet(Code code, bool isInsiteMethod)
-            : base(code, isInsiteMethod)
+        public AnalyzerCodeInfoVBDotNet(string codeString, bool isInsiteMethod)
+            : base(codeString, isInsiteMethod)
         {
 
         }
@@ -185,17 +185,17 @@ namespace OyuLib.Documents.Analysis
 
         #region Private
 
-        private bool CheckCommonCodeInfoMethod()
+        private bool CheckCommonCodeInfoMethod(Code code)
         {
-            int methodHead = this.GetIndexCodeParts(new SourceRuleVBDotNet().GetMethodHead());
+            int methodHead = code.GetIndexCodeParts(new SourceRuleVBDotNet().GetMethodHead());
 
             if (methodHead < 0)
             {
                 return false;
             }
 
-            if (this.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_END)
-                || this.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EXIT))
+            if (code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_END)
+                || code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EXIT))
             {
                 return false;
             }
@@ -203,23 +203,23 @@ namespace OyuLib.Documents.Analysis
             return true;
         }
 
-        private CommonCodeInfoMethodInfo GetCommonCodeInfoMethod()
+        private CommonCodeInfoMethodInfo GetCommonCodeInfoMethod(Code code)
         {
-            int methodHead = this.GetIndexCodeParts(new SourceRuleVBDotNet().GetMethodHead());
+            int methodHead = code.GetIndexCodeParts(new SourceRuleVBDotNet().GetMethodHead());
 
-            int accessModifier = this.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
+            int accessModifier = code.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
             int name = methodHead + 1;
             int typeName = -1;
 
-            if (this.Code.CodeParts()[methodHead].Equals(SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION))
+            if (code.CodeParts()[methodHead].Equals(SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION))
             {
-                typeName = this.Code.CodeParts().Length - 1;
+                typeName = code.CodeParts().Length - 1;
             }
 
             return new CommonCodeInfoMethodInfo(accessModifier, name, typeName, null);
         }
 
-        private CommonCodeInfoValiableInfo GetCommonCodeInfoVariable()
+        private CommonCodeInfoValiableInfo GetCommonCodeInfoVariable(Code code)
         {
             // ■頭がnew、returnで始まっているものは排除 → ただのコード (class:OtherCode)
             // ■=が含まれておらず、分割して2ワードになっているもの
@@ -228,29 +228,29 @@ namespace OyuLib.Documents.Analysis
             // ■=が含まれており、=より前のワードが3ワードになっていてかつ先頭がアクセス修飾子
 
             int value = -1;
-            int equals = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_EQUALS);
+            int equals = code.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_EQUALS);
 
             if (equals >= 0)
             {
                 value = equals + 1;
             }
 
-            int accessModifier = this.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
-            bool isConst = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_CONST) >= 0;
-            int name = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_AS) - 1;
-            int typeName = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_AS) + 1;
+            int accessModifier = code.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
+            bool isConst = code.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_CONST) >= 0;
+            int name = code.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_AS) - 1;
+            int typeName = code.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_AS) + 1;
 
             return new CommonCodeInfoValiableInfo(value, equals, isConst, name, typeName); 
         }
 
-        private bool CheckCommonCodeInfoVariable()
+        private bool CheckCommonCodeInfoVariable(Code code)
         {
-            if (this.IsIncludeSomeStringInCode(new SourceRuleVBDotNet().GetMethodHead()))
+            if (code.IsIncludeSomeStringInCode(new SourceRuleVBDotNet().GetMethodHead()))
             {
                 return false;
             }
 
-            if (!this.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_AS))
+            if (!code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_AS))
             {
                 return false;
             }
@@ -258,20 +258,64 @@ namespace OyuLib.Documents.Analysis
             return true;
         }
 
+        #region GetOtherCodeInfo関係
+
+        private bool CheckCodeInfoWithBlock(Code code)
+        {
+            SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
+
+            // include "With"
+            if (!code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_STATEMENT_WITH))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private CodeInfo GetCodeInfoWithBlock(Code code)
+        {
+            int length = code.CodeParts().Length;
+
+            int statement = code.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_STATEMENT_WITH);
+            int statementObjName = length - 1;
+
+            if (!code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_END))
+            {
+                return new CodeInfoBlockBegin(code, statement, statementObjName);
+            }
+            else
+            {
+                return new CodeInfoBlockEnd();
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Override
 
-        #region CodeInfoComment
-
-        protected override CodeInfoComment GetCodeInfoComment()
+        public override CodeInfo GetAntherCodeInfo()
         {
-            return new CodeInfoComment(this.Code);
+            if (this.CheckCodeInfoWithBlock(this.GetCode()))
+            {
+                return this.GetCodeInfoWithBlock(this.GetCode());
+            }
+
+            return base.GetAntherCodeInfo();
         }
 
-        protected override bool CheckCodeInfoComment()
+        #region CodeInfoComment
+
+        protected override CodeInfoComment GetCodeInfoComment(Code code)
         {
-            if (!this.Code.CodeString.Trim().StartsWith("'"))
+            return new CodeInfoComment(code);
+        }
+
+        protected override bool CheckCodeInfoComment(Code code)
+        {
+            if (!code.CodeString.Trim().StartsWith("'"))
             {
                 return false;
             }
@@ -283,86 +327,51 @@ namespace OyuLib.Documents.Analysis
 
         #region CodeInfoValiable
 
-        protected override CodeInfoValiable GetCodeInfoVariable()
+        protected override CodeInfoValiable GetCodeInfoVariable(Code code)
         {
-            var commonInfo = this.GetCommonCodeInfoVariable();
-            return new CodeInfoValiable(this.Code, commonInfo.Value, commonInfo.Name, commonInfo.TypeName, commonInfo.IsConst);;
+            var commonInfo = this.GetCommonCodeInfoVariable(code);
+            return new CodeInfoValiable(code, commonInfo.Value, commonInfo.Name, commonInfo.TypeName, commonInfo.IsConst); ;
         }
 
-        protected override bool CheckCodeInfoVariable()
+        protected override bool CheckCodeInfoVariable(Code code)
         {
-            return this.CheckCommonCodeInfoVariable() && this.IsInsiteMethod;
+            return this.CheckCommonCodeInfoVariable(code) && this.IsInsiteMethod;
         }
 
         #endregion
 
         #region CodeInfoMemberVariable
 
-        protected override CodeInfoMemberVariable GetCodeInfoMemberVariable()
+        protected override CodeInfoMemberVariable GetCodeInfoMemberVariable(Code code)
         {
-            var commonInfo = this.GetCommonCodeInfoVariable();
-            int accessModifier = this.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
-            return new CodeInfoMemberVariable(this.Code, commonInfo.Value, commonInfo.Name, commonInfo.TypeName, accessModifier, commonInfo.IsConst);
+            var commonInfo = this.GetCommonCodeInfoVariable(code);
+            int accessModifier = code.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
+            return new CodeInfoMemberVariable(code, commonInfo.Value, commonInfo.Name, commonInfo.TypeName, accessModifier, commonInfo.IsConst);
         }
 
-        protected override bool CheckCodeInfoMemberVariable()
+        protected override bool CheckCodeInfoMemberVariable(Code code)
         {
-            return this.CheckCommonCodeInfoVariable() && !this.IsInsiteMethod;
+            return this.CheckCommonCodeInfoVariable(code) && !this.IsInsiteMethod;
         }
 
         #endregion
 
         #region CodeInfoCallMethod
 
-        protected override CodeInfoCallMethod GetCodeInfoCallMethod()
+        protected override CodeInfoCallMethod GetCodeInfoCallMethod(CodeExPartsLogic code)
         {
-            throw new NotImplementedException();
+            int methodName = 0;
+            int paramater = 1;
+
+            return new CodeInfoCallMethod(code, methodName, paramater);
         }
 
-        protected override bool CheckCodeInfoCallMethod()
+        protected override bool CheckCodeInfoCallMethod(Code code)
         {
-            //・代入コード「=」が存在しない
-            //")"で終わっている
-            //     1. "("より前のコードは" "で分割されず、常に一つ
-            //     2. ()の中身のみが" "で分割されることがある
-            //     3. ()は複数あるかもしれない。
-            //上記以外
-            //     1. " "で分割されず、常に一つ
-            //         例外あり：　頭がNewで開始されているもの
-            return false;
-        }
-
-        #endregion
-
-        #region CodeInfoEventMethod
-
-        protected override bool CheckCodeInfoEventMethod()
-        {
-            return this.CheckCommonCodeInfoMethod() &&
-                   this.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
-        }
-
-        protected override CodeInfoEventMethod GetCodeInfoEventMethod()
-        {
-            var commonInfo = this.GetCommonCodeInfoMethod();
-            int eventName = this.Code.CodeParts().Length - 1;
-            return new CodeInfoEventMethod(this.Code, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Valiables, eventName);
-        }
-
-        #endregion
-
-        #region CodeInfoMethod
-
-        protected override bool CheckCodeInfoMethod()
-        {
-            //・代入コード「=」が存在しない
-            //・コードパーツに"As"、"Sub"、"Function"が含まれない
-            //・最後の文字が")"
-
             SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
 
             // No include "As", "Sub", "Function"
-            if (this.IsIncludeSomeStringInCode(
+            if (code.IsIncludeSomeStringInCode(
                 new string[]
                 {
                     SyntaxStringVBDotNet.CONST_AS, 
@@ -374,49 +383,77 @@ namespace OyuLib.Documents.Analysis
             }
 
             // No Include "="
-            if (this.GetCodePartsLength() >= 3)
+            if (code.GetCodePartsLength() >= 3)
             {
-                if (this.GetCodeParts()[1].Equals(SyntaxStringVBDotNet.CONST_EQUALS))
+                if (code.CodeParts()[1].Equals(SyntaxStringVBDotNet.CONST_EQUALS))
                 {
-                    return false;    
+                    return false;
                 }
             }
-           
+
             // End with ")"
-            if (!this.IsIncludeStringInCodeAtLast(SyntaxStringVBDotNet.CONST_CALLMETHOS_END))
+            if (!code.IsIncludeStringInCodeEndWithAtLast(SyntaxStringVBDotNet.CONST_CALLMETHOS_END))
             {
                 return false;
             }
 
             return true;
         }
-                          
-        protected override CodeInfoMethod GetCodeInfoMethod()
+
+        #endregion
+
+        #region CodeInfoEventMethod
+
+        protected override bool CheckCodeInfoEventMethod(Code code)
         {
-            return null;
+            return this.CheckCommonCodeInfoMethod(code) &&
+                   code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
+        }
+
+        protected override CodeInfoEventMethod GetCodeInfoEventMethod(Code code)
+        {
+            var commonInfo = this.GetCommonCodeInfoMethod(code);
+            int eventName = code.CodeParts().Length - 1;
+            return new CodeInfoEventMethod(code, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Valiables, eventName);
+        }
+
+        #endregion
+
+        #region CodeInfoMethod
+
+        protected override bool CheckCodeInfoMethod(Code code)
+        {
+            return this.CheckCommonCodeInfoMethod(code) &&
+                   !code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
+        }
+
+        protected override CodeInfoMethod GetCodeInfoMethod(Code code)
+        {
+            var commonInfo = this.GetCommonCodeInfoMethod(code);
+            return new CodeInfoMethod(code, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Valiables);
         }
 
         #endregion
 
         #region CodeInfoSubstitution
 
-        protected override bool CheckCodeInfoSubstitution()
+        protected override bool CheckCodeInfoSubstitution(Code code)
         {
             SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
 
             // No Begin with "If ","For ","While ", "Do "
-            if (this.IsIncludeSomeStringInCode(rule.GetControlStatementsString()))
+            if (code.IsIncludeSomeStringInCode(rule.GetControlStatementsString()))
             {
                 return false;
             }
             // No include "As"
-            if (this.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_AS))
+            if (code.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_AS))
             {
                 return false;
             }
 
             // composed right-hand side and lefthand side
-            if (this.GetCodePartsLength() < 3 || !this.GetCodeParts()[1].Equals(SyntaxStringVBDotNet.CONST_EQUALS))
+            if (code.GetCodePartsLength() < 3 || !code.CodeParts()[1].Equals(SyntaxStringVBDotNet.CONST_EQUALS))
             {
                 return false;
             }
@@ -424,13 +461,13 @@ namespace OyuLib.Documents.Analysis
             return true;
         }
 
-        protected override CodeInfoSubstitution GetCodeInfoSubstitution()
+        protected override CodeInfoSubstitution GetCodeInfoSubstitution(Code code)
         {
-            int equals = this.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_EQUALS);
-            int rightHandSide = equals - 1;
-            int leftHandSide = equals + 1;
+            int equals = code.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_EQUALS);
+            int rightHandSide = equals + 1;
+            int leftHandSide = equals - 1;
 
-            return new CodeInfoSubstitution(this.Code, rightHandSide, leftHandSide); 
+            return new CodeInfoSubstitution(code, rightHandSide, leftHandSide); 
         }
 
         #endregion

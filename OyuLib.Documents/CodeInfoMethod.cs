@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoMethod : CodeInfo<Code>
+    public class CodeInfoMethod : CodeInfo
     {
         #region instanceVal
 

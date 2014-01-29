@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoValiable : CodeInfo<Code>
+    public class CodeInfoValiable : CodeInfo
     {
         #region instanceVal
 
@@ -47,25 +47,17 @@ namespace OyuLib.Documents
 
         public string Value
         {
-            get
-            {
-                if (this._value < 0)
-                {
-                    return "(None)";
-                }
-                
-                return this.CodeParts()[this._value];
-            }
+            get { return this.GetCodePartsString(this._value); }
         }
 
         public string Name
         {
-            get { return this.CodeParts()[this._name]; }
+            get { return this.GetCodePartsString(this._name); }
         }
 
         public string TypeName
         {
-            get { return this.CodeParts()[this._typeName]; }   
+            get { return this.GetCodePartsString(this._typeName); }
         }
 
         public bool IsConst

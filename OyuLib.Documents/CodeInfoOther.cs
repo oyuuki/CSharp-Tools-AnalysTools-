@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoOther : CodeInfo<Code>
+    public class CodeInfoOther : CodeInfo
     {
         #region Constructor
 

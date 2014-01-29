@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.Xml.Schema;
 using OyuLib;
 using OyuLib.Documents;
 using OyuLib.Documents.Analysis;
@@ -25,7 +25,7 @@ namespace TestApp
         {
             this.exListBox1.Items.Clear();
 
-            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"C:\Users\PASEO\Desktop\FreeMarket.NET\frm002005.Designer.vb").GetAllReadText());
+            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.Designer.vb").GetAllReadText());
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
 
             var filedNameList = new List<string>();
@@ -38,7 +38,7 @@ namespace TestApp
 
             this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
-            source = new SourceVBDotNet(new TextFile(@"C:\Users\PASEO\Desktop\FreeMarket.NET\frm002005.vb").GetAllReadText());
+            source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
             mana = new ManagerAnalysisCode(source.SourceText);
 
             foreach (var name in filedNameList)
@@ -65,6 +65,52 @@ namespace TestApp
             foreach (var value in aa)
             {
                 this.exListBox1.Items.Add(value);
+            }
+        }
+
+        private void exButton3_Click(object sender, EventArgs e)
+        {
+            this.exListBox1.Items.Clear();
+
+            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
+            ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
+
+            foreach (var value in mana.GetVbSourceCodeAnalysis())
+            {
+                if (value is CodeInfoSubstitution)
+                {
+                    var a = (CodeInfoSubstitution) value;
+
+                    if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
+                    {
+                        this.exListBox1.Items.Add(value.ToString());        
+                    }
+                }
+            }
+        }
+
+        private void exButton4_Click(object sender, EventArgs e)
+        {
+            this.exListBox1.Items.Clear();
+
+            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
+            ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
+
+            foreach (var value in mana.GetVbSourceCodeAnalysis())
+            {
+                if (value is CodeInfoSubstitution)
+                {
+                    var a = (CodeInfoSubstitution)value;
+
+                    if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
+                    {
+                        this.exListBox1.Items.Add(value.ToString());
+                    }
+                }
+                else if (value is CodeInfoBlockBegin || value is CodeInfoBlockEnd)
+                {
+                    this.exListBox1.Items.Add(value.ToString());
+                }
             }
         }
     }

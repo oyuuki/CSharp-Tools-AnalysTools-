@@ -40,15 +40,15 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        public CodeInfo<Code>[] GetVbSourceCodeAnalysis()
+        public CodeInfo[] GetVbSourceCodeAnalysis()
         {
             var source = new SourceVBDotNet(this.SourceText);
             var isInsiteMethod = false;
-            var retList = new List<CodeInfo<Code>>();
+            var retList = new List<CodeInfo>();
 
             foreach (var code in source.GetCodes())
             {
-                var ainfo = new AnalyzerCodeInfoVBDotNet(code, isInsiteMethod);
+                var ainfo = new AnalyzerCodeInfoVBDotNet(code.CodeString, isInsiteMethod);
                 var codeInfo = ainfo.GetCodeInfo();
                 retList.Add(codeInfo);
 
@@ -130,7 +130,7 @@ namespace OyuLib.Documents.Analysis
 
         #region private
 
-        private CodeInfo<Code>[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
+        private CodeInfo[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
         {
             return this.GetAnalysisCodeInfoFiltedType(this.GetVbSourceCodeAnalysis(), filterTypes);
         }

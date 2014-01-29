@@ -5,12 +5,11 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public abstract class CodeInfo<T>
-        where T : Code, new()
+    public abstract class CodeInfo
     {
         #region instanceVal
 
-        private T _code = null;
+        private Code _code = null;
 
         #endregion
 
@@ -21,7 +20,7 @@ namespace OyuLib.Documents
                
         }
 
-        protected CodeInfo(T code)
+        protected CodeInfo(Code code)
         {
             this._code = code;
         }

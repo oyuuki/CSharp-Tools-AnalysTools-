@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace OyuLib.Documents.Analysis
     {
         #region instanceVal
 
-        private Code _code = null;
+        private string _codeString = null;
 
         private bool _isInsiteMethod = false;
 
@@ -21,26 +22,21 @@ namespace OyuLib.Documents.Analysis
         {
         }
 
-        protected AnalyzerCodeInfo(Code code)
-            : this(code, false)
+        protected AnalyzerCodeInfo(string codeString)
+            : this(codeString, false)
         {
-            this._code = code;
+            this._codeString = codeString;
         }
 
-        protected AnalyzerCodeInfo(Code code, bool isInsiteMethod)
+        protected AnalyzerCodeInfo(string code, bool isInsiteMethod)
         {
-            this._code = code;
+            this._codeString = code;
             this._isInsiteMethod = isInsiteMethod;
         }
 
         #endregion
 
         #region Property
-
-        protected Code Code
-        {
-            get { return this._code; }
-        }
 
         protected bool IsInsiteMethod
         {
@@ -51,128 +47,102 @@ namespace OyuLib.Documents.Analysis
 
         #region Method
 
+        #region Virtual
+
+        public virtual CodeInfo GetAntherCodeInfo()
+        {
+            return new CodeInfoOther(this.GetCode());
+        }
+
+        #endregion
+
         #region Public
 
-        public CodeInfo<Code> GetCodeInfo()
+        public CodeInfo GetCodeInfo()
         {
-            CodeInfo<Code> retValue = null;
+            CodeInfo retValue = null;
 
-            if (this.CheckCodeInfoComment())
+            if (this.CheckCodeInfoComment(this.GetCode()))
             {
-                return this.GetCodeInfoComment();
+                return this.GetCodeInfoComment(this.GetCode());
             }
 
             return this.GetCodeInfoNoIncludeComment();
         }
 
-        public CodeInfo<Code> GetCodeInfoNoIncludeComment()
+        public CodeInfo GetCodeInfoNoIncludeComment()
         {
-            if (this.CheckCodeInfoEventMethod())
+            if (this.CheckCodeInfoEventMethod(this.GetCode()))
             {
-                return this.GetCodeInfoEventMethod();
+                return this.GetCodeInfoEventMethod(this.GetCode());
             }
-            else if (this.CheckCodeInfoVariable())
+            else if (this.CheckCodeInfoVariable(this.GetCode()))
             {
-                return this.GetCodeInfoVariable();
+                return this.GetCodeInfoVariable(this.GetCode());
             }
-            else if (this.CheckCodeInfoMemberVariable())
+            else if (this.CheckCodeInfoMemberVariable(this.GetCode()))
             {
-                return this.GetCodeInfoMemberVariable();
+                return this.GetCodeInfoMemberVariable(this.GetCode());
             }
-            else if (this.CheckCodeInfoMethod())
+            else if (this.CheckCodeInfoMethod(this.GetCode()))
             {
-                return this.GetCodeInfoMethod();
+                return this.GetCodeInfoMethod(this.GetCode());
             }
-            else if (this.CheckCodeInfoCallMethod())
+            else if (this.CheckCodeInfoCallMethod(this.GetCode()))
             {
-                return this.GetCodeInfoCallMethod();
+                return this.GetCodeInfoCallMethod(this.GetCodeExPartsLogic());
             }
-            
-            return new CodeInfoOther(this.Code);
+            else if (this.CheckCodeInfoSubstitution(this.GetCode()))
+            {
+                return this.GetCodeInfoSubstitution(this.GetCode());
+            }
+
+            return this.GetAntherCodeInfo();
         }
 
         #endregion
 
         #region Protected
 
-        protected bool IsFirstStringIsValue(string value)
-        {
-            return this.GetCodeParts()[0].Trim().Equals(value);
-        }
-
-        protected bool IsIncludeStringInCodeAtLast(string value)
-        {
-            return ArrayUtil.IsIncludeStringInCodeAtLast(this.GetCodeParts(), value);
-        }
-
-        protected bool IsIncludeSomeStringInCode(string[] values)
-        {
-            return ArrayUtil.IsIncludeSomeStringsInArray(this.GetCodeParts(), values);
-        }
-
-        protected bool IsIncludeStringInCode(string value)
-        {
-            return this.IsIncludeSomeStringInCode(new string[]{value});
-        }
-
-        protected bool IsIncludeAllStringInCode(string[] values)
-        {
-            return ArrayUtil.IsIncludeAllStringsInArray(this.GetCodeParts(), values);
-        }
-
-        protected string[] GetCodeParts()
-        {
-            return this.Code.CodeParts();
-        }
-        protected int GetCodePartsLength()
-        {
-            return this.GetCodeParts().Length;
-        }
-
-        protected int GetIndexCodeParts(string value)
-        {
-            return Array.IndexOf(this.GetCodeParts(), value);
-        }
-
-        protected int GetIndexCodeParts(string[] values)
-        {
-            foreach (var value in values)
-            {
-                int index = Array.IndexOf(this.GetCodeParts(), value);
-
-                if (index >= 0)
-                {
-                    return index;
-                }
-            }
-
-            return -1;
-        }
 
         #endregion
 
         #region Abstract
 
-        protected abstract CodeInfoComment GetCodeInfoComment();
-        protected abstract bool CheckCodeInfoComment();
+        protected abstract CodeInfoComment GetCodeInfoComment(Code code);
+        protected abstract bool CheckCodeInfoComment(Code code);
 
-        protected abstract CodeInfoMethod GetCodeInfoMethod();
-        protected abstract bool CheckCodeInfoMethod();
+        protected abstract CodeInfoMethod GetCodeInfoMethod(Code code);
+        protected abstract bool CheckCodeInfoMethod(Code code);
 
-        protected abstract CodeInfoEventMethod GetCodeInfoEventMethod();
-        protected abstract bool CheckCodeInfoEventMethod();
+        protected abstract CodeInfoEventMethod GetCodeInfoEventMethod(Code code);
+        protected abstract bool CheckCodeInfoEventMethod(Code code);
 
-        protected abstract CodeInfoValiable GetCodeInfoVariable();
-        protected abstract bool CheckCodeInfoVariable();
+        protected abstract CodeInfoValiable GetCodeInfoVariable(Code code);
+        protected abstract bool CheckCodeInfoVariable(Code code);
 
-        protected abstract CodeInfoMemberVariable GetCodeInfoMemberVariable();
-        protected abstract bool CheckCodeInfoMemberVariable();
+        protected abstract CodeInfoMemberVariable GetCodeInfoMemberVariable(Code code);
+        protected abstract bool CheckCodeInfoMemberVariable(Code code);
 
-        protected abstract CodeInfoCallMethod GetCodeInfoCallMethod();
-        protected abstract bool CheckCodeInfoCallMethod();
+        protected abstract CodeInfoCallMethod GetCodeInfoCallMethod(CodeExPartsLogic code);
+        protected abstract bool CheckCodeInfoCallMethod(Code code);
 
-        protected abstract CodeInfoSubstitution GetCodeInfoSubstitution();
-        protected abstract bool CheckCodeInfoSubstitution();
+        protected abstract CodeInfoSubstitution GetCodeInfoSubstitution(Code code);
+        protected abstract bool CheckCodeInfoSubstitution(Code code);
+
+        #endregion
+
+        #region protected
+
+        protected Code GetCode()
+        {
+            return new Code(this._codeString, new SourceRuleVBDotNet().GetCodesSeparatorString());
+        }
+
+        protected CodeExPartsLogic GetCodeExPartsLogic()
+        {
+            return new CodeExPartsLogic(this._codeString, new SourceRuleVBDotNet().GetCodesSeparatorString());
+        }
 
         #endregion
 
