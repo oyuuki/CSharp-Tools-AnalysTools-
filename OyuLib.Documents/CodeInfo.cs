@@ -5,38 +5,26 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public abstract class CodeInfo
+    public abstract class CodeInfo : Code
     {
-        #region instanceVal
-
-        private Code _code = null;
-
-        #endregion
-
         #region Constructor
 
         protected CodeInfo()
+            : base()
         {
                
         }
 
         protected CodeInfo(Code code)
+            : base(code)
         {
-            this._code = code;
+            
         }
 
         protected CodeInfo(string codeString, string codeDelimiter)
+            : base(codeString, codeDelimiter)
         {
-            this._code = new Code(codeString, codeDelimiter);
-        }
-
-        #endregion
-
-        #region Property
-
-        public Code Code
-        {
-            get { return this._code; }
+            
         }
 
         #endregion
@@ -52,7 +40,7 @@ namespace OyuLib.Documents
                 return "(None)";
             }
 
-            return this.Code.CodeParts()[index];
+            return this.CodeParts()[index];
         }
 
         #endregion

@@ -69,18 +69,18 @@ namespace OyuLib.Documents
                     return "(None)";
                 }
                 
-                return this.Code.CodeParts()[this._value];
+                return this.CodeParts()[this._value];
             }
         }
 
         public string Name
         {
-            get { return this.Code.CodeParts()[this._name]; }
+            get { return this.CodeParts()[this._name]; }
         }
 
         public string TypeName
         {
-            get { return this.Code.CodeParts()[this._typeName]; }   
+            get { return this.CodeParts()[this._typeName]; }   
         }
 
         public bool IsConst

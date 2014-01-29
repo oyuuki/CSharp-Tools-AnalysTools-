@@ -38,7 +38,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "コメント：" + this.Code.CodeString;
+            return "コメント：" + this.CodeString;
         }
 
         #endregion

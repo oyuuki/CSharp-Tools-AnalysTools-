@@ -96,7 +96,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + this.Code.CodeString;
+            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + this.CodeString;
         }
 
         #endregion

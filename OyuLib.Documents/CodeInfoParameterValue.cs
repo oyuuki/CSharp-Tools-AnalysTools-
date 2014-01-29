@@ -76,7 +76,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "その他コード：" + this.Code.CodeString;
+            return "その他コード：" + this.CodeString;
         }
 
         #endregion

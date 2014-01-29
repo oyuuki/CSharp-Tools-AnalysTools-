@@ -23,6 +23,12 @@ namespace OyuLib.Documents
             
         }
 
+        public Code(Code code)
+            : this(code.CodeString, code.CodeDelimiter)
+        {
+            
+        }
+
         public Code(string codeLine, string codeDelimiter)
         {
             this._codeString = codeLine;
@@ -49,12 +55,10 @@ namespace OyuLib.Documents
 
         #region Method
 
-        public string[] CodeParts()
+        public virtual string[] CodeParts()
         {
             return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(this.CodeString.Trim());
         }
-
-
 
         #endregion
     }
