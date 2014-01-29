@@ -33,19 +33,6 @@ namespace OyuLib.Documents
             this._eve = eve;
         }
 
-        public CodeInfoEventMethod(
-            string codeLine,
-            string codeDelimiter,
-            int accessModifier,
-            int name,
-            int returnTypeName,
-            CodeInfoValiable[] paramValiable,
-            int eve)
-            : base(codeLine, codeDelimiter, accessModifier, name, returnTypeName, paramValiable)
-        {
-            this._eve = eve;
-        }
-
         #endregion
 
         #region Property

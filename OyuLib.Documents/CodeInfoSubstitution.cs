@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoSubstitution : CodeInfo
+    public class CodeInfoSubstitution : CodeInfo<Code>
     {
         #region instanceVal
 
@@ -27,17 +27,6 @@ namespace OyuLib.Documents
             int rightHandSide,
             int leftHandSide)
             : base(code)
-        {
-            this._rightHandSide = rightHandSide;
-            this._leftHandSide = leftHandSide;
-        }
-
-        public CodeInfoSubstitution(
-            string codeLine,
-            string codeDelimiter,
-            int rightHandSide,
-            int leftHandSide)
-            : base(codeLine, codeDelimiter)
         {
             this._rightHandSide = rightHandSide;
             this._leftHandSide = leftHandSide;

@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code.cs" />
+    <Compile Include="CodeExPartsLogic.cs" />
     <Compile Include="CodeInfo.cs" />
     <Compile Include="CodeInfoCallMethod.cs" />
     <Compile Include="CodeInfoComment.cs" />

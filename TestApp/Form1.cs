@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using OyuLib;
 using OyuLib.Documents;
 using OyuLib.Documents.Analysis;
 using OyuLib.IO;
@@ -33,7 +34,7 @@ namespace TestApp
             {
                 this.exListBox1.Items.Add(value.ToString());
                 filedNameList.Add(value.Name);
-            }
+            }      
 
             this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
@@ -50,6 +51,20 @@ namespace TestApp
                 }
     
                 this.exListBox1.Items.Add("");
+            }
+        }
+
+        private void exButton2_Click(object sender, EventArgs e)
+        {
+            this.exListBox1.Items.Clear();
+
+            StringSpilitter s = new StringSpilitter("aaaaaaa aas ssss.(a()b()c(d() ) )");
+
+            string[] aa = s.GetSpilitStringSomeNested(" ", new NestingString("(", ")"));
+
+            foreach (var value in aa)
+            {
+                this.exListBox1.Items.Add(value);
             }
         }
     }

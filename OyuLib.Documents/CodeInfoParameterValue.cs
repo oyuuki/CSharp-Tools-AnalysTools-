@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoParameterValue : CodeInfo
+    public class CodeInfoParameterValue : CodeInfo<Code>
     {
         #region instanceVal
 
@@ -36,18 +36,6 @@ namespace OyuLib.Documents
             this._passedType = passedType;
         }
 
-        public CodeInfoParameterValue(
-            string codeString, 
-            string codeDelimiter,
-            int name,
-            int typeName,
-            int passedType)
-            : base(codeString, codeDelimiter)
-        {
-            this._name = name;
-            this._typeName = typeName;
-            this._passedType = passedType;
-        }
 
         #endregion
 

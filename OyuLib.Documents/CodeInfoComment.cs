@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoComment : CodeInfo
+    public class CodeInfoComment : CodeInfo<Code>
     {
         #region Constructor
 
@@ -18,14 +18,6 @@ namespace OyuLib.Documents
         public CodeInfoComment(
             Code code)
             : base(code)
-        {
-            
-        }
-
-        public CodeInfoComment(
-            string codeLine,
-            string codeDelimiter)
-            : base(codeLine, codeDelimiter)
         {
             
         }

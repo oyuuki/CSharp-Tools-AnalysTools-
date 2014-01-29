@@ -40,11 +40,11 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        public CodeInfo[] GetVbSourceCodeAnalysis()
+        public CodeInfo<Code>[] GetVbSourceCodeAnalysis()
         {
             var source = new SourceVBDotNet(this.SourceText);
             var isInsiteMethod = false;
-            var retList = new List<CodeInfo>();
+            var retList = new List<CodeInfo<Code>>();
 
             foreach (var code in source.GetCodes())
             {
@@ -130,7 +130,7 @@ namespace OyuLib.Documents.Analysis
 
         #region private
 
-        private CodeInfo[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
+        private CodeInfo<Code>[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
         {
             return this.GetAnalysisCodeInfoFiltedType(this.GetVbSourceCodeAnalysis(), filterTypes);
         }

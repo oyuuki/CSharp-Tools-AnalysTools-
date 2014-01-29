@@ -33,19 +33,6 @@ namespace OyuLib.Documents
             this._accessModifier = accessModifiers;
         }
 
-        public CodeInfoMemberVariable(
-            string codeString,
-            string codeDelimiter,
-            int value,
-            int name,
-            int typeName,
-            int accessModifiers,
-            bool isConst)
-            : base(codeString, codeDelimiter, value, name, typeName, isConst)
-        {
-            this._accessModifier = accessModifiers;
-        }
-
         #endregion
 
         #region Property

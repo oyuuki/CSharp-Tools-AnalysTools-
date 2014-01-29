@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoCallMethod: CodeInfo
+    public class CodeInfoCallMethod : CodeInfo<CodeExPartsLogic>
     {
         #region instanceVal
 
@@ -30,21 +30,10 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoCallMethod(
-            Code code,
+            CodeExPartsLogic code,
             int callmethodName,
             int paramater)
             : base(code)
-        {
-            this._callmethodName = callmethodName;
-            this._paramater = paramater;
-        }
-
-        public CodeInfoCallMethod(
-            string codeLine,
-            string codeDelimiter,
-            int callmethodName,
-            int paramater)
-            : base(codeLine, codeDelimiter)
         {
             this._callmethodName = callmethodName;
             this._paramater = paramater;

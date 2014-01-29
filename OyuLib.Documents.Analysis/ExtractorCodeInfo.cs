@@ -37,14 +37,14 @@ namespace OyuLib.Documents.Analysis
 
         #region public 
 
-        public CodeInfo GetCodeInfo()
+        public CodeInfo<Code> GetCodeInfo()
         {
             throw new Exception("未実装：ソースのすべてをCodeInfoに変換したものを返す");
         }
 
-        public CodeInfo[] GetCodeInfoByValName(string valName)
+        public CodeInfo<Code>[] GetCodeInfoByValName(string valName)
         {
-            var retList = new List<CodeInfo>();
+            var retList = new List<CodeInfo<Code>>();
 
             CodeInfoMemberVariable val = this.GetCodeInfoMemberVariable(valName, this.Source);
 

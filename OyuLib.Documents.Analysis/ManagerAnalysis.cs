@@ -56,14 +56,14 @@ namespace OyuLib.Documents.Analysis
 
         #region 
 
-        public CodeInfo[] GetAnalysisCodeInfoFiltedType(CodeInfo[] codeInfoArray, Type[] filterTypes)
+        public CodeInfo<Code>[] GetAnalysisCodeInfoFiltedType(CodeInfo<Code>[] codeInfoArray, Type[] filterTypes)
         {
             if (filterTypes == null || filterTypes.Length <= 0)
             {
                 return codeInfoArray;
             }
 
-            var retList = new List<CodeInfo>();
+            var retList = new List<CodeInfo<Code>>();
 
             foreach (var codeInfo in codeInfoArray)
             {

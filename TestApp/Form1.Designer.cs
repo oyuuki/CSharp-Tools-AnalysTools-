@@ -31,16 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.exListBox1 = new OyuLib.Windows.Forms.ExListBox(this.components);
             this.exButton1 = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exButton2 = new OyuLib.Windows.Forms.ExButton(this.components);
             this.SuspendLayout();
             // 
             // exListBox1
             // 
             this.exListBox1.FormattingEnabled = true;
             this.exListBox1.ItemHeight = 12;
-            this.exListBox1.Location = new System.Drawing.Point(12, 45);
+            this.exListBox1.Location = new System.Drawing.Point(12, 81);
             this.exListBox1.Name = "exListBox1";
             this.exListBox1.ScrollAlwaysVisible = true;
-            this.exListBox1.Size = new System.Drawing.Size(1487, 388);
+            this.exListBox1.Size = new System.Drawing.Size(1487, 352);
             this.exListBox1.TabIndex = 1;
             // 
             // exButton1
@@ -53,11 +54,22 @@
             this.exButton1.UseVisualStyleBackColor = true;
             this.exButton1.Click += new System.EventHandler(this.exButton1_Click);
             // 
+            // exButton2
+            // 
+            this.exButton2.Location = new System.Drawing.Point(12, 48);
+            this.exButton2.Name = "exButton2";
+            this.exButton2.Size = new System.Drawing.Size(1487, 27);
+            this.exButton2.TabIndex = 2;
+            this.exButton2.Text = "exButton2";
+            this.exButton2.UseVisualStyleBackColor = true;
+            this.exButton2.Click += new System.EventHandler(this.exButton2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 454);
+            this.Controls.Add(this.exButton2);
             this.Controls.Add(this.exListBox1);
             this.Controls.Add(this.exButton1);
             this.Name = "Form1";
@@ -70,6 +82,7 @@
 
         private OyuLib.Windows.Forms.ExButton exButton1;
         private OyuLib.Windows.Forms.ExListBox exListBox1;
+        private OyuLib.Windows.Forms.ExButton exButton2;
     }
 }
 

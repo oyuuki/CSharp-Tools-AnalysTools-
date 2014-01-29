@@ -53,9 +53,9 @@ namespace OyuLib.Documents.Analysis
 
         #region Public
 
-        public CodeInfo GetCodeInfo()
+        public CodeInfo<Code> GetCodeInfo()
         {
-            CodeInfo retValue = null;
+            CodeInfo<Code> retValue = null;
 
             if (this.CheckCodeInfoComment())
             {
@@ -65,7 +65,7 @@ namespace OyuLib.Documents.Analysis
             return this.GetCodeInfoNoIncludeComment();
         }
 
-        public CodeInfo GetCodeInfoNoIncludeComment()
+        public CodeInfo<Code> GetCodeInfoNoIncludeComment()
         {
             if (this.CheckCodeInfoEventMethod())
             {

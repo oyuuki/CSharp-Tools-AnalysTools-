@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoMethod : CodeInfo
+    public class CodeInfoMethod : CodeInfo<Code>
     {
         #region instanceVal
 
@@ -34,21 +34,6 @@ namespace OyuLib.Documents
             int returnTypeName,
             CodeInfoValiable[] paramValiables)
             : base(code)
-        {
-            this._accessModifier = accessModifier;
-            this._name = name;
-            this._returnTypeName = returnTypeName;
-            this._paramValiables = paramValiables;
-        }
-
-        public CodeInfoMethod(
-            string codeLine,
-            string codeDelimiter,
-            int accessModifier,
-            int name,
-            int returnTypeName,
-            CodeInfoValiable[] paramValiables)
-            : base(codeLine, codeDelimiter)
         {
             this._accessModifier = accessModifier;
             this._name = name;
