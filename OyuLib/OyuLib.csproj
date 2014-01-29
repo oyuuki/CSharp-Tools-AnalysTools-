@@ -51,6 +51,7 @@
     <Compile Include="LineCharCodeKind.cs" />
     <Compile Include="LineCharCodeKindValue.cs" />
     <Compile Include="ConcoleManager.cs" />
+    <Compile Include="NestingString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeUtil.cs" />
     <Compile Include="Util.cs" />
