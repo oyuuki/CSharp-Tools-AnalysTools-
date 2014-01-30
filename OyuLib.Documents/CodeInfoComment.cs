@@ -16,8 +16,9 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoComment(
-            Code code)
-            : base(code)
+            Code code,
+            CodePartsFactory _coFac)
+            : base(code, _coFac)
         {
             
         }

@@ -28,5 +28,9 @@ namespace OyuLib.Documents
         public const string CONST_WHILE = "while";
 
         public const string CONST_DO = "do";
+
+        public const string CONST_BLOCKSTART = "{";
+
+        public const string CONST_BLOCKEND = "}";
     }
 }

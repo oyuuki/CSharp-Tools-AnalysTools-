@@ -34,16 +34,17 @@
             this.exButton2 = new OyuLib.Windows.Forms.ExButton(this.components);
             this.exButton3 = new OyuLib.Windows.Forms.ExButton(this.components);
             this.exButton4 = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exButton5 = new OyuLib.Windows.Forms.ExButton(this.components);
             this.SuspendLayout();
             // 
             // exListBox1
             // 
             this.exListBox1.FormattingEnabled = true;
             this.exListBox1.ItemHeight = 12;
-            this.exListBox1.Location = new System.Drawing.Point(12, 153);
+            this.exListBox1.Location = new System.Drawing.Point(12, 193);
             this.exListBox1.Name = "exListBox1";
             this.exListBox1.ScrollAlwaysVisible = true;
-            this.exListBox1.Size = new System.Drawing.Size(1487, 280);
+            this.exListBox1.Size = new System.Drawing.Size(1487, 388);
             this.exListBox1.TabIndex = 1;
             // 
             // exButton1
@@ -86,11 +87,22 @@
             this.exButton4.UseVisualStyleBackColor = true;
             this.exButton4.Click += new System.EventHandler(this.exButton4_Click);
             // 
+            // exButton5
+            // 
+            this.exButton5.Location = new System.Drawing.Point(12, 160);
+            this.exButton5.Name = "exButton5";
+            this.exButton5.Size = new System.Drawing.Size(1487, 27);
+            this.exButton5.TabIndex = 5;
+            this.exButton5.Text = "exButton5";
+            this.exButton5.UseVisualStyleBackColor = true;
+            this.exButton5.Click += new System.EventHandler(this.exButton5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1511, 454);
+            this.ClientSize = new System.Drawing.Size(1511, 583);
+            this.Controls.Add(this.exButton5);
             this.Controls.Add(this.exButton4);
             this.Controls.Add(this.exButton3);
             this.Controls.Add(this.exButton2);
@@ -109,6 +121,7 @@
         private OyuLib.Windows.Forms.ExButton exButton2;
         private OyuLib.Windows.Forms.ExButton exButton3;
         private OyuLib.Windows.Forms.ExButton exButton4;
+        private OyuLib.Windows.Forms.ExButton exButton5;
     }
 }
 

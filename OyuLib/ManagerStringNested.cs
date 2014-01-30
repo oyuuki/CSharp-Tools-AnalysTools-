@@ -8,7 +8,7 @@ using System.Windows.Forms.PropertyGridInternal;
 
 namespace OyuLib
 {
-    public class NestingString
+    public class ManagerStringNested
     {
         #region InstanceVal
 
@@ -20,7 +20,7 @@ namespace OyuLib
 
         #region Constructor
 
-        public NestingString(
+        public ManagerStringNested(
             string nestStartString,
             string nestEndtString)
         {
@@ -48,15 +48,15 @@ namespace OyuLib
 
         #region Public
 
-        public NestingStringIndexPare[] GetIndexPareArray(string str)
+        public StringRange[] GetStringRangeArray(string str)
         {
             int index = 0;
-            return this.GetIndexPareArrayLogic(ref index, str);
+            return this.GetStringRangeLogic(ref index, str);
         }
 
-        private NestingStringIndexPare[] GetIndexPareArrayLogic(ref int index, string str)
+        private StringRange[] GetStringRangeLogic(ref int index, string str)
         {
-            var retlist = new List<NestingStringIndexPare>();
+            var retlist = new List<StringRange>();
             var isParentSwitch = false;
 
             for (; index < str.Length; index++)
@@ -65,11 +65,11 @@ namespace OyuLib
                 {
                     if (isParentSwitch)
                     {
-                        retlist[retlist.Count - 1].Childs = this.GetIndexPareArrayLogic(ref index, str);
+                        retlist[retlist.Count - 1].Childs = this.GetStringRangeLogic(ref index, str);
                     }
                     else
                     {
-                        var pare = new NestingStringIndexPare(index);
+                        var pare = new StringRange(index);
                         retlist.Add(pare);
                         isParentSwitch = true;
                     }

@@ -14,8 +14,10 @@ namespace OyuLib.Documents
                
         }
 
-        public CodeInfoOther(Code code)
-            : base(code)
+        public CodeInfoOther(
+            Code code,
+            CodePartsFactory _coFac)
+            : base(code, _coFac)
         {
         }
 

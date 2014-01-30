@@ -29,11 +29,12 @@ namespace OyuLib.Documents
 
         public CodeInfoMethod(
             Code code,
+            CodePartsFactory coFac,
             int accessModifier,
             int name,
             int returnTypeName,
             CodeInfoValiable[] paramValiables)
-            : base(code)
+            : base(code, coFac)
         {
             this._accessModifier = accessModifier;
             this._name = name;

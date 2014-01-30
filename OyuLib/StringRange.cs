@@ -5,19 +5,19 @@ using System.Text;
 
 namespace OyuLib
 {
-    public class NestingStringIndexPare
+    public class StringRange
     {
         #region InstanceVal
 
         private int _indexStart = -1;
         private int _indexEnd = -1;
-        private NestingStringIndexPare[] _childs = null;
+        private StringRange[] _childs = null;
 
         #endregion
 
         #region Constructor
 
-        public NestingStringIndexPare(
+        public StringRange(
             int indexStart,
             int indexEnd = -1)
         {
@@ -25,10 +25,17 @@ namespace OyuLib
             this._indexEnd = indexEnd;
         }
 
-        public NestingStringIndexPare(
+        public StringRange(
             int indexStart)
         {
             this._indexStart = indexStart;
+        }
+
+        public StringRange(
+            StringRange range)
+            : this(range.IndexStart, range.IndexEnd)
+        {
+            
         }
 
         #endregion
@@ -47,10 +54,15 @@ namespace OyuLib
             set { this._indexEnd = value; }
         }
 
-        public NestingStringIndexPare[] Childs
+        public StringRange[] Childs
         {
             get { return this._childs; }
             set { this._childs = value; }
+        }
+
+        public int CutStringCount
+        {
+            get { return this._indexEnd - this.IndexStart + 1; }
         }
 
         #endregion

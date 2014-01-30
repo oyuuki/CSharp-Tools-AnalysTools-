@@ -26,10 +26,11 @@ namespace OyuLib.Documents
 
         public CodeInfoParameterValue(
             Code code,
+            CodePartsFactory coFac,
             int name,
             int typeName,
             int passedType)
-            : base(code)
+            : base(code, coFac)
         {
             this._name = name;
             this._typeName = typeName;

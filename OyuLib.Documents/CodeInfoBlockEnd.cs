@@ -15,17 +15,19 @@ namespace OyuLib.Documents
 
         #region Constructor
 
-        public CodeInfoBlockEnd()
+        public CodeInfoBlockEnd(int statement)
             : base()
         {
-            
+            this._statement = statement;
         }
 
         public CodeInfoBlockEnd(
-            Code code)
-            : base(code)
+            Code code,
+            CodePartsFactory coFac,
+            int statement)
+            : base(code, coFac)
         {
-
+            this._statement = statement;
         }
 
         #endregion
@@ -45,7 +47,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "Endステートメント：";
+            return "Endステートメント：" + Statement;
         }
 
         #endregion

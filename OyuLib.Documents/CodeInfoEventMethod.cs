@@ -23,12 +23,13 @@ namespace OyuLib.Documents
 
         public CodeInfoEventMethod(
             Code code,
+            CodePartsFactory coFac,
             int accessModifier,
             int name,
             int returnTypeName,
             CodeInfoValiable[] paramValiable,
             int eve)
-            : base(code, accessModifier, name, returnTypeName, paramValiable)
+            : base(code, coFac, accessModifier, name, returnTypeName, paramValiable)
         {
             this._eve = eve;
         }

@@ -30,10 +30,11 @@ namespace OyuLib.Documents
         }
 
         public CodeInfoCallMethod(
-            CodeExPartsLogic code,
+            Code code,
+            CodePartsFactory coFac,
             int callmethodName,
             int paramater)
-            : base(code)
+            : base(code, coFac)
         {
             this._callmethodName = callmethodName;
             this._paramater = paramater;

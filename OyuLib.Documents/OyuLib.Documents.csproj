@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -40,10 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code.cs" />
-    <Compile Include="CodeExPartsLogic.cs" />
     <Compile Include="CodeInfo.cs" />
     <Compile Include="CodeInfoBlockBegin.cs" />
+    <Compile Include="CodeInfoBlockBeginDo.cs" />
+    <Compile Include="CodeInfoBlockEndDo.cs.cs" />
     <Compile Include="CodeInfoBlockEnd.cs" />
+    <Compile Include="CodeInfoBlockBeginFor.cs" />
+    <Compile Include="CodeInfoBlockEndFor.cs" />
+    <Compile Include="CodeInfoBlockBeginIf.cs" />
+    <Compile Include="CodeInfoBlockEndIf.cs" />
+    <Compile Include="CodeInfoBlockBeginWhile.cs" />
+    <Compile Include="CodeInfoBlockEndWhile.cs" />
     <Compile Include="CodeInfoCallMethod.cs" />
     <Compile Include="CodeInfoComment.cs" />
     <Compile Include="CodeInfoEventMethod.cs" />
@@ -53,6 +61,8 @@
     <Compile Include="CodeInfoParameterValue.cs" />
     <Compile Include="CodeInfoSubstitution.cs" />
     <Compile Include="CodeInfoValiable.cs" />
+    <Compile Include="CodePartsFactory.cs" />
+    <Compile Include="CodePartsFactoryHasParams.cs" />
     <Compile Include="ISourceRule.cs" />
     <Compile Include="SourceCSharp.cs" />
     <Compile Include="Document.cs" />

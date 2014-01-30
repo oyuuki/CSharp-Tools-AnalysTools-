@@ -23,12 +23,13 @@ namespace OyuLib.Documents
 
         public CodeInfoMemberVariable(
             Code code,
+            CodePartsFactory coFac,
             int value,
             int name,
             int typeName,
             int accessModifiers,
             bool isConst)
-            : base(code, value, name, typeName, isConst)
+            : base(code, coFac, value, name, typeName, isConst)
         {
             this._accessModifier = accessModifiers;
         }

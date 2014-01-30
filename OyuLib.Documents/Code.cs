@@ -12,8 +12,6 @@ namespace OyuLib.Documents
 
         private string _codeString = string.Empty;
 
-        private string _codeDelimiter = string.Empty;
-
         #endregion
 
         #region Constructor
@@ -24,15 +22,14 @@ namespace OyuLib.Documents
         }
 
         public Code(Code code)
-            : this(code.CodeString, code.CodeDelimiter)
+            : this(code.CodeString)
         {
             
         }
 
-        public Code(string codeLine, string codeDelimiter)
+        public Code(string codeLine)
         {
             this._codeString = codeLine;
-            this._codeDelimiter = codeDelimiter;
         }
 
         #endregion
@@ -45,80 +42,15 @@ namespace OyuLib.Documents
             set { this._codeString = value; }
         }
 
-        public string CodeDelimiter
-        {
-            get { return this._codeDelimiter; }
-            set { this._codeDelimiter = value; }
-        }
-
         #endregion
 
         #region Method
 
-        #region Virtual
+        #region internal
 
-        public virtual string[] CodeParts()
+        internal string GetTrimCodeString()
         {
-            return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(this.CodeString.Trim());
-        }
-
-        #endregion
-
-        #region protected
-
-        public bool IsFirstStringIsValue(string value)
-        {
-            return this.CodeParts()[0].Trim().Equals(value);
-        }
-
-        public bool IsIncludeStringInCodeAtLast(string value)
-        {
-            return ArrayUtil.IsIncludeStringInCodeAtLast(this.CodeParts(), value);
-        }
-
-        public bool IsIncludeStringInCodeEndWithAtLast(string value)
-        {
-            return ArrayUtil.IsIncludeStringInCodeEndWithAtLast(this.CodeParts(), value);
-        }
-
-        public bool IsIncludeSomeStringInCode(string[] values)
-        {
-            return ArrayUtil.IsIncludeSomeStringsInArray(this.CodeParts(), values);
-        }
-
-        public bool IsIncludeStringInCode(string value)
-        {
-            return this.IsIncludeSomeStringInCode(new string[] { value });
-        }
-
-        public bool IsIncludeAllStringInCode(string[] values)
-        {
-            return ArrayUtil.IsIncludeAllStringsInArray(this.CodeParts(), values);
-        }
-
-        public int GetCodePartsLength()
-        {
-            return this.CodeParts().Length;
-        }
-
-        public int GetIndexCodeParts(string value)
-        {
-            return Array.IndexOf(this.CodeParts(), value);
-        }
-
-        public int GetIndexCodeParts(string[] values)
-        {
-            foreach (var value in values)
-            {
-                int index = Array.IndexOf(this.CodeParts(), value);
-
-                if (index >= 0)
-                {
-                    return index;
-                }
-            }
-
-            return -1;
+            return this.CodeString.Trim();
         }
 
         #endregion

@@ -50,7 +50,7 @@ namespace OyuLib.Documents
             
             Func<string, string> proc = (string value) =>
             {
-                retList.Add(new Code(value,this.GetSourceRule().GetCodesSeparatorString()));
+                retList.Add(new Code(value));
                 return "";
             };
 

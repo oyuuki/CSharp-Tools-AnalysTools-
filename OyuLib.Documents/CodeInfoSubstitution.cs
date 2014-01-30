@@ -24,9 +24,10 @@ namespace OyuLib.Documents
 
         public CodeInfoSubstitution(
             Code code,
+            CodePartsFactory coFac,
             int rightHandSide,
             int leftHandSide)
-            : base(code)
+            : base(code, coFac)
         {
             this._rightHandSide = rightHandSide;
             this._leftHandSide = leftHandSide;

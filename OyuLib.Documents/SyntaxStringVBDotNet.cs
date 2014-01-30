@@ -43,14 +43,18 @@ namespace OyuLib.Documents
 
         public const string CONST_COMMA = ",";
 
-        public const string CONST_IF = "If ";
+        public const string CONST_IF = "If";
 
-        public const string CONST_FOR = "For ";
+        public const string CONST_FOR = "For";
 
-        public const string CONST_WHILE = "While ";
+        public const string CONST_WHILE = "While";
 
-        public const string CONST_DO = "Do ";
+        public const string CONST_DO = "Do";
 
         public const string CONST_STATEMENT_WITH = "With";
+
+        public const string CONST_STATEMENT_NEXT = "Next";
+
+        public const string CONST_STATEMENT_LOOP = "Loop";
     }
 }

@@ -121,9 +121,9 @@ namespace TestApp
         {
             this.exListBox1.Items.Clear();
 
-            StringSpilitter s = new StringSpilitter("aaaaaaa aas ssss.(a()b()c(d() ) )");
+            StringSpilitter s = new StringSpilitter(@"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText()).GetText(""""test"""").Text");
 
-            string[] aa = s.GetSpilitStringSomeNested(" ", new NestingString("(", ")"));
+            string[] aa = s.GetSpilitStringNoChilds(" ", new ManagerStringNested("(", ")"));
 
             foreach (var value in aa)
             {
@@ -146,8 +146,12 @@ namespace TestApp
 
                     if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
                     {
-                        this.exListBox1.Items.Add(value.ToString());        
+                 //       this.exListBox1.Items.Add(value.ToString());        
                     }
+                }
+                else if (value is CodeInfoCallMethod)
+                {
+                    this.exListBox1.Items.Add(value.ToString());
                 }
             }
         }
@@ -171,6 +175,22 @@ namespace TestApp
                     }
                 }
                 else if (value is CodeInfoBlockBegin || value is CodeInfoBlockEnd)
+                {
+                    this.exListBox1.Items.Add(value.ToString());
+                }
+            }
+        }
+
+        private void exButton5_Click(object sender, EventArgs e)
+        {
+            this.exListBox1.Items.Clear();
+
+            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
+            ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
+
+            foreach (var value in mana.GetVbSourceCodeAnalysis())
+            {
+                if (value is CodeInfoBlockBegin || value is CodeInfoBlockEnd)
                 {
                     this.exListBox1.Items.Add(value.ToString());
                 }

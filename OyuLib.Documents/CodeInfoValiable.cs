@@ -29,11 +29,12 @@ namespace OyuLib.Documents
 
         public CodeInfoValiable(
             Code code,
+            CodePartsFactory coFac,
             int value,
             int name,
             int typeName,
             bool isConst)
-            : base(code)
+            : base(code, coFac)
         {
             this._value = value;
             this._name = name;

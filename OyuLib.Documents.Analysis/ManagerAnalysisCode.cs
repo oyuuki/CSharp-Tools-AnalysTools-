@@ -48,7 +48,7 @@ namespace OyuLib.Documents.Analysis
 
             foreach (var code in source.GetCodes())
             {
-                var ainfo = new AnalyzerCodeInfoVBDotNet(code.CodeString, isInsiteMethod);
+                var ainfo = new AnalyzerCodeInfoVBDotNet(code, isInsiteMethod);
                 var codeInfo = ainfo.GetCodeInfo();
                 retList.Add(codeInfo);
 

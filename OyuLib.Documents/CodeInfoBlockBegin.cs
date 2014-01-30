@@ -27,9 +27,10 @@ namespace OyuLib.Documents
 
         public CodeInfoBlockBegin(
             Code code,
+            CodePartsFactory coFac,
             int statement,
             int statementObject)
-            : base(code)
+            : base(code, coFac)
         {
             this._statement = statement;
             this._statementObject = statementObject;   

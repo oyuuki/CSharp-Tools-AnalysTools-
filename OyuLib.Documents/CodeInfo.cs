@@ -10,6 +10,7 @@ namespace OyuLib.Documents
         #region instanceVal
 
         private Code _code = null;
+        private CodePartsFactory _coFac = null;
 
         #endregion
 
@@ -20,9 +21,12 @@ namespace OyuLib.Documents
                
         }
 
-        protected CodeInfo(Code code)
+        protected CodeInfo(
+            Code code,
+            CodePartsFactory coFac)
         {
             this._code = code;
+            this._coFac = coFac;
         }
 
         #endregion
@@ -47,12 +51,12 @@ namespace OyuLib.Documents
                 return "(None)";
             }
 
-            return this._code.CodeParts()[index];
+            return this._coFac.GetCodeParts()[index];
         }
 
         public string[] CodeParts()
         {
-            return this._code.CodeParts();
+            return this._coFac.GetCodeParts();
         }
 
         #endregion

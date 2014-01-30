@@ -34,33 +34,57 @@ namespace OyuLib
 
         #region Method
 
-        public string[] GetSpilitStringSomeNested(string strSeparator, NestingString nStr)
+        public string[] GetSpilitStringNoChilds(string strSeparator, ManagerStringNested nStr)
         {
-            var retlist = new List<string>();
+            var retList = new List<string>();
+
+            foreach (var range in this.GetStringRangeSpilit(strSeparator, nStr))
+            {
+                retList.Add(this.TargetString.Substring(range.IndexStart, range.CutStringCount));
+            }
+
+            return retList.ToArray();
+        }
+
+        public StringRange[] GetStringRangeSpilit(string strSeparator, ManagerStringNested nStr)
+        {
+            var retlist = new List<StringRange>();
             var startIndex = 0;
-            var indexPareArray = nStr.GetIndexPareArray(this.TargetString);
+            var indexPareArray = nStr.GetStringRangeArray(this.TargetString);
             var nStrIndex = 0;
 
             for (int index = 0; index < this.TargetString.Length; index++)
             {
-                var indexPare = indexPareArray[nStrIndex];
-
-                if (indexPare.IndexStart == index)
+                if (indexPareArray.Length > nStrIndex && indexPareArray[nStrIndex].IndexStart == index)
                 {
-                    if (startIndex != indexPare.IndexStart)
+                    var stringRange = indexPareArray[nStrIndex];
+
+                    if (startIndex != stringRange.IndexStart)
                     {
-                        retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
+                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1));
+                        // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
                     }
 
-                    retlist.Add(this.TargetString.Substring(indexPare.IndexStart, indexPare.IndexEnd - indexPare.IndexStart));
+
+                    retlist.Add(new StringRange(stringRange));
+                    // retlist.Add(this.TargetString.Substring(indexPare.IndexStart, indexPare.IndexEnd - indexPare.IndexStart + 1));
+                    index = stringRange.IndexEnd;
                     startIndex = index + 1;
-                    index = indexPare.IndexEnd;
+                    nStrIndex++;
                 }
                 else if (this.TargetString[index].ToString().Equals(strSeparator))
                 {
-                    retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
+                    retlist.Add(new StringRange(startIndex, index - 1));
+                    // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + 1;                    
                 }
+            }
+
+
+            if (startIndex < this.TargetString.Length - 1)
+            {
+                retlist.Add(new StringRange(startIndex, this.TargetString.Length - 1));
+                //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 
             return retlist.ToArray();
