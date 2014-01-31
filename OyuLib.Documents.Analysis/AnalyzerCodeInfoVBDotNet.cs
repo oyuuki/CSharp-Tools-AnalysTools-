@@ -526,23 +526,50 @@ namespace OyuLib.Documents.Analysis
 
         #endregion
 
+        #region
+
+        protected override bool CheckCodeInfoBlockEndMethod(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            return coFac.IsIncludeSomeStringInCode(
+                new string[]
+                {
+                    SyntaxStringVBDotNet.CONST_METHODHEAD_SUB,
+                    SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION,
+                })
+                   && coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_END);
+        }
+
+        protected override CodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_END);
+            return new CodeInfoBlockEndMethod(code, coFac, segments + 1);
+        }
+
+        #endregion
+
         #region CodeInfoEventMethod
 
-        protected override bool CheckCodeInfoEventMethod(Code code)
+        protected override bool CheckCodeInfoBlockBeginEventMethod(Code code)
         {
             CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             return this.CheckCommonCodeInfoMethod(code) &&
                    coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
         }
 
-        protected override CodeInfoEventMethod GetCodeInfoEventMethod(Code code)
+        protected override CodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(Code code)
         {
             var commonInfo = this.GetCommonCodeInfoMethod(code);
 
             CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, " ");
             int eventName = coFac.GetCodeParts().Length - 1;
 
-            return new CodeInfoEventMethod(
+            return new CodeInfoBlockBeginEventMethod(
                 code, 
                 coFac, 
                 commonInfo.AccessModifier, 
@@ -558,14 +585,14 @@ namespace OyuLib.Documents.Analysis
 
         #region CodeInfoMethod
 
-        protected override bool CheckCodeInfoMethod(Code code)
+        protected override bool CheckCodeInfoBlockBeginMethod(Code code)
         {
             CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             return this.CheckCommonCodeInfoMethod(code) &&
                    !coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
         }
 
-        protected override CodeInfoBlockBeginMethod GetCodeInfoMethod(Code code)
+        protected override CodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(Code code)
         {
             CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, " ");
             var commonInfo = this.GetCommonCodeInfoMethod(code);

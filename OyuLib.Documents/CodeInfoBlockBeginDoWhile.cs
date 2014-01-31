@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginDoWhile : CodeInfoBlockBegin<CodeInfoBlockEndDoWhile>
+    public class CodeInfoBlockBeginDoWhile : CodeInfoBlockBegin
     {
         #region Constructor
 
@@ -26,6 +26,19 @@ namespace OyuLib.Documents
         {
             
         }
+
+        #endregion
+
+        #region Method
+
+        #region OverRide
+
+        public override Type GetCodeInfoBlockEndType()
+        {
+            return typeof(CodeInfoBlockEndDoWhile);
+        }
+
+        #endregion
 
         #endregion
     }

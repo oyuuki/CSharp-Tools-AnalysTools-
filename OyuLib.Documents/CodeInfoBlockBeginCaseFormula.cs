@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginCaseFormula : CodeInfoBlockBegin<CodeInfoBlockEndCaseFormula>
+    public class CodeInfoBlockBeginCaseFormula : CodeInfoBlockBegin
     {
         #region Constructor
 
@@ -26,6 +26,19 @@ namespace OyuLib.Documents
         {
 
         }
+
+        #endregion
+
+        #region Method
+
+        #region OverRide
+
+        public override Type GetCodeInfoBlockEndType()
+        {
+            return typeof(CodeInfoBlockEndCaseFormula);
+        }
+
+        #endregion
 
         #endregion
     }

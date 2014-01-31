@@ -18,9 +18,15 @@ namespace OyuLib.Documents
 
         #region Constructor
 
-        public SourceBlock(CodeInfo[] codeinfos, int startIndex)
+        public SourceBlock(CodeInfo[] codeinfos, int startIndex, Type endType)
         {
-            this._codeObjects = this.GetCodeObjects(codeinfos, startIndex);
+            this._codeObjects = GetCodeObjects(codeinfos, startIndex, endType);
+        }
+
+        public SourceBlock(CodeInfo[] codeinfos, int startIndex)
+            : this(codeinfos, startIndex, null)
+        {
+            
         }
 
         public SourceBlock(CodeInfo[] codeinfos)
@@ -41,39 +47,46 @@ namespace OyuLib.Documents
         public Range Range
         {
             get { return this._range; }
+            private set { this._range = value; }
         }
 
         #endregion
 
         #region Method
 
-        public object[] GetCodeObjects(CodeInfo[] codeinfos, int startIndex)
+        public object[] GetCodeObjects(CodeInfo[] codeinfos, int startIndex, Type endType)
         {
             var objList = new List<object>();
             Range range = null;
 
             int start = startIndex;
+
             int end = 0;
+
+            if (startIndex != 0)
+            {
+                objList.Add(codeinfos[startIndex]);
+                start++;
+            }
 
             for (int indexLoop = start; indexLoop < codeinfos.Length; indexLoop++)
             {
                 var codeInfo = codeinfos[indexLoop];
 
                 // Search The block of head
-                if (codeInfo is CodeInfoBlockBegin<CodeInfoBlockEnd>)
+                if (codeInfo is CodeInfoBlockBegin)
                 {
-                    // Add new Code Object That create New Source Block Instance       
-                    var iinerBlockCodeInfo = codeinfos.Skip(indexLoop).Take(
-                        this.GetIndexPairCodeBlockEnd(
-                            codeinfos,
-                            (CodeInfoBlockBegin<CodeInfoBlockEnd>)codeInfo,
-                            indexLoop)).ToArray();
-
-                    var innerSourceBlock = new SourceBlock(iinerBlockCodeInfo, indexLoop);
+                    var innerSourceBlock = new SourceBlock(codeinfos, indexLoop, ((CodeInfoBlockBegin)codeInfo).GetCodeInfoBlockEndType());
                     objList.Add(innerSourceBlock);
                     indexLoop = innerSourceBlock.Range.IndexEnd;
                 }
-                else if (!(codeInfo is CodeInfoBlockEnd))
+                else if ((codeInfo is CodeInfoBlockEnd) && endType != null && endType.Equals(codeInfo.GetType()))
+                {
+                    objList.Add(codeInfo);
+                    this.Range = new Range(startIndex, indexLoop);
+                    break;
+                }
+                else
                 {
                     // Add CodeInfo
                     objList.Add(codeInfo);
@@ -85,7 +98,7 @@ namespace OyuLib.Documents
 
         private int GetIndexPairCodeBlockEnd(
             CodeInfo[] codeinfos, 
-            CodeInfoBlockBegin<CodeInfoBlockEnd> codeinfoBegin, 
+            CodeInfoBlockBegin codeinfoBegin, 
             int startindex)
         {
             int retIndex = -1;

@@ -52,7 +52,7 @@ namespace OyuLib.Documents.Analysis
                 var codeInfo = ainfo.GetCodeInfo();
                 retList.Add(codeInfo);
 
-                if (codeInfo is CodeInfoEventMethod || codeInfo is CodeInfoBlockBeginMethod)
+                if (codeInfo is CodeInfoBlockBeginEventMethod || codeInfo is CodeInfoBlockBeginMethod)
                 {
                     isInsiteMethod = true;
                 }
@@ -65,15 +65,15 @@ namespace OyuLib.Documents.Analysis
             return retList.ToArray();
         }
 
-        public CodeInfoEventMethod[] GetEventMethodCodeIndoFiltFieldName(string fieldname)
+        public CodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltFieldName(string fieldname)
         {
-            var retValue = new List<CodeInfoEventMethod>();
+            var retValue = new List<CodeInfoBlockBeginEventMethod>();
 
             foreach (var codeInfo in this.GetVbSourceCodeAnalysis())
             {
-                if(codeInfo is CodeInfoEventMethod)
+                if(codeInfo is CodeInfoBlockBeginEventMethod)
                 {
-                    var locCodeInfo = (CodeInfoEventMethod) codeInfo;
+                    var locCodeInfo = (CodeInfoBlockBeginEventMethod) codeInfo;
 
                     if (locCodeInfo.ObjNamesuggestEventName.Equals(fieldname))
                     {
@@ -106,15 +106,15 @@ namespace OyuLib.Documents.Analysis
             return retValue.ToArray();
         }
 
-        public CodeInfoEventMethod[] GetEventMethodCodeIndoFiltTypeName(string typeName)
+        public CodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltTypeName(string typeName)
         {
-            var retValue = new List<CodeInfoEventMethod>();
+            var retValue = new List<CodeInfoBlockBeginEventMethod>();
 
             foreach (var codeInfo in this.GetVbSourceCodeAnalysis())
             {
-                if (codeInfo is CodeInfoEventMethod)
+                if (codeInfo is CodeInfoBlockBeginEventMethod)
                 {
-                    var locCodeInfo = (CodeInfoEventMethod)codeInfo;
+                    var locCodeInfo = (CodeInfoBlockBeginEventMethod)codeInfo;
 
                     if (locCodeInfo.ReturnTypeName.Equals(typeName))
                     {

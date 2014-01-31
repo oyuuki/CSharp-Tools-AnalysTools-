@@ -21,7 +21,7 @@ namespace OyuLib.Documents.Analysis
 
         #region Override
 
-        public override CodeInfoEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceVBDotNet source)
+        public override CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceVBDotNet source)
         {
             throw new NotImplementedException();
         }

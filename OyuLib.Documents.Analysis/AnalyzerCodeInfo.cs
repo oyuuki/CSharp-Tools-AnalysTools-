@@ -143,9 +143,9 @@ namespace OyuLib.Documents.Analysis
 
         public CodeInfo GetCodeInfoNoIncludeComment()
         {
-            if (this.CheckCodeInfoEventMethod(this.Code))
+            if (this.CheckCodeInfoBlockBeginEventMethod(this.Code))
             {
-                return this.GetCodeInfoEventMethod(this.Code);
+                return this.GetCodeInfoBlockBeginEventMethod(this.Code);
             }
             else if (this.CheckCodeInfoVariable(this.Code))
             {
@@ -155,9 +155,13 @@ namespace OyuLib.Documents.Analysis
             {
                 return this.GetCodeInfoMemberVariable(this.Code);
             }
-            else if (this.CheckCodeInfoMethod(this.Code))
+            else if (this.CheckCodeInfoBlockBeginMethod(this.Code))
             {
-                return this.GetCodeInfoMethod(this.Code);
+                return this.GetCodeInfoBlockBeginMethod(this.Code);
+            }
+            else if (this.CheckCodeInfoBlockEndMethod(this.Code))
+            {
+                return this.GetCodeInfoBlockEndMethod(this.Code);
             }
             else if (this.CheckCodeInfoCallMethod(this.Code))
             {
@@ -178,11 +182,14 @@ namespace OyuLib.Documents.Analysis
         protected abstract CodeInfoComment GetCodeInfoComment(Code code);
         protected abstract bool CheckCodeInfoComment(Code code);
 
-        protected abstract CodeInfoBlockBeginMethod GetCodeInfoMethod(Code code);
-        protected abstract bool CheckCodeInfoMethod(Code code);
+        protected abstract CodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(Code code);
+        protected abstract bool CheckCodeInfoBlockBeginMethod(Code code);
 
-        protected abstract CodeInfoEventMethod GetCodeInfoEventMethod(Code code);
-        protected abstract bool CheckCodeInfoEventMethod(Code code);
+        protected abstract CodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(Code code);
+        protected abstract bool CheckCodeInfoBlockBeginEventMethod(Code code);
+
+        protected abstract CodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(Code code);
+        protected abstract bool CheckCodeInfoBlockEndMethod(Code code);
 
         protected abstract CodeInfoValiable GetCodeInfoVariable(Code code);
         protected abstract bool CheckCodeInfoVariable(Code code);

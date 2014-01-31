@@ -65,7 +65,7 @@ namespace OyuLib.Documents.Analysis
 
         public abstract CodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, T source);
         public abstract CodeInfoBlockBeginMethod  GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, T source);
-        public abstract CodeInfoEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, T source);
+        public abstract CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, T source);
 
         #endregion
 

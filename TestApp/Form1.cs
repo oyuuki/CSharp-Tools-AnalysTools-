@@ -178,7 +178,7 @@ namespace TestApp
                         this.exListBox1.Items.Add(value.ToString());
                     }
                 }
-                else if (value is CodeInfoBlockBegin<CodeInfoBlockEnd> || value is CodeInfoBlockEnd)
+                else if (value is CodeInfoBlockBegin || value is CodeInfoBlockEnd)
                 {
                     this.exListBox1.Items.Add(value.ToString());
                 }
