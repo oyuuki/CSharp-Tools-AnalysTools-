@@ -43,7 +43,11 @@
     <Compile Include="Code.cs" />
     <Compile Include="CodeInfo.cs" />
     <Compile Include="CodeInfoBlockBegin.cs" />
+    <Compile Include="CodeInfoBlockBeginCaseFormula.cs" />
+    <Compile Include="CodeInfoBlockBeginCaseValue.cs" />
     <Compile Include="CodeInfoBlockBeginDo.cs" />
+    <Compile Include="CodeInfoBlockEndCaseFormula.cs" />
+    <Compile Include="CodeInfoBlockEndCaseValue.cs" />
     <Compile Include="CodeInfoBlockEndDo.cs.cs" />
     <Compile Include="CodeInfoBlockEnd.cs" />
     <Compile Include="CodeInfoBlockBeginFor.cs" />

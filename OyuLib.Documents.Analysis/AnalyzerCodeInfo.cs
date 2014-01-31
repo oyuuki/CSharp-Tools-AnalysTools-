@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace OyuLib.Documents.Analysis
@@ -44,6 +45,11 @@ namespace OyuLib.Documents.Analysis
             get { return this._isInsiteMethod; }
         }
 
+        private Code Code
+        {
+            get { return this._code; }
+        }
+
         #endregion
 
         #region Method
@@ -54,7 +60,7 @@ namespace OyuLib.Documents.Analysis
 
         public virtual CodeInfo GetControlCodeInfo()
         {
-            Code code = this.GetCode();
+            Code code = this.Code;
             SourceRule rule = this.GetSourceRule();
             CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
 
@@ -62,151 +68,42 @@ namespace OyuLib.Documents.Analysis
             {
                 if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndIf()))
                 {
-                    return this.GetAnyCodeInfoBlockEndIf();
+                    return this.GetAnyCodeInfoBlockEndIf(this.Code);
                 }
                 else
                 {
-                    return this.GetAnyCodeInfoBlockBeginIf();
+                    return this.GetAnyCodeInfoBlockBeginIf(this.Code);
                 }
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeFor()))
             {
-                return this.GetAnyCodeInfoBlockBeginFor();
+                return this.GetAnyCodeInfoBlockBeginFor(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndFor()))
             {
-                return this.GetAnyCodeInfoBlockEndFor();
+                return this.GetAnyCodeInfoBlockEndFor(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeDo()))
             {
-                return this.GetAnyCodeInfoBlockBeginDo();
+                return this.GetAnyCodeInfoBlockBeginDo(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndDo()))
             {
-                return this.GetAnyCodeInfoBlockEndDo();
+                return this.GetAnyCodeInfoBlockEndDo(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeWhile()))
             {
                 if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndWhile()))
                 {
-                    return this.GetAnyCodeInfoBlockEndWhile();
+                    return this.GetAnyCodeInfoBlockEndWhile(this.Code);
                 }
                 else
                 {
-                    return this.GetAnyCodeInfoBlockBeginWhile();
+                    return this.GetAnyCodeInfoBlockBeginWhile(this.Code);
                 }
             }
 
             return null;
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockBeginIf()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-            CodeInfo retinfo = null;
-
-            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeIf());
-            return new CodeInfoBlockBeginIf(code, coFac, segments, segments + 1);
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockEndIf()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-
-            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndIf());
-            return new CodeInfoBlockEndIf(code, coFac, segments);
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockBeginDo()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-            CodeInfo retinfo = null;
-
-            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeDo());
-            return new CodeInfoBlockBeginDo(code, coFac, segments, segments + 1);
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockEndDo()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-
-            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndDo());
-            return new CodeInfoBlockEndDo(code, coFac, segments);
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockBeginWhile()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-            CodeInfo retinfo = null;
-
-            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeWhile());
-            return new CodeInfoBlockBeginWhile(code, coFac, segments, segments + 1);
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockEndWhile()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-            CodeInfo retinfo = null;
-
-            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndWhile());
-            return new CodeInfoBlockEndWhile(code, coFac, segments);
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockBeginFor()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-            CodeInfo retinfo = null;
-
-            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeFor());
-            return new CodeInfoBlockBeginFor(code, coFac, segments, segments + 1);
-        }
-
-        private CodeInfo GetAnyCodeInfoBlockEndFor()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-            CodeInfo retinfo = null;
-
-            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndFor());
-            return new CodeInfoBlockEndFor(code, coFac, segments);
-        }
-
-        private bool CheckControlCode()
-        {
-            Code code = this.GetCode();
-            SourceRule rule = this.GetSourceRule();
-
-            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            if (!coFac.IsIncludeSomeStringInCode(rule.GetControlCodes()))
-            {
-                return false;
-            }
-
-            return true;
         }
 
         #endregion
@@ -215,9 +112,9 @@ namespace OyuLib.Documents.Analysis
 
         #region Virtual
 
-        public virtual CodeInfo GetAntherCodeInfo()
+        public virtual CodeInfo GetAntherCodeInfo(Code code)
         {
-            return new CodeInfoOther(this.GetCode(), new CodePartsFactoryVB(this.GetCode(), this.GetSourceRule().GetCodeEndSeparatorString()));
+            return new CodeInfoOther(code, new CodePartsFactoryVB(this.Code, this.GetSourceRule().GetCodeEndSeparatorString()));
         }
 
         #endregion
@@ -228,11 +125,11 @@ namespace OyuLib.Documents.Analysis
         {
             CodeInfo retValue = null;
 
-            if (this.CheckCodeInfoComment(this.GetCode()))
+            if (this.CheckCodeInfoComment(this.Code))
             {
-                retValue =  this.GetCodeInfoComment(this.GetCode());
+                retValue =  this.GetCodeInfoComment(this.Code);
             }
-            else if (this.CheckControlCode())
+            else if (this.CheckControlCode(this.Code))
             {
                 retValue = this.GetControlCodeInfo();
             }
@@ -247,33 +144,33 @@ namespace OyuLib.Documents.Analysis
 
         public CodeInfo GetCodeInfoNoIncludeComment()
         {
-            if (this.CheckCodeInfoEventMethod(this.GetCode()))
+            if (this.CheckCodeInfoEventMethod(this.Code))
             {
-                return this.GetCodeInfoEventMethod(this.GetCode());
+                return this.GetCodeInfoEventMethod(this.Code);
             }
-            else if (this.CheckCodeInfoVariable(this.GetCode()))
+            else if (this.CheckCodeInfoVariable(this.Code))
             {
-                return this.GetCodeInfoVariable(this.GetCode());
+                return this.GetCodeInfoVariable(this.Code);
             }
-            else if (this.CheckCodeInfoMemberVariable(this.GetCode()))
+            else if (this.CheckCodeInfoMemberVariable(this.Code))
             {
-                return this.GetCodeInfoMemberVariable(this.GetCode());
+                return this.GetCodeInfoMemberVariable(this.Code);
             }
-            else if (this.CheckCodeInfoMethod(this.GetCode()))
+            else if (this.CheckCodeInfoMethod(this.Code))
             {
-                return this.GetCodeInfoMethod(this.GetCode());
+                return this.GetCodeInfoMethod(this.Code);
             }
-            else if (this.CheckCodeInfoCallMethod(this.GetCode()))
+            else if (this.CheckCodeInfoCallMethod(this.Code))
             {
-                return this.GetCodeInfoCallMethod(this.GetCode());
+                return this.GetCodeInfoCallMethod(this.Code);
             }
-            else if (this.CheckCodeInfoSubstitution(this.GetCode()))
+            else if (this.CheckCodeInfoSubstitution(this.Code))
             {
-                return this.GetCodeInfoSubstitution(this.GetCode());
+                return this.GetCodeInfoSubstitution(this.Code);
             }
 
 
-            return this.GetAntherCodeInfo();
+            return this.GetAntherCodeInfo(this.Code);
         }
 
         #endregion
@@ -306,16 +203,17 @@ namespace OyuLib.Documents.Analysis
         protected abstract CodeInfoSubstitution GetCodeInfoSubstitution(Code code);
         protected abstract bool CheckCodeInfoSubstitution(Code code);
 
+        protected abstract CodeInfo GetAnyCodeInfoBlockBeginIf(Code code);
+        protected abstract CodeInfo GetAnyCodeInfoBlockEndIf(Code code);
+        protected abstract CodeInfo GetAnyCodeInfoBlockBeginDo(Code code);
+        protected abstract CodeInfo GetAnyCodeInfoBlockEndDo(Code code);
+        protected abstract CodeInfo GetAnyCodeInfoBlockBeginWhile(Code code);
+        protected abstract CodeInfo GetAnyCodeInfoBlockEndWhile(Code code);
+        protected abstract CodeInfo GetAnyCodeInfoBlockBeginFor(Code code);
+        protected abstract CodeInfo GetAnyCodeInfoBlockEndFor(Code code);
+        protected abstract bool CheckControlCode(Code code);
+
         public abstract SourceRule GetSourceRule();
-
-        #endregion
-
-        #region protected
-
-        protected Code GetCode()
-        {
-            return new Code(this._code);
-        }
 
         #endregion
 

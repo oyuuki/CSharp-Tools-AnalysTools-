@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class Code
+    public sealed class Code
     {
         #region InstanceVal
 

@@ -325,22 +325,22 @@ namespace OyuLib.Documents.Analysis
 
         #region Override
 
-        public override CodeInfo GetAntherCodeInfo()
+        public override CodeInfo GetAntherCodeInfo(Code code)
         {
-            if (this.CheckCommonCodeInfoBlock(this.GetCode(), new string[] { SyntaxStringVBDotNet.CONST_STATEMENT_WITH }))
+            if (this.CheckCommonCodeInfoBlock(code, new string[] { SyntaxStringVBDotNet.CONST_STATEMENT_WITH }))
             {
-                return this.GetCodeInfoWithBlock(this.GetCode());
+                return this.GetCodeInfoWithBlock(code);
             }
-            else if (this.CheckCommonCodeInfoBlock(this.GetCode(), new string[] { SyntaxStringVBDotNet.CONST_METHODHEAD_SUB, SyntaxStringVBDotNet.CONST_END }))
+            else if (this.CheckCommonCodeInfoBlock(code, new string[] { SyntaxStringVBDotNet.CONST_METHODHEAD_SUB, SyntaxStringVBDotNet.CONST_END }))
             {
-                return this.GetCodeInfoSubEndBlock(this.GetCode());
+                return this.GetCodeInfoSubEndBlock(code);
             }
-            else if (this.CheckCommonCodeInfoBlock(this.GetCode(), new string[] { SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION, SyntaxStringVBDotNet.CONST_END }))
+            else if (this.CheckCommonCodeInfoBlock(code, new string[] { SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION, SyntaxStringVBDotNet.CONST_END }))
             {
-                return this.GetCodeInfoFunctionEndBlock(this.GetCode());
+                return this.GetCodeInfoFunctionEndBlock(code);
             }
 
-            return base.GetAntherCodeInfo();
+            return base.GetAntherCodeInfo(code);
         }
 
         public override SourceRule GetSourceRule()
@@ -542,6 +542,106 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoSubstitution(code, coFac, rightHandSide, leftHandSide); 
         }
 
+        #endregion
+
+        #region CodeInfoBlock
+
+        protected override CodeInfo GetAnyCodeInfoBlockBeginIf(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodeInfo retinfo = null;
+
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeIf());
+            return new CodeInfoBlockBeginIf(code, coFac, segments, segments + 1);
+        }
+
+        protected override CodeInfo GetAnyCodeInfoBlockEndIf(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndIf());
+            return new CodeInfoBlockEndIf(code, coFac, segments);
+        }
+
+        protected override CodeInfo GetAnyCodeInfoBlockBeginDo(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodeInfo retinfo = null;
+
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeDo());
+            return new CodeInfoBlockBeginDo(code, coFac, segments, segments + 1);
+        }
+
+        protected override CodeInfo GetAnyCodeInfoBlockEndDo(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndDo());
+            return new CodeInfoBlockEndDo(code, coFac, segments);
+        }
+
+        protected override CodeInfo GetAnyCodeInfoBlockBeginWhile(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodeInfo retinfo = null;
+
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeWhile());
+            return new CodeInfoBlockBeginWhile(code, coFac, segments, segments + 1);
+        }
+
+        protected override CodeInfo GetAnyCodeInfoBlockEndWhile(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodeInfo retinfo = null;
+
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndWhile());
+            return new CodeInfoBlockEndWhile(code, coFac, segments);
+        }
+
+        protected override CodeInfo GetAnyCodeInfoBlockBeginFor(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodeInfo retinfo = null;
+
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeFor());
+            return new CodeInfoBlockBeginFor(code, coFac, segments, segments + 1);
+        }
+
+        protected override CodeInfo GetAnyCodeInfoBlockEndFor(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodeInfo retinfo = null;
+
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndFor());
+            return new CodeInfoBlockEndFor(code, coFac, segments);
+        }
+
+        protected override bool CheckControlCode(Code code)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            if (!coFac.IsIncludeSomeStringInCode(rule.GetControlCodes()))
+            {
+                return false;
+            }
+
+            return true;
+        }
         #endregion
 
         #endregion
