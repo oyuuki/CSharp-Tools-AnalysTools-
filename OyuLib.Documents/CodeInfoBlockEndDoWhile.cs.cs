@@ -5,18 +5,18 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockEndDo :CodeInfoBlockEnd
+    public class CodeInfoBlockEndDoWhile :CodeInfoBlockEnd
     {
         #region Constructor
 
-        public CodeInfoBlockEndDo(
+        public CodeInfoBlockEndDoWhile(
             int statement)
             : base(statement)
         {
             
         }
 
-        public CodeInfoBlockEndDo(
+        public CodeInfoBlockEndDoWhile(
             Code code,
             CodePartsFactory coFac,
             int statement)

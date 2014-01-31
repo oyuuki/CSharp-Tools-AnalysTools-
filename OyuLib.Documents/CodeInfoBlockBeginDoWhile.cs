@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginDo : CodeInfoBlockBegin
+    public class CodeInfoBlockBeginDoWhile : CodeInfoBlockBegin
     {
         #region Constructor
 
-        public CodeInfoBlockBeginDo(
+        public CodeInfoBlockBeginDoWhile(
             int statement,
             int statementObject)
             : base(statement, statementObject)
@@ -17,7 +17,7 @@ namespace OyuLib.Documents
             
         }
 
-        public CodeInfoBlockBeginDo(
+        public CodeInfoBlockBeginDoWhile(
             Code code,
             CodePartsFactory coFac,
             int statement,

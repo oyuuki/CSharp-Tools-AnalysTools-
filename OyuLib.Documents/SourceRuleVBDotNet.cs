@@ -27,38 +27,49 @@ namespace OyuLib.Documents
             return new CharCode(" ").GetCharCodeString();
         }
 
-        public override string GetControlCodeIf()
+        public override string GetControlCodeBeginIf()
         {
             return SyntaxStringVBDotNet.CONST_IF;
-        }
-        public override string GetControlCodeFor()
-        {
-            return SyntaxStringVBDotNet.CONST_FOR;
-        }
-        public override string GetControlCodeDo()
-        {
-            return SyntaxStringVBDotNet.CONST_DO;
-        }
-        public override string GetControlCodeWhile()
-        {
-            return SyntaxStringVBDotNet.CONST_WHILE;
         }
 
         public override string GetControlCodeEndIf()
         {
             return SyntaxStringVBDotNet.CONST_END;
         }
+
+        public override string GetControlCodeBeginFor()
+        {
+            return SyntaxStringVBDotNet.CONST_FOR;
+        }
+
         public override string GetControlCodeEndFor()
         {
             return SyntaxStringVBDotNet.CONST_STATEMENT_NEXT;
         }
-        public override string GetControlCodeEndDo()
+
+        public override string GetControlCodeBeginDoWhile()
+        {
+            return SyntaxStringVBDotNet.CONST_DO;
+        }
+
+        public override string GetControlCodeEndDoWhile()
         {
             return SyntaxStringVBDotNet.CONST_STATEMENT_LOOP;
         }
-        public override string GetControlCodeEndWhile()
+
+        public override string GetControlCodeBeginCaseFomula()
+        {
+            return SyntaxStringVBDotNet.CONST_STATEMENT_SELECT;
+        }
+
+        public override string GetControlCodeEndCaseFomula()
         {
             return SyntaxStringVBDotNet.CONST_END;
+        }
+
+        public override string GetControlCodeCaseValue()
+        {
+            return SyntaxStringVBDotNet.CONST_STATEMENT_CASE;
         }
 
         public override string[] GetAccessModifiersString()

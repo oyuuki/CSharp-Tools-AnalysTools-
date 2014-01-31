@@ -17,38 +17,47 @@ namespace OyuLib.Documents
             return new CharCode(" ").GetCharCodeString();
         }
 
-        public override string GetControlCodeIf()
+        public override string GetControlCodeBeginIf()
         {
             return SyntaxStringCSharp.CONST_IF;
         }
-        public override string GetControlCodeFor()
+        public override string GetControlCodeBeginFor()
         {
             return SyntaxStringCSharp.CONST_FOR;
         }
-        public override string GetControlCodeDo()
+        public override string GetControlCodeEndDoWhile()
         {
-            return SyntaxStringCSharp.CONST_DO;
-        }
-        public override string GetControlCodeWhile()
-        {
-            return SyntaxStringCSharp.CONST_WHILE;
+            throw new NotImplementedException();
         }
 
         public override string GetControlCodeEndIf()
         {
             return SyntaxStringCSharp.CONST_BLOCKEND;
         }
+
         public override string GetControlCodeEndFor()
         {
             return SyntaxStringCSharp.CONST_BLOCKEND;
         }
-        public override string GetControlCodeEndDo()
+
+        public override string GetControlCodeBeginDoWhile()
         {
-            return SyntaxStringCSharp.CONST_BLOCKEND;
+            throw new NotImplementedException();
         }
-        public override string GetControlCodeEndWhile()
+
+        public override string GetControlCodeBeginCaseFomula()
         {
-            return SyntaxStringCSharp.CONST_BLOCKEND;
+            throw new NotImplementedException();
+        }
+
+        public override string GetControlCodeEndCaseFomula()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetControlCodeCaseValue()
+        {
+            throw new NotImplementedException();
         }
 
         public override string[] GetAccessModifiersString()

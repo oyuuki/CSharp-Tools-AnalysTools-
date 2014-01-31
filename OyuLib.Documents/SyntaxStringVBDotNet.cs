@@ -58,5 +58,9 @@ namespace OyuLib.Documents
         public const string CONST_STATEMENT_LOOP = "Loop";
 
         public const string CONST_STATEMENT_CALL = "Call";
+
+        public const string CONST_STATEMENT_SELECT = "Select";
+
+        public const string CONST_STATEMENT_CASE = "Case";
     }
 }

@@ -13,28 +13,27 @@ namespace OyuLib.Documents
         {
             return new string[]
             {
-                this.GetControlCodeIf(),
-                this.GetControlCodeFor(),
-                this.GetControlCodeWhile(),
-                this.GetControlCodeDo(),
+                this.GetControlCodeBeginIf(),
                 this.GetControlCodeEndIf(),
+                this.GetControlCodeBeginFor(),
                 this.GetControlCodeEndFor(),
-                this.GetControlCodeEndDo(),
-                this.GetControlCodeEndWhile(),
+                this.GetControlCodeBeginDoWhile(),
+                this.GetControlCodeEndDoWhile(),
             };
         }
 
         #region Abstract
 
         public abstract string GetCodeEndSeparatorString();
-        public abstract string GetControlCodeIf();
-        public abstract string GetControlCodeFor();
-        public abstract string GetControlCodeDo();
-        public abstract string GetControlCodeWhile();
+        public abstract string GetControlCodeBeginIf();
         public abstract string GetControlCodeEndIf();
+        public abstract string GetControlCodeBeginDoWhile();
+        public abstract string GetControlCodeEndDoWhile();
+        public abstract string GetControlCodeBeginFor();
         public abstract string GetControlCodeEndFor();
-        public abstract string GetControlCodeEndDo();
-        public abstract string GetControlCodeEndWhile();
+        public abstract string GetControlCodeBeginCaseFomula();
+        public abstract string GetControlCodeEndCaseFomula();
+        public abstract string GetControlCodeCaseValue();
         public abstract string GetCodesSeparatorString();
         public abstract string[] GetAccessModifiersString();
         public abstract string[] GetControlStatementsString();
