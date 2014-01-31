@@ -546,7 +546,7 @@ namespace OyuLib.Documents.Analysis
 
         #region CodeInfoBlock
 
-        protected override CodeInfo GetAnyCodeInfoBlockBeginIf(Code code)
+        protected override CodeInfoBlockBeginIf GetCodeInfoBlockBeginIf(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodeInfo retinfo = null;
@@ -557,7 +557,7 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoBlockBeginIf(code, coFac, segments, segments + 1);
         }
 
-        protected override CodeInfo GetAnyCodeInfoBlockEndIf(Code code)
+        protected override CodeInfoBlockEndIf GetCodeInfoBlockEndIf(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
@@ -566,7 +566,7 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoBlockEndIf(code, coFac, segments);
         }
 
-        protected override CodeInfo GetAnyCodeInfoBlockBeginDo(Code code)
+        protected override CodeInfoBlockBeginDo GetCodeInfoBlockBeginDo(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodeInfo retinfo = null;
@@ -577,7 +577,7 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoBlockBeginDo(code, coFac, segments, segments + 1);
         }
 
-        protected override CodeInfo GetAnyCodeInfoBlockEndDo(Code code)
+        protected override CodeInfoBlockEndDo GetCodeInfoBlockEndDo(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
@@ -586,7 +586,7 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoBlockEndDo(code, coFac, segments);
         }
 
-        protected override CodeInfo GetAnyCodeInfoBlockBeginWhile(Code code)
+        protected override CodeInfoBlockBeginWhile GetCodeInfoBlockBeginWhile(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodeInfo retinfo = null;
@@ -597,7 +597,7 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoBlockBeginWhile(code, coFac, segments, segments + 1);
         }
 
-        protected override CodeInfo GetAnyCodeInfoBlockEndWhile(Code code)
+        protected override CodeInfoBlockEndWhile GetCodeInfoBlockEndWhile(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodeInfo retinfo = null;
@@ -608,7 +608,7 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoBlockEndWhile(code, coFac, segments);
         }
 
-        protected override CodeInfo GetAnyCodeInfoBlockBeginFor(Code code)
+        protected override CodeInfoBlockBeginFor GetCodeInfoBlockBeginFor(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodeInfo retinfo = null;
@@ -619,7 +619,7 @@ namespace OyuLib.Documents.Analysis
             return new CodeInfoBlockBeginFor(code, coFac, segments, segments + 1);
         }
 
-        protected override CodeInfo GetAnyCodeInfoBlockEndFor(Code code)
+        protected override CodeInfoBlockEndFor GetCodeInfoBlockEndFor(Code code)
         {
             SourceRule rule = this.GetSourceRule();
             CodeInfo retinfo = null;
@@ -642,6 +642,27 @@ namespace OyuLib.Documents.Analysis
 
             return true;
         }
+
+        protected override CodeInfoBlockBeginCaseFormula GetCodeInfoBlockBeginCaseFormula(Code code)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override CodeInfoBlockEndCaseFormula GetCodeInfoBlockEndCaseFormula(Code code)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override CodeInfoBlockBeginCaseValue GetCodeInfoBlockBeginCaseValue(Code code)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override CodeInfoBlockEndCaseValue GetCodeInfoBlockEndCaseValue(Code code)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #endregion

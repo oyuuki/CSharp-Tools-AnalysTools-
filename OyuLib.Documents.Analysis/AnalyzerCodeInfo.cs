@@ -68,38 +68,38 @@ namespace OyuLib.Documents.Analysis
             {
                 if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndIf()))
                 {
-                    return this.GetAnyCodeInfoBlockEndIf(this.Code);
+                    return this.GetCodeInfoBlockEndIf(this.Code);
                 }
                 else
                 {
-                    return this.GetAnyCodeInfoBlockBeginIf(this.Code);
+                    return this.GetCodeInfoBlockBeginIf(this.Code);
                 }
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeFor()))
             {
-                return this.GetAnyCodeInfoBlockBeginFor(this.Code);
+                return this.GetCodeInfoBlockBeginFor(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndFor()))
             {
-                return this.GetAnyCodeInfoBlockEndFor(this.Code);
+                return this.GetCodeInfoBlockEndFor(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeDo()))
             {
-                return this.GetAnyCodeInfoBlockBeginDo(this.Code);
+                return this.GetCodeInfoBlockBeginDo(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndDo()))
             {
-                return this.GetAnyCodeInfoBlockEndDo(this.Code);
+                return this.GetCodeInfoBlockEndDo(this.Code);
             }
             else if (coFac.IsIncludeStringInCode(rule.GetControlCodeWhile()))
             {
                 if (coFac.IsIncludeStringInCode(rule.GetControlCodeEndWhile()))
                 {
-                    return this.GetAnyCodeInfoBlockEndWhile(this.Code);
+                    return this.GetCodeInfoBlockEndWhile(this.Code);
                 }
                 else
                 {
-                    return this.GetAnyCodeInfoBlockBeginWhile(this.Code);
+                    return this.GetCodeInfoBlockBeginWhile(this.Code);
                 }
             }
 
@@ -203,14 +203,18 @@ namespace OyuLib.Documents.Analysis
         protected abstract CodeInfoSubstitution GetCodeInfoSubstitution(Code code);
         protected abstract bool CheckCodeInfoSubstitution(Code code);
 
-        protected abstract CodeInfo GetAnyCodeInfoBlockBeginIf(Code code);
-        protected abstract CodeInfo GetAnyCodeInfoBlockEndIf(Code code);
-        protected abstract CodeInfo GetAnyCodeInfoBlockBeginDo(Code code);
-        protected abstract CodeInfo GetAnyCodeInfoBlockEndDo(Code code);
-        protected abstract CodeInfo GetAnyCodeInfoBlockBeginWhile(Code code);
-        protected abstract CodeInfo GetAnyCodeInfoBlockEndWhile(Code code);
-        protected abstract CodeInfo GetAnyCodeInfoBlockBeginFor(Code code);
-        protected abstract CodeInfo GetAnyCodeInfoBlockEndFor(Code code);
+        protected abstract CodeInfoBlockBeginIf GetCodeInfoBlockBeginIf(Code code);
+        protected abstract CodeInfoBlockEndIf GetCodeInfoBlockEndIf(Code code);
+        protected abstract CodeInfoBlockBeginDo GetCodeInfoBlockBeginDo(Code code);
+        protected abstract CodeInfoBlockEndDo GetCodeInfoBlockEndDo(Code code);
+        protected abstract CodeInfoBlockBeginWhile GetCodeInfoBlockBeginWhile(Code code);
+        protected abstract CodeInfoBlockEndWhile GetCodeInfoBlockEndWhile(Code code);
+        protected abstract CodeInfoBlockBeginFor GetCodeInfoBlockBeginFor(Code code);
+        protected abstract CodeInfoBlockEndFor GetCodeInfoBlockEndFor(Code code);
+        protected abstract CodeInfoBlockBeginCaseFormula GetCodeInfoBlockBeginCaseFormula(Code code);
+        protected abstract CodeInfoBlockEndCaseFormula GetCodeInfoBlockEndCaseFormula(Code code);
+        protected abstract CodeInfoBlockBeginCaseValue GetCodeInfoBlockBeginCaseValue(Code code);
+        protected abstract CodeInfoBlockEndCaseValue GetCodeInfoBlockEndCaseValue(Code code);
         protected abstract bool CheckControlCode(Code code);
 
         public abstract SourceRule GetSourceRule();
