@@ -24,6 +24,7 @@ namespace TestApp
         private void exButton1_Click(object sender, EventArgs e)
         {
             this.exListBox1.Items.Clear();
+            this.exListBox2.Items.Clear();
 
             SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.Designer.vb").GetAllReadText());
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
@@ -83,9 +84,9 @@ namespace TestApp
                         }
                     }
 
-                    if (value is CodeInfoBlockBegin)
+                    if (value is CodeInfoBlockBeginWithVB)
                     {
-                        var blockWithInfo = (CodeInfoBlockBegin) value;
+                        var blockWithInfo = (CodeInfoBlockBeginWithVB)value;
                         
                         if (blockWithInfo.StatementObject.Equals(name))
                         {
@@ -97,7 +98,7 @@ namespace TestApp
                             withNextCount.Add(false);
                         }
                     }
-                    else if (value is CodeInfoBlockEnd)
+                    else if (value is CodeInfoBlockEndWithVB)
                     {
                         if (withNextCount.Count > 0)
                         {
@@ -120,6 +121,7 @@ namespace TestApp
         private void exButton2_Click(object sender, EventArgs e)
         {
             this.exListBox1.Items.Clear();
+            this.exListBox2.Items.Clear();
 
             StringSpilitter s = new StringSpilitter(@"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText()).GetText(""""test"""").Text");
 
@@ -134,6 +136,7 @@ namespace TestApp
         private void exButton3_Click(object sender, EventArgs e)
         {
             this.exListBox1.Items.Clear();
+            this.exListBox2.Items.Clear();
 
             SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
@@ -159,6 +162,7 @@ namespace TestApp
         private void exButton4_Click(object sender, EventArgs e)
         {
             this.exListBox1.Items.Clear();
+            this.exListBox2.Items.Clear();
 
             SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
@@ -174,7 +178,7 @@ namespace TestApp
                         this.exListBox1.Items.Add(value.ToString());
                     }
                 }
-                else if (value is CodeInfoBlockBegin || value is CodeInfoBlockEnd)
+                else if (value is CodeInfoBlockBegin<CodeInfoBlockEnd> || value is CodeInfoBlockEnd)
                 {
                     this.exListBox1.Items.Add(value.ToString());
                 }
@@ -184,17 +188,20 @@ namespace TestApp
         private void exButton5_Click(object sender, EventArgs e)
         {
             this.exListBox1.Items.Clear();
+            this.exListBox2.Items.Clear();
 
             SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
-                if (value is CodeInfoOther)
-                {
-                    this.exListBox1.Items.Add(value.ToString());
-                    this.exListBox2.Items.Add(value.CodeString);
-                }
+                this.exListBox1.Items.Add(value.ToString());
+                
+            }
+
+            foreach (var str in source.GetLineArray())
+            {
+                this.exListBox2.Items.Add(str);
             }
         }
 
@@ -207,6 +214,7 @@ namespace TestApp
         private void timer1_Tick(object sender, EventArgs e)
         {
             exListBox1.TopIndex = exListBox2.TopIndex;
+            exListBox1.SelectedIndex = exListBox2.SelectedIndex;
         }
 
         

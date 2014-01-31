@@ -5,28 +5,36 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginCaseValue : CodeInfoBlockBegin
+    public class CodeInfoBlockBeginCaseValue : CodeInfo
     {
+        #region instanceVal
+
+        private int _value = -1;
+
+        #endregion
+
         #region Constructor
 
-        public CodeInfoBlockBeginCaseValue(
-            int statement,
-            int statementObject)
-            : base(statement, statementObject)
+        public CodeInfoBlockBeginCaseValue(int value)
+            : base()
         {
-            
+            this._value = value;
         }
 
         public CodeInfoBlockBeginCaseValue(
             Code code,
             CodePartsFactory coFac,
-            int statement,
-            int statementObject)
-            : base(code, coFac, statement, statementObject)
+            int value)
+            : base(code, coFac)
         {
-            
+            this._value = value;
         }
 
         #endregion
+
+        public override string GetCodeText()
+        {
+            return "CASE：";
+        }
     }
 }

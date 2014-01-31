@@ -305,11 +305,11 @@ namespace OyuLib.Documents.Analysis
 
             if (!coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_END))
             {
-                return new CodeInfoBlockBegin(code, coFac, statement, statementObjName);
+                return new  CodeInfoBlockBeginWithVB(code, coFac, statement, statementObjName);
             }
             else
             {
-                return new CodeInfoBlockEnd(code, coFac, statement);
+                return new CodeInfoBlockEndWithVB(code, coFac, statement);
             }
         }
 
@@ -336,7 +336,19 @@ namespace OyuLib.Documents.Analysis
             SourceRule rule = this.GetSourceRule();
             CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
 
-            return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginIf()) && isEnd != coFac.IsIncludeStringInCode(rule.GetControlCodeEndIf());
+            return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginIf()) && isEnd == coFac.IsIncludeStringInCode(rule.GetControlCodeEndIf());
+        }
+
+        #endregion
+
+        #region
+
+        private bool CheckCommonCodeInfoBlockBeginCaseFomula(Code code, bool isEnd)
+        {
+            SourceRule rule = this.GetSourceRule();
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginCaseFomula()) && isEnd == coFac.IsIncludeStringInCode(rule.GetControlCodeEndCaseFomula());
         }
 
         #endregion
@@ -689,10 +701,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoBlockBeginCaseFormula(Code code)
         {
-            SourceRule rule = this.GetSourceRule();
-            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginCaseFomula());
+            return this.CheckCommonCodeInfoBlockBeginCaseFomula(code, false);   
         }
 
         protected override CodeInfoBlockEndCaseFormula GetCodeInfoBlockEndCaseFormula(Code code)
@@ -707,10 +716,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoBlockEndCaseFormula(Code code)
         {
-            SourceRule rule = this.GetSourceRule();
-            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
-
-            return coFac.IsIncludeStringInCode(rule.GetControlCodeEndCaseFomula());
+            return this.CheckCommonCodeInfoBlockBeginCaseFomula(code, true);
         }
 
         protected override CodeInfoBlockBeginCaseValue GetCodeInfoBlockCaseValue(Code code)
@@ -719,8 +725,8 @@ namespace OyuLib.Documents.Analysis
             CodeInfo retinfo = null;
             CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
 
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeCaseValue());
-            return new CodeInfoBlockBeginCaseValue(code, coFac, segments, segments + 1);
+            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeCaseValue()) + 1;
+            return new CodeInfoBlockBeginCaseValue(code, coFac, segments);
         }
 
         protected override bool CheckCodeInfoBlockCaseValue(Code code)

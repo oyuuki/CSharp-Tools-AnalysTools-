@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginFor : CodeInfoBlockBegin
+    public class CodeInfoBlockBeginFor : CodeInfoBlockBegin<CodeInfoBlockEndFor>
     {
         #region Constructor
 

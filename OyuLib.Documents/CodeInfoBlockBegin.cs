@@ -5,7 +5,8 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBegin : CodeInfo
+    public abstract class CodeInfoBlockBegin<T> : CodeInfo
+        where T : CodeInfoBlockEnd
     {
         #region instanceVal
 
@@ -62,6 +63,11 @@ namespace OyuLib.Documents
         }
 
         #endregion
+
+        public Type GetCodeInfoBlockEndType()
+        {
+            return typeof (T);
+        }
 
         #endregion
     }

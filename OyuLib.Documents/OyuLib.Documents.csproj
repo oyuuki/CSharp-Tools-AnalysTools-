@@ -46,6 +46,7 @@
     <Compile Include="CodeInfoBlockBeginCaseFormula.cs" />
     <Compile Include="CodeInfoBlockBeginCaseValue.cs" />
     <Compile Include="CodeInfoBlockBeginDoWhile.cs" />
+    <Compile Include="CodeInfoBlockBeginWithVB.cs" />
     <Compile Include="CodeInfoBlockEndCaseFormula.cs" />
     <Compile Include="CodeInfoBlockEndCaseValue.cs" />
     <Compile Include="CodeInfoBlockEndDoWhile.cs.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="CodeInfoBlockEndFor.cs" />
     <Compile Include="CodeInfoBlockBeginIf.cs" />
     <Compile Include="CodeInfoBlockEndIf.cs" />
+    <Compile Include="CodeInfoBlockEndWithVB.cs" />
     <Compile Include="CodeInfoBlockFunctionEndVB.cs" />
     <Compile Include="CodeInfoBlockSubEndVB.cs" />
     <Compile Include="CodeInfoCallMethod.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="SourceRuleCSharp.cs" />
     <Compile Include="SourceRuleVB6.cs" />
     <Compile Include="SourceRuleVBDotNet.cs" />
+    <Compile Include="SourceStruct.cs" />
     <Compile Include="SourceVB6.cs" />
     <Compile Include="SourceVBDotNet.cs" />
     <Compile Include="SyntaxStringCSharp.cs" />

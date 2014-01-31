@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginCaseFormula : CodeInfoBlockBegin
+    public class CodeInfoBlockBeginCaseFormula : CodeInfoBlockBegin<CodeInfoBlockEndCaseFormula>
     {
         #region Constructor
 
@@ -24,7 +24,7 @@ namespace OyuLib.Documents
             int statementObject)
             : base(code, coFac, statement, statementObject)
         {
-            
+
         }
 
         #endregion

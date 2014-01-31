@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginIf : CodeInfoBlockBegin<CodeInfoBlockEndIf>
+    public class CodeInfoBlockBeginWithVB : CodeInfoBlockBegin<CodeInfoBlockEndWithVB>
     {
         #region Constructor
 
-        public CodeInfoBlockBeginIf(
+        public CodeInfoBlockBeginWithVB(
             int statement,
             int statementObject)
             : base(statement, statementObject)
@@ -17,14 +17,14 @@ namespace OyuLib.Documents
             
         }
 
-        public CodeInfoBlockBeginIf(
+        public CodeInfoBlockBeginWithVB(
             Code code,
             CodePartsFactory coFac,
             int statement,
             int statementObject)
             : base(code, coFac, statement, statementObject)
         {
-            
+
         }
 
         #endregion

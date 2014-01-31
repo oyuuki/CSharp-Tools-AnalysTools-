@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockEnd : CodeInfo
+    public abstract class CodeInfoBlockEnd : CodeInfo
     {
         #region instanceVal
 
@@ -43,14 +43,10 @@ namespace OyuLib.Documents
 
         #region Method
 
-        #region override
-
         public override string GetCodeText()
         {
-            return "Endステートメント：" + Statement;
+            return "ブロック終了：" + this.Statement;
         }
-
-        #endregion
 
         #endregion
     }
