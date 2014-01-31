@@ -190,11 +190,25 @@ namespace TestApp
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
-                if (value is CodeInfoBlockBegin || value is CodeInfoBlockEnd)
+                if (value is CodeInfoOther)
                 {
                     this.exListBox1.Items.Add(value.ToString());
+                    this.exListBox2.Items.Add(value.CodeString);
                 }
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            timer1.Interval = 1;
+            timer1.Enabled = true;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            exListBox1.TopIndex = exListBox2.TopIndex;
+        }
+
+        
     }
 }

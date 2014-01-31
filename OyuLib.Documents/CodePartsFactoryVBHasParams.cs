@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodePartsFactoryHasParams : CodePartsFactory
+    public class CodePartsFactoryVBHasParams : CodePartsFactoryVB
     {
         #region Constructor
 
-        public CodePartsFactoryHasParams(
+        public CodePartsFactoryVBHasParams(
             Code code,
             string codeDelimiter)
             : base(code, codeDelimiter)
@@ -23,10 +23,10 @@ namespace OyuLib.Documents
 
         #region OverRide
 
-        public override string[] GetCodeParts()
+        protected override string[] GetCodePartsWithOutComment(string withOutComment)
         {
             return
-                new StringSpilitter(this.Code.GetTrimCodeString()).GetSpilitStringNoChilds(
+                new StringSpilitter(this.TrimCodeString).GetSpilitStringNoChilds(
                     new CharCode(this.CodeDelimiter).GetCharCodeString(), new ManagerStringNested("(", ")"));
         }
 

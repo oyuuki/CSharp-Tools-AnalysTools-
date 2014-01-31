@@ -84,6 +84,7 @@ namespace OyuLib
 
                     isParentSwitch = false;
                     retlist[retlist.Count - 1].IndexEnd = index;
+                    retlist[retlist.Count - 1].SpilitStrings = new string[]{this.NestStartString, this.NestEndtString} ; 
                 }
             }
 

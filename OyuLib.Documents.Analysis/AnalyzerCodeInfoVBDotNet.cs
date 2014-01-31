@@ -128,6 +128,8 @@ namespace OyuLib.Documents.Analysis
 
             private int _typeName = -1;
 
+            private int _paramaters = -1;
+
             private CodeInfoValiable[] _valiables = null;
 
             #endregion
@@ -138,11 +140,13 @@ namespace OyuLib.Documents.Analysis
                 int accessModifier,
                 int name,
                 int typeName,
+                int paramaters,
                 CodeInfoValiable[] valiables)
             {
                 this._accessModifier = accessModifier;
                 this._name = name;
                 this._typeName = typeName;
+                this._paramaters = paramaters;
                 this._valiables = valiables;
             }
 
@@ -168,6 +172,12 @@ namespace OyuLib.Documents.Analysis
                 set { this._typeName = value; }
             }
 
+            public int Paramaters
+            {
+                get { return this._paramaters; }
+                set { this._paramaters = value; }
+            }
+
             public CodeInfoValiable[] Valiables
             {
                 get { return this._valiables; }
@@ -187,7 +197,7 @@ namespace OyuLib.Documents.Analysis
 
         private bool CheckCommonCodeInfoMethod(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
 
             int methodHead = coFac.GetIndexCodeParts(new SourceRuleVBDotNet().GetMethodHead());
 
@@ -207,11 +217,11 @@ namespace OyuLib.Documents.Analysis
 
         private CommonCodeInfoMethodInfo GetCommonCodeInfoMethod(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, " ");
             int methodHead = coFac.GetIndexCodeParts(new SourceRuleVBDotNet().GetMethodHead());
-
             int accessModifier = coFac.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
             int name = methodHead + 1;
+            int paramaters = name + 1;
             int typeName = -1;
 
             if (coFac.GetCodeParts()[methodHead].Equals(SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION))
@@ -219,7 +229,7 @@ namespace OyuLib.Documents.Analysis
                 typeName = coFac.GetCodeParts().Length - 1;
             }
 
-            return new CommonCodeInfoMethodInfo(accessModifier, name, typeName, null);
+            return new CommonCodeInfoMethodInfo(accessModifier, name, typeName, paramaters, null);
         }
 
         private CommonCodeInfoValiableInfo GetCommonCodeInfoVariable(Code code, CodePartsFactory coFac)
@@ -263,13 +273,12 @@ namespace OyuLib.Documents.Analysis
 
         #region GetOtherCodeInfo関係
 
-        private bool CheckCodeInfoWithBlock(Code code)
+        private bool CheckCommonCodeInfoBlock(Code code, string[] blockNames)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
-            SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
-
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
+            
             // include "With"
-            if (!coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_STATEMENT_WITH))
+            if (!coFac.IsIncludeAllStringInCode(blockNames))
             {
                 return false;
             }
@@ -279,7 +288,7 @@ namespace OyuLib.Documents.Analysis
 
         private CodeInfo GetCodeInfoWithBlock(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
 
             int length = coFac.GetCodeParts().Length;
 
@@ -296,6 +305,20 @@ namespace OyuLib.Documents.Analysis
             }
         }
 
+        private CodeInfo GetCodeInfoSubEndBlock(Code code)
+        {
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
+            int statement = coFac.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_METHODHEAD_SUB);
+            return new CodeInfoBlockSubEndVB(code, coFac, statement);
+        }
+
+        private CodeInfo GetCodeInfoFunctionEndBlock(Code code)
+        {
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
+            int statement = coFac.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_METHODHEAD_SUB);
+            return new CodeInfoBlockFunctionEndVB(code, coFac, statement);
+        }
+
         #endregion
 
         #endregion
@@ -304,9 +327,17 @@ namespace OyuLib.Documents.Analysis
 
         public override CodeInfo GetAntherCodeInfo()
         {
-            if (this.CheckCodeInfoWithBlock(this.GetCode()))
+            if (this.CheckCommonCodeInfoBlock(this.GetCode(), new string[] { SyntaxStringVBDotNet.CONST_STATEMENT_WITH }))
             {
                 return this.GetCodeInfoWithBlock(this.GetCode());
+            }
+            else if (this.CheckCommonCodeInfoBlock(this.GetCode(), new string[] { SyntaxStringVBDotNet.CONST_METHODHEAD_SUB, SyntaxStringVBDotNet.CONST_END }))
+            {
+                return this.GetCodeInfoSubEndBlock(this.GetCode());
+            }
+            else if (this.CheckCommonCodeInfoBlock(this.GetCode(), new string[] { SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION, SyntaxStringVBDotNet.CONST_END }))
+            {
+                return this.GetCodeInfoFunctionEndBlock(this.GetCode());
             }
 
             return base.GetAntherCodeInfo();
@@ -321,7 +352,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override CodeInfoComment GetCodeInfoComment(Code code)
         {
-            return new CodeInfoComment(code, new CodePartsFactory(code, " "));
+            return new CodeInfoComment(code, new CodePartsFactoryVB(code, " "));
         }
 
         protected override bool CheckCodeInfoComment(Code code)
@@ -340,7 +371,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override CodeInfoValiable GetCodeInfoVariable(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             var commonInfo = this.GetCommonCodeInfoVariable(code, coFac);
             return new CodeInfoValiable(
                 code, 
@@ -353,7 +384,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoVariable(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             return this.CheckCommonCodeInfoVariable(code, coFac) && this.IsInsiteMethod;
         }
 
@@ -363,7 +394,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override CodeInfoMemberVariable GetCodeInfoMemberVariable(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             var commonInfo = this.GetCommonCodeInfoVariable(code, coFac);
             int accessModifier = coFac.GetIndexCodeParts(new SourceRuleVBDotNet().GetAccessModifiersString());
             return new CodeInfoMemberVariable(code, coFac, commonInfo.Value, commonInfo.Name, commonInfo.TypeName, accessModifier, commonInfo.IsConst);
@@ -371,7 +402,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoMemberVariable(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             return this.CheckCommonCodeInfoVariable(code, coFac) && !this.IsInsiteMethod;
         }
 
@@ -382,16 +413,24 @@ namespace OyuLib.Documents.Analysis
         protected override CodeInfoCallMethod GetCodeInfoCallMethod(Code code)
         {
             int methodName = 0;
-            int paramater = 1;
+            int paramater = 0;
 
-            CodePartsFactory coFac = new CodePartsFactoryHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            if (coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_STATEMENT_CALL))
+            {
+                methodName = 1;
+            }
+
+            paramater = methodName + 1;
+
             return new CodeInfoCallMethod(code, coFac, methodName, paramater);
         }
 
         protected override bool CheckCodeInfoCallMethod(Code code)
         {
             SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
 
             // No include "As", "Sub", "Function"
             if (coFac.IsIncludeSomeStringInCode(
@@ -414,8 +453,10 @@ namespace OyuLib.Documents.Analysis
                 }
             }
 
+
             // End with ")"
-            if (!coFac.IsIncludeStringInCodeEndWithAtLast(SyntaxStringVBDotNet.CONST_CALLMETHOS_END))
+            if (!coFac.IsIncludeStringInCodeEndWithAtLast(SyntaxStringVBDotNet.CONST_CALLMETHOS_END)
+                && !coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_STATEMENT_CALL))
             {
                 return false;
             }
@@ -429,7 +470,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoEventMethod(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             return this.CheckCommonCodeInfoMethod(code) &&
                    coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
         }
@@ -438,10 +479,10 @@ namespace OyuLib.Documents.Analysis
         {
             var commonInfo = this.GetCommonCodeInfoMethod(code);
 
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, " ");
             int eventName = coFac.GetCodeParts().Length - 1;
 
-            return new CodeInfoEventMethod(code, coFac, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Valiables, eventName);
+            return new CodeInfoEventMethod(code, coFac, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Paramaters, eventName);
         }
 
         #endregion
@@ -450,16 +491,16 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoMethod(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             return this.CheckCommonCodeInfoMethod(code) &&
                    !coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
         }
 
         protected override CodeInfoMethod GetCodeInfoMethod(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, " ");
             var commonInfo = this.GetCommonCodeInfoMethod(code);
-            return new CodeInfoMethod(code, coFac, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Valiables);
+            return new CodeInfoMethod(code, coFac, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Paramaters);
         }
 
         #endregion
@@ -468,7 +509,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override bool CheckCodeInfoSubstitution(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             SourceRuleVBDotNet rule = new SourceRuleVBDotNet();
 
             // No Begin with "If ","For ","While ", "Do "
@@ -493,7 +534,7 @@ namespace OyuLib.Documents.Analysis
 
         protected override CodeInfoSubstitution GetCodeInfoSubstitution(Code code)
         {
-            CodePartsFactory coFac = new CodePartsFactory(code, " ");
+            CodePartsFactory coFac = new CodePartsFactoryVB(code, " ");
             int equals = coFac.GetIndexCodeParts(SyntaxStringVBDotNet.CONST_EQUALS);
             int rightHandSide = equals + 1;
             int leftHandSide = equals - 1;

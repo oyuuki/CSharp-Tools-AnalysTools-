@@ -15,7 +15,7 @@ namespace OyuLib.Documents
 
         private readonly int _returnTypeName = -1;
 
-        private CodeInfoValiable[] _paramValiables = null;
+        private readonly int _paramaters = -1;
 
         #endregion
 
@@ -33,13 +33,13 @@ namespace OyuLib.Documents
             int accessModifier,
             int name,
             int returnTypeName,
-            CodeInfoValiable[] paramValiables)
+            int paramaters)
             : base(code, coFac)
         {
             this._accessModifier = accessModifier;
             this._name = name;
             this._returnTypeName = returnTypeName;
-            this._paramValiables = paramValiables;
+            this._paramaters = paramaters;
         }
 
         #endregion
@@ -53,13 +53,7 @@ namespace OyuLib.Documents
 
         public string Name
         {
-
-            get
-            {
-                var locName = this.GetCodePartsString(this._name); 
-
-                return locName.Substring(0, locName.IndexOf("("));
-            }
+            get{ return this.GetCodePartsString(this._name); }
         }
 
         public string ReturnTypeName
@@ -68,10 +62,9 @@ namespace OyuLib.Documents
         }
 
 
-        public CodeInfoValiable[] ParamValiables
+        public string Paramaters
         {
-            get { return this._paramValiables; }
-            set { this._paramValiables = value; }
+            get { return this.GetCodePartsString(this._paramaters); }
         }
 
         #endregion
@@ -82,7 +75,7 @@ namespace OyuLib.Documents
 
         public override string GetCodeText()
         {
-            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + this.CodeString;
+            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + " パラメータ：" + this.Paramaters;
         }
 
         #endregion

@@ -52,6 +52,8 @@
     <Compile Include="CodeInfoBlockEndIf.cs" />
     <Compile Include="CodeInfoBlockBeginWhile.cs" />
     <Compile Include="CodeInfoBlockEndWhile.cs" />
+    <Compile Include="CodeInfoBlockFunctionEndVB.cs" />
+    <Compile Include="CodeInfoBlockSubEndVB.cs" />
     <Compile Include="CodeInfoCallMethod.cs" />
     <Compile Include="CodeInfoComment.cs" />
     <Compile Include="CodeInfoEventMethod.cs" />
@@ -62,7 +64,8 @@
     <Compile Include="CodeInfoSubstitution.cs" />
     <Compile Include="CodeInfoValiable.cs" />
     <Compile Include="CodePartsFactory.cs" />
-    <Compile Include="CodePartsFactoryHasParams.cs" />
+    <Compile Include="CodePartsFactoryVBHasParams.cs" />
+    <Compile Include="CodePartsFactoryVB.cs" />
     <Compile Include="ISourceRule.cs" />
     <Compile Include="SourceCSharp.cs" />
     <Compile Include="Document.cs" />

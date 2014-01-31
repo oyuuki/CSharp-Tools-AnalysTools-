@@ -27,9 +27,9 @@ namespace OyuLib.Documents
             int accessModifier,
             int name,
             int returnTypeName,
-            CodeInfoValiable[] paramValiable,
+            int paramaters,
             int eve)
-            : base(code, coFac, accessModifier, name, returnTypeName, paramValiable)
+            : base(code, coFac, accessModifier, name, returnTypeName, paramaters)
         {
             this._eve = eve;
         }
@@ -65,7 +65,7 @@ namespace OyuLib.Documents
         public override string GetCodeText()
         {
             return "イベントメソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "イベント名：" + this.EventName +
-                   "イベント発生オブジェクト名：" + this.ObjNamesuggestEventName  + this.CodeString;
+                   "イベント発生オブジェクト名：" + this.ObjNamesuggestEventName  + "パラメータ名：" + this.Paramaters;
         }
 
         #endregion

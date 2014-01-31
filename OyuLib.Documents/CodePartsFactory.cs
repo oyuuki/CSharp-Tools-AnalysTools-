@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodePartsFactory
+    public abstract class CodePartsFactory
     {
         #region instanceVal
 
@@ -29,7 +29,7 @@ namespace OyuLib.Documents
 
         #region Property
 
-        public Code Code
+        private Code Code
         {
             get { return this._code; }
             set { this._code = value; }
@@ -39,6 +39,11 @@ namespace OyuLib.Documents
         {
             get { return this._codeDelimiter; }
             set { this._codeDelimiter = value; }
+        }
+
+        public string TrimCodeString
+        {
+            get { return this._code.CodeString.Trim(); }
         }
 
         #endregion
@@ -106,10 +111,27 @@ namespace OyuLib.Documents
 
         #region Virtual
 
-        public virtual string[] GetCodeParts()
+        public string[] GetCodeParts()
         {
-            return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(this.Code.GetTrimCodeString());
+            var str = string.Empty;
+            var commentStartIndex = this.GetCommentStartindex();
+
+            if (commentStartIndex >= 0)
+            {
+                str = this.TrimCodeString.Substring(0, commentStartIndex);
+            }
+            else
+            {
+                str = this.TrimCodeString;
+            }
+
+            return this.GetCodePartsWithOutComment(str);
         }
+
+        protected abstract string[] GetCodePartsWithOutComment(string withOutComment);
+
+        protected abstract int GetCommentStartindex();
+
         #endregion
 
         #endregion

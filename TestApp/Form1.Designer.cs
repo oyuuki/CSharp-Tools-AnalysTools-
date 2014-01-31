@@ -35,16 +35,19 @@
             this.exButton3 = new OyuLib.Windows.Forms.ExButton(this.components);
             this.exButton4 = new OyuLib.Windows.Forms.ExButton(this.components);
             this.exButton5 = new OyuLib.Windows.Forms.ExButton(this.components);
+            this.exListBox2 = new OyuLib.Windows.Forms.ExListBox(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // exListBox1
             // 
+            this.exListBox1.Font = new System.Drawing.Font("MS UI Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.exListBox1.FormattingEnabled = true;
-            this.exListBox1.ItemHeight = 12;
+            this.exListBox1.ItemHeight = 11;
             this.exListBox1.Location = new System.Drawing.Point(12, 193);
             this.exListBox1.Name = "exListBox1";
             this.exListBox1.ScrollAlwaysVisible = true;
-            this.exListBox1.Size = new System.Drawing.Size(1487, 388);
+            this.exListBox1.Size = new System.Drawing.Size(993, 378);
             this.exListBox1.TabIndex = 1;
             // 
             // exButton1
@@ -97,11 +100,27 @@
             this.exButton5.UseVisualStyleBackColor = true;
             this.exButton5.Click += new System.EventHandler(this.exButton5_Click);
             // 
+            // exListBox2
+            // 
+            this.exListBox2.Font = new System.Drawing.Font("MS UI Gothic", 8F);
+            this.exListBox2.FormattingEnabled = true;
+            this.exListBox2.ItemHeight = 11;
+            this.exListBox2.Location = new System.Drawing.Point(1011, 193);
+            this.exListBox2.Name = "exListBox2";
+            this.exListBox2.ScrollAlwaysVisible = true;
+            this.exListBox2.Size = new System.Drawing.Size(493, 378);
+            this.exListBox2.TabIndex = 6;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1511, 583);
+            this.Controls.Add(this.exListBox2);
             this.Controls.Add(this.exButton5);
             this.Controls.Add(this.exButton4);
             this.Controls.Add(this.exButton3);
@@ -110,6 +129,7 @@
             this.Controls.Add(this.exButton1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -122,6 +142,8 @@
         private OyuLib.Windows.Forms.ExButton exButton3;
         private OyuLib.Windows.Forms.ExButton exButton4;
         private OyuLib.Windows.Forms.ExButton exButton5;
+        private OyuLib.Windows.Forms.ExListBox exListBox2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -11,12 +11,12 @@ namespace OyuLib
 
         public static bool IsNullOrNoLength(Array array)
         {
-            return array == null || array.Length < 0;
+            return array == null || array.Length <= 0;
         }
 
         public static bool IsIncludeStringInCodeAtLast(string[] arrayString, string value)
         {
-            if (arrayString == null)
+            if (IsNullOrNoLength(arrayString))
             {
                 return false;
             }
@@ -26,7 +26,7 @@ namespace OyuLib
 
         public static bool IsIncludeStringInCodeEndWithAtLast(string[] arrayString, string value)
         {
-            if (arrayString == null)
+            if (IsNullOrNoLength(arrayString))
             {
                 return false;
             }
@@ -37,7 +37,7 @@ namespace OyuLib
         
         public static bool IsIncludeStringEndsWith(Array array, string value)
         {
-            if (array == null)
+            if (IsNullOrNoLength(array))
             {
                 return false;
             }
@@ -55,7 +55,7 @@ namespace OyuLib
 
         public static bool IsIncludeString(Array array, string value)
         {
-            if (array == null)
+            if (IsNullOrNoLength(array))
             {
                 return false;
             }
@@ -73,6 +73,11 @@ namespace OyuLib
 
         public static bool IsIncludeSomeStringsInArray(Array array, string[] targetStrings)
         {
+            if (IsNullOrNoLength(array))
+            {
+                return false;
+            }
+
             foreach (string val in array)
             {
                 foreach (var tarStr in targetStrings)
@@ -89,13 +94,18 @@ namespace OyuLib
 
         public static bool IsIncludeAllStringsInArray(Array array, string[] targetStrings)
         {
-            foreach (string val in array)
+            if (IsNullOrNoLength(array))
+            {
+                return false;
+            }
+
+            foreach (string valtarStr in targetStrings)
             {
                 bool isFind = false;
 
-                foreach (var tarStr in targetStrings)
+                foreach (var str in array)
                 {
-                    if (val.Equals(tarStr))
+                    if (valtarStr.Equals(str))
                     {
                         isFind = true;
                         break;
