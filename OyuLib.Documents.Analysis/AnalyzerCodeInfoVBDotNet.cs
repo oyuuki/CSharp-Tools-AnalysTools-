@@ -124,6 +124,10 @@ namespace OyuLib.Documents.Analysis
 
             private int _accessModifier = -1;
 
+            private int _statement = -1;
+
+            private int _statementObj = -1;
+
             private int _name = -1;
 
             private int _typeName = -1;
@@ -138,12 +142,16 @@ namespace OyuLib.Documents.Analysis
 
             public CommonCodeInfoMethodInfo(
                 int accessModifier,
+                int statement,
+                int statementObj,
                 int name,
                 int typeName,
                 int paramaters,
                 CodeInfoValiable[] valiables)
             {
                 this._accessModifier = accessModifier;
+                this._statement = statement;
+                this._statementObj = statementObj;
                 this._name = name;
                 this._typeName = typeName;
                 this._paramaters = paramaters;
@@ -158,6 +166,18 @@ namespace OyuLib.Documents.Analysis
             {
                 get { return this._accessModifier; }
                 set { this._accessModifier = value; }
+            }
+
+            public int Statement
+            {
+                get { return this._statement; }
+                set { this._statement = value; }
+            }
+
+            public int StatementObj
+            {
+                get { return this._statementObj; }
+                set { this._statementObj = value; }
             }
 
             public int Name
@@ -231,7 +251,7 @@ namespace OyuLib.Documents.Analysis
                 typeName = coFac.GetCodeParts().Length - 1;
             }
 
-            return new CommonCodeInfoMethodInfo(accessModifier, name, typeName, paramaters, null);
+            return new CommonCodeInfoMethodInfo(accessModifier, methodHead, -1,name, typeName, paramaters, null);
         }
 
         #endregion
@@ -522,7 +542,16 @@ namespace OyuLib.Documents.Analysis
             CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, " ");
             int eventName = coFac.GetCodeParts().Length - 1;
 
-            return new CodeInfoEventMethod(code, coFac, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Paramaters, eventName);
+            return new CodeInfoEventMethod(
+                code, 
+                coFac, 
+                commonInfo.AccessModifier, 
+                commonInfo.Statement, 
+                commonInfo.StatementObj, 
+                commonInfo.Name, 
+                commonInfo.TypeName, 
+                commonInfo.Paramaters, 
+                eventName);
         }
 
         #endregion
@@ -536,11 +565,19 @@ namespace OyuLib.Documents.Analysis
                    !coFac.IsIncludeStringInCode(SyntaxStringVBDotNet.CONST_EVENTS_HANDLES);
         }
 
-        protected override CodeInfoMethod GetCodeInfoMethod(Code code)
+        protected override CodeInfoBlockBeginMethod GetCodeInfoMethod(Code code)
         {
             CodePartsFactory coFac = new CodePartsFactoryVBHasParams(code, " ");
             var commonInfo = this.GetCommonCodeInfoMethod(code);
-            return new CodeInfoMethod(code, coFac, commonInfo.AccessModifier, commonInfo.Name, commonInfo.TypeName, commonInfo.Paramaters);
+            return new CodeInfoBlockBeginMethod(
+                code,
+                coFac,
+                commonInfo.AccessModifier,
+                commonInfo.Statement, 
+                commonInfo.AccessModifier, 
+                commonInfo.Name, 
+                commonInfo.TypeName, 
+                commonInfo.Paramaters);
         }
 
         #endregion

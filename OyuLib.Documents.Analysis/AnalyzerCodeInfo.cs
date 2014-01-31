@@ -178,7 +178,7 @@ namespace OyuLib.Documents.Analysis
         protected abstract CodeInfoComment GetCodeInfoComment(Code code);
         protected abstract bool CheckCodeInfoComment(Code code);
 
-        protected abstract CodeInfoMethod GetCodeInfoMethod(Code code);
+        protected abstract CodeInfoBlockBeginMethod GetCodeInfoMethod(Code code);
         protected abstract bool CheckCodeInfoMethod(Code code);
 
         protected abstract CodeInfoEventMethod GetCodeInfoEventMethod(Code code);

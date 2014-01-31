@@ -203,6 +203,8 @@ namespace TestApp
             {
                 this.exListBox2.Items.Add(str);
             }
+
+            var sourceBlock = new SourceBlock(mana.GetVbSourceCodeAnalysis());
         }
 
         private void Form1_Load(object sender, EventArgs e)

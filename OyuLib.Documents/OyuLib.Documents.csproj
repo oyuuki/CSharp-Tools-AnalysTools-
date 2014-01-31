@@ -55,6 +55,7 @@
     <Compile Include="CodeInfoBlockEndFor.cs" />
     <Compile Include="CodeInfoBlockBeginIf.cs" />
     <Compile Include="CodeInfoBlockEndIf.cs" />
+    <Compile Include="CodeInfoBlockEndMethod.cs" />
     <Compile Include="CodeInfoBlockEndWithVB.cs" />
     <Compile Include="CodeInfoBlockFunctionEndVB.cs" />
     <Compile Include="CodeInfoBlockSubEndVB.cs" />
@@ -62,7 +63,7 @@
     <Compile Include="CodeInfoComment.cs" />
     <Compile Include="CodeInfoEventMethod.cs" />
     <Compile Include="CodeInfoMemberVariable.cs" />
-    <Compile Include="CodeInfoMethod.cs" />
+    <Compile Include="CodeInfoBlockBeginMethod.cs" />
     <Compile Include="CodeInfoOther.cs" />
     <Compile Include="CodeInfoParameterValue.cs" />
     <Compile Include="CodeInfoSubstitution.cs" />

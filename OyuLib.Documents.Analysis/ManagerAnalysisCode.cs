@@ -52,7 +52,7 @@ namespace OyuLib.Documents.Analysis
                 var codeInfo = ainfo.GetCodeInfo();
                 retList.Add(codeInfo);
 
-                if (codeInfo is CodeInfoEventMethod || codeInfo is CodeInfoMethod)
+                if (codeInfo is CodeInfoEventMethod || codeInfo is CodeInfoBlockBeginMethod)
                 {
                     isInsiteMethod = true;
                 }

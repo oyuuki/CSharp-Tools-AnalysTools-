@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoMethod : CodeInfo
+    public class CodeInfoBlockBeginMethod : CodeInfoBlockBegin<CodeInfoBlockEndMethod>
     {
         #region instanceVal
 
@@ -21,20 +21,24 @@ namespace OyuLib.Documents
 
         #region Constructor
 
-        public CodeInfoMethod()
-            : base()
+        public CodeInfoBlockBeginMethod(
+            int statement,
+            int statementObject)
+            : base(statement, statementObject)
         {
             
         }
 
-        public CodeInfoMethod(
+        public CodeInfoBlockBeginMethod(
             Code code,
             CodePartsFactory coFac,
+            int statement,
+            int statementObject,
             int accessModifier,
             int name,
             int returnTypeName,
             int paramaters)
-            : base(code, coFac)
+            : base(code, coFac, statement, statementObject)
         {
             this._accessModifier = accessModifier;
             this._name = name;

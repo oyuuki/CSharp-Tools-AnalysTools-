@@ -5,12 +5,10 @@ using System.Text;
 
 namespace OyuLib
 {
-    public class StringRange
+    public class StringRange : Range
     {
         #region InstanceVal
 
-        private int _indexStart = -1;
-        private int _indexEnd = -1;
         private string[] _spilitStrings = null;
         private StringRange[] _childs = null;
 
@@ -30,10 +28,9 @@ namespace OyuLib
         public StringRange(
             int indexStart,
             int indexEnd,
-            string[] spilitStrings)            
+            string[] spilitStrings)
+            : base(indexStart, indexEnd)
         {
-            this._indexStart = indexStart;
-            this._indexEnd = indexEnd;
             this._spilitStrings = spilitStrings;
         }
 
@@ -54,9 +51,9 @@ namespace OyuLib
 
         public StringRange(
             int indexStart)
-            : this(indexStart, -1, new string[] { })
+            : this(indexStart, -1, new string[] { })            
         {
-            this._indexStart = indexStart;
+            
         }
 
         public StringRange(
@@ -69,18 +66,6 @@ namespace OyuLib
         #endregion
 
         #region Property
-
-        public int IndexStart
-        {
-            get { return this._indexStart; }
-            set { this._indexStart = value; }
-        }
-
-        public int IndexEnd
-        {
-            get { return this._indexEnd; }
-            set { this._indexEnd = value; }
-        }
 
         public string[] SpilitStrings
         {
@@ -96,7 +81,7 @@ namespace OyuLib
 
         public int CutStringCount
         {
-            get { return this._indexEnd - this.IndexStart + 1; }
+            get { return this.IndexEnd - this.IndexStart + 1; }
         }
 
         public bool GetIsSpilitStrings(string[] spilitStrings)

@@ -52,6 +52,7 @@
     <Compile Include="LineCharCodeKindValue.cs" />
     <Compile Include="ConcoleManager.cs" />
     <Compile Include="ManagerStringNested.cs" />
+    <Compile Include="Range.cs" />
     <Compile Include="StringRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringSpilitter.cs" />

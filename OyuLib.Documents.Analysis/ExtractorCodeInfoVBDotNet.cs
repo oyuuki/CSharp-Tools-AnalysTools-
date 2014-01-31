@@ -31,7 +31,7 @@ namespace OyuLib.Documents.Analysis
             throw new NotImplementedException();
         }
 
-        public override CodeInfoMethod GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceVBDotNet source)
+        public override CodeInfoBlockBeginMethod GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceVBDotNet source)
         {
             throw new NotImplementedException();
         }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoEventMethod : CodeInfoMethod
+    public class CodeInfoEventMethod : CodeInfoBlockBeginMethod
     {
         #region instanceVal
 
@@ -15,8 +15,10 @@ namespace OyuLib.Documents
 
         #region Constructor
 
-        public CodeInfoEventMethod()
-            : base()
+        public CodeInfoEventMethod(
+            int statement,
+            int statementObject)
+            : base(statement, statementObject)
         {
             
         }
@@ -24,12 +26,14 @@ namespace OyuLib.Documents
         public CodeInfoEventMethod(
             Code code,
             CodePartsFactory coFac,
+            int statement,
+            int statementObject,
             int accessModifier,
             int name,
             int returnTypeName,
             int paramaters,
             int eve)
-            : base(code, coFac, accessModifier, name, returnTypeName, paramaters)
+            : base(code, coFac, statement, statementObject, accessModifier, name, returnTypeName, paramaters)
         {
             this._eve = eve;
         }

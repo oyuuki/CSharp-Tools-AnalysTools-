@@ -43,5 +43,3 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\RepaceSource.exe.CodeAnalysisLog.xml
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\RepaceSource.exe.lastcodeanalysissucceeded
