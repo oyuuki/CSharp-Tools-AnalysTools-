@@ -145,7 +145,8 @@ namespace TestApp
 
         private void Test(string a, StringRange str, string blank)
         {
-            this.exListBox1.Items.Add(blank + a.Substring(str.IndexStart, str.CutStringCount));
+            //this.exListBox1.Items.Add(blank + " " +  str.IndexStart + ":" + str.CutStringCount);
+            this.exListBox1.Items.Add(blank + str.GetStringSpilited());
 
             if (str.Childs == null)
             {
