@@ -130,6 +130,9 @@ namespace TestApp
             a =
                 @"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText(a = GetText(1 + 2 + 3 + .GetAllReadText(Text)))).GetText(""""test"""").Text";
 
+            a =
+                @"new SourceVBDotNet(new TextFile)";
+
             StringSpilitter s = new StringSpilitter(a);
 
             string[] aa = s.GetSpilitStringNoChilds(" ", new ManagerStringNested("(", ")"));
@@ -226,16 +229,32 @@ namespace TestApp
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
-                this.exListBox1.Items.Add(value.ToString());
-                
-            }
+                if (value is CodeInfoCallMethod)
+                {
+                    var val = (CodeInfoCallMethod) value;
 
-            foreach (var str in source.GetLineArray())
+                    this.exListBox1.Items.Add(value.ToString());
+                    this.exListBox2.Items.Add(value.CodeString);
+
+                    this.Test2(val.GetStringRangesParamaters(), "");
+                }
+            }
+        }
+
+        private void Test2(StringRange[] strRange, string kaisou)
+        {
+            foreach (var inVal in strRange)
             {
-                this.exListBox2.Items.Add(str);
-            }
-
-            
+                if (inVal.Childs != null)
+                {
+                    Test2(inVal.Childs, kaisou + "  ");
+                }
+                else
+                {
+                    this.exListBox1.Items.Add(kaisou + inVal.GetStringSpilited());
+                    this.exListBox2.Items.Add(kaisou + inVal.GetStringSpilited());
+                }
+            } 
         }
 
         private void Form1_Load(object sender, EventArgs e)

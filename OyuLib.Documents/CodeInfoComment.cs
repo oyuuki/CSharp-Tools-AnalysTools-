@@ -29,7 +29,7 @@ namespace OyuLib.Documents
 
         #region override
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
             return "コメント：" + this.CodeString;
         }

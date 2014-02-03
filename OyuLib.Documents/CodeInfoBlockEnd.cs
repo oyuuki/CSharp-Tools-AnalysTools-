@@ -43,7 +43,7 @@ namespace OyuLib.Documents
 
         #region Method
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
             return "ブロック終了：" + this.Statement;
         }

@@ -57,7 +57,7 @@ namespace OyuLib.Documents
 
         #region override
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
             return "ステートメント：　　ステートメント名" + this.Statement + "関連オブジェクト：" + this.StatementObject;
         }

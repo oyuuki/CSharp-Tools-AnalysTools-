@@ -32,7 +32,7 @@ namespace OyuLib.Documents
 
         #endregion
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
             return "CASE：";
         }

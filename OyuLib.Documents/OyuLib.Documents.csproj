@@ -71,6 +71,7 @@
     <Compile Include="CodePartsFactory.cs" />
     <Compile Include="CodePartsFactoryVBHasParams.cs" />
     <Compile Include="CodePartsFactoryVB.cs" />
+    <Compile Include="IParamater.cs" />
     <Compile Include="ISourceRule.cs" />
     <Compile Include="SourceDocumentCSharp.cs" />
     <Compile Include="Document.cs" />

@@ -40,19 +40,7 @@ namespace OyuLib
 
             foreach (var range in this.GetStringRangeSpilit(strSeparator, nStr))
             {
-                retList.Add(this.TargetString.Substring(range.IndexStart, range.CutStringCount));
-            }
-
-            return retList.ToArray();
-        }
-
-        public string[] GetSpilitStringNoChilds(ManagerStringNested nStr)
-        {
-            var retList = new List<string>();
-
-            //foreach (var range in this.GetStringRangeSpilit(nStr.GetStringRangeArray(this.TargetString), strSeparator, nStr, 0, this.TargetString.Length))
-            {
-              //  retList.Add(this.TargetString.Substring(range.IndexStart, range.CutStringCount));
+                retList.Add(range.GetStringSpilited());
             }
 
             return retList.ToArray();
@@ -81,11 +69,11 @@ namespace OyuLib
 
                     if (startIndex != stringRange.IndexStart)
                     {
-                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1, stringRange.SpilitStrings));
+                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1, stringRange.SpilitStrings, this.TargetString));
                         // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
                     }
 
-                    retlist.Add(new StringRange(stringRange.IndexStart + 1, stringRange.IndexEnd - 1));
+                    retlist.Add(new StringRange(stringRange.IndexStart + 1, stringRange.IndexEnd - 1, this.TargetString));
 
                     if (stringRange.Childs != null)
                     {
@@ -99,7 +87,7 @@ namespace OyuLib
                 }
                 else if (this.TargetString[index].ToString().Equals(strSeparator))
                 {
-                    retlist.Add(new StringRange(startIndex, index - 1, strSeparator));
+                    retlist.Add(new StringRange(startIndex, index - 1, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + 1;                    
                 }
@@ -108,7 +96,7 @@ namespace OyuLib
 
             if (startIndex < endIndex)
             {
-                retlist.Add(new StringRange(startIndex, endIndex));
+                retlist.Add(new StringRange(startIndex, endIndex, this.TargetString, this.TargetString));
                 //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 

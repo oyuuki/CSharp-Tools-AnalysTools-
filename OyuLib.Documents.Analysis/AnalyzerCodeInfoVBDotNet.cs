@@ -484,7 +484,7 @@ namespace OyuLib.Documents.Analysis
 
             paramater = methodName + 1;
 
-            return new CodeInfoCallMethod(code, coFac, methodName, paramater);
+            return new CodeInfoCallMethod(code, coFac, ",", methodName, paramater);
         }
 
         protected override bool CheckCodeInfoCallMethod(Code code)

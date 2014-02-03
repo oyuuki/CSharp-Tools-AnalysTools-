@@ -78,7 +78,7 @@ namespace OyuLib.Documents
 
         #region Abstract
 
-        public abstract string GetCodeText();
+        protected abstract string GetCodeText();
 
         #endregion
 

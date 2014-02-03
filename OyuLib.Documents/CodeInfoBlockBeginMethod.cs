@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoBlockBeginMethod : CodeInfoBlockBegin
+    public class CodeInfoBlockBeginMethod : CodeInfoBlockBegin, IParamater
     {
         #region instanceVal
 
@@ -81,13 +81,10 @@ namespace OyuLib.Documents
             get { return this._codeDelimiterParamater; }
         }
 
-        public StringRange[] Paramaters
+        public StringRange[] GetStringRangesParamaters()
         {
-            get
-            {
-                var s = new StringSpilitter(this.ParamatersString);
-                return  s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
-            }
+            var s = new StringSpilitter(this.ParamatersString);
+            return s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
         }
 
         #endregion
@@ -97,9 +94,9 @@ namespace OyuLib.Documents
 
         #region Override
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
-            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + " パラメータ：" + this.Paramaters + ParamatersString;
+            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + " パラメータ：" + this.GetStringRangesParamaters() + ParamatersString;
         }
 
         #endregion

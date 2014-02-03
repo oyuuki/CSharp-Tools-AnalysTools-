@@ -72,7 +72,7 @@ namespace OyuLib.Documents
 
         #region Override
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
             return "ローカル変数名：" + this.Name + "値：" + this.Value + "型名：" + this.TypeName + "CONST?" + this.IsConst;
         }

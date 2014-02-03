@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class CodeInfoCallMethod : CodeInfo
+    public class CodeInfoCallMethod : CodeInfo, IParamater
     {
         #region instanceVal
 
@@ -17,7 +17,10 @@ namespace OyuLib.Documents
         /// <summary>
         /// 
         /// </summary>
-        private int _paramater = -1;
+        private readonly string _codeDelimiterParamater = null;
+
+
+        private readonly int _paramater = -1;
 
         #endregion
 
@@ -32,10 +35,13 @@ namespace OyuLib.Documents
         public CodeInfoCallMethod(
             Code code,
             CodePartsFactory coFac,
+            string codeDelimiterParamater,
             int callmethodName,
             int paramater)
             : base(code, coFac)
         {
+
+            this._codeDelimiterParamater = codeDelimiterParamater;
             this._callmethodName = callmethodName;
             this._paramater = paramater;
         }
@@ -54,15 +60,31 @@ namespace OyuLib.Documents
             get { return this.GetCodePartsString(this._paramater); }
         }
 
+        private string CodeDelimiterParamater
+        {
+            get { return this._codeDelimiterParamater; }
+        }
+
+        public string ParamatersString
+        {
+            get { return this.GetCodePartsString(this._paramater); }
+        }
+
         #endregion
 
         #region Method
 
         #region override
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
-            return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.Paramater;
+            return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.GetStringRangesParamaters() + this.Paramater;
+        }
+
+        public StringRange[] GetStringRangesParamaters()
+        {
+            var s = new StringSpilitter(this.ParamatersString);
+            return s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
         }
 
         #endregion

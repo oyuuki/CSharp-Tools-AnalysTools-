@@ -54,7 +54,7 @@ namespace OyuLib.Documents
 
         #region override
 
-        public override string GetCodeText()
+        protected override string GetCodeText()
         {
             return "代入式  左辺：" + this.LeftHandSide + " 右辺：" + this.RightHandSide;
         }

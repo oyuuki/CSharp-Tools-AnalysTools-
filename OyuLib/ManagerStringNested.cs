@@ -69,7 +69,7 @@ namespace OyuLib
                     }
                     else
                     {
-                        var pare = new StringRange(index);
+                        var pare = new StringRange(index, str);
                         retlist.Add(pare);
                         isParentSwitch = true;
                     }
