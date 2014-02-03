@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public static class SyntaxStringCSharp
+    public static class SourceDocumentSyntaxCSharp
     {
         public const string CONST_ACCESSMODIFIER_PRIVATE = "private";
 

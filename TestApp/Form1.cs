@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -26,8 +27,8 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.Designer.vb").GetAllReadText());
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.Designer.vb").GetAllReadText());
+            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
 
             var filedNameList = new List<string>();
             
@@ -39,8 +40,8 @@ namespace TestApp
 
             this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
-            source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
-            mana = new ManagerAnalysisCode(source.SourceText);
+            source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
+            mana = new ManagerAnalysisCode(source);
 
             foreach (var name in filedNameList)
             {
@@ -127,9 +128,30 @@ namespace TestApp
 
             string[] aa = s.GetSpilitStringNoChilds(" ", new ManagerStringNested("(", ")"));
 
+            StringRange[] cc = s.GetStringRangeSpilit(" ", new ManagerStringNested("(", ")"));
+
             foreach (var value in aa)
             {
                 this.exListBox1.Items.Add(value);
+            }
+
+            foreach (var va in cc)
+            {
+                Test(va);
+            }
+        }
+
+        private void Test(StringRange str)
+        {
+            if (str.Childs == null)
+            {
+                this.exListBox1.Items.Add( str.IndexStart + ":" + str.IndexEnd);
+                return;
+            }
+
+            foreach (var va in str.Childs)
+            {
+                Test(va);
             }
         }
 
@@ -138,8 +160,8 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb", CharSet.ShiftJis).GetAllReadText());
+            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
@@ -164,8 +186,8 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb", CharSet.ShiftJis).GetAllReadText());
+            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
@@ -190,8 +212,9 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceVBDotNet source = new SourceVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source.SourceText);
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
+            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
+            var sourceBlock = mana.GetSource();
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
@@ -204,7 +227,7 @@ namespace TestApp
                 this.exListBox2.Items.Add(str);
             }
 
-            var sourceBlock = new SourceBlock(mana.GetVbSourceCodeAnalysis());
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)

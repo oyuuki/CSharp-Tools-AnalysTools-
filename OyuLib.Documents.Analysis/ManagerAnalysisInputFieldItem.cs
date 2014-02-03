@@ -20,9 +20,9 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        /// <param name="sourceText"></param>
-        public ManagerAnalysisInputFieldItem(string sourceText)
-            : base(sourceText)
+        /// <param name="source"></param>
+        public ManagerAnalysisInputFieldItem(SourceDocument source)
+            : base(source)
         {
             
         }
@@ -37,7 +37,7 @@ namespace OyuLib.Documents.Analysis
         public WinFrmField[] GetSourceAnalysisWinFrmFields<T>()
             where T : ManagerWinFrmField, new()
         {
-            var gene = TypeUtil.GetInstance<T>(new [] { this.SourceText });
+            var gene = TypeUtil.GetInstance<T>(new [] { this.Source.Text });
             return gene.GetWinFrmFields<ExtractorWinFrmFieldVB6>();
         }
 

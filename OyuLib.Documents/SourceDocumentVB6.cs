@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class SourceCSharp : Source
+    public class SourceDocumentVB6 : SourceDocument
     {
         #region constractor
 
-        public SourceCSharp()
+        public SourceDocumentVB6()
             : base()
         {
 
         }
 
-        public SourceCSharp(string sourceText)
+        public SourceDocumentVB6(string sourceText)
             : base(sourceText)
         {
             
@@ -25,12 +26,13 @@ namespace OyuLib.Documents
 
         #region Method
 
-        #region override
+        #region Override
 
-        public override SourceRule GetSourceRule()
+        public override SourceDocumentRule GetSourceRule()
         {
-            return new SourceRuleCSharp();
+            return new SourceDocumentRuleVB6();
         }
+
 
         #endregion
 

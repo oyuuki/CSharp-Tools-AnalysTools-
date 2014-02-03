@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OyuLib.Documents.Analysis
 {
-    public class ExtractorCodeInfoVBDotNet : ExtractorCodeInfo<SourceVBDotNet>
+    public class ExtractorCodeInfoVBDotNet : ExtractorCodeInfo<SourceDocumentVBDotNet>
     {
         #region constructor
 
-        protected ExtractorCodeInfoVBDotNet(SourceVBDotNet source)
+        protected ExtractorCodeInfoVBDotNet(SourceDocumentVBDotNet source)
             : base(source)
         {
             
@@ -21,17 +21,17 @@ namespace OyuLib.Documents.Analysis
 
         #region Override
 
-        public override CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceVBDotNet source)
+        public override CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceDocumentVBDotNet source)
         {
             throw new NotImplementedException();
         }
 
-        public override CodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, SourceVBDotNet source)
+        public override CodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, SourceDocumentVBDotNet source)
         {
             throw new NotImplementedException();
         }
 
-        public override CodeInfoBlockBeginMethod GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceVBDotNet source)
+        public override CodeInfoBlockBeginMethod GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceDocumentVBDotNet source)
         {
             throw new NotImplementedException();
         }

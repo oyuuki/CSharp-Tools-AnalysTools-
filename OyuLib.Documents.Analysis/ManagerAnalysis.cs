@@ -17,7 +17,7 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// source text
         /// </summary>
-        protected string _sourceText = null;
+        protected SourceDocument _source = null;
 
         #endregion
 
@@ -35,19 +35,19 @@ namespace OyuLib.Documents.Analysis
         /// constractor
         /// </summary>
         /// <param name="sourceText"></param>
-        public ManagerAnalysis(string sourceText)
+        public ManagerAnalysis(SourceDocument sourceText)
         {
-            this._sourceText = sourceText;
+            this._source = sourceText;
         }
 
         #endregion
 
         #region Property
 
-        public string SourceText
+        public SourceDocument Source
         {
-            get { return this._sourceText; }
-            set { this._sourceText = value;  }
+            get { return this._source; }
+            set { this._source = value;  }
         }
 
         #endregion

@@ -1,22 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Xml.Schema;
+using System.Text;
 
 namespace OyuLib.Documents
 {
-    public abstract class Source : Document, ISourceRule
+    public class Source
     {
-        #region constractor
+        #region instanceVal
 
-        protected Source()
-            : base()
+        private object[] _codeObjects = null;
+
+        private Range _range = null;
+
+        #endregion
+
+        #region Constructor
+
+        public Source(CodeInfo[] codeinfos, int startIndex, Type endType)
         {
-
+            this._codeObjects = GetCodeObjects(codeinfos, startIndex, endType);
         }
 
-        protected Source(string sourceText)
-            : base(sourceText)
+        public Source(CodeInfo[] codeinfos, int startIndex)
+            : this(codeinfos, startIndex, null)
+        {
+            
+        }
+
+        public Source(CodeInfo[] codeinfos)
+            : this(codeinfos, 0)
         {
             
         }
@@ -25,89 +39,88 @@ namespace OyuLib.Documents
 
         #region Property
 
-        public string SourceText
+        public object[] CodeObjects
         {
-            get { return this.DocumnetText; }
-            set { this.DocumnetText = value; }
+            get { return this._codeObjects; }
         }
 
-        private new string DocumentText
+        public Range Range
         {
-            get { return base.DocumnetText; }
-            set { base.DocumnetText = value; }
+            get { return this._range; }
+            private set { this._range = value; }
         }
 
         #endregion
 
         #region Method
 
-        #region Public
-
-        public Code[] GetCodes()
+        public object[] GetCodeObjects(CodeInfo[] codeinfos, int startIndex, Type endType)
         {
-            var retList = new List<Code>();
+            var objList = new List<object>();
+            Range range = null;
 
-            
-            Func<string, string> proc = (string value) =>
-            {
-                retList.Add(new Code(value));
-                return "";
-            };
+            int start = startIndex;
 
-            foreach (var codeStr in this.GetCodeStringArray())
+            int end = 0;
+
+            if (startIndex != 0)
             {
-                proc(codeStr);
+                objList.Add(codeinfos[startIndex]);
+                start++;
             }
-            
-            return retList.ToArray();
 
-        }
-
-        public string[] GetCodeStringArray()
-        {
-            var retList = new List<string>();
-
-            retList.Add(string.Empty);
-
-            Func<string, string> proc = (string
-                value) =>
+            for (int indexLoop = start; indexLoop < codeinfos.Length; indexLoop++)
             {
-                retList[retList.Count - 1] += value;
+                var codeInfo = codeinfos[indexLoop];
 
-                if (!ArrayUtil.IsIncludeStringEndsWith(this.GetSourceRule().GetCodeNextSeparatorStrings(), value))
+                // Search The block of head
+                if (codeInfo is CodeInfoBlockBegin)
                 {
-                    retList.Add(string.Empty);
+                    var innerSourceBlock = new Source(codeinfos, indexLoop, ((CodeInfoBlockBegin)codeInfo).GetCodeInfoBlockEndType());
+                    objList.Add(innerSourceBlock);
+                    indexLoop = innerSourceBlock.Range.IndexEnd;
+                }
+                else if ((codeInfo is CodeInfoBlockEnd) && endType != null && endType.Equals(codeInfo.GetType()))
+                {
+                    objList.Add(codeInfo);
+                    this.Range = new Range(startIndex, indexLoop);
+                    break;
                 }
                 else
                 {
-                    retList[retList.Count - 1] = retList[retList.Count - 1].Substring(0,
-                        retList[retList.Count - 1].Length - 1);
+                    // Add CodeInfo
+                    objList.Add(codeInfo);
                 }
-
-                return string.Empty;
-            };
-
-
-            foreach (var str in this.GetArrayCodeString())
-            {
-                proc(str);
             }
 
-            return retList.ToArray();
+            return objList.ToArray();
         }
 
-        private string[] GetArrayCodeString()
+        private int GetIndexPairCodeBlockEnd(
+            CodeInfo[] codeinfos, 
+            CodeInfoBlockBegin codeinfoBegin, 
+            int startindex)
         {
-            return new CharCodeManager(new CharCode(this.GetSourceRule().GetCodeEndSeparatorString())).GetSpilitString(this.SourceText);
+            int retIndex = -1;
+            Type codeInfoEndtype = codeinfoBegin.GetCodeInfoBlockEndType();
+
+            for (int indexLoop = startindex; indexLoop < codeinfos.Length; indexLoop++)
+            {
+                // Search The block of footer
+                if (codeinfos[indexLoop].GetType().Equals(codeInfoEndtype))
+                {
+                    retIndex = indexLoop;
+                    break;
+                }
+            }
+
+            if (retIndex == -1)
+            {
+                throw new Exception("Can't Find The Code of Pare with End Block Code ");
+            }
+
+            return retIndex;
         }
-
-        #endregion
-
-        #region Abstract
-
-        public abstract SourceRule GetSourceRule();
-
-        #endregion
 
         #endregion
     }

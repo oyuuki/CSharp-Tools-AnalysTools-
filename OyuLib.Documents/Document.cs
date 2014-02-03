@@ -33,7 +33,7 @@ namespace OyuLib.Documents
 
         #region Property
 
-        public string DocumnetText
+        public string Text
         {
             get { return this._text; }
             set { this._text = value; }

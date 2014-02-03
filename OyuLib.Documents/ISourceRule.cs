@@ -8,6 +8,6 @@ namespace OyuLib.Documents
 {
     public interface ISourceRule
     {
-        SourceRule GetSourceRule();
+        SourceDocumentRule GetSourceRule();
     }
 }

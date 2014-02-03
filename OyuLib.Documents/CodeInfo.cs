@@ -10,6 +10,7 @@ namespace OyuLib.Documents
         #region instanceVal
 
         private Code _code = null;
+
         private CodePartsFactory _coFac = null;
 
         #endregion
@@ -36,6 +37,11 @@ namespace OyuLib.Documents
         public string CodeString
         {
             get { return this._code.CodeString; }
+        }
+
+        public int CodeLineNumber
+        {
+            get { return this._code.CodeLineNumber; }
         }
 
         #endregion

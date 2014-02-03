@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public abstract class SourceRule
+    public abstract class SourceDocumentRule
     {
         #region public
 

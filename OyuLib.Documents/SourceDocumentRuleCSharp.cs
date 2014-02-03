@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class SourceRuleCSharp : SourceRule
+    public class SourceDocumentRuleCSharp : SourceDocumentRule
     {
         public override string GetCodeEndSeparatorString()
         {
@@ -19,11 +19,11 @@ namespace OyuLib.Documents
 
         public override string GetControlCodeBeginIf()
         {
-            return SyntaxStringCSharp.CONST_IF;
+            return SourceDocumentSyntaxCSharp.CONST_IF;
         }
         public override string GetControlCodeBeginFor()
         {
-            return SyntaxStringCSharp.CONST_FOR;
+            return SourceDocumentSyntaxCSharp.CONST_FOR;
         }
         public override string GetControlCodeEndDoWhile()
         {
@@ -32,12 +32,12 @@ namespace OyuLib.Documents
 
         public override string GetControlCodeEndIf()
         {
-            return SyntaxStringCSharp.CONST_BLOCKEND;
+            return SourceDocumentSyntaxCSharp.CONST_BLOCKEND;
         }
 
         public override string GetControlCodeEndFor()
         {
-            return SyntaxStringCSharp.CONST_BLOCKEND;
+            return SourceDocumentSyntaxCSharp.CONST_BLOCKEND;
         }
 
         public override string GetControlCodeBeginDoWhile()
@@ -64,20 +64,20 @@ namespace OyuLib.Documents
         {
             return new string[]
             {
-                SyntaxStringCSharp.CONST_ACCESSMODIFIER_PUBLIC,
-                SyntaxStringCSharp.CONST_ACCESSMODIFIER_INTERNAL,
-                SyntaxStringCSharp.CONST_ACCESSMODIFIER_PROTECTED, 
-                SyntaxStringCSharp.CONST_ACCESSMODIFIER_PRIVATE
+                SourceDocumentSyntaxCSharp.CONST_ACCESSMODIFIER_PUBLIC,
+                SourceDocumentSyntaxCSharp.CONST_ACCESSMODIFIER_INTERNAL,
+                SourceDocumentSyntaxCSharp.CONST_ACCESSMODIFIER_PROTECTED, 
+                SourceDocumentSyntaxCSharp.CONST_ACCESSMODIFIER_PRIVATE
             };
         }
 
         public override string[] GetControlStatementsString()
         {
             return new string[] { 
-                SyntaxStringCSharp.CONST_IF, 
-                SyntaxStringCSharp.CONST_FOR, 
-                SyntaxStringCSharp.CONST_WHILE, 
-                SyntaxStringCSharp.CONST_DO};
+                SourceDocumentSyntaxCSharp.CONST_IF, 
+                SourceDocumentSyntaxCSharp.CONST_FOR, 
+                SourceDocumentSyntaxCSharp.CONST_WHILE, 
+                SourceDocumentSyntaxCSharp.CONST_DO};
         }
 
         public override string[] GetCodeNextSeparatorStrings()

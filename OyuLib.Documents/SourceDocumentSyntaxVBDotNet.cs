@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public static class SyntaxStringVBDotNet
+    public static class SourceDocumentSyntaxVBDotNet
     {
         public const string CONST_METHODHEAD_SUB = "Sub";
 

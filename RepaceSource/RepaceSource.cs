@@ -113,14 +113,10 @@ namespace RepaceSource
 
         private string ReplaceSourceProcNormal2(string filePathString, DataGridViewRowCollection col)
         {
-
             TextFile sourceFile = new TextFile(filePathString);
-
             Document befSourceText = new Document(sourceFile.GetAllReadText());
 
             string retSourceText = sourceFile.GetAllReadText();
-
-
             var replaceplaceList = new List<int[]>();
 
             foreach (DataGridViewRow row in col)

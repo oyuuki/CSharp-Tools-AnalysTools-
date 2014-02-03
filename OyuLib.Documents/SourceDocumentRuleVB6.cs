@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    class SourceRuleVB6 : SourceRule
+    class SourceDocumentRuleVB6 : SourceDocumentRule
     {
         #region Method
 
@@ -23,44 +23,44 @@ namespace OyuLib.Documents
 
         public override string GetControlCodeBeginIf()
         {
-            return SyntaxStringVBDotNet.CONST_IF;
+            return SourceDocumentSyntaxVBDotNet.CONST_IF;
         }
         public override string GetControlCodeBeginFor()
         {
-            return SyntaxStringVBDotNet.CONST_FOR;
+            return SourceDocumentSyntaxVBDotNet.CONST_FOR;
         }
         public override string GetControlCodeEndDoWhile()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_LOOP;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_LOOP;
         }
         
         public override string GetControlCodeEndIf()
         {
-            return SyntaxStringVBDotNet.CONST_END;
+            return SourceDocumentSyntaxVBDotNet.CONST_END;
         }
         public override string GetControlCodeEndFor()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_NEXT;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_NEXT;
         }
 
         public override string GetControlCodeBeginDoWhile()
         {
-            return SyntaxStringVBDotNet.CONST_DO;
+            return SourceDocumentSyntaxVBDotNet.CONST_DO;
         }
 
         public override string GetControlCodeBeginCaseFomula()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_SELECT;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_SELECT;
         }
 
         public override string GetControlCodeEndCaseFomula()
         {
-            return SyntaxStringVBDotNet.CONST_END;
+            return SourceDocumentSyntaxVBDotNet.CONST_END;
         }
 
         public override string GetControlCodeCaseValue()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_CASE;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CASE;
         }
 
         public override string[] GetAccessModifiersString()
@@ -70,10 +70,10 @@ namespace OyuLib.Documents
         public override string[] GetControlStatementsString()
         {
             return new string[] { 
-                SyntaxStringVBDotNet.CONST_IF, 
-                SyntaxStringVBDotNet.CONST_FOR, 
-                SyntaxStringVBDotNet.CONST_WHILE, 
-                SyntaxStringVBDotNet.CONST_DO};
+                SourceDocumentSyntaxVBDotNet.CONST_IF, 
+                SourceDocumentSyntaxVBDotNet.CONST_FOR, 
+                SourceDocumentSyntaxVBDotNet.CONST_WHILE, 
+                SourceDocumentSyntaxVBDotNet.CONST_DO};
         }
 
         public override string[] GetCodeNextSeparatorStrings()

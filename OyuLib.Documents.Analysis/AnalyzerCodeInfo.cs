@@ -61,7 +61,7 @@ namespace OyuLib.Documents.Analysis
         private CodeInfo GetControlCodeInfo()
         {
             Code code = this.Code;
-            SourceRule rule = this.GetSourceRule();
+            SourceDocumentRule rule = this.GetSourceRule();
             CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
 
             if (this.CheckCodeInfoBlockBeginIf(code))
@@ -230,7 +230,7 @@ namespace OyuLib.Documents.Analysis
         protected abstract CodeInfoBlockBeginCaseValue GetCodeInfoBlockCaseValue(Code code);
         protected abstract bool CheckCodeInfoBlockCaseValue(Code code);
 
-        public abstract SourceRule GetSourceRule();
+        public abstract SourceDocumentRule GetSourceRule();
 
         #endregion
 

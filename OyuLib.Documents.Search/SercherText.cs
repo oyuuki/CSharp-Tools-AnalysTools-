@@ -6,16 +6,16 @@ using System.Text.RegularExpressions;
 
 namespace OyuLib.Documents.Search
 {
-    public class TextSercher : Searcher
+    public class SercherText : Searcher
     {
         #region Constructor
 
-        public TextSercher(string targetString, string targetText)
+        public SercherText(string targetString, string targetText)
             : base(targetString, targetText)
         {
             
         }
-        public TextSercher(string targetString, bool isRegex, string targetText)
+        public SercherText(string targetString, bool isRegex, string targetText)
             : base(targetString, isRegex, targetText)
         {
 

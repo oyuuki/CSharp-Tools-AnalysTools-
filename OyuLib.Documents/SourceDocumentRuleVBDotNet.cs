@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class SourceRuleVBDotNet : SourceRule
+    public class SourceDocumentRuleVBDotNet : SourceDocumentRule
     {
         #region Method
 
@@ -14,7 +14,7 @@ namespace OyuLib.Documents
 
         public string[] GetMethodHead()
         {
-            return new string[] { SyntaxStringVBDotNet.CONST_METHODHEAD_SUB, SyntaxStringVBDotNet.CONST_METHODHEAD_FUNCTION };
+            return new string[] { SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_SUB, SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION };
         }
 
         public override string GetCodeEndSeparatorString()
@@ -29,72 +29,72 @@ namespace OyuLib.Documents
 
         public override string GetControlCodeBeginIf()
         {
-            return SyntaxStringVBDotNet.CONST_IF;
+            return SourceDocumentSyntaxVBDotNet.CONST_IF;
         }
 
         public override string GetControlCodeEndIf()
         {
-            return SyntaxStringVBDotNet.CONST_END;
+            return SourceDocumentSyntaxVBDotNet.CONST_END;
         }
 
         public override string GetControlCodeBeginFor()
         {
-            return SyntaxStringVBDotNet.CONST_FOR;
+            return SourceDocumentSyntaxVBDotNet.CONST_FOR;
         }
 
         public override string GetControlCodeEndFor()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_NEXT;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_NEXT;
         }
 
         public override string GetControlCodeBeginDoWhile()
         {
-            return SyntaxStringVBDotNet.CONST_DO;
+            return SourceDocumentSyntaxVBDotNet.CONST_DO;
         }
 
         public override string GetControlCodeEndDoWhile()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_LOOP;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_LOOP;
         }
 
         public override string GetControlCodeBeginCaseFomula()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_SELECT;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_SELECT;
         }
 
         public override string GetControlCodeEndCaseFomula()
         {
-            return SyntaxStringVBDotNet.CONST_END;
+            return SourceDocumentSyntaxVBDotNet.CONST_END;
         }
 
         public override string GetControlCodeCaseValue()
         {
-            return SyntaxStringVBDotNet.CONST_STATEMENT_CASE;
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CASE;
         }
 
         public override string[] GetAccessModifiersString()
         {
             return new string[] { 
-                SyntaxStringVBDotNet.CONST_ACCESSMODIFIER_PRIVATE, 
-                SyntaxStringVBDotNet.CONST_ACCESSMODIFIER_PUBLIC, 
-                SyntaxStringVBDotNet.CONST_ACCESSMODIFIER_INTERNAL, 
-                SyntaxStringVBDotNet.CONST_ACCESSMODIFIER_PROTECTEDFRIEND,
-                SyntaxStringVBDotNet.CONST_ACCESSMODIFIER_PROTECTED, 
-                SyntaxStringVBDotNet.CONST_ACCESSMODIFIER_FRIEND,};
+                SourceDocumentSyntaxVBDotNet.CONST_ACCESSMODIFIER_PRIVATE, 
+                SourceDocumentSyntaxVBDotNet.CONST_ACCESSMODIFIER_PUBLIC, 
+                SourceDocumentSyntaxVBDotNet.CONST_ACCESSMODIFIER_INTERNAL, 
+                SourceDocumentSyntaxVBDotNet.CONST_ACCESSMODIFIER_PROTECTEDFRIEND,
+                SourceDocumentSyntaxVBDotNet.CONST_ACCESSMODIFIER_PROTECTED, 
+                SourceDocumentSyntaxVBDotNet.CONST_ACCESSMODIFIER_FRIEND,};
         }
 
         public override string[] GetControlStatementsString()
         {
             return new string[] { 
-                SyntaxStringVBDotNet.CONST_IF, 
-                SyntaxStringVBDotNet.CONST_FOR, 
-                SyntaxStringVBDotNet.CONST_WHILE, 
-                SyntaxStringVBDotNet.CONST_DO};
+                SourceDocumentSyntaxVBDotNet.CONST_IF, 
+                SourceDocumentSyntaxVBDotNet.CONST_FOR, 
+                SourceDocumentSyntaxVBDotNet.CONST_WHILE, 
+                SourceDocumentSyntaxVBDotNet.CONST_DO};
         }
 
         public override string[] GetCodeNextSeparatorStrings()
         {
-            return new string[] { SyntaxStringVBDotNet.CONST_UNDERBAR, SyntaxStringVBDotNet.CONST_COMMA };
+            return new string[] { SourceDocumentSyntaxVBDotNet.CONST_UNDERBAR, SourceDocumentSyntaxVBDotNet.CONST_COMMA };
         }
 
         #endregion

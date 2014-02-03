@@ -6,7 +6,7 @@ using System.Text;
 namespace OyuLib.Documents.Analysis
 {
     public abstract class ExtractorCodeInfo<T>
-        where T : Source, new()
+        where T : SourceDocument, new()
     {
         #region instanceVal
 

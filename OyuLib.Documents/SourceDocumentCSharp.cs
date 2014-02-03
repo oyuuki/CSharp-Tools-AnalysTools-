@@ -5,17 +5,17 @@ using System.Text;
 
 namespace OyuLib.Documents
 {
-    public class SourceVBDotNet : Source
+    public class SourceDocumentCSharp : SourceDocument
     {
         #region constractor
 
-        public SourceVBDotNet()
+        public SourceDocumentCSharp()
             : base()
         {
 
         }
 
-        public SourceVBDotNet(string sourceText)
+        public SourceDocumentCSharp(string sourceText)
             : base(sourceText)
         {
             
@@ -25,15 +25,15 @@ namespace OyuLib.Documents
 
         #region Method
 
-        #region Override
+        #region override
 
-        public override SourceRule GetSourceRule()
+        public override SourceDocumentRule GetSourceRule()
         {
-            return new SourceRuleVBDotNet();
+            return new SourceDocumentRuleCSharp();
         }
 
         #endregion
 
-        #endregion        
+        #endregion
     }
 }

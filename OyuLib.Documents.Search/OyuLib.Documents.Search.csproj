@@ -43,7 +43,8 @@
     <Compile Include="SearchItem.cs" />
     <Compile Include="SearchResult.cs" />
     <Compile Include="SearchResultItem.cs" />
-    <Compile Include="TextSercher.cs" />
+    <Compile Include="SercherSource.cs" />
+    <Compile Include="SercherText.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Collection\OyuLib.Collection.csproj">

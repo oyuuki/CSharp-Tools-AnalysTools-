@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using System.IO;
+using OyuLib.Documents;
 using OyuLib.Documents.Analysis;
 using OyuLib.IO;
 using OyuLib.Windows.Forms;
@@ -329,10 +330,10 @@ namespace AnalysisVBFormApl
             
             string filePath = exTxtSourcepath.Text;
 
-            TextFile file = new TextFile(filePath, CharSet.ShiftJis);
+            SourceDocumentVB6 source = new SourceDocumentVB6(new TextFile(filePath, CharSet.ShiftJis).GetAllReadText());
 
 
-            ManagerAnalysisInputFieldItem ana = new ManagerAnalysisInputFieldItem(file.GetAllReadText());
+            ManagerAnalysisInputFieldItem ana = new ManagerAnalysisInputFieldItem(source);
             WinFrmField[] items = ana.GetSourceAnalysisWinFrmFields<ManagerWinFrmFieldVb6>();
 
             if (items == null)

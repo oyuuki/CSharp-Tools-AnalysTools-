@@ -24,9 +24,9 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        /// <param name="sourceText"></param>
-        public ManagerAnalysisCode(string sourceText)
-            : base(sourceText)
+        /// <param name="source"></param>
+        public ManagerAnalysisCode(SourceDocument source)
+            : base(source)
         {
             
         }
@@ -37,16 +37,21 @@ namespace OyuLib.Documents.Analysis
 
         #region Public
 
+
+        public Source GetSource()
+        {
+            return new Source(this.GetVbSourceCodeAnalysis());
+        }
+
         /// <summary>
         /// Analys Code to item
         /// </summary>
         public CodeInfo[] GetVbSourceCodeAnalysis()
         {
-            var source = new SourceVBDotNet(this.SourceText);
             var isInsiteMethod = false;
             var retList = new List<CodeInfo>();
 
-            foreach (var code in source.GetCodes())
+            foreach (var code in this.Source.GetCodes())
             {
                 var ainfo = new AnalyzerCodeInfoVBDotNet(code, isInsiteMethod);
                 var codeInfo = ainfo.GetCodeInfo();

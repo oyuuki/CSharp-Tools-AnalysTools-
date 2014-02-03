@@ -17,7 +17,7 @@ namespace OyuLib.Documents.Search
         /// <summary>
         /// Target text item
         /// </summary>
-        private Document _doc = null;
+        private string _text = null;
 
         #endregion
 
@@ -29,30 +29,30 @@ namespace OyuLib.Documents.Search
             set { this._sItem = value; }
         }
 
-        public Document Doc
+        public string Doc
         {
-            get { return this._doc; }
-            set { this._doc = value; }
+            get { return this._text; }
+            set { this._text = value; }
         }
 
         #endregion
 
         #region Constructor
 
-        private Searcher(SearchItem sItem, Document doc)
+        private Searcher(SearchItem sItem, string text)
         {
             this._sItem = sItem;
-            this._doc = doc;
+            this._text = text;
         }
 
-        protected Searcher(string targetString, string targetText)
-            : this(new SearchItem(targetString), new Document(targetText))
+        protected Searcher(string targetString, string text)
+            : this(new SearchItem(targetString), text)
         {
             
         }
 
-        protected Searcher(string targetString, bool isRegex, string targetText)
-            : this(new SearchItem(targetString, isRegex), new Document(targetText))
+        protected Searcher(string targetString, bool isRegex, string text)
+            : this(new SearchItem(targetString, isRegex), text)
         {
 
         }
