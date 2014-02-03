@@ -6,16 +6,16 @@ using System.Text.RegularExpressions;
 
 namespace OyuLib.Documents.Search
 {
-    public class SercherText : Searcher
+    public class TextSercher : Searcher
     {
         #region Constructor
 
-        public SercherText(string targetString, string targetText)
+        public TextSercher(string targetString, string targetText)
             : base(targetString, targetText)
         {
             
         }
-        public SercherText(string targetString, bool isRegex, string targetText)
+        public TextSercher(string targetString, bool isRegex, string targetText)
             : base(targetString, isRegex, targetText)
         {
 
@@ -31,30 +31,23 @@ namespace OyuLib.Documents.Search
         {
             var retValue = new SearchResult();
 
-            int rownumber = 1;
-
-            foreach (var line in this.Doc.GetLineArray())
+            if (this.SItem.IsRegexincludePettern)
             {
-                if (this.SItem.IsRegexincludePettern)
-                {
-                    Regex reg = new Regex(this.SItem.TargetString);
+                Regex reg = new Regex(this.SItem.TargetString);
 
-                    foreach (Match matched in reg.Matches(line))
-                    {
-                        retValue.Add(new SearchResultItem(rownumber, matched.Index + 1, this.SItem.TargetString, line));
-                    }
-                }
-                else
+                foreach (Match matched in reg.Matches(this.Text))
                 {
-                    var index = 0;
-
-                    while ((index = line.IndexOf(this.SItem.TargetString, index)) >= 0)
-                    {
-                        retValue.Add(new SearchResultItem(rownumber, index + 1, this.SItem.TargetString, line));
-                    }
+                    retValue.Add(new SearchResultItem(this.Text, matched.Index));
                 }
-                
-                rownumber++;
+            }
+            else
+            {
+                var index = 0;
+
+                while ((index = this.Text.IndexOf(this.SItem.TargetString, index)) >= 0)
+                {
+                    retValue.Add(new SearchResultItem(this.Text, index + 1));
+                }
             }
 
             return retValue;

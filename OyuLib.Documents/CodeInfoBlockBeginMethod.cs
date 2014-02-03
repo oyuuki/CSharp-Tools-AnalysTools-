@@ -85,8 +85,8 @@ namespace OyuLib.Documents
         {
             get
             {
-                return new StringSpilitter(this.ParamatersString).GetStringRangeSpilit(
-                  new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
+                var s = new StringSpilitter(this.ParamatersString);
+                return  s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
             }
         }
 

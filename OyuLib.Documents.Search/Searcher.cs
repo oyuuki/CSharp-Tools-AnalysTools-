@@ -29,7 +29,7 @@ namespace OyuLib.Documents.Search
             set { this._sItem = value; }
         }
 
-        public string Doc
+        public string Text
         {
             get { return this._text; }
             set { this._text = value; }

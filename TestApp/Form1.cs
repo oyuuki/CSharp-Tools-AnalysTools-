@@ -124,7 +124,13 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            StringSpilitter s = new StringSpilitter(@"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText()).GetText(""""test"""").Text");
+            string a =
+                @"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText()).GetText(""""test"""").Text";
+
+            a =
+                @"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText()).GetText(""""test"""").Text";
+
+            StringSpilitter s = new StringSpilitter(a);
 
             string[] aa = s.GetSpilitStringNoChilds(" ", new ManagerStringNested("(", ")"));
 
@@ -132,26 +138,28 @@ namespace TestApp
 
             foreach (var value in aa)
             {
-                this.exListBox1.Items.Add(value);
+                // this.exListBox1.Items.Add(value);
             }
+
+            this.exListBox1.Items.Add(a);
 
             foreach (var va in cc)
             {
-                Test(va);
+                Test(a, va, "");
             }
         }
 
-        private void Test(StringRange str)
+        private void Test(string a, StringRange str, string blank)
         {
             if (str.Childs == null)
             {
-                this.exListBox1.Items.Add( str.IndexStart + ":" + str.IndexEnd);
+                this.exListBox1.Items.Add(blank + a.Substring(str.IndexStart, str.CutStringCount));
                 return;
             }
 
             foreach (var va in str.Childs)
-            {
-                Test(va);
+            {                          
+                Test(a, va, blank + "    ");
             }
         }
 

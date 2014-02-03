@@ -10,16 +10,6 @@ namespace OyuLib.Documents.Search
         #region instanceVal
 
         /// <summary>
-        /// row number Of search out Text Place
-        /// </summary>
-        private int _rowNumber = 0;
-
-        /// <summary>
-        /// column number Of searched Text Place
-        /// </summary>
-        private int _columnNumber = 0;
-
-        /// <summary>
         /// Target Text
         /// </summary>
         private string _targetText = string.Empty;
@@ -27,57 +17,40 @@ namespace OyuLib.Documents.Search
         /// <summary>
         /// Text Line that searched out
         /// </summary>
-        private string _findTextLine = string.Empty;
+        private int _findTextIndex = 0;
 
         #endregion
 
         #region Constructor
 
-        public SearchResultItem(int rowNumber,
-                                 int columnNumber,
-                                 string targetText,
-                                 string findTextLine)
+        public SearchResultItem(string targetText,
+                                 int findTextIndex)
         {
-            this._rowNumber = rowNumber;
-            this._columnNumber = columnNumber;
             this._targetText = targetText;
-            this._findTextLine = findTextLine;
+            this._findTextIndex = findTextIndex;
         }
 
 
         #endregion
 
         #region Property
-
-        public int RowNumber
-        {
-            get { return this._rowNumber; }
-            set { this._rowNumber = value; }
-        }
-
-        public int ColumnNumber
-        {
-            get { return this._columnNumber; }
-            set { this._columnNumber = value; }
-        }
-
+       
         public string TargetText
         {
             get { return this._targetText; }
             set { this._targetText = value; }
         }
 
-        public string FindTextLine
+        public int FindTextIndex
         {
-            get { return this._findTextLine; }
-            set { this._findTextLine = value; }
+            get { return this._findTextIndex; }
+            set { this._findTextIndex = value; }
         }
 
 
         #endregion
 
         #region Method
-
 
 
         #endregion

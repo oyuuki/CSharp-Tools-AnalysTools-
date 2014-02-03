@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Search
 {
-    public class SercherSource : Searcher
+    public class SercherSource 
     {
         #region instanceVal
 
