@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<ArrayOfXmlValueTypeKeyAndValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <XmlValueTypeKeyAndValue>
+    <Key>1</Key>
+    <Value>ColNo1q2w3e4r5t6y1,ColLineNumber1q2w3e4r5t6y23,ColOldText1q2w3e4r5t6y	Private Const COL_MAX As Integer = 15 'SpreadのCOL数,ColNewText1q2w3e4r5t6y	うふふ COL_MAX As Integer = 15 'SpreadのCOL数</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>3</Key>
+    <Value>ColNo1q2w3e4r5t6y3,ColLineNumber1q2w3e4r5t6y24,ColOldText1q2w3e4r5t6y	Private Const COL_HIDDEN As Integer = 11 'SpreadのHiddenのCell開始位置,ColNewText1q2w3e4r5t6y	うふふ COL_HIDDEN As Integer = 11 'SpreadのHiddenのCell開始位置</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>4</Key>
+    <Value>ColNo1q2w3e4r5t6y4,ColLineNumber1q2w3e4r5t6y25,ColOldText1q2w3e4r5t6y	Private Const PAGE_MAX As Integer = 32 '一覧表の最大行数,ColNewText1q2w3e4r5t6y	うふふ PAGE_MAX As Integer = 32 '一覧表の最大行数</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>5</Key>
+    <Value>ColNo1q2w3e4r5t6y5,ColLineNumber1q2w3e4r5t6y27,ColOldText1q2w3e4r5t6y	Private Const cmLngSTART_ROW As Integer = 14 ',ColNewText1q2w3e4r5t6y	うふふ cmLngSTART_ROW As Integer = 14 '</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>6</Key>
+    <Value>ColNo1q2w3e4r5t6y6,ColLineNumber1q2w3e4r5t6y28,ColOldText1q2w3e4r5t6y	Private Const cmLngCOL_ITEM_CTRL_NUMBER As Integer = 13 '商品管理番号,ColNewText1q2w3e4r5t6y	うふふ cmLngCOL_ITEM_CTRL_NUMBER As Integer = 13 '商品管理番号</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>7</Key>
+    <Value>ColNo1q2w3e4r5t6y7,ColLineNumber1q2w3e4r5t6y29,ColOldText1q2w3e4r5t6y	Private Const cmLngCOL_STATUS As Integer = 14 '状態フラグ,ColNewText1q2w3e4r5t6y	うふふ cmLngCOL_STATUS As Integer = 14 '状態フラグ</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>8</Key>
+    <Value>ColNo1q2w3e4r5t6y8,ColLineNumber1q2w3e4r5t6y30,ColOldText1q2w3e4r5t6y	Private Const cmLngCOL_LINE_NUMBER As Integer = 15,ColNewText1q2w3e4r5t6y	うふふ cmLngCOL_LINE_NUMBER As Integer = 15</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>9</Key>
+    <Value>ColNo1q2w3e4r5t6y9,ColLineNumber1q2w3e4r5t6y32,ColOldText1q2w3e4r5t6y	Private Const cmLngBUTTON_PRINT As Integer = 3 '明細印刷,ColNewText1q2w3e4r5t6y	うふふ cmLngBUTTON_PRINT As Integer = 3 '明細印刷</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>10</Key>
+    <Value>ColNo1q2w3e4r5t6y10,ColLineNumber1q2w3e4r5t6y33,ColOldText1q2w3e4r5t6y	Private Const cmLngBUTTON_CANCEL As Integer = 4 '発注取消,ColNewText1q2w3e4r5t6y	うふふ cmLngBUTTON_CANCEL As Integer = 4 '発注取消</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>11</Key>
+    <Value>ColNo1q2w3e4r5t6y11,ColLineNumber1q2w3e4r5t6y34,ColOldText1q2w3e4r5t6y	Private Const cmLngBUTTON_CLOSE As Integer = 99 ',ColNewText1q2w3e4r5t6y	うふふ cmLngBUTTON_CLOSE As Integer = 99 '</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>12</Key>
+    <Value>ColNo1q2w3e4r5t6y12,ColLineNumber1q2w3e4r5t6y66,ColOldText1q2w3e4r5t6y				oldShiireCodeNo = 仕入先コード.Text,ColNewText1q2w3e4r5t6y				oldShiireCodeNo = 仕入先OyuCode.Text</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>13</Key>
+    <Value>ColNo1q2w3e4r5t6y13,ColLineNumber1q2w3e4r5t6y73,ColOldText1q2w3e4r5t6y				''''''            gDispField = "コード, 名称, コード",ColNewText1q2w3e4r5t6y				''''''            gDispField = "OyuCode, 名称, OyuCode"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>14</Key>
+    <Value>ColNo1q2w3e4r5t6y14,ColLineNumber1q2w3e4r5t6y102,ColOldText1q2w3e4r5t6y				If Len(imt仕入先コード.Text) &lt;= 0 Then,ColNewText1q2w3e4r5t6y				If Len(imt仕入先OyuCode.Text) &lt;= 0 Then</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>15</Key>
+    <Value>ColNo1q2w3e4r5t6y15,ColLineNumber1q2w3e4r5t6y105,ColOldText1q2w3e4r5t6y				gSelCode = imt仕入先コード.Text,ColNewText1q2w3e4r5t6y				gSelCode = imt仕入先OyuCode.Text</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>16</Key>
+    <Value>ColNo1q2w3e4r5t6y16,ColLineNumber1q2w3e4r5t6y143,ColOldText1q2w3e4r5t6y				仕入先コード.Text = gSelCode,ColNewText1q2w3e4r5t6y				仕入先OyuCode.Text = gSelCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>17</Key>
+    <Value>ColNo1q2w3e4r5t6y17,ColLineNumber1q2w3e4r5t6y373,ColOldText1q2w3e4r5t6y			imt仕入先コード.Visible = False '2013/04/13,ColNewText1q2w3e4r5t6y			imt仕入先OyuCode.Visible = False '2013/04/13</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>18</Key>
+    <Value>ColNo1q2w3e4r5t6y18,ColLineNumber1q2w3e4r5t6y389,ColOldText1q2w3e4r5t6y			objRec = CreateObject("ADODB.RecordSet") 'SQLレコード接続 OBJECT取得,ColNewText1q2w3e4r5t6y			objRec = CreateObject("ADODB.RecordSet") 'SQLレOyuCode接続 OBJECT取得</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>19</Key>
+    <Value>ColNo1q2w3e4r5t6y19,ColLineNumber1q2w3e4r5t6y527,ColOldText1q2w3e4r5t6y		SQL = SQL &amp; "[コード] = '" &amp; 仕入先コード.Text &amp; "'",ColNewText1q2w3e4r5t6y		SQL = SQL &amp; "[OyuCode] = '" &amp; 仕入先OyuCode.Text &amp; "'"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>20</Key>
+    <Value>ColNo1q2w3e4r5t6y20,ColLineNumber1q2w3e4r5t6y679,ColOldText1q2w3e4r5t6y		Dim InputItemCode As String '商品コード,ColNewText1q2w3e4r5t6y		Dim InputItemCode As String '商品OyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>21</Key>
+    <Value>ColNo1q2w3e4r5t6y21,ColLineNumber1q2w3e4r5t6y704,ColOldText1q2w3e4r5t6y				Case 2, 3 '商品コードと枝番の入力,ColNewText1q2w3e4r5t6y				Case 2, 3 '商品OyuCodeと枝番の入力</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>22</Key>
+    <Value>ColNo1q2w3e4r5t6y22,ColLineNumber1q2w3e4r5t6y708,ColOldText1q2w3e4r5t6y					InputItemCode = Trim(.Text) '商品コード,ColNewText1q2w3e4r5t6y					InputItemCode = Trim(.Text) '商品OyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>23</Key>
+    <Value>ColNo1q2w3e4r5t6y23,ColLineNumber1q2w3e4r5t6y712,ColOldText1q2w3e4r5t6y						MsgBox("商品コードが未入力です。" &amp; vbCrLf &amp; "先に商品コードを入力して下さい。", MsgBoxStyle.Information + MsgBoxStyle.OKOnly),ColNewText1q2w3e4r5t6y						MsgBox("商品OyuCodeが未入力です。" &amp; vbCrLf &amp; "先に商品OyuCodeを入力して下さい。", MsgBoxStyle.Information + MsgBoxStyle.OKOnly)</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>24</Key>
+    <Value>ColNo1q2w3e4r5t6y24,ColLineNumber1q2w3e4r5t6y720,ColOldText1q2w3e4r5t6y							MsgBox("入力されたコードで、該当する商品がありません。", MsgBoxStyle.Information + MsgBoxStyle.OKOnly),ColNewText1q2w3e4r5t6y							MsgBox("入力されたOyuCodeで、該当する商品がありません。", MsgBoxStyle.Information + MsgBoxStyle.OKOnly)</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>25</Key>
+    <Value>ColNo1q2w3e4r5t6y25,ColLineNumber1q2w3e4r5t6y732,ColOldText1q2w3e4r5t6y							'''''                        gInputItemCode = InputItemCode          '入力した商品コードをセット,ColNewText1q2w3e4r5t6y							'''''                        gInputItemCode = InputItemCode          '入力した商品OyuCodeをセット</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>26</Key>
+    <Value>ColNo1q2w3e4r5t6y26,ColLineNumber1q2w3e4r5t6y856,ColOldText1q2w3e4r5t6y		If 仕入先コード.Text = "" Or IsDbNull(仕入先コード.Text) Then,ColNewText1q2w3e4r5t6y		If 仕入先OyuCode.Text = "" Or IsDbNull(仕入先OyuCode.Text) Then</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>27</Key>
+    <Value>ColNo1q2w3e4r5t6y27,ColLineNumber1q2w3e4r5t6y858,ColOldText1q2w3e4r5t6y			仕入先コード.Focus(),ColNewText1q2w3e4r5t6y			仕入先OyuCode.Focus()</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>28</Key>
+    <Value>ColNo1q2w3e4r5t6y28,ColLineNumber1q2w3e4r5t6y921,ColOldText1q2w3e4r5t6y			.Col = 2 '商品コード,ColNewText1q2w3e4r5t6y			.Col = 2 '商品OyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>29</Key>
+    <Value>ColNo1q2w3e4r5t6y29,ColLineNumber1q2w3e4r5t6y1017,ColOldText1q2w3e4r5t6y		If 仕入先コード.Text = "" Or IsDbNull(仕入先コード.Text) Then '仕入先未選択,ColNewText1q2w3e4r5t6y		If 仕入先OyuCode.Text = "" Or IsDbNull(仕入先OyuCode.Text) Then '仕入先未選択</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>30</Key>
+    <Value>ColNo1q2w3e4r5t6y30,ColLineNumber1q2w3e4r5t6y1031,ColOldText1q2w3e4r5t6y		'''''    Set ObjRec = CreateObject("ADODB.RecordSet")            'SQLレコード接続 OBJECT取得,ColNewText1q2w3e4r5t6y		'''''    Set ObjRec = CreateObject("ADODB.RecordSet")            'SQLレOyuCode接続 OBJECT取得</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>31</Key>
+    <Value>ColNo1q2w3e4r5t6y31,ColLineNumber1q2w3e4r5t6y1119,ColOldText1q2w3e4r5t6y		SQL = SQL &amp; "[コード] = '" &amp; 仕入先コード.Text &amp; "'",ColNewText1q2w3e4r5t6y		SQL = SQL &amp; "[OyuCode] = '" &amp; 仕入先OyuCode.Text &amp; "'"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>32</Key>
+    <Value>ColNo1q2w3e4r5t6y32,ColLineNumber1q2w3e4r5t6y1207,ColOldText1q2w3e4r5t6y		SQL = SQL &amp; ", " &amp; ShiireSakiKanriNo '仕入先コード（管理番号）,ColNewText1q2w3e4r5t6y		SQL = SQL &amp; ", " &amp; ShiireSakiKanriNo '仕入先OyuCode（管理番号）</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>33</Key>
+    <Value>ColNo1q2w3e4r5t6y33,ColLineNumber1q2w3e4r5t6y1217,ColOldText1q2w3e4r5t6y		SQL = SQL &amp; ", " &amp; gStaffNo '担当者コード,ColNewText1q2w3e4r5t6y		SQL = SQL &amp; ", " &amp; gStaffNo '担当者OyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>34</Key>
+    <Value>ColNo1q2w3e4r5t6y34,ColLineNumber1q2w3e4r5t6y1281,ColOldText1q2w3e4r5t6y				SQL = SQL &amp; ", '" &amp; .Text &amp; "'" '商品コード,ColNewText1q2w3e4r5t6y				SQL = SQL &amp; ", '" &amp; .Text &amp; "'" '商品OyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>35</Key>
+    <Value>ColNo1q2w3e4r5t6y35,ColLineNumber1q2w3e4r5t6y1454,ColOldText1q2w3e4r5t6y		仕入先コード.Text = sNull(objRec.Fields("コード")),ColNewText1q2w3e4r5t6y		仕入先OyuCode.Text = sNull(objRec.Fields("OyuCode"))</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>36</Key>
+    <Value>ColNo1q2w3e4r5t6y36,ColLineNumber1q2w3e4r5t6y1455,ColOldText1q2w3e4r5t6y		仕入先コード.ReadOnly = True,ColNewText1q2w3e4r5t6y		仕入先OyuCode.ReadOnly = True</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>37</Key>
+    <Value>ColNo1q2w3e4r5t6y37,ColLineNumber1q2w3e4r5t6y1482,ColOldText1q2w3e4r5t6y		SQL = "SELECT " &amp; " dbHachuSub.[商品コード] " &amp; ",dbHachuSub.[枝番] " &amp; ",CASE WHEN dbHachuSub.[商品名] &lt;&gt; '' THEN dbHachuSub.[商品名] ELSE mstItemMain.[名称] END AS [商品名] " &amp; ",dbHachuSub.[単位] " &amp; ",dbHachuSub.[発注数] " &amp; ",dbHachuSub.[仕入値円] " &amp; ",dbHachuSub.[発注金額円] " &amp; ",dbHachuSub.[商品管理番号] " &amp; ",dbHachuSub.[M3] " &amp; ",dbHachuSub.[状態フラグ] " &amp; ",dbHachuSub.[行番号] " &amp; ",mstItemMain.[最小カートン入数] " &amp; "FROM " &amp; "dbHachuSub " &amp; "INNER JOIN mstItemMain ON dbHachuSub.[商品管理番号] = mstItemMain.[管理番号] ",ColNewText1q2w3e4r5t6y		SQL = "SELECT " &amp; " dbHachuSub.[商品OyuCode] " &amp; ",dbHachuSub.[枝番] " &amp; ",CASE WHEN dbHachuSub.[商品名] &lt;&gt; '' THEN dbHachuSub.[商品名] ELSE mstItemMain.[名称] END AS [商品名] " &amp; ",dbHachuSub.[単位] " &amp; ",dbHachuSub.[発注数] " &amp; ",dbHachuSub.[仕入値円] " &amp; ",dbHachuSub.[発注金額円] " &amp; ",dbHachuSub.[商品管理番号] " &amp; ",dbHachuSub.[M3] " &amp; ",dbHachuSub.[状態フラグ] " &amp; ",dbHachuSub.[行番号] " &amp; ",mstItemMain.[最小カートン入数] " &amp; "FROM " &amp; "dbHachuSub " &amp; "INNER JOIN mstItemMain ON dbHachuSub.[商品管理番号] = mstItemMain.[管理番号] "</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>38</Key>
+    <Value>ColNo1q2w3e4r5t6y38,ColLineNumber1q2w3e4r5t6y1508,ColOldText1q2w3e4r5t6y				.SetText(2, .MaxRows, sNull(objRec.Fields("商品コード"))) '商品コード,ColNewText1q2w3e4r5t6y				.SetText(2, .MaxRows, sNull(objRec.Fields("商品OyuCode"))) '商品OyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>39</Key>
+    <Value>ColNo1q2w3e4r5t6y39,ColLineNumber1q2w3e4r5t6y1658,ColOldText1q2w3e4r5t6y			'''''        .Cell("G8").Value = 仕入先コード.Text,ColNewText1q2w3e4r5t6y			'''''        .Cell("G8").Value = 仕入先OyuCode.Text</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>40</Key>
+    <Value>ColNo1q2w3e4r5t6y40,ColLineNumber1q2w3e4r5t6y1776,ColOldText1q2w3e4r5t6y		SQL = SQL &amp; "[商品コード] LIKE '" &amp; wItemCode &amp; "%'",ColNewText1q2w3e4r5t6y		SQL = SQL &amp; "[商品OyuCode] LIKE '" &amp; wItemCode &amp; "%'"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>41</Key>
+    <Value>ColNo1q2w3e4r5t6y41,ColLineNumber1q2w3e4r5t6y1810,ColOldText1q2w3e4r5t6y			SQL = SQL &amp; "[商品コード] LIKE '" &amp; wItemCode &amp; "%'",ColNewText1q2w3e4r5t6y			SQL = SQL &amp; "[商品OyuCode] LIKE '" &amp; wItemCode &amp; "%'"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>42</Key>
+    <Value>ColNo1q2w3e4r5t6y42,ColLineNumber1q2w3e4r5t6y1892,ColOldText1q2w3e4r5t6y			.Col = 2 '商品コード,ColNewText1q2w3e4r5t6y			.Col = 2 '商品OyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>43</Key>
+    <Value>ColNo1q2w3e4r5t6y43,ColLineNumber1q2w3e4r5t6y1893,ColOldText1q2w3e4r5t6y			.Text = Trim(objRec.Fields("商品コード").Value),ColNewText1q2w3e4r5t6y			.Text = Trim(objRec.Fields("商品OyuCode").Value)</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>44</Key>
+    <Value>ColNo1q2w3e4r5t6y44,ColLineNumber1q2w3e4r5t6y1947,ColOldText1q2w3e4r5t6y	Private Sub 仕入先コード_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles 仕入先コード.Leave,ColNewText1q2w3e4r5t6y	Private Sub 仕入先OyuCode_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles 仕入先OyuCode.Leave</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>45</Key>
+    <Value>ColNo1q2w3e4r5t6y45,ColLineNumber1q2w3e4r5t6y1959,ColOldText1q2w3e4r5t6y		If 仕入先コード.Text = oldShiireCodeNo Then,ColNewText1q2w3e4r5t6y		If 仕入先OyuCode.Text = oldShiireCodeNo Then</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>46</Key>
+    <Value>ColNo1q2w3e4r5t6y46,ColLineNumber1q2w3e4r5t6y1963,ColOldText1q2w3e4r5t6y		If 仕入先コード.Text = "" Then,ColNewText1q2w3e4r5t6y		If 仕入先OyuCode.Text = "" Then</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>47</Key>
+    <Value>ColNo1q2w3e4r5t6y47,ColLineNumber1q2w3e4r5t6y1969,ColOldText1q2w3e4r5t6y		objRec = CreateObject("ADODB.RecordSet") 'SQLレコード接続 OBJECT取得,ColNewText1q2w3e4r5t6y		objRec = CreateObject("ADODB.RecordSet") 'SQLレOyuCode接続 OBJECT取得</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>48</Key>
+    <Value>ColNo1q2w3e4r5t6y48,ColLineNumber1q2w3e4r5t6y1973,ColOldText1q2w3e4r5t6y		SQL = SQL &amp; "[コード] = '" &amp; 仕入先コード.Text &amp; "'",ColNewText1q2w3e4r5t6y		SQL = SQL &amp; "[OyuCode] = '" &amp; 仕入先OyuCode.Text &amp; "'"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>49</Key>
+    <Value>ColNo1q2w3e4r5t6y49,ColLineNumber1q2w3e4r5t6y1989,ColOldText1q2w3e4r5t6y			仕入先コード.Focus(),ColNewText1q2w3e4r5t6y			仕入先OyuCode.Focus()</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>50</Key>
+    <Value>ColNo1q2w3e4r5t6y50,ColLineNumber1q2w3e4r5t6y1990,ColOldText1q2w3e4r5t6y			仕入先コード.Text = "",ColNewText1q2w3e4r5t6y			仕入先OyuCode.Text = ""</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>51</Key>
+    <Value>ColNo1q2w3e4r5t6y51,ColLineNumber1q2w3e4r5t6y1991,ColOldText1q2w3e4r5t6y			MsgBox("該当する仕入先情報がありませんでした。" &amp; vbCrLf &amp; "仕入先コードを確認して下さい。", MsgBoxStyle.Exclamation + MsgBoxStyle.OKOnly),ColNewText1q2w3e4r5t6y			MsgBox("該当する仕入先情報がありませんでした。" &amp; vbCrLf &amp; "仕入先OyuCodeを確認して下さい。", MsgBoxStyle.Exclamation + MsgBoxStyle.OKOnly)</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>52</Key>
+    <Value>ColNo1q2w3e4r5t6y52,ColLineNumber1q2w3e4r5t6y1994,ColOldText1q2w3e4r5t6y		gSelCode = Trim(objRec.Fields("コード").Value),ColNewText1q2w3e4r5t6y		gSelCode = Trim(objRec.Fields("OyuCode").Value)</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>53</Key>
+    <Value>ColNo1q2w3e4r5t6y53,ColLineNumber1q2w3e4r5t6y2031,ColOldText1q2w3e4r5t6y			仕入先コード.Text = gSelCode,ColNewText1q2w3e4r5t6y			仕入先OyuCode.Text = gSelCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>54</Key>
+    <Value>ColNo1q2w3e4r5t6y54,ColLineNumber1q2w3e4r5t6y21,ColOldText1q2w3e4r5t6y	Private Const cmLngBUTTON_SELECT As Integer = 0 '選択,ColNewText1q2w3e4r5t6y	うふふ cmLngBUTTON_SELECT As Integer = 0 '選択</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>55</Key>
+    <Value>ColNo1q2w3e4r5t6y55,ColLineNumber1q2w3e4r5t6y22,ColOldText1q2w3e4r5t6y	Private Const cmLngBUTTON_SEARCH As Integer = 1 '検索,ColNewText1q2w3e4r5t6y	うふふ cmLngBUTTON_SEARCH As Integer = 1 '検索</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>56</Key>
+    <Value>ColNo1q2w3e4r5t6y56,ColLineNumber1q2w3e4r5t6y23,ColOldText1q2w3e4r5t6y	Private Const cmLngBUTTON_DISPLAY As Integer = 2 '表示,ColNewText1q2w3e4r5t6y	うふふ cmLngBUTTON_DISPLAY As Integer = 2 '表示</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>57</Key>
+    <Value>ColNo1q2w3e4r5t6y57,ColLineNumber1q2w3e4r5t6y24,ColOldText1q2w3e4r5t6y	Private Const cmLngBUTTON_CLOSE As Integer = 99 '閉じる,ColNewText1q2w3e4r5t6y	うふふ cmLngBUTTON_CLOSE As Integer = 99 '閉じる</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>58</Key>
+    <Value>ColNo1q2w3e4r5t6y58,ColLineNumber1q2w3e4r5t6y26,ColOldText1q2w3e4r5t6y	Private Const cmLngCOL_MAX As Integer = 8,ColNewText1q2w3e4r5t6y	うふふ cmLngCOL_MAX As Integer = 8</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>59</Key>
+    <Value>ColNo1q2w3e4r5t6y59,ColLineNumber1q2w3e4r5t6y27,ColOldText1q2w3e4r5t6y	Private Const cmLngCOL_HIDDEN As Integer = 7,ColNewText1q2w3e4r5t6y	うふふ cmLngCOL_HIDDEN As Integer = 7</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>60</Key>
+    <Value>ColNo1q2w3e4r5t6y60,ColLineNumber1q2w3e4r5t6y71,ColOldText1q2w3e4r5t6y				'''''            gDispField = "コード, 名称, コード",ColNewText1q2w3e4r5t6y				'''''            gDispField = "OyuCode, 名称, OyuCode"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>61</Key>
+    <Value>ColNo1q2w3e4r5t6y61,ColLineNumber1q2w3e4r5t6y83,ColOldText1q2w3e4r5t6y					imtコード.Text = gSelCode,ColNewText1q2w3e4r5t6y					imtOyuCode.Text = gSelCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>62</Key>
+    <Value>ColNo1q2w3e4r5t6y62,ColLineNumber1q2w3e4r5t6y131,ColOldText1q2w3e4r5t6y	Private Sub imtコード_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles imtコード.Leave,ColNewText1q2w3e4r5t6y	Private Sub imtOyuCode_Leave(ByVal eventSender As System.Object, ByVal eventArgs As System.EventArgs) Handles imtOyuCode.Leave</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>63</Key>
+    <Value>ColNo1q2w3e4r5t6y63,ColLineNumber1q2w3e4r5t6y140,ColOldText1q2w3e4r5t6y		With imtコード,ColNewText1q2w3e4r5t6y		With imtOyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>64</Key>
+    <Value>ColNo1q2w3e4r5t6y64,ColLineNumber1q2w3e4r5t6y153,ColOldText1q2w3e4r5t6y			plStrSQL = "SELECT * FROM mstShiireSaki" &amp; " WHERE " &amp; "[コード] = '" &amp; .Text &amp; "'" &amp; ";",ColNewText1q2w3e4r5t6y			plStrSQL = "SELECT * FROM mstShiireSaki" &amp; " WHERE " &amp; "[OyuCode] = '" &amp; .Text &amp; "'" &amp; ";"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>65</Key>
+    <Value>ColNo1q2w3e4r5t6y65,ColLineNumber1q2w3e4r5t6y221,ColOldText1q2w3e4r5t6y		plStrSQL = "SELECT dbLcList.*" &amp; ",mstShiireSaki.[コード]" &amp; ",mstShiireSaki.[名称]" &amp; " FROM dbLcList" &amp; " INNER JOIN mstShiireSaki ON dbLcList.[仕入先管理番号] = mstShiireSaki.[管理番号]",ColNewText1q2w3e4r5t6y		plStrSQL = "SELECT dbLcList.*" &amp; ",mstShiireSaki.[OyuCode]" &amp; ",mstShiireSaki.[名称]" &amp; " FROM dbLcList" &amp; " INNER JOIN mstShiireSaki ON dbLcList.[仕入先管理番号] = mstShiireSaki.[管理番号]"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>66</Key>
+    <Value>ColNo1q2w3e4r5t6y66,ColLineNumber1q2w3e4r5t6y227,ColOldText1q2w3e4r5t6y		With imtコード,ColNewText1q2w3e4r5t6y		With imtOyuCode</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>67</Key>
+    <Value>ColNo1q2w3e4r5t6y67,ColLineNumber1q2w3e4r5t6y229,ColOldText1q2w3e4r5t6y				plStrSQL = plStrSQL &amp; " WHERE " &amp; "mstShiireSaki.[コード] = '" &amp; .Text &amp; "'" &amp; " AND " &amp; "dbLcList.[LC番号] &lt;&gt; ''",ColNewText1q2w3e4r5t6y				plStrSQL = plStrSQL &amp; " WHERE " &amp; "mstShiireSaki.[OyuCode] = '" &amp; .Text &amp; "'" &amp; " AND " &amp; "dbLcList.[LC番号] &lt;&gt; ''"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>68</Key>
+    <Value>ColNo1q2w3e4r5t6y68,ColLineNumber1q2w3e4r5t6y234,ColOldText1q2w3e4r5t6y		plStrSQL = plStrSQL &amp; " ORDER BY mstShiireSaki.[コード],dbLcList.[LC番号]" &amp; ",dbLcList.[日付] DESC" &amp; ",dbLcList.[管理番号] DESC" &amp; ";",ColNewText1q2w3e4r5t6y		plStrSQL = plStrSQL &amp; " ORDER BY mstShiireSaki.[OyuCode],dbLcList.[LC番号]" &amp; ",dbLcList.[日付] DESC" &amp; ",dbLcList.[管理番号] DESC" &amp; ";"</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>69</Key>
+    <Value>ColNo1q2w3e4r5t6y69,ColLineNumber1q2w3e4r5t6y245,ColOldText1q2w3e4r5t6y						.SetText(1, .MaxRows, sNull(plAdoRec.Fields("コード"))),ColNewText1q2w3e4r5t6y						.SetText(1, .MaxRows, sNull(plAdoRec.Fields("OyuCode")))</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>2</Key>
+    <Value>ColNo1q2w3e4r5t6y2,ColLineNumber1q2w3e4r5t6y,ColOldText1q2w3e4r5t6y,ColNewText1q2w3e4r5t6y</Value>
+  </XmlValueTypeKeyAndValue>
+</ArrayOfXmlValueTypeKeyAndValue>

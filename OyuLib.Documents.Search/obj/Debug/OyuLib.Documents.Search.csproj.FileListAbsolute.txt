@@ -1,0 +1,11 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.Documents.Search.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.Documents.Search.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.Collection.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.Documents.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.Collection.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.Documents.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\obj\Debug\OyuLib.Documents.Search.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\obj\Debug\OyuLib.Documents.Search.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Search\obj\Debug\OyuLib.Documents.Search.pdb

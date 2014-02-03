@@ -1,0 +1,783 @@
+<?xml version="1.0"?>
+<ArrayOfXmlValueTypeKeyAndValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <XmlValueTypeKeyAndValue>
+    <Key>2</Key>
+    <Value>ColNo1q2w3e4r5t6y2,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y137,ColOldText1q2w3e4r5t6y					.ChangeMade = False,ColNewText1q2w3e4r5t6y					.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>3</Key>
+    <Value>ColNo1q2w3e4r5t6y3,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y219,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>4</Key>
+    <Value>ColNo1q2w3e4r5t6y4,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y253,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then '明細に変化があった？,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then '明細に変化があった？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>5</Key>
+    <Value>ColNo1q2w3e4r5t6y5,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y415,ColOldText1q2w3e4r5t6y		vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y		vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>6</Key>
+    <Value>ColNo1q2w3e4r5t6y6,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y492,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>7</Key>
+    <Value>ColNo1q2w3e4r5t6y7,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y698,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>8</Key>
+    <Value>ColNo1q2w3e4r5t6y8,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y1361,ColOldText1q2w3e4r5t6y		vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y		vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>9</Key>
+    <Value>ColNo1q2w3e4r5t6y9,ColFileName1q2w3e4r5t6yfrm001001.vb,ColLineNumber1q2w3e4r5t6y2034,ColOldText1q2w3e4r5t6y			vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y			vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>10</Key>
+    <Value>ColNo1q2w3e4r5t6y10,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y200,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>11</Key>
+    <Value>ColNo1q2w3e4r5t6y11,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y275,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then '明細に変化があった？,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then '明細に変化があった？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>12</Key>
+    <Value>ColNo1q2w3e4r5t6y12,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y472,ColOldText1q2w3e4r5t6y		vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y		vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>13</Key>
+    <Value>ColNo1q2w3e4r5t6y13,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y726,ColOldText1q2w3e4r5t6y					.ChangeMade = True,ColNewText1q2w3e4r5t6y					.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>14</Key>
+    <Value>ColNo1q2w3e4r5t6y14,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y730,ColOldText1q2w3e4r5t6y					If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>15</Key>
+    <Value>ColNo1q2w3e4r5t6y15,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y803,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>16</Key>
+    <Value>ColNo1q2w3e4r5t6y16,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y1047,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>17</Key>
+    <Value>ColNo1q2w3e4r5t6y17,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y1433,ColOldText1q2w3e4r5t6y				.ChangeMade = False,ColNewText1q2w3e4r5t6y				.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>18</Key>
+    <Value>ColNo1q2w3e4r5t6y18,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y2069,ColOldText1q2w3e4r5t6y		vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y		vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>19</Key>
+    <Value>ColNo1q2w3e4r5t6y19,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y2472,ColOldText1q2w3e4r5t6y		'        vaSpread.ChangeMade = True,ColNewText1q2w3e4r5t6y		'        vaSpread.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>20</Key>
+    <Value>ColNo1q2w3e4r5t6y20,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y2478,ColOldText1q2w3e4r5t6y		vaSpread.ChangeMade = plBlnChangeMode,ColNewText1q2w3e4r5t6y		vaSpread.tetee = plBlnChangeMode,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>21</Key>
+    <Value>ColNo1q2w3e4r5t6y21,ColFileName1q2w3e4r5t6yfrm001003.vb,ColLineNumber1q2w3e4r5t6y2494,ColOldText1q2w3e4r5t6y			vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y			vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>22</Key>
+    <Value>ColNo1q2w3e4r5t6y22,ColFileName1q2w3e4r5t6yfrm001003002.vb,ColLineNumber1q2w3e4r5t6y162,ColOldText1q2w3e4r5t6y						.ChangeMade = False,ColNewText1q2w3e4r5t6y						.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>23</Key>
+    <Value>ColNo1q2w3e4r5t6y23,ColFileName1q2w3e4r5t6yfrm001003002.vb,ColLineNumber1q2w3e4r5t6y170,ColOldText1q2w3e4r5t6y				If spd船積日.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd船積日.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>24</Key>
+    <Value>ColNo1q2w3e4r5t6y24,ColFileName1q2w3e4r5t6yfrm001003002.vb,ColLineNumber1q2w3e4r5t6y473,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>25</Key>
+    <Value>ColNo1q2w3e4r5t6y25,ColFileName1q2w3e4r5t6yfrm001003002.vb,ColLineNumber1q2w3e4r5t6y539,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>26</Key>
+    <Value>ColNo1q2w3e4r5t6y26,ColFileName1q2w3e4r5t6yfrm001003002.vb,ColLineNumber1q2w3e4r5t6y1249,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>27</Key>
+    <Value>ColNo1q2w3e4r5t6y27,ColFileName1q2w3e4r5t6yfrm001007.vb,ColLineNumber1q2w3e4r5t6y311,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>28</Key>
+    <Value>ColNo1q2w3e4r5t6y28,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y136,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>29</Key>
+    <Value>ColNo1q2w3e4r5t6y29,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y221,ColOldText1q2w3e4r5t6y				If spd発注.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd発注.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>30</Key>
+    <Value>ColNo1q2w3e4r5t6y30,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y235,ColOldText1q2w3e4r5t6y				If spd発注.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd発注.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>31</Key>
+    <Value>ColNo1q2w3e4r5t6y31,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y608,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>32</Key>
+    <Value>ColNo1q2w3e4r5t6y32,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y694,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>33</Key>
+    <Value>ColNo1q2w3e4r5t6y33,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y955,ColOldText1q2w3e4r5t6y			plBlnChangeMode = .ChangeMade,ColNewText1q2w3e4r5t6y			plBlnChangeMode = .tetee,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>34</Key>
+    <Value>ColNo1q2w3e4r5t6y34,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y1158,ColOldText1q2w3e4r5t6y			.ChangeMade = plBlnChangeMode,ColNewText1q2w3e4r5t6y			.tetee = plBlnChangeMode,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>35</Key>
+    <Value>ColNo1q2w3e4r5t6y35,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y1620,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>36</Key>
+    <Value>ColNo1q2w3e4r5t6y36,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y2161,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>37</Key>
+    <Value>ColNo1q2w3e4r5t6y37,ColFileName1q2w3e4r5t6yfrm001009.vb,ColLineNumber1q2w3e4r5t6y2539,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>38</Key>
+    <Value>ColNo1q2w3e4r5t6y38,ColFileName1q2w3e4r5t6yfrm002001001.vb,ColLineNumber1q2w3e4r5t6y80,ColOldText1q2w3e4r5t6y				vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y				vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>39</Key>
+    <Value>ColNo1q2w3e4r5t6y39,ColFileName1q2w3e4r5t6yfrm002001001.vb,ColLineNumber1q2w3e4r5t6y96,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>40</Key>
+    <Value>ColNo1q2w3e4r5t6y40,ColFileName1q2w3e4r5t6yfrm002001001.vb,ColLineNumber1q2w3e4r5t6y105,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>41</Key>
+    <Value>ColNo1q2w3e4r5t6y41,ColFileName1q2w3e4r5t6yfrm002002001.vb,ColLineNumber1q2w3e4r5t6y80,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>42</Key>
+    <Value>ColNo1q2w3e4r5t6y42,ColFileName1q2w3e4r5t6yfrm002005001.vb,ColLineNumber1q2w3e4r5t6y407,ColOldText1q2w3e4r5t6y					vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y					vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>43</Key>
+    <Value>ColNo1q2w3e4r5t6y43,ColFileName1q2w3e4r5t6yfrm002005001.vb,ColLineNumber1q2w3e4r5t6y433,ColOldText1q2w3e4r5t6y				vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y				vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>44</Key>
+    <Value>ColNo1q2w3e4r5t6y44,ColFileName1q2w3e4r5t6yfrm002005001.vb,ColLineNumber1q2w3e4r5t6y550,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>45</Key>
+    <Value>ColNo1q2w3e4r5t6y45,ColFileName1q2w3e4r5t6yfrm002005001.vb,ColLineNumber1q2w3e4r5t6y569,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>46</Key>
+    <Value>ColNo1q2w3e4r5t6y46,ColFileName1q2w3e4r5t6yfrm002005001.vb,ColLineNumber1q2w3e4r5t6y721,ColOldText1q2w3e4r5t6y		vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y		vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>47</Key>
+    <Value>ColNo1q2w3e4r5t6y47,ColFileName1q2w3e4r5t6yfrm002005001.vb,ColLineNumber1q2w3e4r5t6y1171,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>48</Key>
+    <Value>ColNo1q2w3e4r5t6y48,ColFileName1q2w3e4r5t6yfrm002005001.vb,ColLineNumber1q2w3e4r5t6y4257,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>49</Key>
+    <Value>ColNo1q2w3e4r5t6y49,ColFileName1q2w3e4r5t6yfrm002006001.vb,ColLineNumber1q2w3e4r5t6y288,ColOldText1q2w3e4r5t6y				vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y				vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>50</Key>
+    <Value>ColNo1q2w3e4r5t6y50,ColFileName1q2w3e4r5t6yfrm002006001.vb,ColLineNumber1q2w3e4r5t6y343,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>51</Key>
+    <Value>ColNo1q2w3e4r5t6y51,ColFileName1q2w3e4r5t6yfrm002006001.vb,ColLineNumber1q2w3e4r5t6y405,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>52</Key>
+    <Value>ColNo1q2w3e4r5t6y52,ColFileName1q2w3e4r5t6yfrm002006001.vb,ColLineNumber1q2w3e4r5t6y424,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>53</Key>
+    <Value>ColNo1q2w3e4r5t6y53,ColFileName1q2w3e4r5t6yfrm002006001.vb,ColLineNumber1q2w3e4r5t6y969,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>54</Key>
+    <Value>ColNo1q2w3e4r5t6y54,ColFileName1q2w3e4r5t6yfrm002006001.vb,ColLineNumber1q2w3e4r5t6y1462,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>55</Key>
+    <Value>ColNo1q2w3e4r5t6y55,ColFileName1q2w3e4r5t6yfrm002010.vb,ColLineNumber1q2w3e4r5t6y90,ColOldText1q2w3e4r5t6y				If spd一覧.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd一覧.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>56</Key>
+    <Value>ColNo1q2w3e4r5t6y56,ColFileName1q2w3e4r5t6yfrm002010.vb,ColLineNumber1q2w3e4r5t6y178,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>57</Key>
+    <Value>ColNo1q2w3e4r5t6y57,ColFileName1q2w3e4r5t6yfrm002010.vb,ColLineNumber1q2w3e4r5t6y587,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>58</Key>
+    <Value>ColNo1q2w3e4r5t6y58,ColFileName1q2w3e4r5t6yfrm002010.vb,ColLineNumber1q2w3e4r5t6y813,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>59</Key>
+    <Value>ColNo1q2w3e4r5t6y59,ColFileName1q2w3e4r5t6yfrm002010.vb,ColLineNumber1q2w3e4r5t6y1075,ColOldText1q2w3e4r5t6y		spd一覧.ChangeMade = False,ColNewText1q2w3e4r5t6y		spd一覧.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>60</Key>
+    <Value>ColNo1q2w3e4r5t6y60,ColFileName1q2w3e4r5t6yfrm002013001.vb,ColLineNumber1q2w3e4r5t6y104,ColOldText1q2w3e4r5t6y				If spdヘッダ.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spdヘッダ.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>61</Key>
+    <Value>ColNo1q2w3e4r5t6y61,ColFileName1q2w3e4r5t6yfrm002013001.vb,ColLineNumber1q2w3e4r5t6y334,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>62</Key>
+    <Value>ColNo1q2w3e4r5t6y62,ColFileName1q2w3e4r5t6yfrm002013001.vb,ColLineNumber1q2w3e4r5t6y595,ColOldText1q2w3e4r5t6y		spdヘッダ.ChangeMade = False,ColNewText1q2w3e4r5t6y		spdヘッダ.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>63</Key>
+    <Value>ColNo1q2w3e4r5t6y63,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y114,ColOldText1q2w3e4r5t6y					spd一覧.ChangeMade = False,ColNewText1q2w3e4r5t6y					spd一覧.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>64</Key>
+    <Value>ColNo1q2w3e4r5t6y64,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y166,ColOldText1q2w3e4r5t6y				If spd一覧.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd一覧.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>65</Key>
+    <Value>ColNo1q2w3e4r5t6y65,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y248,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>66</Key>
+    <Value>ColNo1q2w3e4r5t6y66,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y274,ColOldText1q2w3e4r5t6y				.ChangeMade = False,ColNewText1q2w3e4r5t6y				.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>67</Key>
+    <Value>ColNo1q2w3e4r5t6y67,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y449,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>68</Key>
+    <Value>ColNo1q2w3e4r5t6y68,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y720,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>69</Key>
+    <Value>ColNo1q2w3e4r5t6y69,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y1011,ColOldText1q2w3e4r5t6y		spd一覧.ChangeMade = False,ColNewText1q2w3e4r5t6y		spd一覧.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>70</Key>
+    <Value>ColNo1q2w3e4r5t6y70,ColFileName1q2w3e4r5t6yfrm004004.vb,ColLineNumber1q2w3e4r5t6y1274,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>71</Key>
+    <Value>ColNo1q2w3e4r5t6y71,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y679,ColOldText1q2w3e4r5t6y					spd商品.ChangeMade = False,ColNewText1q2w3e4r5t6y					spd商品.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>72</Key>
+    <Value>ColNo1q2w3e4r5t6y72,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y688,ColOldText1q2w3e4r5t6y					LogOut("7.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y					LogOut("7.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>73</Key>
+    <Value>ColNo1q2w3e4r5t6y73,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y742,ColOldText1q2w3e4r5t6y					spd商品.ChangeMade = False,ColNewText1q2w3e4r5t6y					spd商品.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>74</Key>
+    <Value>ColNo1q2w3e4r5t6y74,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y754,ColOldText1q2w3e4r5t6y				spd商品.ChangeMade = False,ColNewText1q2w3e4r5t6y				spd商品.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>75</Key>
+    <Value>ColNo1q2w3e4r5t6y75,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y763,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>76</Key>
+    <Value>ColNo1q2w3e4r5t6y76,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y898,ColOldText1q2w3e4r5t6y					.ChangeMade = True,ColNewText1q2w3e4r5t6y					.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>77</Key>
+    <Value>ColNo1q2w3e4r5t6y77,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y900,ColOldText1q2w3e4r5t6y				LogOut("9.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y				LogOut("9.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>78</Key>
+    <Value>ColNo1q2w3e4r5t6y78,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y995,ColOldText1q2w3e4r5t6y				spd商品.ChangeMade = True,ColNewText1q2w3e4r5t6y				spd商品.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>79</Key>
+    <Value>ColNo1q2w3e4r5t6y79,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y996,ColOldText1q2w3e4r5t6y				LogOut("10.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y				LogOut("10.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>80</Key>
+    <Value>ColNo1q2w3e4r5t6y80,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1005,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>81</Key>
+    <Value>ColNo1q2w3e4r5t6y81,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1013,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>82</Key>
+    <Value>ColNo1q2w3e4r5t6y82,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1032,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>83</Key>
+    <Value>ColNo1q2w3e4r5t6y83,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1204,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>84</Key>
+    <Value>ColNo1q2w3e4r5t6y84,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1222,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>85</Key>
+    <Value>ColNo1q2w3e4r5t6y85,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1257,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>86</Key>
+    <Value>ColNo1q2w3e4r5t6y86,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1286,ColOldText1q2w3e4r5t6y				LogOut("1.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y				LogOut("1.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>87</Key>
+    <Value>ColNo1q2w3e4r5t6y87,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1287,ColOldText1q2w3e4r5t6y				If spd商品.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>88</Key>
+    <Value>ColNo1q2w3e4r5t6y88,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1512,ColOldText1q2w3e4r5t6y		LogOut("2.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y		LogOut("2.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>89</Key>
+    <Value>ColNo1q2w3e4r5t6y89,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1513,ColOldText1q2w3e4r5t6y		spd商品.ChangeMade = False,ColNewText1q2w3e4r5t6y		spd商品.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>90</Key>
+    <Value>ColNo1q2w3e4r5t6y90,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1618,ColOldText1q2w3e4r5t6y		LogOut("3.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y		LogOut("3.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>91</Key>
+    <Value>ColNo1q2w3e4r5t6y91,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y1741,ColOldText1q2w3e4r5t6y			spd商品.ChangeMade = False,ColNewText1q2w3e4r5t6y			spd商品.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>92</Key>
+    <Value>ColNo1q2w3e4r5t6y92,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y2685,ColOldText1q2w3e4r5t6y		Debug.Print("1.Mode:" &amp; eventArgs.Mode &amp; " ChangeMade:" &amp; eventArgs.ChangeMade),ColNewText1q2w3e4r5t6y		Debug.Print("1.Mode:" &amp; eventArgs.Mode &amp; " tetee:" &amp; eventArgs.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>93</Key>
+    <Value>ColNo1q2w3e4r5t6y93,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y2724,ColOldText1q2w3e4r5t6y		Debug.Print("2.Mode:" &amp; eventArgs.Mode &amp; " ChangeMade:" &amp; eventArgs.ChangeMade),ColNewText1q2w3e4r5t6y		Debug.Print("2.Mode:" &amp; eventArgs.Mode &amp; " tetee:" &amp; eventArgs.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>94</Key>
+    <Value>ColNo1q2w3e4r5t6y94,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y2725,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>95</Key>
+    <Value>ColNo1q2w3e4r5t6y95,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y4602,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>96</Key>
+    <Value>ColNo1q2w3e4r5t6y96,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y4763,ColOldText1q2w3e4r5t6y			spd商品.ChangeMade = True 'Spreadを強制的に修正モードにする。,ColNewText1q2w3e4r5t6y			spd商品.tetee = True 'Spreadを強制的に修正モードにする。,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>97</Key>
+    <Value>ColNo1q2w3e4r5t6y97,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y4764,ColOldText1q2w3e4r5t6y			LogOut("4.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y			LogOut("4.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>98</Key>
+    <Value>ColNo1q2w3e4r5t6y98,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y5286,ColOldText1q2w3e4r5t6y				spd商品.ChangeMade = True '強制的に修正モードにする,ColNewText1q2w3e4r5t6y				spd商品.tetee = True '強制的に修正モードにする,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>99</Key>
+    <Value>ColNo1q2w3e4r5t6y99,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y5288,ColOldText1q2w3e4r5t6y			LogOut("5.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y			LogOut("5.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>100</Key>
+    <Value>ColNo1q2w3e4r5t6y100,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y9016,ColOldText1q2w3e4r5t6y		spd商品.ChangeMade = False,ColNewText1q2w3e4r5t6y		spd商品.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>101</Key>
+    <Value>ColNo1q2w3e4r5t6y101,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y9017,ColOldText1q2w3e4r5t6y		LogOut("6.DEBUG", "spd商品.ChangeMade：" &amp; spd商品.ChangeMade),ColNewText1q2w3e4r5t6y		LogOut("6.DEBUG", "spd商品.tetee：" &amp; spd商品.tetee),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>102</Key>
+    <Value>ColNo1q2w3e4r5t6y102,ColFileName1q2w3e4r5t6yfrm004006.vb,ColLineNumber1q2w3e4r5t6y10162,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>103</Key>
+    <Value>ColNo1q2w3e4r5t6y103,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y92,ColOldText1q2w3e4r5t6y				spd諸経費.ChangeMade = False '変更モードOFF,ColNewText1q2w3e4r5t6y				spd諸経費.tetee = False '変更モードOFF,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>104</Key>
+    <Value>ColNo1q2w3e4r5t6y104,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y110,ColOldText1q2w3e4r5t6y				If spd諸経費.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd諸経費.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>105</Key>
+    <Value>ColNo1q2w3e4r5t6y105,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y123,ColOldText1q2w3e4r5t6y				If spd諸経費.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd諸経費.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>106</Key>
+    <Value>ColNo1q2w3e4r5t6y106,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y131,ColOldText1q2w3e4r5t6y				If spd諸経費.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd諸経費.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>107</Key>
+    <Value>ColNo1q2w3e4r5t6y107,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y221,ColOldText1q2w3e4r5t6y		spd諸経費.ChangeMade = False,ColNewText1q2w3e4r5t6y		spd諸経費.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>108</Key>
+    <Value>ColNo1q2w3e4r5t6y108,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y505,ColOldText1q2w3e4r5t6y		spd諸経費.ChangeMade = False,ColNewText1q2w3e4r5t6y		spd諸経費.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>109</Key>
+    <Value>ColNo1q2w3e4r5t6y109,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y798,ColOldText1q2w3e4r5t6y			spd諸経費.ChangeMade = True 'Spreadを強制的に修正モードにする。,ColNewText1q2w3e4r5t6y			spd諸経費.tetee = True 'Spreadを強制的に修正モードにする。,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>110</Key>
+    <Value>ColNo1q2w3e4r5t6y110,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y1034,ColOldText1q2w3e4r5t6y			spd諸経費.ChangeMade = True '強制的に修正モードにする,ColNewText1q2w3e4r5t6y			spd諸経費.tetee = True '強制的に修正モードにする,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>111</Key>
+    <Value>ColNo1q2w3e4r5t6y111,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y1105,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>112</Key>
+    <Value>ColNo1q2w3e4r5t6y112,ColFileName1q2w3e4r5t6yfrm004010001.vb,ColLineNumber1q2w3e4r5t6y1507,ColOldText1q2w3e4r5t6y		spd諸経費.ChangeMade = False,ColNewText1q2w3e4r5t6y		spd諸経費.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>113</Key>
+    <Value>ColNo1q2w3e4r5t6y113,ColFileName1q2w3e4r5t6yfrm004012.vb,ColLineNumber1q2w3e4r5t6y193,ColOldText1q2w3e4r5t6y				If spd商品2.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd商品2.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>114</Key>
+    <Value>ColNo1q2w3e4r5t6y114,ColFileName1q2w3e4r5t6yfrm004012.vb,ColLineNumber1q2w3e4r5t6y646,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>115</Key>
+    <Value>ColNo1q2w3e4r5t6y115,ColFileName1q2w3e4r5t6yfrm004012.vb,ColLineNumber1q2w3e4r5t6y1146,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>116</Key>
+    <Value>ColNo1q2w3e4r5t6y116,ColFileName1q2w3e4r5t6yfrm004012.vb,ColLineNumber1q2w3e4r5t6y1366,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>117</Key>
+    <Value>ColNo1q2w3e4r5t6y117,ColFileName1q2w3e4r5t6yfrm004012.vb,ColLineNumber1q2w3e4r5t6y1619,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>118</Key>
+    <Value>ColNo1q2w3e4r5t6y118,ColFileName1q2w3e4r5t6yfrm004016001.vb,ColLineNumber1q2w3e4r5t6y101,ColOldText1q2w3e4r5t6y				If spdヘッダ.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spdヘッダ.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>119</Key>
+    <Value>ColNo1q2w3e4r5t6y119,ColFileName1q2w3e4r5t6yfrm004016001.vb,ColLineNumber1q2w3e4r5t6y335,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>120</Key>
+    <Value>ColNo1q2w3e4r5t6y120,ColFileName1q2w3e4r5t6yfrm004016001.vb,ColLineNumber1q2w3e4r5t6y1229,ColOldText1q2w3e4r5t6y		spdヘッダ.ChangeMade = False,ColNewText1q2w3e4r5t6y		spdヘッダ.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>121</Key>
+    <Value>ColNo1q2w3e4r5t6y121,ColFileName1q2w3e4r5t6yfrm004016002.vb,ColLineNumber1q2w3e4r5t6y84,ColOldText1q2w3e4r5t6y				If spdヘッダ.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spdヘッダ.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>122</Key>
+    <Value>ColNo1q2w3e4r5t6y122,ColFileName1q2w3e4r5t6yfrm004016002.vb,ColLineNumber1q2w3e4r5t6y206,ColOldText1q2w3e4r5t6y					.ChangeMade = False,ColNewText1q2w3e4r5t6y					.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>123</Key>
+    <Value>ColNo1q2w3e4r5t6y123,ColFileName1q2w3e4r5t6yfrm004016002.vb,ColLineNumber1q2w3e4r5t6y248,ColOldText1q2w3e4r5t6y					.ChangeMade = False,ColNewText1q2w3e4r5t6y					.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>124</Key>
+    <Value>ColNo1q2w3e4r5t6y124,ColFileName1q2w3e4r5t6yfrm004016002.vb,ColLineNumber1q2w3e4r5t6y313,ColOldText1q2w3e4r5t6y			'''''        .ChangeMade = False,ColNewText1q2w3e4r5t6y			'''''        .tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>125</Key>
+    <Value>ColNo1q2w3e4r5t6y125,ColFileName1q2w3e4r5t6yfrm004016002.vb,ColLineNumber1q2w3e4r5t6y388,ColOldText1q2w3e4r5t6y		spdヘッダ.ChangeMade = False,ColNewText1q2w3e4r5t6y		spdヘッダ.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>126</Key>
+    <Value>ColNo1q2w3e4r5t6y126,ColFileName1q2w3e4r5t6yfrm004021.vb,ColLineNumber1q2w3e4r5t6y309,ColOldText1q2w3e4r5t6y				If spd売上明細.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd売上明細.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>127</Key>
+    <Value>ColNo1q2w3e4r5t6y127,ColFileName1q2w3e4r5t6yfrm004021.vb,ColLineNumber1q2w3e4r5t6y322,ColOldText1q2w3e4r5t6y				If spd売上明細.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd売上明細.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>128</Key>
+    <Value>ColNo1q2w3e4r5t6y128,ColFileName1q2w3e4r5t6yfrm004021.vb,ColLineNumber1q2w3e4r5t6y446,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>129</Key>
+    <Value>ColNo1q2w3e4r5t6y129,ColFileName1q2w3e4r5t6yfrm004021.vb,ColLineNumber1q2w3e4r5t6y475,ColOldText1q2w3e4r5t6y				If spd売上明細.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd売上明細.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>130</Key>
+    <Value>ColNo1q2w3e4r5t6y130,ColFileName1q2w3e4r5t6yfrm004021.vb,ColLineNumber1q2w3e4r5t6y1072,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>131</Key>
+    <Value>ColNo1q2w3e4r5t6y131,ColFileName1q2w3e4r5t6yfrm004021001.vb,ColLineNumber1q2w3e4r5t6y138,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>132</Key>
+    <Value>ColNo1q2w3e4r5t6y132,ColFileName1q2w3e4r5t6yfrm004021001.vb,ColLineNumber1q2w3e4r5t6y179,ColOldText1q2w3e4r5t6y				If spd売上明細.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd売上明細.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>133</Key>
+    <Value>ColNo1q2w3e4r5t6y133,ColFileName1q2w3e4r5t6yfrm004022.vb,ColLineNumber1q2w3e4r5t6y174,ColOldText1q2w3e4r5t6y				If spd一覧.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd一覧.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>134</Key>
+    <Value>ColNo1q2w3e4r5t6y134,ColFileName1q2w3e4r5t6yfrm004022.vb,ColLineNumber1q2w3e4r5t6y190,ColOldText1q2w3e4r5t6y					.ChangeMade = False,ColNewText1q2w3e4r5t6y					.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>135</Key>
+    <Value>ColNo1q2w3e4r5t6y135,ColFileName1q2w3e4r5t6yfrm004022.vb,ColLineNumber1q2w3e4r5t6y780,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>136</Key>
+    <Value>ColNo1q2w3e4r5t6y136,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y191,ColOldText1q2w3e4r5t6y						vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y						vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>137</Key>
+    <Value>ColNo1q2w3e4r5t6y137,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y200,ColOldText1q2w3e4r5t6y				'''''            If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				'''''            If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>138</Key>
+    <Value>ColNo1q2w3e4r5t6y138,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y227,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>139</Key>
+    <Value>ColNo1q2w3e4r5t6y139,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y237,ColOldText1q2w3e4r5t6y						If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y						If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>140</Key>
+    <Value>ColNo1q2w3e4r5t6y140,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y284,ColOldText1q2w3e4r5t6y						If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y						If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>141</Key>
+    <Value>ColNo1q2w3e4r5t6y141,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y356,ColOldText1q2w3e4r5t6y				If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>142</Key>
+    <Value>ColNo1q2w3e4r5t6y142,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y596,ColOldText1q2w3e4r5t6y		vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y		vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>143</Key>
+    <Value>ColNo1q2w3e4r5t6y143,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y873,ColOldText1q2w3e4r5t6y		'''''    If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y		'''''    If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>144</Key>
+    <Value>ColNo1q2w3e4r5t6y144,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y962,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>145</Key>
+    <Value>ColNo1q2w3e4r5t6y145,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y1445,ColOldText1q2w3e4r5t6y		'''''    If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y		'''''    If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>146</Key>
+    <Value>ColNo1q2w3e4r5t6y146,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y1564,ColOldText1q2w3e4r5t6y		'''''    If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y		'''''    If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>147</Key>
+    <Value>ColNo1q2w3e4r5t6y147,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y1611,ColOldText1q2w3e4r5t6y			If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y			If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>148</Key>
+    <Value>ColNo1q2w3e4r5t6y148,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y1950,ColOldText1q2w3e4r5t6y	'    vaSpread.ChangeMade = False,ColNewText1q2w3e4r5t6y	'    vaSpread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>149</Key>
+    <Value>ColNo1q2w3e4r5t6y149,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y3419,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>150</Key>
+    <Value>ColNo1q2w3e4r5t6y150,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y3545,ColOldText1q2w3e4r5t6y		If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y		If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>151</Key>
+    <Value>ColNo1q2w3e4r5t6y151,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y3654,ColOldText1q2w3e4r5t6y		If vaSpread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y		If vaSpread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>152</Key>
+    <Value>ColNo1q2w3e4r5t6y152,ColFileName1q2w3e4r5t6yfrm005001.vb,ColLineNumber1q2w3e4r5t6y4442,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>153</Key>
+    <Value>ColNo1q2w3e4r5t6y153,ColFileName1q2w3e4r5t6yfrm005003.vb,ColLineNumber1q2w3e4r5t6y1677,ColOldText1q2w3e4r5t6y	'''''Private Sub vaSpread_EditMode(ByVal Col As Long, ByVal Row As Long, ByVal Mode As Integer, ByVal ChangeMade As Boolean),ColNewText1q2w3e4r5t6y	'''''Private Sub vaSpread_EditMode(ByVal Col As Long, ByVal Row As Long, ByVal Mode As Integer, ByVal tetee As Boolean),ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>154</Key>
+    <Value>ColNo1q2w3e4r5t6y154,ColFileName1q2w3e4r5t6yfrm005003.vb,ColLineNumber1q2w3e4r5t6y1683,ColOldText1q2w3e4r5t6y	'''''    If ChangeMade = False Then          '入力が変わっていない？,ColNewText1q2w3e4r5t6y	'''''    If tetee = False Then          '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>155</Key>
+    <Value>ColNo1q2w3e4r5t6y155,ColFileName1q2w3e4r5t6yfrm005007.vb,ColLineNumber1q2w3e4r5t6y248,ColOldText1q2w3e4r5t6y						.ChangeMade = True,ColNewText1q2w3e4r5t6y						.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>156</Key>
+    <Value>ColNo1q2w3e4r5t6y156,ColFileName1q2w3e4r5t6yfrm005007.vb,ColLineNumber1q2w3e4r5t6y372,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>157</Key>
+    <Value>ColNo1q2w3e4r5t6y157,ColFileName1q2w3e4r5t6yfrm005007.vb,ColLineNumber1q2w3e4r5t6y1098,ColOldText1q2w3e4r5t6y			'''''            .ChangeMade = False,ColNewText1q2w3e4r5t6y			'''''            .tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>158</Key>
+    <Value>ColNo1q2w3e4r5t6y158,ColFileName1q2w3e4r5t6yfrm005007.vb,ColLineNumber1q2w3e4r5t6y1168,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>159</Key>
+    <Value>ColNo1q2w3e4r5t6y159,ColFileName1q2w3e4r5t6yfrm005007.vb,ColLineNumber1q2w3e4r5t6y1219,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>160</Key>
+    <Value>ColNo1q2w3e4r5t6y160,ColFileName1q2w3e4r5t6yfrm005007.vb,ColLineNumber1q2w3e4r5t6y1658,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>161</Key>
+    <Value>ColNo1q2w3e4r5t6y161,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y168,ColOldText1q2w3e4r5t6y				spd預一覧.ChangeMade = False,ColNewText1q2w3e4r5t6y				spd預一覧.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>162</Key>
+    <Value>ColNo1q2w3e4r5t6y162,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y204,ColOldText1q2w3e4r5t6y							.ChangeMade = False,ColNewText1q2w3e4r5t6y							.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>163</Key>
+    <Value>ColNo1q2w3e4r5t6y163,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y211,ColOldText1q2w3e4r5t6y					.ChangeMade = False,ColNewText1q2w3e4r5t6y					.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>164</Key>
+    <Value>ColNo1q2w3e4r5t6y164,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y229,ColOldText1q2w3e4r5t6y				If spd預一覧.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If spd預一覧.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>165</Key>
+    <Value>ColNo1q2w3e4r5t6y165,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y265,ColOldText1q2w3e4r5t6y					.ChangeMade = False,ColNewText1q2w3e4r5t6y					.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>166</Key>
+    <Value>ColNo1q2w3e4r5t6y166,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y301,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>167</Key>
+    <Value>ColNo1q2w3e4r5t6y167,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y715,ColOldText1q2w3e4r5t6y					.ChangeMade = False,ColNewText1q2w3e4r5t6y					.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>168</Key>
+    <Value>ColNo1q2w3e4r5t6y168,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y795,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>169</Key>
+    <Value>ColNo1q2w3e4r5t6y169,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y826,ColOldText1q2w3e4r5t6y					.eventArgs.ChangeMade = True,ColNewText1q2w3e4r5t6y					.eventArgs.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>170</Key>
+    <Value>ColNo1q2w3e4r5t6y170,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y834,ColOldText1q2w3e4r5t6y					.eventArgs.ChangeMade = True,ColNewText1q2w3e4r5t6y					.eventArgs.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>171</Key>
+    <Value>ColNo1q2w3e4r5t6y171,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y842,ColOldText1q2w3e4r5t6y					.eventArgs.ChangeMade = True,ColNewText1q2w3e4r5t6y					.eventArgs.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>172</Key>
+    <Value>ColNo1q2w3e4r5t6y172,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y1209,ColOldText1q2w3e4r5t6y			.ChangeMade = True,ColNewText1q2w3e4r5t6y			.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>173</Key>
+    <Value>ColNo1q2w3e4r5t6y173,ColFileName1q2w3e4r5t6yfrm005010.vb,ColLineNumber1q2w3e4r5t6y2569,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>174</Key>
+    <Value>ColNo1q2w3e4r5t6y174,ColFileName1q2w3e4r5t6yfrm006007_1.vb,ColLineNumber1q2w3e4r5t6y72,ColOldText1q2w3e4r5t6y				spd品種(0).ChangeMade = False 'SPREADの変更有無をOFF,ColNewText1q2w3e4r5t6y				spd品種(0).tetee = False 'SPREADの変更有無をOFF,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>175</Key>
+    <Value>ColNo1q2w3e4r5t6y175,ColFileName1q2w3e4r5t6yfrm006007_1.vb,ColLineNumber1q2w3e4r5t6y87,ColOldText1q2w3e4r5t6y				spd品種(0).ChangeMade = True 'SPREADの変更有無をON,ColNewText1q2w3e4r5t6y				spd品種(0).tetee = True 'SPREADの変更有無をON,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>176</Key>
+    <Value>ColNo1q2w3e4r5t6y176,ColFileName1q2w3e4r5t6yfrm006007_1.vb,ColLineNumber1q2w3e4r5t6y97,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>177</Key>
+    <Value>ColNo1q2w3e4r5t6y177,ColFileName1q2w3e4r5t6yfrm006007_1.vb,ColLineNumber1q2w3e4r5t6y383,ColOldText1q2w3e4r5t6y			.ChangeMade = False 'SPREADの変更有無をOFF    End With,ColNewText1q2w3e4r5t6y			.tetee = False 'SPREADの変更有無をOFF    End With,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>178</Key>
+    <Value>ColNo1q2w3e4r5t6y178,ColFileName1q2w3e4r5t6yfrm006012.vb,ColLineNumber1q2w3e4r5t6y794,ColOldText1q2w3e4r5t6y				If eventArgs.Mode = 0 And eventArgs.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If eventArgs.Mode = 0 And eventArgs.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>179</Key>
+    <Value>ColNo1q2w3e4r5t6y179,ColFileName1q2w3e4r5t6yfrm006014.vb,ColLineNumber1q2w3e4r5t6y207,ColOldText1q2w3e4r5t6y	''''''    If 単品Spread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y	''''''    If 単品Spread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>180</Key>
+    <Value>ColNo1q2w3e4r5t6y180,ColFileName1q2w3e4r5t6yfrm006014.vb,ColLineNumber1q2w3e4r5t6y216,ColOldText1q2w3e4r5t6y	''''''    単品Spread.ChangeMade = False,ColNewText1q2w3e4r5t6y	''''''    単品Spread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>181</Key>
+    <Value>ColNo1q2w3e4r5t6y181,ColFileName1q2w3e4r5t6yfrm006014.vb,ColLineNumber1q2w3e4r5t6y424,ColOldText1q2w3e4r5t6y		'''''    単品Spread.ChangeMade = False,ColNewText1q2w3e4r5t6y		'''''    単品Spread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>182</Key>
+    <Value>ColNo1q2w3e4r5t6y182,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y60,ColOldText1q2w3e4r5t6y				単品Spread.ChangeMade = False,ColNewText1q2w3e4r5t6y				単品Spread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>183</Key>
+    <Value>ColNo1q2w3e4r5t6y183,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y74,ColOldText1q2w3e4r5t6y				単品Spread.ChangeMade = True,ColNewText1q2w3e4r5t6y				単品Spread.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>184</Key>
+    <Value>ColNo1q2w3e4r5t6y184,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y90,ColOldText1q2w3e4r5t6y					.ChangeMade = True,ColNewText1q2w3e4r5t6y					.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>185</Key>
+    <Value>ColNo1q2w3e4r5t6y185,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y103,ColOldText1q2w3e4r5t6y					.ChangeMade = True,ColNewText1q2w3e4r5t6y					.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>186</Key>
+    <Value>ColNo1q2w3e4r5t6y186,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y108,ColOldText1q2w3e4r5t6y				If 単品Spread.ChangeMade = True Then,ColNewText1q2w3e4r5t6y				If 単品Spread.tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>187</Key>
+    <Value>ColNo1q2w3e4r5t6y187,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y160,ColOldText1q2w3e4r5t6y		単品Spread.ChangeMade = False,ColNewText1q2w3e4r5t6y		単品Spread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>188</Key>
+    <Value>ColNo1q2w3e4r5t6y188,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y222,ColOldText1q2w3e4r5t6y			単品Spread.ChangeMade = True,ColNewText1q2w3e4r5t6y			単品Spread.tetee = True,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>189</Key>
+    <Value>ColNo1q2w3e4r5t6y189,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y249,ColOldText1q2w3e4r5t6y		If eventArgs.ChangeMade = False Then '入力が変わっていない？,ColNewText1q2w3e4r5t6y		If eventArgs.tetee = False Then '入力が変わっていない？,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>190</Key>
+    <Value>ColNo1q2w3e4r5t6y190,ColFileName1q2w3e4r5t6yfrm006014001.vb,ColLineNumber1q2w3e4r5t6y1293,ColOldText1q2w3e4r5t6y		単品Spread.ChangeMade = False,ColNewText1q2w3e4r5t6y		単品Spread.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>191</Key>
+    <Value>ColNo1q2w3e4r5t6y191,ColFileName1q2w3e4r5t6yfrm008017.vb,ColLineNumber1q2w3e4r5t6y69,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>192</Key>
+    <Value>ColNo1q2w3e4r5t6y192,ColFileName1q2w3e4r5t6yfrm008017.vb,ColLineNumber1q2w3e4r5t6y339,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>193</Key>
+    <Value>ColNo1q2w3e4r5t6y193,ColFileName1q2w3e4r5t6yfrm008019.vb,ColLineNumber1q2w3e4r5t6y69,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>194</Key>
+    <Value>ColNo1q2w3e4r5t6y194,ColFileName1q2w3e4r5t6yfrm008019.vb,ColLineNumber1q2w3e4r5t6y82,ColOldText1q2w3e4r5t6y					If .ChangeMade = True Then,ColNewText1q2w3e4r5t6y					If .tetee = True Then,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>195</Key>
+    <Value>ColNo1q2w3e4r5t6y195,ColFileName1q2w3e4r5t6yfrm008019.vb,ColLineNumber1q2w3e4r5t6y459,ColOldText1q2w3e4r5t6y			.ChangeMade = False,ColNewText1q2w3e4r5t6y			.tetee = False,ColReplaceString1q2w3e4r5t6yChangeMade→tetee：</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>1</Key>
+    <Value>ColNo1q2w3e4r5t6y1,ColFileName1q2w3e4r5t6y,ColLineNumber1q2w3e4r5t6y,ColOldText1q2w3e4r5t6y,ColNewText1q2w3e4r5t6y,ColReplaceString1q2w3e4r5t6y</Value>
+  </XmlValueTypeKeyAndValue>
+</ArrayOfXmlValueTypeKeyAndValue>

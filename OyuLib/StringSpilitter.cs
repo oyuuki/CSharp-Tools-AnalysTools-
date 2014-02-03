@@ -73,6 +73,27 @@ namespace OyuLib
                         // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
                     }
 
+                    if (retlist.Count > 0)
+                    {
+                        List<StringRange> childList = null;
+
+                        if (retlist[retlist.Count - 1].Childs != null)
+                        {
+                            childList = new List<StringRange>(retlist[retlist.Count - 1].Childs);
+                        }
+                        else
+                        {
+                            childList = new List<StringRange>();
+                        }
+
+                        childList.Add(new StringRange(stringRange.IndexStart + 1, stringRange.IndexEnd - 1, this.TargetString));
+                        retlist[retlist.Count - 1].Childs = childList.ToArray();
+                    }
+                    else
+                    {
+                        retlist.Add(new StringRange(stringRange.IndexStart + 1, stringRange.IndexEnd - 1, this.TargetString));
+                    }
+
                     retlist.Add(new StringRange(stringRange.IndexStart + 1, stringRange.IndexEnd - 1, this.TargetString));
 
                     if (stringRange.Childs != null)
@@ -89,8 +110,10 @@ namespace OyuLib
                 {
                     retlist.Add(new StringRange(startIndex, index - 1, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                    startIndex = index + 1;                    
+                    startIndex = index + 1;
                 }
+
+
             }
 
 

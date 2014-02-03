@@ -1,0 +1,1 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Analysis.Source\obj\Debug\OyuLib.Document.Analysis.Source.csprojResolveAssemblyReference.cache

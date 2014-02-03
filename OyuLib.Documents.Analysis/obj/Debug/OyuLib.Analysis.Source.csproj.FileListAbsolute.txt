@@ -1,0 +1,5 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Analysis.Source\bin\Debug\OyuLib.Analysis.Source.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Analysis.Source\bin\Debug\OyuLib.Analysis.Source.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Analysis.Source\obj\Debug\OyuLib.Analysis.Source.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Analysis.Source\obj\Debug\OyuLib.Analysis.Source.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Analysis.Source\obj\Debug\OyuLib.Analysis.Source.pdb

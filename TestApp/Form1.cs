@@ -154,9 +154,11 @@ namespace TestApp
 
         private void Test(string a, StringRange str, string blank)
         {
+            this.exListBox1.Items.Add(blank + a.Substring(str.IndexStart, str.CutStringCount));
+
             if (str.Childs == null)
             {
-                this.exListBox1.Items.Add(blank + a.Substring(str.IndexStart, str.CutStringCount));
+                
                 return;
             }
 
