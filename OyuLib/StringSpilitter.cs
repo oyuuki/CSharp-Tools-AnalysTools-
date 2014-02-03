@@ -85,7 +85,7 @@ namespace OyuLib
                         // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
                     }
 
-                    retlist.Add(new StringRange(stringRange));
+                    retlist.Add(new StringRange(stringRange.IndexStart + 1, stringRange.IndexEnd - 1));
 
                     if (stringRange.Childs != null)
                     {
@@ -99,7 +99,7 @@ namespace OyuLib
                 }
                 else if (this.TargetString[index].ToString().Equals(strSeparator))
                 {
-                    retlist.Add(new StringRange(startIndex, index, strSeparator));
+                    retlist.Add(new StringRange(startIndex, index - 1, strSeparator));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + 1;                    
                 }
