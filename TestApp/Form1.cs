@@ -130,21 +130,12 @@ namespace TestApp
             a =
                 @"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText(a = GetText(1 + 2 + 3 + .GetAllReadText(Text)))).GetText(""""test"""").Text";
 
-            a =
-                @"new SourceVBDotNet(new TextFile)";
 
             StringSpilitter s = new StringSpilitter(a);
 
-            string[] aa = s.GetSpilitStringNoChilds(" ", new ManagerStringNested("(", ")"));
+            StringRange[] cc = s.GetHierarchicalStringWithRangeSpilit(" ", new ManagerStringNested("(", ")"));
 
-            StringRange[] cc = s.GetStringRangeSpilit(" ", new ManagerStringNested("(", ")"));
-
-            foreach (var value in aa)
-            {
-                // this.exListBox1.Items.Add(value);
-            }
-
-            this.exListBox1.Items.Add(a);
+            // this.exListBox1.Items.Add(a);
 
             foreach (var va in cc)
             {
@@ -158,7 +149,6 @@ namespace TestApp
 
             if (str.Childs == null)
             {
-                
                 return;
             }
 
@@ -229,6 +219,7 @@ namespace TestApp
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
             var sourceBlock = mana.GetSource();
 
+           
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
                 if (value is CodeInfoCallMethod)

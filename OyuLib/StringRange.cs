@@ -37,7 +37,6 @@ namespace OyuLib
         {
             this._spilitStrings = spilitStrings;
             this._targetString = targetString;
-            
         }
 
         public StringRange(
