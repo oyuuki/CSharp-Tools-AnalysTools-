@@ -60,6 +60,11 @@ namespace OyuLib.Documents.Sources.Analysis
             return this._coFac.GetCodeParts()[index];
         }
 
+        protected string GetTemplateString()
+        {
+            return this._coFac.GetTemplateString(this.GetCodePartsIndex());
+        }
+
         public string[] CodeParts()
         {
             return this._coFac.GetCodeParts();
@@ -79,6 +84,8 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Abstract
 
         protected abstract string GetCodeText();
+        protected abstract int[] GetCodePartsIndex();
+
 
         #endregion
 

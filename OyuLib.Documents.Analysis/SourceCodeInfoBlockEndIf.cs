@@ -25,6 +25,11 @@ namespace OyuLib.Documents.Sources.Analysis
             
         }
 
+        protected override int[] GetCodePartsIndex()
+        {
+            throw new Exception("TODO：未実装");
+        }
+
         #endregion
     }
 }

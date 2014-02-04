@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -75,6 +76,11 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override string GetCodeText()
         {
             return "ローカル変数名：" + this.Name + "値：" + this.Value + "型名：" + this.TypeName + "CONST?" + this.IsConst;
+        }
+
+        protected override int[] GetCodePartsIndex()
+        {
+            return new int[] { this._value, this._name, this._typeName };
         }
 
         #endregion

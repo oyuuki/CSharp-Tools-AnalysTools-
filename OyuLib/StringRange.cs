@@ -9,7 +9,8 @@ namespace OyuLib
     {
         #region InstanceVal
 
-        private string[] _spilitStrings = null;
+        private string _spilitSeparatorStart = null;
+        private string _spilitSeparatorEnd = null;
         private StringRange[] _childs = null;
 
         private readonly string _targetString = string.Empty;
@@ -21,9 +22,9 @@ namespace OyuLib
         public StringRange(
             int indexStart,
             int indexEnd,
-            string spilitString,
+            string spilitStringStart,
             string targetString)
-            : this(indexStart, indexEnd, new string[] { spilitString }, targetString)
+            : this(indexStart, indexEnd, spilitStringStart, string.Empty, targetString)
         {
             
         }
@@ -31,42 +32,29 @@ namespace OyuLib
         public StringRange(
             int indexStart,
             int indexEnd,
-            string[] spilitStrings,
+            string spilitStringStart,
+            string spilitStringEnd,
             string targetString)
             : base(indexStart, indexEnd)
         {
-            this._spilitStrings = spilitStrings;
+            this._spilitSeparatorStart = spilitStringStart;
+            this._spilitSeparatorEnd = spilitStringEnd;
             this._targetString = targetString;
         }
 
         public StringRange(
             int indexStart,
-            int indexEnd,
+            string spilitStringStart,
+            string spilitStringEnd,
             string targetString)
-            : this(indexStart, indexEnd, new string[]{}, targetString)
-        {
-        }
-
-        public StringRange(
-            int indexStart,
-            string spilitString,
-            string targetString)
-            : this(indexStart, -1, new string[] { spilitString }, targetString)
-        {
-            
-        }
-
-        public StringRange(
-            int indexStart,
-            string targetString)
-            : this(indexStart, -1, new string[] { }, targetString)            
+            : this(indexStart, -1, spilitStringStart, spilitStringEnd, targetString)
         {
             
         }
 
         public StringRange(
             StringRange range)
-            : this(range.IndexStart, range.IndexEnd, range.SpilitStrings, range.TargetString)
+            : this(range.IndexStart, range.IndexEnd, range.SpilitSeparatorStart, range.SpilitSeparatorEnd, range.TargetString)
         {
             
         }
@@ -75,10 +63,16 @@ namespace OyuLib
 
         #region Property
 
-        public string[] SpilitStrings
+        public string SpilitSeparatorStart
         {
-            get { return this._spilitStrings; }
-            set { this._spilitStrings = value; }
+            get { return this._spilitSeparatorStart; }
+            set { this._spilitSeparatorStart = value; }
+        }
+
+        public string SpilitSeparatorEnd
+        {
+            get { return this._spilitSeparatorEnd; }
+            set { this._spilitSeparatorEnd = value; }
         }
 
         public StringRange[] Childs
@@ -97,19 +91,25 @@ namespace OyuLib
             get { return this._targetString; }
         }
 
-        public bool GetIsSpilitStrings(string[] spilitStrings)
+        public bool GetIsSpilitStrings(string spilitStringStart, string spilitStringEnd)
         {
-            if (this.SpilitStrings.Length != spilitStrings.Length)
+            if (!this.GetIsSpilitStringStart(spilitStringStart)
+                || !this.SpilitSeparatorEnd.Equals(spilitStringEnd))
             {
                 return false;
             }
 
-            return ArrayUtil.IsIncludeAllStringsInArray(this.SpilitStrings, spilitStrings);
+            return true;
         }
 
-        public bool GetIsSpilitStrings(string spilitString)
+        public bool GetIsSpilitStringStart(string spilitStringStart)
         {
-            return this.GetIsSpilitStrings(new string[] {spilitString});
+            if (!this.SpilitSeparatorStart.Equals(spilitStringStart))
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public string GetStringSpilited()

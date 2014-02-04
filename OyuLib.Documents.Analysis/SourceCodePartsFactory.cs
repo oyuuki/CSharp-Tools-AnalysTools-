@@ -50,6 +50,27 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
+        #region Private
+
+        private string GetStringWithOutComment()
+        {
+            var str = string.Empty;
+            var commentStartIndex = this.GetCommentStartindex();
+
+            if (commentStartIndex >= 0)
+            {
+                str = this.TrimCodeString.Substring(0, commentStartIndex);
+            }
+            else
+            {
+                str = this.TrimCodeString;
+            }
+
+            return str;
+        }
+
+        #endregion
+
         #region Public
 
         public bool IsFirstStringIsValue(string value)
@@ -107,28 +128,56 @@ namespace OyuLib.Documents.Sources.Analysis
             return -1;
         }
 
-        #endregion
-
-        #region Virtual
-
         public string[] GetCodeParts()
         {
-            var str = string.Empty;
-            var commentStartIndex = this.GetCommentStartindex();
+            string strWithoutComment = this.GetStringWithOutComment();
 
-            if (commentStartIndex >= 0)
-            {
-                str = this.TrimCodeString.Substring(0, commentStartIndex);
-            }
-            else
-            {
-                str = this.TrimCodeString;
-            }
+            string[] codeparts = new StringSpilitter(
+                strWithoutComment).GetSpilitStringNoChilds(
+                this.GetCodePartsRanges(strWithoutComment));
 
-            return this.GetCodePartsWithOutComment(str);
+            return codeparts;
         }
 
-        protected abstract string[] GetCodePartsWithOutComment(string withOutComment);
+        public string GetTemplateString(int[] codepartsIndex)
+        {
+            string str = this.GetStringWithOutComment();
+
+            StringRange[] ranges = this.GetCodePartsRanges(str);
+            StringBuilder strBu = new StringBuilder();
+
+            for (int index = 0; index > ranges.Length; index++)
+            {
+                bool isParts = false;
+
+                strBu.Append(ranges[index].SpilitSeparatorStart);
+
+                foreach (var indexVal in codepartsIndex)
+                {
+                    if (indexVal == index)
+                    {
+                        strBu.Append("{<<<" + indexVal + ">>>}");
+                        isParts = true;
+                        break;
+                    }
+                }
+
+                if (!isParts)
+                {
+                    strBu.Append(ranges[index]);
+                }
+
+                strBu.Append(ranges[index].SpilitSeparatorEnd);
+            }
+
+            return null;
+        }
+
+        #endregion
+
+        #region Abstract
+
+        protected abstract StringRange[] GetCodePartsRanges(string withOutComment);
 
         protected abstract int GetCommentStartindex();
 

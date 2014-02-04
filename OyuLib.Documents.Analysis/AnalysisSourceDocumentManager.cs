@@ -95,41 +95,6 @@ namespace OyuLib.Documents.Sources.Analysis
             return (SourceCodeInfoBlockBegin) blockInfo.CodeObjects[0];
         }
 
-        protected T[] GetSourceCodeInfos<T>(object[] codeobjects)
-        {
-            var retList = new List<T>();
-
-            foreach (var codeInfo in codeobjects)
-            {
-                if (codeInfo is SourceCodeblockInfo)
-                {
-                    retList.AddRange(GetSourceCodeInfos<T>(((SourceCodeblockInfo)codeInfo).CodeObjects));
-                }
-                else if (codeInfo is T)
-                {
-                    retList.Add((T)codeInfo);
-                }
-            }
-
-            return retList.ToArray();
-        }
-
-        protected SourceCodeblockInfo[] GetSourceCodeblockInfo(object[] codeobjects)
-        {
-            var retList = new List<SourceCodeblockInfo>();
-
-            foreach (var codeInfo in codeobjects)
-            {
-                if (codeInfo is SourceCodeblockInfo)
-                {
-                    retList.Add((SourceCodeblockInfo)codeInfo);
-                    retList.AddRange(GetSourceCodeblockInfo(((SourceCodeblockInfo)codeInfo).CodeObjects));
-                }
-            }
-
-            return retList.ToArray();
-        }
-
         #region CodeObjects
 
         private void SetCodeObjects()
@@ -214,6 +179,41 @@ namespace OyuLib.Documents.Sources.Analysis
         #endregion
 
         #region Protected
+
+        protected T[] GetSourceCodeInfos<T>(object[] codeobjects)
+        {
+            var retList = new List<T>();
+
+            foreach (var codeInfo in codeobjects)
+            {
+                if (codeInfo is SourceCodeblockInfo)
+                {
+                    retList.AddRange(GetSourceCodeInfos<T>(((SourceCodeblockInfo)codeInfo).CodeObjects));
+                }
+                else if (codeInfo is T)
+                {
+                    retList.Add((T)codeInfo);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        protected SourceCodeblockInfo[] GetSourceCodeblockInfo(object[] codeobjects)
+        {
+            var retList = new List<SourceCodeblockInfo>();
+
+            foreach (var codeInfo in codeobjects)
+            {
+                if (codeInfo is SourceCodeblockInfo)
+                {
+                    retList.Add((SourceCodeblockInfo)codeInfo);
+                    retList.AddRange(GetSourceCodeblockInfo(((SourceCodeblockInfo)codeInfo).CodeObjects));
+                }
+            }
+
+            return retList.ToArray();
+        }
 
         protected T[] GetSourceCodeInfos<T>()
         {
@@ -358,9 +358,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
-        #endregion
-        
-        
+        #endregion 
         //     式コードを取得
         //     コールメソッドコードを取得
       

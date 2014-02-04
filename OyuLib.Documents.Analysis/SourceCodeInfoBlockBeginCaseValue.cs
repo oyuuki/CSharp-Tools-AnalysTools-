@@ -36,5 +36,10 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             return "CASE：";
         }
+
+        protected override int[] GetCodePartsIndex()
+        {
+            return new int[] { this._value };
+        }
     }
 }

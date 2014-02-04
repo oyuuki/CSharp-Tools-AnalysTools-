@@ -66,6 +66,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public abstract Type GetCodeInfoBlockEndType();
 
+        protected override int[] GetCodePartsIndex()
+        {
+            return new int[] { this._statement, this._statementObject };
+        }
+
         #endregion
     }
 }

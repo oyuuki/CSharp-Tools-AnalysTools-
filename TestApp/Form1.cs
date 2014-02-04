@@ -173,7 +173,10 @@ namespace TestApp
             this.exListBox2.Items.Clear();
 
             var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
-
+            foreach (var codeinfo in mana.CodeObjects)
+            {
+                this.exListBox1.Items.Add(codeinfo.ToString());
+            }
            
         }
 

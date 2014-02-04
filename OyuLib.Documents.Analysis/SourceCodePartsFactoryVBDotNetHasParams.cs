@@ -23,10 +23,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region OverRide
 
-        protected override string[] GetCodePartsWithOutComment(string withOutComment)
+        protected override StringRange[] GetCodePartsRanges(string withOutComment)
         {
             return
-                new StringSpilitter(this.TrimCodeString).GetSpilitStringNoChilds(
+                new StringSpilitter(withOutComment).GetStringRangeSpilit(
                     new CharCode(this.CodeDelimiter).GetCharCodeString(), new ManagerStringNested("(", ")"));
         }
 

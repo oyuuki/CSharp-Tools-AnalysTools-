@@ -34,6 +34,11 @@ namespace OyuLib.Documents.Sources.Analysis
             return "コメント：" + this.CodeString;
         }
 
+        protected override int[] GetCodePartsIndex()
+        {
+            throw new Exception("TODO：未実装");
+        }
+
         #endregion
 
         #endregion

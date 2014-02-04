@@ -59,6 +59,11 @@ namespace OyuLib.Documents.Sources.Analysis
             return "代入式  左辺：" + this.LeftHandSide + " 右辺：" + this.RightHandSide;
         }
 
+        protected override int[] GetCodePartsIndex()
+        {
+            return　new int[] { this._rightHandSide, this._leftHandSide };
+        }
+
         #endregion
 
         #endregion

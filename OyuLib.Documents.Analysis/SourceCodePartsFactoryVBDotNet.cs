@@ -24,9 +24,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override string[] GetCodePartsWithOutComment(string withOutComment)
+        protected override StringRange[] GetCodePartsRanges(string withOutComment)
         {
-            return new CharCodeManager(new CharCode(this.CodeDelimiter)).GetSpilitString(withOutComment);
+            return
+                new StringSpilitter(withOutComment).GetStringRangeSpilit(
+                    new CharCode(this.CodeDelimiter).GetCharCodeString());
         }
 
         protected override int GetCommentStartindex()
@@ -39,12 +41,12 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var range in rangeList.Reverse())
             {
-                if (range.GetIsSpilitStrings(new string[]{"\"", "\""}))
+                if (range.GetIsSpilitStrings("\"", "\""))
                 {
                     break;
                 }
 
-                if (range.GetIsSpilitStrings("'"))
+                if (range.GetIsSpilitStringStart("'"))
                 {
                     commentStringIndex = range.IndexEnd;
                 }

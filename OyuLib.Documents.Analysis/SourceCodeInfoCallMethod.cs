@@ -74,6 +74,16 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
+        #region Public
+
+        public StringRange[] GetStringRangesParamaters()
+        {
+            var s = new StringSpilitter(this.ParamatersString);
+            return s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
+        }
+
+        #endregion
+
         #region override
 
         protected override string GetCodeText()
@@ -81,10 +91,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.GetStringRangesParamaters() + this.Paramater;
         }
 
-        public StringRange[] GetStringRangesParamaters()
+        protected override int[] GetCodePartsIndex()
         {
-            var s = new StringSpilitter(this.ParamatersString);
-            return s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
+            return new int[] { this._callmethodName, this._paramater };
         }
 
         #endregion
