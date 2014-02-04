@@ -40,57 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code.cs" />
-    <Compile Include="CodeInfo.cs" />
-    <Compile Include="CodeInfoBlockBegin.cs" />
-    <Compile Include="CodeInfoBlockBeginCaseFormula.cs" />
-    <Compile Include="CodeInfoBlockBeginCaseValue.cs" />
-    <Compile Include="CodeInfoBlockBeginDoWhile.cs" />
-    <Compile Include="CodeInfoBlockBeginWithVB.cs" />
-    <Compile Include="CodeInfoBlockEndCaseFormula.cs" />
-    <Compile Include="CodeInfoBlockEndCaseValue.cs" />
-    <Compile Include="CodeInfoBlockEndDoWhile.cs.cs" />
-    <Compile Include="CodeInfoBlockEnd.cs" />
-    <Compile Include="CodeInfoBlockBeginFor.cs" />
-    <Compile Include="CodeInfoBlockEndFor.cs" />
-    <Compile Include="CodeInfoBlockBeginIf.cs" />
-    <Compile Include="CodeInfoBlockEndIf.cs" />
-    <Compile Include="CodeInfoBlockEndMethod.cs" />
-    <Compile Include="CodeInfoBlockEndWithVB.cs" />
-    <Compile Include="CodeInfoBlockFunctionEndVB.cs" />
-    <Compile Include="CodeInfoBlockSubEndVB.cs" />
-    <Compile Include="CodeInfoCallMethod.cs" />
-    <Compile Include="CodeInfoComment.cs" />
-    <Compile Include="CodeInfoEventMethod.cs" />
-    <Compile Include="CodeInfoMemberVariable.cs" />
-    <Compile Include="CodeInfoBlockBeginMethod.cs" />
-    <Compile Include="CodeInfoOther.cs" />
-    <Compile Include="CodeInfoOptionParameters.cs" />
-    <Compile Include="CodeInfoSubstitution.cs" />
-    <Compile Include="CodeInfoValiable.cs" />
-    <Compile Include="CodePartsFactory.cs" />
-    <Compile Include="CodePartsFactoryVBHasParams.cs" />
-    <Compile Include="CodePartsFactoryVB.cs" />
-    <Compile Include="IParamater.cs" />
-    <Compile Include="ISourceRule.cs" />
-    <Compile Include="SourceDocumentCSharp.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="DocumentItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DocumentitemSentence.cs" />
-    <Compile Include="SourceDocument.cs" />
     <Compile Include="DocumentItemWritting.cs" />
-    <Compile Include="SourceDocumentRule.cs" />
-    <Compile Include="SourceDocumentRuleCSharp.cs" />
-    <Compile Include="SourceDocumentRuleVB6.cs" />
-    <Compile Include="SourceDocumentRuleVBDotNet.cs" />
-    <Compile Include="Source.cs" />
-    <Compile Include="SourceDocumentVB6.cs" />
-    <Compile Include="SourceDocumentVBDotNet.cs" />
-    <Compile Include="SourceDocumentSyntaxCSharp.cs" />
-    <Compile Include="SourceDocumentSyntaxVBDotNet.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OyuLib.IO\OyuLib.IO.csproj">
+      <Project>{db36f088-321b-42e7-aadc-4762e9f98205}</Project>
+      <Name>OyuLib.IO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OyuLib\OyuLib.csproj">
       <Project>{dee62fab-1a21-47a6-954e-a6aa22f4ae5b}</Project>
       <Name>OyuLib</Name>

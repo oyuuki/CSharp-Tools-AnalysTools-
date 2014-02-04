@@ -8,8 +8,8 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 using System.IO;
-using OyuLib.Documents;
-using OyuLib.Documents.Analysis;
+using OyuLib.Documents.Sources;
+using OyuLib.Documents.Sources.Analysis;
 using OyuLib.IO;
 using OyuLib.Windows.Forms;
 using OyuLib.Windows.Forms.DataGridView;
@@ -334,7 +334,7 @@ namespace AnalysisVBFormApl
 
 
             ManagerAnalysisInputFieldItem ana = new ManagerAnalysisInputFieldItem(source);
-            WinFrmField[] items = ana.GetSourceAnalysisWinFrmFields<ManagerWinFrmFieldVb6>();
+            WinFrmInputField[] items = ana.GetSourceAnalysisWinFrmFields<ManagerWinFrmFieldVb6>();
 
             if (items == null)
             {
@@ -415,17 +415,17 @@ namespace AnalysisVBFormApl
             return retDic;
         }
 
-        private void ShowData(WinFrmField[] array)
+        private void ShowData(WinFrmInputField[] array)
         {
             Dictionary<string, Memo> memoDic = GetMemoDictionalyFromXmlFile();
             
-            foreach (WinFrmField value in array)
+            foreach (WinFrmInputField value in array)
             {
                 this.SetRowData(this.exDataGridView1.Rows.Add(), value, memoDic);
             }
         }
 
-        private void SetRowData(int rowIndex, WinFrmField item, Dictionary<string, Memo> dic)
+        private void SetRowData(int rowIndex, WinFrmInputField item, Dictionary<string, Memo> dic)
         {
             string nameTab = string.Empty;
 
@@ -999,7 +999,7 @@ namespace AnalysisVBFormApl
 
         private void TranceRowTypeValue(ref DataGridViewRow row)
         {
-            row.Cells[COLUMNNAME_COLTYPE].Value = ConstAttributeManager<KindTranceTypeWinFrmField>.GetValueSuggestConst(row.Cells[COLUMNNAME_COLTYPE].Value.ToString());
+            row.Cells[COLUMNNAME_COLTYPE].Value = ConstAttributeManager<FieldTranceType>.GetValueSuggestConst(row.Cells[COLUMNNAME_COLTYPE].Value.ToString());
         }
 
         private void TranceRowlabelValue(ref DataGridViewRow row)
@@ -1062,7 +1062,7 @@ namespace AnalysisVBFormApl
         private string GetTrancedType(int rowIndex)
         {
             // ●属性    型をそのまま出力
-            return ConstAttributeManager<KindTranceTypeWinFrmField>.GetValueSuggestConst(this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
+            return ConstAttributeManager<FieldTranceType>.GetValueSuggestConst(this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
         }
 
         private string GetTrancedSize(int rowIndex)
@@ -1076,13 +1076,13 @@ namespace AnalysisVBFormApl
         {
             // ●書式    条件：TextBoxの場合
             //   ReadOnlyの場合は"-"
-            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
+            FieldReadOnly redOnly = ConstAttributeManager<FieldReadOnly>.GetEnumValue(this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
-            KindTranceTypeWinFrmField trType = ConstAttributeManager<KindTranceTypeWinFrmField>.GetEnumValue(
+            FieldTranceType trType = ConstAttributeManager<FieldTranceType>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
 
 
-            if (trType != KindTranceTypeWinFrmField.imPostal && redOnly == KindReadOnlyWinFrmField.On)
+            if (trType != FieldTranceType.imPostal && redOnly == FieldReadOnly.On)
             {
                 return "-";
             }
@@ -1095,21 +1095,21 @@ namespace AnalysisVBFormApl
         {
             //  ●入力    条件：TextBoxの場合
             //               ReadOnlyであれば"出"
-            KindTranceTypeWinFrmField trType = ConstAttributeManager<KindTranceTypeWinFrmField>.GetEnumValue(
+            FieldTranceType trType = ConstAttributeManager<FieldTranceType>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
-            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(
+            FieldReadOnly redOnly = ConstAttributeManager<FieldReadOnly>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
             string retValue = "-";
 
             switch (trType)
             {
-                case KindTranceTypeWinFrmField.ImText:
-                case KindTranceTypeWinFrmField.ImNumber:
-                case KindTranceTypeWinFrmField.ImDate:
+                case FieldTranceType.ImText:
+                case FieldTranceType.ImNumber:
+                case FieldTranceType.ImDate:
                 
 
-                    if (redOnly == KindReadOnlyWinFrmField.On)
+                    if (redOnly == FieldReadOnly.On)
                     {
                         retValue = "出";
                     }
@@ -1120,20 +1120,20 @@ namespace AnalysisVBFormApl
 
                     break;
 
-                case KindTranceTypeWinFrmField.imPostal:
+                case FieldTranceType.imPostal:
 
                     retValue = "入出";
                     break;
 
-                case KindTranceTypeWinFrmField.OptionButton:
-                case KindTranceTypeWinFrmField.ComboBox:
+                case FieldTranceType.OptionButton:
+                case FieldTranceType.ComboBox:
 
                     //            条件：OptionButton, ComboBoxの場合
                     //               "入出"
                     retValue = "入出";
                     break;
 
-                case KindTranceTypeWinFrmField.Label:
+                case FieldTranceType.Label:
 
                     //            条件：Labelの場合
                     //               "(タイトル)"の場合"-"
@@ -1158,12 +1158,12 @@ namespace AnalysisVBFormApl
         {
               // ●IME     TextBoxのIMEの値によって変換したものを出力
               // OFF,ON,規定値
-            string imeStr = ConstAttributeManager<ImeMode>.GetValueSuggestConst(this.exDataGridView1.GetStringValue(COLUMNNAME_COLIMEMODE, rowIndex));
+            string imeStr = ConstAttributeManager<OyuLib.Documents.Sources.Analysis.FieldImeMode>.GetValueSuggestConst(this.exDataGridView1.GetStringValue(COLUMNNAME_COLIMEMODE, rowIndex));
 
-            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(
+            FieldReadOnly redOnly = ConstAttributeManager<FieldReadOnly>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
-            if (redOnly == KindReadOnlyWinFrmField.On || string.IsNullOrEmpty(imeStr))
+            if (redOnly == FieldReadOnly.On || string.IsNullOrEmpty(imeStr))
             {
                 return "-";
             }
@@ -1182,26 +1182,26 @@ namespace AnalysisVBFormApl
                 return "\"" + name.Replace("(タイトル)", "") + "\"";
             }
 
-            KindTranceTypeWinFrmField trType = ConstAttributeManager<KindTranceTypeWinFrmField>.GetEnumValue(
+            FieldTranceType trType = ConstAttributeManager<FieldTranceType>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLTYPE, rowIndex));
-            KindReadOnlyWinFrmField redOnly = ConstAttributeManager<KindReadOnlyWinFrmField>.GetEnumValue(
+            FieldReadOnly redOnly = ConstAttributeManager<FieldReadOnly>.GetEnumValue(
                 this.exDataGridView1.GetStringValue(COLUMNNAME_COLREADONLY, rowIndex));
 
             string retValue = string.Empty;
 
             switch (trType)
             {
-                case KindTranceTypeWinFrmField.ImText:
-                case KindTranceTypeWinFrmField.ImNumber:
-                case KindTranceTypeWinFrmField.ImDate:
-                case KindTranceTypeWinFrmField.imPostal:
+                case FieldTranceType.ImText:
+                case FieldTranceType.ImNumber:
+                case FieldTranceType.ImDate:
+                case FieldTranceType.imPostal:
 
                     retValue = this.exDataGridView1.GetStringValue(COLUMNNAME_COLNAME, rowIndex);
-                    retValue += "を表示" + (redOnly == KindReadOnlyWinFrmField.Off ? "、入力" : "") + "する";
+                    retValue += "を表示" + (redOnly == FieldReadOnly.Off ? "、入力" : "") + "する";
 
                     break;
 
-                case KindTranceTypeWinFrmField.ComboBox:
+                case FieldTranceType.ComboBox:
 
                     //            条件：OptionButton, ComboBoxの場合
                     //               "入出"

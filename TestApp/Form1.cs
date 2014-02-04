@@ -8,9 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Schema;
+
 using OyuLib;
-using OyuLib.Documents;
-using OyuLib.Documents.Analysis;
+using OyuLib.Documents.Sources;
+using OyuLib.Documents.Sources.Analysis;
 using OyuLib.IO;
 
 namespace TestApp
@@ -27,7 +28,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.Designer.vb").GetAllReadText());
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.Designer.vb");
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
 
             var filedNameList = new List<string>();
@@ -40,7 +41,7 @@ namespace TestApp
 
             this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
-            source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
+            source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
             mana = new ManagerAnalysisCode(source);
 
             foreach (var name in filedNameList)
@@ -68,10 +69,10 @@ namespace TestApp
                 {
                     if (withNextCount.Count > 0 && withNextCount[withNextCount.Count - 1])
                     {
-                        if (value is CodeInfoSubstitution)
+                        if (value is SourceCodeInfoSubstitution)
                         {
 
-                            var a = (CodeInfoSubstitution) value;
+                            var a = (SourceCodeInfoSubstitution) value;
 
                             if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
                             {
@@ -79,15 +80,15 @@ namespace TestApp
                             }
 
                         }
-                        else if (value is CodeInfoCallMethod)
+                        else if (value is SourceCodeInfoCallMethod)
                         {
                             this.exListBox1.Items.Add(value.ToString());
                         }
                     }
 
-                    if (value is CodeInfoBlockBeginWithVB)
+                    if (value is SourceCodeInfoBlockBeginWithVB)
                     {
-                        var blockWithInfo = (CodeInfoBlockBeginWithVB)value;
+                        var blockWithInfo = (SourceCodeInfoBlockBeginWithVB)value;
                         
                         if (blockWithInfo.StatementObject.Equals(name))
                         {
@@ -99,7 +100,7 @@ namespace TestApp
                             withNextCount.Add(false);
                         }
                     }
-                    else if (value is CodeInfoBlockEndWithVB)
+                    else if (value is SourceCodeInfoBlockEndWithVB)
                     {
                         if (withNextCount.Count > 0)
                         {
@@ -164,21 +165,21 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb", CharSet.ShiftJis).GetAllReadText());
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb", CharSet.ShiftJis);
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
-                if (value is CodeInfoSubstitution)
+                if (value is SourceCodeInfoSubstitution)
                 {
-                    var a = (CodeInfoSubstitution) value;
+                    var a = (SourceCodeInfoSubstitution) value;
 
                     if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
                     {
                  //       this.exListBox1.Items.Add(value.ToString());        
                     }
                 }
-                else if (value is CodeInfoCallMethod)
+                else if (value is SourceCodeInfoCallMethod)
                 {
                     this.exListBox1.Items.Add(value.ToString());
                 }
@@ -190,21 +191,21 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb", CharSet.ShiftJis).GetAllReadText());
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
-                if (value is CodeInfoSubstitution)
+                if (value is SourceCodeInfoSubstitution)
                 {
-                    var a = (CodeInfoSubstitution)value;
+                    var a = (SourceCodeInfoSubstitution)value;
 
                     if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
                     {
                         this.exListBox1.Items.Add(value.ToString());
                     }
                 }
-                else if (value is CodeInfoBlockBegin || value is CodeInfoBlockEnd)
+                else if (value is SourceCodeInfoBlockBegin || value is SourceCodeInfoBlockEnd)
                 {
                     this.exListBox1.Items.Add(value.ToString());
                 }
@@ -216,16 +217,16 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(new TextFile(@"D:\TETETETE\frm002005.vb").GetAllReadText());
+            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
             ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
             var sourceBlock = mana.GetSource();
 
            
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
-                if (value is CodeInfoCallMethod)
+                if (value is SourceCodeInfoCallMethod)
                 {
-                    var val = (CodeInfoCallMethod) value;
+                    var val = (SourceCodeInfoCallMethod) value;
 
                     this.exListBox1.Items.Add(value.ToString());
                     this.exListBox2.Items.Add(value.CodeString);

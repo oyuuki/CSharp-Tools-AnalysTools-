@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using System.Reflection;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
     /// <summary>
     /// class is All Sourcecode parent
@@ -39,12 +39,12 @@ namespace OyuLib.Documents.Analysis
         /// 入力項目情報を取得する
         /// </summary>
         /// <returns></returns>
-        public WinFrmField[] GetWinFrmFields<T>()
-            where T : ExtractorWinFrmField, new()
+        public WinFrmInputField[] GetWinFrmFields<T>()
+            where T : ExtractorWinFrmInputField, new()
         {
 
             AnalyzerInputFieldItem[] partArray = this.GetSourceCodePart().GetPartArray();
-            List<WinFrmField> retList = new List<WinFrmField>();
+            List<WinFrmInputField> retList = new List<WinFrmInputField>();
 
             foreach (AnalyzerInputFieldItem part in partArray)
             {
@@ -57,7 +57,7 @@ namespace OyuLib.Documents.Analysis
         }
 
         private static T ConstructItemInput<T>(AnalyzerInputFieldItem part)
-            where T : ExtractorWinFrmField, new()
+            where T : ExtractorWinFrmInputField, new()
         {
             Type type = typeof(T);
             ConstructorInfo ctor = type.GetConstructor(new Type[] { typeof(string), typeof(int), typeof(string) });
@@ -75,6 +75,5 @@ namespace OyuLib.Documents.Analysis
         #endregion
 
         #endregion
-
     }
 }

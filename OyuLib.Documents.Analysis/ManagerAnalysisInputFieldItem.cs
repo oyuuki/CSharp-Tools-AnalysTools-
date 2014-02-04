@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
     public class ManagerAnalysisInputFieldItem : ManagerAnalysis
     {
@@ -34,11 +34,11 @@ namespace OyuLib.Documents.Analysis
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        public WinFrmField[] GetSourceAnalysisWinFrmFields<T>()
+        public WinFrmInputField[] GetSourceAnalysisWinFrmFields<T>()
             where T : ManagerWinFrmField, new()
         {
             var gene = TypeUtil.GetInstance<T>(new [] { this.Source.Text });
-            return gene.GetWinFrmFields<ExtractorWinFrmFieldVB6>();
+            return gene.GetWinFrmFields<ExtractorWinFrmInputFieldVB6>();
         }
 
         #endregion

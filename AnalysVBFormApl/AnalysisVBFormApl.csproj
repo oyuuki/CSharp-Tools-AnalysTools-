@@ -51,7 +51,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Oyuuki.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -125,7 +126,6 @@
     <None Include="DBINfo.xss">
       <DependentUpon>DBINfo.xsd</DependentUpon>
     </None>
-    <None Include="Oyuuki.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -141,9 +141,13 @@
       <Project>{8eea5e05-187a-4a8a-837b-999afa436840}</Project>
       <Name>OyuLib.Data.DB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OyuLib.Documents.Analysis\OyuLib.Documents.Analysis.csproj">
+    <ProjectReference Include="..\OyuLib.Documents.Analysis\OyuLib.Documents.Sources.Analysis.csproj">
       <Project>{2bb0f5f4-0234-4c52-907c-5e2347a1129e}</Project>
-      <Name>OyuLib.Documents.Analysis</Name>
+      <Name>OyuLib.Documents.Sources.Analysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">
+      <Project>{89573291-d945-4691-b5a2-5a9be29b2c05}</Project>
+      <Name>OyuLib.Documents.Sources</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib.IO\OyuLib.IO.csproj">
       <Project>{db36f088-321b-42e7-aadc-4762e9f98205}</Project>

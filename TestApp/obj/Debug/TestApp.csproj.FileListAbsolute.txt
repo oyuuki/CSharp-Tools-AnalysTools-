@@ -1,11 +1,13 @@
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\TestApp.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\TestApp.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Document.Analysis.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Documents.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Documents.Sources.Analysis.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Documents.Sources.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.IO.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Windows.Forms.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Document.Analysis.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Documents.Sources.Analysis.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Documents.Sources.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Documents.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.IO.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Windows.Forms.pdb

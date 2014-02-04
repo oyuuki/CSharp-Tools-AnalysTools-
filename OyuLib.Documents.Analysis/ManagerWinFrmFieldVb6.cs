@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
     public class ManagerWinFrmFieldVb6 : ManagerWinFrmField
     {

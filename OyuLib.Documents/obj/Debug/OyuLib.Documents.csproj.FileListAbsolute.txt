@@ -8,6 +8,8 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\oyuLib.Text\obj\Debug\
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\bin\Debug\OyuLib.Documents.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\bin\Debug\OyuLib.Documents.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\bin\Debug\OyuLib.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\bin\Debug\OyuLib.IO.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\bin\Debug\OyuLib.IO.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\bin\Debug\OyuLib.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\obj\Debug\OyuLib.Documents.csprojResolveAssemblyReference.cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents\obj\Debug\OyuLib.Documents.dll

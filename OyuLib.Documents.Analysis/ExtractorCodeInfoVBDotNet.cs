@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
-    public class ExtractorCodeInfoVBDotNet : ExtractorCodeInfo<SourceDocumentVBDotNet>
+    internal class ExtractorCodeInfoVBDotNet : ExtractorCodeInfo<SourceDocumentVBDotNet>
     {
         #region constructor
 
@@ -21,17 +21,17 @@ namespace OyuLib.Documents.Analysis
 
         #region Override
 
-        public override CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceDocumentVBDotNet source)
+        public override CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(SourceCodeInfoMemberVariable suggestVal, SourceDocumentVBDotNet source)
         {
             throw new NotImplementedException();
         }
 
-        public override CodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, SourceDocumentVBDotNet source)
+        public override SourceCodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, SourceDocumentVBDotNet source)
         {
             throw new NotImplementedException();
         }
 
-        public override CodeInfoBlockBeginMethod GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, SourceDocumentVBDotNet source)
+        public override SourceCodeInfoBlockBeginMethod GetCodeInfoMethodSuggestVal(SourceCodeInfoMemberVariable suggestVal, SourceDocumentVBDotNet source)
         {
             throw new NotImplementedException();
         }

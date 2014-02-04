@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
-    public abstract class ExtractorCodeInfo<T>
+    internal abstract class ExtractorCodeInfo<T>
         where T : SourceDocument, new()
     {
         #region instanceVal
@@ -37,16 +37,16 @@ namespace OyuLib.Documents.Analysis
 
         #region public 
 
-        public CodeInfo GetCodeInfo()
+        public SourceCodeInfo GetCodeInfo()
         {
             throw new Exception("未実装：ソースのすべてをCodeInfoに変換したものを返す");
         }
 
-        public CodeInfo[] GetCodeInfoByValName(string valName)
+        public SourceCodeInfo[] GetCodeInfoByValName(string valName)
         {
-            var retList = new List<CodeInfo>();
+            var retList = new List<SourceCodeInfo>();
 
-            CodeInfoMemberVariable val = this.GetCodeInfoMemberVariable(valName, this.Source);
+            SourceCodeInfoMemberVariable val = this.GetCodeInfoMemberVariable(valName, this.Source);
 
             if (val == null)
             {
@@ -63,9 +63,9 @@ namespace OyuLib.Documents.Analysis
 
         #region abstract
 
-        public abstract CodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, T source);
-        public abstract CodeInfoBlockBeginMethod  GetCodeInfoMethodSuggestVal(CodeInfoMemberVariable suggestVal, T source);
-        public abstract CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(CodeInfoMemberVariable suggestVal, T source);
+        public abstract SourceCodeInfoMemberVariable GetCodeInfoMemberVariable(string suggestVal, T source);
+        public abstract SourceCodeInfoBlockBeginMethod  GetCodeInfoMethodSuggestVal(SourceCodeInfoMemberVariable suggestVal, T source);
+        public abstract CodeInfoBlockBeginEventMethod GetCodeInfoEventMethodSuggestVal(SourceCodeInfoMemberVariable suggestVal, T source);
 
         #endregion
 

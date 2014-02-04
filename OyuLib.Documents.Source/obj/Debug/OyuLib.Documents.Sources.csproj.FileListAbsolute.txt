@@ -1,0 +1,15 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.Documents.Sources.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.Documents.Sources.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.Documents.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.IO.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.Xml.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.Documents.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.IO.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.Xml.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\obj\Debug\OyuLib.Documents.Sources.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\obj\Debug\OyuLib.Documents.Sources.Properties.Resources.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\obj\Debug\OyuLib.Documents.Sources.csproj.GenerateResource.Cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\obj\Debug\OyuLib.Documents.Sources.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Source\obj\Debug\OyuLib.Documents.Sources.pdb

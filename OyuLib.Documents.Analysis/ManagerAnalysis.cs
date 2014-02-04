@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using OyuLib.Documents.Analysis;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
     /// <summary>
     /// Manage to analys VBCode
@@ -56,14 +55,14 @@ namespace OyuLib.Documents.Analysis
 
         #region 
 
-        public CodeInfo[] GetAnalysisCodeInfoFiltedType(CodeInfo[] codeInfoArray, Type[] filterTypes)
+        public SourceCodeInfo[] GetAnalysisCodeInfoFiltedType(SourceCodeInfo[] codeInfoArray, Type[] filterTypes)
         {
             if (filterTypes == null || filterTypes.Length <= 0)
             {
                 return codeInfoArray;
             }
 
-            var retList = new List<CodeInfo>();
+            var retList = new List<SourceCodeInfo>();
 
             foreach (var codeInfo in codeInfoArray)
             {

@@ -77,9 +77,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OyuLib.Documents.Analysis\OyuLib.Documents.Analysis.csproj">
+    <ProjectReference Include="..\OyuLib.Documents.Analysis\OyuLib.Documents.Sources.Analysis.csproj">
       <Project>{2bb0f5f4-0234-4c52-907c-5e2347a1129e}</Project>
-      <Name>OyuLib.Documents.Analysis</Name>
+      <Name>OyuLib.Documents.Sources.Analysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">
+      <Project>{89573291-d945-4691-b5a2-5a9be29b2c05}</Project>
+      <Name>OyuLib.Documents.Sources</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib.Documents\OyuLib.Documents.csproj">
       <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>

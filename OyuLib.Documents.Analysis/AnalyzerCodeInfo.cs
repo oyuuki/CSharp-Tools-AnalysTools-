@@ -5,13 +5,15 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace OyuLib.Documents.Analysis
+using OyuLib.Documents.Sources;
+
+namespace OyuLib.Documents.Sources.Analysis
 {
-    public abstract class AnalyzerCodeInfo : ISourceRule
+    internal abstract class AnalyzerCodeInfo : ISourceRule
     {
         #region instanceVal
 
-        private Code _code = null;
+        private SourceCode _code = null;
 
         private bool _isInsiteMethod = false;
 
@@ -24,13 +26,13 @@ namespace OyuLib.Documents.Analysis
 
         }
 
-        protected AnalyzerCodeInfo(Code code)
+        protected AnalyzerCodeInfo(SourceCode code)
             : this(code, false)
         {
             this._code = code;
         }
 
-        protected AnalyzerCodeInfo(Code code, bool isInsiteMethod)
+        protected AnalyzerCodeInfo(SourceCode code, bool isInsiteMethod)
         {
             this._code = code;
             this._isInsiteMethod = isInsiteMethod;
@@ -45,7 +47,7 @@ namespace OyuLib.Documents.Analysis
             get { return this._isInsiteMethod; }
         }
 
-        private Code Code
+        private SourceCode Code
         {
             get { return this._code; }
         }
@@ -58,11 +60,11 @@ namespace OyuLib.Documents.Analysis
 
         #region ControlCodeInfo
 
-        private CodeInfo GetControlCodeInfo()
+        private SourceCodeInfo GetControlCodeInfo()
         {
-            Code code = this.Code;
+            SourceCode code = this.Code;
             SourceDocumentRule rule = this.GetSourceRule();
-            CodePartsFactory coFac = new CodePartsFactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVB(code, this.GetSourceRule().GetCodesSeparatorString());
 
             if (this.CheckCodeInfoBlockBeginIf(code))
             {
@@ -110,18 +112,18 @@ namespace OyuLib.Documents.Analysis
 
         #region Virtual
 
-        public virtual CodeInfo GetAntherCodeInfo(Code code)
+        public virtual SourceCodeInfo GetAntherCodeInfo(SourceCode code)
         {
-            return new CodeInfoOther(code, new CodePartsFactoryVB(this.Code, this.GetSourceRule().GetCodeEndSeparatorString()));
+            return new SourceCodeInfoOther(code, new SourceCodePartsfactoryVB(this.Code, this.GetSourceRule().GetCodeEndSeparatorString()));
         }
 
         #endregion
 
         #region Public
 
-        public CodeInfo GetCodeInfo()
+        public SourceCodeInfo GetCodeInfo()
         {
-            CodeInfo retValue = null;
+            SourceCodeInfo retValue = null;
 
             if (this.CheckCodeInfoComment(this.Code))
             {
@@ -141,7 +143,7 @@ namespace OyuLib.Documents.Analysis
             return retValue;
         }
 
-        public CodeInfo GetCodeInfoNoIncludeComment()
+        public SourceCodeInfo GetCodeInfoNoIncludeComment()
         {
             if (this.CheckCodeInfoBlockBeginEventMethod(this.Code))
             {
@@ -179,56 +181,56 @@ namespace OyuLib.Documents.Analysis
 
         #region Abstract
 
-        protected abstract CodeInfoComment GetCodeInfoComment(Code code);
-        protected abstract bool CheckCodeInfoComment(Code code);
+        protected abstract SourceCodeInfoComment GetCodeInfoComment(SourceCode code);
+        protected abstract bool CheckCodeInfoComment(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(Code code);
-        protected abstract bool CheckCodeInfoBlockBeginMethod(Code code);
+        protected abstract SourceCodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockBeginMethod(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(Code code);
-        protected abstract bool CheckCodeInfoBlockBeginEventMethod(Code code);
+        protected abstract CodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockBeginEventMethod(SourceCode code);
 
-        protected abstract CodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(Code code);
-        protected abstract bool CheckCodeInfoBlockEndMethod(Code code);
+        protected abstract SourceCodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockEndMethod(SourceCode code);
 
-        protected abstract CodeInfoValiable GetCodeInfoVariable(Code code);
-        protected abstract bool CheckCodeInfoVariable(Code code);
+        protected abstract SourceCodeInfoValiable GetCodeInfoVariable(SourceCode code);
+        protected abstract bool CheckCodeInfoVariable(SourceCode code);
 
-        protected abstract CodeInfoMemberVariable GetCodeInfoMemberVariable(Code code);
-        protected abstract bool CheckCodeInfoMemberVariable(Code code);
+        protected abstract SourceCodeInfoMemberVariable GetCodeInfoMemberVariable(SourceCode code);
+        protected abstract bool CheckCodeInfoMemberVariable(SourceCode code);
 
-        protected abstract CodeInfoCallMethod GetCodeInfoCallMethod(Code code);
-        protected abstract bool CheckCodeInfoCallMethod(Code code);
+        protected abstract SourceCodeInfoCallMethod GetCodeInfoCallMethod(SourceCode code);
+        protected abstract bool CheckCodeInfoCallMethod(SourceCode code);
 
-        protected abstract CodeInfoSubstitution GetCodeInfoSubstitution(Code code);
-        protected abstract bool CheckCodeInfoSubstitution(Code code);
+        protected abstract SourceCodeInfoSubstitution GetCodeInfoSubstitution(SourceCode code);
+        protected abstract bool CheckCodeInfoSubstitution(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginIf GetCodeInfoBlockBeginIf(Code code);
-        protected abstract bool CheckCodeInfoBlockBeginIf(Code code);
+        protected abstract SourceCodeInfoBlockBeginIf GetCodeInfoBlockBeginIf(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockBeginIf(SourceCode code);
 
-        protected abstract CodeInfoBlockEndIf GetCodeInfoBlockEndIf(Code code);
-        protected abstract bool CheckCodeInfoBlockEndIf(Code code);
+        protected abstract SourceCodeInfoBlockEndIf GetCodeInfoBlockEndIf(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockEndIf(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginDoWhile GetCodeInfoBlockBeginDoWhile(Code code);
-        protected abstract bool CheckCodeInfoBlockBeginDoWhile(Code code);
+        protected abstract SourceCodeInfoBlockBeginDoWhile GetCodeInfoBlockBeginDoWhile(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockBeginDoWhile(SourceCode code);
 
-        protected abstract CodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(Code code);
-        protected abstract bool CheckInfoBlockEndDoWhile(Code code);
+        protected abstract CodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code);
+        protected abstract bool CheckInfoBlockEndDoWhile(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginFor GetCodeInfoBlockBeginFor(Code code);
-        protected abstract bool CheckCodeInfoBlockBeginFor(Code code);
+        protected abstract SourceCodeInfoBlockBeginFor GetCodeInfoBlockBeginFor(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockBeginFor(SourceCode code);
 
-        protected abstract CodeInfoBlockEndFor GetCodeInfoBlockEndFor(Code code);
-        protected abstract bool CheckCodeInfoBlockEndFor(Code code);
+        protected abstract SourceCodeInfoBlockEndFor GetCodeInfoBlockEndFor(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockEndFor(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginCaseFormula GetCodeInfoBlockBeginCaseFormula(Code code);
-        protected abstract bool CheckCodeInfoBlockBeginCaseFormula(Code code);
+        protected abstract SourceCodeInfoBlockBeginCaseFormula GetCodeInfoBlockBeginCaseFormula(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockBeginCaseFormula(SourceCode code);
 
-        protected abstract CodeInfoBlockEndCaseFormula GetCodeInfoBlockEndCaseFormula(Code code);
-        protected abstract bool CheckCodeInfoBlockEndCaseFormula(Code code);
+        protected abstract SourceCodeInfoBlockEndCaseFormula GetCodeInfoBlockEndCaseFormula(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockEndCaseFormula(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginCaseValue GetCodeInfoBlockCaseValue(Code code);
-        protected abstract bool CheckCodeInfoBlockCaseValue(Code code);
+        protected abstract SourceCodeInfoBlockBeginCaseValue GetCodeInfoBlockCaseValue(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockCaseValue(SourceCode code);
 
         public abstract SourceDocumentRule GetSourceRule();
 

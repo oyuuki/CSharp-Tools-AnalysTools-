@@ -5,9 +5,9 @@ using System.Text;
 
 using System.Reflection;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
-    public abstract class AnalyzerInputFieldItem : InputFieldItem
+    public abstract class AnalyzerInputFieldItem : InputField
     {
         #region instance
 

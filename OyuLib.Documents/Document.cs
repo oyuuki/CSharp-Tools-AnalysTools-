@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
+
+using OyuLib.IO;
 
 namespace OyuLib.Documents
 {
@@ -24,9 +23,15 @@ namespace OyuLib.Documents
             
         }
 
-        public Document(string text)
+        public Document(string filepath)
+            : this(filepath, CharSet.ShiftJis)
         {
-            this._text = text;
+            
+        }
+
+        public Document(string filepath, CharSet charactorSet)
+        {
+            this._text = new TextFile(filepath, charactorSet).GetAllReadText();
         }
 
         #endregion

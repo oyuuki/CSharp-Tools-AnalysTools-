@@ -7,7 +7,7 @@ using System.Text;
 
 using OyuLib.Documents;
 
-namespace OyuLib.Documents.Analysis
+namespace OyuLib.Documents.Sources.Analysis
 {
     public class ManagerAnalysisCode : ManagerAnalysis
     {
@@ -38,18 +38,18 @@ namespace OyuLib.Documents.Analysis
         #region Public
 
 
-        public Source GetSource()
+        public SourceCodeblockInfo GetSource()
         {
-            return new Source(this.GetVbSourceCodeAnalysis());
+            return new SourceCodeblockInfo(this.GetVbSourceCodeAnalysis());
         }
 
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        public CodeInfo[] GetVbSourceCodeAnalysis()
+        public SourceCodeInfo[] GetVbSourceCodeAnalysis()
         {
             var isInsiteMethod = false;
-            var retList = new List<CodeInfo>();
+            var retList = new List<SourceCodeInfo>();
 
             foreach (var code in this.Source.GetCodes())
             {
@@ -57,7 +57,7 @@ namespace OyuLib.Documents.Analysis
                 var codeInfo = ainfo.GetCodeInfo();
                 retList.Add(codeInfo);
 
-                if (codeInfo is CodeInfoBlockBeginEventMethod || codeInfo is CodeInfoBlockBeginMethod)
+                if (codeInfo is CodeInfoBlockBeginEventMethod || codeInfo is SourceCodeInfoBlockBeginMethod)
                 {
                     isInsiteMethod = true;
                 }
@@ -91,15 +91,15 @@ namespace OyuLib.Documents.Analysis
             return retValue.ToArray();
         }
 
-        public CodeInfoMemberVariable[] GetMemValCodeIndoFiltTypeName(string typeName)
+        public SourceCodeInfoMemberVariable[] GetMemValCodeIndoFiltTypeName(string typeName)
         {
-            var retValue = new List<CodeInfoMemberVariable>();
+            var retValue = new List<SourceCodeInfoMemberVariable>();
 
             foreach (var codeInfo in this.GetVbSourceCodeAnalysis())
             {
-                if (codeInfo is CodeInfoMemberVariable)
+                if (codeInfo is SourceCodeInfoMemberVariable)
                 {
-                    var locCodeInfo = (CodeInfoMemberVariable)codeInfo;
+                    var locCodeInfo = (SourceCodeInfoMemberVariable)codeInfo;
 
                     if (locCodeInfo.TypeName.Equals(typeName))
                     {
@@ -135,7 +135,7 @@ namespace OyuLib.Documents.Analysis
 
         #region private
 
-        private CodeInfo[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
+        private SourceCodeInfo[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
         {
             return this.GetAnalysisCodeInfoFiltedType(this.GetVbSourceCodeAnalysis(), filterTypes);
         }
