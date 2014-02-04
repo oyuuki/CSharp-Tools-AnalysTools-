@@ -74,8 +74,8 @@
     <Compile Include="SourceCodeInfoSubstitution.cs" />
     <Compile Include="SourceCodeInfoValiable.cs" />
     <Compile Include="SourceCodePartsFactory.cs" />
-    <Compile Include="SourceCodePartsFactoryVB.cs" />
-    <Compile Include="SourceCodePartsFactoryVBHasParams.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNet.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetHasParams.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">

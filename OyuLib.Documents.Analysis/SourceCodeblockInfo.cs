@@ -50,8 +50,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
-        
-
+       
         #endregion
     }
 }

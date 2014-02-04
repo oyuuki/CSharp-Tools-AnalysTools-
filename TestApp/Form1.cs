@@ -184,7 +184,7 @@ namespace TestApp
 
             var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
-            foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
+            foreach (var codeinfo in mana.GetCodeInfoSubstitutionsRoundBlock(".Row"))
             {
                 this.exListBox1.Items.Add(codeinfo.ToString());
                 this.exListBox2.Items.Add(codeinfo.CodeString);

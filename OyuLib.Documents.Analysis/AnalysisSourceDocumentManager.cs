@@ -90,6 +90,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Private
 
+        private SourceCodeInfoBlockBegin GetSourceCodeInfoBlockBegin(SourceCodeblockInfo blockInfo)
+        {
+            return (SourceCodeInfoBlockBegin) blockInfo.CodeObjects[0];
+        }
+
         protected T[] GetSourceCodeInfos<T>(object[] codeobjects)
         {
             var retList = new List<T>();
@@ -103,6 +108,22 @@ namespace OyuLib.Documents.Sources.Analysis
                 else if (codeInfo is T)
                 {
                     retList.Add((T)codeInfo);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        protected SourceCodeblockInfo[] GetSourceCodeblockInfo(object[] codeobjects)
+        {
+            var retList = new List<SourceCodeblockInfo>();
+
+            foreach (var codeInfo in codeobjects)
+            {
+                if (codeInfo is SourceCodeblockInfo)
+                {
+                    retList.Add((SourceCodeblockInfo)codeInfo);
+                    retList.AddRange(GetSourceCodeblockInfo(((SourceCodeblockInfo)codeInfo).CodeObjects));
                 }
             }
 
@@ -223,10 +244,82 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var codeInfo in this.GetSourceCodeInfos<T>(codeObjects))
             {
-                if (checkMethod(keyName, codeInfo))
+                if (checkMethod == null)
                 {
                     retList.Add(codeInfo);
                 }
+                else if (checkMethod(keyName, codeInfo))
+                {
+                    retList.Add(codeInfo);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        protected SourceCodeblockInfo[] GetSourceCodeblockInfo<TBlock>()
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            return this.GetSourceCodeblockInfo<TBlock>(this.CodeObjects);
+        }
+
+        protected SourceCodeblockInfo[] GetSourceCodeblockInfo<TBlock>(SourceCodeblockInfo blockInfo)
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            return this.GetSourceCodeblockInfo<TBlock>(blockInfo.CodeObjects);
+        }
+
+        protected SourceCodeblockInfo[] GetSourceCodeblockInfo<TBlock>(object[] codeObjects)
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            var blockList = new List<SourceCodeblockInfo>();
+
+            foreach (var block in this.GetSourceCodeblockInfo(codeObjects))
+            {
+                var sourceCodeInfoBlockBegin = this.GetSourceCodeInfoBlockBegin(block);
+
+                if (sourceCodeInfoBlockBegin is TBlock)
+                {
+                    blockList.Add(block);
+                }
+            }
+
+            return blockList.ToArray();
+        }
+
+        
+        protected T[] GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(
+            string keyName, CheckWithKey<T> checkMethod)
+            where T : SourceCodeInfo
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            return GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(this.CodeObjects, keyName, checkMethod);
+        }
+
+        protected T[] GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(
+            SourceCodeblockInfo blockInfo,
+            string keyName, CheckWithKey<T> checkMethod)
+            where T : SourceCodeInfo
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            return GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(blockInfo.CodeObjects, keyName, checkMethod);
+        }
+
+        protected T[] GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(
+            object[] codeObjects,
+            string keyName, CheckWithKey<T> checkMethod)
+            where T : SourceCodeInfo
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            var retList = new List<T>();
+
+            foreach (var block in this.GetSourceCodeblockInfo<TBlock>(codeObjects))
+            {
+                retList.AddRange(this.GetCodeInfoWithKeyName<T>(
+                keyName,
+                block,
+                checkMethod
+                ));
             }
 
             return retList.ToArray();
@@ -265,10 +358,9 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
-
         #endregion
-        //２．○○というオブジェクトの関連するイベントメソッドのコレクションを取得
-        //３．○○というオブジェクトに関連する○○ブロックで囲まれた
+        
+        
         //     式コードを取得
         //     コールメソッドコードを取得
       

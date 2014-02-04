@@ -43,10 +43,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-
-
-     
-
         /// <summary>
         /// Analys Code to item
         /// </summary>
@@ -74,94 +70,15 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
-        public SourceCodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltFieldName(string fieldname)
+        //３．Withというオブジェクトに関連する○○ブロックで囲まれた式コードを取得
+        public SourceCodeInfoSubstitution[] GetCodeInfoSubstitutionsRoundBlock(string objectName)
         {
-            var retValue = new List<SourceCodeInfoBlockBeginEventMethod>();
-
-            foreach (var codeInfo in this.GetSourceCodeAnalysis())
-            {
-                if (codeInfo is SourceCodeInfoBlockBeginEventMethod)
-                {
-                    var locCodeInfo = (SourceCodeInfoBlockBeginEventMethod)codeInfo;
-
-                    if (locCodeInfo.ObjNamesuggestEventName.Equals(fieldname))
-                    {
-                        retValue.Add(locCodeInfo);
-                    }
-                }
-
-            }
-
-            return retValue.ToArray();
-        }
-
-        public SourceCodeInfoMemberVariable[] GetMemValCodeIndoFiltTypeName(string typeName)
-        {
-            var retValue = new List<SourceCodeInfoMemberVariable>();
-
-            foreach (var codeInfo in this.GetSourceCodeAnalysis())
-            {
-                if (codeInfo is SourceCodeInfoMemberVariable)
-                {
-                    var locCodeInfo = (SourceCodeInfoMemberVariable)codeInfo;
-
-                    if (locCodeInfo.TypeName.Equals(typeName))
-                    {
-                        retValue.Add(locCodeInfo);
-                    }
-                }
-            }
-
-            return retValue.ToArray();
-        }
-
-        public SourceCodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltTypeName(string typeName)
-        {
-            var retValue = new List<SourceCodeInfoBlockBeginEventMethod>();
-
-            foreach (var codeInfo in this.GetSourceCodeAnalysis())
-            {
-                if (codeInfo is SourceCodeInfoBlockBeginEventMethod)
-                {
-                    var locCodeInfo = (SourceCodeInfoBlockBeginEventMethod)codeInfo;
-
-                    if (locCodeInfo.ReturnTypeName.Equals(typeName))
-                    {
-                        retValue.Add(locCodeInfo);
-                    }
-                }
-            }
-
-            return retValue.ToArray();
-        }
-
-        #endregion
-
-        #region private
-
-        private SourceCodeInfo[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
-        {
-            return this.GetAnalysisCodeInfoFiltedType(this.GetSourceCodeAnalysis(), filterTypes);
-        }
-
-        private SourceCodeInfo[] GetAnalysisCodeInfoFiltedType(SourceCodeInfo[] codeInfoArray, Type[] filterTypes)
-        {
-            if (filterTypes == null || filterTypes.Length <= 0)
-            {
-                return codeInfoArray;
-            }
-
-            var retList = new List<SourceCodeInfo>();
-
-            foreach (var codeInfo in codeInfoArray)
-            {
-                if (TypeUtil.IsSameTypesObject(filterTypes, codeInfo))
-                {
-                    retList.Add(codeInfo);
-                }
-            }
-
-            return retList.ToArray();
+            return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfoSubstitution, SourceCodeInfoBlockBeginWithVB>
+                (this.CodeObjects, objectName,
+                 delegate(string lockeyName, SourceCodeInfoSubstitution info)
+                 {
+                    return info.LeftHandSide.Equals(objectName);
+                 });
         }
 
         #endregion

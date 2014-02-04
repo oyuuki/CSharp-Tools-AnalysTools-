@@ -5,11 +5,11 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodePartsfactoryVB : SourceCodePartsfactory
+    public class SourceCodePartsfactoryVBDotNet : SourceCodePartsfactory
     {
         #region Constructor
 
-        public SourceCodePartsfactoryVB(
+        public SourceCodePartsfactoryVBDotNet(
             SourceCode code,
             string codeDelimiter)
             : base(code, codeDelimiter)
