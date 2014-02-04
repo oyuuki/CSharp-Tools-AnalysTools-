@@ -562,14 +562,14 @@ namespace OyuLib.Documents.Sources.Analysis
                    coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_EVENTS_HANDLES);
         }
 
-        protected override CodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(SourceCode code)
+        protected override SourceCodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(SourceCode code)
         {
             var commonInfo = this.GetCommonCodeInfoMethod(code);
 
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBHasParams(code, " ");
             int eventName = coFac.GetCodeParts().Length - 1;
 
-            return new CodeInfoBlockBeginEventMethod(
+            return new SourceCodeInfoBlockBeginEventMethod(
                 code, 
                 coFac,
                 ",",
@@ -701,13 +701,13 @@ namespace OyuLib.Documents.Sources.Analysis
             return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginDoWhile());
         }
 
-        protected override CodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code)
+        protected override SourceCodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndDoWhile());
-            return new CodeInfoBlockEndDoWhile(code, coFac, segments);
+            return new SourceCodeInfoBlockEndDoWhile(code, coFac, segments);
         }
 
         protected override bool CheckInfoBlockEndDoWhile(SourceCode code)

@@ -39,12 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysisCodeManagerVBDotNet.cs" />
+    <Compile Include="AnalysisSourceDocumentManagerVBDotNet.cs" />
     <Compile Include="IParamater.cs" />
     <Compile Include="SourceCodeblockInfo.cs" />
     <Compile Include="SourceCodeInfo.cs" />
     <Compile Include="SourceCodeInfoAnalyzerVBDotNet.cs" />
-    <Compile Include="AnalysisCodeManager.cs" />
+    <Compile Include="AnalysisSourceDocumentManager.cs" />
     <Compile Include="SourceCodeInfoAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SourceCodeInfoBlockBegin.cs" />

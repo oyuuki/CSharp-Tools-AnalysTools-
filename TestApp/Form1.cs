@@ -25,98 +25,98 @@ namespace TestApp
 
         private void exButton1_Click(object sender, EventArgs e)
         {
-            this.exListBox1.Items.Clear();
-            this.exListBox2.Items.Clear();
+            //this.exListBox1.Items.Clear();
+            //this.exListBox2.Items.Clear();
 
 
-            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.Designer.vb");
+            //var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.Designer.vb");
 
-            var filedNameList = new List<string>();
+            //var filedNameList = new List<string>();
             
-            foreach (var value in mana.GetMemValCodeIndoFiltTypeName("FarPoint.Win.Spread.FpSpread"))
-            {
-                this.exListBox1.Items.Add(value.ToString());
-                filedNameList.Add(value.Name);
-            }      
+            //foreach (var value in mana.GetMemValCodeIndoFiltTypeName("FarPoint.Win.Spread.FpSpread"))
+            //{
+            //    this.exListBox1.Items.Add(value.ToString());
+            //    filedNameList.Add(value.Name);
+            //}      
 
-            this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
+            //this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
-            mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
+            //mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
-            foreach (var name in filedNameList)
-            {
-                this.exListBox1.Items.Add("フィールド：" + name + "に関連するイベントメソッド一覧");
+            //foreach (var name in filedNameList)
+            //{
+            //    this.exListBox1.Items.Add("フィールド：" + name + "に関連するイベントメソッド一覧");
 
-                foreach (var value in mana.GetEventMethodCodeIndoFiltFieldName(name))
-                {
-                    this.exListBox1.Items.Add(value.ToString());
-                }
+            //    foreach (var value in mana.GetEventMethodCodeIndoFiltFieldName(name))
+            //    {
+            //        this.exListBox1.Items.Add(value.ToString());
+            //    }
     
-                this.exListBox1.Items.Add("");
-            }
+            //    this.exListBox1.Items.Add("");
+            //}
 
-            this.exListBox1.Items.Add("ここまでがフィールドに関連するイベントメソッド抽出処理");
+            //this.exListBox1.Items.Add("ここまでがフィールドに関連するイベントメソッド抽出処理");
 
 
-            foreach (var name in filedNameList)
-            {
-                this.exListBox1.Items.Add("フィールド：" + name + "に関連する代入一覧");
+            //foreach (var name in filedNameList)
+            //{
+            //    this.exListBox1.Items.Add("フィールド：" + name + "に関連する代入一覧");
 
-                var withNextCount = new List<bool>();
+            //    var withNextCount = new List<bool>();
 
-                foreach (var value in mana.GetSourceCodeAnalysis())
-                {
-                    if (withNextCount.Count > 0 && withNextCount[withNextCount.Count - 1])
-                    {
-                        if (value is SourceCodeInfoSubstitution)
-                        {
+            //    foreach (var value in mana.GetSourceCodeAnalysis())
+            //    {
+            //        if (withNextCount.Count > 0 && withNextCount[withNextCount.Count - 1])
+            //        {
+            //            if (value is SourceCodeInfoSubstitution)
+            //            {
 
-                            var a = (SourceCodeInfoSubstitution) value;
+            //                var a = (SourceCodeInfoSubstitution) value;
 
-                            if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
-                            {
-                                this.exListBox1.Items.Add(value.ToString());
-                            }
+            //                if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
+            //                {
+            //                    this.exListBox1.Items.Add(value.ToString());
+            //                }
 
-                        }
-                        else if (value is SourceCodeInfoCallMethod)
-                        {
-                            this.exListBox1.Items.Add(value.ToString());
-                        }
-                    }
+            //            }
+            //            else if (value is SourceCodeInfoCallMethod)
+            //            {
+            //                this.exListBox1.Items.Add(value.ToString());
+            //            }
+            //        }
 
-                    if (value is SourceCodeInfoBlockBeginWithVB)
-                    {
-                        var blockWithInfo = (SourceCodeInfoBlockBeginWithVB)value;
+            //        if (value is SourceCodeInfoBlockBeginWithVB)
+            //        {
+            //            var blockWithInfo = (SourceCodeInfoBlockBeginWithVB)value;
                         
-                        if (blockWithInfo.StatementObject.Equals(name))
-                        {
-                            this.exListBox1.Items.Add(value.ToString());
-                            withNextCount.Add(true);
-                        }
-                        else
-                        {
-                            withNextCount.Add(false);
-                        }
-                    }
-                    else if (value is SourceCodeInfoBlockEndWithVB)
-                    {
-                        if (withNextCount.Count > 0)
-                        {
-                            if (withNextCount[withNextCount.Count - 1])
-                            {
-                                this.exListBox1.Items.Add(value.ToString());        
-                            }
+            //            if (blockWithInfo.StatementObject.Equals(name))
+            //            {
+            //                this.exListBox1.Items.Add(value.ToString());
+            //                withNextCount.Add(true);
+            //            }
+            //            else
+            //            {
+            //                withNextCount.Add(false);
+            //            }
+            //        }
+            //        else if (value is SourceCodeInfoBlockEndWithVB)
+            //        {
+            //            if (withNextCount.Count > 0)
+            //            {
+            //                if (withNextCount[withNextCount.Count - 1])
+            //                {
+            //                    this.exListBox1.Items.Add(value.ToString());        
+            //                }
 
-                            withNextCount.RemoveAt(withNextCount.Count - 1);    
-                        }
+            //                withNextCount.RemoveAt(withNextCount.Count - 1);    
+            //            }
 
                         
-                    }
-                }
+            //        }
+            //    }
 
-                this.exListBox1.Items.Add("");
-            }
+            //    this.exListBox1.Items.Add("");
+            //}
         }
 
         private void exButton2_Click(object sender, EventArgs e)
@@ -164,24 +164,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
-
-            foreach (var value in mana.GetSourceCodeAnalysis())
-            {
-                if (value is SourceCodeInfoSubstitution)
-                {
-                    var a = (SourceCodeInfoSubstitution) value;
-
-                    if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
-                    {
-                 //       this.exListBox1.Items.Add(value.ToString());        
-                    }
-                }
-                else if (value is SourceCodeInfoCallMethod)
-                {
-                    this.exListBox1.Items.Add(value.ToString());
-                }
-            }
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
         }
 
         private void exButton4_Click(object sender, EventArgs e)
@@ -189,24 +172,9 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
-            foreach (var value in mana.GetSourceCodeAnalysis())
-            {
-                if (value is SourceCodeInfoSubstitution)
-                {
-                    var a = (SourceCodeInfoSubstitution)value;
-
-                    if (a.LeftHandSide.IndexOf(".Row") >= 0 || a.LeftHandSide.IndexOf(".Col") >= 0)
-                    {
-                        this.exListBox1.Items.Add(value.ToString());
-                    }
-                }
-                else if (value is SourceCodeInfoBlockBegin || value is SourceCodeInfoBlockEnd)
-                {
-                    this.exListBox1.Items.Add(value.ToString());
-                }
-            }
+           
         }
 
         private void exButton5_Click(object sender, EventArgs e)
@@ -214,22 +182,14 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
-            var sourceBlock = mana.GetSourceCodeblockInfo();
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
-           
-            foreach (var value in mana.GetSourceCodeAnalysis())
+            foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
             {
-                if (value is SourceCodeInfoCallMethod)
-                {
-                    var val = (SourceCodeInfoCallMethod) value;
-
-                    this.exListBox1.Items.Add(value.ToString());
-                    this.exListBox2.Items.Add(value.CodeString);
-
-                    this.Test2(val.GetStringRangesParamaters(), "");
-                }
+                this.exListBox1.Items.Add(codeinfo.ToString());
+                this.exListBox2.Items.Add(codeinfo.CodeString);
             }
+                      
         }
 
         private void Test2(StringRange[] strRange, string kaisou)

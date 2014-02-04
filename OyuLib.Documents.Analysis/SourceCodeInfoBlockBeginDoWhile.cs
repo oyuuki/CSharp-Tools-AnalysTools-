@@ -35,7 +35,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public override Type GetCodeInfoBlockEndType()
         {
-            return typeof(CodeInfoBlockEndDoWhile);
+            return typeof(SourceCodeInfoBlockEndDoWhile);
         }
 
         #endregion

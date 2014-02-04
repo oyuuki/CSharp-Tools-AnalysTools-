@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class CodeInfoBlockBeginEventMethod : SourceCodeInfoBlockBeginMethod
+    public class SourceCodeInfoBlockBeginEventMethod : SourceCodeInfoBlockBeginMethod
     {
         #region instanceVal
 
@@ -15,7 +15,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Constructor
 
-        public CodeInfoBlockBeginEventMethod(
+        public SourceCodeInfoBlockBeginEventMethod(
             int statement,
             int statementObject)
             : base(statement, statementObject)
@@ -23,7 +23,7 @@ namespace OyuLib.Documents.Sources.Analysis
             
         }
 
-        public CodeInfoBlockBeginEventMethod(
+        public SourceCodeInfoBlockBeginEventMethod(
             SourceCode code,
             SourceCodePartsfactory coFac,
             string CodeDelimiterParamater,

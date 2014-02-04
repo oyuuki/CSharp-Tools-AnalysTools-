@@ -4,14 +4,14 @@ using OyuLib.IO;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class AnalysisCodeManagerVBDotNet : AnalysisCodeManager
+    public class AnalysisSourceDocumentManagerVBDotNet : AnalysisSourceDocumentManager
     {
         #region constractor
 
         /// <summary>
         /// constractor
         /// </summary>
-        public AnalysisCodeManagerVBDotNet()
+        public AnalysisSourceDocumentManagerVBDotNet()
             : base()
         {
         }
@@ -20,7 +20,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// constractor
         /// </summary>
         /// <param name="sourcefilepath"></param>
-        public AnalysisCodeManagerVBDotNet(string sourcefilepath)
+        public AnalysisSourceDocumentManagerVBDotNet(string sourcefilepath)
             : this(sourcefilepath, CharSet.ShiftJis)
         {
             
@@ -31,9 +31,10 @@ namespace OyuLib.Documents.Sources.Analysis
         /// </summary>
         /// <param name="sourcefilepath"></param>
         /// <param name="charactorSet"></param>
-        public AnalysisCodeManagerVBDotNet(string sourcefilepath, CharSet charactorSet)
+        public AnalysisSourceDocumentManagerVBDotNet(string sourcefilepath, CharSet charactorSet)
         {
-            this._source = new SourceDocumentVBDotNet(sourcefilepath, charactorSet);
+            this.Sourcedocument =  new SourceDocumentVBDotNet(sourcefilepath, charactorSet);
+            this.Init();
         }
 
         #endregion
@@ -42,21 +43,25 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
+
+
+     
+
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        public override SourceCodeInfo[] GetSourceCodeAnalysis()
+        protected override SourceCodeInfo[] GetSourceCodeAnalysis()
         {
             var isInsiteMethod = false;
             var retList = new List<SourceCodeInfo>();
 
-            foreach (var code in this.Source.GetCodes())
+            foreach (var code in this.Sourcedocument.GetCodes())
             {
                 var ainfo = new SourceCodeInfoAnalyzerVBDotNet(code, isInsiteMethod);
                 var codeInfo = ainfo.GetCodeInfo();
                 retList.Add(codeInfo);
 
-                if (codeInfo is CodeInfoBlockBeginEventMethod || codeInfo is SourceCodeInfoBlockBeginMethod)
+                if (codeInfo is SourceCodeInfoBlockBeginEventMethod || codeInfo is SourceCodeInfoBlockBeginMethod)
                 {
                     isInsiteMethod = true;
                 }
@@ -69,15 +74,15 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
-        public CodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltFieldName(string fieldname)
+        public SourceCodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltFieldName(string fieldname)
         {
-            var retValue = new List<CodeInfoBlockBeginEventMethod>();
+            var retValue = new List<SourceCodeInfoBlockBeginEventMethod>();
 
             foreach (var codeInfo in this.GetSourceCodeAnalysis())
             {
-                if (codeInfo is CodeInfoBlockBeginEventMethod)
+                if (codeInfo is SourceCodeInfoBlockBeginEventMethod)
                 {
-                    var locCodeInfo = (CodeInfoBlockBeginEventMethod)codeInfo;
+                    var locCodeInfo = (SourceCodeInfoBlockBeginEventMethod)codeInfo;
 
                     if (locCodeInfo.ObjNamesuggestEventName.Equals(fieldname))
                     {
@@ -110,15 +115,15 @@ namespace OyuLib.Documents.Sources.Analysis
             return retValue.ToArray();
         }
 
-        public CodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltTypeName(string typeName)
+        public SourceCodeInfoBlockBeginEventMethod[] GetEventMethodCodeIndoFiltTypeName(string typeName)
         {
-            var retValue = new List<CodeInfoBlockBeginEventMethod>();
+            var retValue = new List<SourceCodeInfoBlockBeginEventMethod>();
 
             foreach (var codeInfo in this.GetSourceCodeAnalysis())
             {
-                if (codeInfo is CodeInfoBlockBeginEventMethod)
+                if (codeInfo is SourceCodeInfoBlockBeginEventMethod)
                 {
-                    var locCodeInfo = (CodeInfoBlockBeginEventMethod)codeInfo;
+                    var locCodeInfo = (SourceCodeInfoBlockBeginEventMethod)codeInfo;
 
                     if (locCodeInfo.ReturnTypeName.Equals(typeName))
                     {

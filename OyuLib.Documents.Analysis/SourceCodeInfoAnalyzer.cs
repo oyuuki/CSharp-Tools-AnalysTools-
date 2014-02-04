@@ -187,7 +187,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected abstract SourceCodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(SourceCode code);
         protected abstract bool CheckCodeInfoBlockBeginMethod(SourceCode code);
 
-        protected abstract CodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(SourceCode code);
+        protected abstract SourceCodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(SourceCode code);
         protected abstract bool CheckCodeInfoBlockBeginEventMethod(SourceCode code);
 
         protected abstract SourceCodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(SourceCode code);
@@ -214,7 +214,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected abstract SourceCodeInfoBlockBeginDoWhile GetCodeInfoBlockBeginDoWhile(SourceCode code);
         protected abstract bool CheckCodeInfoBlockBeginDoWhile(SourceCode code);
 
-        protected abstract CodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code);
+        protected abstract SourceCodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code);
         protected abstract bool CheckInfoBlockEndDoWhile(SourceCode code);
 
         protected abstract SourceCodeInfoBlockBeginFor GetCodeInfoBlockBeginFor(SourceCode code);

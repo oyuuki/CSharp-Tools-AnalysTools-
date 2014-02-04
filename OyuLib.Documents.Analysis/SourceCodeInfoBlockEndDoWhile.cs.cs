@@ -5,18 +5,18 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class CodeInfoBlockEndDoWhile :SourceCodeInfoBlockEnd
+    public class SourceCodeInfoBlockEndDoWhile :SourceCodeInfoBlockEnd
     {
         #region Constructor
 
-        public CodeInfoBlockEndDoWhile(
+        public SourceCodeInfoBlockEndDoWhile(
             int statement)
             : base(statement)
         {
             
         }
 
-        public CodeInfoBlockEndDoWhile(
+        public SourceCodeInfoBlockEndDoWhile(
             SourceCode code,
             SourceCodePartsfactory coFac,
             int statement)
