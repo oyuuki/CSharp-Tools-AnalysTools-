@@ -1209,7 +1209,7 @@ namespace AnalysisVBFormApl
                     break;
 
                 default:
-                                     q
+
                     break;
 
             }

@@ -28,8 +28,8 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.Designer.vb");
-            AnalysisCodeManager mana = new AnalysisCodeManager(source);
+
+            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.Designer.vb");
 
             var filedNameList = new List<string>();
             
@@ -41,8 +41,7 @@ namespace TestApp
 
             this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
-            source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
-            mana = new AnalysisCodeManager(source);
+            mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
             foreach (var name in filedNameList)
             {
@@ -65,7 +64,7 @@ namespace TestApp
 
                 var withNextCount = new List<bool>();
 
-                foreach (var value in mana.GetVbSourceCodeAnalysis())
+                foreach (var value in mana.GetSourceCodeAnalysis())
                 {
                     if (withNextCount.Count > 0 && withNextCount[withNextCount.Count - 1])
                     {
@@ -165,10 +164,9 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb", CharSet.ShiftJis);
-            AnalysisCodeManager mana = new AnalysisCodeManager(source);
+            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
-            foreach (var value in mana.GetVbSourceCodeAnalysis())
+            foreach (var value in mana.GetSourceCodeAnalysis())
             {
                 if (value is SourceCodeInfoSubstitution)
                 {
@@ -191,10 +189,9 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
-            AnalysisCodeManager mana = new AnalysisCodeManager(source);
+            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
-            foreach (var value in mana.GetVbSourceCodeAnalysis())
+            foreach (var value in mana.GetSourceCodeAnalysis())
             {
                 if (value is SourceCodeInfoSubstitution)
                 {
@@ -217,12 +214,11 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
-            AnalysisCodeManager mana = new AnalysisCodeManager(source);
+            var mana = new AnalysisCodeManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
             var sourceBlock = mana.GetSourceCodeblockInfo();
 
            
-            foreach (var value in mana.GetVbSourceCodeAnalysis())
+            foreach (var value in mana.GetSourceCodeAnalysis())
             {
                 if (value is SourceCodeInfoCallMethod)
                 {
