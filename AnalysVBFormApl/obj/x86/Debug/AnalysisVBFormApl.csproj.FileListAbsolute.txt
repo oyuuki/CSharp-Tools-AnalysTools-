@@ -4,14 +4,12 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\De
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Data.DB.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.dll
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.IO.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Windows.Forms.DataGridView.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Windows.Forms.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Xml.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Data.DB.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.IO.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.pdb
@@ -26,3 +24,5 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x8
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.InputFields.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.InputFields.pdb

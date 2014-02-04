@@ -29,7 +29,7 @@ namespace TestApp
             this.exListBox2.Items.Clear();
 
             SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.Designer.vb");
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
+            AnalysisCodeManager mana = new AnalysisCodeManager(source);
 
             var filedNameList = new List<string>();
             
@@ -42,7 +42,7 @@ namespace TestApp
             this.exListBox1.Items.Add("ここまでがフィールド抽出処理");
 
             source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
-            mana = new ManagerAnalysisCode(source);
+            mana = new AnalysisCodeManager(source);
 
             foreach (var name in filedNameList)
             {
@@ -166,7 +166,7 @@ namespace TestApp
             this.exListBox2.Items.Clear();
 
             SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb", CharSet.ShiftJis);
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
+            AnalysisCodeManager mana = new AnalysisCodeManager(source);
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
@@ -192,7 +192,7 @@ namespace TestApp
             this.exListBox2.Items.Clear();
 
             SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
+            AnalysisCodeManager mana = new AnalysisCodeManager(source);
 
             foreach (var value in mana.GetVbSourceCodeAnalysis())
             {
@@ -218,8 +218,8 @@ namespace TestApp
             this.exListBox2.Items.Clear();
 
             SourceDocumentVBDotNet source = new SourceDocumentVBDotNet(@"D:\TETETETE\frm002005.vb");
-            ManagerAnalysisCode mana = new ManagerAnalysisCode(source);
-            var sourceBlock = mana.GetSource();
+            AnalysisCodeManager mana = new AnalysisCodeManager(source);
+            var sourceBlock = mana.GetSourceCodeblockInfo();
 
            
             foreach (var value in mana.GetVbSourceCodeAnalysis())

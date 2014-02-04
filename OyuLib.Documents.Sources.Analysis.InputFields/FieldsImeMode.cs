@@ -1,7 +1,7 @@
 ﻿
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    public enum FieldImeMode
+    public enum FieldsImeMode
     {
         [ConstValue("0", "規定値")]
         Default,

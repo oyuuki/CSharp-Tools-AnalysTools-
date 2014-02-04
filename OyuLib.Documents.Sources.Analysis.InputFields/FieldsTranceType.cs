@@ -1,7 +1,7 @@
 ﻿
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    public enum FieldTranceType
+    public enum FieldsTranceType
     {
         [ConstValue("VB.CommandButton", "Button")]
         Button = 1,

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    public class ManagerWinFrmFieldVb6 : ManagerWinFrmField
+    public class AnalysisWinFrmFieldManagerVb6 : AnalysisWinFrmFieldManager
     {
         #region const
 
@@ -17,12 +17,12 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region constractor
 
-        public ManagerWinFrmFieldVb6(string sourceText) : base(sourceText)
+        public AnalysisWinFrmFieldManagerVb6(string sourceText) : base(sourceText)
         {
 
         }
 
-        public ManagerWinFrmFieldVb6()     
+        public AnalysisWinFrmFieldManagerVb6()     
         {
 
         }
@@ -43,9 +43,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region override
 
-        protected override AnalyzerInputFieldItem GetSourceCodePart()
+        protected override InputFieldItemAnalyzer GetInputFieldItemAnalyzer()
         {
-            return new AnalyzerVB6InputFieldItem(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
+            return new InputFieldItemAnalyzerVB6(this.GetSourceTextWithoutVBForm(), 0, string.Empty);
         }
         
         #endregion

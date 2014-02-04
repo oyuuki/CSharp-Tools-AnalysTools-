@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 using System.Reflection;
 
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
     /// <summary>
     /// class is All Sourcecode parent
     /// </summary>
-    public abstract class ManagerWinFrmField
+    public abstract class AnalysisWinFrmFieldManager
     {
         #region Instance
 
@@ -21,12 +21,12 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Constructor
 
-        protected ManagerWinFrmField(string sourceText)
+        protected AnalysisWinFrmFieldManager(string sourceText)
         {
             this._sourceText = sourceText;
         }
 
-        protected ManagerWinFrmField()
+        protected AnalysisWinFrmFieldManager()
         {
 
         }
@@ -40,13 +40,13 @@ namespace OyuLib.Documents.Sources.Analysis
         /// </summary>
         /// <returns></returns>
         public WinFrmInputField[] GetWinFrmFields<T>()
-            where T : ExtractorWinFrmInputField, new()
+            where T : WinFrmInputFieldExtractor, new()
         {
 
-            AnalyzerInputFieldItem[] partArray = this.GetSourceCodePart().GetPartArray();
+            InputFieldItemAnalyzer[] partArray = this.GetInputFieldItemAnalyzer().GetPartArray();
             List<WinFrmInputField> retList = new List<WinFrmInputField>();
 
-            foreach (AnalyzerInputFieldItem part in partArray)
+            foreach (InputFieldItemAnalyzer part in partArray)
             {
                 T inputItemgene = ConstructItemInput<T>(part);
 
@@ -56,8 +56,8 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
-        private static T ConstructItemInput<T>(AnalyzerInputFieldItem part)
-            where T : ExtractorWinFrmInputField, new()
+        private static T ConstructItemInput<T>(InputFieldItemAnalyzer part)
+            where T : WinFrmInputFieldExtractor, new()
         {
             Type type = typeof(T);
             ConstructorInfo ctor = type.GetConstructor(new Type[] { typeof(string), typeof(int), typeof(string) });
@@ -70,7 +70,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region abstract
 
-        protected abstract AnalyzerInputFieldItem GetSourceCodePart();
+        protected abstract InputFieldItemAnalyzer GetInputFieldItemAnalyzer();
 
         #endregion
 

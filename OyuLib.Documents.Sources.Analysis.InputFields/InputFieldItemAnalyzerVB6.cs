@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    internal class AnalyzerVB6InputFieldItem : AnalyzerInputFieldItem
+    internal class InputFieldItemAnalyzerVB6 : InputFieldItemAnalyzer
     {
         #region const
 
@@ -20,7 +20,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        public AnalyzerVB6InputFieldItem()
+        public InputFieldItemAnalyzerVB6()
             : base()
         {
 
@@ -30,7 +30,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        public AnalyzerVB6InputFieldItem(string sourceText, int hierarchyIndex, string itemSignature)
+        public InputFieldItemAnalyzerVB6(string sourceText, int hierarchyIndex, string itemSignature)
             : base(sourceText, hierarchyIndex, itemSignature)
         {
 
@@ -60,11 +60,11 @@ namespace OyuLib.Documents.Sources.Analysis
             {
                 string rttt = this.SourceText.Substring(nextBeginIndex);
                 string aarttt = rttt.Substring(rttt.IndexOf(BEGIN));
-                this.ReplaceTextBrank(this.AddChild<AnalyzerVB6InputFieldItem>(aarttt));
+                this.ReplaceTextBrank(this.AddChild<InputFieldItemAnalyzerVB6>(aarttt));
             }
             else
             {
-                this.ReplaceTextBrank(this.AddChild<AnalyzerVB6InputFieldItem>(this.SourceText.Substring(beginIndex, endIndex - beginIndex + END.Length)));
+                this.ReplaceTextBrank(this.AddChild<InputFieldItemAnalyzerVB6>(this.SourceText.Substring(beginIndex, endIndex - beginIndex + END.Length)));
             }
 
 
@@ -76,7 +76,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return true;
         }
 
-        private void ReplaceTextBrank(AnalyzerVB6InputFieldItem part)
+        private void ReplaceTextBrank(InputFieldItemAnalyzerVB6 part)
         {
             foreach (string rep in part.GetTextArray())
             {

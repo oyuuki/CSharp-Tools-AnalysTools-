@@ -9,7 +9,7 @@ namespace OyuLib.Documents.Sources.Analysis
     /// <summary>
     /// Manage to analys VBCode
     /// </summary>
-    public class ManagerAnalysis
+    public abstract class AnalysisManager
     {
         #region Instance
 
@@ -25,7 +25,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <summary>
         /// constractor
         /// </summary
-        public ManagerAnalysis()
+        public AnalysisManager()
         {
             
         }
@@ -33,10 +33,10 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        /// <param name="sourceText"></param>
-        public ManagerAnalysis(SourceDocument sourceText)
+        /// <param name="source"></param>
+        public AnalysisManager(SourceDocument source)
         {
-            this._source = sourceText;
+            this._source = source;
         }
 
         #endregion
@@ -52,30 +52,6 @@ namespace OyuLib.Documents.Sources.Analysis
         #endregion
 
         #region Method
-
-        #region 
-
-        public SourceCodeInfo[] GetAnalysisCodeInfoFiltedType(SourceCodeInfo[] codeInfoArray, Type[] filterTypes)
-        {
-            if (filterTypes == null || filterTypes.Length <= 0)
-            {
-                return codeInfoArray;
-            }
-
-            var retList = new List<SourceCodeInfo>();
-
-            foreach (var codeInfo in codeInfoArray)
-            {
-                if (TypeUtil.IsSameTypesObject(filterTypes, codeInfo))
-                {
-                    retList.Add(codeInfo);
-                }
-            }
-
-            return retList.ToArray();
-        }
-
-        #endregion
 
         #endregion
     }

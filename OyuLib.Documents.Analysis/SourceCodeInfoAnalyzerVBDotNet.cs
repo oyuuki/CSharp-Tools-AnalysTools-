@@ -6,14 +6,14 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    internal class AnalyzerCodeInfoVBDotNet : AnalyzerCodeInfo
+    internal class SourceCodeInfoAnalyzerVBDotNet : SourceCodeInfoAnalyzer
     {
         #region Constractor
 
         /// <summary>
         /// constractor
         /// </summAnalysisary>
-        public AnalyzerCodeInfoVBDotNet()
+        public SourceCodeInfoAnalyzerVBDotNet()
             : base()
         {
         }
@@ -22,7 +22,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// constractor
         /// </summary>
         /// <param name="code"></param>
-        public AnalyzerCodeInfoVBDotNet(SourceCode code)
+        public SourceCodeInfoAnalyzerVBDotNet(SourceCode code)
             : base(code)
         {
             
@@ -33,7 +33,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// </summary>
         /// <param name="code"></param>
         /// <param name="isInsiteMethod"></param>
-        public AnalyzerCodeInfoVBDotNet(SourceCode code, bool isInsiteMethod)
+        public SourceCodeInfoAnalyzerVBDotNet(SourceCode code, bool isInsiteMethod)
             : base(code, isInsiteMethod)
         {
 

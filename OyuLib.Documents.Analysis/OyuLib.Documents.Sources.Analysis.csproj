@@ -39,25 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalyzerCodeInfoVBDotNet.cs" />
-    <Compile Include="ManagerAnalysisCode.cs" />
-    <Compile Include="ManagerAnalysisInputFieldItem.cs" />
-    <Compile Include="ManagerAnalysis.cs" />
-    <Compile Include="AnalyzerCodeInfo.cs" />
-    <Compile Include="AnalyzerInputFieldItem.cs" />
-    <Compile Include="AnalyzerVB6InputFieldItem.cs" />
-    <Compile Include="ExtractorCodeInfo.cs" />
-    <Compile Include="InputField.cs" />
+    <Compile Include="SourceCodeInfoAnalyzerVBDotNet.cs" />
+    <Compile Include="AnalysisCodeManager.cs" />
+    <Compile Include="AnalysisManager.cs" />
+    <Compile Include="SourceCodeInfoAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ExtractorCodeInfoVBDotNet.cs" />
-    <Compile Include="WinFrmInputField.cs" />
-    <Compile Include="ExtractorWinFrmInputField.cs" />
-    <Compile Include="ExtractorWinFrmInputFieldVB6.cs" />
-    <Compile Include="FieldImeMode.cs" />
-    <Compile Include="FieldReadOnly.cs" />
-    <Compile Include="FieldTranceType.cs" />
-    <Compile Include="ManagerWinFrmField.cs" />
-    <Compile Include="ManagerWinFrmFieldVb6.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">

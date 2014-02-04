@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    public abstract class ExtractorWinFrmInputField : InputField
+    public abstract class WinFrmInputFieldExtractor : InputField
     {
         #region constractor
 
-        protected ExtractorWinFrmInputField(string sourceText, int hierarchyIndex, string itemSignature)
+        protected WinFrmInputFieldExtractor(string sourceText, int hierarchyIndex, string itemSignature)
                 : base(sourceText, hierarchyIndex, itemSignature)
         {
             
         }
 
-        protected ExtractorWinFrmInputField()
+        protected WinFrmInputFieldExtractor()
         {
 
         }

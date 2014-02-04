@@ -141,9 +141,9 @@
       <Project>{8eea5e05-187a-4a8a-837b-999afa436840}</Project>
       <Name>OyuLib.Data.DB</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OyuLib.Documents.Analysis\OyuLib.Documents.Sources.Analysis.csproj">
-      <Project>{2bb0f5f4-0234-4c52-907c-5e2347a1129e}</Project>
-      <Name>OyuLib.Documents.Sources.Analysis</Name>
+    <ProjectReference Include="..\OyuLib.Documents.Sources.Analysis.InputFields\OyuLib.Documents.Sources.Analysis.InputFields.csproj">
+      <Project>{63a639bb-6d26-49c8-9a1e-f78210882db3}</Project>
+      <Name>OyuLib.Documents.Sources.Analysis.InputFields</Name>
     </ProjectReference>
     <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">
       <Project>{89573291-d945-4691-b5a2-5a9be29b2c05}</Project>

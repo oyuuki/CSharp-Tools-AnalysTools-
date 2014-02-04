@@ -1,7 +1,7 @@
 ﻿
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    public enum FieldReadOnly
+    public enum FieldsReadOnly
     {
         [ConstValue("1", "出")]
         On,

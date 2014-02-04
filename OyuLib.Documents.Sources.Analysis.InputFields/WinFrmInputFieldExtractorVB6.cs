@@ -1,17 +1,17 @@
 ﻿using System;
 
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    internal class ExtractorWinFrmInputFieldVB6 : ExtractorWinFrmInputField
+    internal class WinFrmInputFieldExtractorVB6 : WinFrmInputFieldExtractor
     {
         #region constractor
 
-        public ExtractorWinFrmInputFieldVB6()
+        public WinFrmInputFieldExtractorVB6()
         {
 
         }
 
-        public ExtractorWinFrmInputFieldVB6(string sourceText, int hierarchyIndex, string itemSignature)
+        public WinFrmInputFieldExtractorVB6(string sourceText, int hierarchyIndex, string itemSignature)
             : base(sourceText, hierarchyIndex, itemSignature)
         {
 
@@ -214,7 +214,7 @@ namespace OyuLib.Documents.Sources.Analysis
             if (this.GetExType().IndexOf("imDate") >= 0
                     || this.GetExType().IndexOf("imNumber") >= 0)
             {
-                return ConstAttributeManager<FieldImeMode>.GetConstByEnumValue(FieldImeMode.Off);
+                return ConstAttributeManager<FieldsImeMode>.GetConstByEnumValue(FieldsImeMode.Off);
             }
 
             if (!(retValue = this.GetWinFrmFieldPropertyValue("IMEMode")).Equals(string.Empty))

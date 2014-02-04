@@ -5,13 +5,13 @@ using System.Text;
 
 using System.Reflection;
 
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
-    public abstract class AnalyzerInputFieldItem : InputField
+    public abstract class InputFieldItemAnalyzer : InputField
     {
         #region instance
 
-        protected List<AnalyzerInputFieldItem> _childInputFieldItems = null;
+        protected List<InputFieldItemAnalyzer> _childInputFieldItems = null;
 
         #endregion
 
@@ -21,7 +21,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// 
         /// constractor
         /// </summary>
-        protected AnalyzerInputFieldItem()
+        protected InputFieldItemAnalyzer()
         {
 
         }
@@ -29,10 +29,10 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <summary>
         /// constractor
         /// </summary>
-        protected AnalyzerInputFieldItem(string sourceText, int hierarchyIndex, string itemSignature)
+        protected InputFieldItemAnalyzer(string sourceText, int hierarchyIndex, string itemSignature)
             : base(sourceText, hierarchyIndex, itemSignature)
         {
-            this._childInputFieldItems = new List<AnalyzerInputFieldItem>();
+            this._childInputFieldItems = new List<InputFieldItemAnalyzer>();
             this.ItemSignature = itemSignature + "." + this.GetHashCode().ToString();
             this.Init();
         }
@@ -58,13 +58,13 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.ItemSignature;
         }
 
-        public AnalyzerInputFieldItem[] GetPartArray()
+        public InputFieldItemAnalyzer[] GetPartArray()
         {
-            List<AnalyzerInputFieldItem> retList = new List<AnalyzerInputFieldItem>();
+            List<InputFieldItemAnalyzer> retList = new List<InputFieldItemAnalyzer>();
             retList.Add(this);
-            List<AnalyzerInputFieldItem> childList = new List<AnalyzerInputFieldItem>(this.GetChildParts());
+            List<InputFieldItemAnalyzer> childList = new List<InputFieldItemAnalyzer>(this.GetChildParts());
 
-            foreach (AnalyzerInputFieldItem part in childList.ToArray())
+            foreach (InputFieldItemAnalyzer part in childList.ToArray())
             {
                 retList.Add(part);
             }
@@ -85,9 +85,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region protected
 
-        protected AnalyzerInputFieldItem[] GetChildparts()
+        protected InputFieldItemAnalyzer[] GetChildparts()
         {
-            return this._childInputFieldItems.ToArray<AnalyzerInputFieldItem>();
+            return this._childInputFieldItems.ToArray<InputFieldItemAnalyzer>();
         }
 
         public string[] GetTextArray()
@@ -101,10 +101,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected string[] GetChildPartsTextArray()
         {
-            List<AnalyzerInputFieldItem> childList = new List<AnalyzerInputFieldItem>(this.GetChildParts());
+            List<InputFieldItemAnalyzer> childList = new List<InputFieldItemAnalyzer>(this.GetChildParts());
             List<string> retList = new List<string>();
 
-            foreach (AnalyzerInputFieldItem part in childList.ToArray())
+            foreach (InputFieldItemAnalyzer part in childList.ToArray())
             {
                 retList.Add(part.GetSourcePartText());
             }
@@ -112,11 +112,11 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
-        protected AnalyzerInputFieldItem[] GetChildParts()
+        protected InputFieldItemAnalyzer[] GetChildParts()
         {
-            List<AnalyzerInputFieldItem> retList = new List<AnalyzerInputFieldItem>();
+            List<InputFieldItemAnalyzer> retList = new List<InputFieldItemAnalyzer>();
 
-            foreach (AnalyzerInputFieldItem part in this._childInputFieldItems)
+            foreach (InputFieldItemAnalyzer part in this._childInputFieldItems)
             {
                 if (!part.GetIshaveChild())
                 {
@@ -148,7 +148,7 @@ namespace OyuLib.Documents.Sources.Analysis
         }
 
         protected S AddChild<S>(string text)
-            where S : AnalyzerInputFieldItem, new()
+            where S : InputFieldItemAnalyzer, new()
         {
             Type type = typeof(S);
             ConstructorInfo ctor = type.GetConstructor(new Type[] { typeof(string), typeof(int), typeof(string) });

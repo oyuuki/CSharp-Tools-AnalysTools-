@@ -9,7 +9,7 @@ using OyuLib.Documents.Sources;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    internal abstract class AnalyzerCodeInfo : ISourceRule
+    internal abstract class SourceCodeInfoAnalyzer : ISourceRule
     {
         #region instanceVal
 
@@ -21,18 +21,18 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Constructor
 
-        protected AnalyzerCodeInfo()
+        protected SourceCodeInfoAnalyzer()
         {
 
         }
 
-        protected AnalyzerCodeInfo(SourceCode code)
+        protected SourceCodeInfoAnalyzer(SourceCode code)
             : this(code, false)
         {
             this._code = code;
         }
 
-        protected AnalyzerCodeInfo(SourceCode code, bool isInsiteMethod)
+        protected SourceCodeInfoAnalyzer(SourceCode code, bool isInsiteMethod)
         {
             this._code = code;
             this._isInsiteMethod = isInsiteMethod;

@@ -1,6 +1,6 @@
 ﻿using OyuLib.Documents;
 
-namespace OyuLib.Documents.Sources.Analysis
+namespace OyuLib.Documents.Sources.Analysis.InputFields
 {
     public abstract class InputField        
     {

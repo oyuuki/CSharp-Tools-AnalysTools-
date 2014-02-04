@@ -9,14 +9,24 @@ using OyuLib.Documents;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class ManagerAnalysisCode : ManagerAnalysis
+    public class AnalysisCodeManager
     {
+        
+        #region Instance
+
+        /// <summary>
+        /// source text
+        /// </summary>
+        protected SourceDocument _source = null;
+
+        #endregion
+
         #region constractor
 
         /// <summary>
         /// constractor
         /// </summary>
-        public ManagerAnalysisCode()
+        public AnalysisCodeManager()
             : base()
         {
         }
@@ -25,10 +35,19 @@ namespace OyuLib.Documents.Sources.Analysis
         /// constractor
         /// </summary>
         /// <param name="source"></param>
-        public ManagerAnalysisCode(SourceDocument source)
-            : base(source)
+        public AnalysisCodeManager(SourceDocument source)
         {
-            
+            this._source = source;
+        }
+
+        #endregion
+
+        #region Property
+
+        public SourceDocument Source
+        {
+            get { return this._source; }
+            set { this._source = value; }
         }
 
         #endregion
@@ -37,8 +56,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-
-        public SourceCodeblockInfo GetSource()
+        public SourceCodeblockInfo GetSourceCodeblockInfo()
         {
             return new SourceCodeblockInfo(this.GetVbSourceCodeAnalysis());
         }
@@ -53,7 +71,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var code in this.Source.GetCodes())
             {
-                var ainfo = new AnalyzerCodeInfoVBDotNet(code, isInsiteMethod);
+                var ainfo = new SourceCodeInfoAnalyzerVBDotNet(code, isInsiteMethod);
                 var codeInfo = ainfo.GetCodeInfo();
                 retList.Add(codeInfo);
 
@@ -138,6 +156,26 @@ namespace OyuLib.Documents.Sources.Analysis
         private SourceCodeInfo[] GetVbSourceCodeAnalysisFiltedType(Type[] filterTypes)
         {
             return this.GetAnalysisCodeInfoFiltedType(this.GetVbSourceCodeAnalysis(), filterTypes);
+        }
+
+        private SourceCodeInfo[] GetAnalysisCodeInfoFiltedType(SourceCodeInfo[] codeInfoArray, Type[] filterTypes)
+        {
+            if (filterTypes == null || filterTypes.Length <= 0)
+            {
+                return codeInfoArray;
+            }
+
+            var retList = new List<SourceCodeInfo>();
+
+            foreach (var codeInfo in codeInfoArray)
+            {
+                if (TypeUtil.IsSameTypesObject(filterTypes, codeInfo))
+                {
+                    retList.Add(codeInfo);
+                }
+            }
+
+            return retList.ToArray();
         }
 
         #endregion
