@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisSourceDocumentManagerVBDotNet.cs" />
+    <Compile Include="SourceCodeInfoParamaterFactory.cs" />
     <Compile Include="IParamater.cs" />
     <Compile Include="SourceCodeblockInfo.cs" />
     <Compile Include="SourceCodeInfo.cs" />
@@ -71,11 +72,19 @@
     <Compile Include="SourceCodeInfoMemberVariable.cs" />
     <Compile Include="SourceCodeInfoOptionParameters.cs" />
     <Compile Include="SourceCodeInfoOther.cs" />
+    <Compile Include="SourceCodeInfoParamater.cs" />
+    <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetCallMethod.cs" />
+    <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetMethod.cs" />
+    <Compile Include="SourceCodeInfoParamaterMethod.cs" />
+    <Compile Include="SourceCodeInfoParamaterValue.cs" />
+    <Compile Include="SourceCodeInfoParamaterValueCallMethod.cs" />
+    <Compile Include="SourceCodeInfoParamaterValueMethod.cs" />
     <Compile Include="SourceCodeInfoSubstitution.cs" />
     <Compile Include="SourceCodeInfoValiable.cs" />
     <Compile Include="SourceCodePartsFactory.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNet.cs" />
-    <Compile Include="SourceCodePartsFactoryVBDotNetHasParams.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetEvent.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">

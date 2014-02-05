@@ -132,9 +132,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             private int _typeName = -1;
 
-            private int _paramaters = -1;
-
-            private SourceCodeInfoValiable[] _valiables = null;
+            private string _paramaters = string.Empty;
 
             #endregion
 
@@ -146,7 +144,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 int statementObj,
                 int name,
                 int typeName,
-                int paramaters,
+                string paramaters,
                 SourceCodeInfoValiable[] valiables)
             {
                 this._accessModifier = accessModifier;
@@ -155,7 +153,6 @@ namespace OyuLib.Documents.Sources.Analysis
                 this._name = name;
                 this._typeName = typeName;
                 this._paramaters = paramaters;
-                this._valiables = valiables;
             }
 
             #endregion
@@ -165,44 +162,40 @@ namespace OyuLib.Documents.Sources.Analysis
             public int AccessModifier
             {
                 get { return this._accessModifier; }
-                set { this._accessModifier = value; }
             }
 
             public int Statement
             {
                 get { return this._statement; }
-                set { this._statement = value; }
             }
 
             public int StatementObj
             {
                 get { return this._statementObj; }
-                set { this._statementObj = value; }
             }
 
             public int Name
             {
                 get { return this._name; }
-                set { this._name = value; }
             }
 
             public int TypeName
             {
                 get { return this._typeName; }
-                set { this._typeName = value; }
             }
 
-            public int Paramaters
-            {
-                get { return this._paramaters; }
-                set { this._paramaters = value; }
+            public SourceCodeInfoParamaterMethod ParamatersFactory
+            {                    
+                get
+                {
+                    return
+                        new SourceCodeInfoParamaterFactoryVBDotNetMethod(
+                            0,
+                            new SourceCodePartsFactoryVBDotNetEvent(new SourceCode(_paramaters)))
+                            .GetSourceCodeInfoParamater();
+                }
             }
 
-            public SourceCodeInfoValiable[] Valiables
-            {
-                get { return this._valiables; }
-                set { this._valiables = value; }
-            }
 
             #endregion
         }
@@ -239,11 +232,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private CommonCodeInfoMethodInfo GetCommonCodeInfoMethod(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
             int methodHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetMethodHead());
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
             int name = methodHead + 1;
-            int paramaters = name + 1;
+            string paramaters = coFac.GetCodeParts()[name + 1];
             int typeName = -1;
 
             if (coFac.GetCodeParts()[methodHead].Equals(SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION))
@@ -475,7 +468,7 @@ namespace OyuLib.Documents.Sources.Analysis
             int methodName = 0;
             int paramater = 0;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
 
             if (coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL))
             {
@@ -545,7 +538,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
 
             int segments = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_END);
             return new SourceCodeInfoBlockEndMethod(code, coFac, segments + 1);
@@ -566,8 +559,10 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var commonInfo = this.GetCommonCodeInfoMethod(code);
 
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, " ");
+
+            var coFac = new SourceCodePartsFactoryVBDotNetEvent(code);
             int eventName = coFac.GetCodeParts().Length - 1;
+            int eventObjectName = coFac.GetCodeParts().Length - 2;
 
             return new SourceCodeInfoBlockBeginEventMethod(
                 code, 
@@ -578,8 +573,9 @@ namespace OyuLib.Documents.Sources.Analysis
                 commonInfo.StatementObj, 
                 commonInfo.Name, 
                 commonInfo.TypeName, 
-                commonInfo.Paramaters, 
-                eventName);
+                eventObjectName,
+                eventName,
+                commonInfo.ParamatersFactory);
         }
 
         #endregion
@@ -595,7 +591,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
             var commonInfo = this.GetCommonCodeInfoMethod(code);
             return new SourceCodeInfoBlockBeginMethod(
                 code,
@@ -606,7 +602,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 commonInfo.AccessModifier, 
                 commonInfo.Name, 
                 commonInfo.TypeName, 
-                commonInfo.Paramaters);
+                commonInfo.ParamatersFactory);
         }
 
         #endregion
@@ -657,7 +653,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginIf());
             return new SourceCodeInfoBlockBeginIf(code, coFac, segments, segments + 1);
@@ -671,7 +667,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoBlockEndIf GetCodeInfoBlockEndIf(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndIf());
             return new SourceCodeInfoBlockEndIf(code, coFac, segments);
@@ -687,7 +683,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndDoWhile());
             return new SourceCodeInfoBlockBeginDoWhile(code, coFac, segments, segments + 1);
@@ -704,7 +700,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNetHasParams(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndDoWhile());
             return new SourceCodeInfoBlockEndDoWhile(code, coFac, segments);

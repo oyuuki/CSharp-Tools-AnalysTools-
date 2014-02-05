@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoBlockBeginMethod : SourceCodeInfoBlockBegin, IParamater
+    public class SourceCodeInfoBlockBeginMethod : SourceCodeInfoBlockBegin
     {
         #region instanceVal
 
@@ -16,9 +16,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private readonly int _returnTypeName = -1;
 
-        private readonly int _paramaters = -1;
-
         private readonly string _codeDelimiterParamater = null;
+
+        private SourceCodeInfoParamaterMethod _sourceCodeInfoParamaterValueMethod = null;
 
         #endregion
 
@@ -41,14 +41,14 @@ namespace OyuLib.Documents.Sources.Analysis
             int accessModifier,
             int name,
             int returnTypeName,
-            int paramaters)
+            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod)
             : base(code, coFac, statement, statementObject)
         {
             this._accessModifier = accessModifier;
             this._name = name;
             this._returnTypeName = returnTypeName;
-            this._paramaters = paramaters;
             this._codeDelimiterParamater = codeDelimiterParamater;
+            this._sourceCodeInfoParamaterValueMethod = sourceCodeInfoParamaterValueMethod;
         }
 
         #endregion
@@ -73,18 +73,12 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string ParamatersString
         {
-            get { return this.GetCodePartsString(this._paramaters); }   
+            get { return this._sourceCodeInfoParamaterValueMethod.ToString(); }   
         }
 
         private string CodeDelimiterParamater
         {
             get { return this._codeDelimiterParamater; }
-        }
-
-        public StringRange[] GetStringRangesParamaters()
-        {
-            var s = new StringSpilitter(this.ParamatersString);
-            return s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
         }
 
         #endregion
@@ -96,12 +90,17 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override string GetCodeText()
         {
-            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + " パラメータ：" + this.GetStringRangesParamaters() + ParamatersString;
+            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + " パラメータ：" + ParamatersString;
         }
 
         public override Type GetCodeInfoBlockEndType()
         {
             return typeof(SourceCodeInfoBlockEndMethod);
+        }
+
+        protected override int[] GetCodePartsIndex()
+        {
+            return new int[] { this._accessModifier, this._name, this._returnTypeName };
         }
 
         #endregion

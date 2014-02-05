@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OyuLib.Collection
 {
-    public abstract class CollectionUserClass<T> : System.Collections.CollectionBase
+    public abstract class UserClassCollection<T> : System.Collections.CollectionBase
     {
         #region InstanceVal
 

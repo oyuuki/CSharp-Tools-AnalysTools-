@@ -47,7 +47,7 @@
             this.exListBox1.Location = new System.Drawing.Point(12, 193);
             this.exListBox1.Name = "exListBox1";
             this.exListBox1.ScrollAlwaysVisible = true;
-            this.exListBox1.Size = new System.Drawing.Size(993, 378);
+            this.exListBox1.Size = new System.Drawing.Size(622, 378);
             this.exListBox1.TabIndex = 1;
             // 
             // exButton1
@@ -105,10 +105,10 @@
             this.exListBox2.Font = new System.Drawing.Font("MS UI Gothic", 8F);
             this.exListBox2.FormattingEnabled = true;
             this.exListBox2.ItemHeight = 11;
-            this.exListBox2.Location = new System.Drawing.Point(1011, 193);
+            this.exListBox2.Location = new System.Drawing.Point(640, 193);
             this.exListBox2.Name = "exListBox2";
             this.exListBox2.ScrollAlwaysVisible = true;
-            this.exListBox2.Size = new System.Drawing.Size(493, 378);
+            this.exListBox2.Size = new System.Drawing.Size(864, 378);
             this.exListBox2.TabIndex = 6;
             // 
             // timer1

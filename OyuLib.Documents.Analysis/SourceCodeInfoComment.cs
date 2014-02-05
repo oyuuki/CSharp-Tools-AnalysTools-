@@ -31,7 +31,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override string GetCodeText()
         {
-            return "コメント：" + this.CodeString;
+            return "コメント：" + this.GetCodeString();
         }
 
         protected override int[] GetCodePartsIndex()

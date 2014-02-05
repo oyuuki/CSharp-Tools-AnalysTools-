@@ -9,6 +9,17 @@ namespace OyuLib
     {
         #region Method
 
+        public static T[] GetMargeArray<T>(T[] array1, T[] array2)
+        {
+            var mergedList = new List<T>();
+
+            mergedList.AddRange(array1);
+            mergedList.AddRange(array2);
+
+            return mergedList.ToArray();
+
+        }
+
         public static bool IsNullOrNoLength(Array array)
         {
             return array == null || array.Length <= 0;

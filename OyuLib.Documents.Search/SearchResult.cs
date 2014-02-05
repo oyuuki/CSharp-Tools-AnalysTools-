@@ -8,7 +8,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Search
 {
-    public class SearchResult : CollectionUserClass<SearchResultItem>
+    public class SearchResult : UserClassCollection<SearchResultItem>
     {
         #region constructor
 

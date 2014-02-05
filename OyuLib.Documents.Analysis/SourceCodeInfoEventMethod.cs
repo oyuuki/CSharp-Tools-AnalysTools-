@@ -9,7 +9,9 @@ namespace OyuLib.Documents.Sources.Analysis
     {
         #region instanceVal
 
-        private readonly int _eve = -1;
+        private readonly int _eventObjectName = -1;
+
+        private readonly int _eventName = -1;
 
         #endregion
 
@@ -32,45 +34,45 @@ namespace OyuLib.Documents.Sources.Analysis
             int accessModifier,
             int name,
             int returnTypeName,
-            int paramaters,
-            int eve)
-            : base(code, coFac,CodeDelimiterParamater, statement, statementObject, accessModifier, name, returnTypeName, paramaters)
+            int eventObjectName,
+            int eventName,
+            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod)
+            : base(code, coFac, CodeDelimiterParamater, statement, statementObject, accessModifier, name, returnTypeName, sourceCodeInfoParamaterValueMethod)
         {
-            this._eve = eve;
+            this._eventObjectName = eventObjectName;
+            this._eventName = eventName;
         }
+
 
         #endregion
 
         #region Property
 
-        public string ObjNamesuggestEventName
+        public string EventObjectName
         {
-            get { return this.GetEventString()[0]; }
+            get { return this.GetCodePartsString(this._eventObjectName); }
         }
 
         public string EventName
         {
-            get { return this.GetEventString()[1]; }
+            get { return this.GetCodePartsString(this._eventName); }
         }
 
         #endregion
 
         #region Method
 
-
-        private string[] GetEventString()
-        {
-            return
-                new CharCodeManager(new CharCode(".")).GetSpilitString(
-                    this.GetCodePartsString(this._eve));
-        }
-
         #region override
 
         protected override string GetCodeText()
         {
             return "イベントメソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "イベント名：" + this.EventName +
-                   "イベント発生オブジェクト名：" + this.ObjNamesuggestEventName + "パラメータ名：" + this.GetStringRangesParamaters() + ParamatersString;
+                   "イベント発生オブジェクト名：" + this.EventObjectName + "パラメータ名：" + ParamatersString;
+        }
+
+        protected override int[] GetCodePartsIndex()
+        {
+            return ArrayUtil.GetMargeArray<int>(new[] { this._eventObjectName, this._eventName }, base.GetCodePartsIndex());
         }
 
         #endregion

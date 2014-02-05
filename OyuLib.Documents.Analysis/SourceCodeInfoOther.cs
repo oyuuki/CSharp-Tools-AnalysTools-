@@ -29,7 +29,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override string GetCodeText()
         {
-            return "その他コード：" + this.CodeString;
+            return "その他コード：" + this.GetCodeString();
         }
 
         protected override int[] GetCodePartsIndex()

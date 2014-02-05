@@ -36,6 +36,11 @@ namespace OyuLib.Documents.Sources
             this._codeLineNumber = codeIndex;
         }
 
+        public SourceCode(string codeLine)
+           : this(codeLine, -1)
+        {
+        }
+
         #endregion
 
         #region Property
@@ -51,6 +56,7 @@ namespace OyuLib.Documents.Sources
             get { return this._codeLineNumber; }
             set { this._codeLineNumber = value; }
         }
+
 
         #endregion
 

@@ -139,24 +139,24 @@ namespace OyuLib.Documents.Sources.Analysis
             return codeparts;
         }
 
-        public string GetTemplateString(int[] codepartsIndex)
+        public string GetTemplateString(int[] codepartsIndexes)
         {
             string str = this.GetStringWithOutComment();
 
             StringRange[] ranges = this.GetCodePartsRanges(str);
             StringBuilder strBu = new StringBuilder();
 
-            for (int index = 0; index > ranges.Length; index++)
+            for (int index = 0; index < ranges.Length; index++)
             {
                 bool isParts = false;
 
                 strBu.Append(ranges[index].SpilitSeparatorStart);
 
-                foreach (var indexVal in codepartsIndex)
+                foreach (var indexVal in codepartsIndexes)
                 {
                     if (indexVal == index)
                     {
-                        strBu.Append("{<<<" + indexVal + ">>>}");
+                        strBu.Append(this.GetTemplateValue(indexVal));
                         isParts = true;
                         break;
                     }
@@ -164,13 +164,33 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 if (!isParts)
                 {
-                    strBu.Append(ranges[index]);
+                    strBu.Append(ranges[index].GetStringSpilited());
                 }
 
                 strBu.Append(ranges[index].SpilitSeparatorEnd);
             }
 
-            return null;
+            return strBu.ToString();
+        }
+
+        private string GetTemplateValue(int codepartsIndex)
+        {
+            return "{<<<" + codepartsIndex + ">>>}";
+        }
+
+        public string[] GetNestedCodeParts(string spilitSeparatorStart, string spilitSeparatorEnd)
+        {
+            var retList = new List<string>();
+
+            foreach (var range in this.GetCodePartsRanges(this.GetStringWithOutComment()))
+            {
+                if (range.GetIsSpilitStrings(spilitSeparatorStart, spilitSeparatorEnd))
+                {
+                    retList.Add(range.GetStringSpilited());
+                }           
+            }
+
+            return retList.ToArray();
         }
 
         #endregion

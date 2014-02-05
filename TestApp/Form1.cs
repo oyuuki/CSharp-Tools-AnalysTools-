@@ -10,9 +10,7 @@ using System.Windows.Forms;
 using System.Xml.Schema;
 
 using OyuLib;
-using OyuLib.Documents.Sources;
 using OyuLib.Documents.Sources.Analysis;
-using OyuLib.IO;
 
 namespace TestApp
 {
@@ -130,9 +128,10 @@ namespace TestApp
             a =
                 @"new SourceVBDotNet(new TextFile(""""D:\TETETETE\frm002005.vb"""").GetAllReadText(a = GetText(1 + 2 + 3 + .GetAllReadText(Text)))).GetText(""""test"""").Text";
 
+            a =
+                "Private Sub spd選択_LeaveCell(ByVal eventSender As System.Object, ByVal eventArgs As AxFPSpread._DSpreadEvents_LeaveCellEvent) Handles spd選択.LeaveCell";
 
             StringSpilitter s = new StringSpilitter(a);
-
             StringRange[] cc = s.GetHierarchicalStringWithRangeSpilit(" ", new ManagerStringNested("(", ")"));
 
             // this.exListBox1.Items.Add(a);
@@ -141,6 +140,26 @@ namespace TestApp
             {
                 Test(a, va, "");
             }
+
+            this.exListBox2.Items.Add("ワード検索");
+
+            foreach (var va in cc)
+            {
+                TestSearch(a, va, "", "new");
+            }
+
+            this.exListBox2.Items.Add("コードパーツを生成しよう");
+
+            var str = string.Empty;
+
+            foreach (var va in cc)
+            {
+                str += Test3435(a, va);
+            }
+
+
+            this.exListBox2.Items.Add(str);
+            this.exListBox2.Items.Add(a);
         }
 
         private void Test(string a, StringRange str, string blank)
@@ -157,6 +176,48 @@ namespace TestApp
             {                          
                 Test(a, va, blank + "    ");
             }
+        }
+
+        private void TestSearch(string a, StringRange str, string blank, string search)
+        {
+            //this.exListBox1.Items.Add(blank + " " +  str.IndexStart + ":" + str.CutStringCount);
+
+            if (search.Equals(str.GetStringSpilited()))
+            {
+                this.exListBox1.Items.Add(str.IndexStart + ":" + str.IndexEnd);
+            }
+
+            
+
+            if (str.Childs == null)
+            {
+                return;
+            }
+
+            foreach (var va in str.Childs)
+            {
+                TestSearch(a, va, blank + "    ", search);
+            }
+        }
+
+        private string Test3435(string a, StringRange str)
+        {
+            string retStr = string.Empty;
+
+            //this.exListBox1.Items.Add(blank + " " +  str.IndexStart + ":" + str.CutStringCount);
+            retStr = "[" + str.GetStringSpilited() + "] " ;
+
+            if (str.Childs == null)
+            {
+                return retStr;
+            }
+
+            foreach (var va in str.Childs)
+            {
+                retStr += Test3435(a, va);
+            }
+
+            return retStr;
         }
 
         private void exButton3_Click(object sender, EventArgs e)
@@ -189,8 +250,14 @@ namespace TestApp
 
             foreach (var codeinfo in mana.GetCodeInfoSubstitutionsRoundBlock(".Row"))
             {
-                this.exListBox1.Items.Add(codeinfo.ToString());
-                this.exListBox2.Items.Add(codeinfo.CodeString);
+                this.exListBox1.Items.Add(codeinfo.GetTemplateString());
+                this.exListBox2.Items.Add(codeinfo.GetCodeString());
+            }
+
+            foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
+            {
+                this.exListBox1.Items.Add(codeinfo.GetTemplateString());
+                this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
                       
         }

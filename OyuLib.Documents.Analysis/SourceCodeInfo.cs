@@ -32,23 +32,25 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
-        #region Property
-
-        public string CodeString
-        {
-            get { return this._code.CodeString; }
-        }
-
-        public int CodeLineNumber
-        {
-            get { return this._code.CodeLineNumber; }
-        }
-
-        #endregion
 
         #region Method
 
         #region Public
+
+        public string GetCodeString()
+        {
+            return this._code.CodeString;
+        }
+
+        public int GetCodeLineNumber()
+        {
+            return this._code.CodeLineNumber;
+        }
+
+        public SourceCodePartsfactory GetSourceCodePartsfactory()
+        {
+            return this._coFac;
+        }
 
         protected string GetCodePartsString(int index)
         {
@@ -60,12 +62,12 @@ namespace OyuLib.Documents.Sources.Analysis
             return this._coFac.GetCodeParts()[index];
         }
 
-        protected string GetTemplateString()
+        public string GetTemplateString()
         {
             return this._coFac.GetTemplateString(this.GetCodePartsIndex());
         }
 
-        public string[] CodeParts()
+        public string[] GetCodeParts()
         {
             return this._coFac.GetCodeParts();
         }
@@ -84,6 +86,7 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Abstract
 
         protected abstract string GetCodeText();
+
         protected abstract int[] GetCodePartsIndex();
 
 

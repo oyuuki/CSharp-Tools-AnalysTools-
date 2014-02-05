@@ -59,7 +59,7 @@ namespace OyuLib
 
                     if (startIndex != stringRange.IndexStart)
                     {
-                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1, stringRange.SpilitSeparatorStart, stringRange.SpilitSeparatorEnd, this.TargetString));
+                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1, string.Empty, strSeparator, this.TargetString));
                         // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
                     }
 
@@ -97,7 +97,7 @@ namespace OyuLib
                 }
                 else if (this.TargetString[index].ToString().Equals(strSeparator))
                 {
-                    retlist.Add(new StringRange(startIndex, index - 1, strSeparator, this.TargetString));
+                    retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + 1;                    
                 }
@@ -139,7 +139,7 @@ namespace OyuLib
             {
                 if (this.TargetString[index].ToString().Equals(strSeparator))
                 {
-                    retlist.Add(new StringRange(startIndex, index - 1, strSeparator, string.Empty, this.TargetString));
+                    retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + 1;
                 }
@@ -151,9 +151,28 @@ namespace OyuLib
                 //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 
-            if (this.TargetString.Equals("Private Const cmLngPOPUP_MENU_SELECT As Integer = 0"))
+            return retlist.ToArray();
+        }
+
+        public static StringRange[] GetStringRangeSpilit(StringRange range, string strSeparator)
+        {
+            var retlist = new List<StringRange>();
+            var startIndex = range.IndexStart;
+
+            for (int index = startIndex; index < range.IndexEnd; index++)
             {
-                int a = 1;
+                if (range.TargetString[index].ToString().Equals(strSeparator))
+                {
+                    retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, range.TargetString));
+                    // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
+                    startIndex = index + 1;
+                }
+            }
+
+            if (startIndex < range.TargetString.Length)
+            {
+                retlist.Add(new StringRange(startIndex, range.TargetString.Length - 1, string.Empty, string.Empty, range.TargetString));
+                //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 
             return retlist.ToArray();
@@ -174,7 +193,7 @@ namespace OyuLib
 
                     if (startIndex != stringRange.IndexStart)
                     {
-                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1, stringRange.SpilitSeparatorStart, stringRange.SpilitSeparatorEnd, this.TargetString));
+                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1,string.Empty, strSeparator, this.TargetString));
                         // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
                     }
 
@@ -187,7 +206,7 @@ namespace OyuLib
                 }
                 else if (this.TargetString[index].ToString().Equals(strSeparator))
                 {
-                    retlist.Add(new StringRange(startIndex, index - 1, strSeparator, string.Empty, this.TargetString));
+                    retlist.Add(new StringRange(startIndex, index - 1,string.Empty, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + 1;
                 }

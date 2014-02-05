@@ -329,7 +329,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-        public void Init()
+        protected void Init()
         {
             this.SetCodeObjects();
         }
@@ -353,16 +353,20 @@ namespace OyuLib.Documents.Sources.Analysis
                 objectName,
                 delegate(string lockeyName, SourceCodeInfoBlockBeginEventMethod info)
                 {
-                    return info.ObjNamesuggestEventName.Equals(lockeyName);
+                    return info.EventObjectName.Equals(lockeyName);
                 }
                 );
         }
 
         #endregion 
+
+
+
         //     式コードを取得
         //     コールメソッドコードを取得
       
 //４．右辺式に○○オブジェクトが含まれる
+
 //     式コードを取得
 //     コールメソッドコードを取得
      
@@ -372,7 +376,6 @@ namespace OyuLib.Documents.Sources.Analysis
 //    コールメソッドの引数
 //    IF文の中身
 //    Whileの中身
-//     "'"
 
         #region Abstract
 
