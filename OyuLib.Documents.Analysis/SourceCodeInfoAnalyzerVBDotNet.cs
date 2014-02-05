@@ -191,7 +191,7 @@ namespace OyuLib.Documents.Sources.Analysis
                     return
                         new SourceCodeInfoParamaterFactoryVBDotNetMethod(
                             0,
-                            new SourceCodePartsFactoryVBDotNetEvent(new SourceCode(_paramaters)))
+                            new SourceCodePartsFactoryCommat(new SourceCode(_paramaters)))
                             .GetSourceCodeInfoParamater();
                 }
             }
@@ -212,7 +212,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private bool CheckCommonCodeInfoMethod(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
 
             int methodHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetMethodHead());
 
@@ -232,7 +232,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private CommonCodeInfoMethodInfo GetCommonCodeInfoMethod(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
             int methodHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetMethodHead());
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
             int name = methodHead + 1;
@@ -296,7 +296,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private bool CheckCommonCodeInfoBlock(SourceCode code, string[] blockNames)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             
             // include "With"
             if (!coFac.IsIncludeAllStringInCode(blockNames))
@@ -309,7 +309,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceCodeInfo GetCodeInfoWithBlock(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
 
             int length = coFac.GetCodeParts().Length;
 
@@ -328,14 +328,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceCodeInfo GetCodeInfoSubEndBlock(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             int statement = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_SUB);
             return new SourceCodeInfoBlockSubEndVB(code, coFac, statement);
         }
 
         private SourceCodeInfo GetCodeInfoFunctionEndBlock(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             int statement = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_SUB);
             return new SourceCodeInfoBlockFunctionEndVB(code, coFac, statement);
         }
@@ -347,7 +347,7 @@ namespace OyuLib.Documents.Sources.Analysis
         private  bool CheckCommonCodeInfoBlockBeginIf(SourceCode code, bool isEnd)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginIf()) && isEnd == coFac.IsIncludeStringInCode(rule.GetControlCodeEndIf());
         }
@@ -359,7 +359,7 @@ namespace OyuLib.Documents.Sources.Analysis
         private bool CheckCommonCodeInfoBlockBeginCaseFomula(SourceCode code, bool isEnd)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginCaseFomula()) && isEnd == coFac.IsIncludeStringInCode(rule.GetControlCodeEndCaseFomula());
         }
@@ -405,7 +405,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoComment GetCodeInfoComment(SourceCode code)
         {
-            return new SourceCodeInfoComment(code, new SourceCodePartsfactoryVBDotNet(code, " "));
+            return new SourceCodeInfoComment(code, new SourceCodePartsfactoryNocomment(code, " "));
         }
 
         protected override bool CheckCodeInfoComment(SourceCode code)
@@ -424,7 +424,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoValiable GetCodeInfoVariable(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             var commonInfo = this.GetCommonCodeInfoVariable(code, coFac);
             return new SourceCodeInfoValiable(
                 code, 
@@ -437,7 +437,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override bool CheckCodeInfoVariable(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             return this.CheckCommonCodeInfoVariable(code, coFac) && this.IsInsiteMethod;
         }
 
@@ -447,7 +447,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoMemberVariable GetCodeInfoMemberVariable(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             var commonInfo = this.GetCommonCodeInfoVariable(code, coFac);
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
             return new SourceCodeInfoMemberVariable(code, coFac, commonInfo.Value, commonInfo.Name, commonInfo.TypeName, accessModifier, commonInfo.IsConst);
@@ -455,7 +455,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override bool CheckCodeInfoMemberVariable(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             return this.CheckCommonCodeInfoVariable(code, coFac) && !this.IsInsiteMethod;
         }
 
@@ -468,7 +468,7 @@ namespace OyuLib.Documents.Sources.Analysis
             int methodName = 0;
             int paramater = 0;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
             if (coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL))
             {
@@ -483,7 +483,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override bool CheckCodeInfoCallMethod(SourceCode code)
         {
             SourceDocumentRuleVBDotNet rule = new SourceDocumentRuleVBDotNet();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
 
             // No include "As", "Sub", "Function"
             if (coFac.IsIncludeSomeStringInCode(
@@ -524,7 +524,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override bool CheckCodeInfoBlockEndMethod(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeSomeStringInCode(
                 new string[]
@@ -538,7 +538,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
             int segments = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_END);
             return new SourceCodeInfoBlockEndMethod(code, coFac, segments + 1);
@@ -550,7 +550,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override bool CheckCodeInfoBlockBeginEventMethod(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             return this.CheckCommonCodeInfoMethod(code) &&
                    coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_EVENTS_HANDLES);
         }
@@ -560,7 +560,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var commonInfo = this.GetCommonCodeInfoMethod(code);
 
 
-            var coFac = new SourceCodePartsFactoryVBDotNetEvent(code);
+            var coFac = new SourceCodePartsFactoryDot(code);
             int eventName = coFac.GetCodeParts().Length - 1;
             int eventObjectName = coFac.GetCodeParts().Length - 2;
 
@@ -584,14 +584,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override bool CheckCodeInfoBlockBeginMethod(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             return this.CheckCommonCodeInfoMethod(code) &&
                    !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_EVENTS_HANDLES);
         }
 
         protected override SourceCodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
             var commonInfo = this.GetCommonCodeInfoMethod(code);
             return new SourceCodeInfoBlockBeginMethod(
                 code,
@@ -611,7 +611,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override bool CheckCodeInfoSubstitution(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             SourceDocumentRuleVBDotNet rule = new SourceDocumentRuleVBDotNet();
 
             // No Begin with "If ","For ","While ", "Do "
@@ -636,7 +636,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoSubstitution GetCodeInfoSubstitution(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, " ");
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             int equals = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_EQUALS);
             int rightHandSide = equals + 1;
             int leftHandSide = equals - 1;
@@ -649,11 +649,11 @@ namespace OyuLib.Documents.Sources.Analysis
         #region CodeInfoBlock
 
         protected override SourceCodeInfoBlockBeginIf GetCodeInfoBlockBeginIf(SourceCode code)
-        {
+        {                                            
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginIf());
             return new SourceCodeInfoBlockBeginIf(code, coFac, segments, segments + 1);
@@ -667,7 +667,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoBlockEndIf GetCodeInfoBlockEndIf(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndIf());
             return new SourceCodeInfoBlockEndIf(code, coFac, segments);
@@ -683,7 +683,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndDoWhile());
             return new SourceCodeInfoBlockBeginDoWhile(code, coFac, segments, segments + 1);
@@ -692,7 +692,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override bool CheckCodeInfoBlockBeginDoWhile(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginDoWhile());
         }
@@ -700,7 +700,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryVBDotNetMethod(code);
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndDoWhile());
             return new SourceCodeInfoBlockEndDoWhile(code, coFac, segments);
@@ -709,7 +709,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override bool CheckInfoBlockEndDoWhile(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeStringInCode(rule.GetControlCodeEndDoWhile());
         }
@@ -719,7 +719,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginFor());
             return new SourceCodeInfoBlockBeginFor(code, coFac, segments, segments + 1);
@@ -728,7 +728,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override bool CheckCodeInfoBlockBeginFor(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginFor());
         }
@@ -737,7 +737,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndFor());
             return new SourceCodeInfoBlockEndFor(code, coFac, segments);
@@ -746,7 +746,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override bool CheckCodeInfoBlockEndFor(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeStringInCode(rule.GetControlCodeEndFor());
         }
@@ -755,7 +755,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginCaseFomula());
             return new SourceCodeInfoBlockBeginCaseFormula(code, coFac, segments, segments + 1);
@@ -770,7 +770,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeEndCaseFomula());
             return new SourceCodeInfoBlockEndCaseFormula(code, coFac, segments);
@@ -785,7 +785,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeCaseValue()) + 1;
             return new SourceCodeInfoBlockBeginCaseValue(code, coFac, segments);
@@ -794,7 +794,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override bool CheckCodeInfoBlockCaseValue(SourceCode code)
         {
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             return coFac.IsIncludeStringInCode(rule.GetControlCodeCaseValue());
         }

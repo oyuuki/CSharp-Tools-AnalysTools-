@@ -12,7 +12,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
             int hierarchyCount,
-            SourceCodePartsfactoryVBDotNet factory)
+            SourceCodePartsFactoryCommat factory)
             : base(hierarchyCount, factory)
         {
 
@@ -41,7 +41,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(
             SourceCode sourceCode)
         {
-            return new SourceCodePartsFactoryVBDotNetMethod(sourceCode);
+            return new SourceCodePartsFactoryParamater(sourceCode);
         }
 
         protected override SourceCodeInfoParamaterMethod GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values)

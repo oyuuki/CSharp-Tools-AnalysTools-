@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodePartsFactoryVBDotNetEvent : SourceCodePartsFactoryVBDotNetMethod
+    public class SourceCodePartsFactoryDot : SourceCodePartsFactoryParamater
     {
         #region Const
 
@@ -15,7 +15,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Constructor
 
-        public SourceCodePartsFactoryVBDotNetEvent(
+        public SourceCodePartsFactoryDot(
             SourceCode code)
             : base(code)
         {

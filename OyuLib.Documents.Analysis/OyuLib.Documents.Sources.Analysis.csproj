@@ -82,9 +82,10 @@
     <Compile Include="SourceCodeInfoSubstitution.cs" />
     <Compile Include="SourceCodeInfoValiable.cs" />
     <Compile Include="SourceCodePartsFactory.cs" />
-    <Compile Include="SourceCodePartsFactoryVBDotNet.cs" />
-    <Compile Include="SourceCodePartsFactoryVBDotNetEvent.cs" />
-    <Compile Include="SourceCodePartsFactoryVBDotNetMethod.cs" />
+    <Compile Include="SourceCodePartsFactoryComma.cs" />
+    <Compile Include="SourceCodePartsFactoryNoComment.cs" />
+    <Compile Include="SourceCodePartsFactoryDot.cs" />
+    <Compile Include="SourceCodePartsFactoryParamater.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">

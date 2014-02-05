@@ -73,7 +73,17 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string ParamatersString
         {
-            get { return this._sourceCodeInfoParamaterValueMethod.ToString(); }   
+            get
+            {
+                StringBuilder strBr = new StringBuilder();
+
+                foreach (var value in this._sourceCodeInfoParamaterValueMethod.GetSourceCodeInfoParamaterValue())
+                {
+                    strBr.Append("[" + value.ParammaterName + "]");
+                }
+
+                return strBr.ToString();
+            }   
         }
 
         private string CodeDelimiterParamater
@@ -90,7 +100,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override string GetCodeText()
         {
-            return "メソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "戻り値型名：" + this.ReturnTypeName + " パラメータ：" + ParamatersString;
+            return "メソッド名：" + this.Name + 
+                "アクセス修飾子" + this.AccessModifier + 
+                "戻り値型名：" + this.ReturnTypeName + 
+                " パラメータ：" + ParamatersString;
         }
 
         public override Type GetCodeInfoBlockEndType()

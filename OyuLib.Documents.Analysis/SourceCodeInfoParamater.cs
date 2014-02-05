@@ -26,7 +26,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
-        
+        public SourceCodeInfoParamaterValue[] GetSourceCodeInfoParamaterValue()
+        {
+            return this._sourceCodeInfoParamaterValues;
+        }
 
         #endregion
     }

@@ -64,7 +64,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceCode code = this.Code;
             SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryVBDotNet(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             if (this.CheckCodeInfoBlockBeginIf(code))
             {
@@ -114,7 +114,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public virtual SourceCodeInfo GetAntherCodeInfo(SourceCode code)
         {
-            return new SourceCodeInfoOther(code, new SourceCodePartsfactoryVBDotNet(this.Code, this.GetSourceRule().GetCodeEndSeparatorString()));
+            return new SourceCodeInfoOther(code, new SourceCodePartsfactoryNocomment(this.Code, this.GetSourceRule().GetCodeEndSeparatorString()));
         }
 
         #endregion
