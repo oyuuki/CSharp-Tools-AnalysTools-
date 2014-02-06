@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoCallMethod : SourceCodeInfo, IParamater
@@ -91,9 +93,14 @@ namespace OyuLib.Documents.Sources.Analysis
             return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.GetStringRangesParamaters() + this.Paramater;
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return new int[] { this._callmethodName, this._paramater };
+            var list = new HierarchyUniqueIndexCollection();
+
+            list.Add(this._callmethodName);
+            list.Add(this._paramater);
+
+            return list.ToArray();
         }
 
         #endregion

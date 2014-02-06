@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public abstract class SourceCodePartsfactory
@@ -139,7 +141,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return codeparts;
         }
 
-        public string GetTemplateString(int[] codepartsIndexes)
+        public string GetTemplateString(HierarchyUniqueIndex[] codepartsIndexes)
         {
             string str = this.GetStringWithOutComment();
 
@@ -154,9 +156,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 foreach (var indexVal in codepartsIndexes)
                 {
-                    if (indexVal == index)
+                    if (indexVal.Index == index)
                     {
-                        strBu.Append(this.GetTemplateValue(indexVal));
+                        strBu.Append(this.GetTemplateValue(indexVal.GetUniqueIndexString()));
                         isParts = true;
                         break;
                     }
@@ -173,7 +175,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return strBu.ToString();
         }
 
-        private string GetTemplateValue(int codepartsIndex)
+        private string GetTemplateValue(string codepartsIndex)
         {
             return "{<<<" + codepartsIndex + ">>>}";
         }

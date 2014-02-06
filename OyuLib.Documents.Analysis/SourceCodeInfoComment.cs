@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoComment : SourceCodeInfo
@@ -34,7 +36,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return "コメント：" + this.GetCodeString();
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
             throw new Exception("TODO：未実装");
         }

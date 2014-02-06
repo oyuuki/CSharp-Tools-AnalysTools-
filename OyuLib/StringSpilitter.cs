@@ -193,14 +193,14 @@ namespace OyuLib
 
                     if (startIndex != stringRange.IndexStart)
                     {
-                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 1,string.Empty, strSeparator, this.TargetString));
+                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 2,string.Empty, strSeparator, this.TargetString));
                         // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
                     }
 
 
                     retlist.Add(new StringRange(stringRange));
                     // retlist.Add(this.TargetString.Substring(indexPare.IndexStart, indexPare.IndexEnd - indexPare.IndexStart + 1));
-                    index = stringRange.IndexEnd;
+                    index = stringRange.IndexEnd + 1;
                     startIndex = index + 1;
                     nStrIndex++;
                 }

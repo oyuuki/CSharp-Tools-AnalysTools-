@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public abstract class SourceCodeInfoBlockBegin : SourceCodeInfo
@@ -58,7 +60,7 @@ namespace OyuLib.Documents.Sources.Analysis
         #region override
 
         protected override string GetCodeText()
-        {
+        {           
             return "ステートメント：　　ステートメント名" + this.Statement + "関連オブジェクト：" + this.StatementObject;
         }
 
@@ -66,9 +68,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public abstract Type GetCodeInfoBlockEndType();
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return new int[] { this._statement, this._statementObject };
+            var list = new HierarchyUniqueIndexCollection();
+
+            list.Add(this._statement, 0);
+            list.Add(this._statementObject, 1);
+
+            return list.ToArray();
         }
 
         #endregion

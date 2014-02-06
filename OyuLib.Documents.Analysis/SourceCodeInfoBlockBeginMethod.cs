@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoBlockBeginMethod : SourceCodeInfoBlockBegin
@@ -71,19 +73,10 @@ namespace OyuLib.Documents.Sources.Analysis
         }
 
 
-        public string ParamatersString
+        public SourceCodeInfoParamaterMethod Paramaters
         {
-            get
-            {
-                StringBuilder strBr = new StringBuilder();
 
-                foreach (var value in this._sourceCodeInfoParamaterValueMethod.GetSourceCodeInfoParamaterValue())
-                {
-                    strBr.Append("[" + value.ParammaterName + "]");
-                }
-
-                return strBr.ToString();
-            }   
+            get { return this._sourceCodeInfoParamaterValueMethod; }   
         }
 
         private string CodeDelimiterParamater
@@ -103,7 +96,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return "メソッド名：" + this.Name + 
                 "アクセス修飾子" + this.AccessModifier + 
                 "戻り値型名：" + this.ReturnTypeName + 
-                " パラメータ：" + ParamatersString;
+                " パラメータ：" + Paramaters;
         }
 
         public override Type GetCodeInfoBlockEndType()
@@ -111,9 +104,15 @@ namespace OyuLib.Documents.Sources.Analysis
             return typeof(SourceCodeInfoBlockEndMethod);
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return new int[] { this._accessModifier, this._name, this._returnTypeName };
+            var list = new HierarchyUniqueIndexCollection();
+
+            list.Add(this._accessModifier);
+            list.Add(this._name);
+            list.Add(this._returnTypeName);
+
+            return ArrayUtil.GetMargeArray(list.ToArray(),this.Paramaters.GetCodePartsIndex()) ;
         }
 
         #endregion

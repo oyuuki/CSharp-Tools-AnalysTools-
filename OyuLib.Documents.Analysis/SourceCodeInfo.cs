@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
@@ -87,7 +88,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected abstract string GetCodeText();
 
-        protected abstract int[] GetCodePartsIndex();
+        protected internal abstract HierarchyUniqueIndex[] GetCodePartsIndex();
 
 
         #endregion

@@ -6,12 +6,8 @@ using System.Text;
 
 namespace OyuLib.Collection
 {
-    public abstract class UserClassCollection<T> : System.Collections.CollectionBase
+    public abstract class UserClassCollection<T> : CollectionBase
     {
-        #region InstanceVal
-
-        #endregion
-
         #region Method
 
         public void Add(T tValue)
@@ -42,7 +38,19 @@ namespace OyuLib.Collection
             // caller.
             return (T)List[Index];
         }
-        
+
+        public T[] ToArray()
+        {
+            var retList = new List<T>();
+
+            foreach (var val in this.List)
+            {
+                retList.Add((T)val);
+            }
+
+            return retList.ToArray();
+        }
+
         #endregion
     }
 }

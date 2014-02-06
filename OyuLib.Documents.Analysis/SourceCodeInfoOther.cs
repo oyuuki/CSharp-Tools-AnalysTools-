@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoOther : SourceCodeInfo
@@ -32,7 +34,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return "その他コード：" + this.GetCodeString();
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
             throw new Exception("TODO：未実装");
         }

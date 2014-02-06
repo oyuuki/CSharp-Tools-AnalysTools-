@@ -1,8 +1,10 @@
 ﻿using System;
 using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
@@ -29,6 +31,18 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeInfoParamaterValue[] GetSourceCodeInfoParamaterValue()
         {
             return this._sourceCodeInfoParamaterValues;
+        }
+
+        public HierarchyUniqueIndex[] GetCodePartsIndex()
+        {
+            var retList = new List<HierarchyUniqueIndex>();
+
+            foreach (var val in GetSourceCodeInfoParamaterValue())
+            {
+                retList.AddRange(val.GetCodePartsIndex());
+            }
+
+            return retList.ToArray();
         }
 
         #endregion

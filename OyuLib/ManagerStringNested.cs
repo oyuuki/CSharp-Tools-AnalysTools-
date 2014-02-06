@@ -69,7 +69,7 @@ namespace OyuLib
                     }
                     else
                     {
-                        var pare = new StringRange(index, this.NestStartString, string.Empty, str);
+                        var pare = new StringRange(index + 1, this.NestStartString, string.Empty, str);
                         retlist.Add(pare);
                         isParentSwitch = true;
                     }
@@ -83,7 +83,7 @@ namespace OyuLib
                     }
 
                     isParentSwitch = false;
-                    retlist[retlist.Count - 1].IndexEnd = index;
+                    retlist[retlist.Count - 1].IndexEnd = index - 1;
                     retlist[retlist.Count - 1].SpilitSeparatorEnd = this.NestEndtString;
                 }
             }

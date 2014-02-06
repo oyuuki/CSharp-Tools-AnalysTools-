@@ -233,6 +233,9 @@ namespace OyuLib.Documents.Sources.Analysis
         private CommonCodeInfoMethodInfo GetCommonCodeInfoMethod(SourceCode code)
         {
             SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
+
+            var a = coFac.GetCodeParts();
+
             int methodHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetMethodHead());
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
             int name = methodHead + 1;

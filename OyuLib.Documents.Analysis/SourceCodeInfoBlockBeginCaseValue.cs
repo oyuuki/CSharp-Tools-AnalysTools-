@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoBlockBeginCaseValue : SourceCodeInfo
@@ -35,11 +37,16 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override string GetCodeText()
         {
             return "CASE：";
+            
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return new int[] { this._value };
+            var list = new HierarchyUniqueIndexCollection();
+
+            list.Add(this._value, 0);
+
+            return list.ToArray();
         }
     }
 }

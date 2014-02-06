@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public abstract class SourceCodeInfoParamaterValue : SourceCodeInfo        
@@ -40,6 +42,11 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this.GetCodePartsString(this._parammaterName); }
         }
 
+        public int HierarchyCount
+        {
+            get { return this._hierarchyCount; }
+        }
+
         #endregion
 
         #region Method
@@ -55,9 +62,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return new int[] { this._parammaterName };
+            var list = new HierarchyUniqueIndexCollection();
+
+            list.Add(this._parammaterName);
+
+            return list.ToArray();
         }
 
         protected override string GetCodeText()

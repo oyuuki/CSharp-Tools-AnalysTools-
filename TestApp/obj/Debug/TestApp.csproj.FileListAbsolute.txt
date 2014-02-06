@@ -18,3 +18,5 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuL
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Collection.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Collection.pdb

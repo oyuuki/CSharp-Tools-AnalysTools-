@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoValiable : SourceCodeInfo
@@ -78,9 +80,15 @@ namespace OyuLib.Documents.Sources.Analysis
             return "ローカル変数名：" + this.Name + "値：" + this.Value + "型名：" + this.TypeName + "CONST?" + this.IsConst;
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return new int[] { this._value, this._name, this._typeName };
+            var list = new HierarchyUniqueIndexCollection();
+
+            list.Add(this._value);
+            list.Add(this._name);
+            list.Add(this._typeName);
+
+            return list.ToArray();
         }
 
         #endregion

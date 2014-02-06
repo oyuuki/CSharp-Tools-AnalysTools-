@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoSubstitution : SourceCodeInfo
@@ -59,9 +61,14 @@ namespace OyuLib.Documents.Sources.Analysis
             return "代入式  左辺：" + this.LeftHandSide + " 右辺：" + this.RightHandSide;
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return　new int[] { this._rightHandSide, this._leftHandSide };
+            var list = new HierarchyUniqueIndexCollection();
+
+            list.Add(this._rightHandSide);
+            list.Add(this._leftHandSide);
+
+            return list.ToArray();
         }
 
         #endregion

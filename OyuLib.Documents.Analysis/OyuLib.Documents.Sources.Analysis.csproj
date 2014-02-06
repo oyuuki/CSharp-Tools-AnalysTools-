@@ -88,6 +88,10 @@
     <Compile Include="SourceCodePartsFactoryParamater.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OyuLib.Collection\OyuLib.Collection.csproj">
+      <Project>{a703a42f-2e68-4589-a1ca-a48d809f0d16}</Project>
+      <Name>OyuLib.Collection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">
       <Project>{89573291-d945-4691-b5a2-5a9be29b2c05}</Project>
       <Name>OyuLib.Documents.Sources</Name>

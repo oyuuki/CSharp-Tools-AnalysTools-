@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using OyuLib.Collection;
+
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoBlockBeginEventMethod : SourceCodeInfoBlockBeginMethod
@@ -67,12 +69,16 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override string GetCodeText()
         {
             return "イベントメソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "イベント名：" + this.EventName +
-                   "イベント発生オブジェクト名：" + this.EventObjectName + "パラメータ名：" + ParamatersString;
+                   "イベント発生オブジェクト名：" + this.EventObjectName + "パラメータ名：" + Paramaters;
         }
 
-        protected override int[] GetCodePartsIndex()
+        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
         {
-            return ArrayUtil.GetMargeArray<int>(new[] { this._eventObjectName, this._eventName }, base.GetCodePartsIndex());
+            var list = new HierarchyUniqueIndexCollection();
+            list.Add(this._eventObjectName);
+            list.Add(this._eventName);
+
+            return ArrayUtil.GetMargeArray<HierarchyUniqueIndex>(list.ToArray(), base.GetCodePartsIndex());
         }
 
         #endregion
