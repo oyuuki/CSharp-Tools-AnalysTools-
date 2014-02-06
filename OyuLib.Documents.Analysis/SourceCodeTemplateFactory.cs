@@ -48,26 +48,6 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             StringBuilder strBu = new StringBuilder();
 
-            bool allHasChild = true;
-
-            foreach (var range in ranges)
-            {
-                if (!range.HasChild)
-                {
-                    allHasChild = false;
-                }
-            }
-
-            if (allHasChild)
-            {
-                foreach (var range in ranges)
-                {
-                    strBu.Append(this.GetTemplateString(range.Childs, nestcodeIndecis));
-                }
-
-                return strBu.ToString();
-            }
-
             for (int index = 0; index < ranges.Length; index++)
             {
 

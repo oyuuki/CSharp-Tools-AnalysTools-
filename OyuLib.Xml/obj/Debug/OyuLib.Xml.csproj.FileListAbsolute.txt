@@ -5,3 +5,10 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\bin\Debug\O
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\obj\Debug\OyuLib.Xml.csprojResolveAssemblyReference.cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\obj\Debug\OyuLib.Xml.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\obj\Debug\OyuLib.Xml.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\bin\Debug\OyuLib.Xml.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\bin\Debug\OyuLib.Xml.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\bin\Debug\OyuLib.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\bin\Debug\OyuLib.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\obj\Debug\OyuLib.Xml.csprojResolveAssemblyReference.cache
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\obj\Debug\OyuLib.Xml.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Xml\obj\Debug\OyuLib.Xml.pdb

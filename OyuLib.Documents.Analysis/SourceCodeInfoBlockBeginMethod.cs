@@ -127,7 +127,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             var paramNestIndex = new NestIndex(this._paramater);
 
-            paramNestIndex.Childs = this.Paramaters.GetNestIndices();
+            paramNestIndex.Childs = new NestIndex[]{ this.Paramaters.GetNestIndex() };
 
             retList.Add(paramNestIndex);
 

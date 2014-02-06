@@ -64,16 +64,24 @@ namespace OyuLib.Documents.Sources.Analysis
             return ParamaterRange;
         }
 
-        public NestIndex[] GetNestIndices()
+        public NestIndex GetNestIndex()
         {
             var retList = new List<NestIndex>();
 
             foreach (var val in GetParamaterValue)
             {
-                retList.Add(val.GetNestIndix());  
+                NestIndex paramValuesHead = new NestIndex(-1);
+
+                paramValuesHead.Childs = val.GetNestIndices();
+
+                retList.Add(paramValuesHead);  
             }
 
-            return retList.ToArray();
+            NestIndex paramaterHead = new NestIndex(-1);
+
+            paramaterHead.Childs = retList.ToArray();
+
+            return paramaterHead;
         }
 
         #endregion

@@ -52,9 +52,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override NestIndex GetNestIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            return new NestIndex(this.TypeName, this.HierarchyCount, this.ParentIndex);
+            return ArrayUtil.GetMargeArray<NestIndex>(
+                base.GetNestIndices(),
+                new NestIndex[] { new NestIndex(this.TypeName, this.HierarchyCount, this.ParentIndex) });
         }
 
         protected override string GetCodeText()

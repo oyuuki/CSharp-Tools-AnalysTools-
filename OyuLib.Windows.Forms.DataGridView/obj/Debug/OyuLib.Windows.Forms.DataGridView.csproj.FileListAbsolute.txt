@@ -11,3 +11,16 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.D
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.Windows.Forms.DataGridView.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.Windows.Forms.DataGridView.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.Windows.Forms.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.Xml.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.Windows.Forms.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.Xml.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\bin\Debug\OyuLib.pdb
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.csprojResolveAssemblyReference.cache
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.ExDataGridViewControl.resources
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.csproj.GenerateResource.Cache
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.dll
+C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Windows.Forms.DataGridView\obj\Debug\OyuLib.Windows.Forms.DataGridView.pdb

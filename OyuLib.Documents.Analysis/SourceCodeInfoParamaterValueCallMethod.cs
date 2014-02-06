@@ -29,10 +29,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-        protected override NestIndex GetNestIndex()
-        {
-            throw new NotImplementedException();
-        }
 
         #endregion
 

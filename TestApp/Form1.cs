@@ -248,7 +248,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"C:\Users\yuuki\Desktop\test.vb");
 
             foreach (var codeinfo in mana.GetCodeInfoSubstitutionsRoundBlock(".Row"))
             {
@@ -256,13 +256,13 @@ namespace TestApp
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
 
-            foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
+            foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("test"))
             {
                 this.exListBox1.Items.Add(codeinfo.GetTemplateString());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
 
-            foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
+            foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("test"))
             {
                 this.exListBox1.Items.Add(codeinfo.ToString());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());

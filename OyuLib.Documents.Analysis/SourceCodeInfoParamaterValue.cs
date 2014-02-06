@@ -47,9 +47,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public string ParammaterName
+        public int ParammaterName
         {
-            get { return this.GetCodePartsString(this._parammaterName); }
+            get { return this._parammaterName; }
         }
 
         public int HierarchyCount
@@ -83,36 +83,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-        public NestIndex GetNestIndix()
-        {
-            NestIndex nestIndxIndex = this.GetNestIndex();
-
-            NestIndex[] childs = null;
-
-            if (this.hasChild)
-            {
-                childs = this.ChildParamater.GetNestIndices();
-            }
-
-            nestIndxIndex.Childs = childs;
-
-            return nestIndxIndex;
-        }
-
-
-        #endregion
-
-        #region Abstract
-
-        protected abstract NestIndex GetNestIndex();
-        
         #endregion
 
         #region Override
 
         public override NestIndex[] GetNestIndices()
         {
-            throw new Exception("使用できません");
+            return new NestIndex[] { new NestIndex(this.ParammaterName, this.HierarchyCount, this.ParentIndex)}; 
         }
 
         protected override string GetCodeText()
