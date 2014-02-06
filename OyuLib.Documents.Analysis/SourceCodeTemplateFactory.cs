@@ -50,7 +50,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
             for (int index = 0; index < ranges.Length; index++)
             {
-
                 StringRange range = ranges[index];
                 bool isParts = false;
 
@@ -61,6 +60,8 @@ namespace OyuLib.Documents.Sources.Analysis
                     if (nestIndex.Index < 0 && nestIndex.HasChild)
                     {
                         strBu.Append(this.GetTemplateString(range.Childs, nestIndex.Childs));
+                        isParts = true;
+                        break;
                     }
                     else if (nestIndex.Index == index)
                     {
