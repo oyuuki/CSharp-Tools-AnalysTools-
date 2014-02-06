@@ -22,6 +22,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceCodeInfoParamaterMethod _sourceCodeInfoParamaterValueMethod = null;
 
+        private int _paramater = -1;
+
         #endregion
 
         #region Constructor
@@ -43,7 +45,8 @@ namespace OyuLib.Documents.Sources.Analysis
             int accessModifier,
             int name,
             int returnTypeName,
-            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod)
+            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod,
+            int paramater)
             : base(code, coFac, statement, statementObject)
         {
             this._accessModifier = accessModifier;
@@ -51,6 +54,7 @@ namespace OyuLib.Documents.Sources.Analysis
             this._returnTypeName = returnTypeName;
             this._codeDelimiterParamater = codeDelimiterParamater;
             this._sourceCodeInfoParamaterValueMethod = sourceCodeInfoParamaterValueMethod;
+            this._paramater = paramater;
         }
 
         #endregion
@@ -104,15 +108,30 @@ namespace OyuLib.Documents.Sources.Analysis
             return typeof(SourceCodeInfoBlockEndMethod);
         }
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        protected internal override StringRange[] GetCodeRanges()
         {
-            var list = new HierarchyUniqueIndexCollection();
+            var stringRange = base.GetCodeRanges();
 
-            list.Add(this._accessModifier);
-            list.Add(this._name);
-            list.Add(this._returnTypeName);
+            stringRange[this._paramater].Childs = this.Paramaters.GetStringRange();
 
-            return ArrayUtil.GetMargeArray(list.ToArray(),this.Paramaters.GetCodePartsIndex()) ;
+            return stringRange;
+        }
+
+        public override NestIndex[] GetNestIndices()
+        {
+            var retList = new List<NestIndex>();
+
+            retList.Add(new NestIndex(this._accessModifier));
+            retList.Add(new NestIndex(this._name));
+            retList.Add(new NestIndex(this._returnTypeName));
+
+            var paramNestIndex = new NestIndex(this._paramater);
+
+            paramNestIndex.Childs = this.Paramaters.GetNestIndices();
+
+            retList.Add(paramNestIndex);
+
+            return retList.ToArray();
         }
 
         #endregion

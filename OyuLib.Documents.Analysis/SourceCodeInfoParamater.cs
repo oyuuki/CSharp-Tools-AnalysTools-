@@ -33,13 +33,25 @@ namespace OyuLib.Documents.Sources.Analysis
             return this._sourceCodeInfoParamaterValues;
         }
 
-        public HierarchyUniqueIndex[] GetCodePartsIndex()
+        public StringRange[] GetStringRange()
         {
-            var retList = new List<HierarchyUniqueIndex>();
+            var retList = new List<StringRange>();
+
+            foreach (var val in this.GetSourceCodeInfoParamaterValue())
+            {
+                retList.AddRange(val.GetCodeRanges());                
+            }
+
+            return retList.ToArray();
+        }
+
+        public NestIndex[] GetNestIndices()
+        {
+            var retList = new List<NestIndex>();
 
             foreach (var val in GetSourceCodeInfoParamaterValue())
             {
-                retList.AddRange(val.GetCodePartsIndex());
+                retList.AddRange(val.GetNestIndices());
             }
 
             return retList.ToArray();

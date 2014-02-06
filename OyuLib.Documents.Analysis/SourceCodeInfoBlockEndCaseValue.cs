@@ -29,7 +29,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
             throw new Exception("TODO：未実装");
         }

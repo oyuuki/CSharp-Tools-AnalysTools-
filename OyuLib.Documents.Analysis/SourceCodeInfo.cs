@@ -48,11 +48,6 @@ namespace OyuLib.Documents.Sources.Analysis
             return this._code.CodeLineNumber;
         }
 
-        public SourceCodePartsfactory GetSourceCodePartsfactory()
-        {
-            return this._coFac;
-        }
-
         protected string GetCodePartsString(int index)
         {
             if (index < 0)
@@ -65,7 +60,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string GetTemplateString()
         {
-            return this._coFac.GetTemplateString(this.GetCodePartsIndex());
+            return new SourceCodeTemplateFactory(this.GetNestIndices(), this.GetCodeRanges()).GetTemplateString();
         }
 
         public string[] GetCodeParts()
@@ -84,11 +79,20 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
+        #region Virtual
+
+        protected internal virtual StringRange[] GetCodeRanges()
+        {
+            return this._coFac.GetCodePartsRanges();
+        }
+
+        #endregion
+
         #region Abstract
 
         protected abstract string GetCodeText();
 
-        protected internal abstract HierarchyUniqueIndex[] GetCodePartsIndex();
+        public abstract NestIndex[] GetNestIndices();
 
 
         #endregion

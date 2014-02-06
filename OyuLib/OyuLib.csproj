@@ -47,6 +47,7 @@
     <Compile Include="CharCodeManager.cs" />
     <Compile Include="ConstAttributeManager.cs" />
     <Compile Include="ConstValueAttribute.cs" />
+    <Compile Include="NestIndex.cs" />
     <Compile Include="LineCharCode.cs" />
     <Compile Include="LineCharCodeKind.cs" />
     <Compile Include="LineCharCodeKindValue.cs" />

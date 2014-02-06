@@ -63,8 +63,6 @@ namespace OyuLib.Documents.Sources.Analysis
         private SourceCodeInfo GetControlCodeInfo()
         {
             SourceCode code = this.Code;
-            SourceDocumentRule rule = this.GetSourceRule();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
             if (this.CheckCodeInfoBlockBeginIf(code))
             {

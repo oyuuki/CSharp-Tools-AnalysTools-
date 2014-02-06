@@ -80,15 +80,14 @@ namespace OyuLib.Documents.Sources.Analysis
             return "ローカル変数名：" + this.Name + "値：" + this.Value + "型名：" + this.TypeName + "CONST?" + this.IsConst;
         }
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
-
-            list.Add(this._value);
-            list.Add(this._name);
-            list.Add(this._typeName);
-
-            return list.ToArray();
+            return new NestIndex[]
+            {
+                new NestIndex(this._value),
+                new NestIndex(this._name),
+                new NestIndex(this._typeName)
+            };
         }
 
         #endregion

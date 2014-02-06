@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 
 using OyuLib.Collection;
@@ -40,13 +41,9 @@ namespace OyuLib.Documents.Sources.Analysis
             
         }
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
-
-            list.Add(this._value, 0);
-
-            return list.ToArray();
-        }
+            return new NestIndex[] {new NestIndex(this._value)};
+        }                        
     }
 }

@@ -93,14 +93,13 @@ namespace OyuLib.Documents.Sources.Analysis
             return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.GetStringRangesParamaters() + this.Paramater;
         }
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
-
-            list.Add(this._callmethodName);
-            list.Add(this._paramater);
-
-            return list.ToArray();
+            return new NestIndex[]
+            {
+                new NestIndex(this._callmethodName),
+                new NestIndex(this._paramater)
+            };
         }
 
         #endregion

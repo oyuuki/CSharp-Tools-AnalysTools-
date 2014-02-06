@@ -36,7 +36,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return "コメント：" + this.GetCodeString();
         }
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
             throw new Exception("TODO：未実装");
         }

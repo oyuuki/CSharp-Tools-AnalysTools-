@@ -68,14 +68,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public abstract Type GetCodeInfoBlockEndType();
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
-
-            list.Add(this._statement, 0);
-            list.Add(this._statementObject, 1);
-
-            return list.ToArray();
+            return new NestIndex[]
+            {
+                new NestIndex(this._statement),
+                new NestIndex(this._statementObject)
+            };
         }
 
         #endregion

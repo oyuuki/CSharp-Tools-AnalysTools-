@@ -6,7 +6,7 @@ using System.Text;
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoParamaterFactoryVBDotNetCallMethod :
-        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamaterMethod>
+        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
     {
         #region Constructor
 
@@ -34,7 +34,14 @@ namespace OyuLib.Documents.Sources.Analysis
             int hierarchyCount = this.HierarchyCount + 1;
             int typeName = asIndex + 1;
 
-            return new SourceCodeInfoParamaterValueMethod(sourceCode, this.GetSourceCodePartsFactory(),
+            var paramaterStrings = fac.GetNestedCodeParts("(", ")");
+
+            if (paramaterStrings != null && paramaterStrings.Length > 0)
+            {
+                paramaterString = paramaterStrings[0];
+            }
+
+            return new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),
                 parammaterName, hierarchyCount, typeName);
         }
 
@@ -47,6 +54,18 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoParamaterMethod GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values)
         {
             return new SourceCodeInfoParamaterMethod(values);
+        }
+
+        protected override SourceCodePartsFactoryCommat GetFactory(string paramaterString)
+        {
+            return new SourceCodePartsFactoryCommat(new SourceCode(paramaterString));
+        }
+
+        protected override SourceCodeInfoParamaterFactory
+            <SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat> 
+            GetFactory(SourceCodeInfoParamaterValueMethod[] values)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

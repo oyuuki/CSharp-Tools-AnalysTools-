@@ -81,6 +81,11 @@ namespace OyuLib
             set { this._childs = value; }
         }
 
+        public bool HasChild
+        {
+            get { return this.Childs != null;}
+        }
+
         public int CutStringCount
         {
             get { return this.IndexEnd - this.IndexStart + 1; }

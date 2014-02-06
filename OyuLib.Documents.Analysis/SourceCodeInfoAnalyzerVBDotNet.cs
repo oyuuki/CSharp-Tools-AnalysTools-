@@ -134,6 +134,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
             private string _paramaters = string.Empty;
 
+            private int _paramaterIndex = -1;
+
             #endregion
 
             #region Constructor
@@ -145,7 +147,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 int name,
                 int typeName,
                 string paramaters,
-                SourceCodeInfoValiable[] valiables)
+                int paramaterIndex)
             {
                 this._accessModifier = accessModifier;
                 this._statement = statement;
@@ -153,6 +155,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 this._name = name;
                 this._typeName = typeName;
                 this._paramaters = paramaters;
+                this._paramaterIndex = paramaterIndex;
             }
 
             #endregion
@@ -194,6 +197,11 @@ namespace OyuLib.Documents.Sources.Analysis
                             new SourceCodePartsFactoryCommat(new SourceCode(_paramaters)))
                             .GetSourceCodeInfoParamater();
                 }
+            }
+
+            public int ParamaterIndex
+            {
+                get { return this._paramaterIndex; }
             }
 
 
@@ -239,7 +247,8 @@ namespace OyuLib.Documents.Sources.Analysis
             int methodHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetMethodHead());
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
             int name = methodHead + 1;
-            string paramaters = coFac.GetCodeParts()[name + 1];
+            int paramaterIndex = name + 1;
+            string paramaters = coFac.GetCodeParts()[paramaterIndex];
             int typeName = -1;
 
             if (coFac.GetCodeParts()[methodHead].Equals(SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION))
@@ -247,7 +256,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 typeName = coFac.GetCodeParts().Length - 1;
             }
 
-            return new CommonCodeInfoMethodInfo(accessModifier, methodHead, -1,name, typeName, paramaters, null);
+            return new CommonCodeInfoMethodInfo(accessModifier, methodHead, -1, name, typeName, paramaters, paramaterIndex);
         }
 
         #endregion
@@ -578,7 +587,9 @@ namespace OyuLib.Documents.Sources.Analysis
                 commonInfo.TypeName, 
                 eventObjectName,
                 eventName,
-                commonInfo.ParamatersFactory);
+                commonInfo.ParamaterIndex,
+                commonInfo.ParamatersFactory
+                );
         }
 
         #endregion
@@ -605,7 +616,8 @@ namespace OyuLib.Documents.Sources.Analysis
                 commonInfo.AccessModifier, 
                 commonInfo.Name, 
                 commonInfo.TypeName, 
-                commonInfo.ParamatersFactory);
+                commonInfo.ParamatersFactory,
+                commonInfo.ParamaterIndex);
         }
 
         #endregion

@@ -16,7 +16,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private int _hierarchyCount = -1;
 
-        private SourceCodeInfoParamater _sourceCodeInfoParamater = null;
+        private SourceCodeInfoParamater _childparamater = null;
 
         #endregion
 
@@ -47,28 +47,46 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._hierarchyCount; }
         }
 
+        public bool hasChild
+        {
+            get { return this._childparamater != null; }
+        }
+
+        public SourceCodeInfoParamater ChildParamater
+        {
+            get { return this._childparamater; }
+            internal set { this._childparamater = value; }
+        }
+
+        protected  internal override StringRange[] GetCodeRanges()
+        {
+            if (this.hasChild)
+            {
+                return ArrayUtil.GetMargeArray(base.GetCodeRanges(), this.ChildParamater.GetStringRange());
+            }
+            else
+            {
+                return base.GetCodeRanges();
+            }
+        }
+
+
         #endregion
 
         #region Method
 
-        #region Public
-
-        public SourceCodeInfoParamater GetSourceCodeInfoParamater()
-        {
-            return this._sourceCodeInfoParamater;
-        }
-
-        #endregion
-
         #region Override
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
+            var nestIndex = new NestIndex(this._parammaterName);
 
-            list.Add(this._parammaterName);
+            if (this.hasChild)
+            {
+                nestIndex.Childs = this.ChildParamater.GetNestIndices();
+            }
 
-            return list.ToArray();
+            return new NestIndex[]{ nestIndex };
         }
 
         protected override string GetCodeText()

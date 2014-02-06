@@ -141,50 +141,12 @@ namespace OyuLib.Documents.Sources.Analysis
             return codeparts;
         }
 
-        public string GetTemplateString(HierarchyUniqueIndex[] codepartsIndexes)
-        {
-            string str = this.GetStringWithOutComment();
-
-            StringRange[] ranges = this.GetCodePartsRanges(str);
-            StringBuilder strBu = new StringBuilder();
-
-            for (int index = 0; index < ranges.Length; index++)
-            {
-                bool isParts = false;
-
-                strBu.Append(ranges[index].SpilitSeparatorStart);
-
-                foreach (var indexVal in codepartsIndexes)
-                {
-                    if (indexVal.Index == index)
-                    {
-                        strBu.Append(this.GetTemplateValue(indexVal.GetUniqueIndexString()));
-                        isParts = true;
-                        break;
-                    }
-                }
-
-                if (!isParts)
-                {
-                    strBu.Append(ranges[index].GetStringSpilited());
-                }
-
-                strBu.Append(ranges[index].SpilitSeparatorEnd);
-            }
-
-            return strBu.ToString();
-        }
-
-        private string GetTemplateValue(string codepartsIndex)
-        {
-            return "{<<<" + codepartsIndex + ">>>}";
-        }
 
         public string[] GetNestedCodeParts(string spilitSeparatorStart, string spilitSeparatorEnd)
         {
             var retList = new List<string>();
 
-            foreach (var range in this.GetCodePartsRanges(this.GetStringWithOutComment()))
+            foreach (var range in this.GetCodePartsRanges())
             {
                 if (range.GetIsSpilitStrings(spilitSeparatorStart, spilitSeparatorEnd))
                 {
@@ -193,6 +155,11 @@ namespace OyuLib.Documents.Sources.Analysis
             }
 
             return retList.ToArray();
+        }
+
+        public StringRange[] GetCodePartsRanges()
+        {
+            return this.GetCodePartsRanges(this.GetStringWithOutComment());
         }
 
         #endregion

@@ -38,8 +38,9 @@ namespace OyuLib.Documents.Sources.Analysis
             int returnTypeName,
             int eventObjectName,
             int eventName,
+            int paramater,
             SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod)
-            : base(code, coFac, CodeDelimiterParamater, statement, statementObject, accessModifier, name, returnTypeName, sourceCodeInfoParamaterValueMethod)
+            : base(code, coFac, CodeDelimiterParamater, statement, statementObject, accessModifier, name, returnTypeName, sourceCodeInfoParamaterValueMethod, paramater)
         {
             this._eventObjectName = eventObjectName;
             this._eventName = eventName;
@@ -72,13 +73,15 @@ namespace OyuLib.Documents.Sources.Analysis
                    "イベント発生オブジェクト名：" + this.EventObjectName + "パラメータ名：" + Paramaters;
         }
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
-            list.Add(this._eventObjectName);
-            list.Add(this._eventName);
+            return ArrayUtil.GetMargeArray(base.GetNestIndices(),
 
-            return ArrayUtil.GetMargeArray<HierarchyUniqueIndex>(list.ToArray(), base.GetCodePartsIndex());
+                new NestIndex[]
+                {
+                    new NestIndex(this._eventObjectName),
+                    new NestIndex(this._eventName)
+                });
         }
 
         #endregion

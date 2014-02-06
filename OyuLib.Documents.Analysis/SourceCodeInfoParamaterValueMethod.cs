@@ -50,12 +50,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
-            list.Add(this._typeName, this.HierarchyCount);
-
-            return ArrayUtil.GetMargeArray<HierarchyUniqueIndex>(list.ToArray(), base.GetCodePartsIndex());
+            return ArrayUtil.GetMargeArray<NestIndex>(new NestIndex[] {new NestIndex(this._typeName)},
+                base.GetNestIndices());
         }
 
         protected override string GetCodeText()

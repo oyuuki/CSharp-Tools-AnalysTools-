@@ -61,14 +61,13 @@ namespace OyuLib.Documents.Sources.Analysis
             return "代入式  左辺：" + this.LeftHandSide + " 右辺：" + this.RightHandSide;
         }
 
-        protected internal override HierarchyUniqueIndex[] GetCodePartsIndex()
+        public override NestIndex[] GetNestIndices()
         {
-            var list = new HierarchyUniqueIndexCollection();
-
-            list.Add(this._rightHandSide);
-            list.Add(this._leftHandSide);
-
-            return list.ToArray();
+            return new NestIndex[]
+            {
+                new NestIndex(this._rightHandSide),
+                new NestIndex(this._leftHandSide)
+            };
         }
 
         #endregion
