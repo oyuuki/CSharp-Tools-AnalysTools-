@@ -58,7 +58,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 foreach (var nestIndex in nestcodeIndecis)
                 {
-                    if (nestIndex.Index == index)
+                    if (nestIndex.Index < 0 && nestIndex.HasChild)
+                    {
+                        strBu.Append(this.GetTemplateString(range.Childs, nestIndex.Childs));
+                    }
+                    else if (nestIndex.Index == index)
                     {
                         if (range.HasChild)
                         {

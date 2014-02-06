@@ -65,6 +65,11 @@ namespace OyuLib.Collection
             set { this._childIndices = value; }
         }
 
+        public bool HasChild
+        {
+            get { return this._childIndices != null && this._childIndices.Length > 0; }
+        }
+
         #endregion
 
         #region Method
