@@ -131,6 +131,8 @@ namespace TestApp
             a =
                 "Private Sub spd選択_LeaveCell(ByVal eventSender As System.Object, ByVal eventArgs As AxFPSpread._DSpreadEvents_LeaveCellEvent) Handles spd選択.LeaveCell";
 
+            a = "a(a,b)";
+
             StringSpilitter s = new StringSpilitter(a);
             StringRange[] cc = s.GetHierarchicalStringWithRangeSpilit(" ", new ManagerStringNested("(", ")"));
 

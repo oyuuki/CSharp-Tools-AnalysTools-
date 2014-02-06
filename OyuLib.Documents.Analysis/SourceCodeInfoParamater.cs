@@ -70,10 +70,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var val in GetParamaterValue)
             {
-                var nestIndex = val.NestIndex;
-                nestIndex.Childs = val.GetNestIndices();
-
-                retList.Add(nestIndex);  
+                retList.Add(val.GetNestIndix());  
             }
 
             return retList.ToArray();

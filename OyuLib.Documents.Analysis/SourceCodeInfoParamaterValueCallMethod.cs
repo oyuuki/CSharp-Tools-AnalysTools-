@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
@@ -28,8 +29,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-
-
+        protected override NestIndex GetNestIndex()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
 

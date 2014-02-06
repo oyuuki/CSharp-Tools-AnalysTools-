@@ -41,7 +41,6 @@ namespace OyuLib.Documents.Sources.Analysis
             this._range = range;
 
             this.Range.Childs = GetCodeRanges();
-            this.NestIndex.Childs = this.GetNestIndices();
         }
 
         #endregion
@@ -72,11 +71,6 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._range; }
         }
 
-        internal NestIndex NestIndex
-        {
-            get { return new NestIndex(this._parammaterName, this.HierarchyCount, this.ParentIndex); }
-        }
-
         public SourceCodeInfoParamater ChildParamater
         {
             get { return this._childparamater; }
@@ -87,19 +81,38 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
-        #region Override
+        #region Public
 
-        public override NestIndex[] GetNestIndices()
+        public NestIndex GetNestIndix()
         {
+            NestIndex nestIndxIndex = this.GetNestIndex();
+
             NestIndex[] childs = null;
 
             if (this.hasChild)
             {
                 childs = this.ChildParamater.GetNestIndices();
             }
-            
 
-            return childs;
+            nestIndxIndex.Childs = childs;
+
+            return nestIndxIndex;
+        }
+
+
+        #endregion
+
+        #region Abstract
+
+        protected abstract NestIndex GetNestIndex();
+        
+        #endregion
+
+        #region Override
+
+        public override NestIndex[] GetNestIndices()
+        {
+            throw new Exception("使用できません");
         }
 
         protected override string GetCodeText()
@@ -107,7 +120,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return "パラメータ名：" + this.ParammaterName;
         }
 
-        private new StringRange[] GetCodeRanges()
+        protected internal override StringRange[] GetCodeRanges()
         {
             StringRange[] childs = null;
 

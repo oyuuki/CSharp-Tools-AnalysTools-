@@ -34,9 +34,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public string TypeName
+        public int TypeName
         {
-            get { return this.GetCodePartsString(this._typeName); }
+            get { return this._typeName; }
         }
 
         #endregion
@@ -52,10 +52,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        public override NestIndex[] GetNestIndices()
+        protected override NestIndex GetNestIndex()
         {
-            return ArrayUtil.GetMargeArray<NestIndex>(new NestIndex[] { new NestIndex(this._typeName, this.HierarchyCount, this.ParentIndex) },
-                new NestIndex[]{this.NestIndex});
+            return new NestIndex(this.TypeName, this.HierarchyCount, this.ParentIndex);
         }
 
         protected override string GetCodeText()

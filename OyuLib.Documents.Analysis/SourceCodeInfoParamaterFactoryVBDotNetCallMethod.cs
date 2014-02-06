@@ -6,7 +6,7 @@ using System.Text;
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoParamaterFactoryVBDotNetCallMethod :
-        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
+        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueCallMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
     {
         #region Constructor
 
@@ -25,7 +25,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override SourceCodeInfoParamaterValueMethod GetSourceCodeInfoParamaterValueLogic(
+        protected override SourceCodeInfoParamaterValueCallMethod GetSourceCodeInfoParamaterValueLogic(
             SourceCode sourceCode, 
             SourceCodePartsfactory fac,
             StringRange rangeParam,
@@ -52,8 +52,8 @@ namespace OyuLib.Documents.Sources.Analysis
                 paramaterStringIndex = fac.GetNestedCodePartsIndex("(", ")")[0];
             }
 
-            return new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),rangeParam,
-                parammaterName, parentIndex, hierarchyCount, typeName);
+            return new SourceCodeInfoParamaterValueCallMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode), rangeParam,
+                parammaterName, parentIndex, hierarchyCount);
         }
 
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(
@@ -62,7 +62,8 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodePartsFactoryParamater(sourceCode);
         }
 
-        protected override SourceCodeInfoParamaterMethod GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values, StringRange range)
+        protected override SourceCodeInfoParamaterMethod GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueCallMethod[] values,
+            StringRange range)
         {
             return new SourceCodeInfoParamaterMethod(values, range);
         }
@@ -73,8 +74,8 @@ namespace OyuLib.Documents.Sources.Analysis
         }
 
         protected override SourceCodeInfoParamaterFactory
-            <SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat> 
-            GetFactory(SourceCodeInfoParamaterValueMethod[] values)
+            <SourceCodeInfoParamaterValueCallMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
+            GetFactory(SourceCodeInfoParamaterValueCallMethod[] values)
         {
             throw new NotImplementedException();
         }

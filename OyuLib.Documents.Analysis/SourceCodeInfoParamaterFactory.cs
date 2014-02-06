@@ -19,8 +19,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private StringRange _range = null;
 
-        private NestIndex _nestIndex = null;
-
         #endregion
 
         #region Constructor
@@ -53,12 +51,6 @@ namespace OyuLib.Documents.Sources.Analysis
         public StringRange Range
         {
             get { return this._range; }
-        }
-
-
-        public NestIndex Nest
-        {
-            get { return this._nestIndex; }
         }
 
         #endregion
