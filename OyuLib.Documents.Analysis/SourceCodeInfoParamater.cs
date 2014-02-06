@@ -13,45 +13,67 @@ namespace OyuLib.Documents.Sources.Analysis
         #region instanceVal
 
         private SourceCodeInfoParamaterValue[] _sourceCodeInfoParamaterValues = null;
+        private StringRange _range = null;
+        
 
         #endregion
 
         #region Constructor
 
         public SourceCodeInfoParamater(
-            SourceCodeInfoParamaterValue[] sourceCodeInfoParamaterValues)
+            SourceCodeInfoParamaterValue[] sourceCodeInfoParamaterValues,
+            StringRange range)
         {
             this._sourceCodeInfoParamaterValues = sourceCodeInfoParamaterValues;
+            this._range = range;
         }
 
         #endregion
 
-        #region Method
+        #region Property
 
-        public SourceCodeInfoParamaterValue[] GetSourceCodeInfoParamaterValue()
+        public SourceCodeInfoParamaterValue[] GetParamaterValue
         {
-            return this._sourceCodeInfoParamaterValues;
+            get { return this._sourceCodeInfoParamaterValues; }
         }
 
-        public StringRange[] GetStringRange()
+        public StringRange ParamaterRange
+        {
+            get { return this._range; }
+        }
+
+        #endregion
+
+
+        #region Method
+
+        public StringRange GetStringRange()
         {
             var retList = new List<StringRange>();
 
-            foreach (var val in this.GetSourceCodeInfoParamaterValue())
+            foreach (var val in this.GetParamaterValue)
             {
-                retList.AddRange(val.GetCodeRanges());                
+                var range = val.Range;
+                range.Childs = val.GetCodeRanges();
+
+                retList.Add(range);                
             }
 
-            return retList.ToArray();
+            ParamaterRange.Childs = retList.ToArray();
+
+            return ParamaterRange;
         }
 
         public NestIndex[] GetNestIndices()
         {
             var retList = new List<NestIndex>();
 
-            foreach (var val in GetSourceCodeInfoParamaterValue())
+            foreach (var val in GetParamaterValue)
             {
-                retList.AddRange(val.GetNestIndices());
+                var nestIndex = val.NestIndex;
+                nestIndex.Childs = val.GetNestIndices();
+
+                retList.Add(nestIndex);  
             }
 
             return retList.ToArray();

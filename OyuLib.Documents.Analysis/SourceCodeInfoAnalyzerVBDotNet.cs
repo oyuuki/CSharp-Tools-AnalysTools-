@@ -136,6 +136,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
             private int _paramaterIndex = -1;
 
+            private StringRange _range = null;
+
             #endregion
 
             #region Constructor
@@ -147,7 +149,8 @@ namespace OyuLib.Documents.Sources.Analysis
                 int name,
                 int typeName,
                 string paramaters,
-                int paramaterIndex)
+                int paramaterIndex,
+                StringRange range)
             {
                 this._accessModifier = accessModifier;
                 this._statement = statement;
@@ -156,6 +159,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 this._typeName = typeName;
                 this._paramaters = paramaters;
                 this._paramaterIndex = paramaterIndex;
+                this._range = range;
             }
 
             #endregion
@@ -194,7 +198,8 @@ namespace OyuLib.Documents.Sources.Analysis
                     return
                         new SourceCodeInfoParamaterFactoryVBDotNetMethod(
                             0,
-                            new SourceCodePartsFactoryCommat(new SourceCode(_paramaters)))
+                            new SourceCodePartsFactoryCommat(new SourceCode(_paramaters)),
+                            Range)
                             .GetSourceCodeInfoParamater();
                 }
             }
@@ -202,6 +207,11 @@ namespace OyuLib.Documents.Sources.Analysis
             public int ParamaterIndex
             {
                 get { return this._paramaterIndex; }
+            }
+
+            public StringRange Range
+            {
+                get { return this._range; }
             }
 
 
@@ -242,7 +252,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
-            var a = coFac.GetCodeParts();
+            
 
             int methodHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetMethodHead());
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
@@ -251,12 +261,14 @@ namespace OyuLib.Documents.Sources.Analysis
             string paramaters = coFac.GetCodeParts()[paramaterIndex];
             int typeName = -1;
 
+            var range = coFac.GetCodePartsRanges()[paramaterIndex];
+
             if (coFac.GetCodeParts()[methodHead].Equals(SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION))
             {
                 typeName = coFac.GetCodeParts().Length - 1;
             }
 
-            return new CommonCodeInfoMethodInfo(accessModifier, methodHead, -1, name, typeName, paramaters, paramaterIndex);
+            return new CommonCodeInfoMethodInfo(accessModifier, methodHead, -1, name, typeName, paramaters, paramaterIndex, range);
         }
 
         #endregion

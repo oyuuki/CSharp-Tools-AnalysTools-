@@ -20,10 +20,12 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeInfoParamaterValueMethod(
             SourceCode code,
             SourceCodePartsfactory coFac,
-            int parammaterName, 
+            StringRange range,
+            int parammaterName,
+            int parentIndex,
             int hierarchyCount,
             int typeName)
-            : base(code, coFac, parammaterName, hierarchyCount)
+            : base(code, coFac, range, parammaterName, parentIndex, hierarchyCount)
         {
             this._typeName = typeName;
         }
@@ -52,8 +54,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public override NestIndex[] GetNestIndices()
         {
-            return ArrayUtil.GetMargeArray<NestIndex>(new NestIndex[] {new NestIndex(this._typeName)},
-                base.GetNestIndices());
+            return ArrayUtil.GetMargeArray<NestIndex>(new NestIndex[] { new NestIndex(this._typeName, this.HierarchyCount, this.ParentIndex) },
+                new NestIndex[]{this.NestIndex});
         }
 
         protected override string GetCodeText()

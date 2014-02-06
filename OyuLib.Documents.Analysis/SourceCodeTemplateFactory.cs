@@ -91,7 +91,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private string GetTemplateValue(NestIndex codepartsIndex)
         {
-            return "{<<<" + codepartsIndex.Index + ">>>}";
+            return "{<<<" + codepartsIndex.ParentIndex + "_" + codepartsIndex.HierarchyCount + "_" + codepartsIndex.Index + ">>>}";
         }
 
         #endregion

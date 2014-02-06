@@ -13,9 +13,11 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeInfoParamaterValueCallMethod(
             SourceCode code,
             SourceCodePartsfactory coFac,
+            StringRange range,
             int parammaterName,
+            int parentIndex,
             int hierarchyCount)
-            : base(code, coFac, parammaterName, hierarchyCount)
+            : base(code, coFac, range, parammaterName, parentIndex, hierarchyCount)
         {
                                                               
         }

@@ -157,6 +157,40 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        public StringRange[] GetNestedCodePartsRange(string spilitSeparatorStart, string spilitSeparatorEnd)
+        {
+            var retList = new List<StringRange>();
+
+            foreach (var range in this.GetCodePartsRanges())
+            {
+                if (range.GetIsSpilitStrings(spilitSeparatorStart, spilitSeparatorEnd))
+                {
+                    retList.Add(range);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        public int[] GetNestedCodePartsIndex(string spilitSeparatorStart, string spilitSeparatorEnd)
+        {
+            var retList = new List<int>();
+
+            int index = -1;
+
+            foreach (var range in this.GetCodePartsRanges())
+            {
+                if (range.GetIsSpilitStrings(spilitSeparatorStart, spilitSeparatorEnd))
+                {
+                    retList.Add(index);
+                }
+
+                index++;
+            }
+
+            return retList.ToArray();
+        }
+
         public StringRange[] GetCodePartsRanges()
         {
             return this.GetCodePartsRanges(this.GetStringWithOutComment());

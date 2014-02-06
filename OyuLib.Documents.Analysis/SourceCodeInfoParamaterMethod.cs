@@ -10,8 +10,9 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Constructor
 
         public SourceCodeInfoParamaterMethod(
-            SourceCodeInfoParamaterValue[] sourceCodeInfoParamaterValues)
-            : base(sourceCodeInfoParamaterValues)
+            SourceCodeInfoParamaterValue[] sourceCodeInfoParamaterValues,
+            StringRange range)
+            : base(sourceCodeInfoParamaterValues, range)
         {
 
                                   

@@ -11,6 +11,10 @@ namespace OyuLib.Collection
 
         private int _index = -1;
 
+        private int _hierarchyCount = -1;
+
+        private int _parentIndex = -1;
+
         private NestIndex[] _childIndices = null;
 
 
@@ -19,9 +23,20 @@ namespace OyuLib.Collection
         #region Constructor
 
         public NestIndex(
-            int index)
+            int index,
+            int hierarchyCount,
+            int parentIndex)
         {
             this._index = index;
+            this._hierarchyCount = hierarchyCount;
+            this._parentIndex = parentIndex;
+        }
+
+        public NestIndex(
+            int index)
+            : this(index, 0, 0)
+        {
+
         }
 
 
@@ -32,6 +47,16 @@ namespace OyuLib.Collection
         public int Index
         {
             get { return this._index;  }
+        }
+
+        public int HierarchyCount
+        {
+            get { return this._hierarchyCount; }
+        }
+
+        public int ParentIndex
+        {
+            get { return this._parentIndex; }
         }
 
         public NestIndex[] Childs

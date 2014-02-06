@@ -11,9 +11,10 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Constructor
 
         public SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
-            int hierarchyCount,
-            SourceCodePartsFactoryCommat factory)
-            : base(hierarchyCount, factory)
+            int parentIndex,
+            SourceCodePartsFactoryCommat factory,
+            StringRange range)
+            : base(parentIndex, factory, range)
         {
 
         }
@@ -25,24 +26,34 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Override
 
         protected override SourceCodeInfoParamaterValueMethod GetSourceCodeInfoParamaterValueLogic(
-            SourceCode sourceCode, SourceCodePartsfactory fac, out string paramaterString)
+            SourceCode sourceCode, 
+            SourceCodePartsfactory fac,
+            StringRange rangeParam,
+            out string paramaterString, 
+            out int paramaterStringIndex,
+            out StringRange range,
+            int partsStartIndex, 
+            int parentIndex,
+            int hierarchyCount)
         {
-            paramaterString = string.Empty;   // this code won't using at this class
+            paramaterString = string.Empty;   
+            paramaterStringIndex = -1;   
+            range = null;
 
-            int asIndex = fac.GetIndexCodeParts("As");
-            int parammaterName = asIndex - 1;
-            int hierarchyCount = this.HierarchyCount + 1;
-            int typeName = asIndex + 1;
+            int asIndex = fac.GetIndexCodeParts("As") + partsStartIndex;
+            int parammaterName = asIndex - 1 + partsStartIndex;
+            int typeName = asIndex + 1 + partsStartIndex;
 
             var paramaterStrings = fac.GetNestedCodeParts("(", ")");
 
             if (paramaterStrings != null && paramaterStrings.Length > 0)
             {
                 paramaterString = paramaterStrings[0];
+                paramaterStringIndex = fac.GetNestedCodePartsIndex("(", ")")[0];
             }
 
-            return new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),
-                parammaterName, hierarchyCount, typeName);
+            return new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),rangeParam,
+                parammaterName, parentIndex, hierarchyCount, typeName);
         }
 
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(
@@ -51,9 +62,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodePartsFactoryParamater(sourceCode);
         }
 
-        protected override SourceCodeInfoParamaterMethod GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values)
+        protected override SourceCodeInfoParamaterMethod GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values, StringRange range)
         {
-            return new SourceCodeInfoParamaterMethod(values);
+            return new SourceCodeInfoParamaterMethod(values, range);
         }
 
         protected override SourceCodePartsFactoryCommat GetFactory(string paramaterString)
