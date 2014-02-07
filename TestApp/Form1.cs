@@ -259,13 +259,14 @@ namespace TestApp
             foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
             {
                 this.exListBox1.Items.Add(codeinfo.GetTemplateString());
-                this.exListBox2.Items.Add(codeinfo.GetCodeString());
+                this.exListBox2.Items.Add(codeinfo.GetCodeLineNumber());
             }
 
             foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
             {
                 this.exListBox1.Items.Add(codeinfo.ToString());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
+                this.exListBox2.Items.Add(codeinfo.GetCodeLineNumber());
             }
                       
         }
