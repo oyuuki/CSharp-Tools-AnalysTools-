@@ -269,6 +269,22 @@ namespace TestApp
                 this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
+
+            foreach (var codeinfo in mana.GetSourceCodeInfoCallMethodSuggestObjectName("Err"))
+            {
+                codeinfo.CallmethodName = "うほ";
+
+                this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
+                this.exListBox2.Items.Add(codeinfo.GetCodeString());
+            }
+
+            foreach (var codeinfo in mana.GetCodeInfoCallMethodsRoundBlock("spd選択"))
+            {
+                this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
+                this.exListBox2.Items.Add(codeinfo.GetCodeString());
+            }
+
+            
                       
         }
 

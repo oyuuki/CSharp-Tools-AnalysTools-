@@ -346,7 +346,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
-        //２．○○というオブジェクトの関連するイベントメソッドのコレクションを取得
+        //２．○○というオブジェクトに関連するイベントメソッドのコレクションを取得
         public SourceCodeInfoBlockBeginEventMethod[] GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName(string objectName)
         {
             return this.GetCodeInfoWithKeyName<SourceCodeInfoBlockBeginEventMethod>(
@@ -354,6 +354,30 @@ namespace OyuLib.Documents.Sources.Analysis
                 delegate(string lockeyName, SourceCodeInfoBlockBeginEventMethod info)
                 {
                     return info.EventObjectName.Equals(lockeyName);
+                }
+                );
+        }
+
+        //３．○○というオブジェクトに関連するコールメソッドのコレクションを取得
+        public SourceCodeInfoCallMethod[] GetSourceCodeInfoCallMethodSuggestObjectName(string objectName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoCallMethod>(
+                objectName,
+                delegate(string lockeyName, SourceCodeInfoCallMethod info)
+                {
+                    return info.ObjName.Equals(lockeyName);
+                }
+                );
+        }
+
+        //３．○○というオブジェクトに関連するコールメソッドのコレクションを取得
+        public SourceCodeInfoCallMethod[] GetSourceCodeInfoCallMethod(string methodName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoCallMethod>(
+                methodName,
+                delegate(string lockeyName, SourceCodeInfoCallMethod info)
+                {
+                    return info.CallmethodName.Equals(methodName);
                 }
                 );
         }

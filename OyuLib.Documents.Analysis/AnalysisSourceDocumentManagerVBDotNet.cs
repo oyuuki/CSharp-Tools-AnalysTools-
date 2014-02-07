@@ -81,6 +81,17 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
+        //３．Withというオブジェクトに関連する○○ブロックで囲まれたコールメソッドを取得
+        public SourceCodeInfoCallMethod[] GetCodeInfoCallMethodsRoundBlock(string objectName)
+        {
+            return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfoCallMethod, SourceCodeInfoBlockBeginWithVB>
+                (this.CodeObjects, objectName,
+                 delegate(string lockeyName, SourceCodeInfoCallMethod info)
+                 {
+                     return true;
+                 });
+        }
+
         #endregion
 
         #endregion

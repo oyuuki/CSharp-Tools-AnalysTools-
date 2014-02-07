@@ -134,7 +134,6 @@ namespace OyuLib.Documents.Sources.Analysis
             int hierarchyCount);
         protected abstract TParamater GetSourceCodeInfoParamater(TParamaterValue[] values, StringRange range);
         protected abstract TFactory GetFactory(string paramaterString);
-        protected abstract SourceCodeInfoParamaterFactory<TParamaterValue, TParamater, TFactory> GetFactory(TParamaterValue[] values);
         // protected abstract TParamater GetChildParamater(int codepartIndex, TParamaterValue[] values);
         protected abstract SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(SourceCode sourceCode);
 

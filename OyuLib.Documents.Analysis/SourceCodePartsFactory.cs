@@ -13,7 +13,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceCode _code = null;
 
-        private string _codeDelimiter = string.Empty;
+        private string[] _codeDelimiters = null;
 
         private bool _doTrim = false;
 
@@ -23,20 +23,37 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodePartsfactory(
             SourceCode code,
-            string codeDelimiter)
-            : this(code, codeDelimiter, true)
+            string[] codeDelimiters)
+            : this(code, codeDelimiters, true)
         {
             
         }
 
         public SourceCodePartsfactory(
             SourceCode code,
-            string codeDelimiter,
+            string[] codeDelimiter,
             bool doTrim)
         {
             this._code = code;
-            this._codeDelimiter = codeDelimiter;
+            this._codeDelimiters = codeDelimiter;
             this._doTrim = doTrim;
+        }
+
+        public SourceCodePartsfactory(
+            SourceCode code,
+            string codeDelimiter)
+            : this(code, new string[]{ codeDelimiter }, true)
+        {
+
+        }
+
+        public SourceCodePartsfactory(
+            SourceCode code,
+            string codeDelimiter,
+            bool doTrim)
+            : this(code, new string[] { codeDelimiter }, doTrim)
+        {
+            
         }
 
         #endregion
@@ -49,10 +66,16 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this._code = value; }
         }
 
-        public string CodeDelimiter
+        protected string[] CodeDelimiters
         {
-            get { return this._codeDelimiter; }
-            set { this._codeDelimiter = value; }
+            get { return this._codeDelimiters; }
+            set { this._codeDelimiters = value; }
+        }
+
+        protected string CodeDelimiter
+        {
+            get { return this.CodeDelimiters[0]; }
+            set { this.CodeDelimiters[0] = value; }
         }
 
         public bool DoTrim

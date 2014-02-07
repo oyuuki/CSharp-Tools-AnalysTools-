@@ -43,6 +43,8 @@ namespace OyuLib.Documents.Sources
 
         public const string CONST_COMMA = ",";
 
+        public const string CONST_DOT = ".";
+
         public const string CONST_IF = "If";
 
         public const string CONST_FOR = "For";

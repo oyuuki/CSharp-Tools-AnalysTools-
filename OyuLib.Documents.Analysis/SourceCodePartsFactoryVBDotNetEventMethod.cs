@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodePartsFactoryDot : SourceCodePartsFactoryParamater
+    public class SourceCodePartsFactoryVBDotNetEventMethod : SourceCodePartsFactoryParamater
     {
         #region Const
 
@@ -15,14 +15,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Constructor
 
-        public SourceCodePartsFactoryDot(
+        public SourceCodePartsFactoryVBDotNetEventMethod(
             SourceCode code)
             : base(code)
         {
             
         }
 
-        public SourceCodePartsFactoryDot(
+        public SourceCodePartsFactoryVBDotNetEventMethod(
             SourceCode code,
             bool doTrim)
             : base(code, doTrim)
@@ -46,7 +46,6 @@ namespace OyuLib.Documents.Sources.Analysis
             {
                 margeList.Add(ranges[index]);    
             }
-
 
             var eventRange =
                 StringSpilitter.GetStringRangeSpilit(

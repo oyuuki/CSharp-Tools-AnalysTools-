@@ -191,7 +191,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 get { return this._typeName; }
             }
 
-            public SourceCodeInfoParamaterMethod ParamatersFactory
+            public SourceCodeInfoParamaterMethod Paramaters
             {                    
                 get
                 {
@@ -490,18 +490,56 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodeInfoCallMethod GetCodeInfoCallMethod(SourceCode code)
         {
             int methodName = 0;
-            int paramater = 0;
+            int callIndex = 0;
+            int objName = -1;
+            int paramaterIndex = 0;
+            var paramaterString = string.Empty;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
+            var coFac = new SourceCodePartsFactorySomeParamater(code, new string[]{ " ", "." });
+            var a = coFac.GetCodeParts();
 
             if (coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL))
             {
-                methodName = 1;
+                callIndex = 0;
+            }
+            else
+            {
+                callIndex = -1;
             }
 
-            paramater = methodName + 1;
+            var partRanges = coFac.GetCodePartsRanges();
 
-            return new SourceCodeInfoCallMethod(code, coFac, ",", methodName, paramater);
+            for (int index = callIndex + 1; index < partRanges.Length; index++)
+            {
+                if (partRanges[index].SpilitSeparatorEnd.Equals("."))
+                {
+                    if (string.IsNullOrEmpty(a[index]))
+                    {
+                        objName = -1;
+                    }
+                    else
+                    {
+                        objName = index;
+                    }
+
+                    methodName = index + 1;
+                }
+            }
+
+            paramaterIndex = methodName + 1;
+            paramaterString = coFac.GetCodeParts()[paramaterIndex];
+            var range = coFac.GetCodePartsRanges()[paramaterIndex];
+
+
+
+            var parameter =
+                        new SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
+                            0,
+                            new SourceCodePartsFactoryCommat(new SourceCode(paramaterString), ", "),
+                            range)
+                            .GetSourceCodeInfoParamater();
+
+            return new SourceCodeInfoCallMethod(code, coFac, ",", methodName,objName, parameter, paramaterIndex);
         }
 
         protected override bool CheckCodeInfoCallMethod(SourceCode code)
@@ -584,7 +622,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var commonInfo = this.GetCommonCodeInfoMethod(code);
 
 
-            var coFac = new SourceCodePartsFactoryDot(code);
+            var coFac = new SourceCodePartsFactoryVBDotNetEventMethod(code);
             int eventName = coFac.GetCodeParts().Length - 1;
             int eventObjectName = coFac.GetCodeParts().Length - 2;
 
@@ -600,7 +638,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 eventObjectName,
                 eventName,
                 commonInfo.ParamaterIndex,
-                commonInfo.ParamatersFactory
+                commonInfo.Paramaters
                 );
         }
 
@@ -628,7 +666,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 commonInfo.AccessModifier, 
                 commonInfo.Name, 
                 commonInfo.TypeName, 
-                commonInfo.ParamatersFactory,
+                commonInfo.Paramaters,
                 commonInfo.ParamaterIndex);
         }
 

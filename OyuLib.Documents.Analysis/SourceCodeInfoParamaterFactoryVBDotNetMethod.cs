@@ -62,13 +62,6 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodePartsFactoryCommat(new SourceCode(paramaterString));
         }
 
-        protected override SourceCodeInfoParamaterFactory
-            <SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
-            GetFactory(SourceCodeInfoParamaterValueMethod[] values)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #endregion

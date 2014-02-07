@@ -7,7 +7,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoCallMethod : SourceCodeInfo, IParamater
+    public class SourceCodeInfoCallMethod : SourceCodeInfo
     {
         #region instanceVal
 
@@ -16,13 +16,13 @@ namespace OyuLib.Documents.Sources.Analysis
         /// </summary>
         private int _callmethodName = -1;
 
-        /// <summary>
-        /// 
-        /// </summary>
         private readonly string _codeDelimiterParamater = null;
 
-
         private readonly int _paramater = -1;
+
+        private readonly int _objName = -1;
+
+        private SourceCodeInfoParamaterMethod _sourceCodeInfoParamaterValueMethod = null;
 
         #endregion
 
@@ -39,6 +39,8 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceCodePartsfactory coFac,
             string codeDelimiterParamater,
             int callmethodName,
+            int objName,
+            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod,
             int paramater)
             : base(code, coFac)
         {
@@ -46,6 +48,8 @@ namespace OyuLib.Documents.Sources.Analysis
             this._codeDelimiterParamater = codeDelimiterParamater;
             this._callmethodName = callmethodName;
             this._paramater = paramater;
+            this._sourceCodeInfoParamaterValueMethod = sourceCodeInfoParamaterValueMethod;
+            this._objName = objName;
         }
 
         #endregion
@@ -55,11 +59,19 @@ namespace OyuLib.Documents.Sources.Analysis
         public string CallmethodName
         {
             get { return this.GetCodePartsString(this._callmethodName); }
+            set { this.SetOverwriteValue(this._callmethodName, value); }
+        }
+
+        public string ObjName
+        {
+            get { return this.GetCodePartsString(this._objName); }
+            set { this.SetOverwriteValue(this._objName, value); }
         }
 
         public string Paramater
         {
             get { return this.GetCodePartsString(this._paramater); }
+            set { this.SetOverwriteValue(this._paramater, value); }
         }
 
         private string CodeDelimiterParamater
@@ -67,30 +79,20 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._codeDelimiterParamater; }
         }
 
-        public string ParamatersString
+        protected SourceCodeInfoParamaterMethod Paramaters
         {
-            get { return this.GetCodePartsString(this._paramater); }
+            get { return this._sourceCodeInfoParamaterValueMethod; }
         }
 
         #endregion
 
         #region Method
 
-        #region Public
-
-        public StringRange[] GetStringRangesParamaters()
-        {
-            var s = new StringSpilitter(this.ParamatersString);
-            return s.GetStringRangeSpilit(new CharCode(this.CodeDelimiterParamater).GetCharCodeString(), new ManagerStringNested("(", ")"));
-        }
-
-        #endregion
-
         #region override
 
         protected override string GetCodeText()
         {
-            return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.GetStringRangesParamaters() + this.Paramater;
+            return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.Paramater;
         }
 
         public override NestIndex[] GetNestIndices()
@@ -98,6 +100,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return new NestIndex[]
             {
                 new NestIndex(this._callmethodName),
+                new NestIndex(this._objName),
                 new NestIndex(this._paramater)
             };
         }

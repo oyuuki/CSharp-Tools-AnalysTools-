@@ -26,6 +26,23 @@ namespace OyuLib.Documents.Sources.Analysis
 
         }
 
+        public SourceCodePartsfactoryNocomment(
+            SourceCode code,
+            string[] codeDelimiters)
+            : base(code, codeDelimiters, true)
+        {
+            
+        }
+
+        public SourceCodePartsfactoryNocomment(
+            SourceCode code,
+            string[] codeDelimiters,
+            bool doTrim)
+            : base(code, codeDelimiters, doTrim)
+        {
+            
+        }
+
         #endregion
 
 

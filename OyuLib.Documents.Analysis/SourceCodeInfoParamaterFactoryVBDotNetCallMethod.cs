@@ -39,9 +39,7 @@ namespace OyuLib.Documents.Sources.Analysis
             paramaterStringIndex = -1;   
             range = null;
 
-            int asIndex = fac.GetIndexCodeParts("As");
-            int parammaterName = asIndex - 1;
-            int typeName = asIndex + 1;
+            int parammaterName = 0;
 
             var paramaterStrings = fac.GetNestedCodeParts("(", ")");
 
@@ -70,13 +68,6 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override SourceCodePartsFactoryCommat GetFactory(string paramaterString)
         {
             return new SourceCodePartsFactoryCommat(new SourceCode(paramaterString));
-        }
-
-        protected override SourceCodeInfoParamaterFactory
-            <SourceCodeInfoParamaterValueCallMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
-            GetFactory(SourceCodeInfoParamaterValueCallMethod[] values)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion
