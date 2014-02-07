@@ -63,24 +63,26 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string AccessModifier
         {
-            get { return this.GetCodePartsString(this._accessModifier); }   
+            get { return this.GetCodePartsString(this._accessModifier); }
+            set { this.SetOverwriteValue(this._accessModifier, value); }
         }
 
         public string Name
         {
             get{ return this.GetCodePartsString(this._name); }
+            set { this.SetOverwriteValue(this._name, value); }
         }
 
         public string ReturnTypeName
         {
-            get { return this.GetCodePartsString(this._returnTypeName); }   
+            get { return this.GetCodePartsString(this._returnTypeName); }
+            set { this.SetOverwriteValue(this._returnTypeName, value); }
         }
 
 
-        public SourceCodeInfoParamaterMethod Paramaters
+        protected SourceCodeInfoParamaterMethod Paramaters
         {
-
-            get { return this._sourceCodeInfoParamaterValueMethod; }   
+            get { return this._sourceCodeInfoParamaterValueMethod; }
         }
 
         private string CodeDelimiterParamater

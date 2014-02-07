@@ -34,9 +34,15 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public int TypeName
+        protected   int TypeNameIndex
         {
             get { return this._typeName; }
+        }
+
+        public string TypeName
+        {
+            get { return this.GetCodePartsString(this._typeName); }
+            set { this.SetOverwriteValue(this._typeName, value); }
         }
 
         #endregion
@@ -56,12 +62,12 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             return ArrayUtil.GetMargeArray<NestIndex>(
                 base.GetNestIndices(),
-                new NestIndex[] { new NestIndex(this.TypeName, this.HierarchyCount, this.ParentIndex) });
+                new NestIndex[] { new NestIndex(this.TypeNameIndex, this.HierarchyCountIndex, this.ParentIndexIndex) });
         }
 
         protected override string GetCodeText()
         {
-            return "パラメータ名：" + this.ParammaterName;
+            return "パラメータ名：" + this.ParammaterNameIndex;
         }
 
         #endregion

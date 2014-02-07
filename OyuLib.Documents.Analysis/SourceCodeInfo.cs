@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,21 +15,33 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceCodePartsfactory _coFac = null;
 
+        private Hashtable _overwriteValues = null; 
+
         #endregion
 
         #region Constructor
 
         protected SourceCodeInfo()
         {
-               
+            _overwriteValues = new Hashtable();   
         }
 
         protected SourceCodeInfo(
             SourceCode code,
             SourceCodePartsfactory coFac)
+            : this()
         {
             this._code = code;
             this._coFac = coFac;
+        }
+
+        #endregion
+
+        #region Property
+
+        private Hashtable OverwriteValues
+        {
+            get { return this._overwriteValues; }
         }
 
         #endregion
@@ -37,6 +50,18 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Method
 
         #region Public
+
+        protected void SetOverwriteValue(int index, string value)
+        {
+            if (this.OverwriteValues.ContainsKey(index))
+            {
+                this.OverwriteValues[index] = value;
+            }
+            else
+            {
+                this.OverwriteValues.Add(index, value);
+            }
+        }
 
         public string GetCodeString()
         {
@@ -74,6 +99,32 @@ namespace OyuLib.Documents.Sources.Analysis
         public string[] GetCodeParts()
         {
             return this._coFac.GetCodeParts();
+        }
+
+        public string GetCodePartsOverWriteValues()
+        {
+            StringRange[] codeRanges = this.GetCodeRanges();
+            StringBuilder strBr = new StringBuilder();
+
+
+            for (int index = 0; index < codeRanges.Length; index++)
+            {
+                var range = codeRanges[index];
+
+                strBr.Append(range.SpilitSeparatorStart);
+
+                if (this.OverwriteValues.ContainsKey(index))
+                {
+                    strBr.Append((string)this.OverwriteValues[index]);
+                }
+                else
+                {
+                    strBr.Append(range.GetStringSpilited());
+                }
+
+                strBr.Append(range.SpilitSeparatorEnd);
+            }
+            return strBr.ToString();
         }
 
         #endregion

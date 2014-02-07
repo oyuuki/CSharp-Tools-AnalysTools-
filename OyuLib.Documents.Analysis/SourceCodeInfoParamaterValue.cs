@@ -47,18 +47,35 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public int ParammaterName
+        protected int ParammaterNameIndex
         {
-            get { return this._parammaterName; }
+            get { return this._parammaterName; }            
         }
 
-        public int HierarchyCount
+        protected int HierarchyCountIndex
         {
             get { return this._hierarchyCount; }
         }
-        public int ParentIndex
+        protected int ParentIndexIndex
         {
             get { return this._parentIndex; }
+        }
+
+        public string ParammaterName
+        {
+            get { return this.GetCodePartsString(this._parammaterName); }
+            set { this.SetOverwriteValue(this._parammaterName, value); }
+        }
+
+        public string HierarchyCount
+        {
+            get { return this.GetCodePartsString(this._hierarchyCount); }
+            set { this.SetOverwriteValue(this._hierarchyCount, value); }
+        }
+        public string ParentIndex
+        {
+            get { return this.GetCodePartsString(this._parentIndex); }
+            set { this.SetOverwriteValue(this._parentIndex, value); }
         }
 
         public bool hasChild
@@ -89,12 +106,12 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public override NestIndex[] GetNestIndices()
         {
-            return new NestIndex[] { new NestIndex(this.ParammaterName, this.HierarchyCount, this.ParentIndex)}; 
+            return new NestIndex[] { new NestIndex(this.ParammaterNameIndex, this.HierarchyCountIndex, this.ParentIndexIndex)}; 
         }
 
         protected override string GetCodeText()
         {
-            return "パラメータ名：" + this.ParammaterName;
+            return "パラメータ名：" + this.ParammaterNameIndex;
         }
 
         protected internal override StringRange[] GetCodeRanges()

@@ -54,11 +54,13 @@ namespace OyuLib.Documents.Sources.Analysis
         public string EventObjectName
         {
             get { return this.GetCodePartsString(this._eventObjectName); }
+            set { this.SetOverwriteValue(this._eventObjectName, value); }
         }
 
         public string EventName
         {
             get { return this.GetCodePartsString(this._eventName); }
+            set { this.SetOverwriteValue(this._eventName, value); }
         }
 
         #endregion

@@ -41,16 +41,18 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
-        #region property
+        #region property        
 
         public string Statement
         {
             get { return this.GetCodePartsString(this._statement); }
+            set { this.SetOverwriteValue(this._statement, value); }
         }
 
         public string StatementObject
         {
             get { return this.GetCodePartsString(this._statementObject); }
+            set { this.SetOverwriteValue(this._statementObject, value); }
         }
 
         #endregion

@@ -264,9 +264,10 @@ namespace TestApp
 
             foreach (var codeinfo in mana.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName("spd選択"))
             {
-                this.exListBox1.Items.Add(codeinfo.ToString());
+                codeinfo.EventName = "うわああああ";                
+
+                this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
-                this.exListBox2.Items.Add(codeinfo.GetCodeLineNumber());
             }
                       
         }

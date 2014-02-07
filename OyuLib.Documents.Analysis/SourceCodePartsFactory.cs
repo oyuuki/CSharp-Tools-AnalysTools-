@@ -157,11 +157,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string[] GetCodeParts()
         {
-            if (CodeDelimiter.Equals(","))
-            {
-                int a = 1;
-            }
-
             string strWithoutComment = this.GetStringWithOutComment();
 
             string[] codeparts = new StringSpilitter(
