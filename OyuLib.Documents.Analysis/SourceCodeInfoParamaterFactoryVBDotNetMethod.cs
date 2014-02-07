@@ -32,19 +32,18 @@ namespace OyuLib.Documents.Sources.Analysis
             out string paramaterString, 
             out int paramaterStringIndex,
             out StringRange range,
-            int partsStartIndex, 
-            int parentIndex,
+            int groupCount, 
             int hierarchyCount)
         {
             paramaterString = string.Empty;   // this code  won't  Using at this class
             paramaterStringIndex = -1;        // this code  won't  Using at this class
             range = null;                     // this code  won't  Using at this class
 
-            int parammaterName = 1 + partsStartIndex;
-            int typeName = fac.GetIndexCodeParts("As") + 1 + partsStartIndex;
+            int parammaterName = 1;
+            int typeName = fac.GetIndexCodeParts("As") + 1;
 
             return new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),rangeParam,
-                parammaterName, parentIndex, hierarchyCount, typeName);
+                parammaterName, groupCount, hierarchyCount, typeName);
         }
 
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(

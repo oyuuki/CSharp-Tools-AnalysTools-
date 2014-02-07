@@ -13,7 +13,7 @@ namespace OyuLib.Collection
 
         private int _hierarchyCount = -1;
 
-        private int _parentIndex = -1;
+        private int _groupCount = -1;
 
         private NestIndex[] _childIndices = null;
 
@@ -25,11 +25,11 @@ namespace OyuLib.Collection
         public NestIndex(
             int index,
             int hierarchyCount,
-            int parentIndex)
+            int groupCount)
         {
             this._index = index;
             this._hierarchyCount = hierarchyCount;
-            this._parentIndex = parentIndex;
+            this._groupCount = groupCount;
         }
 
         public NestIndex(
@@ -54,9 +54,9 @@ namespace OyuLib.Collection
             get { return this._hierarchyCount; }
         }
 
-        public int ParentIndex
+        public int GroupCount
         {
-            get { return this._parentIndex; }
+            get { return this._groupCount; }
         }
 
         public NestIndex[] Childs

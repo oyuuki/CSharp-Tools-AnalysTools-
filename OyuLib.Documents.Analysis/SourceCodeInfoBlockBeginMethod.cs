@@ -90,7 +90,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
-
         #region Method
 
         #region Override

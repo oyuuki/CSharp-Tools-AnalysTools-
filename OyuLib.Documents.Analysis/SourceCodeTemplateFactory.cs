@@ -44,6 +44,45 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
+
+        private NestIndex GetPareNestIndex(int rangeIndex, StringRange[] ranges, NestIndex[] nestIndices)
+        {
+            foreach (var nestIndex in nestIndices)
+            {
+                if (nestIndex.Index == rangeIndex)
+                {
+                    return nestIndex;
+                }
+            }
+
+            int hasChildValueCount = 0;
+
+            for (int index = 0; index <= rangeIndex; index++)
+            {
+                if (ranges[index].HasChild)
+                {
+                    hasChildValueCount++;
+                }
+            }
+
+            int hasChildnextIndexCount = 0;
+
+            foreach (var nestIndex in nestIndices)
+            {
+                if (nestIndex.HasChild)
+                {
+                    hasChildnextIndexCount++;
+                }
+
+                if (hasChildnextIndexCount == hasChildValueCount)
+                {
+                    return nestIndex;        
+                }
+            }
+
+            throw new Exception("対応するNextIndexオブジェクトが存在しません。");
+        }
+
         public string GetTemplateString(StringRange[] ranges, NestIndex[] nestcodeIndecis)
         {
             StringBuilder strBu = new StringBuilder();
@@ -51,32 +90,24 @@ namespace OyuLib.Documents.Sources.Analysis
             for (int index = 0; index < ranges.Length; index++)
             {
                 StringRange range = ranges[index];
+
+                if (range.HasChild)
+                {
+                    strBu.Append(this.GetTemplateString(range.Childs, this.GetPareNestIndex(index, ranges, nestcodeIndecis).Childs));
+                    continue;
+                }
+
                 bool isParts = false;
 
                 strBu.Append(range.SpilitSeparatorStart);
 
                 foreach (var nestIndex in nestcodeIndecis)
                 {
-                    if (nestIndex.Index < 0 && nestIndex.HasChild)
+                    if (nestIndex.Index == index)
                     {
-                        strBu.Append(this.GetTemplateString(range.Childs, nestIndex.Childs));
-                        isParts = true;
-                        break;
-                    }
-                    else if (nestIndex.Index == index)
-                    {
-                        if (range.HasChild)
-                        {
-                            strBu.Append(this.GetTemplateString(range.Childs, nestIndex.Childs));
-                        }
-                        else
-                        {
-                            strBu.Append(this.GetTemplateValue(nestIndex));
-                        }
-
+                        strBu.Append(this.GetTemplateValue(nestIndex));
                         isParts = true;
                     }
-                    
                 }
 
                 if (!isParts)
@@ -97,7 +128,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private string GetTemplateValue(NestIndex codepartsIndex)
         {
-            return "{<<<" + codepartsIndex.ParentIndex + "_" + codepartsIndex.HierarchyCount + "_" + codepartsIndex.Index + ">>>}";
+            return "{<<<" + codepartsIndex.GroupCount + "_" + codepartsIndex.HierarchyCount + "_" + codepartsIndex.Index + ">>>}";
         }
 
         #endregion

@@ -59,18 +59,16 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-        public TParamater GetSourceCodeInfoParamater(SourceCodePartsfactory factory, int hierarchyCount, int parentIndex, StringRange range)
+        public TParamater GetSourceCodeInfoParamater(SourceCodePartsfactory factory, int hierarchyCount, StringRange range)
         {
             var retList = new List<TParamaterValue>();
-            int startPartsindex = 0;
-
+            
             var codeparts = factory.GetCodeParts();
             var codeRanges = factory.GetCodePartsRanges();
 
             for (int index = 0; index < codeparts.Length; index++)
             {
-                retList.Add(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, startPartsindex, parentIndex, codeRanges[index]));
-                startPartsindex = retList[retList.Count - 1].CodePartsLength;
+                retList.Add(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
             }
 
             return this.GetSourceCodeInfoParamater(retList.ToArray(), range);
@@ -78,7 +76,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public TParamater GetSourceCodeInfoParamater()
         {
-            return GetSourceCodeInfoParamater(this.Factory, 1, this.ParentIndex, this.Range);
+            return GetSourceCodeInfoParamater(this.Factory, 1, this.Range);
         }
 
         #endregion
@@ -91,9 +89,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected TParamaterValue GetSourceCodeInfoParamaterValue(
             string paramaterValueString, 
-            int hierarchyCount, 
-            int partsStartIndex, 
-            int parentIndex,
+            int hierarchyCount,
+            int groupCount, 
             StringRange range)
         {
             var sourceCode = new SourceCode(paramaterValueString);
@@ -108,14 +105,13 @@ namespace OyuLib.Documents.Sources.Analysis
                 range, 
                 out paramaterString, 
                 out paramaterStringIndex, 
-                out paramaterRange, 
-                partsStartIndex, 
-                parentIndex, 
+                out paramaterRange,
+                groupCount,  
                 hierarchyCount);
 
             if (!string.IsNullOrEmpty(paramaterString))
             {
-                retValue.ChildParamater = this.GetSourceCodeInfoParamater(this.GetFactory(paramaterString), hierarchyCount + 1, paramaterStringIndex, paramaterRange);    
+                retValue.ChildParamater = this.GetSourceCodeInfoParamater(this.GetFactory(paramaterString), hierarchyCount + 1, paramaterRange);    
             }
 
             return retValue;
@@ -134,8 +130,7 @@ namespace OyuLib.Documents.Sources.Analysis
             out string paramaterString, 
             out int paramaterStringIndex,
             out StringRange range,
-            int partsStartIndex, 
-            int parentIndex,
+            int groupCount,
             int hierarchyCount);
         protected abstract TParamater GetSourceCodeInfoParamater(TParamaterValue[] values, StringRange range);
         protected abstract TFactory GetFactory(string paramaterString);
