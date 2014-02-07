@@ -16,6 +16,14 @@ namespace OyuLib.Documents.Sources.Analysis
             
         }
 
+        public SourceCodePartsFactoryCommat(
+            SourceCode code,
+            string codeDelimiter)
+            : base(code, codeDelimiter)
+        {
+
+        }
+
         #endregion        
     }
 }

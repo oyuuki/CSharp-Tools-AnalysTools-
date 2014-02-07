@@ -103,7 +103,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             if (this.hasChild)
             {
-                childs = ArrayUtil.GetMargeArray(base.GetCodeRanges(), new StringRange[] { this.ChildParamater.GetStringRange() });
+                childs = ArrayUtil.GetMargeArray(base.GetCodeRanges(), this.ChildParamater.GetStringRange());
             }
             else
             {

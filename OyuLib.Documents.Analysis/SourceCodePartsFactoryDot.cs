@@ -22,6 +22,14 @@ namespace OyuLib.Documents.Sources.Analysis
             
         }
 
+        public SourceCodePartsFactoryDot(
+            SourceCode code,
+            bool doTrim)
+            : base(code, doTrim)
+        {
+
+        }
+
         #endregion
 
         #region Method

@@ -15,6 +15,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private string _codeDelimiter = string.Empty;
 
+        private bool _doTrim = false;
+
         #endregion
 
         #region Constructor
@@ -22,9 +24,19 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodePartsfactory(
             SourceCode code,
             string codeDelimiter)
+            : this(code, codeDelimiter, true)
+        {
+            
+        }
+
+        public SourceCodePartsfactory(
+            SourceCode code,
+            string codeDelimiter,
+            bool doTrim)
         {
             this._code = code;
             this._codeDelimiter = codeDelimiter;
+            this._doTrim = doTrim;
         }
 
         #endregion
@@ -43,6 +55,12 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this._codeDelimiter = value; }
         }
 
+        public bool DoTrim
+        {
+            get { return this._doTrim; }
+            set { this._doTrim = value; }
+        }
+
         public string TrimCodeString
         {
             get { return this._code.CodeString.Trim(); }
@@ -56,19 +74,26 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private string GetStringWithOutComment()
         {
-            var str = string.Empty;
+            var stringWithOutComment = string.Empty;
             var commentStartIndex = this.GetCommentStartindex();
+
+            var codeString = this.Code.CodeString;
+
+            if (this.DoTrim)
+            {
+                codeString = this.TrimCodeString;
+            }
 
             if (commentStartIndex >= 0)
             {
-                str = this.TrimCodeString.Substring(0, commentStartIndex);
+                stringWithOutComment = this.TrimCodeString.Substring(0, commentStartIndex);
             }
             else
             {
-                str = this.TrimCodeString;
+                stringWithOutComment = this.TrimCodeString;
             }
 
-            return str;
+            return stringWithOutComment;
         }
 
         #endregion
@@ -132,6 +157,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string[] GetCodeParts()
         {
+            if (CodeDelimiter.Equals(","))
+            {
+                int a = 1;
+            }
+
             string strWithoutComment = this.GetStringWithOutComment();
 
             string[] codeparts = new StringSpilitter(

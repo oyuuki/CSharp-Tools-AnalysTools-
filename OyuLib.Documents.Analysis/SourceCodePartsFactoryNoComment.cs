@@ -17,6 +17,15 @@ namespace OyuLib.Documents.Sources.Analysis
             
         }
 
+        public SourceCodePartsfactoryNocomment(
+            SourceCode code,
+            string codeDelimiter,
+            bool doTrim)
+            : base(code, codeDelimiter, doTrim)
+        {
+
+        }
+
         #endregion
 
 
@@ -28,7 +37,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             return
                 new StringSpilitter(withOutComment).GetStringRangeSpilit(
-                    new CharCode(this.CodeDelimiter).GetCharCodeString());
+                    this.CodeDelimiter);
         }
 
         protected override int GetCommentStartindex()

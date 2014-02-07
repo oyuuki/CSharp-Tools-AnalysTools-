@@ -15,16 +15,20 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private StringRange[] _codeRnges = null;
 
+        private string _codeString = string.Empty;
+
         #endregion
 
         #region Constructor
 
         public SourceCodeTemplateFactory(
             NestIndex[] codeIndex,
-            StringRange[] codeRnges)
+            StringRange[] codeRnges,
+            string codeString)
         {
             this._nestcodeIndecis = codeIndex;
             this._codeRnges = codeRnges;
+            this._codeString = codeString;
         }
 
         #endregion
@@ -38,6 +42,10 @@ namespace OyuLib.Documents.Sources.Analysis
         public StringRange[] CodeRnges
         {
             get { return this._codeRnges; }
+        }
+        public string CodeString
+        {
+            get { return this._codeString; }
         }
 
         #endregion
@@ -90,10 +98,13 @@ namespace OyuLib.Documents.Sources.Analysis
             for (int index = 0; index < ranges.Length; index++)
             {
                 StringRange range = ranges[index];
+                
 
                 if (range.HasChild)
                 {
+                    strBu.Append(range.SpilitSeparatorStart);
                     strBu.Append(this.GetTemplateString(range.Childs, this.GetPareNestIndex(index, ranges, nestcodeIndecis).Childs));
+                    strBu.Append(ranges[index].SpilitSeparatorEnd);
                     continue;
                 }
 
@@ -123,8 +134,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string GetTemplateString()
         {
+            //var roundCodepartsStrings = new StringSpilitter(this.CodeRnges[0].TargetString).GetStringRangeSpilit(this.CodeString);
+
             return this.GetTemplateString(this.CodeRnges, this.NestcodeIndex);
+
+            //return roundCodepartsStrings[0].GetStringSpilited() + tempStr + roundCodepartsStrings[1].GetStringSpilited();
         }
+
 
         private string GetTemplateValue(NestIndex codepartsIndex)
         {

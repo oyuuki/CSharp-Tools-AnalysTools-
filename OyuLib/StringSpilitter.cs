@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace OyuLib
@@ -95,8 +96,9 @@ namespace OyuLib
                     startIndex = index + 1;
                     nStrIndex++;
                 }
-                else if (this.TargetString[index].ToString().Equals(strSeparator))
+                else if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
                 {
+                    
                     retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + 1;                    
@@ -130,14 +132,24 @@ namespace OyuLib
             return retList.ToArray();
         }
 
+        private static bool FindSeparatorinTargetString(string targetString, int index, string strSeparator)
+        {
+            return targetString.Substring(index, strSeparator.Length).ToString().Equals(strSeparator);
+        }
+
+        private static int GetMaxLoopValue(string targetString, string strSeparator)
+        {
+            return targetString.Length - strSeparator.Length;
+        }
+
         public StringRange[] GetStringRangeSpilit(string strSeparator)
         {
             var retlist = new List<StringRange>();
             var startIndex = 0;
 
-            for (int index = 0; index < this.TargetString.Length; index++)
+            for (int index = 0; index < GetMaxLoopValue(this.TargetString, strSeparator); index++)
             {
-                if (this.TargetString[index].ToString().Equals(strSeparator))
+                if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
                 {
                     retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
@@ -158,10 +170,16 @@ namespace OyuLib
         {
             var retlist = new List<StringRange>();
             var startIndex = range.IndexStart;
+            var maxLength = range.IndexEnd;
 
-            for (int index = startIndex; index < range.IndexEnd; index++)
+            if (range.IndexEnd == range.TargetString.Length - 1)
             {
-                if (range.TargetString[index].ToString().Equals(strSeparator))
+                maxLength = GetMaxLoopValue(range.TargetString, strSeparator);
+            }
+
+            for (int index = startIndex; index < maxLength; index++)
+            {
+                if (FindSeparatorinTargetString(range.TargetString, index, strSeparator))
                 {
                     retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, range.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));

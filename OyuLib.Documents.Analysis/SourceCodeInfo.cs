@@ -65,7 +65,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string GetTemplateString()
         {
-            return new SourceCodeTemplateFactory(this.GetNestIndices(), this.GetCodeRanges()).GetTemplateString();
+            return new SourceCodeTemplateFactory(
+                this.GetNestIndices(),
+                this.GetCodeRanges(),
+                GetCodeString()).GetTemplateString();
         }
 
         public string[] GetCodeParts()

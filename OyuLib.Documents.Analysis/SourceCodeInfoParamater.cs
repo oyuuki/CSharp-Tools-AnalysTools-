@@ -37,17 +37,12 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._sourceCodeInfoParamaterValues; }
         }
 
-        public StringRange ParamaterRange
-        {
-            get { return this._range; }
-        }
-
         #endregion
 
 
         #region Method
 
-        public StringRange GetStringRange()
+        public StringRange[] GetStringRange()
         {
             var retList = new List<StringRange>();
 
@@ -59,29 +54,22 @@ namespace OyuLib.Documents.Sources.Analysis
                 retList.Add(range);                
             }
 
-            ParamaterRange.Childs = retList.ToArray();
-
-            return ParamaterRange;
+            return retList.ToArray();
         }
 
-        public NestIndex GetNestIndex()
+        public NestIndex[] GetNestIndex()
         {
             var retList = new List<NestIndex>();
 
             foreach (var val in GetParamaterValue)
             {
                 NestIndex paramValuesHead = new NestIndex(-1);
-
                 paramValuesHead.Childs = val.GetNestIndices();
 
                 retList.Add(paramValuesHead);  
             }
 
-            NestIndex paramaterHead = new NestIndex(-1);
-
-            paramaterHead.Childs = retList.ToArray();
-
-            return paramaterHead;
+            return retList.ToArray();
         }
 
         #endregion

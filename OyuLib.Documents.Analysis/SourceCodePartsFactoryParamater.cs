@@ -11,9 +11,17 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodePartsFactoryParamater(
             SourceCode code)
-            : base(code, " ")
+            : this(code, true)
         {
             
+        }
+
+        public SourceCodePartsFactoryParamater(
+            SourceCode code,
+            bool doTrim)
+            : base(code, " ", doTrim)
+        {
+
         }
 
         #endregion

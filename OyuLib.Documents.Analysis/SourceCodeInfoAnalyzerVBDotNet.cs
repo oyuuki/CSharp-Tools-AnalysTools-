@@ -198,7 +198,7 @@ namespace OyuLib.Documents.Sources.Analysis
                     return
                         new SourceCodeInfoParamaterFactoryVBDotNetMethod(
                             0,
-                            new SourceCodePartsFactoryCommat(new SourceCode(_paramaters)),
+                            new SourceCodePartsFactoryCommat(new SourceCode(_paramaters), ", "),
                             Range)
                             .GetSourceCodeInfoParamater();
                 }

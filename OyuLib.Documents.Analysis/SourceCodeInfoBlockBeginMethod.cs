@@ -111,7 +111,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var stringRange = base.GetCodeRanges();
 
-            stringRange[this._paramater].Childs = new StringRange[] {this.Paramaters.GetStringRange()};
+            stringRange[this._paramater].Childs = this.Paramaters.GetStringRange();
 
             return stringRange;
         }
@@ -126,7 +126,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             var paramNestIndex = new NestIndex(this._paramater);
 
-            paramNestIndex.Childs = new NestIndex[]{ this.Paramaters.GetNestIndex() };
+            paramNestIndex.Childs = this.Paramaters.GetNestIndex();
 
             retList.Add(paramNestIndex);
 
