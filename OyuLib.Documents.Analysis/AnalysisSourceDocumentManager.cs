@@ -289,25 +289,35 @@ namespace OyuLib.Documents.Sources.Analysis
 
         
         protected T[] GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(
-            string keyName, CheckWithKey<T> checkMethod)
+            string keyName, 
+            CheckWithKey<T> checkMethod,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
             where T : SourceCodeInfo
+
             where TBlock : SourceCodeInfoBlockBegin
         {
-            return GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(this.CodeObjects, keyName, checkMethod);
+            return GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(this.CodeObjects, keyName, checkMethod, blockName, checkBlockMethod);
         }
 
         protected T[] GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(
             SourceCodeblockInfo blockInfo,
-            string keyName, CheckWithKey<T> checkMethod)
+            string keyName,
+            CheckWithKey<T> checkMethod,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
             where T : SourceCodeInfo
             where TBlock : SourceCodeInfoBlockBegin
         {
-            return GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(blockInfo.CodeObjects, keyName, checkMethod);
+            return GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(blockInfo.CodeObjects, keyName, checkMethod, blockName, checkBlockMethod);
         }
 
         protected T[] GetCodeInfoWithKeyNameRangeBlock<T, TBlock>(
             object[] codeObjects,
-            string keyName, CheckWithKey<T> checkMethod)
+            string keyName, 
+            CheckWithKey<T> checkMethod,
+            string blockName, 
+            CheckWithKey<TBlock> checkBlockMethod)
             where T : SourceCodeInfo
             where TBlock : SourceCodeInfoBlockBegin
         {
@@ -315,11 +325,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var block in this.GetSourceCodeblockInfo<TBlock>(codeObjects))
             {
-                retList.AddRange(this.GetCodeInfoWithKeyName<T>(
+                if (checkBlockMethod(blockName, (TBlock) block.CodeObjects[0]))
+                {
+                    retList.AddRange(this.GetCodeInfoWithKeyName<T>(
                 keyName,
                 block,
                 checkMethod
-                ));
+                ));    
+                }
             }
 
             return retList.ToArray();

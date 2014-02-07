@@ -68,7 +68,7 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this.SetOverwriteValue(this._objName, value); }
         }
 
-        public string Paramater
+        public string ParamaterString
         {
             get { return this.GetCodePartsString(this._paramater); }
             set { this.SetOverwriteValue(this._paramater, value); }
@@ -79,7 +79,7 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._codeDelimiterParamater; }
         }
 
-        protected SourceCodeInfoParamaterMethod Paramaters
+        public SourceCodeInfoParamaterMethod Paramater
         {
             get { return this._sourceCodeInfoParamaterValueMethod; }
         }
@@ -103,6 +103,23 @@ namespace OyuLib.Documents.Sources.Analysis
                 new NestIndex(this._objName),
                 new NestIndex(this._paramater)
             };
+        }
+
+        public override bool GetParamaterOverWriteValues(int index, ref StringBuilder strBu)
+        {
+            if (index == this._paramater)
+            {
+                foreach (var value in this.Paramater.GetParamaterValues)
+                {
+                    strBu.Append(value.Range.SpilitSeparatorStart);
+                    strBu.Append(value.GetCodePartsOverWriteValues());
+                    strBu.Append(value.Range.SpilitSeparatorEnd);
+                }
+
+                return true;
+            }
+
+            return false;
         }
 
         #endregion

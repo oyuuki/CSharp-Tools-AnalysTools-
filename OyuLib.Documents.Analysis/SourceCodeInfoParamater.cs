@@ -32,7 +32,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public SourceCodeInfoParamaterValue[] GetParamaterValue
+        public SourceCodeInfoParamaterValue[] GetParamaterValues
         {
             get { return this._sourceCodeInfoParamaterValues; }
         }
@@ -46,7 +46,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var retList = new List<StringRange>();
 
-            foreach (var val in this.GetParamaterValue)
+            foreach (var val in this.GetParamaterValues)
             {
                 var range = val.Range;
                 range.Childs = val.GetCodeRanges();
@@ -61,7 +61,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var retList = new List<NestIndex>();
 
-            foreach (var val in GetParamaterValue)
+            foreach (var val in GetParamaterValues)
             {
                 NestIndex paramValuesHead = new NestIndex(-1);
                 paramValuesHead.Childs = val.GetNestIndices();

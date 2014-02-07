@@ -71,24 +71,34 @@ namespace OyuLib.Documents.Sources.Analysis
         }
 
         //３．Withというオブジェクトに関連する○○ブロックで囲まれた式コードを取得
-        public SourceCodeInfoSubstitution[] GetCodeInfoSubstitutionsRoundBlock(string objectName)
+        public SourceCodeInfoSubstitution[] GetCodeInfoSubstitutionsRoundBlock(string blockName)
         {
             return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfoSubstitution, SourceCodeInfoBlockBeginWithVB>
-                (this.CodeObjects, objectName,
+                (this.CodeObjects, "",
                  delegate(string lockeyName, SourceCodeInfoSubstitution info)
                  {
-                    return info.LeftHandSide.Equals(objectName);
+                     return info.GetCodeString().Trim().StartsWith(".");
+                 },
+                 blockName,
+                 delegate(string lockeyName, SourceCodeInfoBlockBeginWithVB info)
+                 {
+                     return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName); ;
                  });
         }
 
         //３．Withというオブジェクトに関連する○○ブロックで囲まれたコールメソッドを取得
-        public SourceCodeInfoCallMethod[] GetCodeInfoCallMethodsRoundBlock(string objectName)
+        public SourceCodeInfoCallMethod[] GetCodeInfoCallMethodsRoundBlock(string blockName)
         {
             return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfoCallMethod, SourceCodeInfoBlockBeginWithVB>
-                (this.CodeObjects, objectName,
+                (this.CodeObjects, "",
                  delegate(string lockeyName, SourceCodeInfoCallMethod info)
                  {
-                     return true;
+                     return info.GetCodeString().Trim().StartsWith(".");
+                 },
+                 blockName,
+                 delegate(string lockeyName, SourceCodeInfoBlockBeginWithVB info)
+                 {
+                     return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName);;
                  });
         }
 

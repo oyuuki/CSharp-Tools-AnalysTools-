@@ -113,6 +113,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 strBr.Append(range.SpilitSeparatorStart);
 
+                if (GetParamaterOverWriteValues(index, ref strBr))
+                {
+                     strBr.Append(range.SpilitSeparatorEnd);
+                     continue;
+                }
+                
+
                 if (this.OverwriteValues.ContainsKey(index))
                 {
                     strBr.Append((string)this.OverwriteValues[index]);
@@ -126,6 +133,8 @@ namespace OyuLib.Documents.Sources.Analysis
             }
             return strBr.ToString();
         }
+
+        
 
         #endregion
 
@@ -143,6 +152,11 @@ namespace OyuLib.Documents.Sources.Analysis
         protected internal virtual StringRange[] GetCodeRanges()
         {
             return this._coFac.GetCodePartsRanges();
+        }
+
+        public virtual bool GetParamaterOverWriteValues(int index, ref StringBuilder strBu)
+        {
+            return false;
         }
 
         #endregion

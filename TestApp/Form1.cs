@@ -250,7 +250,7 @@ namespace TestApp
 
             var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
 
-            foreach (var codeinfo in mana.GetCodeInfoSubstitutionsRoundBlock(".Row"))
+            foreach (var codeinfo in mana.GetCodeInfoSubstitutionsRoundBlock("spd選択"))
             {
                 this.exListBox1.Items.Add(codeinfo.GetTemplateString());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
@@ -280,12 +280,21 @@ namespace TestApp
 
             foreach (var codeinfo in mana.GetCodeInfoCallMethodsRoundBlock("spd選択"))
             {
+                codeinfo.CallmethodName = "うほほほほほほ";
+
+                codeinfo.Paramater.GetParamaterValues[0].ParammaterName = "うははは";
+
                 this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
 
-            
-                      
+            foreach (var codeinfo in mana.GetCodeInfoCallMethodsRoundBlock("spd選択"))
+            {
+
+
+                this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
+                this.exListBox2.Items.Add(codeinfo.GetCodeString());
+            }
         }
 
         private void Test2(StringRange[] strRange, string kaisou)
