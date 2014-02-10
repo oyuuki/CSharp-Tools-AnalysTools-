@@ -227,7 +227,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test.vb");
         }
 
         private void exButton4_Click(object sender, EventArgs e)
@@ -235,7 +235,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test.vb");
             foreach (var codeinfo in mana.CodeObjects)
             {
                 this.exListBox1.Items.Add(codeinfo.ToString());
@@ -248,7 +248,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test.vb");
 
             foreach (var codeinfo in mana.GetCodeInfoSubstitutionsRoundBlock("spd選択"))
             {
@@ -277,6 +277,16 @@ namespace TestApp
                 this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
+
+            foreach (var codeinfo in mana.GetSourceCodeInfoCallMethod("Test"))
+            {
+                codeinfo.CallmethodName = "うほ";
+
+                this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
+                this.exListBox2.Items.Add(codeinfo.GetCodeString());
+            }
+
+            
 
             foreach (var codeinfo in mana.GetCodeInfoCallMethodsRoundBlock("spd選択"))
             {
