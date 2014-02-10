@@ -33,7 +33,9 @@ namespace OyuLib.Documents.Sources
 
         public const string CONST_END = "End";
 
-        public const string CONST_CALLMETHOS_END = ")";
+        public const string CONST_PARENTHESIS_START = "(";
+
+        public const string CONST_PARENTHESIS_END = ")";
 
         public const string CONST_EXIT = "Exit";
 

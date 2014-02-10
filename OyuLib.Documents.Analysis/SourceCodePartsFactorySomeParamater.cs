@@ -35,9 +35,10 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override StringRange[] GetCodePartsRanges(string withOutComment)
         {
             return
-                new StringSpilitter(withOutComment).GetStringRangeSpilit(
+                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreNestedString(
                     this.CodeDelimiters, 
-                    new ManagerStringNested("(", ")"));
+                    new ManagerStringNested("(", ")"),
+                    new ManagerStringNested("\"", "\""));
         }
 
         #endregion

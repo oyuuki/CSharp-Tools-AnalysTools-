@@ -59,8 +59,69 @@ namespace OyuLib
             var retlist = new List<StringRange>();
             var isParentSwitch = false;
 
+            var isStart = true;
+
             for (; index < str.Length; index++)
             {
+                if ((!this.NestStartString.Equals(this.NestEndtString) &&
+                        str[index].ToString().Equals(this.NestStartString) ||
+                     this.NestStartString.Equals(this.NestEndtString) && 
+                    (str[index].ToString().Equals(this.NestStartString) && isStart)))
+                {
+                    if (isParentSwitch)
+                    {
+                        retlist[retlist.Count - 1].Childs = this.GetStringRangeLogic(ref index, str);
+                    }
+                    else
+                    {
+                        var pare = new StringRange(index + 1, this.NestStartString, string.Empty, str);
+                        retlist.Add(pare);
+                        isParentSwitch = true;
+                    }
+
+                    isStart = false;
+                }
+                else if (str[index].ToString().Equals(this.NestEndtString))
+                {
+                    if (!isParentSwitch)
+                    {
+                        index -= 1;
+                        return retlist.ToArray();
+                    }
+
+                    isParentSwitch = false;
+                    retlist[retlist.Count - 1].IndexEnd = index - 1;
+                    retlist[retlist.Count - 1].SpilitSeparatorEnd = this.NestEndtString;
+
+                    isStart = true;
+                }
+
+            }
+            return retlist.ToArray();   // TODO：2013/02/10 "(" の場合 endIndexが-1のまま
+        }
+
+        public StringRange[] GetStringRangeIgnoreNestedString(string str, ManagerStringNested nestedString)
+        {
+            int index = 0;
+            return this.GetStringRangeIgnoreStringRangesLogic(ref index, str, nestedString.GetStringRangeArray(str));
+        }
+
+        private StringRange[] GetStringRangeIgnoreStringRangesLogic(ref int index, string str, StringRange[] ranges)
+        {
+            var retlist = new List<StringRange>();
+            var isParentSwitch = false;
+
+            var rangesIndex = 0;
+
+            for (; index < str.Length; index++)
+            {
+                if (ranges != null &&
+                    ranges.Length > rangesIndex &&
+                    ranges[rangesIndex].IndexStart <= index && ranges[rangesIndex].IndexEnd >= index)
+                {
+                    continue;
+                }
+
                 if (str[index].ToString().Equals(this.NestStartString))
                 {
                     if (isParentSwitch)
@@ -90,6 +151,8 @@ namespace OyuLib
 
             return retlist.ToArray();
         }
+
+      
 
         #endregion
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -17,59 +18,104 @@ namespace TestApp
             InitializeComponent();
         }
 
+
+        private PartialClass[] GetFilePaths(string folderPath)
+        {
+            var retList = new List<PartialClass>();
+
+            foreach (var filepath in Directory.GetFiles(folderPath))
+            {
+                string fileName = Path.GetFileName(filepath);
+
+                if (fileName.StartsWith("frm") && fileName.EndsWith(".vb") && !filepath.EndsWith("Designer.vb"))
+                {
+                    PartialClass part = new PartialClass(
+                        Path.Combine(folderPath, fileName),
+                        Path.Combine(folderPath, fileName.Replace(".vb", string.Empty) + ".Designer.vb"));
+
+                    retList.Add(part);    
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        private PartialClass[] Test()
+        {
+            var retList = new List<PartialClass>();
+
+            retList.Add(new PartialClass(@"D:\TETETETE\frm002006.vb", @"D:\TETETETE\frm002006.Designer.vb"));
+
+            return retList.ToArray();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            // デザイナクラスを読み込み
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm000099.Designer.vb");
-            // スプレッドフィールド名を保持する
-            var filedNameList = this.GetFiledNamelist(mana, "FarPoint.Win.Spread.FpSpread");
-
-            // 処理クラスを読み込み
-            var mana2 = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm000099.vb");
-
-            var spreadwithBlockNameList = new List<string>();
-
-            foreach (var withBlockBegin in mana2.GetSourceCodeInfoblockBeginWith())
+            string targetSourceDirectory = @"D:\TETETETE\";
+            // this.GetFilePaths(targetSourceDirectory)
+            // this.Test()
+            foreach (var form in this.GetFilePaths(targetSourceDirectory))
             {
-                var locWithName = withBlockBegin.StatementObject;
-                var motoName = withBlockBegin.StatementObject;
+                // デザイナクラスを読み込み
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(form.DesinerClassFilePath);
+                // スプレッドフィールド名を保持する
+                var filedNameList = this.GetFiledNamelist(mana, "FarPoint.Win.Spread.FpSpread");
 
-                if (locWithName.EndsWith(")"))
+                // 処理クラスを読み込み
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(form.BussinessClassFilePath);
+
+                var spreadwithBlockNameList = new List<string>();
+
+                foreach (var withBlockBegin in mana2.GetSourceCodeInfoblockBeginWith())
                 {
-                    locWithName = "_" + locWithName;
-                    locWithName = locWithName.Replace("(", "_").Replace(")", "");
-                }
+                    var locWithName = withBlockBegin.StatementObject;
+                    var motoName = withBlockBegin.StatementObject;
 
-                foreach (var name in filedNameList)
-                {
-
-                    if (locWithName.Equals(name))
-                    {                   
-                        withBlockBegin.StatementObject = locWithName;
-                        spreadwithBlockNameList.Add(motoName);
-                    }
-                }
-            }
-
-            // スプレッドに関連する
-            foreach (var name in spreadwithBlockNameList)
-            {
-                string colString = string.Empty;
-                string rowString = string.Empty;
-
-
-                var blocks = mana2.GetCodeInfosRoundWithBlock(name);
-
-                foreach (var value in mana2.GetCodeInfosRoundWithBlock(name))
-                {
-                    if (value.GetCodeString().Trim().StartsWith("."))
+                    if (locWithName.EndsWith(")"))
                     {
-                        this.SetSpreadRowCol(value, ref rowString, ref colString);
+                        locWithName = "_" + locWithName;
+                        locWithName = locWithName.Replace("(", "_").Replace(")", "");
+                    }
+
+                    foreach (var name in filedNameList)
+                    {
+
+                        if (locWithName.Equals(name))
+                        {
+                            withBlockBegin.StatementObject = locWithName;
+                            spreadwithBlockNameList.Add(motoName);
+                        }
                     }
                 }
-            }
 
-            mana2.CreateAnalysisSourceFile(@"D:\TETETETE\test\test.vb");
+                // スプレッドに関連する
+                foreach (var name in spreadwithBlockNameList)
+                {
+                    string colString = string.Empty;
+                    string rowString = string.Empty;
+
+
+                    var blocks = mana2.GetCodeInfosRoundWithBlock(name);
+
+                    foreach (var value in mana2.GetCodeInfosRoundWithBlock(name))
+                    {
+                        if (value.GetCodeString().Trim().StartsWith("."))
+                        {
+                            this.SetSpreadRowCol(value, ref rowString, ref colString);
+                        }
+                    }
+                }
+
+                string outputDirctory = targetSourceDirectory + "Test";
+
+                if (!Directory.Exists(outputDirctory))
+                {
+                    Directory.CreateDirectory(outputDirctory);
+                }
+
+                mana.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(form.DesinerClassFilePath)));
+                mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(form.BussinessClassFilePath)));
+            }
         }
 
         private string[] GetFiledNamelist(AnalysisSourceDocumentManagerVBDotNet mana, string typeName)

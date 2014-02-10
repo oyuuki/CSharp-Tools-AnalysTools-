@@ -46,7 +46,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        protected override SourceCodeInfo[] GetSourceCodeAnalysis()
+        public override SourceCodeInfo[] GetSourceCodeAnalysis()
         {
             var isInsiteMethod = false;
             var retList = new List<SourceCodeInfo>();

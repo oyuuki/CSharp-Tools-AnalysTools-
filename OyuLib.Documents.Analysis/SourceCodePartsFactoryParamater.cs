@@ -33,8 +33,10 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override StringRange[] GetCodePartsRanges(string withOutComment)
         {
             return
-                new StringSpilitter(withOutComment).GetStringRangeSpilit(
-                    new CharCode(this.CodeDelimiter).GetCharCodeString(), new ManagerStringNested("(", ")"));
+                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreNestedString(
+                    new CharCode(this.CodeDelimiter).GetCharCodeString(), 
+                    new ManagerStringNested("(", ")"),
+                    new ManagerStringNested("\"", "\""));
         }
 
         #endregion

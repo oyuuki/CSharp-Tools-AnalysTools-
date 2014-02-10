@@ -370,6 +370,11 @@ namespace OyuLib.Documents.Sources.Analysis
             
         private  bool CheckCommonCodeInfoBlockBeginIf(SourceCode code, bool isEnd)
         {
+            if(code.CodeString.IndexOf(@"If nNull(plAdoRec.Fields(" + "発注数2" + ")) <> nNull(plAdoRec.Fields(" + "発注残数" + "))") >= 0)
+            {
+                int a = 1;
+            }
+
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
@@ -495,11 +500,6 @@ namespace OyuLib.Documents.Sources.Analysis
             int paramaterIndex = 0;
             var paramaterString = string.Empty;
 
-            if (code.CodeString.IndexOf("Trim") >= 0)
-            {
-                int a1 = 1;
-            }
-
             var coFac = new SourceCodePartsFactorySomeParamater(code, new string[]{ ".", "," });
             var a = coFac.GetCodeParts();
 
@@ -575,8 +575,12 @@ namespace OyuLib.Documents.Sources.Analysis
 
 
             // End with ")"
-            if (!coFac.IsIncludeStringInCodeEndWithAtLast(SourceDocumentSyntaxVBDotNet.CONST_CALLMETHOS_END)
-                && !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL))
+            // Callステートメントが存在しない
+            // "("が含まれない)
+            if (!coFac.IsIncludeStringInCodeEndWithAtLast(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END)
+                || !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL)
+                || coFac.IsIncludeStringInCodeEndWithAtLast(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END) &&
+                !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_START))
             {
                 return false;
             }
@@ -719,7 +723,12 @@ namespace OyuLib.Documents.Sources.Analysis
         #region CodeInfoBlock
 
         protected override SourceCodeInfoBlockBeginIf GetCodeInfoBlockBeginIf(SourceCode code)
-        {                                            
+        {
+            if (code.CodeString.IndexOf("If InStrRev(plStrInvoiceNumber, ") >= 0)
+            {
+                int a = 1;
+            }
+
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
@@ -764,7 +773,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
-            return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginDoWhile());
+            return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginDoWhile()) && !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_EXIT);
         }
 
         protected override SourceCodeInfoBlockEndDoWhile GetInfoBlockEndDoWhile(SourceCode code)
@@ -800,7 +809,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
-            return coFac.IsFirstStringIsValue((rule.GetControlCodeBeginFor()));
+            return coFac.IsFirstStringIsValue((rule.GetControlCodeBeginFor())) && !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_EXIT);
         }
 
         protected override SourceCodeInfoBlockEndFor GetCodeInfoBlockEndFor(SourceCode code)

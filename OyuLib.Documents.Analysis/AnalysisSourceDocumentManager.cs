@@ -491,7 +491,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <summary>
         /// Analys Code to item
         /// </summary>
-        protected abstract SourceCodeInfo[] GetSourceCodeAnalysis();
+        public abstract SourceCodeInfo[] GetSourceCodeAnalysis();
 
         #endregion
 

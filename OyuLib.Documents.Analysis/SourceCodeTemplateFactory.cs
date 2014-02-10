@@ -134,11 +134,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string GetTemplateString()
         {
-            //var roundCodepartsStrings = new StringSpilitter(this.CodeRnges[0].TargetString).GetStringRangeSpilit(this.CodeString);
-
             return this.GetTemplateString(this.CodeRnges, this.NestcodeIndex);
-
-            //return roundCodepartsStrings[0].GetStringSpilited() + tempStr + roundCodepartsStrings[1].GetStringSpilited();
         }
 
 
