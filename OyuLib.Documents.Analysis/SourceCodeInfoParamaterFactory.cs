@@ -15,8 +15,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private int _parentIndex = -1;
 
-        private TFactory _factory = null;
-
         private StringRange _range = null;
 
         #endregion
@@ -25,11 +23,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodeInfoParamaterFactory(
             int parentIndex,
-            TFactory factory,
             StringRange range)
         {
             this._parentIndex = parentIndex;
-            this._factory = factory;
             this._range = range;
         }
 
@@ -41,11 +37,6 @@ namespace OyuLib.Documents.Sources.Analysis
         public int ParentIndex
         {
             get { return this._parentIndex; }
-        }
-
-        public TFactory Factory
-        {
-            get { return this._factory; }
         }
 
         public StringRange Range
@@ -76,7 +67,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public TParamater GetSourceCodeInfoParamater()
         {
-            return GetSourceCodeInfoParamater(this.Factory, 1, this.Range);
+            return GetSourceCodeInfoParamater(this.GetFactory(this.Range.GetStringSpilited()), 1, this.Range);
         }
 
         #endregion

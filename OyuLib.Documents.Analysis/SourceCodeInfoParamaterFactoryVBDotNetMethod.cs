@@ -14,7 +14,7 @@ namespace OyuLib.Documents.Sources.Analysis
             int parentIndex,
             SourceCodePartsFactoryCommat paramfactory,
             StringRange range)
-            : base(parentIndex, paramfactory, range)
+            : base(parentIndex, range)
         {
 
         }

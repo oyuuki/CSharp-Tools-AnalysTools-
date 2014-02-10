@@ -278,9 +278,10 @@ namespace TestApp
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
 
-            foreach (var codeinfo in mana.GetSourceCodeInfoCallMethod("Test"))
+            foreach (var codeinfo in mana.GetSourceCodeInfoCallMethod("Test1"))
             {
                 codeinfo.CallmethodName = "うほ";
+                codeinfo.Paramater.GetParamaterValues[0].ParammaterName = "うははは";
 
                 this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());

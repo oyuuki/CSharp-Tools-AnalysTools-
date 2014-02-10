@@ -6,15 +6,14 @@ using System.Text;
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoParamaterFactoryVBDotNetCallMethod :
-        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueCallMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
+        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueCallMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactorySomeParamater>
     {
         #region Constructor
 
         public SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
             int parentIndex,
-            SourceCodePartsFactoryCommat factory,
             StringRange range)
-            : base(parentIndex, factory, range)
+            : base(parentIndex, range)
         {
 
         }
@@ -65,9 +64,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodeInfoParamaterMethod(values, range);
         }
 
-        protected override SourceCodePartsFactoryCommat GetFactory(string paramaterString)
+        protected override SourceCodePartsFactorySomeParamater GetFactory(string paramaterString)
         {
-            return new SourceCodePartsFactoryCommat(new SourceCode(paramaterString));
+            return new SourceCodePartsFactorySomeParamater(new SourceCode(paramaterString), new string[] {" ", "."});
         }
 
         #endregion

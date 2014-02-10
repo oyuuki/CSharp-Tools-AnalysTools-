@@ -535,7 +535,6 @@ namespace OyuLib.Documents.Sources.Analysis
             var parameter =
                         new SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
                             0,
-                            new SourceCodePartsFactoryCommat(new SourceCode(paramaterString), ", "),
                             range)
                             .GetSourceCodeInfoParamater();
 
