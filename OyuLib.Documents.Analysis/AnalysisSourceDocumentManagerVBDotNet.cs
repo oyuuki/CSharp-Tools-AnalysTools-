@@ -102,6 +102,34 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
+        //３．Withというオブジェクトに関連する○○ブロックで囲まれた式コードを取得
+        public SourceCodeInfo[] GetCodeInfosRoundWithBlock(string blockName)
+        {
+            return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfo, SourceCodeInfoBlockBeginWithVB>
+                (this.CodeObjects, "",
+                 delegate(string lockeyName, SourceCodeInfo info)
+                 {
+                     return true;
+                 },
+                 blockName,
+                 delegate(string lockeyName, SourceCodeInfoBlockBeginWithVB info)
+                 {
+                     return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName); ;
+                 });
+        }
+
+        public SourceCodeInfoBlockBeginWithVB[] GetSourceCodeInfoblockBeginWith()
+        {
+            var retList = new List<SourceCodeInfoBlockBeginWithVB>();
+
+            foreach (var codeBlock in this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginWithVB>())
+            {
+                retList.Add((SourceCodeInfoBlockBeginWithVB)codeBlock.GetSourceCodeInfoBlockBegin());
+            }
+
+            return retList.ToArray();
+        }
+
         #endregion
 
         #endregion

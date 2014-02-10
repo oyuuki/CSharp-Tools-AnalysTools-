@@ -114,22 +114,6 @@ namespace OyuLib.Documents.Sources.Analysis
             return "パラメータ名：" + this.ParammaterNameIndex;
         }
 
-        protected internal override StringRange[] GetCodeRanges()
-        {
-            StringRange[] childs = null;
-
-            if (this.hasChild)
-            {
-                childs = ArrayUtil.GetMargeArray(base.GetCodeRanges(), this.ChildParamater.GetStringRange());
-            }
-            else
-            {
-                childs = base.GetCodeRanges();
-            }
-
-            return childs;
-        }
-
         #endregion
 
         #endregion

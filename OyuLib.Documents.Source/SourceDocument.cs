@@ -86,7 +86,7 @@ namespace OyuLib.Documents.Sources
 
         private string[] GetArrayCodeString()
         {
-            return new CharCodeManager(new CharCode(this.GetSourceRule().GetCodeEndSeparatorString())).GetSpilitString(this.Text);
+            return this.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None);
         }
 
         #endregion

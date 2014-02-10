@@ -109,7 +109,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             if (index == this._paramater)
             {
-                foreach (var value in this.Paramater.GetParamaterValues)
+                foreach (var value in this.Paramater.ParamaterValues)
                 {
                     strBu.Append(value.Range.SpilitSeparatorStart);
                     strBu.Append(value.GetCodePartsOverWriteValues());

@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 
 using OyuLib.Documents;
+using OyuLib.IO;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
@@ -24,7 +25,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public object[] CodeObjects
+        protected object[] CodeObjects
         {
             get { return this._codeObjects; }
             private set { this._codeObjects = value; }
@@ -180,6 +181,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Protected
 
+        #region Common
+
         protected T[] GetSourceCodeInfos<T>(object[] codeobjects)
         {
             var retList = new List<T>();
@@ -220,14 +223,12 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.GetSourceCodeInfos<T>(this.CodeObjects);
         }
 
-        //        １．左辺式が○○である式コードのコレクションを取得
         protected T[] GetCodeInfoWithKeyName<T>(string keyName, CheckWithKey<T> checkMethod)
             where T : SourceCodeInfo
         {
             return this.GetCodeInfoWithKeyName(keyName, this.CodeObjects, checkMethod);
         }
-
-        //        １．左辺式が○○である式コードのコレクションを取得
+        
         protected T[] GetCodeInfoWithKeyName<T>(
             string keyName, SourceCodeblockInfo block, CheckWithKey<T> checkMethod)
             where T : SourceCodeInfo
@@ -235,7 +236,6 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.GetCodeInfoWithKeyName(keyName, block.CodeObjects, checkMethod);
         }
 
-        //        １．左辺式が○○である式コードのコレクションを取得
         protected T[] GetCodeInfoWithKeyName<T>(
             string keyName, object[] codeObjects, CheckWithKey<T> checkMethod)
             where T : SourceCodeInfo
@@ -256,6 +256,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
             return retList.ToArray();
         }
+
+        #endregion
+
+        #region Round Block Common
 
         protected SourceCodeblockInfo[] GetSourceCodeblockInfo<TBlock>()
             where TBlock : SourceCodeInfoBlockBegin
@@ -340,12 +344,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
-        #region Public
-
         protected void Init()
         {
             this.SetCodeObjects();
         }
+
+        #endregion
+
+        #region Public
 
         //        １．左辺式が○○である式コードのコレクションを取得
         public SourceCodeInfoSubstitution[] GetCodeInfoSubstitutions(string keyName)
@@ -395,7 +401,73 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
-        #endregion 
+       /// <summary>
+       /// Get ValiableInfo By TypeName
+       /// </summary>
+       /// <param name="typeName">TypeName</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByType(string typeName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoMemberVariable>(
+                typeName,
+                delegate(string lockeyName, SourceCodeInfoMemberVariable info)
+                {
+                    return info.TypeName.Equals(typeName);
+                }
+                );
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By Name
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByName(string name)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoMemberVariable>(
+                name,
+                delegate(string lockeyName, SourceCodeInfoMemberVariable info)
+                {
+                    return info.Name.Equals(name);
+                }
+                );
+        }
+
+        private SourceCodeInfo[] GetSourceCodeInfo(object[] codeObjects)
+        {
+            var retList = new List<SourceCodeInfo>();
+
+            foreach (var codeobject in codeObjects)
+            {
+                if (codeobject is SourceCodeblockInfo)
+                {
+                    retList.AddRange(this.GetSourceCodeInfo(((SourceCodeblockInfo)codeobject).CodeObjects));
+                }
+                else
+                {
+                    retList.Add((SourceCodeInfo)codeobject);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        public void CreateAnalysisSourceFile(string filePath)
+        {
+            using (var file = new TextFile(filePath))
+            {
+                file.OpenFileForse();
+
+                foreach (var codeinfo in this.GetSourceCodeInfo(this.CodeObjects))
+                {
+                    file.WriteLine(codeinfo.GetCodePartsOverWriteValues());
+                }
+            }
+        }
+
+        
+
+        #endregion
 
 
 

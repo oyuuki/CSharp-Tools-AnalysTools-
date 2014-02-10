@@ -38,3 +38,4 @@ C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\Test
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Form1.resources
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Properties.Resources.resources
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.csproj.GenerateResource.Cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Form2.resources

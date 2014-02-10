@@ -552,7 +552,8 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     SourceDocumentSyntaxVBDotNet.CONST_AS, 
                     SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_SUB, 
-                    SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION
+                    SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION,
+                    SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_WITH
                 }))
             {
                 return false;
@@ -794,7 +795,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
-            return coFac.IsIncludeStringInCode(rule.GetControlCodeBeginFor());
+            return coFac.IsFirstStringIsValue((rule.GetControlCodeBeginFor()));
         }
 
         protected override SourceCodeInfoBlockEndFor GetCodeInfoBlockEndFor(SourceCode code)

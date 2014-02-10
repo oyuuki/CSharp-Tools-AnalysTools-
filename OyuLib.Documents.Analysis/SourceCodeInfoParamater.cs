@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Design;
 using System.Linq;
 using System.Text;
 using OyuLib.Collection;
@@ -32,9 +33,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public SourceCodeInfoParamaterValue[] GetParamaterValues
+        public SourceCodeInfoParamaterValue[] ParamaterValues
         {
             get { return this._sourceCodeInfoParamaterValues; }
+        }
+
+        public bool HasParamater
+        {
+            get { return this.ParamaterValues != null && this.ParamaterValues.Length > 0; }
         }
 
         #endregion
@@ -46,7 +52,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var retList = new List<StringRange>();
 
-            foreach (var val in this.GetParamaterValues)
+            foreach (var val in this.ParamaterValues)
             {
                 var range = val.Range;
                 range.Childs = val.GetCodeRanges();
@@ -61,7 +67,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var retList = new List<NestIndex>();
 
-            foreach (var val in GetParamaterValues)
+            foreach (var val in ParamaterValues)
             {
                 NestIndex paramValuesHead = new NestIndex(-1);
                 paramValuesHead.Childs = val.GetNestIndices();
@@ -70,6 +76,36 @@ namespace OyuLib.Documents.Sources.Analysis
             }
 
             return retList.ToArray();
+        }
+
+        private SourceCodeInfoParamaterValue[] GetParamaterValue(string paramaterString, SourceCodeInfoParamater paramater)
+        {
+            var retList = new List<SourceCodeInfoParamaterValue>();
+
+            if (!paramater.HasParamater)
+            {
+                return null;    
+            }
+
+            foreach (var value in paramater.ParamaterValues)
+            {
+                if (value.ParammaterName.Equals(paramaterString))
+                {
+                    retList.Add(value);
+                }
+
+                if (value.hasChild)
+                {
+                    retList.AddRange(this.GetParamaterValue(paramaterString, value.ChildParamater));
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        public SourceCodeInfoParamaterValue[] GetParamaterValue(string paramaterString)
+        {
+            return this.GetParamaterValue(paramaterString, this);
         }
 
         #endregion

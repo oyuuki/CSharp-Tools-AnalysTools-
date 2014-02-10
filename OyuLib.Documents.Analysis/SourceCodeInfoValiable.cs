@@ -52,16 +52,19 @@ namespace OyuLib.Documents.Sources.Analysis
         public string Value
         {
             get { return this.GetCodePartsString(this._value); }
+            set { this.SetOverwriteValue(this._value, value); }
         }
 
         public string Name
         {
             get { return this.GetCodePartsString(this._name); }
+            set { this.SetOverwriteValue(this._name, value); }
         }
 
         public string TypeName
         {
             get { return this.GetCodePartsString(this._typeName); }
+            set { this.SetOverwriteValue(this._typeName, value); }
         }
 
         public bool IsConst

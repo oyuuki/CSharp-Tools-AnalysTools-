@@ -80,9 +80,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected string GetCodePartsString(int index)
         {
-            if (index < 0)
+            var codeParts = this._coFac.GetCodeParts();
+
+            if (index < 0 || codeParts.Length <= index)
             {
-                return "(None)";
+                return string.Empty;
             }
 
             return this._coFac.GetCodeParts()[index];

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-
+using System.Xml.Serialization;
 using OyuLib.Documents.Sources;
 
 namespace OyuLib.Documents.Sources.Analysis
@@ -143,6 +143,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodeInfo GetCodeInfoNoIncludeComment()
         {
+            if (this.Code.CodeString.IndexOf("With") >= 0)
+            {
+                int a = 1;
+            }
+
             if (this.CheckCodeInfoBlockBeginEventMethod(this.Code))
             {
                 return this.GetCodeInfoBlockBeginEventMethod(this.Code);

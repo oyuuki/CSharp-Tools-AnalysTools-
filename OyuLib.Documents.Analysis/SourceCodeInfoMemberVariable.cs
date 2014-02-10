@@ -40,7 +40,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string AccessModifier
         {
-            get { return this.GetCodePartsString(this._accessModifier); }   
+            get { return this.GetCodePartsString(this._accessModifier); }
+            set { this.SetOverwriteValue(this._accessModifier, value); }
         }
 
         #endregion

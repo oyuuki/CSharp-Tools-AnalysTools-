@@ -42,11 +42,13 @@ namespace OyuLib.Documents.Sources.Analysis
         public string RightHandSide
         {
             get { return this.GetCodePartsString(this._rightHandSide); }
+            set { this.SetOverwriteValue(this._rightHandSide, value); }
         }
 
         public string LeftHandSide
         {
             get { return this.GetCodePartsString(this._leftHandSide); }
+            set { this.SetOverwriteValue(this._leftHandSide, value); }
         }
 
 

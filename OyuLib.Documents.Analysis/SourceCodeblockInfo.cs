@@ -50,6 +50,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
+        public SourceCodeInfoBlockBegin GetSourceCodeInfoBlockBegin()
+        {
+            return (SourceCodeInfoBlockBegin) this.CodeObjects[0];
+        }
+
        
         #endregion
     }

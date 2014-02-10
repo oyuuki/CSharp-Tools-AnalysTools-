@@ -125,6 +125,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public bool IsFirstStringIsValue(string value)
         {
+            var codeParts = this.GetCodeParts();
+
+            if (codeParts == null || codeParts.Length <= 0)
+            {
+                return false;
+            }
+
             return this.GetCodeParts()[0].Trim().Equals(value);
         }
 

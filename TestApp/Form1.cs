@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -227,7 +228,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test\test.vb");
         }
 
         private void exButton4_Click(object sender, EventArgs e)
@@ -235,11 +236,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test.vb");
-            foreach (var codeinfo in mana.CodeObjects)
-            {
-                this.exListBox1.Items.Add(codeinfo.ToString());
-            }
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test\test.vb");
            
         }
 
@@ -248,7 +245,7 @@ namespace TestApp
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\test\test.vb");
 
             foreach (var codeinfo in mana.GetCodeInfoSubstitutionsRoundBlock("spd選択"))
             {
@@ -278,27 +275,7 @@ namespace TestApp
                 this.exListBox2.Items.Add(codeinfo.GetCodeString());
             }
 
-            foreach (var codeinfo in mana.GetSourceCodeInfoCallMethod("Test1"))
-            {
-                codeinfo.CallmethodName = "うほ";
-                codeinfo.Paramater.GetParamaterValues[0].ParammaterName = "うははは";
-
-                this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
-                this.exListBox2.Items.Add(codeinfo.GetCodeString());
-            }
-
-            
-
-            foreach (var codeinfo in mana.GetCodeInfoCallMethodsRoundBlock("spd選択"))
-            {
-                codeinfo.CallmethodName = "うほほほほほほ";
-
-                codeinfo.Paramater.GetParamaterValues[0].ParammaterName = "うははは";
-
-                this.exListBox1.Items.Add(codeinfo.GetCodePartsOverWriteValues());
-                this.exListBox2.Items.Add(codeinfo.GetCodeString());
-            }
-
+           
             foreach (var codeinfo in mana.GetCodeInfoCallMethodsRoundBlock("spd選択"))
             {
 
