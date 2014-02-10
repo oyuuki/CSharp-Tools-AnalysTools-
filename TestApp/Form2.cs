@@ -145,9 +145,9 @@ namespace TestApp
                 var subCodeInfo = (SourceCodeInfoCallMethod)codeInfo;
                 var paramater = subCodeInfo.Paramater;
 
-                var rowParamaterValues = subCodeInfo.Paramater.GetParamaterValue("Row");
+                var rowParamaterValues = subCodeInfo.Paramater.GetParamaterValue(".Row");
 
-                if (rowParamaterValues == null)
+                if (rowParamaterValues != null)
                 {
                     foreach (var value in rowParamaterValues)
                     {
@@ -155,9 +155,9 @@ namespace TestApp
                     }                    
                 }
 
-                var colParamaterValues = subCodeInfo.Paramater.GetParamaterValue("Col");
+                var colParamaterValues = subCodeInfo.Paramater.GetParamaterValue(".Col");
 
-                if (colParamaterValues == null)
+                if (colParamaterValues != null)
                 {
                     foreach (var value in colParamaterValues)
                     {
@@ -180,13 +180,12 @@ namespace TestApp
 
                     var paramaterValues = paramater.ParamaterValues;
 
-                    var rowValue = paramaterValues[1].ParammaterName;
-                    var colValue = paramaterValues[0].ParammaterName;
-                    var setValue = paramaterValues[2].ParammaterName;
+                    var list = new List<SourceCodeInfoParamaterValue>();
 
-                    paramaterValues[0].ParammaterName = rowValue;
-                    paramaterValues[1].ParammaterName = colValue;
-                    paramaterValues[2].ParammaterName = setValue;
+                    list.Add(paramaterValues[1]);
+                    list.Add(paramaterValues[0]);
+                    list.Add(paramaterValues[2]);
+                    paramater.ParamaterValues = list.ToArray();
                 }
 
             }

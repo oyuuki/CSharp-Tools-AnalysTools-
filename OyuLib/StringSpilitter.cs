@@ -134,6 +134,14 @@ namespace OyuLib
 
         private static bool FindSeparatorinTargetString(string targetString, int index, string strSeparator)
         {
+            var targetLength = targetString.Length;
+            var separatorLength = strSeparator.Length;
+
+            if (index + separatorLength + 1 >= targetLength)
+            {
+                return false;
+            }
+
             return targetString.Substring(index, strSeparator.Length).ToString().Equals(strSeparator);
         }
 
@@ -190,6 +198,45 @@ namespace OyuLib
             if (startIndex < range.TargetString.Length)
             {
                 retlist.Add(new StringRange(startIndex, range.TargetString.Length - 1, string.Empty, string.Empty, range.TargetString));
+                //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
+            }
+
+            return retlist.ToArray();
+        }
+
+        public StringRange[] GetStringRangeSpilitIncludeNestedString(string strSeparator, ManagerStringNested nStr)
+        {
+            var retlist = new List<StringRange>();
+            var startIndex = 0;
+            var indexPareArray = nStr.GetStringRangeArray(this.TargetString);
+            var nStrIndex = 0;
+
+            for (int index = 0; index < this.TargetString.Length; index++)
+            {
+                if (indexPareArray.Length > nStrIndex &&
+                    indexPareArray[nStrIndex].IndexEnd < index)
+                {
+                    nStrIndex++;
+                }
+
+                if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
+                {
+                    if (indexPareArray.Length > nStrIndex &&
+                        indexPareArray[nStrIndex].IndexStart <= index &&
+                        indexPareArray[nStrIndex].IndexEnd >= index)
+                    {
+                        continue;
+                    }
+                    retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
+                    // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
+                    startIndex = index + 1;
+                }
+            }
+
+
+            if (startIndex < this.TargetString.Length)
+            {
+                retlist.Add(new StringRange(startIndex, this.TargetString.Length - 1, string.Empty, string.Empty, this.TargetString));
                 //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 

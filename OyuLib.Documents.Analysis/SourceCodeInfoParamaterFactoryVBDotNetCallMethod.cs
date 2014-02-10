@@ -40,6 +40,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             int parammaterName = 0;
 
+
             var paramaterStrings = fac.GetNestedCodeParts("(", ")");
 
             if (paramaterStrings != null && paramaterStrings.Length > 0)
@@ -66,7 +67,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodePartsFactorySomeParamater GetFactory(string paramaterString)
         {
-            return new SourceCodePartsFactorySomeParamater(new SourceCode(paramaterString), new string[] {" ", "."});
+            return new SourceCodePartsFactorySomeParamater(new SourceCode(paramaterString), new string[] { " ,", "," });
         }
 
         #endregion

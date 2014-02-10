@@ -14,6 +14,7 @@ namespace OyuLib.Documents.Sources.Analysis
         #region instanceVal
 
         private SourceCodeInfoParamaterValue[] _sourceCodeInfoParamaterValues = null;
+
         private StringRange _range = null;
         
 
@@ -36,6 +37,7 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeInfoParamaterValue[] ParamaterValues
         {
             get { return this._sourceCodeInfoParamaterValues; }
+            set { this._sourceCodeInfoParamaterValues = value; }
         }
 
         public bool HasParamater

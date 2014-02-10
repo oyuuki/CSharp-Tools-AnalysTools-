@@ -495,7 +495,12 @@ namespace OyuLib.Documents.Sources.Analysis
             int paramaterIndex = 0;
             var paramaterString = string.Empty;
 
-            var coFac = new SourceCodePartsFactorySomeParamater(code, new string[]{ " ", "." });
+            if (code.CodeString.IndexOf("Trim") >= 0)
+            {
+                int a1 = 1;
+            }
+
+            var coFac = new SourceCodePartsFactorySomeParamater(code, new string[]{ ".", "," });
             var a = coFac.GetCodeParts();
 
             if (coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL))

@@ -83,6 +83,7 @@
     <Compile Include="SourceCodeInfoValiable.cs" />
     <Compile Include="SourceCodePartsFactory.cs" />
     <Compile Include="SourceCodePartsFactoryComma.cs" />
+    <Compile Include="SourceCodePartsFactoryCommatIncludeParamater.cs" />
     <Compile Include="SourceCodePartsFactoryNoComment.cs" />
     <Compile Include="SourceCodePartsFactorySomeParamater.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetEventMethod.cs" />
