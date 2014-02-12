@@ -24,6 +24,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         }
 
+        public SourceCodePartsFactoryCommatIncludeParamater(
+            SourceCode code,
+            string[] codeDelimiters)
+            : base(code, codeDelimiters)
+        {
+
+        }
+
         #endregion
 
         #region Method
@@ -34,7 +42,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             return
                 new StringSpilitter(withOutComment).GetStringRangeSpilitIncludeNestedString(
-                    new CharCode(this.CodeDelimiter).GetCharCodeString(), new ManagerStringNested("(", ")"));
+                    this.CodeDelimiters, new ManagerStringNested("(", ")"));
         }
 
 

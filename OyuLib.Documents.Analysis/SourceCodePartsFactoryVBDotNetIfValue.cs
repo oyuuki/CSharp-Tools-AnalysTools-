@@ -11,7 +11,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodePartsFactoryVBDotNetIfValue(
             SourceCode code)
-            : base(code, new string[] { " And ", " Or ", " Not ", " <> ", " >= ", " <= ", " = ", " < ", " > " })
+            : base(code, new string[] { " And ", " Or ", " Not ", " <> ", " >= ", " <= ", " = ", " < ", " > ", " + ", " - ", " * ", " / ", " Is ", " & " })
         {
 
         }

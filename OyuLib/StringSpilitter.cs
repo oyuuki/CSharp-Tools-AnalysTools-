@@ -227,6 +227,11 @@ namespace OyuLib
                 {
                     if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
                     {
+                        if (strSeparator.Equals(" & "))
+                        {
+                            int a = 1;
+                        }
+
                         if (indexPareArray.Length > nStrIndex &&
                             indexPareArray[nStrIndex].IndexStart <= index &&
                             indexPareArray[nStrIndex].IndexEnd >= index)

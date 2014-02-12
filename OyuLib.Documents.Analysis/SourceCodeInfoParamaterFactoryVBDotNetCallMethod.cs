@@ -64,7 +64,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodePartsFactoryCommatIncludeParamater GetFactory(string paramaterString)
         {
-            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString));
+            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString), new string[] { ",", " & ", " + ", " * ", " - ", " / ", " = " });
         }
 
         #endregion
