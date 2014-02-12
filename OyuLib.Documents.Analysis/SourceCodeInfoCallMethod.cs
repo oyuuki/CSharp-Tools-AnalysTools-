@@ -22,7 +22,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private readonly int _objName = -1;
 
-        private SourceCodeInfoParamaterMethod _sourceCodeInfoParamaterValueMethod = null;
+        private SourceCodeInfoParamater _sourceCodeInfoParamaterValueMethod = null;
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace OyuLib.Documents.Sources.Analysis
             string codeDelimiterParamater,
             int callmethodName,
             int objName,
-            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod,
+            SourceCodeInfoParamater sourceCodeInfoParamaterValueMethod,
             int paramater)
             : base(code, coFac)
         {
@@ -79,7 +79,7 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._codeDelimiterParamater; }
         }
 
-        public SourceCodeInfoParamaterMethod Paramater
+        public SourceCodeInfoParamater Paramater
         {
             get { return this._sourceCodeInfoParamaterValueMethod; }
         }

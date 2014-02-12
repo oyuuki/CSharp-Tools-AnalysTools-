@@ -97,7 +97,7 @@ namespace OyuLib
                 }
 
             }
-            return retlist.ToArray();   // TODO：2013/02/10 "(" の場合 endIndexが-1のまま
+            return retlist.ToArray();   
         }
 
         public StringRange[] GetStringRangeIgnoreNestedString(string str, ManagerStringNested nestedString)

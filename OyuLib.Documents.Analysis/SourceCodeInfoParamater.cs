@@ -9,7 +9,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public abstract class SourceCodeInfoParamater
+    public class SourceCodeInfoParamater
     {
         #region instanceVal
 

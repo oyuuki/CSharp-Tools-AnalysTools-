@@ -8,7 +8,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public abstract class SourceCodeInfoParamaterValue : SourceCodeInfo        
+    public class SourceCodeInfoParamaterValue : SourceCodeInfo        
     {
         #region instanceVal
 
@@ -19,8 +19,6 @@ namespace OyuLib.Documents.Sources.Analysis
         private int _parentIndex = -1;
 
         private StringRange _range = null;
-
-        private SourceCodeInfoParamater _childparamater = null;
 
         #endregion
 
@@ -78,21 +76,14 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this.SetOverwriteValue(this._parentIndex, value); }
         }
 
-        public bool hasChild
-        {
-            get { return this._childparamater != null; }
-        }
+        
 
         internal StringRange Range
         {
             get { return this._range; }
         }
 
-        public SourceCodeInfoParamater ChildParamater
-        {
-            get { return this._childparamater; }
-            internal set { this._childparamater = value; }
-        }
+        
 
         #endregion
 

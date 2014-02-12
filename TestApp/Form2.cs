@@ -56,30 +56,35 @@ namespace TestApp
             // this.Test()
             foreach (var form in this.GetFilePaths(targetSourceDirectory))
             {
-                // デザイナクラスを読み込み
+                // デザイナコード解析
                 var mana = new AnalysisSourceDocumentManagerVBDotNet(form.DesinerClassFilePath);
                 // スプレッドフィールド名を保持する
                 var filedNameList = this.GetFiledNamelist(mana, "FarPoint.Win.Spread.FpSpread");
 
-                // 処理クラスを読み込み
+                // ビジネスコード解析
                 var mana2 = new AnalysisSourceDocumentManagerVBDotNet(form.BussinessClassFilePath);
 
                 var spreadwithBlockNameList = new List<string>();
 
+                // コントロール配列のスプレッドシート変数を対象に、
+                // Withステートメントコードを全て抽出し
+                // デザイナで定義されている変数名に置換する
                 foreach (var withBlockBegin in mana2.GetSourceCodeInfoblockBeginWith())
                 {
                     var locWithName = withBlockBegin.StatementObject;
                     var motoName = withBlockBegin.StatementObject;
 
+                    // コントロール配列による宣言を行っている場合 例) "vaSpread(0)"
                     if (locWithName.EndsWith(")"))
                     {
+                        // "_vaSpread_0" のように文字列を組み替える
                         locWithName = "_" + locWithName;
                         locWithName = locWithName.Replace("(", "_").Replace(")", "");
                     }
 
+                    // デザイナの変数名に置換する
                     foreach (var name in filedNameList)
                     {
-
                         if (locWithName.Equals(name))
                         {
                             withBlockBegin.StatementObject = locWithName;
@@ -88,17 +93,18 @@ namespace TestApp
                     }
                 }
 
-                // スプレッドに関連する
+                // スプレッドに関連する置換処理を行う
                 foreach (var name in spreadwithBlockNameList)
                 {
                     string colString = string.Empty;
                     string rowString = string.Empty;
 
+                    var a = mana2.GetCodeInfosRoundWithBlock(name);
 
-                    var blocks = mana2.GetCodeInfosRoundWithBlock(name);
-
+                    // スプレッド変数名のWithステートメントブロックを抽出する
                     foreach (var value in mana2.GetCodeInfosRoundWithBlock(name))
                     {
+                        // "."で始まるコードを対象に置換処理を行う
                         if (value.GetCodeString().Trim().StartsWith("."))
                         {
                             this.SetSpreadRowCol(value, ref rowString, ref colString);

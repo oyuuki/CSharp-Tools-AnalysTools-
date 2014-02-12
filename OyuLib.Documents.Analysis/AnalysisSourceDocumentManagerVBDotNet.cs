@@ -70,7 +70,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
-        //３．Withというオブジェクトに関連する○○ブロックで囲まれた式コードを取得
+        // Withというオブジェクトに関連する○○ブロックで囲まれた式コードを取得
         public SourceCodeInfoSubstitution[] GetCodeInfoSubstitutionsRoundBlock(string blockName)
         {
             return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfoSubstitution, SourceCodeInfoBlockBeginWithVB>
@@ -86,7 +86,7 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
-        //３．Withというオブジェクトに関連する○○ブロックで囲まれたコールメソッドを取得
+        // Withというオブジェクトに関連する○○ブロックで囲まれたコールメソッドを取得
         public SourceCodeInfoCallMethod[] GetCodeInfoCallMethodsRoundBlock(string blockName)
         {
             return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfoCallMethod, SourceCodeInfoBlockBeginWithVB>
@@ -102,7 +102,7 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
-        //３．Withというオブジェクトに関連する○○ブロックで囲まれた式コードを取得
+        // Withステートメントブロック内のコードを全て取得する
         public SourceCodeInfo[] GetCodeInfosRoundWithBlock(string blockName)
         {
             return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfo, SourceCodeInfoBlockBeginWithVB>
@@ -118,16 +118,26 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
+        // Withステートメントコードを全て取得
         public SourceCodeInfoBlockBeginWithVB[] GetSourceCodeInfoblockBeginWith()
         {
-            var retList = new List<SourceCodeInfoBlockBeginWithVB>();
+            return base.GetSourceCodeInfoblockBegin<SourceCodeInfoBlockBeginWithVB>();
+        }
 
-            foreach (var codeBlock in this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginWithVB>())
-            {
-                retList.Add((SourceCodeInfoBlockBeginWithVB)codeBlock.GetSourceCodeInfoBlockBegin());
-            }
-
-            return retList.ToArray();
+        // Withステートメントブロック内のIfステートメントコードを全て取得する
+        public SourceCodeInfoBlockBeginIf[] GetCodeInfosIfBeginRoundWithBlock(string blockName)
+        {
+            return GetCodeInfoWithKeyNameRangeBlock<SourceCodeInfoBlockBeginIf, SourceCodeInfoBlockBeginWithVB>
+                (this.CodeObjects, "",
+                 delegate(string lockeyName, SourceCodeInfoBlockBeginIf info)
+                 {
+                     return true;
+                 },
+                 blockName,
+                 delegate(string lockeyName, SourceCodeInfoBlockBeginWithVB info)
+                 {
+                     return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName); ;
+                 });
         }
 
         #endregion

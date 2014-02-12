@@ -39,7 +39,7 @@ namespace OyuLib.Documents.Sources.Analysis
             int eventObjectName,
             int eventName,
             int paramater,
-            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod)
+            SourceCodeInfoParamater sourceCodeInfoParamaterValueMethod)
             : base(code, coFac, CodeDelimiterParamater, statement, statementObject, accessModifier, name, returnTypeName, sourceCodeInfoParamaterValueMethod, paramater)
         {
             this._eventObjectName = eventObjectName;

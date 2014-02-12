@@ -95,7 +95,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Private
 
-        private string GetStringWithOutComment()
+        public string GetStringWithOutComment()
         {
             var stringWithOutComment = string.Empty;
             var commentStartIndex = this.GetCommentStartindex();

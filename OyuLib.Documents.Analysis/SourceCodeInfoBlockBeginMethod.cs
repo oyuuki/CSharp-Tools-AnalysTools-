@@ -20,7 +20,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private readonly string _codeDelimiterParamater = null;
 
-        private SourceCodeInfoParamaterMethod _sourceCodeInfoParamaterValueMethod = null;
+        private SourceCodeInfoParamater _sourceCodeInfoParamaterValueMethod = null;
 
         private int _paramater = -1;
 
@@ -45,7 +45,7 @@ namespace OyuLib.Documents.Sources.Analysis
             int accessModifier,
             int name,
             int returnTypeName,
-            SourceCodeInfoParamaterMethod sourceCodeInfoParamaterValueMethod,
+            SourceCodeInfoParamater sourceCodeInfoParamaterValueMethod,
             int paramater)
             : base(code, coFac, statement, statementObject)
         {
@@ -80,7 +80,7 @@ namespace OyuLib.Documents.Sources.Analysis
         }
 
 
-        protected SourceCodeInfoParamaterMethod Paramaters
+        protected SourceCodeInfoParamater Paramaters
         {
             get { return this._sourceCodeInfoParamaterValueMethod; }
         }

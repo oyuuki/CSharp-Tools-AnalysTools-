@@ -75,7 +75,6 @@
     <Compile Include="SourceCodeInfoParamater.cs" />
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetCallMethod.cs" />
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetMethod.cs" />
-    <Compile Include="SourceCodeInfoParamaterMethod.cs" />
     <Compile Include="SourceCodeInfoParamaterValue.cs" />
     <Compile Include="SourceCodeInfoParamaterValueCallMethod.cs" />
     <Compile Include="SourceCodeInfoParamaterValueMethod.cs" />
@@ -88,6 +87,7 @@
     <Compile Include="SourceCodePartsFactorySomeParamater.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetEventMethod.cs" />
     <Compile Include="SourceCodePartsFactoryParamater.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetIf.cs" />
     <Compile Include="SourceCodeTemplateFactory.cs" />
   </ItemGroup>
   <ItemGroup>

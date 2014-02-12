@@ -6,7 +6,7 @@ using System.Text;
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoParamaterFactoryVBDotNetMethod :
-        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamaterMethod, SourceCodePartsFactoryCommat>
+        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamater, SourceCodePartsFactoryCommat>
     {
         #region Constructor
 
@@ -52,9 +52,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodePartsFactoryParamater(sourceCode);
         }
 
-        protected override SourceCodeInfoParamaterMethod GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values, StringRange range)
+        protected override SourceCodeInfoParamater GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values, StringRange range)
         {
-            return new SourceCodeInfoParamaterMethod(values, range);
+            return new SourceCodeInfoParamater(values, range);
         }
 
         protected override SourceCodePartsFactoryCommat GetFactory(string paramaterString)

@@ -175,6 +175,92 @@ namespace OyuLib.Documents.Sources.Analysis
             return retIndex;
         }
 
+        private SourceCodeInfoCallMethod GetConditionalValuesCallMethod(string name, SourceCodeInfo[] codeInfos)
+        {
+            foreach (var value in codeInfos)
+            {
+                if (!(value is SourceCodeInfoCallMethod))
+                {
+                    continue;
+
+                }
+
+                var codeInfoCallMethod = (SourceCodeInfoCallMethod)value;
+
+                if (codeInfoCallMethod.CallmethodName.Equals(name))
+                {
+                    return codeInfoCallMethod;
+                }
+            }
+
+            return null;
+        }
+
+        private SourceCodeInfoParamaterValueCallMethod[] GetConditionalValuesMethodParamaters(string name, SourceCodeInfo[] codeInfos)
+        {
+            var retList = new List<SourceCodeInfoParamaterValueCallMethod>();
+
+            foreach (var value in codeInfos)
+            {
+                if (!(value is SourceCodeInfoParamaterValueCallMethod))
+                {
+                    continue;
+
+                }
+
+                var codeInfoCallMethod = (SourceCodeInfoParamaterValueCallMethod)value;
+
+                if (codeInfoCallMethod.ParammaterName.Equals(name))
+                {
+                    retList.Add(codeInfoCallMethod);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        private SourceCodeInfoSubstitution GetConditionalValuesSubstitutionRight(string rightName, SourceCodeInfo[] codeInfos)
+        {
+            foreach (var value in codeInfos)
+            {
+                if (!(value is SourceCodeInfoSubstitution))
+                {
+                    continue;
+
+                }
+
+                var codeInfoCallMethod = (SourceCodeInfoSubstitution)value;
+
+                if (codeInfoCallMethod.RightHandSide.Equals(rightName))
+                {
+                    return codeInfoCallMethod;
+                }
+            }
+
+            return null;
+        }
+
+        private SourceCodeInfoSubstitution GetConditionalValuesSubstitutionLeft(string leftName, SourceCodeInfo[] codeInfos)
+        {
+            foreach (var value in codeInfos)
+            {
+                if (!(value is SourceCodeInfoSubstitution))
+                {
+                    continue;
+
+                }
+
+                var codeInfoCallMethod = (SourceCodeInfoSubstitution)value;
+
+                if (codeInfoCallMethod.LeftHandSide.Equals(leftName))
+                {
+                    return codeInfoCallMethod;
+                }
+            }
+
+            return null;
+        }
+
         #endregion
 
         #endregion
@@ -182,6 +268,19 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Protected
 
         #region Common
+
+        protected TBlock[] GetSourceCodeInfoblockBegin<TBlock>()
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            var retList = new List<TBlock>();
+
+            foreach (var codeBlock in this.GetSourceCodeblockInfo<TBlock>())
+            {
+                retList.Add((TBlock)codeBlock.GetSourceCodeInfoBlockBegin());
+            }
+
+            return retList.ToArray();
+        }
 
         protected T[] GetSourceCodeInfos<T>(object[] codeobjects)
         {

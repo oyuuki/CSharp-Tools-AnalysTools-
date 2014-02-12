@@ -191,7 +191,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 get { return this._typeName; }
             }
 
-            public SourceCodeInfoParamaterMethod Paramaters
+            public SourceCodeInfoParamater Paramaters
             {                    
                 get
                 {
@@ -370,11 +370,6 @@ namespace OyuLib.Documents.Sources.Analysis
             
         private  bool CheckCommonCodeInfoBlockBeginIf(SourceCode code, bool isEnd)
         {
-            if(code.CodeString.IndexOf(@"If nNull(plAdoRec.Fields(" + "発注数2" + ")) <> nNull(plAdoRec.Fields(" + "発注残数" + "))") >= 0)
-            {
-                int a = 1;
-            }
-
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
 
@@ -548,8 +543,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override bool CheckCodeInfoCallMethod(SourceCode code)
         {
-            SourceDocumentRuleVBDotNet rule = new SourceDocumentRuleVBDotNet();
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
+            var rule = new SourceDocumentRuleVBDotNet();
+            var coFac = this.GetSourceFactoryForCallMethod(code);
 
             // No include "As", "Sub", "Function"
             if (coFac.IsIncludeSomeStringInCode(
@@ -572,20 +567,25 @@ namespace OyuLib.Documents.Sources.Analysis
                     return false;
                 }
             }
-
-
+           
             // End with ")"
-            // Callステートメントが存在しない
-            // "("が含まれない)
-            if (!coFac.IsIncludeStringInCodeEndWithAtLast(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END)
-                || !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL)
-                || coFac.IsIncludeStringInCodeEndWithAtLast(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END) &&
-                !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_START))
+            if (!coFac.GetStringWithOutComment().EndsWith(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END))
             {
                 return false;
             }
 
             return true;
+        }
+
+        private SourceCodePartsfactoryNocomment GetSourceFactoryForCallMethod(SourceCode code)
+        {
+            return new SourceCodePartsfactoryNocomment(code, " ");
+        }
+
+        private bool IsEndWithparenthesis(SourceCode code)
+        {
+            var coFac = GetSourceFactoryForCallMethod(code);
+            return coFac.GetStringWithOutComment().EndsWith(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END);
         }
 
         #endregion
@@ -700,13 +700,22 @@ namespace OyuLib.Documents.Sources.Analysis
             }
 
             // composed right-hand side and lefthand side
-            if (coFac.GetCodePartsLength() < 3 || !coFac.GetCodeParts()[1].Equals(SourceDocumentSyntaxVBDotNet.CONST_EQUALS))
+            if (!this.IsSubstitutionString(code))
             {
                 return false;
             }
 
             return true;
         }
+
+        private bool IsSubstitutionString(SourceCode code)
+        {
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
+
+            return coFac.GetCodePartsLength() == 3 &&
+                   coFac.GetCodeParts()[1].Equals(SourceDocumentSyntaxVBDotNet.CONST_EQUALS);
+        }
+
 
         protected override SourceCodeInfoSubstitution GetCodeInfoSubstitution(SourceCode code)
         {
@@ -724,18 +733,28 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoBlockBeginIf GetCodeInfoBlockBeginIf(SourceCode code)
         {
-            if (code.CodeString.IndexOf("If InStrRev(plStrInvoiceNumber, ") >= 0)
-            {
-                int a = 1;
-            }
-
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
+            var coFac = new SourceCodePartsFactoryVBDotNetIf(code);
+
+
+            var conditionalValuesList = new List<SourceCodeInfo>();
+
+            var te = coFac.GetCodeParts();
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginIf());
-            return new SourceCodeInfoBlockBeginIf(code, coFac, segments, segments + 1);
+            int segmentsValue = segments + 1;
+
+            var range = coFac.GetCodePartsRanges()[segmentsValue];
+
+            var parameter =
+                        new SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
+                            0,
+                            range)
+                            .GetSourceCodeInfoParamater();
+
+            return new SourceCodeInfoBlockBeginIf(code, coFac, segments, segments + 1, parameter);
         }
 
         protected override bool CheckCodeInfoBlockBeginIf(SourceCode code)

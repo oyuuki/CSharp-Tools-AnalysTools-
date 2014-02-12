@@ -49,6 +49,8 @@ namespace OyuLib.Documents.Sources
 
         public const string CONST_IF = "If";
 
+        public const string CONST_THEN = "Then";
+
         public const string CONST_FOR = "For";
 
         public const string CONST_WHILE = "While";

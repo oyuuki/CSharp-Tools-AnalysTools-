@@ -7,7 +7,7 @@ using OyuLib.Collection;
 namespace OyuLib.Documents.Sources.Analysis
 {
     public abstract class SourceCodeInfoParamaterFactory<TParamaterValue, TParamater, TFactory>
-        where TParamaterValue : SourceCodeInfoParamaterValue
+        where TParamaterValue : SourceCodeInfo
         where TParamater : SourceCodeInfoParamater
         where TFactory : SourceCodePartsfactory
     {

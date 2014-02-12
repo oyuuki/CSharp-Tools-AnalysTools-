@@ -55,6 +55,11 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this.SetOverwriteValue(this._statementObject, value); }
         }
 
+        public int StatementObjectindex
+        {
+            get { return this._statementObject; }
+        }
+
         #endregion
 
         #region Method
