@@ -17,8 +17,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private Hashtable _overwriteValues = null;
 
-        private SourceCodeInfoParamater _childparamater = null;
-
         #endregion
 
         #region Constructor
@@ -44,17 +42,6 @@ namespace OyuLib.Documents.Sources.Analysis
         private Hashtable OverwriteValues
         {
             get { return this._overwriteValues; }
-        }
-
-        public bool hasChild
-        {
-            get { return this._childparamater != null; }
-        }
-
-        public SourceCodeInfoParamater ChildParamater
-        {
-            get { return this._childparamater; }
-            internal set { this._childparamater = value; }
         }
 
         #endregion

@@ -7,7 +7,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoCallMethod : SourceCodeInfo
+    public class SourceCodeInfoCallMethod : SourceCodeInfo, IParamater
     {
         #region instanceVal
 
@@ -23,6 +23,8 @@ namespace OyuLib.Documents.Sources.Analysis
         private readonly int _objName = -1;
 
         private SourceCodeInfoParamater _sourceCodeInfoParamaterValueMethod = null;
+
+        private StringRange _range = null;
 
         #endregion
 
@@ -79,9 +81,10 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._codeDelimiterParamater; }
         }
 
-        public SourceCodeInfoParamater Paramater
+        public StringRange Range 
         {
-            get { return this._sourceCodeInfoParamaterValueMethod; }
+            get { return this._range; }
+            set { this._range = value; }
         }
 
         #endregion
@@ -90,9 +93,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region override
 
+        public SourceCodeInfoParamater GetSourceCodeInfoParamater()
+        {
+            return this._sourceCodeInfoParamaterValueMethod;
+        }
+
         protected override string GetCodeText()
         {
-            return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.Paramater;
+            return "呼び出しメソッド名：" + this.CallmethodName + " パラメータ：" + this.GetSourceCodeInfoParamater();
         }
 
         public override NestIndex[] GetNestIndices()
@@ -109,13 +117,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             if (index == this._paramater)
             {
-                foreach (var value in this.Paramater.ParamaterValues)
-                {
-                    strBu.Append(value.Range.SpilitSeparatorStart);
-                    strBu.Append(value.GetCodePartsOverWriteValues());
-                    strBu.Append(value.Range.SpilitSeparatorEnd);
-                }
-
+                strBu.Append(this.GetSourceCodeInfoParamater().GetParamaterOverWriteValues());
                 return true;
             }
 

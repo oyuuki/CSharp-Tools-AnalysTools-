@@ -206,6 +206,11 @@ namespace OyuLib
 
         public StringRange[] GetStringRangeSpilitIncludeNestedString(string strSeparator, ManagerStringNested nStr)
         {
+            return GetStringRangeSpilitIncludeNestedString(new string[] {strSeparator}, nStr);
+        }
+
+        public StringRange[] GetStringRangeSpilitIncludeNestedString(string[] strSeparators, ManagerStringNested nStr)
+        {
             var retlist = new List<StringRange>();
             var startIndex = 0;
             var indexPareArray = nStr.GetStringRangeArray(this.TargetString);
@@ -218,18 +223,21 @@ namespace OyuLib
                 {
                     nStrIndex++;
                 }
-
-                if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
+                foreach (var strSeparator in strSeparators)
                 {
-                    if (indexPareArray.Length > nStrIndex &&
-                        indexPareArray[nStrIndex].IndexStart <= index &&
-                        indexPareArray[nStrIndex].IndexEnd >= index)
+                    if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
                     {
-                        continue;
+                        if (indexPareArray.Length > nStrIndex &&
+                            indexPareArray[nStrIndex].IndexStart <= index &&
+                            indexPareArray[nStrIndex].IndexEnd >= index)
+                        {
+                            continue;
+                        }
+                        retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
+
+                        // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
+                        startIndex = index + 1;
                     }
-                    retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
-                    // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                    startIndex = index + 1;
                 }
             }
 
@@ -237,6 +245,8 @@ namespace OyuLib
             if (startIndex < this.TargetString.Length)
             {
                 retlist.Add(new StringRange(startIndex, this.TargetString.Length - 1, string.Empty, string.Empty, this.TargetString));
+
+                
                 //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 
@@ -315,6 +325,17 @@ namespace OyuLib
         {
             return this.GetStringRangeSpilitLogic(new string[] { strSeparator }, nStr.GetStringRangeIgnoreNestedString(this.TargetString, IgnoreNestedString));
         }
+
+        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested[] IgnoreNestedStrings)
+        {
+            return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, IgnoreNestedStrings));
+        }
+
+        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string strSeparator, ManagerStringNested nStr, ManagerStringNested[] IgnoreNestedStrings)
+        {
+            return this.GetStringRangeSpilitLogic(new string[] { strSeparator }, nStr.GetStringRangeIgnoreNestedString(this.TargetString, IgnoreNestedStrings));
+        }
+
 
         #endregion
 

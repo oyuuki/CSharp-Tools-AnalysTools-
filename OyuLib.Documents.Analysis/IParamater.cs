@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using OyuLib.Documents.Sources.Analysis;
 
 namespace OyuLib.Documents.Sources
 {
     interface IParamater
     {
-        StringRange[] GetStringRangesParamaters();
+        SourceCodeInfoParamater GetSourceCodeInfoParamater();
+        StringRange Range { get; set; }
     }
 
 }

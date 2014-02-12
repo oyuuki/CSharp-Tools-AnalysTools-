@@ -29,16 +29,9 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceCode sourceCode, 
             SourceCodePartsfactory fac, 
             StringRange rangeParam,
-            out string paramaterString, 
-            out int paramaterStringIndex,
-            out StringRange range,
             int groupCount, 
             int hierarchyCount)
         {
-            paramaterString = string.Empty;   // this code  won't  Using at this class
-            paramaterStringIndex = -1;        // this code  won't  Using at this class
-            range = null;                     // this code  won't  Using at this class
-
             int parammaterName = 1;
             int typeName = fac.GetIndexCodeParts("As") + 1;
 
@@ -52,9 +45,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodePartsFactoryParamater(sourceCode);
         }
 
-        protected override SourceCodeInfoParamater GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values, StringRange range)
+        protected override SourceCodeInfoParamater GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values)
         {
-            return new SourceCodeInfoParamater(values, range);
+            return new SourceCodeInfoParamater(values);
         }
 
         protected override SourceCodePartsFactoryCommat GetFactory(string paramaterString)

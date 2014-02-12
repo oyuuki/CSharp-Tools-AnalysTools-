@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisSourceDocumentManagerVBDotNet.cs" />
+    <Compile Include="SourceCodeInfoFactoryCallMethodVBDotNet.cs" />
     <Compile Include="SourceCodeInfoParamaterFactory.cs" />
     <Compile Include="IParamater.cs" />
     <Compile Include="SourceCodeblockInfo.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="SourceCodeInfoOptionParameters.cs" />
     <Compile Include="SourceCodeInfoOther.cs" />
     <Compile Include="SourceCodeInfoParamater.cs" />
+    <Compile Include="SourceCodeInfoParamaterFactoryIf.cs" />
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetCallMethod.cs" />
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetMethod.cs" />
     <Compile Include="SourceCodeInfoParamaterValue.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="SourceCodePartsFactoryVBDotNetEventMethod.cs" />
     <Compile Include="SourceCodePartsFactoryParamater.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetIf.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetIfValue.cs" />
     <Compile Include="SourceCodeTemplateFactory.cs" />
   </ItemGroup>
   <ItemGroup>

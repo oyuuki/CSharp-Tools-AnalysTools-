@@ -6,11 +6,13 @@ using System.Xml.Schema;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoBlockBeginIf : SourceCodeInfoBlockBegin
+    public class SourceCodeInfoBlockBeginIf : SourceCodeInfoBlockBegin, IParamater
     {
         #region instanceVaｌ
 
         private SourceCodeInfoParamater _sourceCodeInfoParamaterValueMethod = null;
+
+        private StringRange _range = null;
 
         #endregion
 
@@ -44,6 +46,12 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._sourceCodeInfoParamaterValueMethod; }
         }
 
+        public StringRange Range
+        {
+            get { return this._range; }
+            set { this._range = value; }
+        }
+
         #endregion
 
         #region Method
@@ -55,28 +63,21 @@ namespace OyuLib.Documents.Sources.Analysis
             return typeof(SourceCodeInfoBlockEndIf);
         }
 
+        public SourceCodeInfoParamater GetSourceCodeInfoParamater()
+        {
+            return this._sourceCodeInfoParamaterValueMethod;
+        }
+
         public override bool GetParamaterOverWriteValues(int index, ref StringBuilder strBu)
         {
             if (index == this.StatementObjectindex)
             {
-                foreach (var value in this.Paramater.ParamaterValues)
-                {
-                    strBu.Append(value.Range.SpilitSeparatorStart);
-                    strBu.Append(value.GetCodePartsOverWriteValues());
-                    strBu.Append(value.Range.SpilitSeparatorEnd);
-                }
-
+                strBu.Append(this.GetSourceCodeInfoParamater().GetParamaterOverWriteValues());
                 return true;
             }
 
             return false;
         }
-
-        #endregion
-
-        #region Public
-
-       
 
         #endregion
 

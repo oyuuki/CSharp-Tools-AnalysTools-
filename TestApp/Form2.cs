@@ -195,9 +195,9 @@ namespace TestApp
             else if (codeInfo is SourceCodeInfoCallMethod)
             {
                 var subCodeInfo = (SourceCodeInfoCallMethod)codeInfo;
-                var paramater = subCodeInfo.Paramater;
+                var paramater = subCodeInfo.GetSourceCodeInfoParamater();
 
-                var rowParamaterValues = subCodeInfo.Paramater.GetParamaterValue(".Row");
+                var rowParamaterValues = paramater.GetParamaterValue(".Row");
 
                 if (rowParamaterValues != null)
                 {
@@ -207,7 +207,7 @@ namespace TestApp
                     }                    
                 }
 
-                var colParamaterValues = subCodeInfo.Paramater.GetParamaterValue(".Col");
+                var colParamaterValues = paramater.GetParamaterValue(".Col");
 
                 if (colParamaterValues != null)
                 {
@@ -230,7 +230,7 @@ namespace TestApp
                         subCodeInfo.CallmethodName = "ActiveSheet.SetValue";    
                     }
 
-                    var paramaterValues = paramater.ParamaterValues;
+                    var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
 
                     var list = new List<SourceCodeInfoParamaterValue>();
 

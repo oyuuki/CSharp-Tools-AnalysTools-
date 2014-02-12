@@ -106,6 +106,20 @@ namespace OyuLib
             return this.GetStringRangeIgnoreStringRangesLogic(ref index, str, nestedString.GetStringRangeArray(str));
         }
 
+        public StringRange[] GetStringRangeIgnoreNestedString(string str, ManagerStringNested[] nestedStrings)
+        {
+            int index = 0;
+
+            var nestStringRangeList = new  List<StringRange>();
+
+            foreach (var nestedString in nestedStrings)
+            {
+                nestStringRangeList.AddRange(nestedString.GetStringRangeArray(str));
+            }
+
+            return this.GetStringRangeIgnoreStringRangesLogic(ref index, str, nestStringRangeList.ToArray());
+        }
+
         private StringRange[] GetStringRangeIgnoreStringRangesLogic(ref int index, string str, StringRange[] ranges)
         {
             var retlist = new List<StringRange>();

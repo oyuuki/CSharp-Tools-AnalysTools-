@@ -5,12 +5,12 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoParamaterFactoryVBDotNetCallMethod :
-        SourceCodeInfoParamaterFactory<SourceCodeInfo, SourceCodeInfoParamater, SourceCodePartsFactoryCommatIncludeParamater>
+    public class SourceCodeInfoParamaterFactoryIf :
+        SourceCodeInfoParamaterFactory<SourceCodeInfo, SourceCodeInfoParamater, SourceCodePartsFactoryVBDotNetIfValue>
     {
         #region Constructor
 
-        public SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
+        public SourceCodeInfoParamaterFactoryIf(
             int parentIndex,
             StringRange range)
             : base(parentIndex, range)
@@ -25,7 +25,7 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Override
 
         protected override SourceCodeInfo GetSourceCodeInfoParamaterValueLogic(
-            SourceCode sourceCode, 
+            SourceCode sourceCode,
             SourceCodePartsfactory fac,
             StringRange rangeParam,
             int groupCount,
@@ -37,8 +37,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             SourceCodeInfo retValue = null;
 
-            // Exist Paramater
-            if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]) && !paramaterStrings[0].StartsWith("("))
+            if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]))
             {
                 retValue = SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(sourceCode);
             }
@@ -62,9 +61,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodeInfoParamater(values);
         }
 
-        protected override SourceCodePartsFactoryCommatIncludeParamater GetFactory(string paramaterString)
+        protected override SourceCodePartsFactoryVBDotNetIfValue GetFactory(string paramaterString)
         {
-            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString));
+            return new SourceCodePartsFactoryVBDotNetIfValue(new SourceCode(paramaterString));
         }
 
         #endregion

@@ -62,7 +62,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 retList.Add(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
             }
 
-            return this.GetSourceCodeInfoParamater(retList.ToArray(), range);
+            return this.GetSourceCodeInfoParamater(retList.ToArray());
         }
 
         public TParamater GetSourceCodeInfoParamater()
@@ -94,16 +94,8 @@ namespace OyuLib.Documents.Sources.Analysis
                 sourceCode, 
                 fac, 
                 range, 
-                out paramaterString, 
-                out paramaterStringIndex, 
-                out paramaterRange,
                 groupCount,  
                 hierarchyCount);
-
-            if (!string.IsNullOrEmpty(paramaterString))
-            {
-                retValue.ChildParamater = this.GetSourceCodeInfoParamater(this.GetFactory(paramaterString), hierarchyCount + 1, paramaterRange);    
-            }
 
             return retValue;
         }
@@ -118,12 +110,9 @@ namespace OyuLib.Documents.Sources.Analysis
             (SourceCode sourceCode,
             SourceCodePartsfactory fac,
             StringRange rangeParam,
-            out string paramaterString, 
-            out int paramaterStringIndex,
-            out StringRange range,
             int groupCount,
             int hierarchyCount);
-        protected abstract TParamater GetSourceCodeInfoParamater(TParamaterValue[] values, StringRange range);
+        protected abstract TParamater GetSourceCodeInfoParamater(TParamaterValue[] values);
         protected abstract TFactory GetFactory(string paramaterString);
         // protected abstract TParamater GetChildParamater(int codepartIndex, TParamaterValue[] values);
         protected abstract SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(SourceCode sourceCode);

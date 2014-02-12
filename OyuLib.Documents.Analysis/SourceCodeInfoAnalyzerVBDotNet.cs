@@ -489,56 +489,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoCallMethod GetCodeInfoCallMethod(SourceCode code)
         {
-            int methodName = 0;
-            int callIndex = 0;
-            int objName = -1;
-            int paramaterIndex = 0;
-            var paramaterString = string.Empty;
-
-            var coFac = new SourceCodePartsFactorySomeParamater(code, new string[]{ ".", "," });
-            var a = coFac.GetCodeParts();
-
-            if (coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CALL))
-            {
-                callIndex = 0;
-            }
-            else
-            {
-                callIndex = -1;
-            }
-
-            var partRanges = coFac.GetCodePartsRanges();
-
-            for (int index = callIndex + 1; index < partRanges.Length; index++)
-            {
-                if (partRanges[index].SpilitSeparatorEnd.Equals("."))
-                {
-                    if (string.IsNullOrEmpty(a[index]))
-                    {
-                        objName = -1;
-                    }
-                    else
-                    {
-                        objName = index;
-                    }
-
-                    methodName = index + 1;
-                }
-            }
-
-            paramaterIndex = methodName + 1;
-            paramaterString = coFac.GetCodeParts()[paramaterIndex];
-            var range = coFac.GetCodePartsRanges()[paramaterIndex];
-
-
-
-            var parameter =
-                        new SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
-                            0,
-                            range)
-                            .GetSourceCodeInfoParamater();
-
-            return new SourceCodeInfoCallMethod(code, coFac, ",", methodName,objName, parameter, paramaterIndex);
+            return SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(code);
         }
 
         protected override bool CheckCodeInfoCallMethod(SourceCode code)
@@ -749,7 +700,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var range = coFac.GetCodePartsRanges()[segmentsValue];
 
             var parameter =
-                        new SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
+                        new SourceCodeInfoParamaterFactoryIf(
                             0,
                             range)
                             .GetSourceCodeInfoParamater();
