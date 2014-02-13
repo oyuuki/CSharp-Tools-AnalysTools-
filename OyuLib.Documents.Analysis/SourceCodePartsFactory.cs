@@ -116,7 +116,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 stringWithOutComment = this.TrimCodeString;
             }
 
-            return stringWithOutComment;
+            return stringWithOutComment.TrimEnd();
         }
 
         #endregion

@@ -59,14 +59,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override int GetCommentStartindex()
         {
-            if (this.TrimCodeString.IndexOf("Next  '2010/06/24     追加") >= 0)
-            {
-                int a = 1;
-            }
-
             if (this.TrimCodeString.EndsWith("'"))
             {
-                return this.TrimCodeString.Substring(0, this.TrimCodeString.Length - 1).Trim().Length;
+                return this.TrimCodeString.Length - 2;
             }
 
             var rangeList =

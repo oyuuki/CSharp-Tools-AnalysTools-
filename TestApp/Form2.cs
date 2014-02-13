@@ -224,19 +224,21 @@ namespace TestApp
                     subCodeInfo.CallmethodName.Equals("GetFloat") ||
                     subCodeInfo.CallmethodName.Equals("GetText"))
                 {
+                    var methodName = string.Empty;
+
                     if (subCodeInfo.CallmethodName.Equals("GetText"))
                     {
-                        subCodeInfo.CallmethodName = "ActiveSheet.GetText";                        
+                        methodName = "GetText";                        
                     }
                     else
                     {
-                        subCodeInfo.CallmethodName = "ActiveSheet.GetValue";    
+                        methodName = "GetValue";    
                     }
 
                     var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
 
                     subCodeInfo.AllOverWriteString = paramaterValues[2].ParamaterName + " = .ActiveSheet. " +
-                                                     subCodeInfo.CallmethodName + "(" + paramaterValues[1].ParamaterName + "," +
+                                                     methodName + "(" + paramaterValues[1].ParamaterName + "," +
                                                      paramaterValues[0].ParamaterName + ")";
                 }
 
