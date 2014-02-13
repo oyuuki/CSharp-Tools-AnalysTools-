@@ -68,12 +68,10 @@ namespace OyuLib.Documents.Sources.Analysis
         public string HierarchyCount
         {
             get { return this.GetCodePartsString(this._hierarchyCount); }
-            set { this.SetOverwriteValue(this._hierarchyCount, value); }
         }
         public string ParentIndex
         {
             get { return this.GetCodePartsString(this._parentIndex); }
-            set { this.SetOverwriteValue(this._parentIndex, value); }
         }
 
         

@@ -218,6 +218,29 @@ namespace TestApp
                     }
                 }
 
+
+
+                if (subCodeInfo.CallmethodName.Equals("GetInteger") ||
+                    subCodeInfo.CallmethodName.Equals("GetFloat") ||
+                    subCodeInfo.CallmethodName.Equals("GetText"))
+                {
+                    if (subCodeInfo.CallmethodName.Equals("GetText"))
+                    {
+                        subCodeInfo.CallmethodName = "ActiveSheet.GetText";                        
+                    }
+                    else
+                    {
+                        subCodeInfo.CallmethodName = "ActiveSheet.GetValue";    
+                    }
+
+                    var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
+
+                    subCodeInfo.AllOverWriteString = paramaterValues[2].ParamaterName + " = .ActiveSheet. " +
+                                                     subCodeInfo.CallmethodName + "(" + paramaterValues[1].ParamaterName + "," +
+                                                     paramaterValues[0].ParamaterName + ")";
+                }
+
+
                 if (subCodeInfo.CallmethodName.Equals("SetInteger")||
                     subCodeInfo.CallmethodName.Equals("SetFloat") ||
                     subCodeInfo.CallmethodName.Equals("SetText"))

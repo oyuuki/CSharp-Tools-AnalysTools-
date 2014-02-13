@@ -144,7 +144,6 @@ namespace OyuLib.Documents.Sources.Analysis
                 return this.AllOverWriteString;
             }
 
-
             for (int index = 0; index < codeRanges.Length; index++)
             {
                 var range = codeRanges[index];
@@ -169,6 +168,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 strBr.Append(range.SpilitSeparatorEnd);
             }
+
             return strBr.ToString();
         }
 

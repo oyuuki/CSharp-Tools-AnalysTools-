@@ -52,7 +52,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodePartsFactoryCommatIncludeParamater GetFactory(string paramaterString)
         {
-            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString), new string[] { ",", " & ", " + ", " * ", " - ", " / ", " = " });
+            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString), new string[] { ",", " & ", " + ", " * ", " - ", " / ", " = ", " <> ", " < ", " > ", " >= ", " <= " });
         }
 
         #endregion

@@ -497,6 +497,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var rule = new SourceDocumentRuleVBDotNet();
             var coFac = this.GetSourceFactoryForCallMethod(code);
 
+            var codeWithOutComment = coFac.GetStringWithOutComment();
 
             // No include "As", "Sub", "Function"
             if (coFac.IsIncludeSomeStringInCode(

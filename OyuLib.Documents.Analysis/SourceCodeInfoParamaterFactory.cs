@@ -137,7 +137,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     var paramKakko = "(" + param + ")";
 
-                    var paramIndex = sourceCodeString.IndexOf(paramKakko);
+                    var paramIndex = sourceCodeString.IndexOf(paramKakko, startIndex);
                     var endIndex = paramIndex + paramKakko.Length;
                     var paramSourceCode =
                         new SourceCode(sourceCodeString.Substring(startIndex, endIndex - startIndex));
@@ -148,10 +148,17 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 if (startIndex < sourceCodeString.Length)
                 {
-                    var range = new StringRange(startIndex, sourceCodeString.Length - 1, "", "", sourceCodeString);
-                    retList.Add(new SourceCodeInfoParamaterValueCallMethod(sourceCode,
-                        new SourceCodePartsFactoryParamater(sourceCode), range,
-                        0, groupCount, hierarchyCount));
+                    var paramValueSourceCodeString = sourceCodeString.Substring(startIndex);
+                    var paramSourceCode = new SourceCode(paramValueSourceCodeString);
+
+                    var range = new StringRange(0, paramValueSourceCodeString.Length - 1, "", "", paramValueSourceCodeString);
+                    retList.Add(new SourceCodeInfoParamaterValueCallMethod(
+                        paramSourceCode,
+                        new SourceCodePartsFactoryParamater(paramSourceCode),
+                        range,
+                        0,
+                        groupCount, 
+                        hierarchyCount));
                 }
             }
             else

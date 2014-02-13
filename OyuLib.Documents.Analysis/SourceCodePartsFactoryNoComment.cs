@@ -59,6 +59,16 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override int GetCommentStartindex()
         {
+            if (this.TrimCodeString.IndexOf("Next  '2010/06/24     追加") >= 0)
+            {
+                int a = 1;
+            }
+
+            if (this.TrimCodeString.EndsWith("'"))
+            {
+                return this.TrimCodeString.Substring(0, this.TrimCodeString.Length - 1).Trim().Length;
+            }
+
             var rangeList =
                 new StringSpilitter(this.TrimCodeString).GetStringRangeSpilit(new CharCode("'").GetCharCodeString(),
                     new ManagerStringNested("\"", "\""));
@@ -74,7 +84,7 @@ namespace OyuLib.Documents.Sources.Analysis
                     break;
                 }
 
-                if (range.GetIsSpilitStringStart("'"))
+                if (range.GetIsSpilitStringEnd("'"))
                 {
                     commentStringIndex = range.IndexEnd;
                 }
