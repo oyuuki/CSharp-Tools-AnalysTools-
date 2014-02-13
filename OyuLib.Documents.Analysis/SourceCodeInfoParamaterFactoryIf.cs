@@ -39,7 +39,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]))
             {
-                retValue = SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(sourceCode, fac.GetCodePartsRanges()[0]);
+                retValue = SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(sourceCode, rangeParam);
             }
             else
             {
