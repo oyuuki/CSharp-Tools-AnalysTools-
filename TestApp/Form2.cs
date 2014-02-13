@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using OyuLib;
 using OyuLib.Documents.Sources.Analysis;
 
 namespace TestApp
@@ -167,12 +168,12 @@ namespace TestApp
                 if (subCodeInfo.LeftHandSide.Equals(".Row"))
                 {
                     rowString = subCodeInfo.RightHandSide + " -1";
-                    subCodeInfo.LeftHandSide = "' 置換ツールによりコメント化" + subCodeInfo.LeftHandSide;
+                    subCodeInfo.CommentString = "' 置換ツールによりコメント化";
                 }
                 else if (subCodeInfo.LeftHandSide.Equals(".Col"))
                 {
                     colString = subCodeInfo.RightHandSide + " -1";
-                    subCodeInfo.LeftHandSide = "' 置換ツールによりコメント化" + subCodeInfo.LeftHandSide;
+                    subCodeInfo.CommentString = "' 置換ツールによりコメント化";
                 }
                 else if (subCodeInfo.RightHandSide.Equals(".Row"))
                 {
@@ -199,21 +200,21 @@ namespace TestApp
 
                 var rowParamaterValues = paramater.GetParamaterValue(".Row");
 
-                if (rowParamaterValues != null)
+                if (!ArrayUtil.IsNullOrNoLength(rowParamaterValues))
                 {
                     foreach (var value in rowParamaterValues)
                     {
-                        value.ParammaterName = rowString;
+                        value.ParamaterName = rowString;
                     }                    
                 }
 
                 var colParamaterValues = paramater.GetParamaterValue(".Col");
 
-                if (colParamaterValues != null)
+                if (!ArrayUtil.IsNullOrNoLength(colParamaterValues))
                 {
                     foreach (var value in colParamaterValues)
                     {
-                        value.ParammaterName = colString;
+                        value.ParamaterName = colString;
                     }
                 }
 

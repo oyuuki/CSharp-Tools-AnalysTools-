@@ -59,7 +59,7 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._parentIndex; }
         }
 
-        public string ParammaterName
+        public string ParamaterName
         {
             get { return this.GetCodePartsString(this._parammaterName); }
             set { this.SetOverwriteValue(this._parammaterName, value); }

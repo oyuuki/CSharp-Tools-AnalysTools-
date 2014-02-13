@@ -65,11 +65,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
             var commentStringIndex = -1;
 
-            if (TrimCodeString.IndexOf("End With '") >= 0)
-            {
-                int a = 1;
-            }
-
             int count = 0;
 
             foreach (var range in rangeList.Reverse())

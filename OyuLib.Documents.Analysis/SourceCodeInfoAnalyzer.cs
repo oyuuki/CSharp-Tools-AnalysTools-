@@ -143,11 +143,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodeInfo GetCodeInfoNoIncludeComment()
         {
-            if (this.Code.CodeString.IndexOf("With") >= 0)
-            {
-                int a = 1;
-            }
-
             if (this.CheckCodeInfoBlockBeginEventMethod(this.Code))
             {
                 return this.GetCodeInfoBlockBeginEventMethod(this.Code);

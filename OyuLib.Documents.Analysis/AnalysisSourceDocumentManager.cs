@@ -210,7 +210,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 var codeInfoCallMethod = (SourceCodeInfoParamaterValueCallMethod)value;
 
-                if (codeInfoCallMethod.ParammaterName.Equals(name))
+                if (codeInfoCallMethod.ParamaterName.Equals(name))
                 {
                     retList.Add(codeInfoCallMethod);
                 }
@@ -559,10 +559,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 foreach (var codeinfo in this.GetSourceCodeInfo(this.CodeObjects))
                 {
-                    if (codeinfo is SourceCodeInfoBlockBeginIf)
-                    {
-                        int a = 1;
-                    }
                     file.WriteLine(codeinfo.GetCodePartsOverWriteValues());
                 }
             }

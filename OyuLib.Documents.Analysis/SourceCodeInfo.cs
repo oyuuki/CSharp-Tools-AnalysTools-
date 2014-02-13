@@ -17,6 +17,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private Hashtable _overwriteValues = null;
 
+        private string _allOverWriteString = string.Empty;
+
+        private string _commentString = string.Empty;
+
         #endregion
 
         #region Constructor
@@ -43,6 +47,29 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             get { return this._overwriteValues; }
         }
+
+        public string AllOverWriteString
+        {
+            get { return this._allOverWriteString; }
+            set { this._allOverWriteString = value; }
+        }
+
+        public bool IsAllOverWriteString
+        {
+            get { return string.IsNullOrEmpty(this.AllOverWriteString); } 
+        }
+
+        public string CommentString
+        {
+            get { return this._commentString; }
+            set { this._commentString = value; }
+        }
+
+        public bool IsChangeComment
+        {
+            get { return string.IsNullOrEmpty(this.CommentString); } 
+        }
+
 
         #endregion
 
@@ -107,6 +134,15 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             StringRange[] codeRanges = this.GetCodeRanges();
             StringBuilder strBr = new StringBuilder();
+
+            if (this.IsChangeComment)
+            {
+                return "'" + this.CommentString + this.GetCodeString();
+            }
+            else if (this.IsAllOverWriteString)
+            {
+                return this.AllOverWriteString;
+            }
 
 
             for (int index = 0; index < codeRanges.Length; index++)

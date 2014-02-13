@@ -123,23 +123,28 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var retList = new List<SourceCodeInfoParamaterValue>();
 
-            //if (!paramater.HasParamater)
-            //{
-            //    return null;    
-            //}
+            if (!paramater.HasParamater)
+            {
+                return null;    
+            }
 
-            //foreach (var value in paramater.ParamaterValues)
-            //{
-            //    if (value.ParammaterName.Equals(paramaterString))
-            //    {
-            //        retList.Add(value);
-            //    }
+            foreach (var value in paramater.ParamaterValues)
+            {
+                if (value is SourceCodeInfoParamaterValue)
+                {
+                    var paramValue = (SourceCodeInfoParamaterValue)value;
 
-            //    if (value.hasChild)
-            //    {
-            //        retList.AddRange(this.GetParamaterValue(paramaterString, value.ChildParamater));
-            //    }
-            //}
+                    if (paramValue.ParamaterName.Equals(paramaterString))
+                    {
+                        retList.Add(paramValue);
+                    }    
+                }
+                else if (value is IParamater)
+                {
+                    var valueHaveparam = (IParamater)value;
+                    retList.AddRange(this.GetParamaterValue(paramaterString, valueHaveparam.GetSourceCodeInfoParamater()));
+                }
+            }
 
             return retList.ToArray();
         }

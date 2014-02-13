@@ -15,6 +15,11 @@ namespace OyuLib.Documents.Sources.Analysis
             int paramaterIndex = 0;
             var paramaterString = string.Empty;
 
+            if (code.CodeString.Trim().StartsWith("."))
+            {
+                int a1 = 1;
+            }
+
             var coFac = new SourceCodePartsFactorySomeParamater(code, new string[] { ".", "," });
             var a = coFac.GetCodeParts();
 
@@ -33,12 +38,7 @@ namespace OyuLib.Documents.Sources.Analysis
             {
                 if (partRanges[index].SpilitSeparatorEnd.Equals("."))
                 {
-                    if (!string.IsNullOrEmpty(a[index]))
-                    {
-                        objName = index;
-                    }
-
-                    
+                    objName = index;                    
                 }
             }
 
