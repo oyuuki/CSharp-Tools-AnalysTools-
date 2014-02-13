@@ -103,7 +103,6 @@ namespace OyuLib
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + strSeparator.Length + 1;
                     index = startIndex - 1;
-                    break;
                 }
             }
 
@@ -165,7 +164,6 @@ namespace OyuLib
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + strSeparator.Length;
                     index = startIndex - 1;
-                    break;
                 }
             }
 
@@ -197,7 +195,6 @@ namespace OyuLib
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                     startIndex = index + strSeparator.Length;
                     index = startIndex - 1;
-                    break;
                 }
             }
 
