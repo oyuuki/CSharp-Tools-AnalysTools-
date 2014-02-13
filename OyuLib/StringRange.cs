@@ -117,6 +117,16 @@ namespace OyuLib
             return true;
         }
 
+        public bool GetIsSpilitStringEnd(string spilitStringEnd)
+        {
+            if (!this.SpilitSeparatorEnd.Equals(spilitStringEnd))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public string GetStringSpilited()
         {
             return TargetString.Substring(this.IndexStart, this.CutStringCount);

@@ -40,7 +40,7 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this._codeObjects = value; }
         }
 
-        public Range Range
+        public Range EndBlockRange
         {
             get { return this._range; }
             set { this._range = value; }

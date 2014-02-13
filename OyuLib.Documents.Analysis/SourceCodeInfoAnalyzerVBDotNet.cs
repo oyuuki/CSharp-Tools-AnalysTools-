@@ -321,7 +321,7 @@ namespace OyuLib.Documents.Sources.Analysis
         private bool CheckCommonCodeInfoBlock(SourceCode code, string[] blockNames)
         {
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
-            
+
             // include "With"
             if (!coFac.IsIncludeAllStringInCode(blockNames))
             {
@@ -497,6 +497,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var rule = new SourceDocumentRuleVBDotNet();
             var coFac = this.GetSourceFactoryForCallMethod(code);
 
+
             // No include "As", "Sub", "Function"
             if (coFac.IsIncludeSomeStringInCode(
                 new string[]
@@ -520,7 +521,7 @@ namespace OyuLib.Documents.Sources.Analysis
             }
            
             // End with ")"
-            if (!coFac.GetStringWithOutComment().EndsWith(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END))
+            if (!this.IsEndWithparenthesis(code))
             {
                 return false;
             }
@@ -536,6 +537,7 @@ namespace OyuLib.Documents.Sources.Analysis
         private bool IsEndWithparenthesis(SourceCode code)
         {
             var coFac = GetSourceFactoryForCallMethod(code);
+
             return coFac.GetStringWithOutComment().EndsWith(SourceDocumentSyntaxVBDotNet.CONST_PARENTHESIS_END);
         }
 
@@ -688,11 +690,6 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceCodeInfo retinfo = null;
 
             var coFac = new SourceCodePartsFactoryVBDotNetIf(code);
-
-
-            var conditionalValuesList = new List<SourceCodeInfo>();
-
-            var te = coFac.GetCodeParts();
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginIf());
             int segmentsValue = segments + 1;

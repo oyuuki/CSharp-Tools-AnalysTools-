@@ -189,6 +189,11 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             string strWithoutComment = this.GetStringWithOutComment();
 
+            if (this.Code.CodeString.IndexOf("plStrInvoiceNumber = VB.Left") >= 0)
+            {
+                int a = 1;
+            }
+
             string[] codeparts = new StringSpilitter(
                 strWithoutComment).GetSpilitStringNoChilds(
                 this.GetCodePartsRanges(strWithoutComment));

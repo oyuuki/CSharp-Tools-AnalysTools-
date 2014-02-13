@@ -169,11 +169,9 @@ namespace OyuLib.Documents.Sources.Analysis
                     strBu.Append(value.GetCodePartsOverWriteValues());
                     strBu.Append(paramValue.Range.SpilitSeparatorEnd);
                 }
-                else if (value is IParamater)
+                else
                 {
-                    var iparaVal = (IParamater)value;
-                    var range = iparaVal.Range;
-                    strBu.Append(this.GetParamaterOverWriteValues(iparaVal.GetSourceCodeInfoParamater().ParamaterValues));
+                    strBu.Append(value.GetCodePartsOverWriteValues());
                 }
             }
 

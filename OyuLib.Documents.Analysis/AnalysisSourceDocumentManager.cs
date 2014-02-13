@@ -131,7 +131,7 @@ namespace OyuLib.Documents.Sources.Analysis
                     var innerSourceBlock = new SourceCodeblockInfo(codeObject.CodeObjects, codeObject.Range);
 
                     objList.Add(innerSourceBlock);
-                    indexLoop = innerSourceBlock.Range.IndexEnd;
+                    indexLoop = innerSourceBlock.EndBlockRange.IndexEnd;
                 }
                 else if ((codeInfo is SourceCodeInfoBlockEnd) && endType != null && endType.Equals(codeInfo.GetType()))
                 {
@@ -559,6 +559,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 foreach (var codeinfo in this.GetSourceCodeInfo(this.CodeObjects))
                 {
+                    if (codeinfo is SourceCodeInfoBlockBeginIf)
+                    {
+                        int a = 1;
+                    }
                     file.WriteLine(codeinfo.GetCodePartsOverWriteValues());
                 }
             }

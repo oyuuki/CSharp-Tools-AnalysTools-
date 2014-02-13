@@ -101,7 +101,9 @@ namespace OyuLib
                     
                     retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                    startIndex = index + 1;                    
+                    startIndex = index + strSeparator.Length + 1;
+                    index = startIndex - 1;
+                    break;
                 }
             }
 
@@ -161,7 +163,9 @@ namespace OyuLib
                 {
                     retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                    startIndex = index + 1;
+                    startIndex = index + strSeparator.Length;
+                    index = startIndex - 1;
+                    break;
                 }
             }
 
@@ -191,7 +195,9 @@ namespace OyuLib
                 {
                     retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, range.TargetString));
                     // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                    startIndex = index + 1;
+                    startIndex = index + strSeparator.Length;
+                    index = startIndex - 1;
+                    break;
                 }
             }
 
@@ -227,10 +233,6 @@ namespace OyuLib
                 {
                     if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
                     {
-                        if (strSeparator.Equals(" & "))
-                        {
-                            int a = 1;
-                        }
 
                         if (indexPareArray.Length > nStrIndex &&
                             indexPareArray[nStrIndex].IndexStart <= index &&
@@ -241,7 +243,9 @@ namespace OyuLib
                         retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
 
                         // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                        startIndex = index + 1;
+                        startIndex = index + strSeparator.Length;
+                        index = startIndex - 1;
+                        break;
                     }
                 }
             }
@@ -295,7 +299,9 @@ namespace OyuLib
                         {
                             retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
                             // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                            startIndex = index + 1;
+                            startIndex = index + strSeparator.Length;
+                            index = startIndex - 1;
+                            break;
                         }
                     }
                 }

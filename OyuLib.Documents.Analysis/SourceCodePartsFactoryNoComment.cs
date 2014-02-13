@@ -65,6 +65,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
             var commentStringIndex = -1;
 
+            if (TrimCodeString.IndexOf("End With '") >= 0)
+            {
+                int a = 1;
+            }
+
+            int count = 0;
+
             foreach (var range in rangeList.Reverse())
             {
                 if (range.GetIsSpilitStrings("\"", "\""))
@@ -75,6 +82,12 @@ namespace OyuLib.Documents.Sources.Analysis
                 if (range.GetIsSpilitStringStart("'"))
                 {
                     commentStringIndex = range.IndexEnd;
+                }
+
+                if (count == rangeList.Length - 1 && range.GetStringSpilited().EndsWith("'"))
+                {
+                    commentStringIndex = range.IndexEnd - 1;
+                    range.SpilitSeparatorEnd = "'";
                 }
             }
 
