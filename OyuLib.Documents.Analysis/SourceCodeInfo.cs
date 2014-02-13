@@ -56,7 +56,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public bool IsAllOverWriteString
         {
-            get { return string.IsNullOrEmpty(this.AllOverWriteString); } 
+            get { return !string.IsNullOrEmpty(this.AllOverWriteString); } 
         }
 
         public string CommentString
@@ -67,7 +67,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public bool IsChangeComment
         {
-            get { return string.IsNullOrEmpty(this.CommentString); } 
+            get { return !string.IsNullOrEmpty(this.CommentString); } 
         }
 
 

@@ -24,30 +24,19 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override SourceCodeInfo GetSourceCodeInfoParamaterValueLogic(
+        protected override SourceCodeInfo[] GetSourceCodeInfoParamaterValueLogic(
             SourceCode sourceCode,
             SourceCodePartsfactory fac,
             StringRange rangeParam,
             int groupCount,
             int hierarchyCount)
         {
-            int parammaterName = 0;
-
-            var paramaterStrings = fac.GetNestedCodeParts("(", ")");
-
-            SourceCodeInfo retValue = null;
-
-            if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]))
-            {
-                retValue = SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(sourceCode, rangeParam);
-            }
-            else
-            {
-                retValue = new SourceCodeInfoParamaterValueCallMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode), rangeParam,
-                    parammaterName, groupCount, hierarchyCount);
-            }
-
-            return retValue;
+            return this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
+                 sourceCode,
+                 fac,
+                 rangeParam,
+                 groupCount,
+                 hierarchyCount);
         }
 
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(

@@ -25,7 +25,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override SourceCodeInfoParamaterValueMethod GetSourceCodeInfoParamaterValueLogic(
+        protected override SourceCodeInfoParamaterValueMethod[] GetSourceCodeInfoParamaterValueLogic(
             SourceCode sourceCode, 
             SourceCodePartsfactory fac, 
             StringRange rangeParam,
@@ -35,8 +35,12 @@ namespace OyuLib.Documents.Sources.Analysis
             int parammaterName = 1;
             int typeName = fac.GetIndexCodeParts("As") + 1;
 
-            return new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),rangeParam,
-                parammaterName, groupCount, hierarchyCount, typeName);
+            var retList = new List<SourceCodeInfoParamaterValueMethod>();
+
+            retList.Add(new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),rangeParam,
+                parammaterName, groupCount, hierarchyCount, typeName));
+
+            return retList.ToArray();
         }
 
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(

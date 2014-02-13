@@ -59,7 +59,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             for (int index = 0; index < codeparts.Length; index++)
             {
-                retList.Add(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
+                retList.AddRange(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
             }
 
             return this.GetSourceCodeInfoParamater(retList.ToArray());
@@ -78,7 +78,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Protected
 
-        protected TParamaterValue GetSourceCodeInfoParamaterValue(
+        protected TParamaterValue[] GetSourceCodeInfoParamaterValue(
             string paramaterValueString, 
             int hierarchyCount,
             int groupCount, 
@@ -100,13 +100,78 @@ namespace OyuLib.Documents.Sources.Analysis
             return retValue;
         }
 
+        protected SourceCodeInfo[] GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
+           SourceCode sourceCode,
+           SourceCodePartsfactory fac,
+           StringRange rangeParam,
+           int groupCount,
+           int hierarchyCount)
+        {
+            if (sourceCode.CodeString.IndexOf("objRec.Fields(\"" + "ログイン状態" + "\"" + ").Value") >= 0)
+            {
+                int a = 21;
+            }
+
+            int parammaterName = 0;
+
+            var paramaterStrings = fac.GetNestedCodeParts("(", ")");
+
+            //var innerFacParam = new SourceCodePartsFactoryVBDotNetIfValue(sourceCode);
+
+            //if (innerFacParam.GetCodePartsLength() >= 2)
+            //{
+                
+            //}
+                
+            //var innerParamRange = new StringRange()
+
+            var retList = new List<SourceCodeInfo>();
+
+            // Exist Paramater
+            if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]) && !paramaterStrings[0].StartsWith("("))
+            {
+                var startIndex = 0;
+                var sourceCodeString = sourceCode.CodeString.Trim();
+
+                foreach (var param in paramaterStrings)
+                {
+                    var paramKakko = "(" + param + ")";
+
+                    var paramIndex = sourceCodeString.IndexOf(paramKakko);
+                    var endIndex = paramIndex + paramKakko.Length;
+                    var paramSourceCode =
+                        new SourceCode(sourceCodeString.Substring(startIndex, endIndex - startIndex));
+                    var range = new StringRange(startIndex, endIndex, "", "", sourceCodeString);
+                    startIndex = endIndex;
+                    retList.Add(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(paramSourceCode, rangeParam));
+                }
+
+                if (startIndex < sourceCodeString.Length)
+                {
+                    var range = new StringRange(startIndex, sourceCodeString.Length - 1, "", "", sourceCodeString);
+                    retList.Add(new SourceCodeInfoParamaterValueCallMethod(sourceCode,
+                        new SourceCodePartsFactoryParamater(sourceCode), range,
+                        0, groupCount, hierarchyCount));
+                }
+            }
+            else
+            {
+                retList.Add(new SourceCodeInfoParamaterValueCallMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode), rangeParam,
+                    parammaterName, groupCount, hierarchyCount));
+            }
+
+            return retList.ToArray();
+        }
+
         
 
         #endregion
 
+
+
         #region Abstract
 
-        protected abstract TParamaterValue GetSourceCodeInfoParamaterValueLogic
+        protected abstract TParamaterValue[] GetSourceCodeInfoParamaterValueLogic
             (SourceCode sourceCode,
             SourceCodePartsfactory fac,
             StringRange rangeParam,
