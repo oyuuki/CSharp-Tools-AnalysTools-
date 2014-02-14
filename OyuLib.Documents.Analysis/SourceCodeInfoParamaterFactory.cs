@@ -107,11 +107,6 @@ namespace OyuLib.Documents.Sources.Analysis
            int groupCount,
            int hierarchyCount)
         {
-            if (sourceCode.CodeString.IndexOf("objRec.Fields(\"" + "ログイン状態" + "\"" + ").Value") >= 0)
-            {
-                int a = 21;
-            }
-
             int parammaterName = 0;
 
             var paramaterStrings = fac.GetNestedCodeParts("(", ")");
@@ -126,6 +121,7 @@ namespace OyuLib.Documents.Sources.Analysis
             //var innerParamRange = new StringRange()
 
             var retList = new List<SourceCodeInfo>();
+
 
             // Exist Paramater
             if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]) && !paramaterStrings[0].StartsWith("("))

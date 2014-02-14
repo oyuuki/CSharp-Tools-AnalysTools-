@@ -137,6 +137,7 @@ namespace TestApp
                 mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(form.BussinessClassFilePath)));
 
                 this.progressBar1.Value++;
+                this.progressBar1.Update();
             }
         }
 
