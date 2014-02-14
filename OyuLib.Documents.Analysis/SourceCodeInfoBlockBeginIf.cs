@@ -10,7 +10,7 @@ namespace OyuLib.Documents.Sources.Analysis
     {
         #region instanceVaｌ
 
-        private SourceCodeInfoParamater _sourceCodeInfoParamaterValueMethod = null;
+        private SourceCodeInfoParamater _sourceCodeInfoParamater = null;
 
         private StringRange _range = null;
 
@@ -31,10 +31,10 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceCodePartsfactory coFac,
             int statement,
             int statementObject,
-            SourceCodeInfoParamater sourceCodeInfoParamaterValueMethod)
+            SourceCodeInfoParamater sourceCodeInfoParamater)
             : base(code, coFac, statement, statementObject)
         {
-            this._sourceCodeInfoParamaterValueMethod = sourceCodeInfoParamaterValueMethod;
+            this._sourceCodeInfoParamater = sourceCodeInfoParamater;
         }
 
         #endregion
@@ -43,7 +43,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodeInfoParamater Paramater
         {
-            get { return this._sourceCodeInfoParamaterValueMethod; }
+            get { return this._sourceCodeInfoParamater; }
         }
 
         public StringRange Range
@@ -65,7 +65,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodeInfoParamater GetSourceCodeInfoParamater()
         {
-            return this._sourceCodeInfoParamaterValueMethod;
+            return this._sourceCodeInfoParamater;
         }
 
         public override bool GetParamaterOverWriteValues(int index, ref StringBuilder strBu)

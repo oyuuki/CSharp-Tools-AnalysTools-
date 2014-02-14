@@ -28,12 +28,15 @@ namespace TestApp
             this.exListBox2.Items.Clear();
 
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002005001.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm002010.vb");
 
             foreach (var info in mana.GetSourceCodeAnalysis())
             {
-                this.exListBox1.Items.Add(info.ToString());
-                this.exListBox2.Items.Add(info.GetCodeString());   
+                if (info is SourceCodeInfoSubstitution)
+                {
+                    this.exListBox1.Items.Add(info.ToString());
+                    this.exListBox2.Items.Add(info.GetCodeString());
+                }
             }
 
             //var filedNameList = new List<string>();

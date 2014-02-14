@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using OyuLib.Collection;
 
@@ -76,7 +77,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Method
 
-        #region Public
+        #region Protected
 
         protected void SetOverwriteValue(int index, string value)
         {
@@ -88,6 +89,32 @@ namespace OyuLib.Documents.Sources.Analysis
             {
                 this.OverwriteValues.Add(index, value);
             }
+        }
+
+        protected string GetCodePartsString(int index)
+        {
+            var codeParts = this._coFac.GetCodeParts();
+
+            if (index < 0 || codeParts.Length <= index)
+            {
+                return string.Empty;
+            }
+
+            return this._coFac.GetCodeParts()[index];
+        }
+
+        #endregion
+
+        #region Public
+
+        public string GetTabString()
+        {
+            var codeString = this.GetCodeString();
+            var trimCodeString = codeString.Trim();
+
+            var endTabStringIndex = codeString.IndexOf(trimCodeString) - 1;
+
+            return codeString.Substring(0, endTabStringIndex + 1);
         }
 
         public string GetCodeString()
@@ -103,18 +130,6 @@ namespace OyuLib.Documents.Sources.Analysis
         public int GetCodeLineNumber()
         {
             return this._code.CodeLineNumber;
-        }
-
-        protected string GetCodePartsString(int index)
-        {
-            var codeParts = this._coFac.GetCodeParts();
-
-            if (index < 0 || codeParts.Length <= index)
-            {
-                return string.Empty;
-            }
-
-            return this._coFac.GetCodeParts()[index];
         }
 
         public string GetTemplateString()

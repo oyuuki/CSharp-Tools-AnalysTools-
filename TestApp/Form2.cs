@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using OyuLib;
+using OyuLib.Documents.Sources;
 using OyuLib.Documents.Sources.Analysis;
 
 namespace TestApp
@@ -45,7 +46,7 @@ namespace TestApp
         {
             var retList = new List<PartialClass>();
 
-            retList.Add(new PartialClass(@"D:\TETETETE\frm002006.vb", @"D:\TETETETE\frm002006.Designer.vb"));
+            retList.Add(new PartialClass(@"D:\TETETETE\frm002010.vb", @"D:\TETETETE\frm002010.Designer.vb"));
 
             return retList.ToArray();
         }
@@ -110,6 +111,10 @@ namespace TestApp
                         {
                             this.SetSpreadRowCol(value, ref rowString, ref colString);
                         }
+                        else if (value is SourceCodeInfoBlockBeginIf)
+                        {
+                            new ReplaceManagerHaveParamaterValueSpread(rowString, colString, (IParamater)value).Replace();
+                        }
                     }
                 }
 
@@ -138,134 +143,26 @@ namespace TestApp
             return filedNameList.ToArray();
         }
 
-        private bool SetSubstitutionValue(
-            SourceCodeInfoSubstitution codeinfo,
-            string rowString,
-            string colString,
-            string targetString,
-            string replaceString)
+        private void SetIfparamtersValue(SourceCodeInfoBlockBeginIf codeInfo, ReplaceItem replaceItem)
         {
-            if (codeinfo.LeftHandSide.Equals(targetString))
+            foreach (var value in codeInfo.Paramater.GetParamaterValue(replaceItem.TargetString))
             {
-                codeinfo.LeftHandSide = replaceString;
-                return true;
+                value.ParamaterName = replaceItem.ReplaceString;
             }
-            else if (codeinfo.RightHandSide.Equals(targetString))
-            {
-                codeinfo.RightHandSide = replaceString;
-                return true;
-            }
-
-            return false;
         }
 
         private void SetSpreadRowCol(SourceCodeInfo codeInfo, ref string rowString, ref string colString)
         {
             if (codeInfo is SourceCodeInfoSubstitution)
             {
-                var subCodeInfo = (SourceCodeInfoSubstitution) codeInfo;
+                var replaceManager = new ReplaceManagerSpreadSubstitution(rowString, colString,
+                    (SourceCodeInfoSubstitution) codeInfo);
 
-                if (subCodeInfo.LeftHandSide.Equals(".Row"))
-                {
-                    rowString = subCodeInfo.RightHandSide + " -1";
-                    subCodeInfo.CommentString = "' 置換ツールによりコメント化";
-                }
-                else if (subCodeInfo.LeftHandSide.Equals(".Col"))
-                {
-                    colString = subCodeInfo.RightHandSide + " -1";
-                    subCodeInfo.CommentString = "' 置換ツールによりコメント化";
-                }
-                else if (subCodeInfo.RightHandSide.Equals(".Row"))
-                {
-                    subCodeInfo.RightHandSide = rowString;
-                }
-                else if (subCodeInfo.RightHandSide.Equals(".Col"))
-                {
-                    subCodeInfo.RightHandSide = colString;
-                }
-                else if (this.SetSubstitutionValue(subCodeInfo, rowString, colString, ".Value", ".ActiveSheet.Cell(" + rowString + "," + colString + ").Value"))
-                {
-                    
-                }
-                else if (this.SetSubstitutionValue(subCodeInfo, rowString, colString, ".MaxRows", ".ActiveSheet.Rows.Count"))
-                {
-                    
-                }
-
+                replaceManager.Replace();
             }
             else if (codeInfo is SourceCodeInfoCallMethod)
             {
-                var subCodeInfo = (SourceCodeInfoCallMethod)codeInfo;
-                var paramater = subCodeInfo.GetSourceCodeInfoParamater();
-
-                var rowParamaterValues = paramater.GetParamaterValue(".Row");
-
-                if (!ArrayUtil.IsNullOrNoLength(rowParamaterValues))
-                {
-                    foreach (var value in rowParamaterValues)
-                    {
-                        value.ParamaterName = rowString;
-                    }                    
-                }
-
-                var colParamaterValues = paramater.GetParamaterValue(".Col");
-
-                if (!ArrayUtil.IsNullOrNoLength(colParamaterValues))
-                {
-                    foreach (var value in colParamaterValues)
-                    {
-                        value.ParamaterName = colString;
-                    }
-                }
-
-
-
-                if (subCodeInfo.CallmethodName.Equals("GetInteger") ||
-                    subCodeInfo.CallmethodName.Equals("GetFloat") ||
-                    subCodeInfo.CallmethodName.Equals("GetText"))
-                {
-                    var methodName = string.Empty;
-
-                    if (subCodeInfo.CallmethodName.Equals("GetText"))
-                    {
-                        methodName = "GetText";                        
-                    }
-                    else
-                    {
-                        methodName = "GetValue";    
-                    }
-
-                    var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
-
-                    subCodeInfo.AllOverWriteString = paramaterValues[2].ParamaterName + " = .ActiveSheet. " +
-                                                     methodName + "(" + paramaterValues[1].ParamaterName + "," +
-                                                     paramaterValues[0].ParamaterName + ")";
-                }
-
-
-                if (subCodeInfo.CallmethodName.Equals("SetInteger")||
-                    subCodeInfo.CallmethodName.Equals("SetFloat") ||
-                    subCodeInfo.CallmethodName.Equals("SetText"))
-                {
-                    if (subCodeInfo.CallmethodName.Equals("SetText"))
-                    {
-                        subCodeInfo.CallmethodName = "ActiveSheet.SetText";                        
-                    }
-                    else
-                    {
-                        subCodeInfo.CallmethodName = "ActiveSheet.SetValue";    
-                    }
-
-                    var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
-
-                    var list = new List<SourceCodeInfoParamaterValue>();
-
-                    list.Add(paramaterValues[1]);
-                    list.Add(paramaterValues[0]);
-                    list.Add(paramaterValues[2]);
-                    paramater.ParamaterValues = list.ToArray();
-                }
-
+                new ReplaceManagerSpreadCallMethod(rowString, colString, (SourceCodeInfoCallMethod) codeInfo).Replace();
             }
         }
     }

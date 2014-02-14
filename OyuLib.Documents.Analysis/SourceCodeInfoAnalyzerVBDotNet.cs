@@ -666,7 +666,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
 
-            return coFac.GetCodePartsLength() == 3 &&
+            return coFac.GetCodePartsLength() >= 3 &&
                    coFac.GetCodeParts()[1].Equals(SourceDocumentSyntaxVBDotNet.CONST_EQUALS);
         }
 

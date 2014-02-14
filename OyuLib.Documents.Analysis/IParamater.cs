@@ -7,7 +7,7 @@ using OyuLib.Documents.Sources.Analysis;
 
 namespace OyuLib.Documents.Sources
 {
-    interface IParamater
+    public interface IParamater
     {
         SourceCodeInfoParamater GetSourceCodeInfoParamater();
         StringRange Range { get; set; }

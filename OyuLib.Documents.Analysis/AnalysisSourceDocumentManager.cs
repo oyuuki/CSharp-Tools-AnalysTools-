@@ -559,7 +559,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 foreach (var codeinfo in this.GetSourceCodeInfo(this.CodeObjects))
                 {
-                    file.WriteLine(codeinfo.GetCodePartsOverWriteValues());
+                    file.WriteLine(codeinfo.GetTabString() +  codeinfo.GetCodePartsOverWriteValues());
                 }
             }
         }
