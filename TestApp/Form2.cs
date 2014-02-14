@@ -56,6 +56,14 @@ namespace TestApp
             string targetSourceDirectory = @"D:\TETETETE\";
             // this.GetFilePaths(targetSourceDirectory)
             // this.Test()
+
+            int num = this.GetFilePaths(targetSourceDirectory).Length;
+
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Maximum = num;
+
+            this.progressBar1.Value = 0;
+
             foreach (var form in this.GetFilePaths(targetSourceDirectory))
             {
                 // デザイナコード解析
@@ -127,6 +135,8 @@ namespace TestApp
 
                 mana.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(form.DesinerClassFilePath)));
                 mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(form.BussinessClassFilePath)));
+
+                this.progressBar1.Value++;
             }
         }
 
@@ -159,6 +169,9 @@ namespace TestApp
                     (SourceCodeInfoSubstitution) codeInfo);
 
                 replaceManager.Replace();
+
+                rowString = replaceManager.RowString;
+                colString = replaceManager.ColString;
             }
             else if (codeInfo is SourceCodeInfoCallMethod)
             {

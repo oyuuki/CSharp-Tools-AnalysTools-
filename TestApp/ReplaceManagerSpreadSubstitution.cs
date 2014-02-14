@@ -30,13 +30,6 @@ namespace TestApp
         {
             var subCodeInfo = this.SourceCodeInfo;
 
-            if (subCodeInfo.LeftHandSide.IndexOf("MaxRows") >= 0)
-            {
-                int a = 1;
-            }
-
-            
-
             if (subCodeInfo.LeftHandSide.Equals(".Row"))
             {
                 this.RowString = subCodeInfo.RightHandSide + " -1";
@@ -59,17 +52,31 @@ namespace TestApp
             {
                 new ReplaceManagerSpreadActionSubstitution(this.RowString, this.ColString, this.SourceCodeInfo).Replace();
             }
-            else if (this.SetSubstitutionValue(subCodeInfo, ".Value"))
+            else if (subCodeInfo.LeftHandSide.Equals(".ReDraw"))
             {
+                var redrowMethodName = string.Empty;
 
+                if (subCodeInfo.RightHandSide.Trim().Equals("True"))
+                {
+                    redrowMethodName = ".ResumeLayout()";                                     
+                }
+                else
+                {
+                    redrowMethodName = ".SuspendLayout()";
+                }
+
+                subCodeInfo.AllOverWriteString = redrowMethodName;
             }
-            else if (this.SetSubstitutionValue(subCodeInfo, ".MaxRows"))
+            else if (subCodeInfo.LeftHandSide.Equals(".Text"))
             {
-
+                subCodeInfo.AllOverWriteString = ".ActiveSheet.SetText(" + this.RowString + ", " + this.ColString + ", " + subCodeInfo.RightHandSide + ")";
             }
-            else if (this.SetSubstitutionValue(subCodeInfo, ".ColHidden"))
+            else
             {
-
+                foreach (var replaceItem in this.GetReplaceItems())
+                {
+                    this.SetSubstitutionValue(subCodeInfo, replaceItem.TargetString);
+                }
             }
         }
 

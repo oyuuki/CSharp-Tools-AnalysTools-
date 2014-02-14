@@ -24,6 +24,9 @@ namespace TestApp
         public override ReplaceItem[] GetReplaceItems()
         {
             var retList = new List<ReplaceItem>();
+
+            retList.Add(new ReplaceItem("set_RowHeight", "ActiveSheet.SetRowHeight"));
+
             return retList.ToArray();
         }
 
@@ -35,6 +38,22 @@ namespace TestApp
             new ReplaceManagerHaveParamaterValueSpread(this.RowString, this.ColString, subCodeInfo).Replace();
             new ReplaceManagerSpreadGetCallMethod(this.RowString, this.ColString, subCodeInfo).Replace();
             new ReplaceManagerSpreadSetCallMethod(this.RowString, this.ColString, subCodeInfo).Replace();
+
+            foreach (var replaceItem in GetReplaceItems())
+            {
+                ReplaceProc(replaceItem);
+            }
+        }
+
+
+        public void ReplaceProc(ReplaceItem item)
+        {
+            if (!item.TargetString.Equals(this.SourceCodeInfo.CallmethodName))
+            {
+                return;
+            }
+
+            this.SourceCodeInfo.CallmethodName = item.ReplaceString;
         }
     
     }

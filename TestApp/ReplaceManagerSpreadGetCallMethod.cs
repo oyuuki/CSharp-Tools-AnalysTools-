@@ -37,7 +37,7 @@ namespace TestApp
         {
             var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue();
 
-            return paramaterValues[2].ParamaterName + " = .ActiveSheet. " +
+            return paramaterValues[2].ParamaterName + " = .ActiveSheet." +
                    replaceMethodName + "(" + paramaterValues[1].ParamaterName + "," +
                    paramaterValues[0].ParamaterName + ")";
         }
@@ -48,7 +48,7 @@ namespace TestApp
 
             if (this.IsExistReplaceItem(codeInfo.CallmethodName))
             {
-                codeInfo.AllOverWriteString = this.GetMethodCode(this.SourceCodeInfo.CallmethodName);
+                codeInfo.AllOverWriteString = this.GetMethodCode(this.GetReplaceItem(this.SourceCodeInfo.CallmethodName).ReplaceString);
             }
         }   
     }

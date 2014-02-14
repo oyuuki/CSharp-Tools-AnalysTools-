@@ -32,13 +32,13 @@ namespace TestApp
 
         #region Property
 
-        protected string RowString
+        public string RowString
         {
             get { return this._rowString; }
             set { this._rowString = value; }
         }
 
-        protected string ColString
+        public string ColString
         {
             get { return this._colString; }
             set { this._colString = value; }
