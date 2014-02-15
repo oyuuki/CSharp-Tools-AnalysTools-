@@ -5,6 +5,8 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 
+using System.Text.RegularExpressions;
+
 using OyuLib.Documents;
 using OyuLib.IO;
 
@@ -28,7 +30,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected object[] CodeObjects
         {
             get { return this._codeObjects; }
-            private set { this._codeObjects = value; }
+            set { this._codeObjects = value; }
         }
 
         public SourceDocument Sourcedocument
@@ -113,10 +115,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
             int end = 0;
 
-            if (startIndex != 0)
+            if (startIndex != 0 && codeinfos[startIndex - 1] is SourceCodeInfoBlockBegin)
             {
-                objList.Add(codeinfos[startIndex]);
-                start++;
+                objList.Add(codeinfos[startIndex - 1]);
             }
 
             for (int indexLoop = start; indexLoop < codeinfos.Length; indexLoop++)
@@ -126,7 +127,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 // Search The block of head
                 if (codeInfo is SourceCodeInfoBlockBegin)
                 {
-                    var codeObject = this.GetCodeObjects(codeinfos, indexLoop,
+                    var codeObject = this.GetCodeObjects(codeinfos, indexLoop + 1,
                         ((SourceCodeInfoBlockBegin)codeInfo).GetCodeInfoBlockEndType());
                     var innerSourceBlock = new SourceCodeblockInfo(codeObject.CodeObjects, codeObject.Range);
 
@@ -500,10 +501,10 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
-       /// <summary>
-       /// Get ValiableInfo By TypeName
-       /// </summary>
-       /// <param name="typeName">TypeName</param>
+        /// <summary>
+        /// Get ValiableInfo By TypeName
+        /// </summary>
+        /// <param name="typeName">TypeName</param>
         /// <returns>ValiableInfo</returns>
         public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByType(string typeName)
         {
@@ -532,6 +533,23 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
+        /// <summary>
+        /// Get ValiableInfo By Name
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableRegex(string regEndWithName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoMemberVariable>(
+                regEndWithName,
+                delegate(string lockeyName, SourceCodeInfoMemberVariable info)
+                {   
+                    Regex reg = new Regex(regEndWithName);
+                    return reg.IsMatch(info.Name);
+                }
+                );
+        }
+
         private SourceCodeInfo[] GetSourceCodeInfo(object[] codeObjects)
         {
             var retList = new List<SourceCodeInfo>();
@@ -551,6 +569,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+
         public void CreateAnalysisSourceFile(string filePath)
         {
             using (var file = new TextFile(filePath))
@@ -564,6 +583,74 @@ namespace OyuLib.Documents.Sources.Analysis
             }
         }
 
+        protected void AddCodeFromHead(SourceCodeInfoOther[] codeInfos, object[] codeObjects)
+        {
+            int index = 0;
+            var replaceCodeObject = new List<object>();
+
+            foreach (var codeInfo in codeInfos)
+            {
+                replaceCodeObject.Add(codeInfo);
+            }
+
+            foreach (var codeobject in codeObjects)
+            {
+                replaceCodeObject.Add(codeobject);
+            }
+
+            codeObjects = replaceCodeObject.ToArray();
+        }
+
+
+        public void AddValiableMemberCode(SourceCodeInfoOther[] codeInfos)
+        {
+            int index = 0;
+            var codeObjects = this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginClass>()[0].CodeObjects;
+            var replaceCodeObject = new List<object>();
+           
+
+            foreach(var codeobject in codeObjects)
+            {
+               if (codeobject is SourceCodeblockInfo)
+               {
+                   if (codeInfos != null)
+                   {
+                       foreach (var codeInfo in codeInfos)
+                       {
+                           replaceCodeObject.Add(codeInfo);
+                       }
+
+                       codeInfos = null;
+                   }
+               }
+
+               replaceCodeObject.Add(codeobject);
+
+               index++;
+            }
+
+            this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginClass>()[0].CodeObjects = replaceCodeObject.ToArray();
+        }
+
+        public void AddOtherCodeToEventMethod(SourceCodeInfoOther[] codeInfos, string eventName)
+        {
+            int index = 0;
+            object[] codeObjects = null;
+            var replaceCodeObject = new List<object>();
+
+            foreach(var block in  this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginEventMethod>())
+            {
+                var blockBeginInfo = (SourceCodeInfoBlockBeginEventMethod)block.GetSourceCodeInfoBlockBegin();
+
+                if(blockBeginInfo.EventName.Equals(eventName))
+                {
+                    codeObjects = block.CodeObjects;
+                    break;
+                }   
+            }
+
+            this.AddCodeFromHead(codeInfos, codeObjects);
+        }
         
 
         #endregion

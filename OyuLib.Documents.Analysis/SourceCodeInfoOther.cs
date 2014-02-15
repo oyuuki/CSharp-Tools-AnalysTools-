@@ -23,6 +23,12 @@ namespace OyuLib.Documents.Sources.Analysis
         {
         }
 
+        public SourceCodeInfoOther(
+            SourceCode code)
+            : base(code, new SourceCodePartsfactoryNocomment(code, " "))
+        {
+        }
+
         #endregion
 
         #region Method

@@ -77,7 +77,7 @@ namespace TestApp
             foreach (var valiable in manaDes.GetSourceCodeInfoMemberVariableRegex(pattern))
             {
                 Regex reg = new Regex(pattern);
-                var keyName = reg.Replace(valiable.Name, "");
+                var keyName = reg.Replace(valiable.Name, "").Substring(1);
 
                 if(!dic.ContainsKey(keyName))
                 {
@@ -87,8 +87,23 @@ namespace TestApp
                 dic[keyName].Add(valiable);            
             }
 
+            // コントロール配列に関連するイベントメソッドの取得
+            var dicEvent = new Dictionary<string, List<SourceCodeInfoBlockBeginEventMethod>>();
+
+            foreach(var keyName in dic.Keys)
+            {   
+                dicEvent.Add(keyName, new List<SourceCodeInfoBlockBeginEventMethod>());
+
+                // コントロール配列だったコントロールのコレクションを取得
+                foreach (var methodInfo in manaDes.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName(keyName))
+                {
+                    dicEvent[keyName].Add(methodInfo);    
+                }
+            }
+
+
             // Imports文を追加
-            //manaBus.AddCodeInfoImports(new SourceCodeInfoOther[] { new SourceCodeInfoOther(new SourceCode("Imports System.Collections.Generic")) });
+            manaBus.AddCodeInfoImports(new SourceCodeInfoOther[] { new SourceCodeInfoOther(new SourceCode("Imports System.Collections.Generic")) });
 
             // コントロール配列メンバー変数を生成
             var addValiableMemList = new List<SourceCodeInfoOther>();
@@ -103,6 +118,30 @@ namespace TestApp
 
             // 生成したメンバー変数をコレクションに追加
             manaBus.AddValiableMemberCode(addValiableMemList.ToArray());
+
+
+            // コントロール配列初期化コードを生成
+
+            var addInitControlCollectionCode = new List<SourceCodeInfoOther>();
+
+            foreach(var keyName in dic.Keys)
+            {   
+                addInitControlCollectionCode.Add(new SourceCodeInfoOther(new SourceCode(keyName + " = New Dic Dictionary(Of Integer, " + dic[keyName][0].TypeName + ")")));                
+
+                foreach(var list in dic[keyName])
+                {
+                     addInitControlCollectionCode.Add(new SourceCodeInfoOther(new SourceCode("Me." + keyName + ".Add(" + 1 +", " + list.Name + ")")));
+                }
+                foreach(var list in dic[keyName])
+                {
+                    // AddHandler Me.imn諸経費(0).Leave, AddressOf Me.imn諸経費_Leave
+                    addInitControlCollectionCode.Add(new SourceCodeInfoOther(new SourceCode("Me." + keyName + ".Add(" + 1 + ", " + list.Name + ")")));
+                }
+
+            }
+
+
+            manaBus.AddOtherCodeToEventMethod(null, "Load");
 
             string outputDirctory = @"D:\TETETETE\Test2\";
 

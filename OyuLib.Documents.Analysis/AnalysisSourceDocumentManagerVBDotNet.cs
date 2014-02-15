@@ -140,6 +140,11 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
+        public void AddCodeInfoImports(SourceCodeInfoOther[] codeInfos)
+        {
+            this.AddCodeFromHead(codeInfos, this.CodeObjects);
+        }
+
         #endregion
 
         #endregion
