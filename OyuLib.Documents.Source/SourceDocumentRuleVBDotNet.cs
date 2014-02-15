@@ -12,9 +12,14 @@ namespace OyuLib.Documents.Sources
 
         #region override
 
-        public string[] GetMethodHead()
+        public override string[] GetMethodHead()
         {
             return new string[] { SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_SUB, SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION };
+        }
+
+        public override string GetClassHead()
+        {
+            return SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CLASS;
         }
 
         public override string GetCodeEndSeparatorString()

@@ -40,16 +40,7 @@ namespace TestApp
             if (this.IsExistReplaceItem(codeInfo.CallmethodName))
             {
                 var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamater();
-
-
-                var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
-                var list = new List<SourceCodeInfo>();
-
-                list.Add(paramaterValues[1]);
-                list.Add(paramaterValues[0]);
-                list.Add(paramaterValues[2]);
-                paramater.ParamaterValues = list.ToArray();
-
+                paramater.ChangeParamaterIndex(0, 1);
                 codeInfo.CallmethodName = this.GetReplaceItem(codeInfo.CallmethodName).ReplaceString;
             }
         }

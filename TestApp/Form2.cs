@@ -7,6 +7,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
+
+using System.Text.RegularExpressions;
+
 using OyuLib;
 using OyuLib.Documents.Sources;
 using OyuLib.Documents.Sources.Analysis;
@@ -52,6 +56,91 @@ namespace TestApp
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            this.ExecuteReplaceControlArray(); 
+        }
+
+
+        private void ExecuteReplaceControlArray()
+        {
+            var classPath = Test()[0];
+
+            var manaDes = new AnalysisSourceDocumentManagerVBDotNet(classPath.DesinerClassFilePath);
+            var manaBus = new AnalysisSourceDocumentManagerVBDotNet(classPath.BussinessClassFilePath);
+
+            string a = string.Empty;
+
+            string pattern = "_\\d{1,}$";
+            var dic = new Dictionary<string, List<SourceCodeInfoMemberVariable>>();
+
+            // コントロール配列だったコントロールのコレクションを取得
+            foreach (var valiable in manaDes.GetSourceCodeInfoMemberVariableRegex(pattern))
+            {
+                Regex reg = new Regex(pattern);
+                var keyName = reg.Replace(valiable.Name, "");
+
+                if(!dic.ContainsKey(keyName))
+                {
+                    dic.Add(keyName, new List<SourceCodeInfoMemberVariable>());
+                }
+
+                dic[keyName].Add(valiable);            
+            }
+
+            // Imports文を追加
+            //manaBus.AddCodeInfoImports(new SourceCodeInfoOther[] { new SourceCodeInfoOther(new SourceCode("Imports System.Collections.Generic")) });
+
+            // コントロール配列メンバー変数を生成
+            var addValiableMemList = new List<SourceCodeInfoOther>();
+
+            foreach(var keyName in dic.Keys)
+            {   
+                addValiableMemList.Add(
+                    new SourceCodeInfoOther(
+                        new SourceCode(
+                            "Private " + keyName + " As Dictionary(Of Integer, " + dic[keyName][0].TypeName + ")")));
+            }
+
+            // 生成したメンバー変数をコレクションに追加
+            manaBus.AddValiableMemberCode(addValiableMemList.ToArray());
+
+            string outputDirctory = @"D:\TETETETE\Test2\";
+
+            if (!Directory.Exists(outputDirctory))
+            {
+                Directory.CreateDirectory(outputDirctory);
+            }
+
+            manaBus.CreateAnalysisSourceFile(outputDirctory + @"\test.vb");
+            manaDes.CreateAnalysisSourceFile(outputDirctory + @"\test.Desiner.vb");
+        }
+
+        private void ExecuteReplace2()
+        {
+            string filepath = @"D:\TETETETE\test.vb";
+
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(filepath);
+
+            foreach(var value in mana.GetSourceCodeAnalysis())
+            {
+                if(value is SourceCodeInfoCallMethod)
+                {
+                    var s = (SourceCodeInfoCallMethod)value;
+
+                    var paramater = s.GetSourceCodeInfoParamater();
+                    paramater.ChangeParamaterIndex(0, 1);
+
+                    s.CallmethodName = "test";
+                    MessageBox.Show(s.GetCodePartsOverWriteValues());
+                }
+
+
+                int a = 1;
+            }
+
+        }
+
+        private void ExecuteReplace1()
         {
             string targetSourceDirectory = @"D:\TETETETE\";
             // this.GetFilePaths(targetSourceDirectory)

@@ -318,11 +318,24 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region GetOtherCodeInfo関係
 
+        private bool CheckCommonCodeInfoStatement(SourceCode code, string statementName)
+        {
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
+
+            // include blockName
+            if (!coFac.IsFirstStringIsValue(statementName))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         private bool CheckCommonCodeInfoBlock(SourceCode code, string[] blockNames)
         {
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
 
-            // include "With"
+            // include blockName
             if (!coFac.IsIncludeAllStringInCode(blockNames))
             {
                 return false;
@@ -350,18 +363,25 @@ namespace OyuLib.Documents.Sources.Analysis
             }
         }
 
-        private SourceCodeInfo GetCodeInfoSubEndBlock(SourceCode code)
+        private SourceCodeInfoBlockSubEndVB GetCodeInfoSubEndBlock(SourceCode code)
         {
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             int statement = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_SUB);
             return new SourceCodeInfoBlockSubEndVB(code, coFac, statement);
         }
 
-        private SourceCodeInfo GetCodeInfoFunctionEndBlock(SourceCode code)
+        private SourceCodeInfoBlockFunctionEndVB GetCodeInfoFunctionEndBlock(SourceCode code)
         {
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
             int statement = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_SUB);
             return new SourceCodeInfoBlockFunctionEndVB(code, coFac, statement);
+        }
+
+        private SourceCodeInfoVbImports GetCodeInfoImports(SourceCode code)
+        {
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
+            int nameSpace = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_IMPORTS) + 1;
+            return new SourceCodeInfoVbImports(code, coFac, nameSpace);
         }
 
         #endregion
@@ -409,6 +429,10 @@ namespace OyuLib.Documents.Sources.Analysis
             else if (this.CheckCommonCodeInfoBlock(code, new string[] { SourceDocumentSyntaxVBDotNet.CONST_METHODHEAD_FUNCTION, SourceDocumentSyntaxVBDotNet.CONST_END }))
             {
                 return this.GetCodeInfoFunctionEndBlock(code);
+            }
+            else if (this.CheckCommonCodeInfoStatement(code, SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_IMPORTS))
+            {
+                return this.GetCodeInfoImports(code);
             }
 
             return base.GetAntherCodeInfo(code);
@@ -544,7 +568,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
-        #region
+        #region CodeInfoBlockEnd
 
         protected override bool CheckCodeInfoBlockEndMethod(SourceCode code)
         {
@@ -567,6 +591,56 @@ namespace OyuLib.Documents.Sources.Analysis
 
             int segments = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_END);
             return new SourceCodeInfoBlockEndMethod(code, coFac, segments + 1);
+        }
+
+        #endregion
+
+        #region CodeInfoClass
+
+        protected override bool CheckCodeInfoBlockBeginClass(SourceCode code)
+        {
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
+            return coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_CLASS)
+                && !coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_END);
+        }
+
+        protected override SourceCodeInfoBlockBeginClass GetCodeInfoBlockBeginClass(SourceCode code)
+        {
+            SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
+
+            int classHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetClassHead());
+            int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
+            int name = classHead + 1;
+
+            return new SourceCodeInfoBlockBeginClass(
+                code,
+                coFac,
+                classHead,
+                name,
+                accessModifier,
+                name);
+        }
+
+        protected override bool CheckCodeInfoBlockEndClass(SourceCode code)
+        {
+            SourceDocumentRule rule = this.GetSourceRule();
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
+
+            return coFac.IsIncludeSomeStringInCode(
+                new string[]
+                {
+                    GetSourceRule().GetClassHead(),
+                })
+                   && coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_END);
+        }
+
+        protected override SourceCodeInfoBlockEndClass GetCodeInfoBlockEndClass(SourceCode code)
+        {
+            SourceDocumentRule rule = this.GetSourceRule();
+            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
+
+            int segments = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_END);
+            return new SourceCodeInfoBlockEndClass(code, coFac, segments + 1);
         }
 
         #endregion

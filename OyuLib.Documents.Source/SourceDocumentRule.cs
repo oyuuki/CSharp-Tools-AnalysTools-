@@ -24,6 +24,8 @@ namespace OyuLib.Documents.Sources
 
         #region Abstract
 
+        public abstract string[] GetMethodHead();
+        public abstract string GetClassHead();
         public abstract string GetCodeEndSeparatorString();
         public abstract string GetControlCodeBeginIf();
         public abstract string GetControlCodeEndIf();

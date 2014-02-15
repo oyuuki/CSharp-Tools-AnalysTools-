@@ -68,5 +68,9 @@ namespace OyuLib.Documents.Sources
         public const string CONST_STATEMENT_SELECT = "Select";
 
         public const string CONST_STATEMENT_CASE = "Case";
+
+        public const string CONST_STATEMENT_IMPORTS = "Imports";
+
+        public const string CONST_STATEMENT_CLASS = "Class";
     }
 }

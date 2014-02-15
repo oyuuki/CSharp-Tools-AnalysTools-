@@ -155,6 +155,14 @@ namespace OyuLib.Documents.Sources.Analysis
             {
                 return this.GetCodeInfoMemberVariable(this.Code);
             }
+            else if (this.CheckCodeInfoBlockBeginClass(this.Code))
+            {
+                return this.GetCodeInfoBlockBeginClass(this.Code);
+            }
+            else if (this.CheckCodeInfoBlockEndClass(this.Code))
+            {
+                return this.GetCodeInfoBlockEndClass(this.Code);
+            }              
             else if (this.CheckCodeInfoBlockBeginMethod(this.Code))
             {
                 return this.GetCodeInfoBlockBeginMethod(this.Code);
@@ -182,11 +190,17 @@ namespace OyuLib.Documents.Sources.Analysis
         protected abstract SourceCodeInfoComment GetCodeInfoComment(SourceCode code);
         protected abstract bool CheckCodeInfoComment(SourceCode code);
 
+        protected abstract SourceCodeInfoBlockBeginClass GetCodeInfoBlockBeginClass(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockBeginClass(SourceCode code);
+
         protected abstract SourceCodeInfoBlockBeginMethod GetCodeInfoBlockBeginMethod(SourceCode code);
         protected abstract bool CheckCodeInfoBlockBeginMethod(SourceCode code);
 
         protected abstract SourceCodeInfoBlockBeginEventMethod GetCodeInfoBlockBeginEventMethod(SourceCode code);
         protected abstract bool CheckCodeInfoBlockBeginEventMethod(SourceCode code);
+
+        protected abstract SourceCodeInfoBlockEndClass GetCodeInfoBlockEndClass(SourceCode code);
+        protected abstract bool CheckCodeInfoBlockEndClass(SourceCode code);
 
         protected abstract SourceCodeInfoBlockEndMethod GetCodeInfoBlockEndMethod(SourceCode code);
         protected abstract bool CheckCodeInfoBlockEndMethod(SourceCode code);

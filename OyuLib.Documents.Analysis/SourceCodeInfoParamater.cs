@@ -33,7 +33,6 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeInfo[] ParamaterValues
         {
             get { return this._sourceCodeInfoParamaterValues; }
-            set { this._sourceCodeInfoParamaterValues = value; }
         }
 
         public bool HasParamater
@@ -47,6 +46,14 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Method
 
         #region Public
+
+        public void ChangeParamaterIndex(int index1, int index2)
+        {
+            var index1Paramater = this.ParamaterValues[index1];
+
+            this.ParamaterValues[index1] = this.ParamaterValues[index2];
+            this.ParamaterValues[index2] = index1Paramater;
+        }
 
         public SourceCodeInfoParamaterValue[] GetSourceCodeInfoParamaterValue()
         {

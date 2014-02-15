@@ -11,6 +11,16 @@ namespace OyuLib.Documents.Sources
 
         #region Override
 
+        public override string[] GetMethodHead()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetClassHead()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string GetCodeEndSeparatorString()
         {
             return new LineCharCode().GetCharCodeString();

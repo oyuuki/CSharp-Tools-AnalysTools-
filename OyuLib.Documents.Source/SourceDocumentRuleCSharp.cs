@@ -7,6 +7,16 @@ namespace OyuLib.Documents.Sources
 {
     public class SourceDocumentRuleCSharp : SourceDocumentRule
     {
+        public override string[] GetMethodHead()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string GetClassHead()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string GetCodeEndSeparatorString()
         {
             return new CharCode(";").GetCharCodeString();
