@@ -252,8 +252,6 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceCodePartsfactory coFac = new SourceCodePartsFactoryParamater(code);
 
-            
-
             int methodHead = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetMethodHead());
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
             int name = methodHead + 1;
@@ -860,7 +858,7 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceCodePartsFactoryVBDotNetFor coFac = new SourceCodePartsFactoryVBDotNetFor(code);
 
             int segments = 0;
-            int evaluationFormula = 0;
+            int evaluationFormula = 2;
 
             var range = coFac.GetCodePartsRanges()[evaluationFormula];
 

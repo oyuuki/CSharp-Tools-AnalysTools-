@@ -169,7 +169,7 @@ namespace OyuLib
                 {
                     if (isParentSwitch)
                     {
-                        retlist[retlist.Count - 1].Childs = this.GetStringRangeLogic(ref index, str);
+                        retlist[retlist.Count - 1].Childs = this.GetStringRangeIgnoreStringRangesLogic(ref index, str, ranges);
                     }
                     else
                     {

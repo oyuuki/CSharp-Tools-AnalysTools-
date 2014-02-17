@@ -24,13 +24,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override StringRange[] GetCodePartsRanges(string withOutComment)
         {
-            if (withOutComment.IndexOf("plStrSQL & \"" + "WHERE \"" + " & " + "\"" + "((mstTokuiSaki.[区分] <> 0 AND mstTokuiSaki.[グループ] <> 0)") >= 0)
+            if (withOutComment.IndexOf("VB.Left(plStrInvoiceNumber, InStrRev(plStrInvoiceNumber") >= 0)
             {
                 int aa = 1;
             }
 
             return
-                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreNestedString(
+                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreNestedStringAndSeparator(
                     this.CodeDelimiters, 
                     new ManagerStringNested("(", ")"),
                     new ManagerStringNested("\"", "\""));

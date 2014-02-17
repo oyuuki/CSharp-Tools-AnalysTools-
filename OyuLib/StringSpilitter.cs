@@ -311,24 +311,76 @@ namespace OyuLib
                 //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 
-            if (_targetString.IndexOf("plStrSQL = plStrSQL & \"" + "WHERE \"" + " & " + "\"" + "((mstTokuiSaki.[区分] <> 0 AND mstTokuiSaki.[グループ] <> 0)") >= 0)
+            
+            return retlist.ToArray();
+        }
+
+        private StringRange[] GetStringRangeSpilitLogic(string[] strSeparatores, StringRange[] stringRanges, StringRange[] IgnoreSeparatorStringRanges)
+        {
+            var retlist = new List<StringRange>();
+            var startIndex = 0;
+            var indexPareArray = stringRanges;
+            var nStrIndex = 0;
+
+            var ignoreSeparatorIndex = 0;
+
+            for (int index = 0; index < this.TargetString.Length; index++)
             {
-                var stra = string.Empty;
-
-                foreach (var a in retlist)
+                if (IgnoreSeparatorStringRanges != null &&
+                    ignoreSeparatorIndex < IgnoreSeparatorStringRanges.Length &&
+                    IgnoreSeparatorStringRanges[ignoreSeparatorIndex].IndexEnd < index)
                 {
-
-                    if (a.IndexEnd < 0 || a.IndexStart < 0)
-                    {
-                        stra += "   !!!!!マイナス";
-                    }
-
-                    stra += a.GetStringSpilited();
-                    stra += "\n";
+                    ignoreSeparatorIndex++;
                 }
 
-                stra = stra;
+                if (indexPareArray.Length > nStrIndex && indexPareArray[nStrIndex].IndexStart == index)
+                {
+                    var stringRange = indexPareArray[nStrIndex];
+
+                    if (startIndex != stringRange.IndexStart)
+                    {
+                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 2, string.Empty, string.Empty, this.TargetString));
+                        // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
+                    }
+
+
+                    retlist.Add(new StringRange(stringRange));
+                    // retlist.Add(this.TargetString.Substring(indexPare.IndexStart, indexPare.IndexEnd - indexPare.IndexStart + 1));
+                    index = stringRange.IndexEnd + 1;
+                    startIndex = index + 1;
+                    nStrIndex++;
+                }
+                else
+                {
+                    if (IgnoreSeparatorStringRanges != null &&
+                        ignoreSeparatorIndex < IgnoreSeparatorStringRanges.Length &&
+                        IgnoreSeparatorStringRanges[ignoreSeparatorIndex].IndexStart <= index &&
+                        IgnoreSeparatorStringRanges[ignoreSeparatorIndex].IndexEnd >= index)
+                    {
+                        continue;
+                    }
+
+                    foreach (var strSeparator in strSeparatores)
+                    {
+                        if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
+                        {
+                            retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
+                            // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
+                            startIndex = index + strSeparator.Length;
+                            index = startIndex - 1;
+                            break;
+                        }
+                    }
+                }
             }
+
+
+            if (startIndex < this.TargetString.Length)
+            {
+                retlist.Add(new StringRange(startIndex, this.TargetString.Length - 1, string.Empty, string.Empty, this.TargetString));
+                //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
+            }
+
 
             return retlist.ToArray();
         }
@@ -338,31 +390,71 @@ namespace OyuLib
             return this.GetStringRangeSpilitLogic(new string[] { strSeparator }, nStr.GetStringRangeArray(this.TargetString));
         }
 
+
         public StringRange[] GetStringRangeSpilit(string[] strSeparators, ManagerStringNested nStr)
         {
             return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeArray(this.TargetString));
         }
 
-        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested IgnoreNestedString)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strSeparators"></param>
+        /// <param name="nStr"></param>
+        /// <param name="nStrIgnoreNestedString">nStrの文字列がこの範囲内に現れた場合は無視する</param>
+        /// <returns></returns>
+        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested nStrIgnoreNestedString)
         {
-            return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, IgnoreNestedString));
+            return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, nStrIgnoreNestedString));
         }
 
-        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string strSeparator, ManagerStringNested nStr, ManagerStringNested IgnoreNestedString)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strSeparators"></param>
+        /// <param name="nStr"></param>
+        /// <param name="nStrIgnoreNestedString">nStrの文字列がこの範囲内に現れた場合は無視する</param>
+        /// <returns></returns>
+        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string strSeparator, ManagerStringNested nStr, ManagerStringNested nStrIgnoreNestedString)
         {
-            return this.GetStringRangeSpilitLogic(new string[] { strSeparator }, nStr.GetStringRangeIgnoreNestedString(this.TargetString, IgnoreNestedString));
+            return this.GetStringRangeSpilitLogic(new string[] { strSeparator }, nStr.GetStringRangeIgnoreNestedString(this.TargetString, nStrIgnoreNestedString));
         }
 
-        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested[] IgnoreNestedStrings)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strSeparators"></param>
+        /// <param name="nStr"></param>
+        /// <param name="nStrIgnoreNestedString">nStrの文字列がこの範囲内に現れた場合は無視する</param>
+        /// <returns></returns>
+        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested[] nStrIgnoreNestedStrings)
         {
-            return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, IgnoreNestedStrings));
+            return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, nStrIgnoreNestedStrings));
         }
 
-        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string strSeparator, ManagerStringNested nStr, ManagerStringNested[] IgnoreNestedStrings)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strSeparators"></param>
+        /// <param name="nStr"></param>
+        /// <param name="nStrIgnoreNestedString">nStrの文字列がこの範囲内に現れた場合は無視する</param>
+        /// <returns></returns>
+        public StringRange[] GetStringRangeSpilitIgnoreNestedString(string strSeparator, ManagerStringNested nStr, ManagerStringNested[] nStrIgnoreNestedStrings)
         {
-            return this.GetStringRangeSpilitLogic(new string[] { strSeparator }, nStr.GetStringRangeIgnoreNestedString(this.TargetString, IgnoreNestedStrings));
+            return this.GetStringRangeSpilitLogic(new string[] { strSeparator }, nStr.GetStringRangeIgnoreNestedString(this.TargetString, nStrIgnoreNestedStrings));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strSeparators"></param>
+        /// <param name="nStr"></param>
+        /// <param name="nStrIgnoreNestedString">nStr、strSeparatorsの文字列がこの範囲内に現れた場合は無視する</param>
+        /// <returns></returns>
+        public StringRange[] GetStringRangeSpilitIgnoreNestedStringAndSeparator(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested ignoreNestedStrings)
+        {
+            return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, ignoreNestedStrings), ignoreNestedStrings.GetStringRangeArray(this.TargetString));
+        }
 
         #endregion
 

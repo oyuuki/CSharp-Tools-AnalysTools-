@@ -31,6 +31,11 @@ namespace OyuLib.Documents.Sources.Analysis
             int groupCount,
             int hierarchyCount)
         {
+            if (sourceCode.CodeString.IndexOf("Check_Quantity(plAdoCon,sNull(plVrtOrderNumber)") >= 0)
+            {
+                int a = 1;
+            }
+
             return this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
                  sourceCode,
                  fac,

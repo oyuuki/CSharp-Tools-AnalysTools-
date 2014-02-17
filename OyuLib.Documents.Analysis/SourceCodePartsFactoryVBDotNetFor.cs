@@ -25,10 +25,16 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override StringRange[] GetCodePartsRanges(string withOutComment)
         {
             var retList = new List<StringRange>();                         
+
+
             var toString = this.CodeDelimiter;
             var toStringStartIndex = withOutComment.IndexOf(toString);
 
-            retList.Add(new StringRange(toStringStartIndex + toString.Length + 1, withOutComment.Length - 1, "", "", withOutComment));
+            retList.Add(new StringRange(0, toStringStartIndex - 1, " ", withOutComment));
+
+            retList.Add(new StringRange(toStringStartIndex, toStringStartIndex + toString.Length - 1, "", "", withOutComment));
+
+            retList.Add(new StringRange(toStringStartIndex + toString.Length, withOutComment.Length - 1, "", "", withOutComment));
 
             return retList.ToArray();
         }
