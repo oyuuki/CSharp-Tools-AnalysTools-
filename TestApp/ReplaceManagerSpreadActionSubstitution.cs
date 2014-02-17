@@ -13,8 +13,10 @@ namespace TestApp
         public ReplaceManagerSpreadActionSubstitution(
             string rowString, 
             string colString, 
+            string comment,
+            string commentSeparator,
             SourceCodeInfoSubstitution value)
-            : base(rowString, colString, value)
+            : base(rowString, colString, comment, commentSeparator, value)
         {
             
         }
@@ -25,7 +27,7 @@ namespace TestApp
         {
             var retList = new List<ReplaceItem>();
 
-            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionActiveCell", "ActiveSheet.SetActiveCell(" + this.RowString + ", " + this.RowString + ")"));
+            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionActiveCell", ".ActiveSheet.SetActiveCell(" + this.RowString + ", " + this.RowString + ")"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionSetCellBorder", ""));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionInsertRow", ".ActiveSheet.ActiveRow.Add()"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionDeleteRow", ".ActiveSheet.ActiveRow.Remove()"));
@@ -37,8 +39,7 @@ namespace TestApp
 
         public override void Replace()
         {
-            this.SourceCodeInfo.AllOverWriteString =
-                this.GetReplaceItem(this.SourceCodeInfo.RightHandSide).ReplaceString;
+            this.SourceCodeInfo.SetAllOverWriteString(this.GetReplaceItem(this.SourceCodeInfo.RightHandSide).ReplaceString, this.CommentSeparator, this.Comment);
         }
 
     }

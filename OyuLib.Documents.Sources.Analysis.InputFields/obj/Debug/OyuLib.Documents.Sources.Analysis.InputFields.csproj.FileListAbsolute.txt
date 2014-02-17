@@ -13,9 +13,6 @@ C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sourc
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.csproj.GenerateResource.Cache
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.dll
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.csprojResolveAssemblyReference.cache
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.Properties.Resources.resources
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\bin\Debug\OyuLib.Documents.Sources.Analysis.InputFields.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\bin\Debug\OyuLib.Documents.Sources.Analysis.InputFields.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\bin\Debug\OyuLib.dll
@@ -26,5 +23,8 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sourc
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\bin\Debug\OyuLib.Documents.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\bin\Debug\OyuLib.IO.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.Properties.Resources.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Documents.Sources.Analysis.InputFields\obj\Debug\OyuLib.Documents.Sources.Analysis.InputFields.pdb

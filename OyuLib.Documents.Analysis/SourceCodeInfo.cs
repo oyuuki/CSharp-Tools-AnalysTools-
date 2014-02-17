@@ -52,7 +52,6 @@ namespace OyuLib.Documents.Sources.Analysis
         public string AllOverWriteString
         {
             get { return this._allOverWriteString; }
-            set { this._allOverWriteString = value; }
         }
 
         public bool IsAllOverWriteString
@@ -73,7 +72,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
 
         #endregion
-
 
         #region Method
 
@@ -106,6 +104,11 @@ namespace OyuLib.Documents.Sources.Analysis
         #endregion
 
         #region Public
+
+        public void SetAllOverWriteString(string value, string commentSeparator, string comment)
+        { 
+            this._allOverWriteString = value + commentSeparator + comment; 
+        }
 
         public string GetTabString()
         {
@@ -143,16 +146,29 @@ namespace OyuLib.Documents.Sources.Analysis
         public string[] GetCodeParts()
         {
             return this._coFac.GetCodeParts();
+        }     
+
+        #endregion
+
+        #region Override
+
+        public override string ToString()
+        {
+            return this.GetCodeText();
         }
 
-        public string GetCodePartsOverWriteValues()
+        #endregion
+
+        #region Virtual
+
+        public virtual string GetCodePartsOverWriteValues()
         {
             StringRange[] codeRanges = this.GetCodeRanges();
             StringBuilder strBr = new StringBuilder();
 
             if (this.IsChangeComment)
             {
-                return "'" + this.CommentString + this.GetCodeString();
+                return this.CommentString + this.GetCodeString() + "★このコードは置換ツールによってコメント化されました。";
             }
             else if (this.IsAllOverWriteString)
             {
@@ -167,10 +183,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 if (GetParamaterOverWriteValues(index, ref strBr))
                 {
-                     strBr.Append(range.SpilitSeparatorEnd);
-                     continue;
+                    strBr.Append(range.SpilitSeparatorEnd);
+                    continue;
                 }
-                
+
 
                 if (this.OverwriteValues.ContainsKey(index))
                 {
@@ -186,21 +202,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
             return strBr.ToString();
         }
-
-        
-
-        #endregion
-
-        #region Override
-
-        public override string ToString()
-        {
-            return this.GetCodeText();
-        }
-
-        #endregion
-
-        #region Virtual
 
         protected internal virtual StringRange[] GetCodeRanges()
         {

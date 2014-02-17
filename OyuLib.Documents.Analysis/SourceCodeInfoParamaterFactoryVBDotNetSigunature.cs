@@ -5,12 +5,12 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoParamaterFactoryVBDotNetMethod :
+    public class SourceCodeInfoParamaterFactoryVBDotNetSigunature :
         SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamater, SourceCodePartsFactoryCommat>
     {
         #region Constructor
 
-        public SourceCodeInfoParamaterFactoryVBDotNetMethod(            
+        public SourceCodeInfoParamaterFactoryVBDotNetSigunature(            
             int parentIndex,
             SourceCodePartsFactoryCommat paramfactory,
             StringRange range)

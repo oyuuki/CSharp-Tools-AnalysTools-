@@ -76,9 +76,9 @@
     <Compile Include="SourceCodeInfoOptionParameters.cs" />
     <Compile Include="SourceCodeInfoOther.cs" />
     <Compile Include="SourceCodeInfoParamater.cs" />
-    <Compile Include="SourceCodeInfoParamaterFactoryIf.cs" />
-    <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetCallMethod.cs" />
-    <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetMethod.cs" />
+    <Compile Include="SourceCodeInfoParamaterFactoryMultiple.cs" />
+    <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetSimple.cs" />
+    <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetSigunature.cs" />
     <Compile Include="SourceCodeInfoParamaterValue.cs" />
     <Compile Include="SourceCodeInfoParamaterValueCallMethod.cs" />
     <Compile Include="SourceCodeInfoParamaterValueMethod.cs" />
@@ -90,10 +90,12 @@
     <Compile Include="SourceCodePartsFactoryCommatIncludeParamater.cs" />
     <Compile Include="SourceCodePartsFactoryNoComment.cs" />
     <Compile Include="SourceCodePartsFactorySomeParamater.cs" />
+    <Compile Include="SourceCodePartsFactorySubstitution.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetEventMethod.cs" />
     <Compile Include="SourceCodePartsFactoryParamater.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetFor.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetIf.cs" />
-    <Compile Include="SourceCodePartsFactoryVBDotNetIfValue.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetFomula.cs" />
     <Compile Include="SourceCodeTemplateFactory.cs" />
   </ItemGroup>
   <ItemGroup>

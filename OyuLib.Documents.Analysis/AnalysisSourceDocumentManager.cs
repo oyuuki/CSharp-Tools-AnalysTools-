@@ -583,24 +583,37 @@ namespace OyuLib.Documents.Sources.Analysis
             }
         }
 
-        protected void AddCodeFromHead(SourceCodeInfoOther[] codeInfos, object[] codeObjects)
+        protected object[] GetAddedCodeInfo(SourceCodeInfoOther[] codeInfos, object[] codeObjects, int startAddIndex)
         {
-            int index = 0;
+            if(startAddIndex < 0)
+            {
+                throw new ArgumentException("無効な引数が渡されました。開始Indexがマイナス値です。");
+            }
+
             var replaceCodeObject = new List<object>();
+
+            for (int index = 0; index <= startAddIndex - 1; index++)
+            {
+                replaceCodeObject.Add(codeObjects[index]);
+            }
 
             foreach (var codeInfo in codeInfos)
             {
                 replaceCodeObject.Add(codeInfo);
             }
 
-            foreach (var codeobject in codeObjects)
+            for (int index = startAddIndex; index < codeObjects.Length; index++)
             {
-                replaceCodeObject.Add(codeobject);
+                replaceCodeObject.Add(codeObjects[index]);
             }
 
-            codeObjects = replaceCodeObject.ToArray();
+            return replaceCodeObject.ToArray();
         }
 
+        protected object[] GetAddedCodeInnerBlock(SourceCodeInfoOther[] codeInfos, object[] codeObjects)
+        {
+            return this.GetAddedCodeInfo(codeInfos, codeObjects, 1);
+        }
 
         public void AddValiableMemberCode(SourceCodeInfoOther[] codeInfos)
         {
@@ -638,18 +651,20 @@ namespace OyuLib.Documents.Sources.Analysis
             object[] codeObjects = null;
             var replaceCodeObject = new List<object>();
 
+            SourceCodeblockInfo blockObj = null;
+
             foreach(var block in  this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginEventMethod>())
             {
                 var blockBeginInfo = (SourceCodeInfoBlockBeginEventMethod)block.GetSourceCodeInfoBlockBegin();
 
                 if(blockBeginInfo.EventName.Equals(eventName))
                 {
-                    codeObjects = block.CodeObjects;
+                    blockObj = block;
                     break;
                 }   
             }
 
-            this.AddCodeFromHead(codeInfos, codeObjects);
+            blockObj.CodeObjects = this.GetAddedCodeInnerBlock(codeInfos, blockObj.CodeObjects);
         }
         
 

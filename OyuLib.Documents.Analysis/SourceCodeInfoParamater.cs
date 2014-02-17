@@ -189,10 +189,6 @@ namespace OyuLib.Documents.Sources.Analysis
                     strBu.Append(value.GetCodePartsOverWriteValues());
                     strBu.Append(range.SpilitSeparatorEnd);
                 }
-                else
-                {
-                    int a = 1;
-                }
             }
 
             return strBu.ToString();

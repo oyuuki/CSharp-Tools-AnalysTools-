@@ -142,7 +142,20 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public void AddCodeInfoImports(SourceCodeInfoOther[] codeInfos)
         {
-            this.AddCodeFromHead(codeInfos, this.CodeObjects);
+            int startIndex = 0;
+
+            for (int index = 0; index < this.CodeObjects.Length; index++)
+            {
+                var codeObj = this.CodeObjects[index];
+
+                if (codeObj is SourceCodeInfo && ((SourceCodeInfo)codeObj).GetCodeString().Trim().StartsWith("Option"))
+                {
+                    startIndex = index + 1;
+                }
+            }
+
+
+            this.CodeObjects = this.GetAddedCodeInfo(codeInfos, this.CodeObjects, startIndex);
         }
 
         #endregion

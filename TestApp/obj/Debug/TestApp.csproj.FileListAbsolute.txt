@@ -18,11 +18,6 @@ C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\Test
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Form1.resources
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Properties.Resources.resources
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.csproj.GenerateResource.Cache
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.csprojResolveAssemblyReference.cache
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Form1.resources
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Form2.resources
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Properties.Resources.resources
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\TestApp.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\TestApp.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.dll
@@ -37,5 +32,10 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuL
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.IO.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.Windows.Forms.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Form1.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Form2.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.Properties.Resources.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\TestApp\obj\Debug\TestApp.pdb

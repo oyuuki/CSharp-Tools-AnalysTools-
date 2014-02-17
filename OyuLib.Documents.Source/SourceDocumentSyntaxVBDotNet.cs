@@ -53,6 +53,8 @@ namespace OyuLib.Documents.Sources
 
         public const string CONST_FOR = "For";
 
+        public const string CONST_FOR_TO = "To";
+
         public const string CONST_WHILE = "While";
 
         public const string CONST_DO = "Do";

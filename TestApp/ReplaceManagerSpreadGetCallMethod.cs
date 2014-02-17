@@ -13,8 +13,10 @@ namespace TestApp
         public ReplaceManagerSpreadGetCallMethod(
             string rowString, 
             string colString,
+            string comment,
+            string commentSeparator,
             SourceCodeInfoCallMethod value)
-            : base(rowString, colString, value)
+            : base(rowString, colString, comment, commentSeparator, value)
         {
             
         }
@@ -48,7 +50,7 @@ namespace TestApp
 
             if (this.IsExistReplaceItem(codeInfo.CallmethodName))
             {
-                codeInfo.AllOverWriteString = this.GetMethodCode(this.GetReplaceItem(this.SourceCodeInfo.CallmethodName).ReplaceString);
+                codeInfo.SetAllOverWriteString(this.GetMethodCode(this.GetReplaceItem(this.SourceCodeInfo.CallmethodName).ReplaceString), this.CommentSeparator, this.Comment);
             }
         }   
     }

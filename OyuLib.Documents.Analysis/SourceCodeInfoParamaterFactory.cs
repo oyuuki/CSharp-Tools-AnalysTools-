@@ -122,7 +122,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
             var retList = new List<SourceCodeInfo>();
 
-
             // Exist Paramater
             if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]) && !paramaterStrings[0].StartsWith("("))
             {

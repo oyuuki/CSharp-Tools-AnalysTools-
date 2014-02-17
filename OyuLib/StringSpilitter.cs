@@ -311,6 +311,25 @@ namespace OyuLib
                 //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 
+            if (_targetString.IndexOf("plStrSQL = plStrSQL & \"" + "WHERE \"" + " & " + "\"" + "((mstTokuiSaki.[区分] <> 0 AND mstTokuiSaki.[グループ] <> 0)") >= 0)
+            {
+                var stra = string.Empty;
+
+                foreach (var a in retlist)
+                {
+
+                    if (a.IndexEnd < 0 || a.IndexStart < 0)
+                    {
+                        stra += "   !!!!!マイナス";
+                    }
+
+                    stra += a.GetStringSpilited();
+                    stra += "\n";
+                }
+
+                stra = stra;
+            }
+
             return retlist.ToArray();
         }
 

@@ -20,12 +20,14 @@ namespace TestApp
             retList.Add(new ReplaceItem(".MaxCols", ".ActiveSheet.ColumnCount"));
             retList.Add(new ReplaceItem(".Value", ".ActiveSheet.Cell(" + replaceRowString + "," + replaceColString + ").Value"));
             retList.Add(new ReplaceItem(".ActiveRow", ".ActiveSheet.ActiveRowIndex"));
-            retList.Add(new ReplaceItem(".ColHidden", ".ActiveSheet.Columns(" + replaceColString + " - 1).Visible"));
+            retList.Add(new ReplaceItem(".ColHidden", ".ActiveSheet.Columns(" + replaceColString + ").Visible"));
             retList.Add(new ReplaceItem(".SelBlockRow", ".ActiveSheet.GetSelection(0).Row"));
-            retList.Add(new ReplaceItem(".SelBlockRow2", ".ActiveSheet.GetSelection(0).Row + .ActiveSheet.GetSelection(0).RowCount - 1"));
+            retList.Add(new ReplaceItem(".SelBlockRow2", ".ActiveSheet.GetSelection(0).Row + .ActiveSheet.GetSelection(0).RowCount"));
             retList.Add(new ReplaceItem(".BackColor", ".ActiveSheet.Cells(" + rowString + "," + colString + ", eventArgs.Column).BackColor"));
-            retList.Add(new ReplaceItem(".ForeColor", ".ActiveSheet.Cells(1, 1).ForeColor"));
-            
+            retList.Add(new ReplaceItem(".ForeColor", ".ActiveSheet.Cells(" + rowString + "," + colString + ").ForeColor"));
+            //retList.Add(new ReplaceItem(".set_ColWidth", ".ActiveSheet..SetColumnWidth(" + colString + ", .ActiveSheet.Columns(" + colString +").GetPreferredWidth())""));
+            retList.Add(new ReplaceItem(".Formula", ".ActiveSheet.Cells(" + rowString + ", " + colString + ").Formula"));
+            retList.Add(new ReplaceItem(".Lock", ".ActiveSheet.Cells(" + rowString + ", " + colString + ").Locked"));
 
             return retList.ToArray();
         }

@@ -13,13 +13,22 @@ namespace TestApp
 
         private T _sourceCodeInfo = null;
 
+        private string _comment = null;
+
+        private string _commentSeparator = null;
+
         #endregion
 
         #region Constructor
 
-        public ReplaceManager(T sourceCodeInfo)
+        public ReplaceManager(
+            T sourceCodeInfo, 
+            string comment, 
+            string commentSeparator)
         {
             this._sourceCodeInfo = sourceCodeInfo;
+            this._commentSeparator = commentSeparator;
+            this._comment = comment;
         }
 
         #endregion
@@ -29,6 +38,16 @@ namespace TestApp
         public T SourceCodeInfo
         {
             get { return this._sourceCodeInfo; }
+        }
+
+        public string Comment
+        {
+            get { return this._comment; }
+        }
+
+        public string CommentSeparator
+        {
+            get { return this._commentSeparator; }
         }
 
         #endregion

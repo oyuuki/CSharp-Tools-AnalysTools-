@@ -5,12 +5,12 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoParamaterFactoryIf :
-        SourceCodeInfoParamaterFactory<SourceCodeInfo, SourceCodeInfoParamater, SourceCodePartsFactoryVBDotNetIfValue>
+    public class SourceCodeInfoParamaterFactoryVBDotNetSimple :
+        SourceCodeInfoParamaterFactory<SourceCodeInfo, SourceCodeInfoParamater, SourceCodePartsFactoryCommatIncludeParamater>
     {
         #region Constructor
 
-        public SourceCodeInfoParamaterFactoryIf(
+        public SourceCodeInfoParamaterFactoryVBDotNetSimple(
             int parentIndex,
             StringRange range)
             : base(parentIndex, range)
@@ -25,18 +25,18 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Override
 
         protected override SourceCodeInfo[] GetSourceCodeInfoParamaterValueLogic(
-            SourceCode sourceCode,
+            SourceCode sourceCode, 
             SourceCodePartsfactory fac,
             StringRange rangeParam,
             int groupCount,
             int hierarchyCount)
         {
             return this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
-                 sourceCode,
-                 fac,
-                 rangeParam,
-                 groupCount,
-                 hierarchyCount);
+                sourceCode, 
+                fac, 
+                rangeParam, 
+                groupCount,
+                hierarchyCount);
         }
 
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(
@@ -50,9 +50,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return new SourceCodeInfoParamater(values);
         }
 
-        protected override SourceCodePartsFactoryVBDotNetIfValue GetFactory(string paramaterString)
+        protected override SourceCodePartsFactoryCommatIncludeParamater GetFactory(string paramaterString)
         {
-            return new SourceCodePartsFactoryVBDotNetIfValue(new SourceCode(paramaterString));
+            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString), new string[] { ",", " & ", " + ", " * ", " - ", " / ", " = ", " <> ", " < ", " > ", " >= ", " <= " });
         }
 
         #endregion

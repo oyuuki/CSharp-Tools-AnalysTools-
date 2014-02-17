@@ -15,6 +15,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private readonly int _eventName = -1;
 
+        private bool _isDeleteHandles = false;
+
         #endregion
 
         #region Constructor
@@ -63,6 +65,13 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this.SetOverwriteValue(this._eventName, value); }
         }
 
+        public bool IsDeleteHandles
+        {
+            get { return this._isDeleteHandles; }
+            set { this._isDeleteHandles = value; }
+        }
+
+
         #endregion
 
         #region Method
@@ -84,6 +93,18 @@ namespace OyuLib.Documents.Sources.Analysis
                     new NestIndex(this._eventObjectName),
                     new NestIndex(this._eventName)
                 });
+        }
+
+        public override string GetCodePartsOverWriteValues()
+        {
+            string code =  base.GetCodePartsOverWriteValues();
+
+            if(this.IsDeleteHandles)
+            {
+                code = code.Substring(0, code.IndexOf("Handles")); 
+            }
+
+            return code;
         }
 
         #endregion

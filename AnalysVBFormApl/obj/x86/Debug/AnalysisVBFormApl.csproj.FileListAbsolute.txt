@@ -26,11 +26,6 @@ C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x8
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.csproj.GenerateResource.Cache
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.exe
 C:\Users\yuuki\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.pdb
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.csprojResolveAssemblyReference.cache
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Form1.resources
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Form2.resources
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Properties.Resources.resources
-C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\AnalysisVBFormApl.exe.config
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\AnalysisVBFormApl.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\AnalysisVBFormApl.pdb
@@ -52,5 +47,10 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\De
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Windows.Forms.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Xml.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Form1.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Form2.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Properties.Resources.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.pdb

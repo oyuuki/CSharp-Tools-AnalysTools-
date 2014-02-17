@@ -12,9 +12,11 @@ namespace TestApp
 
         public ReplaceManagerSpreadSubstitution(
             string rowString, 
-            string colString, 
+            string colString,
+            string comment,
+            string commentSeparator,
             SourceCodeInfoSubstitution value)
-            : base(rowString, colString, value)
+            : base(rowString, colString, comment, commentSeparator, value)
         {
             
         }
@@ -32,12 +34,12 @@ namespace TestApp
 
             if (subCodeInfo.LeftHandSide.Equals(".Row"))
             {
-                this.RowString = subCodeInfo.RightHandSide + " -1";
+                this.RowString = subCodeInfo.RightHandSide;
                 subCodeInfo.CommentString = "' 置換ツールによりコメント化";
             }
             else if (subCodeInfo.LeftHandSide.Equals(".Col"))
             {
-                this.ColString = subCodeInfo.RightHandSide + " -1";
+                this.ColString = subCodeInfo.RightHandSide;
                 subCodeInfo.CommentString = "' 置換ツールによりコメント化";
             }
             else if (subCodeInfo.RightHandSide.Equals(".Row"))
@@ -50,7 +52,12 @@ namespace TestApp
             }
             else if (subCodeInfo.LeftHandSide.Equals(".Action"))
             {
-                new ReplaceManagerSpreadActionSubstitution(this.RowString, this.ColString, this.SourceCodeInfo).Replace();
+                new ReplaceManagerSpreadActionSubstitution(
+                    this.RowString, 
+                    this.ColString,
+                    "置換ツールにより置換",
+                    "'",
+                    this.SourceCodeInfo).Replace();
             }
             else if (subCodeInfo.LeftHandSide.Equals(".ReDraw"))
             {
@@ -65,11 +72,14 @@ namespace TestApp
                     redrowMethodName = ".SuspendLayout()";
                 }
 
-                subCodeInfo.AllOverWriteString = redrowMethodName;
+                subCodeInfo.SetAllOverWriteString(
+                    redrowMethodName, 
+                    "'", 
+                    "置換ツールにより置換");
             }
             else if (subCodeInfo.LeftHandSide.Equals(".Text"))
             {
-                subCodeInfo.AllOverWriteString = ".ActiveSheet.SetText(" + this.RowString + ", " + this.ColString + ", " + subCodeInfo.RightHandSide + ")";
+                subCodeInfo.SetAllOverWriteString(".ActiveSheet.SetText(" + this.RowString + ", " + this.ColString + ", " + subCodeInfo.RightHandSide + ")", "'", "置換ツールにより置換");
             }
             else
             {

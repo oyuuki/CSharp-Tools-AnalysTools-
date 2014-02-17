@@ -13,8 +13,10 @@ namespace TestApp
         public ReplaceManagerSpreadSetCallMethod(
             string rowString, 
             string colString,
+            string comment,
+            string commentSeparator,
             SourceCodeInfoCallMethod value)
-            : base(rowString, colString, value)
+            : base(rowString, colString, comment, commentSeparator, value)
         {
             
         }

@@ -15,11 +15,6 @@ namespace OyuLib.Documents.Sources.Analysis
             int paramaterIndex = 0;
             var paramaterString = string.Empty;
 
-            if (code.CodeString.Trim().StartsWith("."))
-            {
-                int a1 = 1;
-            }
-
             var coFac = new SourceCodePartsFactorySomeParamater(code, new string[] { ".", "," });
             var a = coFac.GetCodeParts();
 
@@ -50,7 +45,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
 
             var parameter =
-                        new SourceCodeInfoParamaterFactoryVBDotNetCallMethod(
+                        new SourceCodeInfoParamaterFactoryVBDotNetSimple(
                             0,
                             range)
                             .GetSourceCodeInfoParamater();

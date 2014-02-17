@@ -196,7 +196,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 get
                 {
                     return
-                        new SourceCodeInfoParamaterFactoryVBDotNetMethod(
+                        new SourceCodeInfoParamaterFactoryVBDotNetSigunature(
                             0,
                             new SourceCodePartsFactoryCommat(new SourceCode(_paramaters), ", "),
                             Range)
@@ -747,12 +747,29 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override SourceCodeInfoSubstitution GetCodeInfoSubstitution(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
-            int equals = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_EQUALS);
+
+            int equals = 1;
             int rightHandSide = equals + 1;
             int leftHandSide = equals - 1;
 
-            return new SourceCodeInfoSubstitution(code, coFac, rightHandSide, leftHandSide); 
+            SourceCodePartsFactorySubstitution coFac = new SourceCodePartsFactorySubstitution(code);
+            var range = coFac.GetCodePartsRanges()[rightHandSide];
+
+            if (code.CodeString.IndexOf("plStrSQL = plStrSQL & \"" + "WHERE \"" + " & " + "\"" + "((mstTokuiSaki.[区分] <> 0 AND mstTokuiSaki.[グループ] <> 0)") >= 0)
+            {
+                string a = range.GetStringSpilited();
+                int aa = 1;
+            }
+
+
+            var parameter =
+                        new SourceCodeInfoParamaterFactoryMultiple(
+                            0,
+                            range)
+                            .GetSourceCodeInfoParamater();
+
+            
+            return new SourceCodeInfoSubstitution(code, coFac, rightHandSide, leftHandSide, parameter); 
         }
 
         #endregion
@@ -772,7 +789,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var range = coFac.GetCodePartsRanges()[segmentsValue];
 
             var parameter =
-                        new SourceCodeInfoParamaterFactoryIf(
+                        new SourceCodeInfoParamaterFactoryMultiple(
                             0,
                             range)
                             .GetSourceCodeInfoParamater();
@@ -840,10 +857,20 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, this.GetSourceRule().GetCodesSeparatorString());
+            SourceCodePartsFactoryVBDotNetFor coFac = new SourceCodePartsFactoryVBDotNetFor(code);
 
-            int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginFor());
-            return new SourceCodeInfoBlockBeginFor(code, coFac, segments, segments + 1);
+            int segments = 0;
+            int evaluationFormula = 0;
+
+            var range = coFac.GetCodePartsRanges()[evaluationFormula];
+
+            var parameter =
+                        new SourceCodeInfoParamaterFactoryMultiple(
+                            0,
+                            range)
+                            .GetSourceCodeInfoParamater();
+
+            return new SourceCodeInfoBlockBeginFor(code, coFac, segments, segments + 1, evaluationFormula, parameter);
         }
 
         protected override bool CheckCodeInfoBlockBeginFor(SourceCode code)

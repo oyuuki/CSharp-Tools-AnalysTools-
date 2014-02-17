@@ -21,8 +21,10 @@ namespace TestApp
         public ReplaceManagerSpread(
             string rowString, 
             string colString, 
+            string comment, 
+            string commentSeparator,
             T value)
-            : base(value)
+            : base(value, comment, commentSeparator)
         {
             this._rowString = rowString;
             this._colString = colString;
