@@ -779,6 +779,11 @@ namespace OyuLib.Documents.Sources.Analysis
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
 
+            if (code.CodeString.IndexOf("Exchange_SupplyStatus") >= 0)
+            {
+                int a = 1;
+            }
+
             var coFac = new SourceCodePartsFactoryVBDotNetIf(code);
 
             int segments = coFac.GetIndexCodeParts(rule.GetControlCodeBeginIf());

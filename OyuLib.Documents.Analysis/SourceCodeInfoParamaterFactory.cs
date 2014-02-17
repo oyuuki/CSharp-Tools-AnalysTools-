@@ -50,21 +50,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-        public TParamater GetSourceCodeInfoParamater(SourceCodePartsfactory factory, int hierarchyCount, StringRange range)
-        {
-            var retList = new List<TParamaterValue>();
-            
-            var codeparts = factory.GetCodeParts();
-            var codeRanges = factory.GetCodePartsRanges();
-
-            for (int index = 0; index < codeparts.Length; index++)
-            {
-                retList.AddRange(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
-            }
-
-            return this.GetSourceCodeInfoParamater(retList.ToArray());
-        }
-
         public TParamater GetSourceCodeInfoParamater()
         {
             return GetSourceCodeInfoParamater(this.GetFactory(this.Range.GetStringSpilited()), 1, this.Range);
@@ -134,6 +119,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
                     var paramIndex = sourceCodeString.IndexOf(paramKakko, startIndex);
                     var endIndex = paramIndex + paramKakko.Length;
+
                     var paramSourceCode =
                         new SourceCode(sourceCodeString.Substring(startIndex, endIndex - startIndex));
                     var range = new StringRange(startIndex, endIndex, "", "", sourceCodeString);
@@ -169,7 +155,24 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #endregion
 
+        #region Virtual
 
+        public virtual TParamater GetSourceCodeInfoParamater(SourceCodePartsfactory factory, int hierarchyCount, StringRange range)
+        {
+            var retList = new List<TParamaterValue>();
+
+            var codeparts = factory.GetCodeParts();
+            var codeRanges = factory.GetCodePartsRanges();
+
+            for (int index = 0; index < codeparts.Length; index++)
+            {
+                retList.AddRange(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
+            }
+
+            return this.GetSourceCodeInfoParamater(retList.ToArray());
+        }
+
+        #endregion
 
         #region Abstract
 

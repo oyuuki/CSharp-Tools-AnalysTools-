@@ -31,6 +31,7 @@ namespace OyuLib.Documents.Sources.Analysis
             int groupCount,
             int hierarchyCount)
         {
+
             return this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
                 sourceCode, 
                 fac, 

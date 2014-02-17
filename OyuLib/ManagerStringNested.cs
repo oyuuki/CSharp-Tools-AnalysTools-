@@ -98,26 +98,6 @@ namespace OyuLib
 
             }
 
-            if (str.IndexOf("plStrSQL = plStrSQL & \"" + "WHERE \"" + " & " + "\"" + "((mstTokuiSaki.[区分] <> 0 AND mstTokuiSaki.[グループ] <> 0)") >= 0)
-            {
-                var stra = string.Empty;
-
-                foreach(var a in retlist)
-                {
-                    
-                    if(a.IndexEnd < 0 || a.IndexStart < 0)
-                    {
-                        stra += "   !!!!!マイナス";
-                    }
-
-                    stra += a.GetStringSpilited();
-
-                    stra += "\n";
-                }
-
-                stra = stra;
-            }
-
             return retlist.ToArray();   
         }
 
@@ -150,7 +130,6 @@ namespace OyuLib
 
             for (; index < str.Length; index++)
             {
-                
                 if (ranges != null &&
                     ranges.Length > rangesIndex &&
                     ranges[rangesIndex].IndexEnd < index)
@@ -191,6 +170,7 @@ namespace OyuLib
                     retlist[retlist.Count - 1].SpilitSeparatorEnd = this.NestEndtString;
                 }
             }
+
 
             return retlist.ToArray();
         }

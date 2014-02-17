@@ -453,6 +453,12 @@ namespace OyuLib
         /// <returns></returns>
         public StringRange[] GetStringRangeSpilitIgnoreNestedStringAndSeparator(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested ignoreNestedStrings)
         {
+            if (TargetString.IndexOf("nNull(plVrtLineNumber)") >= 0)
+            {
+                var a = this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, ignoreNestedStrings), ignoreNestedStrings.GetStringRangeArray(this.TargetString)); ;
+            }
+            
+
             return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, ignoreNestedStrings), ignoreNestedStrings.GetStringRangeArray(this.TargetString));
         }
 
