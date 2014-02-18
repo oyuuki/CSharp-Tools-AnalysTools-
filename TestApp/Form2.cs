@@ -166,14 +166,24 @@ namespace TestApp
                 string colString = string.Empty;
                 string rowString = string.Empty;
 
-                var a = manaBus.GetCodeInfosRoundWithBlock(name);
+                // スプレッドが関連している
+                foreach(var value in manaBus.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName(name))
+                {
+                    this.ReplaceSpreadEventMethod(value);
+                }
 
                 // スプレッド変数名のWithステートメントブロックを抽出する
                 foreach (var value in manaBus.GetCodeInfosRoundWithBlock(name))
                 {
-                    this.SetSpreadRowCol(value, ref rowString, ref colString);                    
+                    this.ReplaceSpreadCodeInfo(value, ref rowString, ref colString);                    
                 }
             }
+        }
+
+        private void ReplaceSpreadEventMethod(
+            SourceCodeInfoBlockBeginEventMethod codeinfo)
+        {
+            new ReplaceManagerSpreadEventMethod(codeinfo, "★[]★置換ツールにより置換", "'");
         }
 
         private void ExecuteReplaceControlArray(
@@ -296,30 +306,38 @@ namespace TestApp
             }
         }
 
-        private void SetSpreadRowCol(SourceCodeInfo codeInfo, ref string rowString, ref string colString)
+        private void ReplaceSpreadCodeInfo(SourceCodeInfo codeInfo, ref string rowString, ref string colString)
         {
+            // 代入式のリプレイス
             if (codeInfo is SourceCodeInfoSubstitution)
             {
                 var replaceManager = new ReplaceManagerSpreadSubstitution(
                     rowString, 
                     colString,
-                    "置換ツールにより置換",
+                    "★[]★置換ツールにより置換",
                     "'",
                     (SourceCodeInfoSubstitution) codeInfo);
 
                 replaceManager.Replace();
+                new ReplaceManagerHaveParamaterValueSpread(rowString, colString, (IParamater)codeInfo).Replace();
 
                 rowString = replaceManager.RowString;
                 colString = replaceManager.ColString;
             }
+            // メソッド呼び出しのリプレイス
             else if (codeInfo is SourceCodeInfoCallMethod)
             {
                 new ReplaceManagerSpreadCallMethod(
                     rowString, 
                     colString,
-                    "置換ツールにより置換",
+                    "★[]★置換ツールにより置換",
                     "'",
                     (SourceCodeInfoCallMethod) codeInfo).Replace();
+            }
+            // 上記以外のIparamaterを実装するクラス
+            else if (codeInfo is IParamater)
+            {
+                new ReplaceManagerHaveParamaterValueSpread(rowString, colString, (IParamater)codeInfo).Replace();
             }
         }
     }

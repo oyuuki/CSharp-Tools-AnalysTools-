@@ -69,6 +69,7 @@
     <Compile Include="ReplaceManagerSpread.cs" />
     <Compile Include="ReplaceManagerSpreadActionSubstitution.cs" />
     <Compile Include="ReplaceManagerSpreadCallMethod.cs" />
+    <Compile Include="ReplaceManagerSpreadEventMethod.cs" />
     <Compile Include="ReplaceManagerSpreadGetCallMethod.cs" />
     <Compile Include="ReplaceManagerSpreadSetCallMethod.cs" />
     <Compile Include="ReplaceManagerSpreadSubstitution.cs" />

@@ -18,7 +18,7 @@ namespace TestApp
             retList.Add(new ReplaceItem(".Cow", replaceColString));
             retList.Add(new ReplaceItem(".MaxRows", ".ActiveSheet.RowCount"));
             retList.Add(new ReplaceItem(".MaxCols", ".ActiveSheet.ColumnCount"));
-            retList.Add(new ReplaceItem(".Value", ".ActiveSheet.Cell(" + replaceRowString + "," + replaceColString + ").Value"));
+            retList.Add(new ReplaceItem(".Value", ".ActiveSheet.Cells(" + replaceRowString + "," + replaceColString + ").Value"));
             retList.Add(new ReplaceItem(".ActiveRow", ".ActiveSheet.ActiveRowIndex"));
             retList.Add(new ReplaceItem(".ColHidden", ".ActiveSheet.Columns(" + replaceColString + ").Visible"));
             retList.Add(new ReplaceItem(".SelBlockRow", ".ActiveSheet.GetSelection(0).Row"));

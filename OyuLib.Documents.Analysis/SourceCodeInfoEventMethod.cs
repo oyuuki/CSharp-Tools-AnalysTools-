@@ -81,7 +81,7 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override string GetCodeText()
         {
             return "イベントメソッド名：" + this.Name + "アクセス修飾子" + this.AccessModifier + "イベント名：" + this.EventName +
-                   "イベント発生オブジェクト名：" + this.EventObjectName + "パラメータ名：" + Paramaters;
+                   "イベント発生オブジェクト名：" + this.EventObjectName + "パラメータ名：" + Paramater;
         }
 
         public override NestIndex[] GetNestIndices()

@@ -31,6 +31,7 @@ namespace TestApp
             retList.Add(new ReplaceItem("SetActiveCell", "ActiveSheet.SetActiveCell"));
             retList.Add(new ReplaceItem("set_ColWidth", "ActiveSheet.SetColumnWidth"));
             retList.Add(new ReplaceItem("DeleteRows", "ActiveSheet.RemoveRows"));
+            retList.Add(new ReplaceItem("Note", "ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").Note"));
 
             return retList.ToArray();
         }
@@ -44,13 +45,13 @@ namespace TestApp
             new ReplaceManagerSpreadGetCallMethod(
                 this.RowString, 
                 this.ColString,
-                "置換ツールにより置換",
+                "★[]★置換ツールにより置換",
                 "'",
                 subCodeInfo).Replace();
             new ReplaceManagerSpreadSetCallMethod(
                 this.RowString,
                 this.ColString,
-                "置換ツールにより置換",
+                "★[]★置換ツールにより置換",
                 "'",
                 subCodeInfo).Replace();
 

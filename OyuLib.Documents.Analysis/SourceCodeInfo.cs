@@ -98,6 +98,11 @@ namespace OyuLib.Documents.Sources.Analysis
                 return string.Empty;
             }
 
+            if(this.OverwriteValues.ContainsKey(index))
+            {
+                return (string)this.OverwriteValues[index];
+            }
+
             return this._coFac.GetCodeParts()[index];
         }
 

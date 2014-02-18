@@ -27,7 +27,7 @@ namespace TestApp
         {
             var retList = new List<ReplaceItem>();
 
-            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionActiveCell", ".ActiveSheet.SetActiveCell(" + this.RowString + ", " + this.RowString + ")"));
+            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionActiveCell", ".ActiveSheet.SetActiveCell(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ")"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionSetCellBorder", ""));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionInsertRow", ".ActiveSheet.ActiveRow.Add()"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionDeleteRow", ".ActiveSheet.ActiveRow.Remove()"));

@@ -44,18 +44,18 @@ namespace TestApp
             }
             else if (subCodeInfo.RightHandSide.Equals(".Row"))
             {
-                subCodeInfo.RightHandSide = this.RowString;
+              //  subCodeInfo.RightHandSide = this.RowString;
             }
             else if (subCodeInfo.RightHandSide.Equals(".Col"))
             {
-                subCodeInfo.RightHandSide = this.ColString;
+              //  subCodeInfo.RightHandSide = this.ColString;
             }
             else if (subCodeInfo.LeftHandSide.Equals(".Action"))
             {
                 new ReplaceManagerSpreadActionSubstitution(
                     this.RowString, 
                     this.ColString,
-                    "置換ツールにより置換",
+                    "★[]★置換ツールにより置換",
                     "'",
                     this.SourceCodeInfo).Replace();
             }
@@ -75,11 +75,11 @@ namespace TestApp
                 subCodeInfo.SetAllOverWriteString(
                     redrowMethodName, 
                     "'", 
-                    "置換ツールにより置換");
+                    "★[]★置換ツールにより置換");
             }
             else if (subCodeInfo.LeftHandSide.Equals(".Text"))
             {
-                subCodeInfo.SetAllOverWriteString(".ActiveSheet.SetText(" + this.RowString + ", " + this.ColString + ", " + subCodeInfo.RightHandSide + ")", "'", "置換ツールにより置換");
+                subCodeInfo.SetAllOverWriteString(".ActiveSheet.SetText(" + this.RowString + " - 1" + ", " + this.ColString + " - 1" + ", " + subCodeInfo.RightHandSide + ")", "'", "★[]★置換ツールにより置換");
             }
             else
             {
@@ -103,8 +103,8 @@ namespace TestApp
             }
             else if (codeinfo.RightHandSide.Equals(replaceItem.TargetString))
             {
-                codeinfo.RightHandSide = replaceItem.ReplaceString;
-                return true;
+               // codeinfo.RightHandSide = replaceItem.ReplaceString;
+               // return true;
             }
 
             return false;

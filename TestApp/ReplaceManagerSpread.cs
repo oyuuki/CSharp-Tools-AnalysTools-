@@ -34,6 +34,16 @@ namespace TestApp
 
         #region Property
 
+        public string RowStringMinusOne
+        {
+            get { return this._rowString + " - 1"; }
+        }
+
+        public string ColStringMinusOne
+        {
+            get { return this._colString + " - 1"; }
+        }
+
         public string RowString
         {
             get { return this._rowString; }

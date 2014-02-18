@@ -8,7 +8,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoBlockBeginMethod : SourceCodeInfoBlockBegin
+    public class SourceCodeInfoBlockBeginMethod : SourceCodeInfoBlockBegin, IParamater
     {
         #region instanceVal
 
@@ -79,8 +79,18 @@ namespace OyuLib.Documents.Sources.Analysis
             set { this.SetOverwriteValue(this._returnTypeName, value); }
         }
 
+        public StringRange Range
+        {
+            get { return null; }
+            set { return; }
+        }
 
-        protected SourceCodeInfoParamater Paramaters
+        public SourceCodeInfoParamater GetSourceCodeInfoParamater()
+        {
+            return this.Paramater;
+        }
+
+        protected SourceCodeInfoParamater Paramater
         {
             get { return this._sourceCodeInfoParamaterValueMethod; }
         }
@@ -101,7 +111,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return "メソッド名：" + this.Name + 
                 "アクセス修飾子" + this.AccessModifier + 
                 "戻り値型名：" + this.ReturnTypeName + 
-                " パラメータ：" + Paramaters;
+                " パラメータ：" + Paramater;
         }
 
         public override Type GetCodeInfoBlockEndType()
@@ -113,7 +123,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var stringRange = base.GetCodeRanges();
 
-            stringRange[this._paramater].Childs = this.Paramaters.GetStringRange();
+            stringRange[this._paramater].Childs = this.Paramater.GetStringRange();
 
             return stringRange;
         }
@@ -128,7 +138,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             var paramNestIndex = new NestIndex(this._paramater);
 
-            paramNestIndex.Childs = this.Paramaters.GetNestIndex();
+            paramNestIndex.Childs = this.Paramater.GetNestIndex();
 
             retList.Add(paramNestIndex);
 

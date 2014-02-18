@@ -11,7 +11,7 @@ namespace TestApp
 
         private string _targetString = string.Empty;
 
-        private string _replaceString = string.Empty;
+        private string[] _replaceStrings = null;
 
         #endregion
 
@@ -20,7 +20,13 @@ namespace TestApp
         public ReplaceItem(string targetString, string replaceString)
         {
             this._targetString = targetString;
-            this._replaceString = replaceString;
+            this._replaceStrings = new string[] { replaceString };
+        }
+
+        public ReplaceItem(string targetString, string[] replaceStrings)
+        {
+            this._targetString = targetString;
+            this._replaceStrings = replaceStrings;
         }
 
         #endregion
@@ -33,10 +39,16 @@ namespace TestApp
             set { this._targetString = value; }
         }
 
+        public string[] ReplaceStrings
+        {
+            get { return this._replaceStrings; }
+            set { this._replaceStrings = value; }
+        }
+
         public string ReplaceString
         {
-            get { return this._replaceString; }
-            set { this._replaceString = value; }
+            get { return this._replaceStrings[0]; }
+            set { this._replaceStrings[0] = value; }
         }
 
         #endregion
