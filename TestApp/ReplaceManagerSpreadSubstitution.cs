@@ -25,19 +25,21 @@ namespace TestApp
 
         public override ReplaceItem[] GetReplaceItems()
         {
-            return CommonPlaceitemManager.GetSpreadPropertyReplaceItems(this.RowString, this.ColString);
+            return CommonPlaceitemManager.GetSpreadPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne);
         }
 
         public override void Replace()
         {
             var subCodeInfo = this.SourceCodeInfo;
 
-            if (subCodeInfo.LeftHandSide.Equals(".Row"))
+            if (subCodeInfo.LeftHandSide.Equals(".Row")
+                || subCodeInfo.LeftHandSide.Equals(".eventArgs.Row"))
             {
                 this.RowString = subCodeInfo.RightHandSide;
                 subCodeInfo.CommentString = "' 置換ツールによりコメント化";
             }
-            else if (subCodeInfo.LeftHandSide.Equals(".Col"))
+            else if (subCodeInfo.LeftHandSide.Equals(".Col")
+                || subCodeInfo.LeftHandSide.Equals(".eventArgs.Col"))
             {
                 this.ColString = subCodeInfo.RightHandSide;
                 subCodeInfo.CommentString = "' 置換ツールによりコメント化";

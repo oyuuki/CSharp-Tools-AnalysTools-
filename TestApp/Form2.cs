@@ -183,7 +183,7 @@ namespace TestApp
         private void ReplaceSpreadEventMethod(
             SourceCodeInfoBlockBeginEventMethod codeinfo)
         {
-            new ReplaceManagerSpreadEventMethod(codeinfo, "★[]★置換ツールにより置換", "'");
+            new ReplaceManagerSpreadEventMethod(codeinfo, "★[]★置換ツールにより置換", "'").Replace();
         }
 
         private void ExecuteReplaceControlArray(
@@ -311,6 +311,7 @@ namespace TestApp
             // 代入式のリプレイス
             if (codeInfo is SourceCodeInfoSubstitution)
             {
+                new ReplaceManagerHaveParamaterValueSpread(rowString, colString, (IParamater)codeInfo).Replace();
                 var replaceManager = new ReplaceManagerSpreadSubstitution(
                     rowString, 
                     colString,
@@ -319,7 +320,7 @@ namespace TestApp
                     (SourceCodeInfoSubstitution) codeInfo);
 
                 replaceManager.Replace();
-                new ReplaceManagerHaveParamaterValueSpread(rowString, colString, (IParamater)codeInfo).Replace();
+                
 
                 rowString = replaceManager.RowString;
                 colString = replaceManager.ColString;

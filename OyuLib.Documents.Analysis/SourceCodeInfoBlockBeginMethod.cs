@@ -145,6 +145,17 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        public override bool GetParamaterOverWriteValues(int index, ref StringBuilder strBu)
+        {
+            if (index == this._paramater)
+            {
+                strBu.Append(this.GetSourceCodeInfoParamater().GetParamaterOverWriteValues());
+                return true;
+            }
+
+            return false;
+        }
+
         #endregion
 
         #endregion

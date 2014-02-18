@@ -43,6 +43,12 @@ namespace TestApp
             {
                 var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamater();
                 paramater.ChangeParamaterIndex(0, 1);
+
+                var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
+
+                paramaterValues[0].ParamaterName = this.GetAddMinusValue(paramaterValues[0].ParamaterName);
+                paramaterValues[1].ParamaterName = this.GetAddMinusValue(paramaterValues[1].ParamaterName);
+
                 codeInfo.CallmethodName = this.GetReplaceItem(codeInfo.CallmethodName).ReplaceString;
             }
         }

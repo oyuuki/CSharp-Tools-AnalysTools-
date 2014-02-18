@@ -39,10 +39,15 @@ namespace TestApp
         {
             var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue();
 
+            paramaterValues[1].ParamaterName = this.GetAddMinusValue(paramaterValues[1].ParamaterName);
+            paramaterValues[0].ParamaterName = this.GetAddMinusValue(paramaterValues[0].ParamaterName);
+
             return paramaterValues[2].ParamaterName + " = .ActiveSheet." +
-                   replaceMethodName + "(" + paramaterValues[1].ParamaterName + "," +
+                   replaceMethodName + "(" + paramaterValues[1].ParamaterName + ", " +
                    paramaterValues[0].ParamaterName + ")";
         }
+
+        
 
         public override void Replace()
         {

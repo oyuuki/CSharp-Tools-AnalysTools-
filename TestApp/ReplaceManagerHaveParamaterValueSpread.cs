@@ -43,6 +43,16 @@ namespace TestApp
             set { this._colString = value; }
         }
 
+        public string RowStringMinusOne
+        {
+            get { return this._rowString + " - 1"; }
+        }
+
+        public string ColStringMinusOne
+        {
+            get { return this._colString + " - 1"; }
+        }
+
         #endregion
 
         #region Method
@@ -51,7 +61,7 @@ namespace TestApp
 
         public override ReplaceItem[] GetReplaceItems()
         {
-            return CommonPlaceitemManager.GetSpreadPropertyReplaceItems(this.RowString, this.ColString);
+            return CommonPlaceitemManager.GetSpreadPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne);
         }
 
         #endregion

@@ -578,7 +578,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
                 foreach (var codeinfo in this.GetSourceCodeInfo(this.CodeObjects))
                 {
-                    file.WriteLine(codeinfo.GetTabString() +  codeinfo.GetCodePartsOverWriteValues());
+                    string motoCode = string.Empty;
+
+                    if(codeinfo.IsOverWrite())
+                    {
+                        motoCode = "'" + codeinfo.GetCodeString();
+                    }
+
+                    file.WriteLine(codeinfo.GetTabString() +  codeinfo.GetCodePartsOverWriteValues() + motoCode);
                 }
             }
         }

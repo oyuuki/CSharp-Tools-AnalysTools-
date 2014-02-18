@@ -110,6 +110,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
+        public bool IsOverWrite()
+        {
+            return this.OverwriteValues.Keys.Count != 0;
+        }
+
         public void SetAllOverWriteString(string value, string commentSeparator, string comment)
         { 
             this._allOverWriteString = value + commentSeparator + comment; 

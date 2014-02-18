@@ -26,11 +26,12 @@ namespace TestApp
             var retList = new List<ReplaceItem>();
 
             retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_TextTipFetchEvent", new string[] { "FarPoint.Win.Spread.TextTipFetchEventArgs", "TextTipFetch" }));
-            retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_RightClickEvent", new string[] { "MouseEventArgs", "MouseDown" }));
+            retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_RightClickEvent", new string[] { "FarPoint.Win.Spread.CellClickEventArgs", "CellClick" }));
             retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_LeaveCellEvent", new string[] { "FarPoint.Win.Spread.LeaveCellEventArgs", "LeaveCell" }));
             // retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_EditModeEvent", new string[] { "FarPoint.Win.Spread.TextTipFetchEventArgs", "TextTipFetch" }));
             retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_DblClickEvent", new string[] { "FarPoint.Win.Spread.CellClickEventArgs", "CellDoubleClick" }));
             retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_ButtonClickedEvent", new string[] { "FarPoint.Win.Spread.EditorNotifyEventArgs", "ButtonClicked" }));
+            retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_ClickEvent", new string[] { "FarPoint.Win.Spread.CellClickEventArgs", "ButtonClicked" }));
 
             return retList.ToArray();
         }
@@ -46,15 +47,18 @@ namespace TestApp
 
         public void ReplaceProc(ReplaceItem item)
         {
-            var subCodeInfo = this.SourceCodeInfo;
+            var codeInfo = this.SourceCodeInfo;
 
             var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamater();
-            var paramVal = paramater.GetParamaterValue(item.TargetString);
 
-            if(paramVal != null && paramVal.Length > 0)
+            foreach(var paramValue in paramater.ParamaterValues)
             {
-                paramVal[0].ParamaterName = item.ReplaceStrings[0];
-                subCodeInfo.EventName = item.ReplaceStrings[1];
+                if(((SourceCodeInfoParamaterValueMethod)paramValue).TypeName.Equals(item.TargetString))
+                {
+                    ((SourceCodeInfoParamaterValueMethod)paramValue).TypeName = item.ReplaceStrings[0];
+                    codeInfo.EventName = item.ReplaceStrings[1];
+                    break;
+                }
             }
         }
     }

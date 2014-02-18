@@ -32,7 +32,9 @@ namespace TestApp
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionInsertRow", ".ActiveSheet.ActiveRow.Add()"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionDeleteRow", ".ActiveSheet.ActiveRow.Remove()"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionSort", ""));
-            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionGotoCell", ""));
+            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionGotoCell", ".ShowCell(0, 0, 0, 0, FarPoint.Win.Spread.VerticalPosition.Top, FarPoint.Win.Spread.HorizontalPosition.Left)"));
+
+
 
             return retList.ToArray();
         }

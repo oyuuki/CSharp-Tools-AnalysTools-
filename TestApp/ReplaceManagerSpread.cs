@@ -56,6 +56,22 @@ namespace TestApp
             set { this._colString = value; }
         }
 
+        public string GetAddMinusValue(string paramString)
+        {
+            int parseInt = 0;
+            string retValue = paramString;
+
+            // 数字または列数、行数取得プロパティの場合、マイナスをつける
+            if (paramString.Equals(".ActiveSheet.RowCount")
+                || paramString.Equals(".ActiveSheet.ColumnCount")
+                || int.TryParse(paramString, out parseInt))
+            {
+                paramString += " - 1";
+            }
+
+            return paramString;
+        }
+
         #endregion
     }
 }
