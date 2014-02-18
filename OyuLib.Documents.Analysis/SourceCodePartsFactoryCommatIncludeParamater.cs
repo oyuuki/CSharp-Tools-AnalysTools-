@@ -42,8 +42,10 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             return
                 //new StringSpilitter(withOutComment).GetStringRangeSpilitIncludeNestedString(
-                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreNestedStringAndSeparator(
-                    this.CodeDelimiters, new ManagerStringNested("(", ")"), new ManagerStringNested("\"", "\""));
+                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreSeparator(
+                    this.CodeDelimiters, 
+                    new ManagerStringNested("\"", "\""),
+                    new ManagerStringNested("(", ")"));
             
         }
 

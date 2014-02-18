@@ -149,7 +149,13 @@ namespace OyuLib.Documents.Sources.Analysis
                 else if (value is IParamater)
                 {
                     var valueHaveparam = (IParamater)value;
-                    retList.AddRange(this.GetParamaterValue(paramaterString, valueHaveparam.GetSourceCodeInfoParamater()));
+
+                    var param = valueHaveparam.GetSourceCodeInfoParamater();
+
+                    if (param != null)
+                    {
+                        retList.AddRange(this.GetParamaterValue(paramaterString, param));
+                    }
                 }
             }
 
