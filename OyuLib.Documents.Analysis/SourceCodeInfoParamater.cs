@@ -152,7 +152,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
                     var param = valueHaveparam.GetSourceCodeInfoParamater();
 
-                    if (param != null)
+                    if (param.HasParamater)
                     {
                         retList.AddRange(this.GetParamaterValue(paramaterString, param));
                     }

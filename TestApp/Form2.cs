@@ -171,15 +171,7 @@ namespace TestApp
                 // スプレッド変数名のWithステートメントブロックを抽出する
                 foreach (var value in manaBus.GetCodeInfosRoundWithBlock(name))
                 {
-                    // "."で始まるコードを対象に置換処理を行う
-                    if (value.GetCodeString().Trim().StartsWith("."))
-                    {
-                        this.SetSpreadRowCol(value, ref rowString, ref colString);
-                    }
-                    else if (value is IParamater)
-                    {
-                        new ReplaceManagerHaveParamaterValueSpread(rowString, colString, (IParamater)value).Replace();
-                    }
+                    this.SetSpreadRowCol(value, ref rowString, ref colString);                    
                 }
             }
         }
