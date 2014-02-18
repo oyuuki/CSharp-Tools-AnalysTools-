@@ -322,57 +322,45 @@ namespace OyuLib
             var indexPareArray = stringRanges;
             var nStrIndex = 0;
 
-            var ignoreSeparatorIndex = 0;
-
             for (int index = 0; index < this.TargetString.Length; index++)
             {
-                if (IgnoreSeparatorStringRanges != null &&
-                    ignoreSeparatorIndex < IgnoreSeparatorStringRanges.Length &&
-                    IgnoreSeparatorStringRanges[ignoreSeparatorIndex].IndexEnd < index)
+                if(index == 48)
                 {
-                    ignoreSeparatorIndex++;
+                    int a1 = 1;
                 }
 
-                if (indexPareArray.Length > nStrIndex && indexPareArray[nStrIndex].IndexStart == index)
+                bool isFind = false;
+
+                foreach (var range in IgnoreSeparatorStringRanges)
                 {
-                    var stringRange = indexPareArray[nStrIndex];
-
-                    if (startIndex != stringRange.IndexStart)
+                    if (range.IndexEnd >= index && range.IndexStart <= index)
                     {
-                        retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 2, string.Empty, string.Empty, this.TargetString));
-                        // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
+                        isFind = true;
                     }
-
-
-                    retlist.Add(new StringRange(stringRange));
-                    // retlist.Add(this.TargetString.Substring(indexPare.IndexStart, indexPare.IndexEnd - indexPare.IndexStart + 1));
-                    index = stringRange.IndexEnd + 1;
-                    startIndex = index + 1;
-                    nStrIndex++;
                 }
-                else
-                {
-                    if (IgnoreSeparatorStringRanges != null &&
-                        ignoreSeparatorIndex < IgnoreSeparatorStringRanges.Length &&
-                        IgnoreSeparatorStringRanges[ignoreSeparatorIndex].IndexStart <= index &&
-                        IgnoreSeparatorStringRanges[ignoreSeparatorIndex].IndexEnd >= index)
-                    {
-                        continue;
-                    }
 
-                    foreach (var strSeparator in strSeparatores)
+                if(isFind)
+                {
+                    continue;
+                }
+
+
+                foreach (var strSeparator in strSeparatores)
+                {
+                    if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
                     {
-                        if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
+                        if (index > 0)
                         {
                             retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
-                            // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
-                            startIndex = index + strSeparator.Length;
-                            index = startIndex - 1;
-                            break;
                         }
+                        // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
+                        startIndex = index + strSeparator.Length;
+                        index = startIndex - 1;
+                        break;
                     }
                 }
             }
+
 
 
             if (startIndex < this.TargetString.Length)
@@ -381,8 +369,12 @@ namespace OyuLib
                 //retlist.Add(this.TargetString.Substring(startIndex, this.TargetString.Length - startIndex));
             }
 
-
             return retlist.ToArray();
+        }
+
+        private StringRange[] GetStringRangeSpilitLogicIgone(string[] strSeparatores, StringRange[] IgnoreSeparatorStringRanges)
+        {
+            return this.GetStringRangeSpilitLogic(strSeparatores, null, IgnoreSeparatorStringRanges);
         }
 
         public StringRange[] GetStringRangeSpilit(string strSeparator, ManagerStringNested nStr)
@@ -453,13 +445,39 @@ namespace OyuLib
         /// <returns></returns>
         public StringRange[] GetStringRangeSpilitIgnoreNestedStringAndSeparator(string[] strSeparators, ManagerStringNested nStr, ManagerStringNested ignoreNestedStrings)
         {
-            if (TargetString.IndexOf("nNull(plVrtLineNumber)") >= 0)
-            {
-                var a = this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, ignoreNestedStrings), ignoreNestedStrings.GetStringRangeArray(this.TargetString)); ;
-            }
-            
-
             return this.GetStringRangeSpilitLogic(strSeparators, nStr.GetStringRangeIgnoreNestedString(this.TargetString, ignoreNestedStrings), ignoreNestedStrings.GetStringRangeArray(this.TargetString));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strSeparators"></param>
+        /// <param name="nStr"></param>
+        /// <param name="nStrIgnoreNestedString">nStr、strSeparatorsの文字列がこの範囲内に現れた場合は無視する</param>
+        /// <returns></returns>
+        public StringRange[] GetStringRangeSpilitIgnoreSeparator(string[] strSeparators, ManagerStringNested ignoreNestedString, ManagerStringNested ignoreInnerNestedString)
+        {
+            var list = new List<StringRange>();
+
+            StringRange[] ranges = ignoreNestedString.GetStringRangeArray(this.TargetString);
+
+            list.AddRange(ranges);
+            list.AddRange(ignoreInnerNestedString.GetStringRangeArray(this.TargetString, ranges));
+
+
+            if (this.TargetString.IndexOf("Round45(plLngNyukaZanSu1") >= 0)
+            {
+                string te = string.Empty;
+
+                foreach (var aa in list.ToArray())
+                {
+                    te += aa.GetStringSpilited() + "\n";
+                }
+
+                te = te;
+            }
+
+            return this.GetStringRangeSpilitLogicIgone(strSeparators, list.ToArray());
         }
 
         #endregion

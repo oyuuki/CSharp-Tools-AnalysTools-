@@ -51,10 +51,16 @@ namespace OyuLib
         public StringRange[] GetStringRangeArray(string str)
         {
             int index = 0;
-            return this.GetStringRangeLogic(ref index, str);
+            return this.GetStringRangeLogic(ref index, str, null);
         }
 
-        private StringRange[] GetStringRangeLogic(ref int index, string str)
+        public StringRange[] GetStringRangeArray(string str, StringRange[] ranges)
+        {
+            int index = 0;
+            return this.GetStringRangeLogic(ref index, str, ranges);
+        }
+
+        private StringRange[] GetStringRangeLogic(ref int index, string str, StringRange[] ranges)
         {
             var retlist = new List<StringRange>();
             var isParentSwitch = false;
@@ -63,14 +69,33 @@ namespace OyuLib
 
             for (; index < str.Length; index++)
             {
-                if ((!this.NestStartString.Equals(this.NestEndtString) &&
+                bool isFind = false;
+
+                if (ranges != null && ranges.Length > 0)
+                {
+                    foreach (var range in ranges)
+                    {
+                        if(range.IndexStart <= index && range.IndexEnd >= index)
+                        {
+                            isFind = true;
+                            break;
+                        }
+                    }
+                }
+
+                if(isFind)
+                {
+                    continue;
+                }
+
+                if (!this.NestStartString.Equals(this.NestEndtString) &&
                         str[index].ToString().Equals(this.NestStartString) ||
-                     this.NestStartString.Equals(this.NestEndtString) && 
-                    (str[index].ToString().Equals(this.NestStartString) && isStart)))
+                     this.NestStartString.Equals(this.NestEndtString) &&
+                    (str[index].ToString().Equals(this.NestStartString) && isStart))
                 {
                     if (isParentSwitch)
                     {
-                        retlist[retlist.Count - 1].Childs = this.GetStringRangeLogic(ref index, str);
+                        retlist[retlist.Count - 1].Childs = this.GetStringRangeLogic(ref index, str, ranges);
                     }
                     else
                     {
@@ -98,7 +123,7 @@ namespace OyuLib
 
             }
 
-            return retlist.ToArray();   
+            return retlist.ToArray();
         }
 
         public StringRange[] GetStringRangeIgnoreNestedString(string str, ManagerStringNested nestedString)

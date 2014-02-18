@@ -159,6 +159,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public virtual TParamater GetSourceCodeInfoParamater(SourceCodePartsfactory factory, int hierarchyCount, StringRange range)
         {
+            if(range.GetStringSpilited().IndexOf("InStrRev(plStrInvoiceNumber") >= 0)
+            {
+                var aa = range.GetStringSpilited();
+            }
+
             var retList = new List<TParamaterValue>();
 
             var codeparts = factory.GetCodeParts();

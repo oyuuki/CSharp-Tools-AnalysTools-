@@ -30,6 +30,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
             if(range.GetStringSpilited().EndsWith(")"))
             {
+                if(range.GetStringSpilited().IndexOf("plStrInvoiceNumber, InStrRev(plStrInvoiceNumber") >= 0)
+                {
+                    var aa = range.GetStringSpilited();
+                }
+
                 var a = range.GetStringSpilited();
                 retList.Add(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(new SourceCode(range.GetStringSpilited()), range));
                 return this.GetSourceCodeInfoParamater(retList.ToArray());
@@ -48,12 +53,85 @@ namespace OyuLib.Documents.Sources.Analysis
             int groupCount,
             int hierarchyCount)
         {
-            return this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
+            return this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue2(
                  sourceCode,
                  fac,
                  rangeParam,
                  groupCount,
                  hierarchyCount);
+        }
+
+
+        protected SourceCodeInfo[] GetSourceCodeInfoParamaterValueLogicForhasReturnValue2(
+           SourceCode sourceCode,
+           SourceCodePartsfactory fac,
+           StringRange rangeParam,
+           int groupCount,
+           int hierarchyCount)
+        {
+            int parammaterName = 0;
+
+            var paramaterStrings = fac.GetNestedCodeParts("(", ")");
+
+            //var innerFacParam = new SourceCodePartsFactoryVBDotNetIfValue(sourceCode);
+
+            //if (innerFacParam.GetCodePartsLength() >= 2)
+            //{
+
+            //}
+
+            //var innerParamRange = new StringRange()
+
+            var retList = new List<SourceCodeInfo>();
+
+            // Exist Paramater
+            if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]) && !paramaterStrings[0].StartsWith("("))
+            {
+                var startIndex = 0;
+                var sourceCodeString = sourceCode.CodeString.Trim();
+
+                foreach (var param in paramaterStrings)
+                {
+                    if (paramaterStrings.Length >= 2)
+                    {
+                        int a1 = 1;
+                    }
+
+                    var paramKakko = "(" + param + ")";
+
+                    var paramIndex = sourceCodeString.IndexOf(paramKakko, startIndex);
+                    startIndex = sourceCode.CodeString.LastIndexOf(",", paramIndex) + 1;
+                    var endIndex = paramIndex + paramKakko.Length;
+
+                    var paramSourceCode =
+                        new SourceCode(sourceCodeString.Substring(startIndex, endIndex - startIndex));
+                    var range = new StringRange(startIndex, endIndex, "", "", sourceCodeString);
+                    startIndex = endIndex;
+                    retList.Add(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(paramSourceCode, rangeParam));
+                }
+
+                if (startIndex < sourceCodeString.Length)
+                {
+                    var paramValueSourceCodeString = sourceCodeString.Substring(startIndex);
+                    var paramSourceCode = new SourceCode(paramValueSourceCodeString);
+
+                    var range = new StringRange(0, paramValueSourceCodeString.Length - 1, "", "", paramValueSourceCodeString);
+                    retList.Add(new SourceCodeInfoParamaterValueCallMethod(
+                        paramSourceCode,
+                        new SourceCodePartsFactoryParamater(paramSourceCode),
+                        range,
+                        0,
+                        groupCount,
+                        hierarchyCount));
+                }
+            }
+            else
+            {
+                retList.Add(new SourceCodeInfoParamaterValueCallMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode), rangeParam,
+                    parammaterName, groupCount, hierarchyCount));
+            }
+
+            return retList.ToArray();
         }
 
         protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(

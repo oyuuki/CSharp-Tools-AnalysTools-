@@ -7,3 +7,4 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib\bin\Debug\OyuLi
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib\bin\Debug\OyuLib.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib\obj\Debug\OyuLib.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib\obj\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib\obj\Debug\OyuLib.csprojResolveAssemblyReference.cache

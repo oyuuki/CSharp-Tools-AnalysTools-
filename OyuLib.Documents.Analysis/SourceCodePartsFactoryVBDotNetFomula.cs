@@ -25,10 +25,10 @@ namespace OyuLib.Documents.Sources.Analysis
         protected override StringRange[] GetCodePartsRanges(string withOutComment)
         {
             return
-                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreNestedStringAndSeparator(
-                    this.CodeDelimiters, 
-                    new ManagerStringNested("(", ")"),
-                    new ManagerStringNested("\"", "\""));
+                new StringSpilitter(withOutComment).GetStringRangeSpilitIgnoreSeparator(
+                    this.CodeDelimiters,
+                    new ManagerStringNested("\"", "\""), 
+                    new ManagerStringNested("(", ")"));
         }
 
 
