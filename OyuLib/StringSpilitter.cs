@@ -320,15 +320,9 @@ namespace OyuLib
             var retlist = new List<StringRange>();
             var startIndex = 0;
             var indexPareArray = stringRanges;
-            var nStrIndex = 0;
 
             for (int index = 0; index < this.TargetString.Length; index++)
             {
-                if(index == 48)
-                {
-                    int a1 = 1;
-                }
-
                 bool isFind = false;
 
                 foreach (var range in IgnoreSeparatorStringRanges)
@@ -342,6 +336,29 @@ namespace OyuLib
                 if(isFind)
                 {
                     continue;
+                }
+
+                if (indexPareArray != null)
+                {
+
+                    foreach (var range in indexPareArray)
+                    {
+                        if (range.IndexStart == index)
+                        {
+                            var stringRange = range;
+
+                            if (startIndex != stringRange.IndexStart)
+                            {
+                                retlist.Add(new StringRange(startIndex, stringRange.IndexStart - 2, string.Empty, string.Empty, this.TargetString));
+                                // retlist.Add(this.TargetString.Substring(startIndex, indexPare.IndexStart - startIndex));                        
+                            }
+
+                            retlist.Add(new StringRange(stringRange));
+                            // retlist.Add(this.TargetString.Substring(indexPare.IndexStart, indexPare.IndexEnd - indexPare.IndexStart + 1));
+                            index = stringRange.IndexEnd + 1;
+                            startIndex = index + 1;
+                        }
+                    }
                 }
 
 
@@ -463,19 +480,6 @@ namespace OyuLib
 
             list.AddRange(ranges);
             list.AddRange(ignoreInnerNestedString.GetStringRangeArray(this.TargetString, ranges));
-
-
-            if (this.TargetString.IndexOf("Round45(plLngNyukaZanSu1") >= 0)
-            {
-                string te = string.Empty;
-
-                foreach (var aa in list.ToArray())
-                {
-                    te += aa.GetStringSpilited() + "\n";
-                }
-
-                te = te;
-            }
 
             return this.GetStringRangeSpilitLogicIgone(strSeparators, list.ToArray());
         }
