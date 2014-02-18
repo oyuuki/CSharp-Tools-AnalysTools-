@@ -35,12 +35,26 @@ namespace TestApp
             if (subCodeInfo.LeftHandSide.Equals(".Row")
                 || subCodeInfo.LeftHandSide.Equals(".eventArgs.Row"))
             {
+                var item = this.GetReplaceItem(subCodeInfo.RightHandSide);
+
+                if (item != null)
+                {
+                    subCodeInfo.RightHandSide = item.ReplaceString;
+                }
+
                 this.RowString = subCodeInfo.RightHandSide;
                 subCodeInfo.CommentString = "' 置換ツールによりコメント化";
             }
             else if (subCodeInfo.LeftHandSide.Equals(".Col")
                 || subCodeInfo.LeftHandSide.Equals(".eventArgs.Col"))
             {
+                var item = this.GetReplaceItem(subCodeInfo.RightHandSide);
+
+                if (item != null)
+                {
+                    subCodeInfo.RightHandSide = item.ReplaceString;
+                }
+
                 this.ColString = subCodeInfo.RightHandSide;
                 subCodeInfo.CommentString = "' 置換ツールによりコメント化";
             }

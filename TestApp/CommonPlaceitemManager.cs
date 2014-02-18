@@ -15,13 +15,14 @@ namespace TestApp
             var retList = new List<ReplaceItem>();
 
             retList.Add(new ReplaceItem(".Row", replaceRowString));
-            retList.Add(new ReplaceItem(".Cow", replaceColString));
+            retList.Add(new ReplaceItem(".Col", replaceColString));
             retList.Add(new ReplaceItem(".eventArgs.Row", replaceColString));
-            retList.Add(new ReplaceItem(".eventArgs.Cow", replaceColString));
+            retList.Add(new ReplaceItem(".eventArgs.Col", replaceColString));
             retList.Add(new ReplaceItem(".MaxRows", ".ActiveSheet.RowCount"));
             retList.Add(new ReplaceItem(".MaxCols", ".ActiveSheet.ColumnCount"));
             retList.Add(new ReplaceItem(".Value", ".ActiveSheet.Cells(" + replaceRowString + "," + replaceColString + ").Value"));
             retList.Add(new ReplaceItem(".ActiveRow", ".ActiveSheet.ActiveRowIndex"));
+            retList.Add(new ReplaceItem(".ActiveCol", ".ActiveSheet.ActiveColumnIndex"));
             retList.Add(new ReplaceItem(".ColHidden", ".ActiveSheet.Columns(" + replaceColString + ").Visible"));
             retList.Add(new ReplaceItem(".SelBlockRow", ".ActiveSheet.GetSelection(0).Row"));
             retList.Add(new ReplaceItem(".SelBlockRow2", ".ActiveSheet.GetSelection(0).Row + .ActiveSheet.GetSelection(0).RowCount"));
