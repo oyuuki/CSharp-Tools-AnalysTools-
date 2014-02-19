@@ -31,7 +31,7 @@ namespace TestApp
             retList.Add(new ReplaceItem("SetActiveCell", "ActiveSheet.SetActiveCell"));
             retList.Add(new ReplaceItem("set_ColWidth", "ActiveSheet.SetColumnWidth"));
             retList.Add(new ReplaceItem("DeleteRows", "ActiveSheet.RemoveRows"));
-            retList.Add(new ReplaceItem("Note", "ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").Note"));
+            retList.Add(new ReplaceItem("Note", "ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").Note"));            
 
             return retList.ToArray();
         }
@@ -42,8 +42,15 @@ namespace TestApp
             var paramater = subCodeInfo.GetSourceCodeInfoParamater();
 
             new ReplaceManagerHaveParamaterValueSpread(this.RowString, this.ColString, subCodeInfo).Replace();
+            this.ReplaceWithOutParam();
+        }
+
+        public void ReplaceWithOutParam()
+        {
+            var subCodeInfo = this.SourceCodeInfo;
+
             new ReplaceManagerSpreadGetCallMethod(
-                this.RowString, 
+                this.RowString,
                 this.ColString,
                 "★[]★置換ツールにより置換",
                 "'",
@@ -55,9 +62,31 @@ namespace TestApp
                 "'",
                 subCodeInfo).Replace();
 
-            foreach (var replaceItem in GetReplaceItems())
+            if (subCodeInfo.CallmethodName.Equals("get_MaxTextColWidth"))
             {
-                ReplaceProc(replaceItem);
+                subCodeInfo.SetAllOverWriteString(
+                    ".Columns(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
+                    ").GetPreferredWidth()",
+                    "'",
+                    "★[]★置換ツールにより置換");
+            }
+            if (subCodeInfo.CallmethodName.Equals("get_MaxTextRowHeight"))
+            {
+                subCodeInfo.SetAllOverWriteString(
+                    ".Columns(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
+                    ").GetPreferredWidth()",
+                    "'",
+                    "★[]★置換ツールにより置換");
+            }
+
+                
+            else
+            {
+
+                foreach (var replaceItem in GetReplaceItems())
+                {
+                    ReplaceProc(replaceItem);
+                }
             }
         }
 

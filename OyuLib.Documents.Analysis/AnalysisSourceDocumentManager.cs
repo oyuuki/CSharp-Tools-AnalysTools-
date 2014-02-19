@@ -454,6 +454,18 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Public
 
         //        １．左辺式が○○である式コードのコレクションを取得
+        public SourceCodeInfo[] GetAllCodeInfos()
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfo>(
+                string.Empty,
+                delegate(string lockeyName, SourceCodeInfo info)
+                {
+                    return true;
+                }
+                );
+        }
+
+        //        １．左辺式が○○である式コードのコレクションを取得
         public SourceCodeInfoSubstitution[] GetCodeInfoSubstitutions(string keyName)
         {
             return this.GetCodeInfoWithKeyName<SourceCodeInfoSubstitution>(
@@ -501,6 +513,17 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
+        public SourceCodeInfoCallMethod[] GetSourceCodeInfoCallMethod()
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoCallMethod>(
+                string.Empty,
+                delegate(string lockeyName, SourceCodeInfoCallMethod info)
+                {
+                    return true;
+                }                                        
+                );
+        }
+
         /// <summary>
         /// Get ValiableInfo By TypeName
         /// </summary>
@@ -531,6 +554,84 @@ namespace OyuLib.Documents.Sources.Analysis
                     return info.Name.Equals(name);
                 }
                 );
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By Name
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <returns>ValiableInfo</returns>
+        public string[] GetValiableNameCollection(string typeName)
+        {
+            var valiableList = this.GetCodeInfoWithKeyName<SourceCodeInfoValiable>(
+                typeName,
+                delegate(string lockeyName, SourceCodeInfoValiable info)
+                {
+                    return info.TypeName.Equals(typeName);
+                }
+                );
+
+
+
+            var methodList = this.GetCodeInfoWithKeyName<SourceCodeInfoBlockBeginMethod>(
+                string.Empty,
+                delegate(string lockeyName, SourceCodeInfoBlockBeginMethod info)
+                {
+                    return true;
+                }
+                );
+
+            var eventMethodList = this.GetCodeInfoWithKeyName<SourceCodeInfoBlockBeginEventMethod>(
+                string.Empty,
+                delegate(string lockeyName, SourceCodeInfoBlockBeginEventMethod info)
+                {
+                    return true;
+                }
+                );
+
+            var retList = new List<string>();
+
+            foreach(var valIinfo in valiableList)
+            {
+                retList.Add(valIinfo.Name);
+            }
+
+            foreach (var methodIinfo in methodList)
+            {
+                var param = methodIinfo.GetSourceCodeInfoParamater();
+
+                if(param.HasParamater)
+                {
+                    foreach(var paramValue in param.GetSourceCodeInfoParamaterValue())
+                    {
+                        var paramValueMethod = (SourceCodeInfoParamaterValueMethod)paramValue;
+
+                        if(paramValueMethod.TypeName.Equals(typeName))
+                        {
+                            retList.Add(paramValueMethod.ParamaterName);
+                        }
+                    }
+                }
+            }
+            foreach (var eventMethodIinfo in eventMethodList)
+            {
+                var param = eventMethodIinfo.GetSourceCodeInfoParamater();
+
+                if (param.HasParamater)
+                {
+                    foreach (var paramValue in param.GetSourceCodeInfoParamaterValue())
+                    {
+                        var paramValueMethod = (SourceCodeInfoParamaterValueMethod)paramValue;
+
+                        if (paramValueMethod.TypeName.Equals(typeName))
+                        {
+                            retList.Add(paramValueMethod.ParamaterName);
+                        }
+                    }
+                }
+            }
+
+            return retList.ToArray();
         }
 
         /// <summary>
@@ -585,7 +686,7 @@ namespace OyuLib.Documents.Sources.Analysis
                         motoCode = "'" + codeinfo.GetCodeString();
                     }
 
-                    file.WriteLine(codeinfo.GetTabString() +  codeinfo.GetCodePartsOverWriteValues() + motoCode);
+                    file.WriteLine(codeinfo.GetTabString() + codeinfo.GetCodePartsOverWriteValues() + codeinfo.GetComment() + motoCode);
                 }
             }
         }

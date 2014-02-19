@@ -68,3 +68,9 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.Form1.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.Form2.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.Sources.Analysis.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.Sources.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.Sources.Analysis.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Documents.Sources.pdb

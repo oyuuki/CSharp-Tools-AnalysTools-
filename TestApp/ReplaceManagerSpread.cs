@@ -62,11 +62,12 @@ namespace TestApp
             string retValue = paramString;
 
             // 数字または列数、行数取得プロパティの場合、マイナスをつける
-            if (!paramString.Equals("eventArgs.Row")
+            if ((!paramString.Equals("eventArgs.Row")
                 && !paramString.Equals(".eventArgs.Column")
                 && !paramString.Equals(".ActiveSheet.ActiveRowIndex")
                 && !paramString.Equals(".ActiveSheet.ActiveColumnIndex")
-                || int.TryParse(paramString, out parseInt))
+                || int.TryParse(paramString, out parseInt)) &&
+                paramString.IndexOf("- 1") < 0)
             {
                 paramString += " - 1";
             }

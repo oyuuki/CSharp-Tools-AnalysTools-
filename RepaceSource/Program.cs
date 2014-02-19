@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RepaceSource
@@ -16,7 +15,7 @@ namespace RepaceSource
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RepaceSource());
+            Application.Run(new Form2());
         }
     }
 }

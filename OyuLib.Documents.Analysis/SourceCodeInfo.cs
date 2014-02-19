@@ -112,12 +112,18 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public bool IsOverWrite()
         {
-            return this.OverwriteValues.Keys.Count != 0;
+            return this.OverwriteValues.Keys.Count != 0 ||
+                this.IsAllOverWriteString;
         }
 
         public void SetAllOverWriteString(string value, string commentSeparator, string comment)
         { 
             this._allOverWriteString = value + commentSeparator + comment; 
+        }
+
+        public string GetComment()
+        {
+            return this._coFac.GetComment();
         }
 
         public string GetTabString()

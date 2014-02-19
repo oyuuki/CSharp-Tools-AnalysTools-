@@ -97,6 +97,65 @@ namespace TestApp
             {
                 subCodeInfo.SetAllOverWriteString(".ActiveSheet.SetText(" + this.RowString + " - 1" + ", " + this.ColString + " - 1" + ", " + subCodeInfo.RightHandSide + ")", "'", "★[]★置換ツールにより置換");
             }
+            else if(subCodeInfo.LeftHandSide.Equals(".NewLeft"))
+            {
+                subCodeInfo.SetAllOverWriteString(".SetViewportLeftColumn(0, " + subCodeInfo.RightHandSide + ")", "'", "★[]★置換ツールにより置換");
+            }
+            else if(subCodeInfo.RightHandSide.StartsWith(".SearchCol"))
+            {
+                var codeInfoCallMethod  = (SourceCodeInfoCallMethod)subCodeInfo.GetSourceCodeInfoParamater().ParamaterValues[0];
+                var paramValues = codeInfoCallMethod.GetSourceCodeInfoParamater().ParamaterValues;
+
+                subCodeInfo.SetAllOverWriteString(
+                    "Dim col As Integer　 '見つかった列    ★[]★置換ツールにより追加したコード col\n" + 
+                    ".Search(0, " + "\"" + "TEST" + "\"" + ", False, True, True, False, " + 
+                    paramValues[1].GetCodeString() + ", " +
+                    paramValues[0].GetCodeString() + ", " +
+                    paramValues[3].GetCodeString() + ", " +
+                    paramValues[2].GetCodeString() + ", " +
+                    subCodeInfo.LeftHandSide + ", " +
+                    "col" + ") ",
+                    "'",
+                    "★[]★置換ツールにより置換");
+            }
+            else if (subCodeInfo.LeftHandSide.Equals(".TypeCurrencySymbol"))
+            {
+                var currencyCellValiableName = "currencyCell" + subCodeInfo.LeftHandSide;
+
+                subCodeInfo.SetAllOverWriteString(
+                    "Dim " + currencyCellValiableName + " As New FarPoint.Win.Spread.CellType.CurrencyCellType '★[]★置換ツールにより追加\n" +
+                    currencyCellValiableName + ".CurrencySymbol = " + "\"" + "\\" +  "\"" + "'★[]★置換ツールにより追加\n" +
+                    ".ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").CellType = currencyCell",
+                    "'", 
+                    "★[]★置換ツールにより置換");
+
+            }
+            else if (subCodeInfo.LeftHandSide.Equals(".TypeHAlign"))
+            {
+                subCodeInfo.LeftHandSide = ".ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").HorizontalAlignment";
+
+                if(subCodeInfo.RightHandSide.Equals("FPSpread.TypeHAlignConstants.TypeHAlignCenter"))
+                {
+                    subCodeInfo.RightHandSide = "FarPoint.Win.Spread.CellHorizontalAlignment.Center";
+                }
+                else if(subCodeInfo.RightHandSide.Equals("FPSpread.TypeHAlignConstants.TypeHAlignLeft"))
+                {
+                    subCodeInfo.RightHandSide = "FarPoint.Win.Spread.CellHorizontalAlignment.Left";
+                }
+                else if(subCodeInfo.RightHandSide.Equals("FPSpread.TypeHAlignConstants.TypeHAlignRight"))
+                {
+                    subCodeInfo.RightHandSide = "FarPoint.Win.Spread.CellHorizontalAlignment.Right";
+                }
+            }
+            else if (subCodeInfo.LeftHandSide.Equals(".Clip"))
+            {
+                subCodeInfo.LeftHandSide = ".SetClip";
+                subCodeInfo.RightHandSide = "(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ", " + subCodeInfo.RightHandSide + ")";
+            }
+            else if (subCodeInfo.RightHandSide.Equals(".Clip"))
+            {
+                subCodeInfo.RightHandSide = ".GetClip(" + this.RowStringMinusOne + ", 1, 1, " + this.ColStringMinusOne + ")";
+            }
             else
             {
                 foreach (var replaceItem in this.GetReplaceItems())

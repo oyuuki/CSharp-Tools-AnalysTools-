@@ -119,6 +119,19 @@ namespace OyuLib.Documents.Sources.Analysis
             return stringWithOutComment.TrimEnd();
         }
 
+        public string GetComment()
+        {
+            var commentStartIndex = this.GetCommentStartindex();
+            var commentString = string.Empty;
+
+            if (commentStartIndex >= 0)
+            {
+                commentString = this.TrimCodeString.Substring(commentStartIndex);
+            }
+
+            return commentString;
+        }
+
         #endregion
 
         #region Public

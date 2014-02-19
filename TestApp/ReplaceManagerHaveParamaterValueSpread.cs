@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using OyuLib.Documents.Sources;
+using OyuLib.Documents.Sources.Analysis;
 
 namespace TestApp
 {
@@ -62,6 +63,19 @@ namespace TestApp
         public override ReplaceItem[] GetReplaceItems()
         {
             return CommonPlaceitemManager.GetSpreadPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne);
+        }
+
+        public override void ReplaceIParamater(IParamater paramater)
+        {
+            if (paramater is SourceCodeInfoCallMethod)
+            {
+                new ReplaceManagerSpreadCallMethod(
+                    this.RowString,
+                    this.ColString,
+                    "★[]★置換ツールにより置換",
+                    "'",
+                    (SourceCodeInfoCallMethod)paramater).ReplaceWithOutParam();                
+            }
         }
 
         #endregion

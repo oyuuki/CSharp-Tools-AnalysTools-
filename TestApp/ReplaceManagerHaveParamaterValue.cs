@@ -38,6 +38,27 @@ namespace TestApp
 
         #region Public
 
+        public void Replace(IParamater paramater)
+        {
+            if (!paramater.GetSourceCodeInfoParamater().HasParamater)
+            {
+                return;
+            }
+
+            foreach (var codeInfo in paramater.GetSourceCodeInfoParamater().ParamaterValues)
+            {
+                if(codeInfo is IParamater)
+                {
+                     this.ReplaceIParamater((IParamater)codeInfo);
+                     this.Replace((IParamater)codeInfo);
+                }
+                else
+                {
+                    this.ReplaceProc((SourceCodeInfoParamaterValue)codeInfo);
+                }
+            }
+        }
+
         public void Replace()
         {
             if (!this.CodeinfohaveParamater.GetSourceCodeInfoParamater().HasParamater)
@@ -45,28 +66,30 @@ namespace TestApp
                 return;
             }
 
-            foreach (var replaceItem in this.GetReplaceItems())
-            {
-                this.ReplaceProc(replaceItem);
-            }
+            this.Replace(this.CodeinfohaveParamater);
         }
 
         #endregion
 
         #region Private
 
-        private void ReplaceProc(ReplaceItem item)
+        private void ReplaceProc(SourceCodeInfoParamaterValue codeinfo)
         {
-            foreach (var paramValue in this.CodeinfohaveParamater.GetSourceCodeInfoParamater().GetParamaterValue(item.TargetString))
+            foreach (var replaceItem in this.GetReplaceItems())
             {
-                paramValue.ParamaterName = item.ReplaceString;
+                if (codeinfo.ParamaterName.Equals(replaceItem.TargetString))
+                {
+                    codeinfo.ParamaterName = replaceItem.ReplaceString;
+                    break;
+                }
             }
-
         }
 
         #endregion
 
         #region Abstract
+
+        public abstract void ReplaceIParamater(IParamater paramater);
 
         public abstract ReplaceItem[] GetReplaceItems();
 

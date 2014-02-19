@@ -265,9 +265,11 @@ namespace TestApp
                 {
                     if (!dic[keyName][0].TypeName.StartsWith("System."))
                     {
+                        var indexString = reg.Match(list.Name).ToString().Substring(1);
+
                         addInitControlCollectionCode.Add(
                             new SourceCodeInfoOther(
-                                new SourceCode("        Me." + keyName + ".Add(" + 1 + ", " + list.Name + ")")));
+                                new SourceCode("        Me." + keyName + ".Add(" + indexString + ", " + list.Name + ")")));
                     }
 
                     foreach (var eventMethodInfo in dicEvent[keyName])

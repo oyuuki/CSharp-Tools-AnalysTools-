@@ -32,6 +32,9 @@ namespace TestApp
             retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_DblClickEvent", new string[] { "FarPoint.Win.Spread.CellClickEventArgs", "CellDoubleClick" }));
             retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_ButtonClickedEvent", new string[] { "FarPoint.Win.Spread.EditorNotifyEventArgs", "ButtonClicked" }));
             retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_ClickEvent", new string[] { "FarPoint.Win.Spread.CellClickEventArgs", "ButtonClicked" }));
+            retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_TopLeftChangeEvent", new string[] { "FarPoint.Win.Spread.LeftChangeEventArgs", "LeftChange" }));
+            retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_KeyDownEvent", new string[] { "KeyEventArgs", "KeyDown" }));
+            retList.Add(new ReplaceItem("AxFPSpread._DSpreadEvents_KeyPressEvent", new string[] { "KeyPressEventArgs", "KeyPress" }));
 
             return retList.ToArray();
         }
