@@ -28,12 +28,12 @@ namespace RepaceSource
         {
             var retList = new List<ReplaceItem>();
 
-            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionActiveCell", this.SpreadValiableName + ".ActiveSheet.SetActiveCell(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ")"));
+            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionActiveCell", this.ValiableName + ".ActiveSheet.SetActiveCell(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ")"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionSetCellBorder", ""));
-            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionInsertRow", this.SpreadValiableName + ".ActiveSheet.ActiveRow.Add()"));
-            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionDeleteRow", this.SpreadValiableName + ".ActiveSheet.ActiveRow.Remove()"));
+            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionInsertRow", this.ValiableName + ".ActiveSheet.ActiveRow.Add()"));
+            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionDeleteRow", this.ValiableName + ".ActiveSheet.ActiveRow.Remove()"));
             retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionSort", ""));
-            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionGotoCell", this.SpreadValiableName + ".ShowCell(0, 0, 0, 0, FarPoint.Win.Spread.VerticalPosition.Top, FarPoint.Win.Spread.HorizontalPosition.Left)"));
+            retList.Add(new ReplaceItem("FPSpread.ActionConstants.ActionGotoCell", this.ValiableName + ".ShowCell(0, 0, 0, 0, FarPoint.Win.Spread.VerticalPosition.Top, FarPoint.Win.Spread.HorizontalPosition.Left)"));
 
             return retList.ToArray();
         }

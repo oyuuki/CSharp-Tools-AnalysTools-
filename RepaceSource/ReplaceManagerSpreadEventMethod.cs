@@ -14,7 +14,7 @@ namespace RepaceSource
             SourceCodeInfoBlockBeginEventMethod value,
             string comment,
             string commentSeparator)
-            : base(value, comment, commentSeparator)
+            : base(value, comment, commentSeparator, string.Empty)
         {
             
         }

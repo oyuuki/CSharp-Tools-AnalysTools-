@@ -17,6 +17,8 @@ namespace RepaceSource
 
         private string _commentSeparator = null;
 
+        private string _valiableName = string.Empty;
+
         #endregion
 
         #region Constructor
@@ -24,11 +26,13 @@ namespace RepaceSource
         public ReplaceManager(
             T sourceCodeInfo, 
             string comment, 
-            string commentSeparator)
+            string commentSeparator,
+            string valiableName)
         {
             this._sourceCodeInfo = sourceCodeInfo;
             this._commentSeparator = commentSeparator;
             this._comment = comment;
+            this._valiableName = valiableName;
         }
 
         #endregion
@@ -48,6 +52,12 @@ namespace RepaceSource
         public string CommentSeparator
         {
             get { return this._commentSeparator; }
+        }
+
+        public string ValiableName
+        {
+            get { return this._valiableName; }
+            set { this._valiableName = value; }
         }
 
         #endregion

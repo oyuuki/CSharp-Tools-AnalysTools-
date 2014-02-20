@@ -14,8 +14,6 @@ namespace RepaceSource
         private string _rowString = string.Empty;
         private string _colString = string.Empty;
 
-        private string _spreadValiableName = string.Empty;
-
         #endregion
 
         #region Constructor
@@ -23,13 +21,12 @@ namespace RepaceSource
         public ReplaceManagerHaveParamaterValueSpread(
             string rowString, 
             string colString, 
-            string spreadValiableName,
+            string valiableName,
             IParamater value)
-            : base(value)
+            : base(value, valiableName)
         {
             this._rowString = rowString;
             this._colString = colString;
-            this._spreadValiableName = spreadValiableName;
         }
 
         #endregion
@@ -58,12 +55,6 @@ namespace RepaceSource
             get { return this._colString + " - 1"; }
         }
 
-        public string SpreadValiableName
-        {
-            get { return this._spreadValiableName; }
-            set { this._spreadValiableName = value; }
-        }
-
         #endregion
 
         #region Method
@@ -72,7 +63,7 @@ namespace RepaceSource
 
         public override ReplaceItem[] GetReplaceItems()
         {
-            return CommonPlaceitemManager.GetSpreadPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne, this.SpreadValiableName);
+            return CommonSpreadPlaceItemManager.GetPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne, this.ValiableName);
         }
 
         public override void ReplaceIParamater(IParamater paramater)
@@ -82,7 +73,7 @@ namespace RepaceSource
                 new ReplaceManagerSpreadCallMethod(
                     this.RowString,
                     this.ColString,
-                    this.SpreadValiableName,
+                    this.ValiableName,
                     "",
                     "",
                     (SourceCodeInfoCallMethod)paramater).ReplaceWithOutParam();                

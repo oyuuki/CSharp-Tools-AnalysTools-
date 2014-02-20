@@ -13,7 +13,6 @@ namespace RepaceSource
 
         private string _rowString = string.Empty;
         private string _colString = string.Empty;
-        private string _spreadValiableName = string.Empty;
 
         #endregion
 
@@ -26,11 +25,10 @@ namespace RepaceSource
             string comment, 
             string commentSeparator,
             T value)
-            : base(value, comment, commentSeparator)
+            : base(value, comment, commentSeparator, spreadValiableName)
         {
             this._rowString = rowString;
             this._colString = colString;
-            this._spreadValiableName = spreadValiableName;
         }
 
         #endregion
@@ -59,12 +57,6 @@ namespace RepaceSource
             set { this._colString = value; }
         }
 
-        public string SpreadValiableName
-        {
-            get { return this._spreadValiableName; }
-            set { this._spreadValiableName = value; }
-        }
-
         public string GetAddMinusValue(string paramString)
         {
             int parseInt = 0;
@@ -72,9 +64,9 @@ namespace RepaceSource
 
             // 数字または列数、行数取得プロパティの場合、マイナスをつける
             if ((!paramString.Equals("eventArgs.Row")
-                && !paramString.Equals(this.SpreadValiableName + ".eventArgs.Column")
-                && !paramString.Equals(this.SpreadValiableName + ".ActiveSheet.ActiveRowIndex")
-                && !paramString.Equals(this.SpreadValiableName + ".ActiveSheet.ActiveColumnIndex")
+                && !paramString.Equals(this.ValiableName + ".eventArgs.Column")
+                && !paramString.Equals(this.ValiableName + ".ActiveSheet.ActiveRowIndex")
+                && !paramString.Equals(this.ValiableName + ".ActiveSheet.ActiveColumnIndex")
                 || int.TryParse(paramString, out parseInt)) &&
                 paramString.IndexOf("- 1") < 0)
             {
@@ -86,7 +78,7 @@ namespace RepaceSource
 
         protected string GetSpreadName()
         {
-            string spreadName = this.SpreadValiableName;
+            string spreadName = this.ValiableName;
 
             if (!string.IsNullOrEmpty(spreadName))
             {

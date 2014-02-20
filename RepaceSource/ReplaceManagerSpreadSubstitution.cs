@@ -26,14 +26,14 @@ namespace RepaceSource
 
         public override ReplaceItem[] GetReplaceItems()
         {
-            return CommonPlaceitemManager.GetSpreadPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne, this.SpreadValiableName);
+            return CommonSpreadPlaceItemManager.GetPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne, this.ValiableName);
         }
 
         public override void Replace()
         {
             var subCodeInfo = this.SourceCodeInfo;
 
-            string spreadName = this.SpreadValiableName;
+            string spreadName = this.ValiableName;
 
             if (subCodeInfo.LeftHandSide.Equals(spreadName + ".Row")
                 || subCodeInfo.LeftHandSide.Equals(spreadName + ".eventArgs.Row"))
@@ -74,7 +74,7 @@ namespace RepaceSource
                 new ReplaceManagerSpreadActionSubstitution(
                     this.RowString, 
                     this.ColString,
-                    this.SpreadValiableName,
+                    this.ValiableName,
                     "",
                     "",
                     this.SourceCodeInfo).Replace();

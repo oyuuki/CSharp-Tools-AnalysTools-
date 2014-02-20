@@ -13,23 +13,32 @@ namespace RepaceSource
 
         private IParamater _codeinfohaveParamater = null;
 
+        private string _valiableName = string.Empty;
+
         #endregion
 
         #region Constructor
 
-        public ReplaceManagerHaveParamaterValue(IParamater codeinfohaveParamater)
+        public ReplaceManagerHaveParamaterValue(
+            IParamater codeinfohaveParamater,
+            string valiableName)
         {
-            _codeinfohaveParamater = codeinfohaveParamater;
+            this._codeinfohaveParamater = codeinfohaveParamater;
+            this._valiableName = valiableName;
         }
 
         #endregion
 
         #region property
 
-
         public IParamater CodeinfohaveParamater
         {
             get { return this._codeinfohaveParamater; }
+        }
+
+        public string ValiableName
+        {
+            get { return this._valiableName; }
         }
 
         #endregion

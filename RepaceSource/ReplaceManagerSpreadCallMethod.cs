@@ -44,7 +44,7 @@ namespace RepaceSource
             var subCodeInfo = this.SourceCodeInfo;
             var paramater = subCodeInfo.GetSourceCodeInfoParamater();
 
-            new ReplaceManagerHaveParamaterValueSpread(this.RowString, this.ColString, this.SpreadValiableName,  subCodeInfo).Replace();
+            new ReplaceManagerHaveParamaterValueSpread(this.RowString, this.ColString, this.ValiableName, subCodeInfo).Replace();
             this.ReplaceWithOutParam();
         }
 
@@ -57,20 +57,20 @@ namespace RepaceSource
             new ReplaceManagerSpreadGetCallMethod(
                 this.RowString,
                 this.ColString,
-                this.SpreadValiableName,
+                this.ValiableName,
                 "",
                 "",
                 subCodeInfo).Replace();
             new ReplaceManagerSpreadSetCallMethod(
                 this.RowString,
                 this.ColString,
-                this.SpreadValiableName,
+                this.ValiableName,
                 "",
                 "",
                 subCodeInfo).Replace();
 
             if (subCodeInfo.CallmethodName.Equals("get_MaxTextColWidth")
-                && this.SourceCodeInfo.ObjName.Equals(this.SpreadValiableName))
+                && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
                 subCodeInfo.SetAllOverWriteString(
                     spreadName + ".ActiveSheet.Columns(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
@@ -79,7 +79,7 @@ namespace RepaceSource
                     "");
             }
             if (subCodeInfo.CallmethodName.Equals("get_MaxTextRowHeight")
-                && this.SourceCodeInfo.ObjName.Equals(this.SpreadValiableName))
+                && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
                 subCodeInfo.SetAllOverWriteString(
                     spreadName + ".ActiveSheet.Rows(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
@@ -101,7 +101,7 @@ namespace RepaceSource
         public void ReplaceProc(ReplaceItem item)
         {
             if (!item.TargetString.Equals(this.SourceCodeInfo.CallmethodName)
-                || !this.SourceCodeInfo.ObjName.Equals(this.SpreadValiableName))
+                || !this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
                 return;
             }

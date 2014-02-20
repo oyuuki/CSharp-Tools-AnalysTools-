@@ -92,6 +92,48 @@ namespace RepaceSource
 
         }
 
+        private void ExecuteReplace1_2()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            // this.GetFilePaths(targetSourceDirectory)
+            // this.Test()
+
+            int num = this.GetFilePaths(targetSourceDirectory).Length;
+
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Maximum = num;
+
+            this.progressBar1.Value = 0;
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                if (string.IsNullOrEmpty(source.DesinerClassFilePath))
+                {
+                    // デザイナコード解析
+                    var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                    // ビジネスコード解析
+                    var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                    this.ReplaceInputManGcDate(mana, mana2);
+
+                    string outputDirctory = targetSourceDirectory + "Test";
+
+                    if (!Directory.Exists(outputDirctory))
+                    {
+                        Directory.CreateDirectory(outputDirctory);
+                    }
+
+                    mana.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.DesinerClassFilePath)));
+                    mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.BussinessClassFilePath)));
+                }
+                else
+                {
+
+
+                }
+
+            }
+        }
         private void ExecuteReplace1()
         {
             string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
@@ -171,6 +213,75 @@ namespace RepaceSource
             }
         }
 
+
+        private void ReplaceInputManGcDate(
+            AnalysisSourceDocumentManagerVBDotNet manaDes,
+            AnalysisSourceDocumentManagerVBDotNet manaBus)
+        {
+            var gcDataList = this.GetFiledNamelist(manaDes, "GrapeCity.Win.Editors.GcDate");
+            foreach (var valiableName in gcDataList)
+            {
+                foreach (var codeInfo in manaBus.GetAllCodeInfos())
+                {
+                    this.ReplaceInputManGcDateProc(valiableName, codeInfo);
+                }
+
+                // スプレッド変数名のWithステートメントブロックを抽出する
+                foreach (var value in manaBus.GetCodeInfosRoundWithBlock(valiableName))
+                {
+                    this.ReplaceInputManGcDateProc(string.Empty, value);
+                }
+            }
+        }
+
+        private void ReplaceInputManGcDateProc(string valiableName, SourceCodeInfo codeInfo)
+        {
+            // 代入式のリプレイス
+            if (codeInfo is SourceCodeInfoSubstitution)
+            {
+                new ReplaceManagerHaveParamaterValueGcDate(valiableName, (IParamater)codeInfo).Replace();
+                var replaceManager = new ReplaceManagerGcDateSubstitution(
+                    valiableName,
+                    "",
+                    "",
+                    (SourceCodeInfoSubstitution)codeInfo);
+
+                replaceManager.Replace();
+            }
+            // 上記以外のIparamaterを実装するクラス
+            else if (codeInfo is IParamater)
+            {
+                new ReplaceManagerHaveParamaterValueGcDate(valiableName, (IParamater)codeInfo).Replace();
+            }
+
+        }
+
+        private void ReplaceInputManADODBRecordSet(
+            AnalysisSourceDocumentManagerVBDotNet manaBus)
+        {
+            var adoDataList = manaBus.GetValiableNameCollection("ADODB.Recordset");
+
+            foreach (var codeInfo in manaBus.GetAllCodeInfos())
+            {
+                foreach (var valiableName in adoDataList)
+                {
+                    if (codeInfo is SourceCodeInfoCallMethod)
+                    {
+                        new ReplaceManagerAdoDatasetCallMethod(
+                            valiableName,
+                            "",
+                            "",
+                            (SourceCodeInfoCallMethod)codeInfo).Replace();
+                    }
+                    else if (codeInfo is IParamater)
+                    {
+                        new ReplaceManagerHaveParamaterValueAdoDataset(valiableName, (IParamater)codeInfo).Replace();
+                    }
+                }
+            }
+        }
+
+        
 
         private void ReplaceLoadMeethod(AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
@@ -390,7 +501,7 @@ namespace RepaceSource
 
         private string[] GetFiledNamelist(AnalysisSourceDocumentManagerVBDotNet mana, string typeName)
         {
-            // スプレッドフィールド名を保持する
+            // フィールド名を保持する
             var filedNameList = new List<string>();
 
             foreach (var value in mana.GetSourceCodeInfoMemberVariableByType(typeName))

@@ -55,7 +55,7 @@ namespace RepaceSource
             var codeInfo = this.SourceCodeInfo;
 
             if (this.IsExistReplaceItem(codeInfo.CallmethodName)
-                && codeInfo.ObjName.Equals(this.SpreadValiableName))
+                && codeInfo.ObjName.Equals(this.ValiableName))
             {
                 codeInfo.SetAllOverWriteString(this.GetMethodCode(this.GetReplaceItem(this.SourceCodeInfo.CallmethodName).ReplaceString), this.CommentSeparator, this.Comment);
             }

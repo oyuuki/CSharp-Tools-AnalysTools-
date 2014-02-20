@@ -87,14 +87,14 @@ namespace OyuLib.Documents.Replace
 
             if (replaceText.IndexOf(this.ReInfo.StringWillBeReplace) >= 0)
             {
-                comment = this.CommentSeparator + this.CommentString + "元コード：" + replaceText;
+                comment = this.CommentSeparator + this.CommentString + "  元コード：" + replaceText;
             }
 
             var retString = replaceText.Replace(this.ReInfo.StringWillBeReplace, this.ReInfo.StringReplacing);
 
             if (!string.IsNullOrEmpty(comment))
             {
-                retString = retString.EndTrim() + comment;
+                retString = retString.TrimEnd() + comment;
             }
 
             return retString;

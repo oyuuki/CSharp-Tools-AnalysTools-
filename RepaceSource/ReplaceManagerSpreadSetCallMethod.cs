@@ -44,7 +44,7 @@ namespace RepaceSource
             var codeInfo = this.SourceCodeInfo;
 
             if (this.IsExistReplaceItem(codeInfo.CallmethodName)
-                && codeInfo.ObjName.Equals(this.SpreadValiableName))
+                && codeInfo.ObjName.Equals(this.ValiableName))
             {
                 var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamater();
                 paramater.ChangeParamaterIndex(0, 1);
