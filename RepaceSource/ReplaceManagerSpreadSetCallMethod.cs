@@ -31,9 +31,10 @@ namespace RepaceSource
 
             string spreadName = this.GetSpreadName();
 
-            retList.Add(new ReplaceItem(spreadName + "SetInteger", spreadName + "ActiveSheet.SetValue"));
-            retList.Add(new ReplaceItem(spreadName + "SetFloat", spreadName + "ActiveSheet.SetValue"));
-            retList.Add(new ReplaceItem(spreadName + "SetText", spreadName + "ActiveSheet.SetText"));
+
+            retList.Add(new ReplaceItem("SetInteger", "ActiveSheet.SetValue"));
+            retList.Add(new ReplaceItem("SetFloat", "ActiveSheet.SetValue"));
+            retList.Add(new ReplaceItem("SetText", "ActiveSheet.SetText"));
 
             return retList.ToArray();
         }
@@ -42,7 +43,8 @@ namespace RepaceSource
         {
             var codeInfo = this.SourceCodeInfo;
 
-            if (this.IsExistReplaceItem(codeInfo.CallmethodName))
+            if (this.IsExistReplaceItem(codeInfo.CallmethodName)
+                && codeInfo.ObjName.Equals(this.SpreadValiableName))
             {
                 var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamater();
                 paramater.ChangeParamaterIndex(0, 1);

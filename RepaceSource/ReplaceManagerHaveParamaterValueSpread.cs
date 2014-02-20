@@ -29,6 +29,7 @@ namespace RepaceSource
         {
             this._rowString = rowString;
             this._colString = colString;
+            this._spreadValiableName = spreadValiableName;
         }
 
         #endregion
@@ -82,8 +83,8 @@ namespace RepaceSource
                     this.RowString,
                     this.ColString,
                     this.SpreadValiableName,
-                    "★[]★置換ツールにより置換",
-                    "'",
+                    "",
+                    "",
                     (SourceCodeInfoCallMethod)paramater).ReplaceWithOutParam();                
             }
         }

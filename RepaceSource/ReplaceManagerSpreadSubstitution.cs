@@ -46,7 +46,7 @@ namespace RepaceSource
                 }
 
                 this.RowString = subCodeInfo.RightHandSide;
-                subCodeInfo.CommentString = "' 置換ツールによりコメント化";
+                subCodeInfo.CommentString = "' ★置換ツールによりコメント化";
             }
             else if (subCodeInfo.LeftHandSide.Equals(spreadName + ".Col")
                 || subCodeInfo.LeftHandSide.Equals(spreadName + ".eventArgs.Col"))
@@ -59,7 +59,7 @@ namespace RepaceSource
                 }
 
                 this.ColString = subCodeInfo.RightHandSide;
-                subCodeInfo.CommentString = "' 置換ツールによりコメント化";
+                subCodeInfo.CommentString = "' ★置換ツールによりコメント化";
             }
             else if (subCodeInfo.RightHandSide.Equals(spreadName + ".Row"))
             {
@@ -75,8 +75,8 @@ namespace RepaceSource
                     this.RowString, 
                     this.ColString,
                     this.SpreadValiableName,
-                    "★[]★置換ツールにより置換",
-                    "'",
+                    "",
+                    "",
                     this.SourceCodeInfo).Replace();
             }
             else if (subCodeInfo.LeftHandSide.Equals(spreadName + ".ReDraw"))
@@ -94,8 +94,8 @@ namespace RepaceSource
 
                 subCodeInfo.SetAllOverWriteString(
                     redrowMethodName, 
-                    "'", 
-                    "★[]★置換ツールにより置換");
+                    "", 
+                    "");
             }
             else if (subCodeInfo.LeftHandSide.Equals(spreadName + ".Text"))
             {
@@ -119,8 +119,8 @@ namespace RepaceSource
                     paramValues[2].GetCodeString() + ", " +
                     subCodeInfo.LeftHandSide + ", " +
                     "col" + ") ",
-                    "'",
-                    "★[]★置換ツールにより置換");
+                    "",
+                    "");
             }
             else if (subCodeInfo.LeftHandSide.Equals(spreadName + ".TypeCurrencySymbol"))
             {
@@ -130,8 +130,8 @@ namespace RepaceSource
                     "Dim " + currencyCellValiableName + " As New FarPoint.Win.Spread.CellType.CurrencyCellType '★[]★置換ツールにより追加\n" +
                     currencyCellValiableName + ".CurrencySymbol = " + "\"" + "\\" +  "\"" + "'★[]★置換ツールにより追加\n" +
                     spreadName + ".ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").CellType = currencyCell",
-                    "'", 
-                    "★[]★置換ツールにより置換");
+                    "", 
+                    "");
 
             }
             else if (subCodeInfo.LeftHandSide.Equals(spreadName + ".TypeHAlign"))
@@ -177,11 +177,6 @@ namespace RepaceSource
 
             if (codeinfo.LeftHandSide.Equals(replaceItem.TargetString))
             {
-                if(!string.IsNullOrEmpty(this.SpreadValiableName))
-                {
-                    int a = 1;
-                }
-
                 codeinfo.LeftHandSide = replaceItem.ReplaceString;
                 return true;
             }

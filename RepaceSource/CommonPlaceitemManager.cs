@@ -38,6 +38,7 @@ namespace RepaceSource
             retList.Add(new ReplaceItem(spreadValibleName + ".MaxRows", spreadValibleName + ".ActiveSheet.RowCount"));
             retList.Add(new ReplaceItem(spreadValibleName + ".MaxCols", spreadValibleName + ".ActiveSheet.ColumnCount"));
             retList.Add(new ReplaceItem(spreadValibleName + ".Value", spreadValibleName + ".ActiveSheet.Cells(" + replaceRowString + "," + replaceColString + ").Value"));
+            retList.Add(new ReplaceItem(spreadValibleName + ".Text", spreadValibleName + ".ActiveSheet.Cells(" + replaceRowString + "," + replaceColString + ").Text"));
             retList.Add(new ReplaceItem(spreadValibleName + ".ActiveRow", spreadValibleName + ".ActiveSheet.ActiveRowIndex"));
             retList.Add(new ReplaceItem(spreadValibleName + ".ActiveCol", spreadValibleName + ".ActiveSheet.ActiveColumnIndex"));
             retList.Add(new ReplaceItem(spreadValibleName + ".ColHidden", spreadValibleName + ".ActiveSheet.Columns(" + replaceColString + ").Visible"));

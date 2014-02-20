@@ -60,6 +60,32 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.GetSourceCodeInfoParamaterValue(this.ParamaterValues);
         }
 
+        public SourceCodeInfo[] GetAllSourceCodeInfos()
+        {
+            return this.GetAllSourceCodeInfos(this.ParamaterValues);
+        }
+
+        private SourceCodeInfo[] GetAllSourceCodeInfos(SourceCodeInfo[] paramaterValues)
+        {
+            var retList = new List<SourceCodeInfo>();
+
+            foreach (var value in paramaterValues)
+            {
+                if (value is SourceCodeInfoParamaterValue)
+                {
+                    retList.Add((SourceCodeInfo)value);
+                }
+                else if (value is IParamater)
+                {
+                    var iparaVal = value;
+                    retList.Add(iparaVal);
+                    retList.AddRange(this.GetAllSourceCodeInfos(((IParamater)iparaVal).GetSourceCodeInfoParamater().ParamaterValues));
+                }
+            }
+
+            return retList.ToArray();
+        }
+
         private SourceCodeInfoParamaterValue[] GetSourceCodeInfoParamaterValue(SourceCodeInfo[] paramaterValues)
         {
             var retList = new List<SourceCodeInfoParamaterValue>();

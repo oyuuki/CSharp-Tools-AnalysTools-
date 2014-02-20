@@ -11,6 +11,7 @@ namespace OyuLib.Documents.Sources
     {
         SourceCodeInfoParamater GetSourceCodeInfoParamater();
         StringRange Range { get; set; }
+        bool GetIsOverWriteParamater();
     }
 
 }

@@ -58,6 +58,19 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region OverRide
 
+        public bool GetIsOverWriteParamater()
+        {
+            foreach (var codeinfo in this.GetSourceCodeInfoParamater().GetAllSourceCodeInfos())
+            {
+                if (codeinfo.IsOverWrite())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public override Type GetCodeInfoBlockEndType()
         {
             return typeof(SourceCodeInfoBlockEndIf);

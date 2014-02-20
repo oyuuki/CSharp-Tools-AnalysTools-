@@ -680,13 +680,22 @@ namespace OyuLib.Documents.Sources.Analysis
                 foreach (var codeinfo in this.GetSourceCodeInfo(this.CodeObjects))
                 {
                     string motoCode = string.Empty;
-
-                    if(codeinfo.IsOverWrite())
+                    if (codeinfo is IParamater)
                     {
-                        motoCode = "'" + codeinfo.GetCodeString();
+                        if (codeinfo.IsOverWrite() || ((IParamater)codeinfo).GetIsOverWriteParamater())
+                        {
+                            motoCode = "'★[]★置換ツールにより置換   元コード：" + codeinfo.GetCodeWithOutComment();
+                        }                        
+                    }
+                    else
+                    {
+                        if (codeinfo.IsOverWrite())
+                        {
+                            motoCode = "'★[]★置換ツールにより置換   元コード：" + codeinfo.GetCodeWithOutComment();
+                        }
                     }
 
-                    file.WriteLine(codeinfo.GetTabString() + codeinfo.GetCodePartsOverWriteValues() + codeinfo.GetComment() + motoCode);
+                    file.WriteLine(codeinfo.GetTabString() + codeinfo.GetCodePartsOverWriteValues() + " ' " + motoCode + codeinfo.GetComment());
                 }
             }
         }

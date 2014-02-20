@@ -126,6 +126,11 @@ namespace OyuLib.Documents.Sources.Analysis
             return this._coFac.GetComment();
         }
 
+        public string GetCodeWithOutComment()
+        {
+            return this._coFac.GetStringWithOutComment();
+        }
+
         public string GetTabString()
         {
             var codeString = this.GetCodeString();

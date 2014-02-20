@@ -106,6 +106,19 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
+        public bool GetIsOverWriteParamater()
+        {
+            foreach (var codeinfo in this.GetSourceCodeInfoParamater().GetAllSourceCodeInfos())
+            {
+                if (codeinfo.IsOverWrite())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         protected override string GetCodeText()
         {
             return "メソッド名：" + this.Name + 

@@ -29,11 +29,9 @@ namespace RepaceSource
             var retList = new List<ReplaceItem>();
             var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue();
 
-            string spreadName = this.GetSpreadName();
-
-            retList.Add(new ReplaceItem(spreadName + "GetInteger", "GetValue"));
-            retList.Add(new ReplaceItem(spreadName + "GetFloat", "GetValue"));
-            retList.Add(new ReplaceItem(spreadName + "GetText", "GetText"));
+            retList.Add(new ReplaceItem("GetInteger", "GetValue"));
+            retList.Add(new ReplaceItem("GetFloat", "GetValue"));
+            retList.Add(new ReplaceItem("GetText", "GetText"));
 
             return retList.ToArray();
         }
@@ -45,9 +43,7 @@ namespace RepaceSource
             paramaterValues[1].ParamaterName = this.GetAddMinusValue(paramaterValues[1].ParamaterName);
             paramaterValues[0].ParamaterName = this.GetAddMinusValue(paramaterValues[0].ParamaterName);
 
-            string spreadName = this.GetSpreadName();
-
-            return paramaterValues[2].ParamaterName + " = " + spreadName + ".ActiveSheet." +
+            return paramaterValues[2].ParamaterName + " = " + this.SourceCodeInfo.ObjName + ".ActiveSheet." +
                    replaceMethodName + "(" + paramaterValues[1].ParamaterName + ", " +
                    paramaterValues[0].ParamaterName + ")";
         }
@@ -58,7 +54,8 @@ namespace RepaceSource
         {
             var codeInfo = this.SourceCodeInfo;
 
-            if (this.IsExistReplaceItem(codeInfo.CallmethodName))
+            if (this.IsExistReplaceItem(codeInfo.CallmethodName)
+                && codeInfo.ObjName.Equals(this.SpreadValiableName))
             {
                 codeInfo.SetAllOverWriteString(this.GetMethodCode(this.GetReplaceItem(this.SourceCodeInfo.CallmethodName).ReplaceString), this.CommentSeparator, this.Comment);
             }

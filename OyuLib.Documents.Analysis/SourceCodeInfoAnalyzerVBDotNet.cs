@@ -456,12 +456,22 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override bool CheckCodeInfoComment(SourceCode code)
         {
-            if (!code.CodeString.Trim().StartsWith("'"))
+            if (code.CodeString.Trim().StartsWith("'"))
             {
-                return false;
+                return true;
             }
 
-            return true;
+            if (code.CodeString.Trim().StartsWith("#"))
+            {
+                return true;
+            }
+
+            if (code.CodeString.Trim().IndexOf("Declare ") >= 0)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         #endregion
@@ -778,11 +788,6 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceDocumentRule rule = this.GetSourceRule();
             SourceCodeInfo retinfo = null;
-
-            if (code.CodeString.IndexOf("Exchange_SupplyStatus") >= 0)
-            {
-                int a = 1;
-            }
 
             var coFac = new SourceCodePartsFactoryVBDotNetIf(code);
 

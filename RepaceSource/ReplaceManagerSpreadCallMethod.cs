@@ -30,11 +30,11 @@ namespace RepaceSource
 
             string spreadName = this.GetSpreadName();
 
-            retList.Add(new ReplaceItem(spreadName + "set_RowHeight", spreadName + "ActiveSheet.SetRowHeight"));
-            retList.Add(new ReplaceItem(spreadName + "SetActiveCell", spreadName + "ActiveSheet.SetActiveCell"));
-            retList.Add(new ReplaceItem(spreadName + "set_ColWidth", spreadName + "ActiveSheet.SetColumnWidth"));
-            retList.Add(new ReplaceItem(spreadName + "DeleteRows", spreadName + "ActiveSheet.RemoveRows"));
-            retList.Add(new ReplaceItem(spreadName + "Note", spreadName + "ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").Note"));            
+            retList.Add(new ReplaceItem("set_RowHeight", "ActiveSheet.SetRowHeight"));
+            retList.Add(new ReplaceItem("SetActiveCell", "ActiveSheet.SetActiveCell"));
+            retList.Add(new ReplaceItem("set_ColWidth", "ActiveSheet.SetColumnWidth"));
+            retList.Add(new ReplaceItem("DeleteRows", "ActiveSheet.RemoveRows"));
+            retList.Add(new ReplaceItem("Note", "ActiveSheet.Cells(" + this.RowStringMinusOne + ", " + this.ColStringMinusOne + ").Note"));            
 
             return retList.ToArray();
         }
@@ -58,32 +58,34 @@ namespace RepaceSource
                 this.RowString,
                 this.ColString,
                 this.SpreadValiableName,
-                "★[]★置換ツールにより置換",
-                "'",
+                "",
+                "",
                 subCodeInfo).Replace();
             new ReplaceManagerSpreadSetCallMethod(
                 this.RowString,
                 this.ColString,
                 this.SpreadValiableName,
-                "★[]★置換ツールにより置換",
-                "'",
+                "",
+                "",
                 subCodeInfo).Replace();
 
-            if (subCodeInfo.CallmethodName.Equals(spreadName + "get_MaxTextColWidth"))
+            if (subCodeInfo.CallmethodName.Equals("get_MaxTextColWidth")
+                && this.SourceCodeInfo.ObjName.Equals(this.SpreadValiableName))
             {
                 subCodeInfo.SetAllOverWriteString(
                     spreadName + ".ActiveSheet.Columns(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
                     ").GetPreferredWidth())",
-                    "'",
-                    "★[]★置換ツールにより置換");
+                    "",
+                    "");
             }
-            if (subCodeInfo.CallmethodName.Equals(spreadName + "get_MaxTextRowHeight"))
+            if (subCodeInfo.CallmethodName.Equals("get_MaxTextRowHeight")
+                && this.SourceCodeInfo.ObjName.Equals(this.SpreadValiableName))
             {
                 subCodeInfo.SetAllOverWriteString(
                     spreadName + ".ActiveSheet.Rows(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
                     ").GetPreferredHeight())",
-                    "'",
-                    "★[]★置換ツールにより置換");
+                    "",
+                    "");
             }
             else
             {
@@ -98,7 +100,8 @@ namespace RepaceSource
 
         public void ReplaceProc(ReplaceItem item)
         {
-            if (!item.TargetString.Equals(this.SourceCodeInfo.CallmethodName))
+            if (!item.TargetString.Equals(this.SourceCodeInfo.CallmethodName)
+                || !this.SourceCodeInfo.ObjName.Equals(this.SpreadValiableName))
             {
                 return;
             }

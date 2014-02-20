@@ -15,6 +15,7 @@ namespace RepaceSource
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            // Application.Run(new RepaceSource());
             Application.Run(new Form2());
         }
     }
