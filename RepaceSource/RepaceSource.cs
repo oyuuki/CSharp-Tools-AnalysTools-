@@ -45,6 +45,8 @@ namespace RepaceSource
         private void Init()
         {
             exComboBox1.SetItemsFromEnumValue<LanguagePreset>(true);
+
+            this.extxtProFolder.Text = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET";
         }
 
         private void ShowPresetOption()
@@ -90,54 +92,79 @@ namespace RepaceSource
 
             foreach (var filePathString in FileUtil.GetFileList(extxtProFolder.GetTrimedText(), new LanguagePresetProfile(this.exComboBox1.GetSelectedItemKey()).GetFileExtension()))
             {
-                TextFile sourceFile = new TextFile(filePathString);
-
-                Document befSourceText = new Document(sourceFile.GetAllReadText());
-
-                var sourceText = this.ReplaceSourceProcNormal2(filePathString, op.GetDgvRows());
-
+                
+                var outDir = Path.Combine(Path.GetDirectoryName(filePathString), "Replaced");
                 var replaceFodelrpath = Path.Combine(Path.GetDirectoryName(filePathString), "Replaced");
                 var replacefileName = Path.GetFileName(filePathString);
+                var replaceFilePath = Path.Combine(replaceFodelrpath, replacefileName);
+                
 
-                Directory.CreateDirectory(replaceFodelrpath);
+                bool isFirst = true;
 
-                using(var tFile = new TextFile(Path.Combine(replaceFodelrpath, replacefileName)))
+                foreach (DataGridViewRow row in op.GetDgvRows())
                 {
-                    tFile.OpenFileForse();
-                    tFile.Write(sourceText);   
+                    var readFilePath = string.Empty;
+
+                    if(isFirst)
+                    {
+                        readFilePath = filePathString;
+                        isFirst = false;
+                    }
+                    else 
+                    {
+                        readFilePath = replaceFilePath;
+                    }
+
+                    Document befSourceText = new Document(readFilePath);
+                    var sourceText = this.ReplaceSourceProcNormal2(readFilePath, row);
+
+                    Directory.CreateDirectory(replaceFodelrpath);
+
+                    using (var tFile = new TextFile(replaceFilePath))
+                    {
+                        tFile.OpenFileForse();
+                        tFile.Write(sourceText);
+
+                        tFile.Close();
+                    }
                 }
             }
 
             op.Show();
         }
 
-        private string ReplaceSourceProcNormal2(string filePathString, DataGridViewRowCollection col)
+        private string ReplaceSourceProcNormal2(string filePathString, DataGridViewRow row)
         {
             TextFile sourceFile = new TextFile(filePathString);
-            Document befSourceText = new Document(sourceFile.GetAllReadText());
+            Document befSourceText = new Document(filePathString);
 
             string retSourceText = sourceFile.GetAllReadText();
-            var replaceplaceList = new List<int[]>();
+            var replaceplaceList = new List<int>();
 
-            foreach (DataGridViewRow row in col)
-            {
-                var paramList = new List<string>();
+            var paramList = new List<string>();
 
-                paramList.Add(row.Cells[1].Value.ToString());
-                paramList.Add(row.Cells[2].Value.ToString());
+            paramList.Add(row.Cells[1].Value.ToString());
+            paramList.Add(row.Cells[2].Value.ToString());
 
-                ReplacerText rep = new ReplacerText(new Document(retSourceText), paramList.ToArray());
-                rep.IsRegexincludePettern = bool.Parse(new TranceDataGridViewCellValue(row.Cells[4]).GetTrancedValue().ToString());
-                retSourceText = rep.GetReplacedText();
-                replaceplaceList.Add(rep.GetReplacedNumberArray());
-            }
+            var repSourceTextDocu = new Document();
+            repSourceTextDocu.Text = retSourceText;
 
-            this.AddLogForNormalReplace(new Document(retSourceText), befSourceText, replaceplaceList.ToArray(), col, Path.GetFileName(filePathString));
+            ReplacerSource rep = new ReplacerSource(repSourceTextDocu, paramList[0], paramList[1], "置換ツール(単純置換)により置換", "'");
+            rep.IsRegexincludePettern = bool.Parse(new TranceDataGridViewCellValue(row.Cells[4]).GetTrancedValue().ToString());
+
+            retSourceText = rep.GetReplacedText();
+            replaceplaceList.AddRange(rep.GetReplacedNumberArray());
+
+
+            var retDocumnet = new Document();
+            retDocumnet.Text = retSourceText;
+
+            this.AddLogForNormalReplace(retDocumnet, befSourceText, replaceplaceList.ToArray(), row, Path.GetFileName(filePathString));
 
             return retSourceText;
         }
 
-        private void AddLogForNormalReplace(Document NowText, Document BefText, int[][] rePlacePlaceArray, DataGridViewRowCollection col, string fileName)
+        private void AddLogForNormalReplace(Document NowText, Document BefText, int[] rePlacePlaceArray, DataGridViewRow row, string fileName)
         {
             string[] nowTextArray = NowText.GetLineArray();
             string[] befTextArray = BefText.GetLineArray();
@@ -152,39 +179,36 @@ namespace RepaceSource
                     this.exDgvLog[CONST_COLNAME_LINENUMBER, rowIndex].Value = lineNumber;
                     this.exDgvLog[CONST_COLNAME_NEWTEXT, rowIndex].Value = nowTextArray[index];
                     this.exDgvLog[CONST_COLNAME_OLDTEXT, rowIndex].Value = befTextArray[index];
-                    this.exDgvLog[CONST_COLNAME_REPLACESTRING, rowIndex].Value = 
-                        this.GetTextOfReplacePlaceNumber(lineNumber, rePlacePlaceArray, col);
+                    this.exDgvLog[CONST_COLNAME_REPLACESTRING, rowIndex].Value =
+                        this.GetTextOfReplacePlaceNumber(lineNumber, rePlacePlaceArray, row);
                     this.exDgvLog[CONST_COLNAME_FILENAME, rowIndex].Value = fileName;
 
                 }
             }
         }
 
-        private string GetTextOfReplacePlaceNumber(int lineNumber, int[][] ReplacePlaceArray,  DataGridViewRowCollection col)
+        private string GetTextOfReplacePlaceNumber(int lineNumber, int[] ReplacePlaceArray, DataGridViewRow rowparam)
         {
             var retString = string.Empty;
-            
-            for (int replaceStringIndex = 0; replaceStringIndex < col.Count; replaceStringIndex++)
+
+            int any = -1;
+
+            if ((any = Array.IndexOf(ReplacePlaceArray, lineNumber)) >= 0)
             {
-                int any = -1;
+                DataGridViewRow row = rowparam;
+                retString = retString + row.Cells[1].Value + "→" + row.Cells[2].Value + "：";
 
-                if((any = Array.IndexOf(ReplacePlaceArray[replaceStringIndex], lineNumber)) >= 0)
+                object countString = row.Cells[3].Value;
+
+                if (countString == null || string.IsNullOrWhiteSpace(countString.ToString()))
                 {
-                    DataGridViewRow row = col.SharedRow(replaceStringIndex);
-                    retString = retString + row.Cells[1].Value + "→" + row.Cells[2].Value + "：";
-
-                    object countString = row.Cells[3].Value;
-
-                    if (countString == null || string.IsNullOrWhiteSpace(countString.ToString()))
-                    {
-                        row.Cells[3].Value = 1;
-                    }
-                    else
-                    {
-                        row.Cells[3].Value = int.Parse(countString.ToString()) + 1;
-                    }
-                    
+                    row.Cells[3].Value = 1;
                 }
+                else
+                {
+                    row.Cells[3].Value = int.Parse(countString.ToString()) + 1;
+                }
+
             }
 
             return retString;

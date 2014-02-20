@@ -66,12 +66,17 @@ namespace OyuLib.Documents.Replace
             }
         }
 
-        private string GetReplaceTextProcNormal(string replaceText)
+        protected virtual string GetReplaceTextProcNormal(string replaceText)
         {
+            if (string.IsNullOrEmpty(this.ReInfo.StringWillBeReplace))
+            {
+                return replaceText;
+            }
+
             return replaceText.Replace(this.ReInfo.StringWillBeReplace, this.ReInfo.StringReplacing);
         }
 
-        private string GetReplaceTextProcRegex(string replaceText)
+        protected virtual string GetReplaceTextProcRegex(string replaceText)
         {
             return Regex.Replace(replaceText, this.ReInfo.StringWillBeReplace, this.ReInfo.StringReplacing);
         }

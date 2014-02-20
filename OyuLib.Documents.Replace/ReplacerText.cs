@@ -6,14 +6,20 @@ namespace OyuLib.Documents.Replace
     {
         #region Constructor
 
-        public ReplacerText(Document text, object[] objArray)
-            : base(text, objArray)
+        public ReplacerText(
+            Document text,
+            string stringWillBeReplace,
+            string stringReplacing)
+            : base(text, stringWillBeReplace, stringReplacing)
         {
 
         }
 
-        public ReplacerText(string textString, object[] objArray)
-            : base(textString, objArray)
+        public ReplacerText(
+            string textString,
+            string stringWillBeReplace,
+            string stringReplacing)
+            : base(textString, stringWillBeReplace, stringReplacing)
         {
             
         }
@@ -22,39 +28,10 @@ namespace OyuLib.Documents.Replace
 
         #region Method
 
-        #region Overide
-
-        protected override string[] ReplaceProc(ReplaceLogicText rep)
+        protected override ReplaceLogicText GetReplaceClass()
         {
-            List<string> retList = new List<string>();
-
-            foreach (var line in this._text.GetLineArray())
-            {
-                retList.Add(rep.GetReplacedText(line));
-            }
-
-            return retList.ToArray();
+            return new ReplaceLogicText(this.StringWillBeReplace, this.StringReplacing);
         }
-
-        protected override int[] GetReplaceNumberProc(ReplaceLogicText rep)
-        {
-            string[] befReplaceTextArray = this._text.GetLineArray();
-            string[] replacedlineArray = this.ReplaceProc(rep);
-
-            var retList = new List<int>();
-
-            for (int rowIndex = 0; rowIndex < befReplaceTextArray.Length; rowIndex++)
-            {
-                if (!befReplaceTextArray[rowIndex].Equals(replacedlineArray[rowIndex]))
-                {
-                    retList.Add(rowIndex + 1);
-                }
-            }
-
-            return retList.ToArray();
-        }
-
-        #endregion
 
         #endregion
     }

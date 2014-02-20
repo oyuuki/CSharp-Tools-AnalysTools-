@@ -635,7 +635,17 @@ namespace OyuLib.Windows.Forms.DataGridView
             foreach (string colValue in valueArray)
             {
                 string[] colNameValue = colValue.Split(new string[] { SEPARATORCOL }, StringSplitOptions.None);
-                retDic.Add(colNameValue[0], colNameValue[1]);
+
+                if (colNameValue.Length <= 1)
+                {
+                    retDic.Add(colNameValue[0], string.Empty);
+                }
+                else
+                {
+                    retDic.Add(colNameValue[0], colNameValue[1]);
+                }
+
+                
             }
 
             return retDic;

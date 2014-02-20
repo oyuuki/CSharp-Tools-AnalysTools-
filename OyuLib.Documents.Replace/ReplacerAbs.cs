@@ -1,4 +1,5 @@
 ﻿using OyuLib;
+using System.Collections.Generic;
 
 namespace OyuLib.Documents.Replace
 {
@@ -15,29 +16,61 @@ namespace OyuLib.Documents.Replace
         protected bool _isRegexincludePettern = false;
 
         /// <summary>
-        /// Prove that String Either include regex or not
+        /// The String replacing 
         /// </summary>
-        protected object[] _objArray = null;
+        private string _stringReplacing = string.Empty;
+
+        /// <summary>
+        /// The String that will be replace
+        /// </summary>
+        private string _stringWillBeReplace = string.Empty;
 
         #endregion
 
         #region constructor
 
-        protected ReplacerAbs(string textString, object[] objArray)
+        protected ReplacerAbs(
+            string textString,
+            string stringWillBeReplace,
+            string stringReplacing)
+            : this(new Document(textString), stringWillBeReplace, stringReplacing)
         {
-            this._text = new Document(textString);
-            this._objArray = objArray;
+
         }
 
-        protected ReplacerAbs(Document text, object[] objArray)
+        protected ReplacerAbs(
+            Document text,
+            string stringWillBeReplace,
+            string stringReplacing)
         {
             this._text = text;
-            this._objArray = objArray;
+            this._stringWillBeReplace = stringWillBeReplace;
+            this._stringReplacing = stringReplacing;
+        }
+
+        protected ReplacerAbs(
+            Document text,
+            ReplaceInfo info)
+            : this(text, info.StringWillBeReplace, info.StringReplacing)
+        {
+
         }
 
         #endregion
 
         #region property
+
+        public string StringReplacing
+        {
+            get { return this._stringReplacing; }
+            set { this._stringReplacing = value; }
+        }
+
+        public string StringWillBeReplace
+        {
+            get { return this._stringWillBeReplace; }
+            set { this._stringWillBeReplace = value; }
+        }
 
         public bool IsRegexincludePettern
         {
@@ -50,13 +83,6 @@ namespace OyuLib.Documents.Replace
         #region method
 
         #region Public
-
-        public T GetReplaceClass()
-        {
-
-            T rep = TypeUtil.GetInstance<T>(this._objArray);
-            return rep;
-        }
 
         public ReplaceInfo GetReplaceInfo()
         {
@@ -85,15 +111,39 @@ namespace OyuLib.Documents.Replace
             
         }
 
+        protected virtual string[] ReplaceProc(T rep)
+        {
+            List<string> retList = new List<string>();
+
+            foreach (var line in this._text.GetLineArray())
+            {
+                retList.Add(rep.GetReplacedText(line));
+            }
+
+            return retList.ToArray();
+        }
+
+        protected virtual int[] GetReplaceNumberProc(T rep)
+        {
+            string[] befReplaceTextArray = this._text.GetLineArray();
+            string[] replacedlineArray = this.ReplaceProc(rep);
+
+            var retList = new List<int>();
+
+            for (int rowIndex = 0; rowIndex < befReplaceTextArray.Length; rowIndex++)
+            {
+                if (!befReplaceTextArray[rowIndex].Equals(replacedlineArray[rowIndex]))
+                {
+                    retList.Add(rowIndex + 1);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
         #endregion
 
-        #region Abstruct
-
-        protected abstract string[] ReplaceProc(T rep);
-
-        protected abstract int[] GetReplaceNumberProc(T rep);
-
-        #endregion
+        protected abstract T GetReplaceClass();
 
         #endregion
     }

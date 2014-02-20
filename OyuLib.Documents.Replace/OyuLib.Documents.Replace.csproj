@@ -45,8 +45,8 @@
     <Compile Include="ReplaceLogicSource.cs" />
     <Compile Include="ReplaceLogicText.cs" />
     <Compile Include="ReplacerAbs.cs" />
+    <Compile Include="ReplacerSource.cs" />
     <Compile Include="ReplacerText.cs" />
-    <Compile Include="ReplaceSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Documents\OyuLib.Documents.csproj">

@@ -32,7 +32,7 @@ namespace OyuLib.Documents
         public Document(string filepath, CharSet charactorSet)
         {
             this._text = new TextFile(filepath, charactorSet).GetAllReadText();
-        }
+        }        
 
         #endregion
 
