@@ -695,7 +695,25 @@ namespace OyuLib.Documents.Sources.Analysis
                         }
                     }
 
-                    file.WriteLine(codeinfo.GetTabString() + codeinfo.GetCodePartsOverWriteValues() + " ' " + motoCode + codeinfo.GetComment());
+                    string writeString = codeinfo.GetTabString() + codeinfo.GetCodePartsOverWriteValues() + " ' " + motoCode + codeinfo.GetComment();
+
+                    if (writeString.EndsWith(" ' "))
+                    {
+                        writeString = writeString.Substring(0, writeString.Length - 3);
+                    }
+                    else if (writeString.EndsWith(" '  '"))
+                    {
+                        writeString = writeString.Substring(0, writeString.Length - 5);
+                    }
+                    else if (writeString.EndsWith(" '"))
+                    {
+                        writeString = writeString.Substring(0, writeString.Length - 2);
+                    }
+
+                    
+
+                    file.WriteLine(writeString);
+
                 }
             }
         }

@@ -31,7 +31,12 @@ namespace RepaceSource
 
         public override void Replace()
         {
-            this.SourceCodeInfo.SetAllOverWriteString(this.GetReplaceItem(this.SourceCodeInfo.RightHandSide).ReplaceString, this.CommentSeparator, this.Comment);
+            var replaceItem = this.GetReplaceItem(this.SourceCodeInfo.LeftHandSide);
+
+            if (replaceItem != null)
+            {
+                this.SourceCodeInfo.LeftHandSide = replaceItem.ReplaceString;
+            }
         }
     }
 }

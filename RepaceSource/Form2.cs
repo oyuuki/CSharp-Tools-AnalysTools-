@@ -67,7 +67,7 @@ namespace RepaceSource
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.ExecuteReplace1(); 
+            this.ExecuteReplace1_2(); 
         }
 
         private void ExecuteReplace2()
@@ -104,19 +104,22 @@ namespace RepaceSource
             this.progressBar1.Maximum = num;
 
             this.progressBar1.Value = 0;
+            string outputDirctory = targetSourceDirectory + "Test";
 
             foreach (var source in this.GetFilePaths(targetSourceDirectory))
             {
-                if (string.IsNullOrEmpty(source.DesinerClassFilePath))
+                // ビジネスコード解析
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
                 {
                     // デザイナコード解析
                     var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
-                    // ビジネスコード解析
-                    var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+                    
 
                     this.ReplaceInputManGcDate(mana, mana2);
 
-                    string outputDirctory = targetSourceDirectory + "Test";
+                    
 
                     if (!Directory.Exists(outputDirctory))
                     {
@@ -124,14 +127,16 @@ namespace RepaceSource
                     }
 
                     mana.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.DesinerClassFilePath)));
-                    mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.BussinessClassFilePath)));
                 }
-                else
+
+                this.ReplaceInputManADODBRecordSet(mana2);
+
+                if (!Directory.Exists(outputDirctory))
                 {
-
-
+                    Directory.CreateDirectory(outputDirctory);
                 }
 
+                mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.BussinessClassFilePath)));
             }
         }
         private void ExecuteReplace1()
@@ -192,7 +197,7 @@ namespace RepaceSource
 
                     var spreadwithBlockNameList = new List<string>();
 
-                    this.ReplaceLoadMeethod(mana2);
+                    this.ReplaceLoadMethod(mana2);
                     this.ReplaceSpreadCode(mana, mana2);
                     this.ExecuteReplaceControlArray(mana, mana2);
 
@@ -283,7 +288,7 @@ namespace RepaceSource
 
         
 
-        private void ReplaceLoadMeethod(AnalysisSourceDocumentManagerVBDotNet manaBus)
+        private void ReplaceLoadMethod(AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
             foreach (var codeinfo in manaBus.GetSourceCodeInfoCallMethod())
             {

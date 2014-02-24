@@ -30,18 +30,11 @@ namespace OyuLib.Documents.Sources.Analysis
 
             if(range.GetStringSpilited().EndsWith(")"))
             {
-                if(range.GetStringSpilited().IndexOf("plStrInvoiceNumber, InStrRev(plStrInvoiceNumber") >= 0)
-                {
-                    var aa = range.GetStringSpilited();
-                }
-
-                var a = range.GetStringSpilited();
                 retList.Add(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(new SourceCode(range.GetStringSpilited()), range));
                 return this.GetSourceCodeInfoParamater(retList.ToArray());
             }
             else
             {
-                var a = range.GetStringSpilited();
                 return base.GetSourceCodeInfoParamater(factory, hierarchyCount, range);
             }
         }

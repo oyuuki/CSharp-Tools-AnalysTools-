@@ -59,11 +59,6 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected override int GetCommentStartindex()
         {
-            if (this.TrimCodeString.EndsWith("'"))
-            {
-                return this.TrimCodeString.Length - 2;
-            }
-
             var rangeList =
                 new StringSpilitter(this.TrimCodeString).GetStringRangeSpilit(new CharCode("'").GetCharCodeString(),
                     new ManagerStringNested("\"", "\""));
@@ -72,16 +67,17 @@ namespace OyuLib.Documents.Sources.Analysis
 
             int count = 0;
 
+
             foreach (var range in rangeList.Reverse())
             {
                 if (range.GetIsSpilitStrings("\"", "\""))
                 {
-                    break;
+                    continue;
                 }
 
                 if (range.GetIsSpilitStringEnd("'"))
                 {
-                    commentStringIndex = range.IndexEnd;
+                    commentStringIndex = range.IndexEnd + 1;
                 }
 
                 if (count == rangeList.Length - 1 && range.GetStringSpilited().EndsWith("'"))
@@ -89,6 +85,11 @@ namespace OyuLib.Documents.Sources.Analysis
                     commentStringIndex = range.IndexEnd - 1;
                     range.SpilitSeparatorEnd = "'";
                 }
+            }
+
+            if (this.TrimCodeString.EndsWith("'") && commentStringIndex == -1)
+            {
+                return this.TrimCodeString.Length - 2;
             }
 
             return commentStringIndex;

@@ -47,7 +47,9 @@ namespace RepaceSource
                 && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
                 subCodeInfo.SetAllOverWriteString(
-                    this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0] + ".Value",
+                    this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
+                        subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
+                        ,
                     "",
                     "");
             }
