@@ -186,15 +186,15 @@
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>47</Key>
-    <Value>ColNo1q2w3e4r5t6y47,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y47,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yGetPreferredHeight())),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yGetPreferredHeight()),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>48</Key>
-    <Value>ColNo1q2w3e4r5t6y48,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y48,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yByVal eventArgs.Row,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yByVal Row,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>49</Key>
-    <Value>ColNo1q2w3e4r5t6y49,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y49,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yByVal eventArgs.Col,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yByVal Col,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>50</Key>

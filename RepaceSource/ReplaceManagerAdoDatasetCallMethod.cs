@@ -46,6 +46,11 @@ namespace RepaceSource
             if (subCodeInfo.CallmethodName.Equals("Fields")
                 && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
+                if (subCodeInfo.ParamaterString.IndexOf(".Value") >= 0)
+                {
+                    int a = 1;
+                }
+
                 subCodeInfo.SetAllOverWriteString(
                     this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
                         subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"

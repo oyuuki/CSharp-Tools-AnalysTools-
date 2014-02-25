@@ -46,7 +46,7 @@ namespace RepaceSource
 
             retList.Add(new ReplaceItem(spreadValibleName + ".SelBlockRow", spreadValibleName + ".ActiveSheet.GetSelection(0).Row"));
             retList.Add(new ReplaceItem(spreadValibleName + ".SelBlockRow2", spreadValibleName + ".ActiveSheet.GetSelection(0).Row + .ActiveSheet.GetSelection(0).RowCount"));
-            retList.Add(new ReplaceItem(spreadValibleName + ".BackColor", spreadValibleName + ".ActiveSheet.Cells(" + rowString + "," + colString + ", eventArgs.Column).BackColor"));
+            retList.Add(new ReplaceItem(spreadValibleName + ".BackColor", spreadValibleName + ".ActiveSheet.Cells(" + rowString + "," + colString + ").BackColor"));
             retList.Add(new ReplaceItem(spreadValibleName + ".ForeColor", spreadValibleName + ".ActiveSheet.Cells(" + rowString + "," + colString + ").ForeColor"));
             //retList.Add(new ReplaceItem(".set_ColWidth", ".ActiveSheet..SetColumnWidth(" + colString + ", .ActiveSheet.Columns(" + colString +").GetPreferredWidth())""));
             retList.Add(new ReplaceItem(spreadValibleName + ".Formula", spreadValibleName + ".ActiveSheet.Cells(" + rowString + ", " + colString + ").Formula"));

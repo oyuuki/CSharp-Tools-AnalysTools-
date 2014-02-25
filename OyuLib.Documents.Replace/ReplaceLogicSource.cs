@@ -1,5 +1,6 @@
 ﻿
 using System.Text.RegularExpressions;
+using OyuLib.Documents.Sources.Analysis;
 
 namespace OyuLib.Documents.Replace
 {
@@ -75,28 +76,34 @@ namespace OyuLib.Documents.Replace
 
         protected override string GetReplaceTextProcNormal(string replaceText)
         {
+            var befReplaceText = replaceText;
+
+            SourceCodePartsfactoryNocomment fac = new SourceCodePartsfactoryNocomment(new Sources.SourceCode(replaceText), " ");
+            replaceText = fac.GetStringWithOutComment();
+
+            if (string.IsNullOrEmpty(replaceText))
+            {
+                return befReplaceText;
+            }
+
             if (string.IsNullOrEmpty(this.ReInfo.StringWillBeReplace))
             {
-                return replaceText;
+                return befReplaceText;
             }
 
             var comment = string.Empty;
 
             if (replaceText.Trim().StartsWith(this.CommentSeparator))
             {
-                return replaceText;
+                return befReplaceText;
             }
+
+            var retString = befReplaceText;
 
             if (replaceText.IndexOf(this.ReInfo.StringWillBeReplace) >= 0)
             {
-                comment = this.CommentSeparator + this.CommentString + "  元コード：" + replaceText;
-            }
-
-            var retString = replaceText.Replace(this.ReInfo.StringWillBeReplace, this.ReInfo.StringReplacing);
-
-            if (!string.IsNullOrEmpty(comment))
-            {
-                retString = retString.TrimEnd() + comment;
+                comment = this.CommentSeparator + this.CommentString + "  元コード：" + befReplaceText;
+                retString = replaceText.Replace(this.ReInfo.StringWillBeReplace, this.ReInfo.StringReplacing).Trim() + comment;
             }
 
             return retString;
@@ -104,7 +111,15 @@ namespace OyuLib.Documents.Replace
 
         protected override string GetReplaceTextProcRegex(string replaceText)
         {
-            return Regex.Replace(replaceText, this.ReInfo.StringWillBeReplace, this.ReInfo.StringReplacing);
+            SourceCodePartsfactoryNocomment fac = new SourceCodePartsfactoryNocomment(new Sources.SourceCode(replaceText), " ");
+            string target = fac.GetStringWithOutComment();
+
+            if (string.IsNullOrEmpty(target))
+            {
+                return replaceText;
+            }
+
+            return Regex.Replace(target, this.ReInfo.StringWillBeReplace, this.ReInfo.StringReplacing);
         }
 
         #endregion

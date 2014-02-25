@@ -134,7 +134,7 @@ namespace RepaceSource
                     mana.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.DesinerClassFilePath)));
                 }
 
-                this.ReplaceInputManADODBRecordSet(mana2);
+                // this.ReplaceInputManADODBRecordSet(mana2);
 
                 if (!Directory.Exists(outputDirctory))
                 {
