@@ -133,12 +133,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string GetTabString()
         {
-            var codeString = this.GetCodeString();
-            var trimCodeString = codeString.Trim();
-
-            var endTabStringIndex = codeString.IndexOf(trimCodeString) - 1;
-
-            return codeString.Substring(0, endTabStringIndex + 1);
+            return this._coFac.GetTabString();
         }
 
         public string GetCodeString()

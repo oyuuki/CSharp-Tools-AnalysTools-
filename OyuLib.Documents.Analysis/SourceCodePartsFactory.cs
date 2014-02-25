@@ -142,6 +142,16 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
+        public string GetTabString()
+        {
+            var codeString = this._code.CodeString;
+            var trimCodeString = codeString.Trim();
+
+            var endTabStringIndex = codeString.IndexOf(trimCodeString) - 1;
+
+            return codeString.Substring(0, endTabStringIndex + 1);
+        }
+
         public bool IsFirstStringIsValue(string value)
         {
             var codeParts = this.GetCodeParts();
