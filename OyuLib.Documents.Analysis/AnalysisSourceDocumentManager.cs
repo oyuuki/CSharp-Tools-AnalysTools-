@@ -283,6 +283,21 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        protected T[] GetSourceCodeInfosNotRequiredInnerBlock<T>(object[] codeobjects)
+        {
+            var retList = new List<T>();
+
+            foreach (var codeInfo in codeobjects)
+            {
+                if (!(codeInfo is SourceCodeblockInfo))
+                {
+                    retList.Add((T)codeInfo);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
         protected T[] GetSourceCodeInfos<T>(object[] codeobjects)
         {
             var retList = new List<T>();
@@ -318,37 +333,76 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        protected T[] GetSourceCodeInfosNotRequiredInnerBlock<T>()
+        {
+            return this.GetSourceCodeInfosNotRequiredInnerBlock<T>(this.CodeObjects);
+        }
+
         protected T[] GetSourceCodeInfos<T>()
         {
             return this.GetSourceCodeInfos<T>(this.CodeObjects);
         }
 
-        protected T[] GetCodeInfoWithKeyName<T>(string keyName, CheckWithKey<T> checkMethod)
+        protected T[] GetCodeInfoWithKeyName<T>(string keyName, CheckWithKey<T> checkWithKey)
             where T : SourceCodeInfo
         {
-            return this.GetCodeInfoWithKeyName(keyName, this.CodeObjects, checkMethod);
+            return this.GetCodeInfoWithKeyName(keyName, this.CodeObjects, checkWithKey);
         }
         
         protected T[] GetCodeInfoWithKeyName<T>(
-            string keyName, SourceCodeblockInfo block, CheckWithKey<T> checkMethod)
+            string keyName, SourceCodeblockInfo block, CheckWithKey<T> checkWithKey)
             where T : SourceCodeInfo
         {
-            return this.GetCodeInfoWithKeyName(keyName, block.CodeObjects, checkMethod);
+            return this.GetCodeInfoWithKeyName(keyName, block.CodeObjects, checkWithKey);
         }
 
         protected T[] GetCodeInfoWithKeyName<T>(
-            string keyName, object[] codeObjects, CheckWithKey<T> checkMethod)
+            string keyName, object[] codeObjects, CheckWithKey<T> checkWithKey)
             where T : SourceCodeInfo
         {
             var retList = new List<T>();
 
             foreach (var codeInfo in this.GetSourceCodeInfos<T>(codeObjects))
             {
-                if (checkMethod == null)
+                if (checkWithKey == null)
                 {
                     retList.Add(codeInfo);
                 }
-                else if (checkMethod(keyName, codeInfo))
+                else if (checkWithKey(keyName, codeInfo))
+                {
+                    retList.Add(codeInfo);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        protected T[] GetCodeInfoWithKeyNameNotRequiredInnerBlock<T>(string keyName, CheckWithKey<T> checkWithKey)
+            where T : SourceCodeInfo
+        {
+            return this.GetCodeInfoWithKeyNameNotRequiredInnerBlock(keyName, this.CodeObjects, checkWithKey);
+        }
+
+        protected T[] GetCodeInfoWithKeyNameNotRequiredInnerBlock<T>(
+            string keyName, SourceCodeblockInfo block, CheckWithKey<T> checkWithKey)
+            where T : SourceCodeInfo
+        {
+            return this.GetCodeInfoWithKeyNameNotRequiredInnerBlock(keyName, block.CodeObjects, checkWithKey);
+        }
+
+        protected T[] GetCodeInfoWithKeyNameNotRequiredInnerBlock<T>(
+            string keyName, object[] codeObjects, CheckWithKey<T> checkWithKey)
+            where T : SourceCodeInfo
+        {
+            var retList = new List<T>();
+
+            foreach (var codeInfo in this.GetSourceCodeInfosNotRequiredInnerBlock<T>(codeObjects))
+            {
+                if (checkWithKey == null)
+                {
+                    retList.Add(codeInfo);
+                }
+                else if (checkWithKey(keyName, codeInfo))
                 {
                     retList.Add(codeInfo);
                 }
@@ -441,6 +495,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             return retList.ToArray();
         }
+
 
         #endregion
 
@@ -545,15 +600,9 @@ namespace OyuLib.Documents.Sources.Analysis
         /// </summary>
         /// <param name="name">name</param>
         /// <returns>ValiableInfo</returns>
-        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByName(string name)
+        public string[] GetValiableNameCollectionElse(string elseTypeName)
         {
-            return this.GetCodeInfoWithKeyName<SourceCodeInfoMemberVariable>(
-                name,
-                delegate(string lockeyName, SourceCodeInfoMemberVariable info)
-                {
-                    return info.Name.Equals(name);
-                }
-                );
+            return this.GetValiableNameCollection(elseTypeName, false);
         }
 
         /// <summary>
@@ -563,11 +612,21 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <returns>ValiableInfo</returns>
         public string[] GetValiableNameCollection(string typeName)
         {
+            return this.GetValiableNameCollection(typeName, true);
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By Name
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <returns>ValiableInfo</returns>
+        private string[] GetValiableNameCollection(string typeName, bool isMatch)
+        {
             var valiableList = this.GetCodeInfoWithKeyName<SourceCodeInfoValiable>(
                 typeName,
                 delegate(string lockeyName, SourceCodeInfoValiable info)
                 {
-                    return info.TypeName.Equals(typeName);
+                    return isMatch == info.TypeName.Equals(typeName);
                 }
                 );
 
@@ -680,11 +739,14 @@ namespace OyuLib.Documents.Sources.Analysis
                 foreach (var codeinfo in this.GetSourceCodeInfo(this.CodeObjects))
                 {
                     string motoCode = string.Empty;
+                    bool isOverWrite = false;
+
                     if (codeinfo is IParamater)
                     {
                         if (codeinfo.IsOverWrite() || ((IParamater)codeinfo).GetIsOverWriteParamater())
                         {
                             motoCode = "'★[]★置換ツールにより置換   元コード：" + codeinfo.GetCodeWithOutComment();
+                            isOverWrite = true;
                         }                        
                     }
                     else
@@ -692,28 +754,19 @@ namespace OyuLib.Documents.Sources.Analysis
                         if (codeinfo.IsOverWrite())
                         {
                             motoCode = "'★[]★置換ツールにより置換   元コード：" + codeinfo.GetCodeWithOutComment();
+                            isOverWrite = true;
                         }
                     }
 
-                    string writeString = codeinfo.GetTabString() + codeinfo.GetCodePartsOverWriteValues() + " ' " + motoCode + codeinfo.GetComment();
-
-                    if (writeString.EndsWith(" ' "))
+                    if(isOverWrite)
                     {
-                        writeString = writeString.Substring(0, writeString.Length - 3);
+                        string writeString = codeinfo.GetTabString() + codeinfo.GetCodePartsOverWriteValues() + motoCode + codeinfo.GetComment();
+                        file.WriteLine(writeString);
                     }
-                    else if (writeString.EndsWith(" '  '"))
+                    else 
                     {
-                        writeString = writeString.Substring(0, writeString.Length - 5);
+                        file.WriteLine(codeinfo.GetCodeString());
                     }
-                    else if (writeString.EndsWith(" '"))
-                    {
-                        writeString = writeString.Substring(0, writeString.Length - 2);
-                    }
-
-                    
-
-                    file.WriteLine(writeString);
-
                 }
             }
         }

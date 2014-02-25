@@ -94,6 +94,7 @@
     <Compile Include="SourceCodePartsFactoryVBDotNetEventMethod.cs" />
     <Compile Include="SourceCodePartsFactoryParamater.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetFor.cs" />
+    <Compile Include="SourceCodePartsFactoryVBDotNetWith.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetIf.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetFomula.cs" />
     <Compile Include="SourceCodeTemplateFactory.cs" />

@@ -118,6 +118,9 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
+        
+
+
         // Withステートメントコードを全て取得
         public SourceCodeInfoBlockBeginWithVB[] GetSourceCodeInfoblockBeginWith()
         {
@@ -138,6 +141,47 @@ namespace OyuLib.Documents.Sources.Analysis
                  {
                      return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName); ;
                  });
+        }
+
+        // Withステートメントブロックを取得する
+        public SourceCodeblockInfo[] GetCodeWithBlocks()
+        {
+            var retCodeBlockList = new List<SourceCodeblockInfo>();
+
+            foreach (var block in this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginWithVB>(this.CodeObjects))
+            {
+                retCodeBlockList.Add(block);
+            }
+
+            return retCodeBlockList.ToArray();
+        }
+
+        // Withステートメントブロックを取得する
+        public SourceCodeInfo[] GetCodeInfosRoundWithBlocksNotIncludeNames(string[] withOutNames)
+        {
+            var blockList = this.GetCodeWithBlocks();
+            var retList = new List<SourceCodeInfo>();
+
+            foreach (var block in blockList)
+            {
+                bool isMatchName = false;
+
+                foreach (var withOutName in withOutNames)
+                {
+                    if(block.GetSourceCodeInfoBlockBegin().StatementObject.Equals(withOutName))
+                    {
+                        isMatchName = true;
+                        break;
+                    }
+                }
+
+                if(!isMatchName)
+                {
+                    retList.AddRange(block.GetSourceCodeInfosNotIncludeAppointBlock<SourceCodeInfoBlockBeginWithVB>());
+                }
+            }
+
+            return retList.ToArray();
         }
 
         public void AddCodeInfoImports(SourceCodeInfoOther[] codeInfos)

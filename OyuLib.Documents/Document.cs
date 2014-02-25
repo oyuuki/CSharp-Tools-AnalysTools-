@@ -29,10 +29,16 @@ namespace OyuLib.Documents
             
         }
 
+        public Document(string textString, bool dummy, bool dummy2)
+        {
+            this._text = textString;
+        }
+
         public Document(string filepath, CharSet charactorSet)
         {
             this._text = new TextFile(filepath, charactorSet).GetAllReadText();
-        }        
+        }
+
 
         #endregion
 

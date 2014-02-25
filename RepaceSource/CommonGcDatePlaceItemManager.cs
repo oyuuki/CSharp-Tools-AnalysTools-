@@ -15,7 +15,6 @@ namespace RepaceSource
             retList.Add(new ReplaceItem(gcDateValibleName + ".Year", gcDateValibleName + ".Value.Value.Year"));
             retList.Add(new ReplaceItem(gcDateValibleName + ".Month", gcDateValibleName + ".Value.Value.Month"));
             retList.Add(new ReplaceItem(gcDateValibleName + ".Day", gcDateValibleName + ".Value.Value.Day"));
-            retList.Add(new ReplaceItem(gcDateValibleName + ".Value", gcDateValibleName + ".Value.Value"));
             
             return retList.ToArray();
         }

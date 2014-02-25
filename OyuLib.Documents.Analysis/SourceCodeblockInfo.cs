@@ -55,6 +55,50 @@ namespace OyuLib.Documents.Sources.Analysis
             return (SourceCodeInfoBlockBegin) this.CodeObjects[0];
         }
 
+        public SourceCodeInfo[] GetSourceCodeInfosNotIncludeInnerBlock()
+        {
+            var retList = new List<SourceCodeInfo>();
+
+            foreach(var codeInfo in this.CodeObjects)
+            {
+                if(codeInfo is SourceCodeInfo)
+                {
+                    retList.Add((SourceCodeInfo)codeInfo);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        public SourceCodeInfo[] GetSourceCodeInfosNotIncludeAppointBlock<T>()
+           where T : SourceCodeInfoBlockBegin
+        {
+            return this.GetSourceCodeInfosNotIncludeAppointBlock<T>(this.CodeObjects);
+        }
+
+        public SourceCodeInfo[] GetSourceCodeInfosNotIncludeAppointBlock<T>(object[] codeObjects)
+            where T : SourceCodeInfoBlockBegin
+        {
+            var retList = new List<SourceCodeInfo>();
+
+            foreach (var codeInfo in codeObjects)
+            {
+                if (codeInfo is SourceCodeInfo)
+                {
+                    retList.Add((SourceCodeInfo)codeInfo);
+                }
+                else if(codeInfo is SourceCodeblockInfo)
+                {
+                    if(!(((SourceCodeblockInfo)codeInfo).GetSourceCodeInfoBlockBegin is T))
+                    {
+                        retList.AddRange(this.GetSourceCodeInfosNotIncludeAppointBlock<T>(((SourceCodeblockInfo)codeInfo).CodeObjects));
+                    }
+                }
+            }
+
+            return retList.ToArray();
+        }
+
        
         #endregion
     }

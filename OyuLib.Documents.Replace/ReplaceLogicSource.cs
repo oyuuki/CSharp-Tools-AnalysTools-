@@ -28,8 +28,9 @@ namespace OyuLib.Documents.Replace
             string stringWillBeReplace, 
             string stringReplacing,
             string commentString,
-            string commentSeparator)
-            : base(stringWillBeReplace, stringReplacing)
+            string commentSeparator,
+            bool isRegexincludePettern)
+            : base(stringWillBeReplace, stringReplacing, isRegexincludePettern)
         {
             this._commentString = commentString;
             this._commentSeparator = commentSeparator;
@@ -41,8 +42,9 @@ namespace OyuLib.Documents.Replace
         public ReplaceLogicSource(
             ReplaceInfo reInfo, 
             string commentString,
-            string commentSeparator)
-            : base(reInfo)
+            string commentSeparator,
+            bool isRegexincludePettern)
+            : base(reInfo, isRegexincludePettern)
         {
             this._commentString = commentString;
             this._commentSeparator = commentSeparator;

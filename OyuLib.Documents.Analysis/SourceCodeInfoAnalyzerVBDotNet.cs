@@ -344,8 +344,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceCodeInfo GetCodeInfoWithBlock(SourceCode code)
         {
-            SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
-
+            SourceCodePartsfactoryNocomment coFac = new SourceCodePartsfactoryNocomment(code, " "); 
+            
             int length = coFac.GetCodeParts().Length;
 
             int statement = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_WITH);
@@ -353,7 +353,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
             if (!coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_END))
             {
-                return new  SourceCodeInfoBlockBeginWithVB(code, coFac, statement, statementObjName);
+                return new SourceCodeInfoBlockBeginWithVB(code, new SourceCodePartsFactoryVBDotNetWith(code), statement, statementObjName);
             }
             else
             {

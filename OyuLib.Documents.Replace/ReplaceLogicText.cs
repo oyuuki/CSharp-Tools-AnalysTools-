@@ -25,17 +25,24 @@ namespace OyuLib.Documents.Replace
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceLogicText(string stringWillBeReplace, string stringReplacing)
+        public ReplaceLogicText(
+            string stringWillBeReplace, 
+            string stringReplacing,
+            bool isRegexincludePettern)
             : base(stringWillBeReplace, stringReplacing)
         {
+            this._isRegexincludePettern = isRegexincludePettern;
         }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public ReplaceLogicText(ReplaceInfo reInfo)
+        public ReplaceLogicText(
+            ReplaceInfo reInfo,
+            bool isRegexincludePettern)
             : base(reInfo)
         {
+            this._isRegexincludePettern = isRegexincludePettern;
         }
 
         #endregion
@@ -88,6 +95,18 @@ namespace OyuLib.Documents.Replace
         public override string GetReplacedText(string replaceText)
         {
             return this.GetReplaceTextProc(replaceText);
+        }
+
+        public override bool IsMatch(string replaceText)
+        {
+            if (this.IsRegexincludePettern)
+            {
+                return Regex.IsMatch(replaceText, this.ReInfo.StringWillBeReplace);
+            }
+            else
+            {
+                return replaceText.IndexOf(this.ReInfo.StringWillBeReplace) >= 0;
+            }
         }
 
         #endregion

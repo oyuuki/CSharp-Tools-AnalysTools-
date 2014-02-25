@@ -59,6 +59,8 @@
 
         public abstract string GetReplacedText(string replaceText);
 
+        public abstract bool IsMatch(string replaceText);
+
         #endregion
 
         #endregion

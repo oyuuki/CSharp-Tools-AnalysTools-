@@ -66,7 +66,7 @@ namespace OyuLib.Documents.Replace
 
         protected override ReplaceLogicSource GetReplaceClass()
         {
-            return new ReplaceLogicSource(this.StringWillBeReplace, this.StringReplacing, this.CommentString, this.CommentSeparator);
+            return new ReplaceLogicSource(this.StringWillBeReplace, this.StringReplacing, this.CommentString, this.CommentSeparator, this.IsRegexincludePettern);
         }
 
         #endregion

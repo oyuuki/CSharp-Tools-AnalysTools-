@@ -30,7 +30,7 @@ namespace OyuLib.Documents.Replace
 
         protected override ReplaceLogicText GetReplaceClass()
         {
-            return new ReplaceLogicText(this.StringWillBeReplace, this.StringReplacing);
+            return new ReplaceLogicText(this.StringWillBeReplace, this.StringReplacing, this.IsRegexincludePettern);
         }
 
         #endregion

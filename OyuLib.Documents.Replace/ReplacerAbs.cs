@@ -33,7 +33,7 @@ namespace OyuLib.Documents.Replace
             string textString,
             string stringWillBeReplace,
             string stringReplacing)
-            : this(new Document(textString), stringWillBeReplace, stringReplacing)
+            : this(new Document(textString, true, true), stringWillBeReplace, stringReplacing)
         {
 
         }
@@ -98,6 +98,16 @@ namespace OyuLib.Documents.Replace
             T rep = this.GetReplaceClass();
             var retArray = this.ReplaceProc(rep);
             return string.Join(this._text.LineCode.GetCharCodeString(), retArray);
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <returns></returns>
+        public bool IsMatch()
+        {
+            T rep = this.GetReplaceClass();
+            return rep.IsMatch(_text.Text);
         }
 
         /// <summary>
