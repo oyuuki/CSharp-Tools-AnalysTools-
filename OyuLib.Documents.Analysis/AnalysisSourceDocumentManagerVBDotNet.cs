@@ -114,7 +114,7 @@ namespace OyuLib.Documents.Sources.Analysis
                  blockName,
                  delegate(string lockeyName, SourceCodeInfoBlockBeginWithVB info)
                  {
-                     return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName); ;
+                     return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName);
                  });
         }
 

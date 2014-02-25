@@ -23,7 +23,7 @@ namespace OyuLib.Windows.Forms.DataGridView
         /// <summary>
         /// SEPARATOR COLUMNVALUE
         /// </summary>
-        private const string SEPARATORCOLVALUE = ",";
+        private const string SEPARATORCOLVALUE = ",##$$%%&&";
 
         #endregion
 
@@ -630,7 +630,7 @@ namespace OyuLib.Windows.Forms.DataGridView
         {
             Dictionary<string, string> retDic = new Dictionary<string, string>();
 
-            string[] valueArray = value.Split(SEPARATORCOLVALUE.ToCharArray()[0]);
+            string[] valueArray = value.Split(new string[] { SEPARATORCOLVALUE }, StringSplitOptions.None);
 
             foreach (string colValue in valueArray)
             {

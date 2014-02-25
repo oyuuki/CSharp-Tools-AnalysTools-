@@ -30,11 +30,11 @@ namespace OyuLib.Documents.Sources.Analysis
             
 
             var withIndexStart = withOutComment.IndexOf(withString);
-            var withIndexEnd = withIndexStart + withString.Length;
+            var withIndexEnd = withIndexStart + withString.Length - 1;
 
             retList.Add(new StringRange(withIndexStart, withIndexEnd, "", " ", withOutComment));
 
-            retList.Add(new StringRange(withIndexEnd + 1, withOutComment.Length - 1, "", " ", withOutComment));
+            retList.Add(new StringRange(withIndexEnd + 2, withOutComment.Length - 1, "", " ", withOutComment));
 
             return retList.ToArray();
         }

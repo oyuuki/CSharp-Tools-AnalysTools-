@@ -70,8 +70,7 @@ namespace RepaceSource
         private void button1_Click(object sender, EventArgs e)
         {
             // スプレッド置換処理で置換してはいけない部分を修正する関数
-            // this.ExecuteReplaceFor1Replace();
-
+            //this.ExecuteReplaceFor1Replace();
             // GcDateのYear、Month、Day、　ADODBのField関数のコードを修正する
             this.ExecuteReplace1_2();
         }
@@ -200,47 +199,7 @@ namespace RepaceSource
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
             var spreadwithBlockNameList = new List<string>();
-            var filedNameList = this.GetFiledNamelist(manaDes, "FarPoint.Win.Spread.FpSpread");
-
-            // コントロール配列のスプレッドシート変数を対象に、
-            // Withステートメントコードを全て抽出し
-            // デザイナで定義されている変数名に置換する
-            foreach (var withBlockBegin in manaBus.GetSourceCodeInfoblockBeginWith())
-            {
-                var locWithName = withBlockBegin.StatementObject;
-                var motoName = withBlockBegin.StatementObject;
-
-                // コントロール配列による宣言を行っている場合 例) "vaSpread(0)"
-                if (locWithName.EndsWith(")"))
-                {
-                    // "_vaSpread_0" のように文字列を組み替える
-                    locWithName = locWithName.Substring(0, locWithName.IndexOf("("));
-                }
-
-                // スプレッドフィールド名を保持する
-                foreach (var name in filedNameList)
-                {
-                    if (motoName.EndsWith(")") && name.Substring(1).StartsWith(locWithName) 
-                        || locWithName.Equals(name))
-                    {
-                        bool isSameObjectName = false;
-
-                        foreach (var va in spreadwithBlockNameList)
-                        {
-                            if (va.Equals(motoName))
-                            {
-                                isSameObjectName = true;
-                                break;
-                            }
-                        }
-
-                        if (!isSameObjectName)
-                        {
-                            spreadwithBlockNameList.Add(motoName);
-                        }
-                    }
-                }
-            }
+            spreadwithBlockNameList.AddRange(this.GetWithStatementNames(manaDes, manaBus, "FarPoint.Win.Spread.FpSpread"));
 
             // その他のローカル変数、引数でspreadが使用されている箇所の置換
             var localSpreadList = manaBus.GetValiableNameCollection("FarPoint.Win.Spread.FpSpread");
@@ -374,7 +333,7 @@ namespace RepaceSource
                 }
 
                 // スプレッド変数名のWithステートメントブロックを抽出する
-                foreach (var value in manaBus.GetCodeInfosRoundWithBlock(withStateName))
+                foreach (var value in manaBus.GetCodeInfosRoundWithBlock(valiableName))
                 {
                     this.ReplaceInputManGcDateProc(string.Empty, value);
                 }
@@ -445,7 +404,7 @@ namespace RepaceSource
             }
         }
 
-        private void GetWithStatementNames(
+        private string[] GetWithStatementNames(
            AnalysisSourceDocumentManagerVBDotNet manaDes,
            AnalysisSourceDocumentManagerVBDotNet manaBus,
            string typename)
@@ -713,6 +672,13 @@ namespace RepaceSource
             {
                 new ReplaceManagerHaveParamaterValueSpread(rowString, colString, spreadValiableName, (IParamater)codeInfo).Replace();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var form = new RepaceSource();
+
+            form.Show();
         }
     }
 }
