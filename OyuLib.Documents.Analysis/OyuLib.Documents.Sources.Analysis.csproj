@@ -80,8 +80,10 @@
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetSimple.cs" />
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetSigunature.cs" />
     <Compile Include="SourceCodeInfoParamaterValue.cs" />
-    <Compile Include="SourceCodeInfoParamaterValueCallMethod.cs" />
-    <Compile Include="SourceCodeInfoParamaterValueMethod.cs" />
+    <Compile Include="SourceCodeInfoParamaterValueElement.cs" />
+    <Compile Include="SourceCodeInfoParamaterValueElementCallMethod.cs" />
+    <Compile Include="SourceCodeInfoParamaterValueElementStrage.cs" />
+    <Compile Include="SourceCodeInfoParamaterValueElementMethod.cs" />
     <Compile Include="SourceCodeInfoSubstitution.cs" />
     <Compile Include="SourceCodeInfoValiable.cs" />
     <Compile Include="SourceCodeInfoVbImports.cs" />

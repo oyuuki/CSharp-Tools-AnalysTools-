@@ -7,11 +7,11 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoParamaterValueCallMethod : SourceCodeInfoParamaterValue
+    public class SourceCodeInfoParamaterValueElementCallMethod : SourceCodeInfoParamaterValueElement
     {
         #region Constructor
 
-        public SourceCodeInfoParamaterValueCallMethod(
+        public SourceCodeInfoParamaterValueElementCallMethod(
             SourceCode code,
             SourceCodePartsfactory coFac,
             StringRange range,

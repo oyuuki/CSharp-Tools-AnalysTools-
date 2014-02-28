@@ -197,19 +197,19 @@ namespace OyuLib.Documents.Sources.Analysis
             return null;
         }
 
-        private SourceCodeInfoParamaterValueCallMethod[] GetConditionalValuesMethodParamaters(string name, SourceCodeInfo[] codeInfos)
+        private SourceCodeInfoParamaterValueElementCallMethod[] GetConditionalValuesMethodParamaters(string name, SourceCodeInfo[] codeInfos)
         {
-            var retList = new List<SourceCodeInfoParamaterValueCallMethod>();
+            var retList = new List<SourceCodeInfoParamaterValueElementCallMethod>();
 
             foreach (var value in codeInfos)
             {
-                if (!(value is SourceCodeInfoParamaterValueCallMethod))
+                if (!(value is SourceCodeInfoParamaterValueElementCallMethod))
                 {
                     continue;
 
                 }
 
-                var codeInfoCallMethod = (SourceCodeInfoParamaterValueCallMethod)value;
+                var codeInfoCallMethod = (SourceCodeInfoParamaterValueElementCallMethod)value;
 
                 if (codeInfoCallMethod.ParamaterName.Equals(name))
                 {
@@ -663,7 +663,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     foreach(var paramValue in param.GetSourceCodeInfoParamaterValue())
                     {
-                        var paramValueMethod = (SourceCodeInfoParamaterValueMethod)paramValue;
+                        var paramValueMethod = (SourceCodeInfoParamaterValueElementMethod)paramValue;
 
                         if(paramValueMethod.TypeName.Equals(typeName))
                         {
@@ -680,7 +680,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     foreach (var paramValue in param.GetSourceCodeInfoParamaterValue())
                     {
-                        var paramValueMethod = (SourceCodeInfoParamaterValueMethod)paramValue;
+                        var paramValueMethod = (SourceCodeInfoParamaterValueElementMethod)paramValue;
 
                         if (paramValueMethod.TypeName.Equals(typeName))
                         {

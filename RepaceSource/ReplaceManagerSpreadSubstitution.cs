@@ -107,12 +107,12 @@ namespace RepaceSource
             }
             else if (subCodeInfo.RightHandSide.StartsWith(spreadName + ".SearchCol"))
             {
-                var codeInfoCallMethod  = (SourceCodeInfoCallMethod)subCodeInfo.GetSourceCodeInfoParamater().ParamaterValues[0];
+                var codeInfoCallMethod = (SourceCodeInfoCallMethod)subCodeInfo.GetSourceCodeInfoParamater().ParamaterValues[0].ElementStrages[0].Value;
                 var paramValues = codeInfoCallMethod.GetSourceCodeInfoParamater().ParamaterValues;
 
                 subCodeInfo.SetAllOverWriteString(
                     "Dim col As Integer　 '見つかった列    ★[]★置換ツールにより追加したコード col\n" +
-                    spreadName + ".Search(0, " + "\"" + "TEST" + "\"" + ", False, True, True, False, " + 
+                    spreadName + ".Search(0, " + "\"" + "TEST" + "\"" + ", False, True, True, False, " +
                     paramValues[1].GetCodeString() + ", " +
                     paramValues[0].GetCodeString() + ", " +
                     paramValues[3].GetCodeString() + ", " +

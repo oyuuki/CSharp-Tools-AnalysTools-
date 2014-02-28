@@ -13,7 +13,7 @@ namespace OyuLib.Documents.Sources.Analysis
     {
         #region instanceVal
 
-        private SourceCodeInfo[] _sourceCodeInfoParamaterValues = null;
+        private SourceCodeInfoParamaterValue[] _sourceCodeInfoParamaterValues = null;
 
 
         #endregion
@@ -21,7 +21,7 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Constructor
 
         public SourceCodeInfoParamater(
-            SourceCodeInfo[] sourceCodeInfoParamaterValues)
+            SourceCodeInfoParamaterValue[] sourceCodeInfoParamaterValues)
         {
             this._sourceCodeInfoParamaterValues = sourceCodeInfoParamaterValues;
         }
@@ -30,7 +30,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Property
 
-        public SourceCodeInfo[] ParamaterValues
+        public SourceCodeInfoParamaterValue[] ParamaterValues
         {
             get { return this._sourceCodeInfoParamaterValues; }
         }
@@ -47,15 +47,37 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-        public void ChangeParamaterIndex(int index1, int index2)
+        public int ParamaterLength()
         {
-            var index1Paramater = this.ParamaterValues[index1];
+            if(this.ParamaterValues == null)
+            {
+                return 0;
+            }
 
-            this.ParamaterValues[index1] = this.ParamaterValues[index2];
-            this.ParamaterValues[index2] = index1Paramater;
+            return this.ParamaterValues.Length;
         }
 
-        public SourceCodeInfoParamaterValue[] GetSourceCodeInfoParamaterValue()
+        public void ChangeParamaterIndex(int index1, int index2)
+        {
+            try
+            {
+                var index1separator = this.ParamaterValues[index1].Separator;
+                var index2separator = this.ParamaterValues[index2].Separator;
+                var index1Paramater = this.ParamaterValues[index1];
+
+                this.ParamaterValues[index1] = this.ParamaterValues[index2];
+                this.ParamaterValues[index2] = index1Paramater;
+
+                this.ParamaterValues[index1].Separator = index1separator;
+                this.ParamaterValues[index2].Separator = index2separator;
+            }
+            catch(IndexOutOfRangeException ex)
+            {
+                throw new IndexOutOfRangeException("Indexに存在しない要素を指定しています。");
+            }
+        }
+
+        public SourceCodeInfoParamaterValueElement[] GetSourceCodeInfoParamaterValue()
         {
             return this.GetSourceCodeInfoParamaterValue(this.ParamaterValues);
         }
@@ -65,42 +87,52 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.GetAllSourceCodeInfos(this.ParamaterValues);
         }
 
-        private SourceCodeInfo[] GetAllSourceCodeInfos(SourceCodeInfo[] paramaterValues)
+        private SourceCodeInfo[] GetAllSourceCodeInfos(SourceCodeInfoParamaterValue[] paramaterValues)
         {
             var retList = new List<SourceCodeInfo>();
 
             foreach (var value in paramaterValues)
             {
-                if (value is SourceCodeInfoParamaterValue)
+                foreach (var element in value.ElementStrages)
                 {
-                    retList.Add((SourceCodeInfo)value);
-                }
-                else if (value is IParamater)
-                {
-                    var iparaVal = value;
-                    retList.Add(iparaVal);
-                    retList.AddRange(this.GetAllSourceCodeInfos(((IParamater)iparaVal).GetSourceCodeInfoParamater().ParamaterValues));
+                    var elementValue = element.Value;
+
+                    if (elementValue is SourceCodeInfoParamaterValueElement)
+                    {
+                        retList.Add((SourceCodeInfo)elementValue);
+                    }
+                    else if (elementValue is IParamater)
+                    {
+                        var iparaVal = elementValue;
+                        retList.Add(iparaVal);
+                        retList.AddRange(this.GetAllSourceCodeInfos(((IParamater)iparaVal).GetSourceCodeInfoParamater().ParamaterValues));
+                    }
                 }
             }
 
             return retList.ToArray();
         }
 
-        private SourceCodeInfoParamaterValue[] GetSourceCodeInfoParamaterValue(SourceCodeInfo[] paramaterValues)
+        private SourceCodeInfoParamaterValueElement[] GetSourceCodeInfoParamaterValue(SourceCodeInfoParamaterValue[] paramaterValues)
         {
-            var retList = new List<SourceCodeInfoParamaterValue>();
+            var retList = new List<SourceCodeInfoParamaterValueElement>();
 
             foreach (var value in paramaterValues)
             {
-                if (value is SourceCodeInfoParamaterValue)
+                foreach (var element in value.ElementStrages)
                 {
-                    retList.Add((SourceCodeInfoParamaterValue)value);
+                    var elementValue = element.Value;
+
+                    if (elementValue is SourceCodeInfoParamaterValueElement)
+                    {
+                        retList.Add((SourceCodeInfoParamaterValueElement)elementValue);
+                    }
+                    else if (elementValue is IParamater)
+                    {
+                        var iparaVal = (IParamater)elementValue;
+                        retList.AddRange(this.GetSourceCodeInfoParamaterValue(iparaVal.GetSourceCodeInfoParamater().ParamaterValues));
+                    }
                 }
-                else if (value is IParamater)
-                {
-                    var iparaVal = (IParamater)value;
-                    retList.AddRange(this.GetSourceCodeInfoParamaterValue(iparaVal.GetSourceCodeInfoParamater().ParamaterValues));
-                } 
             }
 
             return retList.ToArray();
@@ -111,24 +143,29 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.GetStringRange(this.ParamaterValues);
         }
 
-        private StringRange[] GetStringRange(SourceCodeInfo[] paramaters)
+        private StringRange[] GetStringRange(SourceCodeInfoParamaterValue[] paramaters)
         {
             var retList = new List<StringRange>();
 
             foreach (var val in paramaters)
             {
-                if (val is SourceCodeInfoParamaterValue)
+                foreach (var element in val.ElementStrages)
                 {
-                    var range = ((SourceCodeInfoParamaterValue) val).Range;
-                    range.Childs = val.GetCodeRanges();
+                    var elementValue = element.Value;
 
-                    retList.Add(range);
-                }
-                else if (val is IParamater)
-                {
-                    var iparaVal = (IParamater) val;
-                    var range = iparaVal.Range;
-                    range.Childs = this.GetStringRange(iparaVal.GetSourceCodeInfoParamater().ParamaterValues);
+                    if (elementValue is SourceCodeInfoParamaterValueElement)
+                    {
+                        var range = ((SourceCodeInfoParamaterValueElement)elementValue).Range;
+                        range.Childs = elementValue.GetCodeRanges();
+
+                        retList.Add(range);
+                    }
+                    else if (elementValue is IParamater)
+                    {
+                        var iparaVal = (IParamater)elementValue;
+                        var range = iparaVal.Range;
+                        range.Childs = this.GetStringRange(iparaVal.GetSourceCodeInfoParamater().ParamaterValues);
+                    }
                 }
             }
 
@@ -140,21 +177,26 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var retList = new List<NestIndex>();
 
-            foreach (var val in ParamaterValues)
+            foreach (var val in this.ParamaterValues)
             {
-                NestIndex paramValuesHead = new NestIndex(-1);
-                paramValuesHead.Childs = val.GetNestIndices();
+                foreach (var elemental in val.ElementStrages)
+                {
+                    var elementalValue = elemental.Value;
 
-                retList.Add(paramValuesHead);
+                    NestIndex paramValuesHead = new NestIndex(-1);
+                    paramValuesHead.Childs = elementalValue.GetNestIndices();
+
+                    retList.Add(paramValuesHead);
+                }
             }
 
             return retList.ToArray();
         }
 
-        private SourceCodeInfoParamaterValue[] GetParamaterValue(string paramaterString,
+        private SourceCodeInfoParamaterValueElement[] GetParamaterValue(string paramaterString,
             SourceCodeInfoParamater paramater)
         {
-            var retList = new List<SourceCodeInfoParamaterValue>();
+            var retList = new List<SourceCodeInfoParamaterValueElement>();
 
             if (!paramater.HasParamater)
             {
@@ -163,24 +205,29 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var value in paramater.ParamaterValues)
             {
-                if (value is SourceCodeInfoParamaterValue)
+                foreach (var element in value.ElementStrages)
                 {
-                    var paramValue = (SourceCodeInfoParamaterValue)value;
+                    var elementValue = element.Value;
 
-                    if (paramValue.ParamaterName.Equals(paramaterString))
+                    if (elementValue is SourceCodeInfoParamaterValueElement)
                     {
-                        retList.Add(paramValue);
-                    }    
-                }
-                else if (value is IParamater)
-                {
-                    var valueHaveparam = (IParamater)value;
+                        var paramValue = (SourceCodeInfoParamaterValueElement)elementValue;
 
-                    var param = valueHaveparam.GetSourceCodeInfoParamater();
-
-                    if (param.HasParamater)
+                        if (paramValue.ParamaterName.Equals(paramaterString))
+                        {
+                            retList.Add(paramValue);
+                        }
+                    }
+                    else if (elementValue is IParamater)
                     {
-                        retList.AddRange(this.GetParamaterValue(paramaterString, param));
+                        var valueHaveparam = (IParamater)elementValue;
+
+                        var param = valueHaveparam.GetSourceCodeInfoParamater();
+
+                        if (param.HasParamater)
+                        {
+                            retList.AddRange(this.GetParamaterValue(paramaterString, param));
+                        }
                     }
                 }
             }
@@ -188,7 +235,7 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
-        public SourceCodeInfoParamaterValue[] GetParamaterValue(string paramaterString)
+        public SourceCodeInfoParamaterValueElement[] GetParamaterValue(string paramaterString)
         {
             return this.GetParamaterValue(paramaterString, this);
         }
@@ -200,27 +247,34 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.GetParamaterOverWriteValues(this.ParamaterValues);
         }
 
-        private string GetParamaterOverWriteValues(SourceCodeInfo[] ParamaterValues)
+        private string GetParamaterOverWriteValues(SourceCodeInfoParamaterValue[] ParamaterValues)
         {
             var strBu = new StringBuilder();
 
             foreach (var value in ParamaterValues)
             {
-                if (value is SourceCodeInfoParamaterValue)
+                foreach(var element in value.ElementStrages)
                 {
-                    var paramValue = (SourceCodeInfoParamaterValue)value;
-                    strBu.Append(paramValue.Range.SpilitSeparatorStart);
-                    strBu.Append(value.GetCodePartsOverWriteValues());
-                    strBu.Append(paramValue.Range.SpilitSeparatorEnd);
-                }
-                else if (value is IParamater)
-                {
-                    var range = ((IParamater) value).Range;
+                    var elementValue = element.Value;
 
-                    strBu.Append(range.SpilitSeparatorStart);
-                    strBu.Append(value.GetCodePartsOverWriteValues());
-                    strBu.Append(range.SpilitSeparatorEnd);
+                    if (elementValue is SourceCodeInfoParamaterValueElement)
+                    {
+                        var paramValue = (SourceCodeInfoParamaterValueElement)elementValue;
+                        strBu.Append(paramValue.Range.SpilitSeparatorStart);
+                        strBu.Append(elementValue.GetCodePartsOverWriteValues());
+                        strBu.Append(paramValue.Range.SpilitSeparatorEnd);
+                    }
+                    else if (elementValue is IParamater)
+                    {
+                        var range = ((IParamater)elementValue).Range;
+
+                        strBu.Append(range.SpilitSeparatorStart);
+                        strBu.Append(elementValue.GetCodePartsOverWriteValues());
+                        strBu.Append(range.SpilitSeparatorEnd);
+                    }
                 }
+
+                strBu.Append(value.Separator);
             }
 
             return strBu.ToString();

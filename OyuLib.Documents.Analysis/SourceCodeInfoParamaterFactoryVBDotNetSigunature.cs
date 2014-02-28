@@ -6,7 +6,7 @@ using System.Text;
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoParamaterFactoryVBDotNetSigunature :
-        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueMethod, SourceCodeInfoParamater, SourceCodePartsFactoryCommat>
+        SourceCodeInfoParamaterFactory<SourceCodeInfoParamaterValueElementMethod, SourceCodePartsFactoryCommat, SourceCodePartsFactoryCommatIncludeParamater>
     {
         #region Constructor
 
@@ -14,7 +14,7 @@ namespace OyuLib.Documents.Sources.Analysis
             int parentIndex,
             SourceCodePartsFactoryCommat paramfactory,
             StringRange range)
-            : base(parentIndex, range)
+            : base(parentIndex, range, ",")
         {
 
         }
@@ -25,7 +25,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override SourceCodeInfoParamaterValueMethod[] GetSourceCodeInfoParamaterValueLogic(
+        // SourceCodeInfoParamaterValueElementMethod
+
+        protected override SourceCodeInfoParamaterValueElementStrage[] GetSourceCodeInfoParamaterValueLogic(
             SourceCode sourceCode, 
             SourceCodePartsfactory fac, 
             StringRange rangeParam,
@@ -35,30 +37,22 @@ namespace OyuLib.Documents.Sources.Analysis
             int parammaterName = 1;
             int typeName = fac.GetIndexCodeParts("As") + 1;
 
-            var retList = new List<SourceCodeInfoParamaterValueMethod>();
+            var retList = new List<SourceCodeInfoParamaterValueElementStrage>();
 
-            retList.Add(new SourceCodeInfoParamaterValueMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),rangeParam,
-                parammaterName, groupCount, hierarchyCount, typeName));
+            retList.Add(new SourceCodeInfoParamaterValueElementStrage(new SourceCodeInfoParamaterValueElementMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode),rangeParam,
+                parammaterName, groupCount, hierarchyCount, typeName)));
 
             return retList.ToArray();
-
-            
         }
 
-        protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(
-            SourceCode sourceCode)
-        {
-            return new SourceCodePartsFactoryParamater(sourceCode);
-        }
-
-        protected override SourceCodeInfoParamater GetSourceCodeInfoParamater(SourceCodeInfoParamaterValueMethod[] values)
-        {
-            return new SourceCodeInfoParamater(values);
-        }
-
-        protected override SourceCodePartsFactoryCommat GetFactory(string paramaterString)
+        protected override SourceCodePartsFactoryCommat GetParamaterValueFactory(string paramaterString)
         {
             return new SourceCodePartsFactoryCommat(new SourceCode(paramaterString));
+        }
+
+        protected override SourceCodePartsFactoryCommatIncludeParamater GetParamaterElementFactory(string paramaterString)
+        {
+            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString));
         }
 
         #endregion

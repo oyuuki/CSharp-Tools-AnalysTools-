@@ -6,14 +6,14 @@ using System.Text;
 namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoParamaterFactoryVBDotNetSimple :
-        SourceCodeInfoParamaterFactory<SourceCodeInfo, SourceCodeInfoParamater, SourceCodePartsFactoryCommatIncludeParamater>
+        SourceCodeInfoParamaterFactory<SourceCodeInfo, SourceCodePartsFactoryCommatIncludeParamater, SourceCodePartsFactoryVBDotNetFomula>
     {
         #region Constructor
 
         public SourceCodeInfoParamaterFactoryVBDotNetSimple(
             int parentIndex,
             StringRange range)
-            : base(parentIndex, range)
+            : base(parentIndex, range, ",")
         {
 
         }
@@ -24,7 +24,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Override
 
-        protected override SourceCodeInfo[] GetSourceCodeInfoParamaterValueLogic(
+        protected override SourceCodeInfoParamaterValueElementStrage[] GetSourceCodeInfoParamaterValueLogic(
             SourceCode sourceCode, 
             SourceCodePartsfactory fac,
             StringRange rangeParam,
@@ -32,29 +32,40 @@ namespace OyuLib.Documents.Sources.Analysis
             int hierarchyCount)
         {
 
-            return this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
-                sourceCode, 
-                fac, 
-                rangeParam, 
-                groupCount,
-                hierarchyCount);
+            var retList = new List<SourceCodeInfoParamaterValueElementStrage>();
+
+            var codeParts = fac.GetCodeParts();
+            var codeRange = fac.GetCodePartsRanges();
+
+            for (int index = 0; index < codeParts.Length; index++)
+            {
+                var codepart = codeParts[index];
+                var codepartRange = codeRange[index];
+
+                var sourceCodeinner = new SourceCode(codepart);
+
+                retList.AddRange(this.GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
+                    sourceCodeinner,
+                    new SourceCodePartsFactoryParamater(sourceCodeinner),
+                    codepartRange,
+                    groupCount,
+                    hierarchyCount));
+            }
+
+            return retList.ToArray();
         }
 
-        protected override SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(
-            SourceCode sourceCode)
+
+        protected override SourceCodePartsFactoryCommatIncludeParamater GetParamaterValueFactory(string paramaterString)
         {
-            return new SourceCodePartsFactoryParamater(sourceCode);
+            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString));
         }
 
-        protected override SourceCodeInfoParamater GetSourceCodeInfoParamater(SourceCodeInfo[] values)
+        protected override SourceCodePartsFactoryVBDotNetFomula GetParamaterElementFactory(string paramaterString)
         {
-            return new SourceCodeInfoParamater(values);
+            return new SourceCodePartsFactoryVBDotNetFomula(new SourceCode(paramaterString));
         }
-
-        protected override SourceCodePartsFactoryCommatIncludeParamater GetFactory(string paramaterString)
-        {
-            return new SourceCodePartsFactoryCommatIncludeParamater(new SourceCode(paramaterString), new string[] { ",", " & ", " + ", " * ", " - ", " / ", " = ", " <> ", " < ", " > ", " >= ", " <= " });
-        }
+        
 
         #endregion
 

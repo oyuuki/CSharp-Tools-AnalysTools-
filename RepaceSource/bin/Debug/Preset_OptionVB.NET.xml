@@ -10,7 +10,7 @@
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>3</Key>
-    <Value>ColNo1q2w3e4r5t6y3,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Page.Start(1),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Page.Start(),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y3,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Page.Start(1),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Page.Start(1),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>4</Key>
@@ -31,10 +31,6 @@
   <XmlValueTypeKeyAndValue>
     <Key>8</Key>
     <Value>ColNo1q2w3e4r5t6y8,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,.FontTrue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Font, True,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>9</Key>
-    <Value>ColNo1q2w3e4r5t6y9,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.CtlText,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Text,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>10</Key>
@@ -94,7 +90,7 @@
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>24</Key>
-    <Value>ColNo1q2w3e4r5t6y24,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y - .Count1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y .Count - 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y24,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y - .Count1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Count - 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>25</Key>

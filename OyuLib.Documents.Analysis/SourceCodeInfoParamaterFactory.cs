@@ -6,10 +6,10 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public abstract class SourceCodeInfoParamaterFactory<TParamaterValue, TParamater, TFactory>
+    public abstract class SourceCodeInfoParamaterFactory<TParamaterValue, TParamaterValueFactory, TParamaterElementFactory>
         where TParamaterValue : SourceCodeInfo
-        where TParamater : SourceCodeInfoParamater
-        where TFactory : SourceCodePartsfactory
+        where TParamaterValueFactory : SourceCodePartsfactory
+        where TParamaterElementFactory : SourceCodePartsfactory
     {
         #region InstanceVal
 
@@ -17,16 +17,20 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private StringRange _range = null;
 
+        private string _paramValueSeparator = string.Empty;
+
         #endregion
 
         #region Constructor
 
         public SourceCodeInfoParamaterFactory(
             int parentIndex,
-            StringRange range)
+            StringRange range,
+            string paramValueSeparator)
         {
             this._parentIndex = parentIndex;
             this._range = range;
+            this._paramValueSeparator = paramValueSeparator;
         }
 
 
@@ -44,15 +48,20 @@ namespace OyuLib.Documents.Sources.Analysis
             get { return this._range; }
         }
 
+        public string ParamValueSeparator
+        {
+            get { return this._paramValueSeparator; }
+        }
+
         #endregion
 
         #region Method
 
         #region Public
 
-        public TParamater GetSourceCodeInfoParamater()
+        public SourceCodeInfoParamater GetSourceCodeInfoParamater()
         {
-            return GetSourceCodeInfoParamater(this.GetFactory(this.Range.GetStringSpilited()), 1, this.Range);
+            return GetSourceCodeInfoParamater(this.GetParamaterValueFactory(this.Range.GetStringSpilited()), 1, this.Range);
         }
 
         #endregion
@@ -63,55 +72,65 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Protected
 
-        protected TParamaterValue[] GetSourceCodeInfoParamaterValue(
+        protected SourceCodeInfoParamaterValue GetSourceCodeInfoParamaterValue(
             string paramaterValueString, 
             int hierarchyCount,
             int groupCount, 
             StringRange range)
         {
             var sourceCode = new SourceCode(paramaterValueString);
-            var fac = this.GetSourceCodePartsFactoryParamaterValue(sourceCode);
+            var fac = this.GetParamaterElementFactory(sourceCode.CodeString);
             string paramaterString = string.Empty;
             int paramaterStringIndex = 0;
             StringRange paramaterRange = null;
 
-            var retValue = this.GetSourceCodeInfoParamaterValueLogic(
-                sourceCode, 
-                fac, 
-                range, 
-                groupCount,  
-                hierarchyCount);
+
+            var retValue = new SourceCodeInfoParamaterValue(this.GetSourceCodeInfoParamaterValueLogic(
+                sourceCode,
+                fac,
+                range,
+                groupCount,
+                hierarchyCount),
+                this.ParamValueSeparator);
+            
 
             return retValue;
         }
 
-        protected SourceCodeInfo[] GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
+        protected SourceCodeInfoParamaterValueElementStrage[] GetSourceCodeInfoParamaterValueLogicForhasReturnValue(
            SourceCode sourceCode,
            SourceCodePartsfactory fac,
            StringRange rangeParam,
            int groupCount,
            int hierarchyCount)
         {
+            
+            
             int parammaterName = 0;
 
             var paramaterStrings = fac.GetNestedCodeParts("(", ")");
+
+            var aaa = fac.GetCodeParts();
 
             //var innerFacParam = new SourceCodePartsFactoryVBDotNetIfValue(sourceCode);
 
             //if (innerFacParam.GetCodePartsLength() >= 2)
             //{
-                
+
             //}
-                
+
             //var innerParamRange = new StringRange()
 
-            var retList = new List<SourceCodeInfo>();
+            var retList = new List<SourceCodeInfoParamaterValueElementStrage>();
 
             // Exist Paramater
             if (paramaterStrings != null && paramaterStrings.Length > 0 && !string.IsNullOrEmpty(paramaterStrings[0]) && !paramaterStrings[0].StartsWith("("))
             {
                 var startIndex = 0;
                 var sourceCodeString = sourceCode.CodeString.Trim();
+                // セパレータ文字列を保持
+                var endSeparator = rangeParam.SpilitSeparatorEnd;
+                
 
                 foreach (var param in paramaterStrings)
                 {
@@ -123,8 +142,11 @@ namespace OyuLib.Documents.Sources.Analysis
                     var paramSourceCode =
                         new SourceCode(sourceCodeString.Substring(startIndex, endIndex - startIndex));
                     var range = new StringRange(startIndex, endIndex, "", "", sourceCodeString);
-                    startIndex = endIndex;
-                    retList.Add(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(paramSourceCode, rangeParam));
+
+                    startIndex = paramIndex + paramKakko.Length;
+
+                    retList.Add(new SourceCodeInfoParamaterValueElementStrage(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(paramSourceCode, 
+                        new StringRange(rangeParam.IndexStart, rangeParam.IndexEnd, rangeParam.SpilitSeparatorStart, ""))));
                 }
 
                 if (startIndex < sourceCodeString.Length)
@@ -133,19 +155,33 @@ namespace OyuLib.Documents.Sources.Analysis
                     var paramSourceCode = new SourceCode(paramValueSourceCodeString);
 
                     var range = new StringRange(0, paramValueSourceCodeString.Length - 1, "", "", paramValueSourceCodeString);
-                    retList.Add(new SourceCodeInfoParamaterValueCallMethod(
+                    retList.Add(new SourceCodeInfoParamaterValueElementStrage(new SourceCodeInfoParamaterValueElementCallMethod(
                         paramSourceCode,
                         new SourceCodePartsFactoryParamater(paramSourceCode),
                         range,
                         0,
-                        groupCount, 
-                        hierarchyCount));
+                        groupCount,
+                        hierarchyCount)));
+                }
+
+
+                if (retList[retList.Count - 1].Value is SourceCodeInfoParamaterValueElement)
+                {
+                    ((SourceCodeInfoParamaterValueElement)retList[retList.Count - 1].Value).Range.SpilitSeparatorEnd = endSeparator;
+                }
+                else if (retList[retList.Count - 1].Value is SourceCodeInfoCallMethod)
+                {
+                    ((SourceCodeInfoCallMethod)retList[retList.Count - 1].Value).Range.SpilitSeparatorEnd = endSeparator;
+                }
+                else 
+                {
+                    int a = 1;
                 }
             }
             else
             {
-                retList.Add(new SourceCodeInfoParamaterValueCallMethod(sourceCode, new SourceCodePartsFactoryParamater(sourceCode), rangeParam,
-                    parammaterName, groupCount, hierarchyCount));
+                retList.Add(new SourceCodeInfoParamaterValueElementStrage(new SourceCodeInfoParamaterValueElement(sourceCode, new SourceCodePartsFactoryParamater(sourceCode), rangeParam,
+                    parammaterName, groupCount, hierarchyCount)));
             }
 
             return retList.ToArray();
@@ -157,40 +193,41 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Virtual
 
-        public virtual TParamater GetSourceCodeInfoParamater(SourceCodePartsfactory factory, int hierarchyCount, StringRange range)
+        public virtual SourceCodeInfoParamater GetSourceCodeInfoParamater(SourceCodePartsfactory factory, int hierarchyCount, StringRange range)
         {
-            if(range.GetStringSpilited().IndexOf("plStrInvoiceNumber, InStrRev(plStrInvoiceNumber") >= 0)
-            {
-                var aa = range.GetStringSpilited();
-            }
-
-            var retList = new List<TParamaterValue>();
+            var retList = new List<SourceCodeInfoParamaterValue>();
 
             var codeparts = factory.GetCodeParts();
             var codeRanges = factory.GetCodePartsRanges();
 
             for (int index = 0; index < codeparts.Length; index++)
             {
-                retList.AddRange(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
+                retList.Add(this.GetSourceCodeInfoParamaterValue(codeparts[index], hierarchyCount, index, codeRanges[index]));
             }
 
-            return this.GetSourceCodeInfoParamater(retList.ToArray());
+            if (retList.Count > 0)
+            { 
+                // 最後のパラメータにセパレータはつけない
+                retList[retList.Count - 1].Separator = string.Empty;
+            }
+
+            return new SourceCodeInfoParamater(retList.ToArray());
         }
 
         #endregion
 
         #region Abstract
 
-        protected abstract TParamaterValue[] GetSourceCodeInfoParamaterValueLogic
+
+        protected abstract SourceCodeInfoParamaterValueElementStrage[] GetSourceCodeInfoParamaterValueLogic
             (SourceCode sourceCode,
             SourceCodePartsfactory fac,
             StringRange rangeParam,
             int groupCount,
             int hierarchyCount);
-        protected abstract TParamater GetSourceCodeInfoParamater(TParamaterValue[] values);
-        protected abstract TFactory GetFactory(string paramaterString);
-        // protected abstract TParamater GetChildParamater(int codepartIndex, TParamaterValue[] values);
-        protected abstract SourceCodePartsfactory GetSourceCodePartsFactoryParamaterValue(SourceCode sourceCode);
+
+        protected abstract TParamaterValueFactory GetParamaterValueFactory(string paramaterString);
+        protected abstract TParamaterElementFactory GetParamaterElementFactory(string paramaterString);
 
         #endregion
 

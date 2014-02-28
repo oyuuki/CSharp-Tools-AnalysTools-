@@ -8,7 +8,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoParamaterValueMethod : SourceCodeInfoParamaterValue
+    public class SourceCodeInfoParamaterValueElementMethod : SourceCodeInfoParamaterValueElement
     {
         #region instanceVal
 
@@ -17,7 +17,7 @@ namespace OyuLib.Documents.Sources.Analysis
         #endregion
 
         #region Constructor
-        public SourceCodeInfoParamaterValueMethod(
+        public SourceCodeInfoParamaterValueElementMethod(
             SourceCode code,
             SourceCodePartsfactory coFac,
             StringRange range,

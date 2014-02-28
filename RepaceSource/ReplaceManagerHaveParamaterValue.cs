@@ -54,16 +54,21 @@ namespace RepaceSource
                 return;
             }
 
-            foreach (var codeInfo in paramater.GetSourceCodeInfoParamater().ParamaterValues)
+            foreach (var value in paramater.GetSourceCodeInfoParamater().ParamaterValues)
             {
-                if(codeInfo is IParamater)
+                foreach (var element in value.ElementStrages)
                 {
-                     this.ReplaceIParamater((IParamater)codeInfo);
-                     this.Replace((IParamater)codeInfo);
-                }
-                else
-                {
-                    this.ReplaceProc((SourceCodeInfoParamaterValue)codeInfo);
+                    var elementValue = element.Value;
+
+                    if (elementValue is IParamater)
+                    {
+                        this.ReplaceIParamater((IParamater)elementValue);
+                        this.Replace((IParamater)elementValue);
+                    }
+                    else
+                    {
+                        this.ReplaceProc((SourceCodeInfoParamaterValueElement)elementValue);
+                    }
                 }
             }
         }
@@ -82,7 +87,7 @@ namespace RepaceSource
 
         #region Private
 
-        private void ReplaceProc(SourceCodeInfoParamaterValue codeinfo)
+        private void ReplaceProc(SourceCodeInfoParamaterValueElement codeinfo)
         {
             foreach (var replaceItem in this.GetReplaceItems())
             {

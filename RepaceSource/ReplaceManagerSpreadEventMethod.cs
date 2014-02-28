@@ -56,11 +56,16 @@ namespace RepaceSource
 
             foreach(var paramValue in paramater.ParamaterValues)
             {
-                if(((SourceCodeInfoParamaterValueMethod)paramValue).TypeName.Equals(item.TargetString))
+                foreach (var element in paramValue.ElementStrages)
                 {
-                    ((SourceCodeInfoParamaterValueMethod)paramValue).TypeName = item.ReplaceStrings[0];
-                    codeInfo.EventName = item.ReplaceStrings[1];
-                    break;
+                    var elementValue = element.Value;
+
+                    if (((SourceCodeInfoParamaterValueElementMethod)elementValue).TypeName.Equals(item.TargetString))
+                    {
+                        ((SourceCodeInfoParamaterValueElementMethod)elementValue).TypeName = item.ReplaceStrings[0];
+                        codeInfo.EventName = item.ReplaceStrings[1];
+                        break;
+                    }
                 }
             }
         }

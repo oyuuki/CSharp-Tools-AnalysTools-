@@ -1,87 +1,44 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using OyuLib.Collection;
-
 namespace OyuLib.Documents.Sources.Analysis
 {
-    public class SourceCodeInfoParamaterValue : SourceCodeInfo        
+    public class SourceCodeInfoParamaterValue
     {
-        #region instanceVal
+        #region InstanceVal
 
-        private int _parammaterName = -1;
+        private SourceCodeInfoParamaterValueElementStrage[] _elementStrages = null;
 
-        private int _hierarchyCount = -1;
-
-        private int _parentIndex = -1;
-
-        private StringRange _range = null;
+        private string _separator = string.Empty;
 
         #endregion
 
         #region Constructor
 
         public SourceCodeInfoParamaterValue(
-            SourceCode code,
-            SourceCodePartsfactory coFac,
-            StringRange range,
-            int parammaterName, 
-            int parentIndex,
-            int hierarchyCount)
-            : base(code, coFac)
+            SourceCodeInfoParamaterValueElementStrage[] elementStrages,
+            string separator)
         {
-            this._parammaterName = parammaterName;
-            this._hierarchyCount = hierarchyCount;
-            this._parentIndex = parentIndex;
-            this._range = range;
-
-            this.Range.Childs = GetCodeRanges();
+            this._elementStrages = elementStrages;
+            this._separator = separator;
         }
 
         #endregion
 
         #region Property
 
-        protected int ParammaterNameIndex
+        public SourceCodeInfoParamaterValueElementStrage[] ElementStrages
         {
-            get { return this._parammaterName; }            
+            get { return this._elementStrages; }
         }
 
-        protected int HierarchyCountIndex
+        public string Separator
         {
-            get { return this._hierarchyCount; }
+            get { return this._separator; }
+            set { this._separator = value; }
         }
-        protected int ParentIndexIndex
-        {
-            get { return this._parentIndex; }
-        }
-
-        public string ParamaterName
-        {
-            get { return this.GetCodePartsString(this._parammaterName); }
-            set { this.SetOverwriteValue(this._parammaterName, value); }
-        }
-
-        public string HierarchyCount
-        {
-            get { return this.GetCodePartsString(this._hierarchyCount); }
-        }
-        public string ParentIndex
-        {
-            get { return this.GetCodePartsString(this._parentIndex); }
-        }
-
-        
-
-        internal StringRange Range
-        {
-            get { return this._range; }
-        }
-
-        
 
         #endregion
 
@@ -89,18 +46,25 @@ namespace OyuLib.Documents.Sources.Analysis
 
         #region Public
 
-        #endregion
-
-        #region Override
-
-        public override NestIndex[] GetNestIndices()
+        public string GetCodeString()
         {
-            return new NestIndex[] { new NestIndex(this.ParammaterNameIndex, this.HierarchyCountIndex, this.ParentIndexIndex)}; 
+            return this.GetCodeString(this.ElementStrages);
         }
 
-        protected override string GetCodeText()
+        #endregion
+
+        #region Private
+
+        public string GetCodeString(SourceCodeInfoParamaterValueElementStrage[] elementStrages)
         {
-            return "パラメータ名：" + this.ParammaterNameIndex;
+            StringBuilder strBu = new StringBuilder();
+
+            foreach (var element in elementStrages)
+            {
+                strBu.Append(element.Value.GetCodeString());                
+            }
+
+            return strBu.ToString();
         }
 
         #endregion

@@ -12,6 +12,8 @@ using System.Xml.Schema;
 
 using OyuLib;
 using OyuLib.Documents.Sources.Analysis;
+using OyuLib.Documents.Sources;
+using OyuLib.Documents;
 
 namespace RepaceSource
 {
@@ -22,20 +24,133 @@ namespace RepaceSource
             InitializeComponent();
         }
 
+        private string[] GetFilePaths(string folderPath)
+        {
+            var retList = new List<string>();
+
+            foreach (var filepath in Directory.GetFiles(folderPath))
+            {
+                if (filepath.IndexOf("Designer.vb") < 0 && filepath.EndsWith(".vb"))
+                {
+                    retList.Add(filepath);
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        private int getLineCount(string folderpath)
+        {
+            int length = 0;
+
+            foreach(string filepath in this.GetFilePaths(folderpath))
+            {
+                Document doc = new Document(filepath);
+                length += doc.GetLineArray().Length;
+            }
+
+            return length;
+        }
+
+
+        private string OutParamaterValue(IParamater param)
+        {
+            string paramString = string.Empty;
+
+            if (!param.GetSourceCodeInfoParamater().HasParamater)
+            {
+                return paramString;
+            }
+
+
+            paramString = "{";
+
+            foreach (var value in param.GetSourceCodeInfoParamater().ParamaterValues)
+            {
+                foreach (var element in value.ElementStrages)
+                {
+                    var elemetValue = element.Value;
+
+                    if (elemetValue is SourceCodeInfoCallMethod)
+                    {
+                        paramString += "メ：{①" + ((SourceCodeInfoCallMethod)elemetValue).CallmethodName + "①}";
+                        paramString += "パ：[" + OutParamaterValue((IParamater)elemetValue) + "]";
+                    }
+                    else
+                    {
+                        paramString += "パ：[" + ((SourceCodeInfoParamaterValueElement)elemetValue).ParamaterName + "]";
+                    }
+                }
+            }
+
+            paramString += "}";
+
+            return paramString;
+        }
+
+        private string ChasngeIndexParamaterValue(IParamater param)
+        {
+            string paramString = string.Empty;
+            var paramValues = param.GetSourceCodeInfoParamater().ParamaterValues;
+
+            if (param.GetSourceCodeInfoParamater().HasParamater && paramValues.Length > 1)
+            {
+                param.GetSourceCodeInfoParamater().ChangeParamaterIndex(0, 1);
+            }
+
+            foreach (var paramValue in param.GetSourceCodeInfoParamater().ParamaterValues)
+            {
+                foreach(var element in paramValue.ElementStrages)
+                {
+                    if(element.Value is IParamater)
+                    {
+                        paramString += "Inner：" + this.ChasngeIndexParamaterValue((IParamater)element.Value);
+                    }
+
+                }
+
+            }
+           
+            return paramString;
+        }
+
         private void exButton1_Click(object sender, EventArgs e)
         {
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
 
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\TETETETE\frm004016001.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\test\test.vb");
 
-            foreach (var info in mana.GetSourceCodeAnalysis())
+            foreach (var info in mana.GetAllCodeInfos())
             {
-                
-                    this.exListBox1.Items.Add(info.ToString());
-                    this.exListBox2.Items.Add(info.GetCodeString());
-                
+                if (info is IParamater)
+                {
+                    var paramString = this.OutParamaterValue((IParamater)info);
+                    this.exListBox1.Items.Add(paramString);
+                    this.exListBox1.Items.Add(info.GetCodePartsOverWriteValues());
+                }
+            }
+
+            foreach (var info in mana.GetAllCodeInfos())
+            {
+                if (info is IParamater)
+                {
+                    this.ChasngeIndexParamaterValue((IParamater)info);
+                }
+
+            }
+
+            foreach (var info in mana.GetAllCodeInfos())
+            {
+                if (info is IParamater)
+                {
+                    var paramString = this.OutParamaterValue((IParamater)info);
+
+
+                    this.exListBox2.Items.Add(paramString);
+                    this.exListBox2.Items.Add(info.GetCodePartsOverWriteValues());
+                }
             }
 
             //var filedNameList = new List<string>();
