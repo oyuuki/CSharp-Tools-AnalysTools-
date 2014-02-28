@@ -771,7 +771,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
 
             var parameter =
-                        new SourceCodeInfoParamaterFactoryMultiple(
+                        new SourceCodeInfoParamaterFactoryVBDotNetSimple(
                             0,
                             range)
                             .GetSourceCodeInfoParamater();
@@ -797,7 +797,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var range = coFac.GetCodePartsRanges()[segmentsValue];
 
             var parameter =
-                        new SourceCodeInfoParamaterFactoryMultiple(
+                        new SourceCodeInfoParamaterFactoryVBDotNetSimple(
                             0,
                             range)
                             .GetSourceCodeInfoParamater();
@@ -873,7 +873,7 @@ namespace OyuLib.Documents.Sources.Analysis
             var range = coFac.GetCodePartsRanges()[evaluationFormula];
 
             var parameter =
-                        new SourceCodeInfoParamaterFactoryMultiple(
+                        new SourceCodeInfoParamaterFactoryVBDotNetSimple(
                             0,
                             range)
                             .GetSourceCodeInfoParamater();

@@ -76,7 +76,6 @@
     <Compile Include="SourceCodeInfoOptionParameters.cs" />
     <Compile Include="SourceCodeInfoOther.cs" />
     <Compile Include="SourceCodeInfoParamater.cs" />
-    <Compile Include="SourceCodeInfoParamaterFactoryMultiple.cs" />
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetSimple.cs" />
     <Compile Include="SourceCodeInfoParamaterFactoryVBDotNetSigunature.cs" />
     <Compile Include="SourceCodeInfoParamaterValue.cs" />
