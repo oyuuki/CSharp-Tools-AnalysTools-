@@ -114,12 +114,8 @@ namespace RepaceSource
             return paramString;
         }
 
-        private void exButton1_Click(object sender, EventArgs e)
+        private void testCode()
         {
-            this.exListBox1.Items.Clear();
-            this.exListBox2.Items.Clear();
-
-
             var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\test\test.vb");
 
             foreach (var info in mana.GetAllCodeInfos())
@@ -152,6 +148,15 @@ namespace RepaceSource
                     this.exListBox2.Items.Add(info.GetCodePartsOverWriteValues());
                 }
             }
+        }
+
+        private void exButton1_Click(object sender, EventArgs e)
+        {
+            this.exListBox1.Items.Clear();
+            this.exListBox2.Items.Clear();
+
+
+                        
 
             //var filedNameList = new List<string>();
             

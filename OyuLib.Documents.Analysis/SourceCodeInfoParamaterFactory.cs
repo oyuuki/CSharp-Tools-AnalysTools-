@@ -155,13 +155,19 @@ namespace OyuLib.Documents.Sources.Analysis
                     var paramSourceCode = new SourceCode(paramValueSourceCodeString);
 
                     var range = new StringRange(0, paramValueSourceCodeString.Length - 1, "", "", paramValueSourceCodeString);
-                    retList.Add(new SourceCodeInfoParamaterValueElementStrage(new SourceCodeInfoParamaterValueElementCallMethod(
+
+                    var elementst = new SourceCodeInfoParamaterValueElementStrage(new SourceCodeInfoParamaterValueElementCallMethod(
                         paramSourceCode,
                         new SourceCodePartsFactoryParamater(paramSourceCode),
                         range,
                         0,
                         groupCount,
-                        hierarchyCount)));
+                        hierarchyCount));
+
+                    elementst.BefLinkValue = retList[retList.Count - 1];
+                    retList[retList.Count - 1].AefLinkValue = elementst;
+
+                    retList.Add(elementst);
                 }
 
 

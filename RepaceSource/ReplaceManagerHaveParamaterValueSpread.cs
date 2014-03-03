@@ -66,9 +66,9 @@ namespace RepaceSource
             return CommonSpreadPlaceItemManager.GetPropertyReplaceItems(this.RowStringMinusOne, this.ColStringMinusOne, this.ValiableName);
         }
 
-        public override void ReplaceIParamater(IParamater paramater)
+        public override void ReplaceIParamater(SourceCodeInfoParamaterValueElementStrage paramater)
         {
-            if (paramater is SourceCodeInfoCallMethod)
+            if (paramater.Value is SourceCodeInfoCallMethod)
             {
                 new ReplaceManagerSpreadCallMethod(
                     this.RowString,
@@ -76,7 +76,7 @@ namespace RepaceSource
                     this.ValiableName,
                     "",
                     "",
-                    (SourceCodeInfoCallMethod)paramater).ReplaceWithOutParam();                
+                    (SourceCodeInfoCallMethod)paramater.Value).ReplaceWithOutParam();                
             }
         }
 

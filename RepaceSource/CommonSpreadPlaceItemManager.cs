@@ -20,10 +20,8 @@ namespace RepaceSource
             retList.Add(new ReplaceItem(spreadValibleName + ".eventArgs.Col", replaceColString));
 
             retList.Add(new ReplaceItem("eventArgs.Col", "eventArgs.Column"));
-            retList.Add(new ReplaceItem("eventArgs.Row", "eventArgs.Row"));
             retList.Add(new ReplaceItem("eventArgs.MultiLine", "eventArgs.WrapText"));
             retList.Add(new ReplaceItem("eventArgs.NewCol", "eventArgs.NewColumn"));
-            retList.Add(new ReplaceItem("eventArgs.NewRow", "eventArgs.NewRow"));
             retList.Add(new ReplaceItem("eventArgs.ButtonDown", ".ActiveSheet.Cells(eventArgs.Row, eventArgs.Column).Value"));
 
             retList.Add(new ReplaceItem("Row", "eventArgs.Row"));

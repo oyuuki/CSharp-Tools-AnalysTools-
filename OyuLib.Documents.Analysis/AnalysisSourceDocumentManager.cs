@@ -496,6 +496,55 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        protected T[] GetCodeInfoWithKeyNameRangeBlockNotRequiredInnerBlock<T, TBlock>(
+            string keyName, 
+            CheckWithKey<T> checkMethod,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
+            where T : SourceCodeInfo
+
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            return GetCodeInfoWithKeyNameRangeBlockNotRequiredInnerBlock<T, TBlock>(this.CodeObjects, keyName, checkMethod, blockName, checkBlockMethod);
+        }
+
+        protected T[] GetCodeInfoWithKeyNameRangeBlockNotRequiredInnerBlock<T, TBlock>(
+            SourceCodeblockInfo blockInfo,
+            string keyName,
+            CheckWithKey<T> checkMethod,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
+            where T : SourceCodeInfo
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            return GetCodeInfoWithKeyNameRangeBlockNotRequiredInnerBlock<T, TBlock>(blockInfo.CodeObjects, keyName, checkMethod, blockName, checkBlockMethod);
+        }
+
+        protected T[] GetCodeInfoWithKeyNameRangeBlockNotRequiredInnerBlock<T, TBlock>(
+            object[] codeObjects,
+            string keyName, 
+            CheckWithKey<T> checkMethod,
+            string blockName, 
+            CheckWithKey<TBlock> checkBlockMethod)
+            where T : SourceCodeInfo
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            var retList = new List<T>();
+
+            foreach (var block in this.GetSourceCodeblockInfo<TBlock>(codeObjects))
+            {
+                if (checkBlockMethod(blockName, (TBlock) block.CodeObjects[0]))
+                {
+                    retList.AddRange(this.GetCodeInfoWithKeyNameNotRequiredInnerBlock<T>(
+                keyName,
+                block,
+                checkMethod
+                ));    
+                }
+            }
+
+            return retList.ToArray();
+        }
 
         #endregion
 
@@ -765,7 +814,8 @@ namespace OyuLib.Documents.Sources.Analysis
                     }
                     else 
                     {
-                        file.WriteLine(codeinfo.GetCodeString());
+                        string str = codeinfo.GetCodeString();
+                        file.WriteLine(str);
                     }
                 }
             }

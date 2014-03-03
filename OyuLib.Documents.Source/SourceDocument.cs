@@ -75,11 +75,13 @@ namespace OyuLib.Documents.Sources
                 return string.Empty;
             };
 
-
             foreach (var str in this.GetArrayCodeString())
             {
                 proc(str);
             }
+
+            retList.RemoveAt(retList.Count - 1);
+            retList.RemoveAt(retList.Count - 2);
 
             return retList.ToArray();
         }

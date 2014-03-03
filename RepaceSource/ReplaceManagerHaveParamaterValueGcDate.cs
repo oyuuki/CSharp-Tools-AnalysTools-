@@ -34,7 +34,7 @@ namespace RepaceSource
             return CommonGcDatePlaceItemManager.GetPropertyReplaceItems(this.ValiableName);
         }
 
-        public override void ReplaceIParamater(IParamater paramater)
+        public override void ReplaceIParamater(SourceCodeInfoParamaterValueElementStrage paramater)
         {
             return;
         }

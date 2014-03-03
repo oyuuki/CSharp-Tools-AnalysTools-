@@ -9,16 +9,42 @@ namespace RepaceSource
 {
     public class ReplaceManagerAdoDatasetCallMethod : ReplaceManager<SourceCodeInfoCallMethod>
     {
+        #region instranceVal
+
+        private SourceCodeInfoParamaterValueElementStrage _elementStrage = null;
+
+        #endregion
+
         #region Constructor
 
         public ReplaceManagerAdoDatasetCallMethod(
             string valiableName,
             string comment,
             string commentSeparator,
-            SourceCodeInfoCallMethod value)
+            SourceCodeInfoCallMethod value,
+            SourceCodeInfoParamaterValueElementStrage elementStrage)
             : base(value,  comment, commentSeparator, valiableName)
         {
+            this._elementStrage = elementStrage;            
+        }
+
+        public ReplaceManagerAdoDatasetCallMethod(
+            string valiableName,
+            string comment,
+            string commentSeparator,
+            SourceCodeInfoCallMethod value)
+            : base(value, comment, commentSeparator, valiableName)
+        {
             
+        }
+
+        #endregion
+
+        #region Property
+
+        public SourceCodeInfoParamaterValueElementStrage ElementStrage
+        {
+            get{ return this._elementStrage; }
         }
 
         #endregion
@@ -46,17 +72,30 @@ namespace RepaceSource
             if (subCodeInfo.CallmethodName.Equals("Fields")
                 && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
-                if (subCodeInfo.ParamaterString.IndexOf(".Value") >= 0)
+                if (this.ElementStrage == null
+                    || this.ElementStrage.AefLinkValue == null)
                 {
-                    int a = 1;
+                    subCodeInfo.SetAllOverWriteString(
+                        this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
+                            subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
+                            ,
+                        "",
+                        "");
                 }
+                else if(this.ElementStrage.AefLinkValue.Value is SourceCodeInfoParamaterValueElement)
+                {
+                    var aftElementValue = (SourceCodeInfoParamaterValueElement)this.ElementStrage.AefLinkValue.Value;
+                    var replacedAftElementParamaterName = aftElementValue.ParamaterName.Replace(".Value", string.Empty);
 
-                subCodeInfo.SetAllOverWriteString(
-                    this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
-                        subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
-                        ,
-                    "",
-                    "");
+                    aftElementValue.ParamaterName = replacedAftElementParamaterName;
+
+                    subCodeInfo.SetAllOverWriteString(
+                        this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
+                            subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
+                            ,
+                        "",
+                        "");
+                }
             }
         }
 

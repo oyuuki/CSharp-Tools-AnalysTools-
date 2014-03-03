@@ -42,6 +42,7 @@
     <Compile Include="AnalysisSourceDocumentManagerVBDotNet.cs" />
     <Compile Include="SourceCodeInfoBlockBeginClass.cs" />
     <Compile Include="SourceCodeInfoBlockEndClass.cs" />
+    <Compile Include="SourceCodeInfoError.cs" />
     <Compile Include="SourceCodeInfoFactoryCallMethodVBDotNet.cs" />
     <Compile Include="SourceCodeInfoParamaterFactory.cs" />
     <Compile Include="IParamater.cs" />

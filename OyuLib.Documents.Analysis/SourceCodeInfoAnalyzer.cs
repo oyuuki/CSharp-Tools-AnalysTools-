@@ -9,7 +9,7 @@ using OyuLib.Documents.Sources;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    internal abstract class SourceCodeInfoAnalyzer : ISourceRule
+    public abstract class SourceCodeInfoAnalyzer : ISourceRule
     {
         #region instanceVal
 
@@ -123,19 +123,28 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceCodeInfo retValue = null;
 
-            if (this.CheckCodeInfoComment(this.Code))
+            try
             {
-                retValue =  this.GetCodeInfoComment(this.Code);
-            }
+                
 
-            if (retValue == null)
-            {
-                retValue = this.GetControlCodeInfo();
-            }
+                if (this.CheckCodeInfoComment(this.Code))
+                {
+                    retValue = this.GetCodeInfoComment(this.Code);
+                }
 
-            if (retValue == null)
+                if (retValue == null)
+                {
+                    retValue = this.GetControlCodeInfo();
+                }
+
+                if (retValue == null)
+                {
+                    retValue = this.GetCodeInfoNoIncludeComment();
+                }
+            }
+            catch(Exception ex)
             {
-                retValue = this.GetCodeInfoNoIncludeComment();
+                return new SourceCodeInfoError(this.Code);
             }
 
             return retValue;

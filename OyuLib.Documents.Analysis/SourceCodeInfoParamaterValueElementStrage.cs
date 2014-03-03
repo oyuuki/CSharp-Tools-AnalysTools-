@@ -11,6 +11,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceCodeInfo _sourceCodeInfo = null;
 
+        private SourceCodeInfoParamaterValueElementStrage _befLinkSourceCodeinfo = null;
+        private SourceCodeInfoParamaterValueElementStrage _aftLinkSourceCodeinfo = null;
+
         #endregion
 
         #region Constructor
@@ -27,6 +30,28 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeInfo Value
         {
             get { return this._sourceCodeInfo; }
+        }
+
+        public SourceCodeInfoParamaterValueElementStrage BefLinkValue
+        {
+            get { return this._befLinkSourceCodeinfo; }
+            set { this._befLinkSourceCodeinfo = value; }
+        }
+
+        public bool IsBefExistLinkValue()
+        {
+            return this.BefLinkValue != null;
+        }
+
+        public SourceCodeInfoParamaterValueElementStrage AefLinkValue
+        {
+            get { return this._aftLinkSourceCodeinfo; }
+            set { this._aftLinkSourceCodeinfo = value; }
+        }
+
+        public bool IsAefExistLinkValue()
+        {
+            return this.AefLinkValue != null;
         }
 
         #endregion

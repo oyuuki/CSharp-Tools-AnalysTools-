@@ -6,7 +6,7 @@ using OyuLib.Collection;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    class SourceCodeInfoBlockEndClass : SourceCodeInfoBlockEnd
+    public class SourceCodeInfoBlockEndClass : SourceCodeInfoBlockEnd
     {
         #region Constructor
 

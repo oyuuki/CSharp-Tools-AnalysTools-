@@ -62,12 +62,12 @@ namespace RepaceSource
 
                     if (elementValue is IParamater)
                     {
-                        this.ReplaceIParamater((IParamater)elementValue);
+                        this.ReplaceIParamater(element);
                         this.Replace((IParamater)elementValue);
                     }
                     else
                     {
-                        this.ReplaceProc((SourceCodeInfoParamaterValueElement)elementValue);
+                        this.ReplaceProc(element);
                     }
                 }
             }
@@ -87,13 +87,16 @@ namespace RepaceSource
 
         #region Private
 
-        private void ReplaceProc(SourceCodeInfoParamaterValueElement codeinfo)
+        private void ReplaceProc(SourceCodeInfoParamaterValueElementStrage element)
         {
             foreach (var replaceItem in this.GetReplaceItems())
             {
-                if (codeinfo.ParamaterName.Equals(replaceItem.TargetString))
+                var codeInfo = (SourceCodeInfoParamaterValueElement)element.Value;
+
+                if (codeInfo.ParamaterName.Equals(replaceItem.TargetString)
+                    && !element.IsBefExistLinkValue())
                 {
-                    codeinfo.ParamaterName = replaceItem.ReplaceString;
+                    codeInfo.ParamaterName = replaceItem.ReplaceString;
                     break;
                 }
             }
@@ -103,7 +106,7 @@ namespace RepaceSource
 
         #region Abstract
 
-        public abstract void ReplaceIParamater(IParamater paramater);
+        public abstract void ReplaceIParamater(SourceCodeInfoParamaterValueElementStrage paramaterStrage);
 
         public abstract ReplaceItem[] GetReplaceItems();
 

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OyuLib.Documents.Sources.Analysis
 {
-    internal class SourceCodeInfoAnalyzerVBDotNet : SourceCodeInfoAnalyzer
+    public class SourceCodeInfoAnalyzerVBDotNet : SourceCodeInfoAnalyzer
     {
         #region Constractor
 

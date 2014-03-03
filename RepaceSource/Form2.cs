@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -72,7 +73,172 @@ namespace RepaceSource
             // スプレッド置換処理で置換してはいけない部分を修正する関数
             //this.ExecuteReplaceFor1Replace();
             // GcDateのYear、Month、Day、　ADODBのField関数のコードを修正する
-            this.ExecuteReplace1_2();
+            //this.ExecuteReplace1_2();
+            ///this.ExecuteSearch_1();
+            this.ExecuteReplace1();
+           // this.ExecuteReplace3();
+           // this.ExecuteReplace4();
+        }
+
+        private void ExecuteReplace3()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            // this.GetFilePaths(targetSourceDirectory)
+            // this.Test()
+
+            int num = this.GetFilePaths(targetSourceDirectory).Length;
+
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Maximum = num;
+
+            this.progressBar1.Value = 0;
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                if(!string.IsNullOrEmpty(source.DesinerClassFilePath))
+                {
+                    string filename = Path.GetFileName(source.BussinessClassFilePath).Replace(".vb","");
+
+                    // デザイナコード解析
+                    var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                    // ビジネスコード解析
+                    var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                    var spreadwithBlockNameList = new List<string>();
+
+                    this.ReplaceSpreadCodeWithFormName(mana, mana2, filename);
+
+                    string outputDirctory = targetSourceDirectory + "Test";
+
+                    if (!Directory.Exists(outputDirctory))
+                    {
+                        Directory.CreateDirectory(outputDirctory);
+                    }
+
+                    mana.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.DesinerClassFilePath)));
+                    mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.BussinessClassFilePath)));
+                }
+
+                this.progressBar1.Value++;
+                this.progressBar1.Update();
+            }
+        }
+
+
+        private void ReplaceSpreadCodeWithFormName(
+            AnalysisSourceDocumentManagerVBDotNet manaDes,
+            AnalysisSourceDocumentManagerVBDotNet manaBus,
+            string fileName)
+        {
+            var spreadwithBlockNameList = GetWithStatementNames(manaDes, manaBus, "FarPoint.Win.Spread.FpSpread", fileName);
+
+            // スプレッドに関連する置換処理を行う
+            foreach (var name in spreadwithBlockNameList)
+            {
+                string namestring = fileName + "." + name; 
+                string colString = string.Empty;
+                string rowString = string.Empty;
+
+
+                // スプレッド変数名のWithステートメントブロックを抽出する
+                foreach (var value in manaBus.GetCodeInfosRoundWithBlockNotRequiredInnerBlock(namestring))
+                {
+                    this.ReplaceSpreadCodeInfo(value, ref rowString, ref colString, string.Empty);
+                }
+
+                foreach (var value in manaBus.GetAllCodeInfos())
+                {
+                    this.ReplaceSpreadCodeInfo(value, ref rowString, ref colString, namestring);
+                }
+            }
+        }
+
+        private void ExecuteSearch_1()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            // this.GetFilePaths(targetSourceDirectory)
+            // this.Test()
+
+            int num = this.GetFilePaths(targetSourceDirectory).Length;
+
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Maximum = num;
+
+            this.progressBar1.Value = 0;
+            string outputDirctory = targetSourceDirectory + "Test";
+
+            
+            var table = new Hashtable();
+            var errorTable = new Hashtable();
+
+            string codeString = string.Empty;
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                var list = new List<string>();
+                var errorlist = new List<string>();
+
+                table.Add(source.BussinessClassFilePath, list);
+                errorTable.Add(source.BussinessClassFilePath, errorlist);
+
+                if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
+                {
+                    // ビジネスコード解析
+                    var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+                    // デザイナコード解析
+                    var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+
+                    foreach(var info in mana.GetAllCodeInfos())
+                    {
+                        if(info is SourceCodeInfoCallMethod)
+                        {
+                            // var methodName = ((SourceCodeInfoCallMethod)info).CallmethodName;
+                            var methodName = info.GetCodeWithOutComment();
+
+                            if(methodName.IndexOf(".GetInteger") >= 0
+                                || methodName.IndexOf(".GetFloat") >= 0
+                                || methodName.IndexOf(".GetText") >= 0
+                                || methodName.IndexOf(".SetInteger") >= 0
+                                || methodName.IndexOf(".SetText") >= 0
+                                || methodName.IndexOf(".SetFloat") >= 0)
+                            {
+                                list.Add(info.GetCodeString());
+                            }
+                        }
+                        else if(info is SourceCodeInfoError)
+                        {
+                            list.Add(info.GetCodeString());
+                        }
+
+                    }
+
+                }
+
+            }
+
+            this.listBox1.Items.Add("メソッド一覧");
+
+            foreach(var key in table.Keys)
+            {
+                this.listBox1.Items.Add("   " + key);
+                foreach(var str in ((List<string>)table[key]).ToArray())
+                {
+                    this.listBox1.Items.Add(str);    
+                }
+
+
+            }
+
+            this.listBox1.Items.Add("エラーコード");
+
+            foreach (var key in errorTable.Keys)
+            {
+                this.listBox1.Items.Add("   " + key);
+                foreach (var str in ((List<string>)errorTable[key]).ToArray())
+                {
+                    this.listBox1.Items.Add(str);
+                }
+            }
         }
 
         private void ExecuteReplace2()
@@ -95,6 +261,35 @@ namespace RepaceSource
                 }
             }
 
+        }
+
+        private void ExecuteReplace4()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            // this.GetFilePaths(targetSourceDirectory)
+            // this.Test()
+
+            int num = this.GetFilePaths(targetSourceDirectory).Length;
+
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Maximum = num;
+
+            this.progressBar1.Value = 0;
+            string outputDirctory = targetSourceDirectory + "Test";
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                // ビジネスコード解析
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+                this.ReplaceInputManADODBRecordSet(mana2);
+
+                if (!Directory.Exists(outputDirctory))
+                {
+                    Directory.CreateDirectory(outputDirctory);
+                }
+
+                mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.BussinessClassFilePath)));
+            }
         }
 
         private void ExecuteReplace1_2()
@@ -199,7 +394,7 @@ namespace RepaceSource
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
             var spreadwithBlockNameList = new List<string>();
-            spreadwithBlockNameList.AddRange(this.GetWithStatementNames(manaDes, manaBus, "FarPoint.Win.Spread.FpSpread"));
+            spreadwithBlockNameList.AddRange(this.GetWithStatementNames(manaDes, manaBus, "FarPoint.Win.Spread.FpSpread", string.Empty));
 
             // その他のローカル変数、引数でspreadが使用されている箇所の置換
             var localSpreadList = manaBus.GetValiableNameCollection("FarPoint.Win.Spread.FpSpread");
@@ -211,7 +406,7 @@ namespace RepaceSource
 
             
              // Withステートメントブロック内のコードに対して処理する
-            foreach (var value in manaBus.GetCodeInfosRoundWithBlocksNotIncludeNames(spreadwithBlockNameList.ToArray()))
+            foreach (var value in manaBus.GetCodeInfosRoundWithBlocksNotIncludeNames(spreadwithBlockNameList.ToArray(), true))
             {
                 var str = value.GetCodeWithOutComment();
                 ReplacerSource rep = new ReplacerSource(str.Trim(), "[ ,(]\\.ActiveSheet\\.|^\\.ActiveSheet\\.", "", "", "");
@@ -260,7 +455,7 @@ namespace RepaceSource
                         string rowString = string.Empty;
 
                         // スプレッド変数名のWithステートメントブロックを抽出する
-                        foreach (var value in mana2.GetCodeInfosRoundWithBlock(name))
+                        foreach (var value in mana2.GetCodeInfosRoundWithBlockNotRequiredInnerBlock(name))
                         {
                             this.ReplaceSpreadCodeInfo(value, ref rowString, ref colString, string.Empty);
                         }
@@ -289,9 +484,9 @@ namespace RepaceSource
 
                     var spreadwithBlockNameList = new List<string>();
 
-                    this.ReplaceLoadMethod(mana2);
+                    //this.ReplaceLoadMethod(mana2);
                     this.ReplaceSpreadCode(mana, mana2);
-                    this.ExecuteReplaceControlArray(mana, mana2);
+                    //this.ExecuteReplaceControlArray(mana, mana2);
 
 
                     string outputDirctory = targetSourceDirectory + "Test";
@@ -315,7 +510,7 @@ namespace RepaceSource
             AnalysisSourceDocumentManagerVBDotNet manaDes,
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
-            var spreadwithBlockNameList = GetWithStatementNames(manaDes, manaBus, "GrapeCity.Win.Editors.GcDate");
+            var spreadwithBlockNameList = GetWithStatementNames(manaDes, manaBus, "GrapeCity.Win.Editors.GcDate", string.Empty);
             var gcDataList = this.GetFiledNamelist(manaDes, "GrapeCity.Win.Editors.GcDate");
 
             var list = new List<string>();
@@ -333,7 +528,7 @@ namespace RepaceSource
                 }
 
                 // スプレッド変数名のWithステートメントブロックを抽出する
-                foreach (var value in manaBus.GetCodeInfosRoundWithBlock(valiableName))
+                foreach (var value in manaBus.GetCodeInfosRoundWithBlockNotRequiredInnerBlock(valiableName))
                 {
                     this.ReplaceInputManGcDateProc(string.Empty, value);
                 }
@@ -407,7 +602,8 @@ namespace RepaceSource
         private string[] GetWithStatementNames(
            AnalysisSourceDocumentManagerVBDotNet manaDes,
            AnalysisSourceDocumentManagerVBDotNet manaBus,
-           string typename)
+           string typename,
+           string fileName)
         {
             var withBlockNameList = new List<string>();
             var filedNameList = this.GetFiledNamelist(manaDes, typename);
@@ -417,6 +613,11 @@ namespace RepaceSource
             // デザイナで定義されている変数名に置換する
             foreach (var withBlockBegin in manaBus.GetSourceCodeInfoblockBeginWith())
             {
+                if(withBlockBegin.StatementObject.Equals("frm001009.spd発注"))
+                {
+                    int a = 1;
+                }
+
                 var locWithName = withBlockBegin.StatementObject;
                 var motoName = withBlockBegin.StatementObject;
 
@@ -431,7 +632,7 @@ namespace RepaceSource
                 // スプレッドフィールド名を保持する
                 foreach (var name in filedNameList)
                 {
-                    if (locWithName.Equals(name))
+                    if (locWithName.Equals(name) || locWithName.Equals(fileName + "." + name))
                     {
                         bool isSameObjectName = false;
 
@@ -459,7 +660,7 @@ namespace RepaceSource
             AnalysisSourceDocumentManagerVBDotNet manaDes,
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
-            var spreadwithBlockNameList = GetWithStatementNames(manaDes, manaBus, "FarPoint.Win.Spread.FpSpread");
+            var spreadwithBlockNameList = GetWithStatementNames(manaDes, manaBus, "FarPoint.Win.Spread.FpSpread", string.Empty);
             // スプレッドに関連する置換処理を行う
             foreach (var name in spreadwithBlockNameList)
             {
@@ -473,7 +674,7 @@ namespace RepaceSource
                 }
 
                 // スプレッド変数名のWithステートメントブロックを抽出する
-                foreach (var value in manaBus.GetCodeInfosRoundWithBlock(name))
+                foreach (var value in manaBus.GetCodeInfosRoundWithBlockNotRequiredInnerBlock(name))
                 {
                     this.ReplaceSpreadCodeInfo(value, ref rowString, ref colString, string.Empty);                    
                 }
@@ -494,7 +695,7 @@ namespace RepaceSource
                 string rowString = string.Empty;
 
                 // スプレッド変数名のWithステートメントブロックを抽出する
-                foreach (var value in manaBus.GetCodeInfosRoundWithBlock(name))
+                foreach (var value in manaBus.GetCodeInfosRoundWithBlockNotRequiredInnerBlock(name))
                 {
                     this.ReplaceSpreadCodeInfo(value, ref rowString, ref colString, string.Empty);
                 }
@@ -641,20 +842,7 @@ namespace RepaceSource
             // 代入式のリプレイス
             if (codeInfo is SourceCodeInfoSubstitution)
             {
-                new ReplaceManagerHaveParamaterValueSpread(rowString, colString, spreadValiableName, (IParamater)codeInfo).Replace();
-                var replaceManager = new ReplaceManagerSpreadSubstitution(
-                    rowString, 
-                    colString,
-                    spreadValiableName,
-                    "",
-                    "",
-                    (SourceCodeInfoSubstitution) codeInfo);
-
-                replaceManager.Replace();
-                
-
-                rowString = replaceManager.RowString;
-                colString = replaceManager.ColString;
+                this.ReplaceSpreadCodeInfoSubstitution((SourceCodeInfoSubstitution)codeInfo, ref rowString, ref colString, spreadValiableName);
             }
             // メソッド呼び出しのリプレイス
             else if (codeInfo is SourceCodeInfoCallMethod)
@@ -667,11 +855,49 @@ namespace RepaceSource
                     "",
                     (SourceCodeInfoCallMethod) codeInfo).Replace();
             }
+            else if (codeInfo is SourceCodeInfoComment)
+            {
+                var codeString = codeInfo.GetCodeString();
+                var commentString = "' ★置換ツールによりコメント化";
+                var commentString2 = "★このコードは置換ツールによってコメント化されました。 '";
+
+                if (codeString.IndexOf(commentString) >= 0)
+                {
+                    var sourceCode = new SourceCode(codeString.Replace("' ★置換ツールによりコメント化", "").Replace(commentString2, ""));
+                    var reviveCodeInfo = new SourceCodeInfoAnalyzerVBDotNet(sourceCode).GetCodeInfo();
+
+                    if (reviveCodeInfo is SourceCodeInfoSubstitution)
+                    {
+                        this.ReplaceSpreadCodeInfoSubstitution((SourceCodeInfoSubstitution)reviveCodeInfo, ref rowString, ref colString, spreadValiableName);
+                    }
+                }
+            }
             // 上記以外のIparamaterを実装するクラス
             else if (codeInfo is IParamater)
             {
                 new ReplaceManagerHaveParamaterValueSpread(rowString, colString, spreadValiableName, (IParamater)codeInfo).Replace();
             }
+            
+        }
+
+
+        private void ReplaceSpreadCodeInfoSubstitution(SourceCodeInfoSubstitution codeInfo, ref string rowString, ref string colString, string spreadValiableName)
+        {
+
+            new ReplaceManagerHaveParamaterValueSpread(rowString, colString, spreadValiableName, (IParamater)codeInfo).Replace();
+            var replaceManager = new ReplaceManagerSpreadSubstitution(
+                rowString,
+                colString,
+                spreadValiableName,
+                "",
+                "",
+                (SourceCodeInfoSubstitution)codeInfo);
+
+            replaceManager.Replace();
+
+
+            rowString = replaceManager.RowString;
+            colString = replaceManager.ColString;
         }
 
         private void button2_Click(object sender, EventArgs e)
