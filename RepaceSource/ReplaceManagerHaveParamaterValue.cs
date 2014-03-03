@@ -87,14 +87,13 @@ namespace RepaceSource
 
         #region Private
 
-        private void ReplaceProc(SourceCodeInfoParamaterValueElementStrage element)
+        protected virtual void ReplaceProc(SourceCodeInfoParamaterValueElementStrage element)
         {
             foreach (var replaceItem in this.GetReplaceItems())
             {
                 var codeInfo = (SourceCodeInfoParamaterValueElement)element.Value;
 
-                if (codeInfo.ParamaterName.Equals(replaceItem.TargetString)
-                    && !element.IsBefExistLinkValue())
+                if (codeInfo.ParamaterName.Equals(replaceItem.TargetString))
                 {
                     codeInfo.ParamaterName = replaceItem.ReplaceString;
                     break;

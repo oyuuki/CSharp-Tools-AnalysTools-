@@ -104,7 +104,10 @@ namespace OyuLib.Documents.Sources.Analysis
            int groupCount,
            int hierarchyCount)
         {
-            
+            if(sourceCode.CodeString.IndexOf("objRec.Fields(\"" + "コード" + "\").ActiveSheet.Cells") >= 0)
+            {
+                int a = 1;
+            }
             
             int parammaterName = 0;
 
@@ -147,6 +150,13 @@ namespace OyuLib.Documents.Sources.Analysis
 
                     retList.Add(new SourceCodeInfoParamaterValueElementStrage(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(paramSourceCode, 
                         new StringRange(rangeParam.IndexStart, rangeParam.IndexEnd, rangeParam.SpilitSeparatorStart, ""))));
+
+                    
+                    if(retList.Count >= 2)
+                    {
+                        retList[retList.Count - 1].BefLinkValue = retList[retList.Count - 2];
+                        retList[retList.Count - 2].AefLinkValue = retList[retList.Count - 1];
+                    }
                 }
 
                 if (startIndex < sourceCodeString.Length)

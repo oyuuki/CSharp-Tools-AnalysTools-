@@ -67,7 +67,8 @@ namespace RepaceSource
 
         public void ReplaceWithOutParam()
         {
-            var subCodeInfo = this.SourceCodeInfo;
+            var subCodeInfo = this.SourceCodeInfo;  
+             
 
             if (subCodeInfo.CallmethodName.Equals("Fields")
                 && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
@@ -85,16 +86,42 @@ namespace RepaceSource
                 else if(this.ElementStrage.AefLinkValue.Value is SourceCodeInfoParamaterValueElement)
                 {
                     var aftElementValue = (SourceCodeInfoParamaterValueElement)this.ElementStrage.AefLinkValue.Value;
+
+
+                    // すでに置換済みのコードは処理しない
+                    if(aftElementValue.ParamaterName.Equals(".Value"))
+                    {
+                        return;
+                    }
+
                     var replacedAftElementParamaterName = aftElementValue.ParamaterName.Replace(".Value", string.Empty);
 
                     aftElementValue.ParamaterName = replacedAftElementParamaterName;
 
+                    var valueString = ".Value";
+
+                    if(!string.IsNullOrEmpty(aftElementValue.ParamaterName))
+                    {
+                        valueString = string.Empty;    
+                    }
+                    
+
                     subCodeInfo.SetAllOverWriteString(
                         this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
-                            subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
+                            subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + valueString
                             ,
                         "",
                         "");
+                }
+                else if(this.ElementStrage.AefLinkValue.Value is SourceCodeInfoCallMethod)
+                {
+                    var aftElementValue = (SourceCodeInfoCallMethod)this.ElementStrage.AefLinkValue.Value;
+
+                    if (aftElementValue.CallmethodName.IndexOf("Cells") >= 0)
+                    {
+                        aftElementValue.SetAllOverWriteStringBlank();
+                    }
+
                 }
             }
         }

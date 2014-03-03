@@ -51,12 +51,20 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public string AllOverWriteString
         {
-            get { return this._allOverWriteString; }
+            get 
+            {
+                if (this._allOverWriteString.Equals("[[[BLANK]]]"))
+                {
+                    return string.Empty;                       
+                }
+
+                return this._allOverWriteString; 
+            }
         }
 
         public bool IsAllOverWriteString
         {
-            get { return !string.IsNullOrEmpty(this.AllOverWriteString); } 
+            get { return !string.IsNullOrEmpty(this._allOverWriteString) || this._allOverWriteString.Equals("[[[BLANK]]]"); } 
         }
 
         public string CommentString
@@ -114,6 +122,11 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             return this.OverwriteValues.Keys.Count != 0 ||
                 this.IsAllOverWriteString;
+        }
+
+        public void SetAllOverWriteStringBlank()
+        {
+            this.SetAllOverWriteString("[[[BLANK]]]", string.Empty, string.Empty);
         }
 
         public void SetAllOverWriteString(string value, string commentSeparator, string comment)

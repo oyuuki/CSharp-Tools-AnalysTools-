@@ -74,7 +74,7 @@ namespace RepaceSource
             //this.ExecuteReplaceFor1Replace();
             // GcDateのYear、Month、Day、　ADODBのField関数のコードを修正する
             //this.ExecuteReplace1_2();
-            ///this.ExecuteSearch_1();
+            //this.ExecuteSearch_1();
             this.ExecuteReplace1();
            // this.ExecuteReplace3();
            // this.ExecuteReplace4();
@@ -405,6 +405,8 @@ namespace RepaceSource
             }
 
             
+
+            
              // Withステートメントブロック内のコードに対して処理する
             foreach (var value in manaBus.GetCodeInfosRoundWithBlocksNotIncludeNames(spreadwithBlockNameList.ToArray(), true))
             {
@@ -562,6 +564,7 @@ namespace RepaceSource
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
             var adoDataList = manaBus.GetValiableNameCollection("ADODB.Recordset");
+
 
             foreach (var codeInfo in manaBus.GetAllCodeInfos())
             {
