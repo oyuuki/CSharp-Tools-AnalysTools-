@@ -49,25 +49,28 @@ namespace RepaceSource
 
         public void Replace(IParamater paramater)
         {
-            if (!paramater.GetSourceCodeInfoParamater().HasParamater)
+            foreach (var param in paramater.GetSourceCodeInfoParamaters())
             {
-                return;
-            }
-
-            foreach (var value in paramater.GetSourceCodeInfoParamater().ParamaterValues)
-            {
-                foreach (var element in value.ElementStrages)
+                if (!param.HasParamater)
                 {
-                    var elementValue = element.Value;
+                    return;
+                }
 
-                    if (elementValue is IParamater)
+                foreach (var value in param.ParamaterValues)
+                {
+                    foreach (var element in value.ElementStrages)
                     {
-                        this.ReplaceIParamater(element);
-                        this.Replace((IParamater)elementValue);
-                    }
-                    else
-                    {
-                        this.ReplaceProc(element);
+                        var elementValue = element.Value;
+
+                        if (elementValue is IParamater)
+                        {
+                            this.ReplaceIParamater(element);
+                            this.Replace((IParamater)elementValue);
+                        }
+                        else
+                        {
+                            this.ReplaceProc(element);
+                        }
                     }
                 }
             }
@@ -75,11 +78,6 @@ namespace RepaceSource
 
         public void Replace()
         {
-            if (!this.CodeinfohaveParamater.GetSourceCodeInfoParamater().HasParamater)
-            {
-                return;
-            }
-
             this.Replace(this.CodeinfohaveParamater);
         }
 

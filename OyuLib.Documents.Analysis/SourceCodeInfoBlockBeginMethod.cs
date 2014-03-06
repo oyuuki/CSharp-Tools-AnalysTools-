@@ -85,9 +85,9 @@ namespace OyuLib.Documents.Sources.Analysis
             set { return; }
         }
 
-        public SourceCodeInfoParamater GetSourceCodeInfoParamater()
+        public SourceCodeInfoParamater[] GetSourceCodeInfoParamaters()
         {
-            return this.Paramater;
+            return new SourceCodeInfoParamater[] { this.Paramater };
         }
 
         protected SourceCodeInfoParamater Paramater
@@ -108,11 +108,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public bool GetIsOverWriteParamater()
         {
-            foreach (var codeinfo in this.GetSourceCodeInfoParamater().GetAllSourceCodeInfos())
+            foreach (var param in this.GetSourceCodeInfoParamaters())
             {
-                if (codeinfo.IsOverWrite())
+                foreach (var codeinfo in param.GetAllSourceCodeInfos())
                 {
-                    return true;
+                    if (codeinfo.IsOverWrite())
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -162,7 +165,7 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             if (index == this._paramater)
             {
-                strBu.Append(this.GetSourceCodeInfoParamater().GetParamaterOverWriteValues());
+                strBu.Append(this.GetSourceCodeInfoParamaters()[0].GetParamaterOverWriteValues());
                 return true;
             }
 

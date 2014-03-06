@@ -748,8 +748,15 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             SourceCodePartsfactory coFac = new SourceCodePartsfactoryNocomment(code, " ");
 
-            return coFac.GetCodePartsLength() >= 3 &&
-                   coFac.GetCodeParts()[1].Equals(SourceDocumentSyntaxVBDotNet.CONST_EQUALS);
+            foreach (var str in coFac.GetCodeParts())
+            {
+                if(str.Trim().Equals(SourceDocumentSyntaxVBDotNet.CONST_EQUALS))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
 
@@ -761,23 +768,23 @@ namespace OyuLib.Documents.Sources.Analysis
             int leftHandSide = equals - 1;
 
             SourceCodePartsFactorySubstitution coFac = new SourceCodePartsFactorySubstitution(code);
-            var range = coFac.GetCodePartsRanges()[rightHandSide];
+            var rangeRight = coFac.GetCodePartsRanges()[rightHandSide];
+            var rangeLeft = coFac.GetCodePartsRanges()[leftHandSide];
 
-            if (code.CodeString.IndexOf("plStrSQL = plStrSQL & \"" + "WHERE \"" + " & " + "\"" + "((mstTokuiSaki.[区分] <> 0 AND mstTokuiSaki.[グループ] <> 0)") >= 0)
-            {
-                string a = range.GetStringSpilited();
-                int aa = 1;
-            }
-
-
-            var parameter =
+            var parameterRight =
                         new SourceCodeInfoParamaterFactoryVBDotNetSimple(
                             0,
-                            range)
+                            rangeRight)
                             .GetSourceCodeInfoParamater();
 
-            
-            return new SourceCodeInfoSubstitution(code, coFac, rightHandSide, leftHandSide, parameter); 
+            var parameterLeft =
+                        new SourceCodeInfoParamaterFactoryVBDotNetSimple(
+                            1,
+                            rangeLeft)
+                            .GetSourceCodeInfoParamater();
+
+
+            return new SourceCodeInfoSubstitution(code, coFac, rightHandSide, leftHandSide, parameterRight, parameterLeft); 
         }
 
         #endregion

@@ -42,7 +42,7 @@ namespace RepaceSource
         public override void Replace()
         {
             var subCodeInfo = this.SourceCodeInfo;
-            var paramater = subCodeInfo.GetSourceCodeInfoParamater();
+            var paramater = subCodeInfo.GetSourceCodeInfoParamaters();
 
             new ReplaceManagerHaveParamaterValueSpread(this.RowString, this.ColString, this.ValiableName, subCodeInfo).Replace();
             this.ReplaceWithOutParam();
@@ -73,7 +73,7 @@ namespace RepaceSource
                 && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
                 subCodeInfo.SetAllOverWriteString(
-                    spreadName + ".ActiveSheet.Columns(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
+                    spreadName + ".ActiveSheet.Columns(" + subCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue()[0].ParamaterName +
                     ").GetPreferredWidth())",
                     "",
                     "");
@@ -82,7 +82,7 @@ namespace RepaceSource
                 && this.SourceCodeInfo.ObjName.Equals(this.ValiableName))
             {
                 subCodeInfo.SetAllOverWriteString(
-                    spreadName + ".ActiveSheet.Rows(" + subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName +
+                    spreadName + ".ActiveSheet.Rows(" + subCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue()[0].ParamaterName +
                     ").GetPreferredHeight())",
                     "",
                     "");

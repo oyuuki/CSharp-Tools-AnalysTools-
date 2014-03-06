@@ -59,7 +59,7 @@ namespace RepaceSource
         public override void Replace()
         {
             var subCodeInfo = this.SourceCodeInfo;
-            var paramater = subCodeInfo.GetSourceCodeInfoParamater();
+            var paramater = subCodeInfo.GetSourceCodeInfoParamaters();
 
             new ReplaceManagerHaveParamaterValueAdoDataset(this.ValiableName, subCodeInfo).Replace();
             this.ReplaceWithOutParam();
@@ -78,7 +78,7 @@ namespace RepaceSource
                 {
                     subCodeInfo.SetAllOverWriteString(
                         this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
-                            subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
+                            subCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
                             ,
                         "",
                         "");
@@ -108,7 +108,7 @@ namespace RepaceSource
 
                     subCodeInfo.SetAllOverWriteString(
                         this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
-                            subCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + valueString
+                            subCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + valueString
                             ,
                         "",
                         "");

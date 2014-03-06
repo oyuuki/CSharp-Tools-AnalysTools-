@@ -80,6 +80,21 @@ namespace RepaceSource
             }
         }
 
+        protected override void ReplaceProc(SourceCodeInfoParamaterValueElementStrage element)
+        {
+            foreach (var replaceItem in this.GetReplaceItems())
+            {
+                var codeInfo = (SourceCodeInfoParamaterValueElement)element.Value;
+
+                if (codeInfo.ParamaterName.Equals(replaceItem.TargetString)
+                    && !element.IsBefExistLinkValue())
+                {
+                    codeInfo.ParamaterName = replaceItem.ReplaceString;
+                    break;
+                }
+            }
+        }
+
         #endregion
 
         #endregion

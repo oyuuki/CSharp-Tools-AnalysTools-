@@ -75,9 +75,10 @@ namespace RepaceSource
             // GcDateのYear、Month、Day、　ADODBのField関数のコードを修正する
             //this.ExecuteReplace1_2();
             //this.ExecuteSearch_1();
-            this.ExecuteReplace1();
+            //this.ExecuteReplace1();
            // this.ExecuteReplace3();
-           // this.ExecuteReplace4();
+          // this.ExecuteReplace4();
+            this.ExecuteReplaceCellsToRowsOrColumns();
         }
 
         private void ExecuteReplace3()
@@ -253,14 +254,45 @@ namespace RepaceSource
                 {
                     var s = (SourceCodeInfoCallMethod)value;
 
-                    var paramater = s.GetSourceCodeInfoParamater();
-                    paramater.ChangeParamaterIndex(0, 1);
+                    var paramater = s.GetSourceCodeInfoParamaters();
+                    paramater[0].ChangeParamaterIndex(0, 1);
 
                     s.CallmethodName = "test";
                     MessageBox.Show(s.GetCodePartsOverWriteValues());
                 }
             }
 
+        }
+
+        private void ExecuteReplaceCellsToRowsOrColumns()
+        { 
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+             //string targetSourceDirectory = @"D:\test\";
+            
+            // this.GetFilePaths(targetSourceDirectory)
+            // this.Test()
+
+            int num = this.GetFilePaths(targetSourceDirectory).Length;
+
+            this.progressBar1.Minimum = 0;
+            this.progressBar1.Maximum = num;
+
+            this.progressBar1.Value = 0;
+            string outputDirctory = targetSourceDirectory + "Test";
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                // ビジネスコード解析
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+                this.ReplaceSpreadCellsToRowsOrColumns(mana2);
+
+                if (!Directory.Exists(outputDirctory))
+                {
+                    Directory.CreateDirectory(outputDirctory);
+                }
+
+                mana2.CreateAnalysisSourceFile(Path.Combine(outputDirctory, Path.GetFileName(source.BussinessClassFilePath)));
+            }
         }
 
         private void ExecuteReplace4()
@@ -560,6 +592,27 @@ namespace RepaceSource
 
         }
 
+        private void ReplaceSpreadCellsToRowsOrColumns(
+            AnalysisSourceDocumentManagerVBDotNet manaBus)
+        {
+            foreach (var codeInfo in manaBus.GetAllCodeInfos())
+            {
+
+                if (codeInfo is SourceCodeInfoCallMethod)
+                {
+                    new ReplaceDotNetCodeManagerSpread(
+                        "",
+                        "",
+                        (SourceCodeInfoCallMethod)codeInfo).Replace();
+                }
+                else if (codeInfo is IParamater)
+                {
+                    new ReplaceDotNetCodeHaveParamaterSpread((IParamater)codeInfo).Replace();
+                }
+
+            }
+        }
+
         private void ReplaceInputManADODBRecordSet(
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
@@ -596,7 +649,7 @@ namespace RepaceSource
 
                 if(codeInfoMethod.CallmethodName.Equals("Load"))
                 {
-                    var formName = codeInfoMethod.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue()[0].ParamaterName;
+                    var formName = codeInfoMethod.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue()[0].ParamaterName;
                     codeInfoMethod.SetAllOverWriteString("Dim " + formName + " As New " + formName, "'", "★[]★置換ツールにより置換");
                 }
             }
@@ -616,11 +669,6 @@ namespace RepaceSource
             // デザイナで定義されている変数名に置換する
             foreach (var withBlockBegin in manaBus.GetSourceCodeInfoblockBeginWith())
             {
-                if(withBlockBegin.StatementObject.Equals("frm001009.spd発注"))
-                {
-                    int a = 1;
-                }
-
                 var locWithName = withBlockBegin.StatementObject;
                 var motoName = withBlockBegin.StatementObject;
 

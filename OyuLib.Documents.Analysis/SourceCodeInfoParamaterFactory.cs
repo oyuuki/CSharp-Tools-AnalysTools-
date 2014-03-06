@@ -104,10 +104,6 @@ namespace OyuLib.Documents.Sources.Analysis
            int groupCount,
            int hierarchyCount)
         {
-            if(sourceCode.CodeString.IndexOf("objRec.Fields(\"" + "コード" + "\").ActiveSheet.Cells") >= 0)
-            {
-                int a = 1;
-            }
             
             int parammaterName = 0;
 
@@ -151,7 +147,12 @@ namespace OyuLib.Documents.Sources.Analysis
                     retList.Add(new SourceCodeInfoParamaterValueElementStrage(SourceCodeInfoFactoryCallMethodVBDotNet.GetCodeInfoCallMethod(paramSourceCode, 
                         new StringRange(rangeParam.IndexStart, rangeParam.IndexEnd, rangeParam.SpilitSeparatorStart, ""))));
 
-                    
+
+                    if (retList.Count == 1)
+                    {
+                        ((SourceCodeInfoCallMethod)retList[0].Value).Range.SpilitSeparatorStart = range.SpilitSeparatorStart;
+                    }
+
                     if(retList.Count >= 2)
                     {
                         retList[retList.Count - 1].BefLinkValue = retList[retList.Count - 2];
@@ -189,16 +190,13 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     ((SourceCodeInfoCallMethod)retList[retList.Count - 1].Value).Range.SpilitSeparatorEnd = endSeparator;
                 }
-                else 
-                {
-                    int a = 1;
-                }
             }
             else
             {
                 retList.Add(new SourceCodeInfoParamaterValueElementStrage(new SourceCodeInfoParamaterValueElement(sourceCode, new SourceCodePartsFactoryParamater(sourceCode), rangeParam,
                     parammaterName, groupCount, hierarchyCount)));
             }
+
 
             return retList.ToArray();
         }

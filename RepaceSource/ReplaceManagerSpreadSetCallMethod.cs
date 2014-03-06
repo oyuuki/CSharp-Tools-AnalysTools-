@@ -27,7 +27,7 @@ namespace RepaceSource
         public override ReplaceItem[] GetReplaceItems()
         {
             var retList = new List<ReplaceItem>();
-            var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue();
+            var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue();
 
             string spreadName = this.GetSpreadName();
 
@@ -46,10 +46,10 @@ namespace RepaceSource
             if (this.IsExistReplaceItem(codeInfo.CallmethodName)
                 && codeInfo.ObjName.Equals(this.ValiableName))
             {
-                var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamater();
-                paramater.ChangeParamaterIndex(0, 1);
+                var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamaters();
+                paramater[0].ChangeParamaterIndex(0, 1);
 
-                var paramaterValues = paramater.GetSourceCodeInfoParamaterValue();
+                var paramaterValues = paramater[0].GetSourceCodeInfoParamaterValue();
 
                 paramaterValues[0].ParamaterName = this.GetAddMinusValue(paramaterValues[0].ParamaterName);
                 paramaterValues[1].ParamaterName = this.GetAddMinusValue(paramaterValues[1].ParamaterName);

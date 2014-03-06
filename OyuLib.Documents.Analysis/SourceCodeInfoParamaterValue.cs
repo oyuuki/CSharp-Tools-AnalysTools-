@@ -51,6 +51,11 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.GetCodeString(this.ElementStrages);
         }
 
+        public void ReSetElementStrages(SourceCodeInfoParamaterValueElementStrage[] value)
+        {
+            this._elementStrages = value;
+        }
+
         #endregion
 
         #region Private
@@ -61,7 +66,17 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var element in elementStrages)
             {
-                strBu.Append(element.Value.GetCodeString());                
+                string separatorStart = string.Empty;
+                string separatorEnd = string.Empty;
+
+                if (element.Value is SourceCodeInfoParamaterValueElement)
+                {
+                    separatorStart = ((SourceCodeInfoParamaterValueElement)element.Value).BefSymbol;
+                    separatorEnd = ((SourceCodeInfoParamaterValueElement)element.Value).AetSymbol;
+                }
+                strBu.Append(separatorStart);                
+                strBu.Append(element.Value.GetCodeString());      
+                strBu.Append(separatorEnd);                
             }
 
             return strBu.ToString();

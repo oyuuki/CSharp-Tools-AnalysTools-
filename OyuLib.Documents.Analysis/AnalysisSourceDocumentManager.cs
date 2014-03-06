@@ -706,34 +706,37 @@ namespace OyuLib.Documents.Sources.Analysis
 
             foreach (var methodIinfo in methodList)
             {
-                var param = methodIinfo.GetSourceCodeInfoParamater();
-
-                if(param.HasParamater)
+                foreach (var param in methodIinfo.GetSourceCodeInfoParamaters())
                 {
-                    foreach(var paramValue in param.GetSourceCodeInfoParamaterValue())
+                    if (param.HasParamater)
                     {
-                        var paramValueMethod = (SourceCodeInfoParamaterValueElementMethod)paramValue;
-
-                        if(paramValueMethod.TypeName.Equals(typeName))
+                        foreach (var paramValue in param.GetSourceCodeInfoParamaterValue())
                         {
-                            retList.Add(paramValueMethod.ParamaterName);
+                            var paramValueMethod = (SourceCodeInfoParamaterValueElementMethod)paramValue;
+
+                            if (paramValueMethod.TypeName.Equals(typeName))
+                            {
+                                retList.Add(paramValueMethod.ParamaterName);
+                            }
                         }
                     }
                 }
             }
+
             foreach (var eventMethodIinfo in eventMethodList)
             {
-                var param = eventMethodIinfo.GetSourceCodeInfoParamater();
-
-                if (param.HasParamater)
+                foreach (var param in eventMethodIinfo.GetSourceCodeInfoParamaters())
                 {
-                    foreach (var paramValue in param.GetSourceCodeInfoParamaterValue())
+                    if (param.HasParamater)
                     {
-                        var paramValueMethod = (SourceCodeInfoParamaterValueElementMethod)paramValue;
-
-                        if (paramValueMethod.TypeName.Equals(typeName))
+                        foreach (var paramValue in param.GetSourceCodeInfoParamaterValue())
                         {
-                            retList.Add(paramValueMethod.ParamaterName);
+                            var paramValueMethod = (SourceCodeInfoParamaterValueElementMethod)paramValue;
+
+                            if (paramValueMethod.TypeName.Equals(typeName))
+                            {
+                                retList.Add(paramValueMethod.ParamaterName);
+                            }
                         }
                     }
                 }

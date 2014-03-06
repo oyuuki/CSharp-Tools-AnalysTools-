@@ -80,8 +80,16 @@ namespace OyuLib.Documents.Sources
                 proc(str);
             }
 
-            retList.RemoveAt(retList.Count - 1);
-            retList.RemoveAt(retList.Count - 2);
+            if (string.IsNullOrEmpty(retList[retList.Count - 1].Trim()))
+            {
+                retList.RemoveAt(retList.Count - 1);
+            }
+
+            if (string.IsNullOrEmpty(retList[retList.Count - 2].Trim()))
+            {
+                retList.RemoveAt(retList.Count - 2);
+            }
+            
 
             return retList.ToArray();
         }

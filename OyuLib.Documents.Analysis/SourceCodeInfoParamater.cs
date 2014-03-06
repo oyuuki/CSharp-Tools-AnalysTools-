@@ -33,6 +33,7 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeInfoParamaterValue[] ParamaterValues
         {
             get { return this._sourceCodeInfoParamaterValues; }
+            set { this._sourceCodeInfoParamaterValues = value ; }
         }
 
         public bool HasParamater
@@ -105,7 +106,11 @@ namespace OyuLib.Documents.Sources.Analysis
                     {
                         var iparaVal = elementValue;
                         retList.Add(iparaVal);
-                        retList.AddRange(this.GetAllSourceCodeInfos(((IParamater)iparaVal).GetSourceCodeInfoParamater().ParamaterValues));
+
+                        foreach (var param in ((IParamater)iparaVal).GetSourceCodeInfoParamaters())
+                        {
+                            retList.AddRange(this.GetAllSourceCodeInfos(param.ParamaterValues));
+                        }
                     }
                 }
             }
@@ -130,7 +135,11 @@ namespace OyuLib.Documents.Sources.Analysis
                     else if (elementValue is IParamater)
                     {
                         var iparaVal = (IParamater)elementValue;
-                        retList.AddRange(this.GetSourceCodeInfoParamaterValue(iparaVal.GetSourceCodeInfoParamater().ParamaterValues));
+
+                        foreach (var param in iparaVal.GetSourceCodeInfoParamaters())
+                        {
+                            retList.AddRange(this.GetSourceCodeInfoParamaterValue(param.ParamaterValues));
+                        }
                     }
                 }
             }
@@ -164,7 +173,11 @@ namespace OyuLib.Documents.Sources.Analysis
                     {
                         var iparaVal = (IParamater)elementValue;
                         var range = iparaVal.Range;
-                        range.Childs = this.GetStringRange(iparaVal.GetSourceCodeInfoParamater().ParamaterValues);
+
+                        foreach (var param in iparaVal.GetSourceCodeInfoParamaters())
+                        {
+                            range.Childs = this.GetStringRange(param.ParamaterValues);
+                        }
                     }
                 }
             }
@@ -222,11 +235,13 @@ namespace OyuLib.Documents.Sources.Analysis
                     {
                         var valueHaveparam = (IParamater)elementValue;
 
-                        var param = valueHaveparam.GetSourceCodeInfoParamater();
 
-                        if (param.HasParamater)
+                        foreach (var param in valueHaveparam.GetSourceCodeInfoParamaters())
                         {
-                            retList.AddRange(this.GetParamaterValue(paramaterString, param));
+                            if (param.HasParamater)
+                            {
+                                retList.AddRange(this.GetParamaterValue(paramaterString, param));
+                            }
                         }
                     }
                 }

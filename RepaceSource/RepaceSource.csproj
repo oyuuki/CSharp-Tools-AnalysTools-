@@ -80,6 +80,8 @@
     <Compile Include="Preset\LanguagePresetProfile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplaceDotNetCodeHaveParamaterSpread.cs" />
+    <Compile Include="ReplaceDotNetCodeManagerSpread.cs" />
     <Compile Include="ReplaceItem.cs" />
     <Compile Include="ReplaceManager.cs" />
     <Compile Include="ReplaceManagerAdoDatasetCallMethod.cs" />

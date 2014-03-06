@@ -20,7 +20,7 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private string _allOverWriteString = string.Empty;
 
-        private string _commentString = string.Empty;
+        private string _commentString = string.Empty;        
 
         #endregion
 

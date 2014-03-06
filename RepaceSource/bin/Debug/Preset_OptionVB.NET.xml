@@ -2,506 +2,118 @@
 <ArrayOfXmlValueTypeKeyAndValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <XmlValueTypeKeyAndValue>
     <Key>1</Key>
-    <Value>ColNo1q2w3e4r5t6y1,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y = .CheckedFalse,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Checked = False,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y1,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Left,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.Margins.Left,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>2</Key>
-    <Value>ColNo1q2w3e4r5t6y2,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y&amp; .Text",##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Text &amp; ",##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y2,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Top,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.Margins.Top,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>3</Key>
+    <Value>ColNo1q2w3e4r5t6y3,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yWith Me.Printer,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yWith Me.Document.Printer,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>4</Key>
-    <Value>ColNo1q2w3e4r5t6y4,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yVB.Left,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yVBLeft,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y4,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.DeviceName,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PrinterName,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>5</Key>
-    <Value>ColNo1q2w3e4r5t6y5,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yVB.Right,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yVBRight,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y5,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Orientation,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.Orientation,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>6</Key>
-    <Value>ColNo1q2w3e4r5t6y6,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y= .VisibleFalse,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Visible = False,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y6,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.PageLeftMargin,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.Margins.Left,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>7</Key>
-    <Value>ColNo1q2w3e4r5t6y7,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y= .VisibleTrue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Visible = True,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y7,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.PageRightMargin,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.Margins.Right,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>8</Key>
-    <Value>ColNo1q2w3e4r5t6y8,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,.FontTrue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Font, True,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y8,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.PageTopMargin,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.Margins.Top,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>9</Key>
+    <Value>ColNo1q2w3e4r5t6y9,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.PageBottomMargin,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.Margins.Bottom,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>10</Key>
+    <Value>ColNo1q2w3e4r5t6y10,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.DAODataControl,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.DataSource,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>11</Key>
-    <Value>ColNo1q2w3e4r5t6y11,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y = .CheckedTrue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Checked = True,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y11,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yddOPortrait,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6ySection.PageOrientation.Portrait,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>12</Key>
-    <Value>ColNo1q2w3e4r5t6y12,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y &lt;= .Row0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Row &lt;= 0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y12,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Width = ,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.PaperWidth = ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>13</Key>
-    <Value>ColNo1q2w3e4r5t6y13,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yCtlIMEMode,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yIMEMode,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y13,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Height = ,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.PageSettings.PaperHeight = ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>14</Key>
-    <Value>ColNo1q2w3e4r5t6y14,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yimTime6.imIMEModeConst.ImeMode.On,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yWindows.Forms.ImeMode.On,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y14,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yDDActiveReportsViewer.Canvas,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yGrapeCity.ActiveReports.Document.Section.Page,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>15</Key>
-    <Value>ColNo1q2w3e4r5t6y15,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yimTime6.imIMEModeConst.ImeMode.Off,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yWindows.Forms.ImeMode.Off,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y15,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yVB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height) - 40,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6ySystem.Windows.Forms.Screen.PrimaryScreen.Bounds.Height - 40,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>16</Key>
-    <Value>ColNo1q2w3e4r5t6y16,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.SelBlockRow ,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.ActiveSheet.GetSelection(0).Row ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y16,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yPublic Property DetailCount() As String,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yPublic WriteOnly Property DetailCount() As String,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>17</Key>
-    <Value>ColNo1q2w3e4r5t6y17,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.SelBlockRow2 ,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.ActiveSheet.GetSelection(0).Row + .ActiveSheet.GetSelection(0).RowCount - 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y17,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Printer.StartJob("売上：No." &amp; pDenpyoNumber),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Document.Printer.DocumentName = "売上：No." &amp; pDenpyoNumber ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+  </XmlValueTypeKeyAndValue>
+  <XmlValueTypeKeyAndValue>
+    <Key>18</Key>
+    <Value>ColNo1q2w3e4r5t6y18,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Printer.NDevices,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6ySystem.Drawing.Printing.PrinterSettings.InstalledPrinters.Count,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>19</Key>
-    <Value>ColNo1q2w3e4r5t6y19,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_MouseUpEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yMouseEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y19,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yDDActiveReportsViewer.Canvas,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yGrapeCity.ActiveReports.Document.Section.Page,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>20</Key>
-    <Value>ColNo1q2w3e4r5t6y20,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yMouseUpEvent ,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yMouseUp ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y20,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Printer.Devices,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6ySystem.Drawing.Printing.PrinterSettings.InstalledPrinters,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>21</Key>
-    <Value>ColNo1q2w3e4r5t6y21,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y(0) + .Row.ActiveSheet,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y(0).Row + .ActiveSheet,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y21,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yVB6.PixelsToTwipsX(System.Windows.Forms.Screen.PrimaryScreen.Bounds.PageSettings.PaperWidth),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6ySystem.Windows.Forms.Screen.PrimaryScreen.Bounds.PageSettings.PaperWidth,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>22</Key>
-    <Value>ColNo1q2w3e4r5t6y22,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y Or .RoweventArgs.,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Row Or eventArgs.,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y22,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yVB6.PixelsToTwipsY(System.Windows.Forms.Screen.PrimaryScreen.Bounds.PageSettings.PaperHeight),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6ySystem.Windows.Forms.Screen.PrimaryScreen.Bounds.PageSettings.PaperHeight,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
     <Key>23</Key>
-    <Value>ColNo1q2w3e4r5t6y23,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,-1 - 1, eventArgs.Column,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,-1 - 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Value>ColNo1q2w3e4r5t6y23,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y Round(,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y System.Math.Round(,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
-    <Key>32</Key>
-    <Value>ColNo1q2w3e4r5t6y32,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.MaxRows,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.ActiveSheet.RowCount,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Key>24</Key>
+    <Value>ColNo1q2w3e4r5t6y24,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y, gIniFile),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
-    <Key>33</Key>
-    <Value>ColNo1q2w3e4r5t6y33,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.LeaveRow,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.LeaveCell,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Key>26</Key>
+    <Value>ColNo1q2w3e4r5t6y26,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
-    <Key>34</Key>
-    <Value>ColNo1q2w3e4r5t6y34,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yFPSpread.TypeHAlignConstants.TypeHAlignCenter,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellHorizontalAlignment.Center,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Key>27</Key>
+    <Value>ColNo1q2w3e4r5t6y27,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
-    <Key>35</Key>
-    <Value>ColNo1q2w3e4r5t6y35,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yFPSpread.TypeHAlignConstants.TypeHAlignLeft,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellHorizontalAlignment.Left,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Key>28</Key>
+    <Value>ColNo1q2w3e4r5t6y28,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
-    <Key>36</Key>
-    <Value>ColNo1q2w3e4r5t6y36,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yFPSpread.TypeHAlignConstants.TypeHAlignRight,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellHorizontalAlignment.Right,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Key>29</Key>
+    <Value>ColNo1q2w3e4r5t6y29,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
   <XmlValueTypeKeyAndValue>
-    <Key>37</Key>
-    <Value>ColNo1q2w3e4r5t6y37,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yFpSpread.CellTypeConstants.CellTypeNumber,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellType.NumberCellType,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>38</Key>
-    <Value>ColNo1q2w3e4r5t6y38,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yFpSpread.CellTypeConstants.CellTypeEdit,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellType.TextCellType,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>39</Key>
-    <Value>ColNo1q2w3e4r5t6y39,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yFpSpread.CellTypeConstants.CellTypeTime,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellType.DateTimeCellType,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>40</Key>
-    <Value>ColNo1q2w3e4r5t6y40,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yFPSpread.CellTypeConstants.CellTypeCurrency,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellType.CurrencyCellType,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>41</Key>
-    <Value>ColNo1q2w3e4r5t6y41,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.Appearance = imTime6,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.FlatStyle = imTime6,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>42</Key>
-    <Value>ColNo1q2w3e4r5t6y42,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yimTime6.imAppearanceConst.imFlat,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yGrapeCity.Win.Editors.FlatStyleEx.Flat,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>43</Key>
-    <Value>ColNo1q2w3e4r5t6y43,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_ComboSelChangeEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.EditorNotifyEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>44</Key>
-    <Value>ColNo1q2w3e4r5t6y44,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.DblClick ,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.CellDoubleClick ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>45</Key>
-    <Value>ColNo1q2w3e4r5t6y45,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_DblClickEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellClickEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>46</Key>
-    <Value>ColNo1q2w3e4r5t6y46,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_LeaveCellEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.LeaveCellEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>49</Key>
-    <Value>ColNo1q2w3e4r5t6y49,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .Value",##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value = ",##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>50</Key>
-    <Value>ColNo1q2w3e4r5t6y50,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) * .Value100#,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value * 100#,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>51</Key>
-    <Value>ColNo1q2w3e4r5t6y51,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y(DateAdd\(.*) .Value\),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y$1.Value.Value) ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>52</Key>
-    <Value>ColNo1q2w3e4r5t6y52,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y(DateAdd\(.*)\,\.Value\),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y$1,.Value.Value),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>53</Key>
-    <Value>ColNo1q2w3e4r5t6y53,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y(DateAdd\(.*)\, \.Value\),##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y$1, .Value.Value),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>54</Key>
-    <Value>ColNo1q2w3e4r5t6y54,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yimd年度.Year,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yimd年度.Value.Value.Year,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>55</Key>
-    <Value>ColNo1q2w3e4r5t6y55,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.LeftCol = eventArgs.NewLeft,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.SetViewportLeftColumn(0, eventArgs.NewLeft),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>56</Key>
-    <Value>ColNo1q2w3e4r5t6y56,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.LeftCol = 1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.SetViewportLeftColumn(0, 0),##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>57</Key>
-    <Value>ColNo1q2w3e4r5t6y57,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.CtlText,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Text,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>58</Key>
-    <Value>ColNo1q2w3e4r5t6y58,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .CheckStatecpLngON,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).CheckState = cpLngON,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>59</Key>
-    <Value>ColNo1q2w3e4r5t6y59,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .CheckStatecpLngOFF,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).CheckState = cpLngOFF,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>60</Key>
-    <Value>ColNo1q2w3e4r5t6y60,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &lt;&gt; .CheckedTrue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Checked &lt;&gt; True,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>61</Key>
-    <Value>ColNo1q2w3e4r5t6y61,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &gt; .SelectedIndex0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).SelectedIndex &gt; 0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>62</Key>
-    <Value>ColNo1q2w3e4r5t6y62,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &lt;&gt; .plDblAverage0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).plDblAverage0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>63</Key>
-    <Value>ColNo1q2w3e4r5t6y63,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .Text",##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Text = ",##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>64</Key>
-    <Value>ColNo1q2w3e4r5t6y64,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .CheckState1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).CheckState = 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>65</Key>
-    <Value>ColNo1q2w3e4r5t6y65,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &lt;= .Value0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value &lt;= 0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>66</Key>
-    <Value>ColNo1q2w3e4r5t6y66,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,.plStrShipmentNameVbStrConv,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.plStrShipmentName,VbStrConv,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>67</Key>
-    <Value>ColNo1q2w3e4r5t6y67,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_LeaveRowEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.LeaveCellEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>68</Key>
-    <Value>ColNo1q2w3e4r5t6y68,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,.plStrNisoNinNameVbStrConv,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.plStrNisoNinName,VbStrConv,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>69</Key>
-    <Value>ColNo1q2w3e4r5t6y69,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.DataValue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Value,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>70</Key>
-    <Value>ColNo1q2w3e4r5t6y70,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &amp; .Value",##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value &amp; ",##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>71</Key>
-    <Value>ColNo1q2w3e4r5t6y71,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &amp; .Tag",##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Tag &amp; ",##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>72</Key>
-    <Value>ColNo1q2w3e4r5t6y72,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .ValueTrue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value = True,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>73</Key>
-    <Value>ColNo1q2w3e4r5t6y73,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) - .MaxCols1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).MaxCols - 1 ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>74</Key>
-    <Value>ColNo1q2w3e4r5t6y74,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) - .MaxCols2,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).MaxCols - 2 ,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>75</Key>
-    <Value>ColNo1q2w3e4r5t6y75,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) - .ListCount1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).ListCount - 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>76</Key>
-    <Value>ColNo1q2w3e4r5t6y76,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_ChangeEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.ChangeEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>77</Key>
-    <Value>ColNo1q2w3e4r5t6y77,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_ButtonClickedEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.EditorNotifyEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>78</Key>
-    <Value>ColNo1q2w3e4r5t6y78,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6yAxFPSpread._DSpreadEvents_RightClickEvent,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6yFarPoint.Win.Spread.CellClickEventArgs,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>79</Key>
-    <Value>ColNo1q2w3e4r5t6y79,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .CheckState0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).CheckState = 0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>80</Key>
-    <Value>ColNo1q2w3e4r5t6y80,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y.get_Pos,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y.Pos,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>81</Key>
-    <Value>ColNo1q2w3e4r5t6y81,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .Value0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value = 0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>82</Key>
-    <Value>ColNo1q2w3e4r5t6y82,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) = .Value1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value = 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>83</Key>
-    <Value>ColNo1q2w3e4r5t6y83,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &gt; .SelectedIndex0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).SelectedIndex &gt; 0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>84</Key>
-    <Value>ColNo1q2w3e4r5t6y84,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &lt;&gt; .CheckedTrue,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Checked &lt;&gt; True,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>85</Key>
-    <Value>ColNo1q2w3e4r5t6y85,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) &lt;&gt; .plDblAverage0,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).plDblAverage &lt;&gt; 0,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>86</Key>
-    <Value>ColNo1q2w3e4r5t6y86,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) + .Value1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value + 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>87</Key>
-    <Value>ColNo1q2w3e4r5t6y87,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) - .ListCount1,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).ListCount - 1,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>88</Key>
-    <Value>ColNo1q2w3e4r5t6y88,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) * .Value100#,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value * 100#,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>89</Key>
-    <Value>ColNo1q2w3e4r5t6y89,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) * .Value入数,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value * 入数,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>90</Key>
-    <Value>ColNo1q2w3e4r5t6y90,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) * .Value原価,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value * 原価,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>91</Key>
-    <Value>ColNo1q2w3e4r5t6y91,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y) / .ValueM3,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y).Value / M3,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>92</Key>
-    <Value>ColNo1q2w3e4r5t6y92,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>93</Key>
-    <Value>ColNo1q2w3e4r5t6y93,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>94</Key>
-    <Value>ColNo1q2w3e4r5t6y94,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>95</Key>
-    <Value>ColNo1q2w3e4r5t6y95,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>96</Key>
-    <Value>ColNo1q2w3e4r5t6y96,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>97</Key>
-    <Value>ColNo1q2w3e4r5t6y97,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>98</Key>
-    <Value>ColNo1q2w3e4r5t6y98,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>99</Key>
-    <Value>ColNo1q2w3e4r5t6y99,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>100</Key>
-    <Value>ColNo1q2w3e4r5t6y100,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>101</Key>
-    <Value>ColNo1q2w3e4r5t6y101,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>102</Key>
-    <Value>ColNo1q2w3e4r5t6y102,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>103</Key>
-    <Value>ColNo1q2w3e4r5t6y103,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>104</Key>
-    <Value>ColNo1q2w3e4r5t6y104,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>105</Key>
-    <Value>ColNo1q2w3e4r5t6y105,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>106</Key>
-    <Value>ColNo1q2w3e4r5t6y106,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>107</Key>
-    <Value>ColNo1q2w3e4r5t6y107,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>108</Key>
-    <Value>ColNo1q2w3e4r5t6y108,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>109</Key>
-    <Value>ColNo1q2w3e4r5t6y109,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>110</Key>
-    <Value>ColNo1q2w3e4r5t6y110,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>111</Key>
-    <Value>ColNo1q2w3e4r5t6y111,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>112</Key>
-    <Value>ColNo1q2w3e4r5t6y112,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>113</Key>
-    <Value>ColNo1q2w3e4r5t6y113,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>114</Key>
-    <Value>ColNo1q2w3e4r5t6y114,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>115</Key>
-    <Value>ColNo1q2w3e4r5t6y115,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>116</Key>
-    <Value>ColNo1q2w3e4r5t6y116,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>117</Key>
-    <Value>ColNo1q2w3e4r5t6y117,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>118</Key>
-    <Value>ColNo1q2w3e4r5t6y118,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>119</Key>
-    <Value>ColNo1q2w3e4r5t6y119,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>120</Key>
-    <Value>ColNo1q2w3e4r5t6y120,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>121</Key>
-    <Value>ColNo1q2w3e4r5t6y121,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>122</Key>
-    <Value>ColNo1q2w3e4r5t6y122,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>123</Key>
-    <Value>ColNo1q2w3e4r5t6y123,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>124</Key>
-    <Value>ColNo1q2w3e4r5t6y124,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>125</Key>
-    <Value>ColNo1q2w3e4r5t6y125,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>126</Key>
-    <Value>ColNo1q2w3e4r5t6y126,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>127</Key>
-    <Value>ColNo1q2w3e4r5t6y127,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>128</Key>
-    <Value>ColNo1q2w3e4r5t6y128,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>129</Key>
-    <Value>ColNo1q2w3e4r5t6y129,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>130</Key>
-    <Value>ColNo1q2w3e4r5t6y130,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>131</Key>
-    <Value>ColNo1q2w3e4r5t6y131,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>132</Key>
-    <Value>ColNo1q2w3e4r5t6y132,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>133</Key>
-    <Value>ColNo1q2w3e4r5t6y133,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>134</Key>
-    <Value>ColNo1q2w3e4r5t6y134,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>135</Key>
-    <Value>ColNo1q2w3e4r5t6y135,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>136</Key>
-    <Value>ColNo1q2w3e4r5t6y136,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>137</Key>
-    <Value>ColNo1q2w3e4r5t6y137,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>138</Key>
-    <Value>ColNo1q2w3e4r5t6y138,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>139</Key>
-    <Value>ColNo1q2w3e4r5t6y139,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
-  </XmlValueTypeKeyAndValue>
-  <XmlValueTypeKeyAndValue>
-    <Key>140</Key>
-    <Value>ColNo1q2w3e4r5t6y140,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
+    <Key>30</Key>
+    <Value>ColNo1q2w3e4r5t6y30,##$$%%&amp;&amp;ColTargetText1q2w3e4r5t6y,##$$%%&amp;&amp;ColReplaceText1q2w3e4r5t6y,##$$%%&amp;&amp;ColIsRegex1q2w3e4r5t6yFalse</Value>
   </XmlValueTypeKeyAndValue>
 </ArrayOfXmlValueTypeKeyAndValue>

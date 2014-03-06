@@ -75,6 +75,15 @@ namespace OyuLib.Documents.Sources.Analysis
         }
 
         
+        public string BefSymbol
+        {
+            get { return this.Range.SpilitSeparatorStart; }
+        }
+
+        public string AetSymbol
+        {
+            get { return this.Range.SpilitSeparatorEnd; }
+        }
 
         internal StringRange Range
         {
@@ -88,6 +97,16 @@ namespace OyuLib.Documents.Sources.Analysis
         #region Method
 
         #region Public
+
+        public void DeleteBefSymbol()
+        {
+            this.Range.SpilitSeparatorStart = string.Empty;            
+        }
+
+        public void DeleteAftSymbol()
+        {
+            this.Range.SpilitSeparatorEnd = string.Empty;
+        }
 
         #endregion
 

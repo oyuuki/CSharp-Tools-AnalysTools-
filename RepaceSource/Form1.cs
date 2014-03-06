@@ -57,28 +57,31 @@ namespace RepaceSource
         {
             string paramString = string.Empty;
 
-            if (!param.GetSourceCodeInfoParamater().HasParamater)
+            foreach (var paramValue in param.GetSourceCodeInfoParamaters())
             {
-                return paramString;
-            }
-
-
-            paramString = "{";
-
-            foreach (var value in param.GetSourceCodeInfoParamater().ParamaterValues)
-            {
-                foreach (var element in value.ElementStrages)
+                if (!paramValue.HasParamater)
                 {
-                    var elemetValue = element.Value;
+                    return paramString;
+                }
 
-                    if (elemetValue is SourceCodeInfoCallMethod)
+
+                paramString = "{";
+
+                foreach (var value in paramValue.ParamaterValues)
+                {
+                    foreach (var element in value.ElementStrages)
                     {
-                        paramString += "メ：{①" + ((SourceCodeInfoCallMethod)elemetValue).CallmethodName + "①}";
-                        paramString += "パ：[" + OutParamaterValue((IParamater)elemetValue) + "]";
-                    }
-                    else
-                    {
-                        paramString += "パ：[" + ((SourceCodeInfoParamaterValueElement)elemetValue).ParamaterName + "]";
+                        var elemetValue = element.Value;
+
+                        if (elemetValue is SourceCodeInfoCallMethod)
+                        {
+                            paramString += "メ：{①" + ((SourceCodeInfoCallMethod)elemetValue).CallmethodName + "①}";
+                            paramString += "パ：[" + OutParamaterValue((IParamater)elemetValue) + "]";
+                        }
+                        else
+                        {
+                            paramString += "パ：[" + ((SourceCodeInfoParamaterValueElement)elemetValue).ParamaterName + "]";
+                        }
                     }
                 }
             }
@@ -88,23 +91,23 @@ namespace RepaceSource
             return paramString;
         }
 
-        private string ChasngeIndexParamaterValue(IParamater param)
+        private string ChasngeIndexParamaterValue(IParamater param, int paramIndex)
         {
             string paramString = string.Empty;
-            var paramValues = param.GetSourceCodeInfoParamater().ParamaterValues;
+            var paramValues = param.GetSourceCodeInfoParamaters()[paramIndex].ParamaterValues;
 
-            if (param.GetSourceCodeInfoParamater().HasParamater && paramValues.Length > 1)
+            if (param.GetSourceCodeInfoParamaters()[paramIndex].HasParamater && paramValues.Length > 1)
             {
-                param.GetSourceCodeInfoParamater().ChangeParamaterIndex(0, 1);
+                param.GetSourceCodeInfoParamaters()[paramIndex].ChangeParamaterIndex(0, 1);
             }
 
-            foreach (var paramValue in param.GetSourceCodeInfoParamater().ParamaterValues)
+            foreach (var paramValue in param.GetSourceCodeInfoParamaters()[paramIndex].ParamaterValues)
             {
                 foreach(var element in paramValue.ElementStrages)
                 {
                     if(element.Value is IParamater)
                     {
-                        paramString += "Inner：" + this.ChasngeIndexParamaterValue((IParamater)element.Value);
+                        paramString += "Inner：" + this.ChasngeIndexParamaterValue((IParamater)element.Value, 0);
                     }
 
                 }
@@ -132,7 +135,7 @@ namespace RepaceSource
             {
                 if (info is IParamater)
                 {
-                    this.ChasngeIndexParamaterValue((IParamater)info);
+                    this.ChasngeIndexParamaterValue((IParamater)info, 0);
                 }
 
             }

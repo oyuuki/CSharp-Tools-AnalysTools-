@@ -9,7 +9,7 @@ namespace OyuLib.Documents.Sources
 {
     public interface IParamater
     {
-        SourceCodeInfoParamater GetSourceCodeInfoParamater();
+        SourceCodeInfoParamater[] GetSourceCodeInfoParamaters();
         StringRange Range { get; set; }
         bool GetIsOverWriteParamater();
     }

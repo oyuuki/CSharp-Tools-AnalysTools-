@@ -52,19 +52,20 @@ namespace RepaceSource
         {
             var codeInfo = this.SourceCodeInfo;
 
-            var paramater = this.SourceCodeInfo.GetSourceCodeInfoParamater();
-
-            foreach(var paramValue in paramater.ParamaterValues)
+            foreach (var paramater in this.SourceCodeInfo.GetSourceCodeInfoParamaters())
             {
-                foreach (var element in paramValue.ElementStrages)
+                foreach (var paramValue in paramater.ParamaterValues)
                 {
-                    var elementValue = element.Value;
-
-                    if (((SourceCodeInfoParamaterValueElementMethod)elementValue).TypeName.Equals(item.TargetString))
+                    foreach (var element in paramValue.ElementStrages)
                     {
-                        ((SourceCodeInfoParamaterValueElementMethod)elementValue).TypeName = item.ReplaceStrings[0];
-                        codeInfo.EventName = item.ReplaceStrings[1];
-                        break;
+                        var elementValue = element.Value;
+
+                        if (((SourceCodeInfoParamaterValueElementMethod)elementValue).TypeName.Equals(item.TargetString))
+                        {
+                            ((SourceCodeInfoParamaterValueElementMethod)elementValue).TypeName = item.ReplaceStrings[0];
+                            codeInfo.EventName = item.ReplaceStrings[1];
+                            break;
+                        }
                     }
                 }
             }

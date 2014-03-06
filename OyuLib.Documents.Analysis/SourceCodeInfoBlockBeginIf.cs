@@ -8,7 +8,7 @@ namespace OyuLib.Documents.Sources.Analysis
 {
     public class SourceCodeInfoBlockBeginIf : SourceCodeInfoBlockBegin, IParamater
     {
-        #region instanceVaｌ
+        #region instanceVal
 
         private SourceCodeInfoParamater _sourceCodeInfoParamater = null;
 
@@ -60,11 +60,14 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public bool GetIsOverWriteParamater()
         {
-            foreach (var codeinfo in this.GetSourceCodeInfoParamater().GetAllSourceCodeInfos())
+            foreach (var param in this.GetSourceCodeInfoParamaters())
             {
-                if (codeinfo.IsOverWrite())
+                foreach (var codeinfo in param.GetAllSourceCodeInfos())
                 {
-                    return true;
+                    if (codeinfo.IsOverWrite())
+                    {
+                        return true;
+                    }
                 }
             }
 
@@ -76,16 +79,16 @@ namespace OyuLib.Documents.Sources.Analysis
             return typeof(SourceCodeInfoBlockEndIf);
         }
 
-        public SourceCodeInfoParamater GetSourceCodeInfoParamater()
+        public SourceCodeInfoParamater[] GetSourceCodeInfoParamaters()
         {
-            return this._sourceCodeInfoParamater;
+            return new SourceCodeInfoParamater[]{ this._sourceCodeInfoParamater };
         }
 
         public override bool GetParamaterOverWriteValues(int index, ref StringBuilder strBu)
         {
             if (index == this.StatementObjectindex)
             {
-                strBu.Append(this.GetSourceCodeInfoParamater().GetParamaterOverWriteValues());
+                strBu.Append(this.GetSourceCodeInfoParamaters()[0].GetParamaterOverWriteValues());
                 return true;
             }
 

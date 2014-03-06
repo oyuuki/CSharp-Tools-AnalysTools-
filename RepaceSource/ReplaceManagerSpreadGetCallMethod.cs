@@ -27,7 +27,7 @@ namespace RepaceSource
         public override ReplaceItem[] GetReplaceItems()
         {
             var retList = new List<ReplaceItem>();
-            var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue();
+            var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue();
 
             retList.Add(new ReplaceItem("GetInteger", "GetValue"));
             retList.Add(new ReplaceItem("GetFloat", "GetValue"));
@@ -38,7 +38,7 @@ namespace RepaceSource
 
         private string GetMethodCode(string replaceMethodName)
         {
-            var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamater().GetSourceCodeInfoParamaterValue();
+            var paramaterValues = this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue();
 
             paramaterValues[1].ParamaterName = this.GetAddMinusValue(paramaterValues[1].ParamaterName);
             paramaterValues[0].ParamaterName = this.GetAddMinusValue(paramaterValues[0].ParamaterName);

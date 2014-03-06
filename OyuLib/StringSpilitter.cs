@@ -366,10 +366,8 @@ namespace OyuLib
                 {
                     if (FindSeparatorinTargetString(this.TargetString, index, strSeparator))
                     {
-                        if (index > 0)
-                        {
-                            retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
-                        }
+                        retlist.Add(new StringRange(startIndex, index - 1, string.Empty, strSeparator, this.TargetString));
+                        
                         // retlist.Add(this.TargetString.Substring(startIndex, index - startIndex));
                         startIndex = index + strSeparator.Length;
                         index = startIndex - 1;

@@ -99,11 +99,6 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             var stringWithOutComment = string.Empty;
 
-            if (this.Code.CodeString.IndexOf("imd指定日.Value =") >= 0)
-            {
-                int a = 1;
-            }
-
             var commentStartIndex = this.GetCommentStartindex();
 
             var codeString = this.Code.CodeString;

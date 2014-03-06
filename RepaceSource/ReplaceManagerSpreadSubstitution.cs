@@ -107,8 +107,8 @@ namespace RepaceSource
             }
             else if (subCodeInfo.RightHandSide.StartsWith(spreadName + ".SearchCol"))
             {
-                var codeInfoCallMethod = (SourceCodeInfoCallMethod)subCodeInfo.GetSourceCodeInfoParamater().ParamaterValues[0].ElementStrages[0].Value;
-                var paramValues = codeInfoCallMethod.GetSourceCodeInfoParamater().ParamaterValues;
+                var codeInfoCallMethod = (SourceCodeInfoCallMethod)subCodeInfo.GetSourceCodeInfoParamaters()[0].ParamaterValues[0].ElementStrages[0].Value;
+                var paramValues = codeInfoCallMethod.GetSourceCodeInfoParamaters()[0].ParamaterValues;
 
                 subCodeInfo.SetAllOverWriteString(
                     "Dim col As Integer　 '見つかった列    ★[]★置換ツールにより追加したコード col\n" +

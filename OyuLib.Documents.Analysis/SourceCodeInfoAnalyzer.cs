@@ -180,14 +180,15 @@ namespace OyuLib.Documents.Sources.Analysis
             {
                 return this.GetCodeInfoBlockEndMethod(this.Code);
             }
-            else if (this.CheckCodeInfoCallMethod(this.Code))
-            {
-                return this.GetCodeInfoCallMethod(this.Code);
-            }
             else if (this.CheckCodeInfoSubstitution(this.Code))
             {
                 return this.GetCodeInfoSubstitution(this.Code);
             }
+            else if (this.CheckCodeInfoCallMethod(this.Code))
+            {
+                return this.GetCodeInfoCallMethod(this.Code);
+            }
+            
 
             return this.GetAntherCodeInfo(this.Code);
         }
