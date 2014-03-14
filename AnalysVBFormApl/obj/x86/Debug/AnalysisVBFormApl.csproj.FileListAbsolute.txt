@@ -54,3 +54,6 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x8
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.csproj.GenerateResource.Cache
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Form3.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.pdb

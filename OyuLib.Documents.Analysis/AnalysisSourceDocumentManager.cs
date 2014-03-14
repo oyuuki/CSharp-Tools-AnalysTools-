@@ -496,6 +496,25 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        protected SourceCodeblockInfo[] GetCodeBlockInfoWithBlockName<TBlock>(
+            object[] codeObjects,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
+            where TBlock : SourceCodeInfoBlockBegin
+        {
+            var retList = new List<SourceCodeblockInfo>();
+
+            foreach (var block in this.GetSourceCodeblockInfo<TBlock>(codeObjects))
+            {
+                if (checkBlockMethod(blockName, (TBlock)block.CodeObjects[0]))
+                {
+                    retList.Add(block);    
+                }
+            }
+
+            return retList.ToArray();
+        }
+
         protected T[] GetCodeInfoWithKeyNameRangeBlockNotRequiredInnerBlock<T, TBlock>(
             string keyName, 
             CheckWithKey<T> checkMethod,
@@ -556,6 +575,81 @@ namespace OyuLib.Documents.Sources.Analysis
         #endregion
 
         #region Public
+
+        /// <summary>
+        /// 指定したメソッドブロック内のコードを全て取得する
+        /// </summary>
+        /// <param name="blockName"></param>
+        /// <returns></returns>
+        public void AddSourceCodeInfoMethod(string methodName, string[] addingStrings, string ObjName, string callMethodName)
+        {
+            var block = this.GetCodeBlockInfoWithBlockName<SourceCodeInfoBlockBeginMethod>(
+                this.CodeObjects, 
+                methodName, 
+                delegate(string lockeyName, SourceCodeInfoBlockBeginMethod info)
+                {
+                    return info.Name.Equals(lockeyName);
+                });
+
+            int index = 0;
+
+            foreach(var codeObject in block[0].CodeObjects)
+            {
+                
+
+                if(codeObject is SourceCodeInfoCallMethod)
+                {
+                    var callMethod = (SourceCodeInfoCallMethod)codeObject;
+
+                    if(callMethod.CallmethodName.Equals(callMethodName)
+                        && callMethod.ObjName.Equals(ObjName))
+                    {
+                        break;
+                    }
+
+                    
+                }
+                index++;
+            }
+
+            
+            var list = new List<SourceCodeInfoOther>();
+
+            foreach(var strVal in addingStrings)
+            {
+                int locindex = -1;
+
+                if ((locindex = strVal.IndexOf("SetFieldsAddRange")) >= 0)
+                {
+                    bool isAppend = true;
+
+                    foreach (var codeobj in block[0].CodeObjects)
+                    {
+                        if (codeobj is SourceCodeInfo)
+                        {
+                            var info = (SourceCodeInfo)codeobj;
+
+                            if (info.GetCodeString().IndexOf(strVal.Substring(0, locindex - 1).Trim() + ".Fields.AddRange") >= 0)
+                            {
+                                isAppend = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(isAppend)
+                    {
+                        list.Add(new SourceCodeInfoOther(new SourceCode(strVal)));
+                    }
+                }
+                else
+                {
+                    list.Add(new SourceCodeInfoOther(new SourceCode(strVal)));
+                }
+            }
+
+            block[0].CodeObjects = this.GetAddedCodeInfo(list.ToArray(), block[0].CodeObjects, index);
+        }
 
         //        １．左辺式が○○である式コードのコレクションを取得
         public SourceCodeInfo[] GetAllCodeInfos()

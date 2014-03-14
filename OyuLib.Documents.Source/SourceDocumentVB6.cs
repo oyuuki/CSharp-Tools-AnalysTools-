@@ -24,6 +24,12 @@ namespace OyuLib.Documents.Sources
             
         }
 
+        public SourceDocumentVB6(string textString, bool dummy, bool dummy2)
+            : base(textString, dummy, dummy2)
+        {
+            
+        }
+
         #endregion
 
         #region Method

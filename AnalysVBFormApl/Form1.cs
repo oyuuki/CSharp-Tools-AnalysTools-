@@ -330,7 +330,7 @@ namespace AnalysisVBFormApl
             
             string filePath = exTxtSourcepath.Text;
 
-            SourceDocumentVB6 source = new SourceDocumentVB6(new TextFile(filePath, CharSet.ShiftJis).GetAllReadText());
+            SourceDocumentVB6 source = new SourceDocumentVB6(filePath, CharSet.ShiftJis);
 
 
             AnalysisInputFieldItemManager ana = new AnalysisInputFieldItemManager(source);

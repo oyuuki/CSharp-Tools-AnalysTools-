@@ -132,6 +132,12 @@ namespace RepaceSource
                 {
                     subCodeInfo.CallmethodName = "SetActiveCell";
                     this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].ChangeParamaterIndex(0, 1);
+
+                    var paramString1 = ((SourceCodeInfoParamaterValueElement)this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].ParamaterValues[0].ElementStrages[0].Value).ParamaterName;
+                    var paramString2 = ((SourceCodeInfoParamaterValueElement)this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].ParamaterValues[1].ElementStrages[0].Value).ParamaterName;
+
+                    ((SourceCodeInfoParamaterValueElement)this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].ParamaterValues[0].ElementStrages[0].Value).ParamaterName = paramString1 + " - 1";
+                    ((SourceCodeInfoParamaterValueElement)this.SourceCodeInfo.GetSourceCodeInfoParamaters()[0].ParamaterValues[1].ElementStrages[0].Value).ParamaterName = paramString2 + " - 1"; 
                 }
             }
         }
