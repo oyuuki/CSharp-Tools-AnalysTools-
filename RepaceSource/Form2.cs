@@ -77,8 +77,8 @@ namespace RepaceSource
             //this.ExecuteSearch_1();
             //this.ExecuteReplace1();
            // this.ExecuteReplace3();
-          // this.ExecuteReplace4();
-            this.ExecuteReplaceCellsToRowsOrColumns();
+            this.ExecuteReplace4();
+            //this.ExecuteReplaceCellsToRowsOrColumns();
         }
 
         private void ExecuteReplace3()
@@ -616,7 +616,7 @@ namespace RepaceSource
         private void ReplaceInputManADODBRecordSet(
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
-            var adoDataList = manaBus.GetValiableNameCollection("ADODB.Recordset");
+            var adoDataList = manaBus.GetValiableNameCollection("Recordset");
 
 
             foreach (var codeInfo in manaBus.GetAllCodeInfos())

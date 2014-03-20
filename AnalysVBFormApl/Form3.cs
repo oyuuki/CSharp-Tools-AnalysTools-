@@ -87,12 +87,24 @@ namespace AnalysisVBFormApl
         {
             var table =  ReadSource();
             _table = this.CheckSameValueInCodes(table);
-        }   
+        }
+
+        private void GetTrancedPropertyCodeImeMode()
+        {
+            var table = ReadSource();
+            _table = this.GetPropertyCodeTableImeMode(table);
+        }
 
         private void GetTrancedPropertyCode()
         {
             var table =  ReadSource();
             _table = this.GetPropertyCodeTable(table);
+        }
+
+        private void GetTrancedFontPropertyCode()
+        {
+            var table = ReadSource();
+            _table = this.GetFontPropertyCodeTable(table);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -396,6 +408,282 @@ namespace AnalysisVBFormApl
             return dictable;
         }
 
+        private Hashtable GetPropertyCodeTableImeMode(Hashtable table)
+        {
+            var dictable = new Hashtable();
+
+            foreach (string key in table.Keys)
+            {
+
+                var keyValueList = (List<KeyValuePair<string, string>>)table[key];
+                var list = new List<List<string>>();
+
+                foreach (KeyValuePair<string, string> keyValue in keyValueList)
+                {
+                    string indexValue = string.Empty;
+                    var typeName = keyValue.Key;
+                    var sourceText = keyValue.Value;
+
+                    SourceDocumentVB6 source = new SourceDocumentVB6(sourceText, true, true);
+
+                    int beginCount = 0;
+                    var valiableName = string.Empty;
+                    var loclist = new List<string>();
+
+                    var appearanceString = string.Empty;
+                    var borderStyleString = string.Empty;
+
+                    foreach (var code in source.GetCodes())
+                    {
+                        var codeString = code.CodeString;
+
+                        if (codeString.IndexOf("Begin ") >= 0
+                            || codeString.IndexOf("BeginProperty") >= 0)
+                        {
+                            beginCount++;
+
+                            if (beginCount == 1)
+                            {
+                                valiableName = new StringSpilitter(codeString).GetStringRangeSpilit(" ")[2].GetStringSpilited().Trim();
+                            }
+
+                            continue;
+                        }
+
+                        if (codeString.IndexOf(" End") >= 0)
+                        {
+                            beginCount--;
+                            continue;
+                        }
+
+                        if (beginCount == 2)
+                        {
+                            continue;
+                        }
+
+                        if (beginCount == 0)
+                        {
+                            break;
+                        }
+
+                        if (codeString.Trim().StartsWith("'")
+                            || string.IsNullOrEmpty(codeString.Trim()))
+                        {
+                            continue;
+                        }
+
+                        var strArray = codeString.Split(new string[] { "=" }, StringSplitOptions.None);
+
+                        if (strArray == null ||
+                            strArray.Length <= 1)
+                        {
+                            continue;
+                        }
+
+                        var propertyName = strArray[0].Trim();
+                        var propertyValue = strArray[1].Trim();
+
+                        if (propertyValue.IndexOf("'") >= 0)
+                        {
+                            propertyValue = propertyValue.Substring(0, propertyValue.IndexOf("'")).Trim();
+                        }
+
+                        if (propertyName.Equals("Index"))
+                        {
+                            indexValue = propertyValue;
+                        }
+
+                        string[] addCodes = null;
+
+                        var trancedValueString = this.GetChangeCodeMapImeMode(valiableName, propertyName.Trim(), propertyValue.Trim(), typeName);
+
+                        if (!string.IsNullOrEmpty(trancedValueString))
+                        {
+                            loclist.Add(trancedValueString);
+                        }
+                    }
+
+                    for (int index = 0; index < loclist.Count; index++)
+                    {
+                        var valiableNameAndIndex = valiableName;
+
+                        if (!string.IsNullOrEmpty(indexValue))
+                        {
+                            valiableNameAndIndex = "_" + valiableNameAndIndex + "_" + indexValue;
+                        }
+
+                        loclist[index] = "         Me." + valiableNameAndIndex + loclist[index];
+                    }
+
+                    list.Add(loclist);
+                }
+
+                var retList = new List<string>();
+
+                foreach (var aalist in list)
+                {
+                    retList.AddRange(aalist.ToArray());
+                }
+
+
+                dictable.Add(key, retList);
+            }
+
+            return dictable;
+        }
+
+        private Hashtable GetFontPropertyCodeTable(Hashtable table)
+        {
+            var dictable = new Hashtable();
+
+            foreach (string key in table.Keys)
+            {
+
+                var keyValueList = (List<KeyValuePair<string, string>>)table[key];
+                var list = new List<List<string>>();
+
+
+
+                foreach (KeyValuePair<string, string> keyValue in keyValueList)
+                {
+                    string indexValue = string.Empty;
+                    var typeName = keyValue.Key;
+                    var sourceText = keyValue.Value;
+
+                    SourceDocumentVB6 source = new SourceDocumentVB6(sourceText, true, true);
+
+                    bool fontFlg = false;
+                    var valiableName = string.Empty;
+                    var fontName = string.Empty;
+                    var fontSize = string.Empty;
+
+                    var loclist = new List<string>();
+
+                    foreach (var code in source.GetCodes())
+                    {
+                        var codeString = code.CodeString;
+
+                        if (codeString.IndexOf("Begin ") >= 0)
+                        {
+                            valiableName = new StringSpilitter(codeString).GetStringRangeSpilit(" ")[2].GetStringSpilited().Trim();
+                            continue;
+                        }
+
+                        if (codeString.IndexOf("BeginProperty") >= 0)
+                        {
+                            fontFlg = true;
+                            continue;
+                        }
+
+                        var strArray = codeString.Split(new string[] { "=" }, StringSplitOptions.None);
+
+                        if (strArray == null ||
+                            strArray.Length <= 1)
+                        {
+                            continue;
+                        }
+
+                        var propertyName = strArray[0].Trim();
+                        var propertyValue = strArray[1].Trim();
+
+                        if (propertyValue.IndexOf("'") >= 0)
+                        {
+                            propertyValue = propertyValue.Substring(0, propertyValue.IndexOf("'")).Trim();
+                        }
+
+                        if (propertyName.Equals("Index"))
+                        {
+                            indexValue = propertyValue;
+                        }
+
+
+                        if (fontFlg)
+                        {
+                            strArray = codeString.Split(new string[] { "=" }, StringSplitOptions.None);
+
+                            if (strArray == null ||
+                                strArray.Length <= 1)
+                            {
+                                continue;
+                            }
+
+                            propertyName = strArray[0].Trim();
+                            propertyValue = strArray[1].Trim();
+
+                            if (propertyValue.IndexOf("'") >= 0)
+                            {
+                                propertyValue = propertyValue.Substring(0, propertyValue.IndexOf("'")).Trim();
+                            }
+
+                            if (propertyName.Equals("Name"))
+                            {
+                                fontName = propertyValue;
+                            }
+                            else if (propertyName.Equals("Size"))
+                            {
+                                fontSize = propertyValue;
+                            }
+
+                            if (!string.IsNullOrEmpty(fontName) && !string.IsNullOrEmpty(fontSize))
+                            {
+                                var valiableNameAndIndex = valiableName;
+
+                                if (!string.IsNullOrEmpty(indexValue))
+                                {
+                                    valiableNameAndIndex = "_" + valiableNameAndIndex + "_" + indexValue;
+                                }
+
+                                loclist.Add("        Me." + valiableNameAndIndex + ".Font = New Font(" + fontName + ", " + fontSize + ")");
+                                break;
+                            }
+
+                        }
+                    }
+
+                    list.Add(loclist);
+                }
+
+                var retList = new List<string>();
+
+                foreach (var aalist in list)
+                {
+                    retList.AddRange(aalist.ToArray());
+                }
+
+
+                dictable.Add(key, retList);
+            }
+
+            return dictable;
+        }
+
+        private string GetChangeCodeMapImeMode(string valiableName, string propertyName, string value, string typeName)
+        {
+            var list = new List<KeyValuePair<string, string>>();
+
+            list.Add(new KeyValuePair<string, string>("IMEMode", ".ImeMode = {0}"));
+            list.Add(new KeyValuePair<string, string>("MultiLine", ".MultiLine = {0}"));
+            
+
+            if (propertyName.Equals("LengthAsByte"))
+            {
+                if (value.Equals("-1"))
+                {
+                    return ".MaxLengthUnit = GrapeCity.Win.Editors.LengthUnit.Byte";
+                }
+            }
+
+            foreach (var val in list.ToArray())
+            {
+                if (val.Key.Equals(propertyName))
+                {
+                    return string.Format(val.Value, this.GetTranceValue(propertyName, value));
+                }
+            }
+
+            return string.Empty;
+        }
+
         private string GetChangeCodeMap(string valiableName, string propertyName, string value, string typeName, out string[] addCode)
         {
             addCode = null;
@@ -413,7 +701,7 @@ namespace AnalysisVBFormApl
             list.Add(new KeyValuePair<string,string>("MaxLength", ".MaxLength = {0}"));
             list.Add(new KeyValuePair<string,string>("LengthAsByte", ".MaxLengthUnit = {0}"));
             list.Add(new KeyValuePair<string,string>("HighlightText", ".HighlightText = {0}"));
-            list.Add(new KeyValuePair<string,string>("ImeMode", ".ImeMode = {0}"));
+            list.Add(new KeyValuePair<string, string>("IMEMode", ".ImeMode = {0}"));
             list.Add(new KeyValuePair<string,string>("ScrollBarMode", ".ScrollBarMode = {0}"));
             list.Add(new KeyValuePair<string, string>("DisplayFormat", ".SetDisplayFieldsAddRange({0})"));
             list.Add(new KeyValuePair<string,string>("MaxValue", ".MaxValue = {0}"));
@@ -432,7 +720,7 @@ namespace AnalysisVBFormApl
             {
                 if (value.Equals("-1"))
                 {
-                    return string.Empty;
+                    return ".MaxLengthUnit = GrapeCity.Win.Editors.LengthUnit.Byte";
                 }
             }
 
@@ -514,6 +802,9 @@ namespace AnalysisVBFormApl
             dic.Add("AllowSpace", GetTranceValueCollectionAllowSpace());
             dic.Add("LengthAsByte", GetTranceValueCollectionMaxLengthUnit());
             dic.Add("ScrollBarMode", GetTranceValueCollectionScrollBarMode());
+            dic.Add("Multiline", GetTranceValueCollectionEnabled());
+            dic.Add("IMEMode", GetTranceValueCollectionImemode());
+            
 
             if (propertyName.Equals("Format")
                 || propertyName.Equals("DisplayFormat"))
@@ -610,6 +901,22 @@ namespace AnalysisVBFormApl
             return list.ToArray();
         }
 
+        private KeyValuePair<string, string>[] GetTranceValueCollectionImemode()
+        {
+            var list = new List<KeyValuePair<string, string>>();
+            list.Add(new KeyValuePair<string, string>("2", "Windows.Forms.ImeMode.Off"));
+            list.Add(new KeyValuePair<string, string>("1", "Windows.Forms.ImeMode.On"));
+            list.Add(new KeyValuePair<string, string>("0", "Windows.Forms.ImeMode.NoControl"));
+            list.Add(new KeyValuePair<string, string>("3", "Windows.Forms.ImeMode.Disable"));
+            list.Add(new KeyValuePair<string, string>("4", "Windows.Forms.ImeMode.Hiragana"));
+            list.Add(new KeyValuePair<string, string>("7", "Windows.Forms.ImeMode.AlphaFull"));
+            list.Add(new KeyValuePair<string, string>("-1", "Windows.Forms.ImeMode.Inherit"));
+            list.Add(new KeyValuePair<string, string>("5", "Windows.Forms.ImeMode.Katakana"));
+            list.Add(new KeyValuePair<string, string>("6", "Windows.Forms.ImeMode.KatakanaHalf"));
+            
+            return list.ToArray();
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.ShowData();
@@ -690,6 +997,36 @@ namespace AnalysisVBFormApl
                 var designerPath = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\" + key.Replace(".frm", string.Empty) + ".Designer.vb";
 
                 if(!File.Exists(designerPath))
+                {
+                    this.exListBox1.Items.Add("このファイルに対応する次期のソースファイルがありません。  ファイル名：" + key);
+                    continue;
+                }
+
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(designerPath);
+
+                mana.AddSourceCodeInfoMethod("InitializeComponent", list.ToArray(), "Controls", "Add");
+                mana.CreateAnalysisSourceFile(@"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\Test\" + key.Replace(".frm", string.Empty) + ".Designer.vb");
+
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.exListBox1.Items.Clear();
+
+            this.GetTrancedPropertyCodeImeMode();
+
+            foreach (string key in this._table.Keys)
+            {
+                var list = (List<string>)this._table[key];
+                if (list.Count == 0)
+                {
+                    continue;
+                }
+
+                var designerPath = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\" + key.Replace(".frm", string.Empty) + ".Designer.vb";
+
+                if (!File.Exists(designerPath))
                 {
                     this.exListBox1.Items.Add("このファイルに対応する次期のソースファイルがありません。  ファイル名：" + key);
                     continue;
