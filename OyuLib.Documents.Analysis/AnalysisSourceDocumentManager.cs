@@ -685,6 +685,25 @@ namespace OyuLib.Documents.Sources.Analysis
                     return info.EventObjectName.Equals(lockeyName);
                 }
                 );
+        }       
+
+        public SourceCodeInfoVBDotnetAddHandler[] GetSourceCodeInfoVBDotnetAddHandleresForMiglation(string objectName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoVBDotnetAddHandler>(
+                objectName,
+                delegate(string lockeyName, SourceCodeInfoVBDotnetAddHandler info)
+                {
+                    string addhandlerObj = info.AddhandlerObject;
+                    string locObjectName = addhandlerObj.Replace("Me.", string.Empty).Replace("(", "_").Replace(")", string.Empty).Trim();
+
+                    if (locObjectName.EndsWith(","))
+                    {
+                        locObjectName = locObjectName.Substring(0, locObjectName.Length - 1);
+                    }
+
+                    return locObjectName.Equals(lockeyName);
+                }
+                );
         }
 
         //３．○○というオブジェクトに関連するコールメソッドのコレクションを取得
@@ -737,6 +756,23 @@ namespace OyuLib.Documents.Sources.Analysis
                 }
                 );
         }
+
+        /// <summary>
+        /// Get ValiableInfo By TypeName
+        /// </summary>
+        /// <param name="typeName">TypeName</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByTypeLike(string typeName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoMemberVariable>(
+                typeName,
+                delegate(string lockeyName, SourceCodeInfoMemberVariable info)
+                {
+                    return info.TypeName.IndexOf(typeName) >= 0;
+                }
+                );
+        }
+
 
         /// <summary>
         /// Get ValiableInfo By Name

@@ -342,6 +342,31 @@ namespace OyuLib.Documents.Sources.Analysis
             return true;
         }
 
+        private bool CheckAddhandlerCode(SourceCode code)
+        {
+            var coFac = new SourceCodePartsFactoryVBDotNetAddHandler(code);
+
+            // include blockName
+            if (!coFac.IsIncludeStringInCode(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_ADDHANDLER))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private SourceCodeInfo GetCodeInfoAddhandler(SourceCode code)
+        {
+            var coFac = new SourceCodePartsFactoryVBDotNetAddHandler(code);
+
+            int length = coFac.GetCodeParts().Length;
+
+            int addhandlerindex = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_ADDHANDLER);
+            int addressofIndex = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_ADDRESSOF);
+
+            return new SourceCodeInfoVBDotnetAddHandler(code, coFac, addhandlerindex + 1, addressofIndex + 1);
+        }
+
         private SourceCodeInfo GetCodeInfoWithBlock(SourceCode code)
         {
             SourceCodePartsfactoryNocomment coFac = new SourceCodePartsfactoryNocomment(code, " "); 
@@ -416,6 +441,10 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public override SourceCodeInfo GetAntherCodeInfo(SourceCode code)
         {
+            if (this.CheckAddhandlerCode(code))
+            {
+                return this.GetCodeInfoAddhandler(code);
+            }
             if (this.CheckCommonCodeInfoBlock(code, new string[] { SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_WITH }))
             {
                 return this.GetCodeInfoWithBlock(code);

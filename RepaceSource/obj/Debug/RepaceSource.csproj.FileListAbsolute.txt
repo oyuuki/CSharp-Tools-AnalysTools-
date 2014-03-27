@@ -74,3 +74,5 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.exe
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\obj\Debug\RepaceSource.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Collection.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\RepaceSource\bin\Debug\OyuLib.Collection.pdb

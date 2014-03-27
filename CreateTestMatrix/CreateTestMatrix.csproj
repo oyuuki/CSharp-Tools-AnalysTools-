@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OyuLib">
+      <HintPath>..\OyuLib\bin\Debug\OyuLib.dll</HintPath>
+    </Reference>
+    <Reference Include="OyuLib.Xml">
+      <HintPath>..\OyuLib.Xml\bin\Debug\OyuLib.Xml.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,8 +55,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PartialClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -69,6 +79,40 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OyuLib.Collection\OyuLib.Collection.csproj">
+      <Project>{a703a42f-2e68-4589-a1ca-a48d809f0d16}</Project>
+      <Name>OyuLib.Collection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents.Analysis\OyuLib.Documents.Sources.Analysis.csproj">
+      <Project>{2bb0f5f4-0234-4c52-907c-5e2347a1129e}</Project>
+      <Name>OyuLib.Documents.Sources.Analysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents.Sources.Analysis.InputFields\OyuLib.Documents.Sources.Analysis.InputFields.csproj">
+      <Project>{63a639bb-6d26-49c8-9a1e-f78210882db3}</Project>
+      <Name>OyuLib.Documents.Sources.Analysis.InputFields</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents.Source\OyuLib.Documents.Sources.csproj">
+      <Project>{89573291-d945-4691-b5a2-5a9be29b2c05}</Project>
+      <Name>OyuLib.Documents.Sources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Documents\OyuLib.Documents.csproj">
+      <Project>{a2351b54-fcc4-4349-9fad-cec765b4c378}</Project>
+      <Name>OyuLib.Documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.interop.COM\OyuLib.interop.COM.csproj">
+      <Project>{efb327c9-c43e-461d-8993-59ef7b1946c5}</Project>
+      <Name>OyuLib.interop.COM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Windows.Forms.DataGridView\OyuLib.Windows.Forms.DataGridView.csproj">
+      <Project>{B11D04A4-C034-4873-B1D5-62D9B7B6BFE7}</Project>
+      <Name>OyuLib.Windows.Forms.DataGridView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OyuLib.Windows.Forms\OyuLib.Windows.Forms.csproj">
+      <Project>{FC9CCFC1-71FD-41FF-ABDB-60CB9B6204A6}</Project>
+      <Name>OyuLib.Windows.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

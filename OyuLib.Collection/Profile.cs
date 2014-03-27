@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OyuLib.Collection
 {
-    public abstract class Profile : ICategoryItem
+    public abstract class Profile
     {
         #region instanceVal
 
@@ -22,16 +22,6 @@ namespace OyuLib.Collection
             this._name = name;
             this._uniquName = name;
         }
-
-        #endregion
-
-        #region InsterFace
-
-        #region ICategoryItem
-
-        public abstract void Execute();
-
-        #endregion
 
         #endregion
     }

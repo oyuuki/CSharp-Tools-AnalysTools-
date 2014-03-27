@@ -57,3 +57,5 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x8
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\obj\x86\Debug\AnalysisVBFormApl.Form3.resources
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Documents.Sources.Analysis.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Collection.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\AnalysVBFormApl\bin\Debug\OyuLib.Collection.pdb

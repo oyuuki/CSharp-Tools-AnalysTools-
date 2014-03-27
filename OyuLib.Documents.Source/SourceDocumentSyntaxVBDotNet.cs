@@ -74,5 +74,9 @@ namespace OyuLib.Documents.Sources
         public const string CONST_STATEMENT_IMPORTS = "Imports";
 
         public const string CONST_STATEMENT_CLASS = "Class";
+
+        public const string CONST_STATEMENT_ADDHANDLER = "AddHandler";
+
+        public const string CONST_STATEMENT_ADDRESSOF = "AddressOf";
     }
 }
