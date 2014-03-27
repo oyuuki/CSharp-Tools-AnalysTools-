@@ -77,7 +77,8 @@ namespace CreateTestMatrix
             // this.ExecuteReplace3();
 
             button1.Enabled = false; // いったんボタンを無効化
-            this.ExecuteReplace3();
+            //this.ExecuteReplace3();
+            this.ExecuteReplace4();
             button1.Enabled = true; // いったんボタンを無効化
             //this.ExecuteReplaceCellsToRowsOrColumns();
         }
@@ -102,6 +103,29 @@ namespace CreateTestMatrix
             this.CreateMatrixSpreadEvent(targetSourceDirectory);
             MessageBox.Show("おわり★");
         }
+
+        private void ExecuteReplace4()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            // this.GetFilePaths(targetSourceDirectory)
+            // this.Test()
+
+            //- セルへの入力 (EditModeOn)
+            //- Spreadへのフォーカス移動時 Enter
+            //- セルからのフォーカス移動 LeaveCell
+            //- セルの編集後 (EditModeOff, EditModeOn)
+            //- セルのクリック(Button)  .ButtonClicked
+            //- セルの表示内容  (Spreadがある画面は全て)
+            //  - 書式
+            //  - Combobox内のコレクション   
+            //- CheckBoxの判定 ×(アナライズするのは難しそう)
+            //- セルのダブルクリック (CellDoubleClick)
+            //- 右クリック時の処理 MouseDown(Spreadのみに絞る)               
+            this.CreateMatrixIsUsedinputMan(targetSourceDirectory);
+            MessageBox.Show("おわり★");
+        }
+
+        
 
         private void CreateMatrixSpreadEvent(string targetSourceDirectory)
         {
@@ -171,6 +195,27 @@ namespace CreateTestMatrix
             this.exTextBox1.Text = strbu.ToString();
         }
 
+        private void CreateMatrixIsUsedinputMan(string targetSourceDirectory)
+        {
+            var sourceHash = new Hashtable();
+            var strbu = new StringBuilder();
+
+            strbu.AppendLine("	入力可能文字数	入力可能書式	IMEモード");
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                sourceHash.Add(Path.GetFileNameWithoutExtension(source.BussinessClassFilePath), this.GetIsUsingInputManMatrix(source));
+            }
+
+            foreach (var sourrceKey in sourceHash.Keys)
+            {
+                var str = sourrceKey + "    ";
+                strbu.AppendLine((string)sourceHash[sourrceKey]);
+            }
+
+            this.exTextBox1.Text = strbu.ToString();
+        }
+
         private ProfileAnalysisEvent.ProfileEventItem[] GetEventItemArray(PartialClass source, string name, string typeName)
         {
             if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
@@ -192,7 +237,21 @@ namespace CreateTestMatrix
             return null;
         }
 
-        private bool GetIsUsingInputMan(PartialClass source, string name, string typeName)
+        private string GetIsUsingInputManMatrix(PartialClass source)
+        {
+            var result = this.GetIsUsingInputMan(source);
+
+            if(result)
+            {
+                return "●	●	●";
+            }
+            else
+            {
+                return "-	-	-";
+            }
+        }
+
+        private bool GetIsUsingInputMan(PartialClass source)
         {
             if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
             {
