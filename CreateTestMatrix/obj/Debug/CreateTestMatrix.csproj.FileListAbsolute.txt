@@ -1,0 +1,7 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CreateTestMatrix\bin\Debug\CreateTestMatrix.exe
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CreateTestMatrix\bin\Debug\CreateTestMatrix.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CreateTestMatrix\obj\Debug\CreateTestMatrix.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CreateTestMatrix\obj\Debug\CreateTestMatrix.Properties.Resources.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CreateTestMatrix\obj\Debug\CreateTestMatrix.csproj.GenerateResource.Cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CreateTestMatrix\obj\Debug\CreateTestMatrix.exe
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\CreateTestMatrix\obj\Debug\CreateTestMatrix.pdb

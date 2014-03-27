@@ -1,0 +1,4 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Sort.Items\bin\Debug\OyuLib.Sort.Items.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Sort.Items\bin\Debug\OyuLib.Sort.Items.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Sort.Items\obj\Debug\OyuLib.Sort.Items.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Sort.Items\obj\Debug\OyuLib.Sort.Items.pdb

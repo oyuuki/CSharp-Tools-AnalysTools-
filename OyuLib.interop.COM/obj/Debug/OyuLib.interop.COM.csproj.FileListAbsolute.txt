@@ -1,0 +1,6 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.interop.COM\obj\Debug\OyuLib.interop.COM.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.interop.COM\obj\Debug\OyuLib.interop.COM.csproj.ResolveComReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.interop.COM\obj\Debug\OyuLib.interop.COM.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.interop.COM\bin\Debug\OyuLib.interop.COM.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.interop.COM\bin\Debug\OyuLib.interop.COM.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.interop.COM\obj\Debug\OyuLib.interop.COM.dll

@@ -89,6 +89,12 @@ namespace AnalysisVBFormApl
             _table = this.CheckSameValueInCodes(table);
         }
 
+        private void GetTrancedPropertyCodeTextAlign()
+        {
+            var table = ReadSource();
+            _table = this.GetPropertyCodeTableTextAlign(table);
+        }
+
         private void GetTrancedPropertyCodeImeMode()
         {
             var table = ReadSource();
@@ -407,6 +413,174 @@ namespace AnalysisVBFormApl
 
             return dictable;
         }
+
+
+        private Hashtable GetPropertyCodeTableTextAlign(Hashtable table)
+        {
+            var dictable = new Hashtable();
+
+            foreach (string key in table.Keys)
+            {
+
+                var keyValueList = (List<KeyValuePair<string, string>>)table[key];
+                var list = new List<List<string>>();
+
+                foreach (KeyValuePair<string, string> keyValue in keyValueList)
+                {
+                    string indexValue = string.Empty;
+                    var typeName = keyValue.Key;
+                    var sourceText = keyValue.Value;
+
+                    SourceDocumentVB6 source = new SourceDocumentVB6(sourceText, true, true);
+
+                    int beginCount = 0;
+                    var valiableName = string.Empty;
+                    var loclist = new List<string>();
+
+                    var alignVertical = string.Empty;
+                    var alignHorizontal = string.Empty;
+
+                    foreach (var code in source.GetCodes())
+                    {
+                        var codeString = code.CodeString;
+
+                        if (codeString.IndexOf("Begin ") >= 0
+                            || codeString.IndexOf("BeginProperty") >= 0)
+                        {
+                            beginCount++;
+
+                            if (beginCount == 1)
+                            {
+                                valiableName = new StringSpilitter(codeString).GetStringRangeSpilit(" ")[2].GetStringSpilited().Trim();
+                            }
+
+                            continue;
+                        }
+
+                        if (codeString.IndexOf(" End") >= 0)
+                        {
+                            beginCount--;
+                            continue;
+                        }
+
+                        if (beginCount == 2)
+                        {
+                            continue;
+                        }
+
+                        if (beginCount == 0)
+                        {
+                            break;
+                        }
+
+                        if (codeString.Trim().StartsWith("'")
+                            || string.IsNullOrEmpty(codeString.Trim()))
+                        {
+                            continue;
+                        }
+
+                        var strArray = codeString.Split(new string[] { "=" }, StringSplitOptions.None);
+
+                        if (strArray == null ||
+                            strArray.Length <= 1)
+                        {
+                            continue;
+                        }
+
+                        var propertyName = strArray[0].Trim();
+                        var propertyValue = strArray[1].Trim();
+
+                        if (propertyValue.IndexOf("'") >= 0)
+                        {
+                            propertyValue = propertyValue.Substring(0, propertyValue.IndexOf("'")).Trim();
+                        }
+
+                        if (propertyName.Equals("Index"))
+                        {
+                            indexValue = propertyValue;
+                        }
+
+                        string[] addCodes = null;
+
+                        if (propertyName.Equals("AlignVertical"))
+                        {
+                            alignVertical = propertyValue;
+                        }
+                        else if (propertyName.Equals("AlignHorizontal"))
+                        {
+                            alignHorizontal = propertyValue;
+                        }
+
+
+                        if (!string.IsNullOrEmpty(alignVertical)
+                            && !string.IsNullOrEmpty(alignHorizontal))
+                        {
+                            var addValue = this.GetTextAlignTable(typeName)[int.Parse(alignVertical)][int.Parse(alignHorizontal)];
+
+                            loclist.Add(addValue);
+                            alignVertical = string.Empty;
+                            alignHorizontal = string.Empty;
+                            continue;
+                        }
+                    }
+
+                    for (int index = 0; index < loclist.Count; index++)
+                    {
+                        var valiableNameAndIndex = valiableName;
+
+                        if (!string.IsNullOrEmpty(indexValue))
+                        {
+                            valiableNameAndIndex = "_" + valiableNameAndIndex + "_" + indexValue;
+                        }
+
+                        loclist[index] = "         Me." + valiableNameAndIndex + loclist[index];
+                    }
+
+                    list.Add(loclist);
+                }
+
+                var retList = new List<string>();
+
+                foreach (var aalist in list)
+                {
+                    retList.AddRange(aalist.ToArray());
+                }
+
+
+                dictable.Add(key, retList);
+            }
+
+            return dictable;
+        }
+
+        private string[][] GetTextAlignTable(string typeName)
+        {
+            var retList = new List<string[]>(); 
+            var propName = string.Empty;
+            propName = ".ContentAlignment";
+            
+
+            retList.Add(new string[]{ 
+                propName + " = System.Drawing.ContentAlignment.TopLeft",                
+                propName + " = System.Drawing.ContentAlignment.TopRight",
+                propName + " = System.Drawing.ContentAlignment.TopCenter"
+            });
+
+            retList.Add(new string[]{ 
+                propName + " = System.Drawing.ContentAlignment.BottomLeft",
+                propName + " = System.Drawing.ContentAlignment.BottomRight",
+                propName + " = System.Drawing.ContentAlignment.BottomCenter"
+            });
+
+            retList.Add(new string[]{ 
+                propName + " = System.Drawing.ContentAlignment.MiddleLeft",
+                propName + " = System.Drawing.ContentAlignment.MiddleRight",
+                propName + " = System.Drawing.ContentAlignment.MiddleCenter"
+            });
+
+            return retList.ToArray();
+        }
+
 
         private Hashtable GetPropertyCodeTableImeMode(Hashtable table)
         {
@@ -1015,6 +1189,36 @@ namespace AnalysisVBFormApl
             this.exListBox1.Items.Clear();
 
             this.GetTrancedPropertyCodeImeMode();
+
+            foreach (string key in this._table.Keys)
+            {
+                var list = (List<string>)this._table[key];
+                if (list.Count == 0)
+                {
+                    continue;
+                }
+
+                var designerPath = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\" + key.Replace(".frm", string.Empty) + ".Designer.vb";
+
+                if (!File.Exists(designerPath))
+                {
+                    this.exListBox1.Items.Add("このファイルに対応する次期のソースファイルがありません。  ファイル名：" + key);
+                    continue;
+                }
+
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(designerPath);
+
+                mana.AddSourceCodeInfoMethod("InitializeComponent", list.ToArray(), "Controls", "Add");
+                mana.CreateAnalysisSourceFile(@"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\Test\" + key.Replace(".frm", string.Empty) + ".Designer.vb");
+
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.exListBox1.Items.Clear();
+
+            this.GetTrancedPropertyCodeTextAlign();
 
             foreach (string key in this._table.Keys)
             {
