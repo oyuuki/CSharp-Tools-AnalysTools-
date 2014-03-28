@@ -192,6 +192,13 @@ namespace CreateTestMatrix
             // - 印刷された紙
             this.CreateMatrixContextMenuStripShow(targetSourceDirectory);
             MessageBox.Show("おわり★");
+
+
+
+            // ShowDialog
+            //       ・メッセージボックスによる処理の分岐  = MsgBox("新規       if MsgBox() = 
+            //     - Spread以外のイベント処理  （どのようなイベントがあるか項目単位で解析
+
         }
 
 
