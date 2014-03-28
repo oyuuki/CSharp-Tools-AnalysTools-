@@ -168,8 +168,8 @@ namespace CreateTestMatrix
 
         private void ExecuteReplace7()
         {
-            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
-            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\test\";
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\test\";
             // - VBReports (印刷プログラムのテスト)
             // - プレビュー画面で確認
             //  - 印刷された紙
@@ -221,7 +221,7 @@ namespace CreateTestMatrix
 
                 foreach(string objName in buttonNameHash.Keys)
                 {
-                    str += objName;
+                    str += "	[" + objName + "]ボタン";
                 }
 
                 strbu.AppendLine(str);
@@ -492,6 +492,24 @@ namespace CreateTestMatrix
             return null;
         }
 
+        private ProfileAnalysisEvent.ProfileEventItem[] GetEventItemArrayMemberCaption(PartialClass source, string name, string typeName)
+        {
+            if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
+            {
+                string filename = Path.GetFileName(source.BussinessClassFilePath).Replace(".vb", "");
+                // デザイナコード解析
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                // ビジネスコード解析
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                var profile = new ProfileAnalysisEvent(name, typeName, mana2, mana);
+
+                return profile.GetImplementEventNameMemberCaption();
+            }
+
+            return null;
+        }
+
         private Dictionary<string, ProfileAnalysisEvent.ProfileEventItem[]> GetEventItemArrayByMember(PartialClass source, string name, string typeName)
         {
             if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
@@ -661,7 +679,7 @@ namespace CreateTestMatrix
         
         private ProfileAnalysisEvent.ProfileEventItem[] GetEventItemArrayButton(PartialClass source)
         {
-            return this.GetEventItemArray(source, "ボタン押下", "System.Windows.Forms.Button");
+            return this.GetEventItemArrayMemberCaption(source, "ボタン押下", "System.Windows.Forms.Button");
         }
     }
 }

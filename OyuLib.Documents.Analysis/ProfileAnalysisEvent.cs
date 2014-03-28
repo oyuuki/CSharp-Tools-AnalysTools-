@@ -27,8 +27,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public ProfileAnalysisEvent(string name,
             string eventObjectTypeName,
-            AnalysisSourceDocumentManager businessManager,
-            AnalysisSourceDocumentManager designManager)
+            AnalysisSourceDocumentManagerVBDotNet businessManager,
+            AnalysisSourceDocumentManagerVBDotNet designManager)
             : base(name, businessManager, designManager)
         {
             this._eventObjectTypeName = eventObjectTypeName;
@@ -58,6 +58,36 @@ namespace OyuLib.Documents.Sources.Analysis
                 foreach(var eventMethod in  this.BusinessManager.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName(member.Name))
                 {
                     retValues.Add(new ProfileEventItem(eventMethod.EventObjectName, eventMethod.EventName));
+                }
+            }
+
+            return retValues.ToArray();
+        }
+
+        public ProfileEventItem[] GetImplementEventNameMemberCaption()
+        {
+            var retValues = new List<ProfileEventItem>();
+
+            foreach (var member in this.GetMemberValiables())
+            {
+                var subCodeInfo = this.DesignManager.GetCodeInfoSubstitutions("Me." + member.Name + ".Text");
+
+                var captionName = member.Name;
+
+                if(subCodeInfo != null && subCodeInfo.Length > 0)
+                {
+                    captionName = subCodeInfo[0].RightHandSide.Replace("\"", string.Empty);
+                }
+                
+
+                foreach (var handler in this.BusinessManager.GetSourceCodeInfoVBDotnetAddHandleresForMiglation(member.Name))
+                {
+                    retValues.Add(new ProfileEventItem(captionName, handler.GetEventName()));
+                }
+
+                foreach (var eventMethod in this.BusinessManager.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName(member.Name))
+                {
+                    retValues.Add(new ProfileEventItem(captionName, eventMethod.EventName));
                 }
             }
 

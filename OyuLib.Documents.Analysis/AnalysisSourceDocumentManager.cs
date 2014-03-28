@@ -714,14 +714,25 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }       
 
-        public SourceCodeInfoVBDotnetAddHandler[] GetSourceCodeInfoVBDotnetAddHandleresForMiglation(string objectName)
+        public SourceCodeInfoVBDotnetAddHandler[] GetSourceCodeInfoVBDotnetAddHandleresForMiglation(string objectName, string thisName)
         {
             return this.GetCodeInfoWithKeyName<SourceCodeInfoVBDotnetAddHandler>(
                 objectName,
                 delegate(string lockeyName, SourceCodeInfoVBDotnetAddHandler info)
                 {
                     string addhandlerObj = info.AddhandlerObject;
-                    string locObjectName = addhandlerObj.Replace("Me.", string.Empty).Replace("(", "_").Replace(")", string.Empty).Trim();
+                    string locObjectName = "_" + addhandlerObj.Replace(thisName, string.Empty).Replace("(", "_").Replace(")", string.Empty).Trim();
+
+                    int dotIndex = locObjectName.LastIndexOf(".");
+
+                    if (dotIndex >= 0)
+                    {
+                        locObjectName = locObjectName.Substring(0, locObjectName.LastIndexOf("."));
+                    }
+                    else
+                    {
+                        locObjectName = thisName;
+                    }
 
                     if (locObjectName.EndsWith(","))
                     {
@@ -1177,6 +1188,9 @@ namespace OyuLib.Documents.Sources.Analysis
         /// Analys Code to item
         /// </summary>
         public abstract SourceCodeInfo[] GetSourceCodeAnalysis();
+
+        public abstract SourceCodeInfoVBDotnetAddHandler[] GetSourceCodeInfoVBDotnetAddHandleresForMiglation(string objectName);
+        
 
         #endregion
 

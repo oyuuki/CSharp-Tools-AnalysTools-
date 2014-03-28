@@ -70,6 +70,9 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        
+
+
         // Withというオブジェクトに関連する○○ブロックで囲まれた式コードを取得
         public SourceCodeInfoSubstitution[] GetCodeInfoSubstitutionsRoundBlock(string blockName)
         {
@@ -155,6 +158,11 @@ namespace OyuLib.Documents.Sources.Analysis
                  {
                      return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName); ;
                  });
+        }
+
+        public override SourceCodeInfoVBDotnetAddHandler[] GetSourceCodeInfoVBDotnetAddHandleresForMiglation(string objectName)
+        {
+            return this.GetSourceCodeInfoVBDotnetAddHandleresForMiglation(objectName, "Me");
         }
 
         // Withステートメントブロックを取得する
