@@ -180,6 +180,22 @@ namespace CreateTestMatrix
             MessageBox.Show("おわり★");
         }
 
+        private void ExecuteReplace8()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\test\";
+            // - VBReports (印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            //  - 印刷された紙
+            // - ActiveReports(印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            // - 印刷された紙
+            this.CreateMatrixContextMenuStripShow(targetSourceDirectory);
+            MessageBox.Show("おわり★");
+        }
+
+
+        
         
 
 
@@ -234,12 +250,26 @@ namespace CreateTestMatrix
             var headHash = new Hashtable();
             var sourceHash = new Hashtable();
 
+            var strbu = new StringBuilder();
+
             foreach (var source in this.GetFilePaths(targetSourceDirectory))
             {
                 var isExist = this.GetIsExistContextMenuStrip(source);
+                var str = Path.GetFileNameWithoutExtension(source.BussinessClassFilePath) + "	";
+
+                if (!isExist)
+                {
+                    str += "-	";
+                }
+                else
+                {
+                    str += "●	";
+                }
+
+                strbu.AppendLine(str);
             }
 
-            var strbu = new StringBuilder();
+            
             this.exTextBox1.Text = strbu.ToString();
         }
 

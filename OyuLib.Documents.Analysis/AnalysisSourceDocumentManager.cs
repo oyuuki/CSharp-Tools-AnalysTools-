@@ -721,7 +721,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 delegate(string lockeyName, SourceCodeInfoVBDotnetAddHandler info)
                 {
                     string addhandlerObj = info.AddhandlerObject;
-                    string locObjectName = "_" + addhandlerObj.Replace(thisName, string.Empty).Replace("(", "_").Replace(")", string.Empty).Trim();
+                    string locObjectName = "_" + addhandlerObj.Replace(thisName + ".", string.Empty).Replace("(", "_").Replace(")", string.Empty).Trim();
 
                     int dotIndex = locObjectName.LastIndexOf(".");
 
