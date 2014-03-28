@@ -64,6 +64,30 @@ namespace OyuLib.Documents.Sources.Analysis
             return retValues.ToArray();
         }
 
+        public Dictionary<string, ProfileEventItem[]> GetImplementEventNameByMember()
+        {
+            var retValues = new Dictionary<string, ProfileEventItem[]>();
+
+            foreach (var member in this.GetMemberValiables())
+            {
+                var proftValues = new List<ProfileEventItem>();
+
+                foreach (var handler in this.BusinessManager.GetSourceCodeInfoVBDotnetAddHandleresForMiglation(member.Name))
+                {
+                    proftValues.Add(new ProfileEventItem(member.Name, handler.GetEventName()));
+                }
+
+                foreach (var eventMethod in this.BusinessManager.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName(member.Name))
+                {
+                    proftValues.Add(new ProfileEventItem(eventMethod.EventObjectName, eventMethod.EventName));
+                }
+
+                retValues.Add(member.Name, proftValues.ToArray());
+            }
+
+            return retValues;
+        }
+
         public class ProfileEventItem
         {
             #region instanceVal

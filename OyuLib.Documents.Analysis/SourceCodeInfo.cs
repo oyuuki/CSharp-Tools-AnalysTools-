@@ -154,14 +154,14 @@ namespace OyuLib.Documents.Sources.Analysis
             return this._code.CodeString;
         }
 
-        public int CodePartsLength
-        {
-            get { return this.GetCodeParts().Length; }
-        }
-
         public int GetCodeLineNumber()
         {
             return this._code.CodeLineNumber;
+        }
+
+        public int CodePartsLength
+        {
+            get { return this.GetCodeParts().Length; }
         }
 
         public string GetTemplateString()

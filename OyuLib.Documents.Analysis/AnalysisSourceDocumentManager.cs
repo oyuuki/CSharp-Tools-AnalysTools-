@@ -333,6 +333,33 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        protected bool FindCodeInfo(SourceCodeblockInfo block, SourceCodeInfo targetCodeInfo)
+        {
+            foreach (var codeInfo in block.CodeObjects)
+            {
+                if (codeInfo is SourceCodeblockInfo)
+                {
+                    bool isFind = this.FindCodeInfo((SourceCodeblockInfo)codeInfo, targetCodeInfo);
+
+                    if(isFind)
+                    {
+                        return true;
+                    }
+                }
+                else if (codeInfo is SourceCodeInfo)
+                {
+                    var sourceCodeInfo = (SourceCodeInfo)codeInfo;
+
+                    if(targetCodeInfo.GetCodeLineNumber() == sourceCodeInfo.GetCodeLineNumber())
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         protected T[] GetSourceCodeInfosNotRequiredInnerBlock<T>()
         {
             return this.GetSourceCodeInfosNotRequiredInnerBlock<T>(this.CodeObjects);
@@ -718,6 +745,34 @@ namespace OyuLib.Documents.Sources.Analysis
                 );
         }
 
+        
+        public SourceCodeInfoCallMethod[] GetSourceCodeInfoCallMethod(string methodName, string objName)
+        {
+            return this.GetSourceCodeInfoCallMethod(methodName, new string[] { objName });
+        }
+
+        
+        public SourceCodeInfoCallMethod[] GetSourceCodeInfoCallMethod(string methodName, string[] objNames)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoCallMethod>(
+                methodName,
+                delegate(string lockeyName, SourceCodeInfoCallMethod info)
+                {
+                    bool isFindSameObjName = false;
+
+                    foreach (var objName in objNames)
+                    {
+                        if(objName.Equals(info.ObjName))
+                        {
+                            isFindSameObjName = true;
+                        }
+                    }
+
+                    return isFindSameObjName ? info.CallmethodName.Equals(methodName) : false;
+                }
+                );
+        }
+
         //３．○○というオブジェクトに関連するコールメソッドのコレクションを取得
         public SourceCodeInfoCallMethod[] GetSourceCodeInfoCallMethod(string methodName)
         {
@@ -739,6 +794,81 @@ namespace OyuLib.Documents.Sources.Analysis
                     return true;
                 }                                        
                 );
+        }
+
+
+        // 指定したブロックのブロックInfoを全てを取得する
+        public SourceCodeblockInfo[] GetAllCodeBlocks<T>()
+            where T : SourceCodeInfoBlockBegin
+        {
+            var retCodeBlockList = new List<SourceCodeblockInfo>();
+
+            foreach (var block in this.GetSourceCodeblockInfo<T>(this.CodeObjects))
+            {
+                retCodeBlockList.Add(block);
+            }
+
+            return retCodeBlockList.ToArray();
+        }
+
+        // メソッドブロックを取得する
+        public SourceCodeblockInfo[] GetCodeMethodBlocks()
+        {
+            return this.GetAllCodeBlocks<SourceCodeInfoBlockBeginMethod>();
+        }
+
+        // Eventブロックを取得する
+        public SourceCodeblockInfo[] GetCodeEventMethodBlocks()
+        {
+            return this.GetAllCodeBlocks<SourceCodeInfoBlockBeginEventMethod>();
+        }
+
+        
+        /// <summary>
+        /// 工事中
+        /// </summary>
+        /// <param name="usedCodeinfo"></param>
+        /// <param name="addHandledMethodNames"></param>
+        /// <returns></returns>
+        private SourceCodeInfoBlockBeginMethod[] GetSourceCodeInfoBlockEventMethodUsedCodeinfo(SourceCodeInfo usedCodeinfo, string[] addHandledMethodNames)
+        {
+            var retList = new List<SourceCodeInfoBlockBeginMethod>();
+
+            foreach (var eventBlock in this.GetCodeEventMethodBlocks())
+            {
+                if (this.FindCodeInfo(eventBlock, usedCodeinfo))
+                {
+                    retList.Add((SourceCodeInfoBlockBeginEventMethod)eventBlock.GetSourceCodeInfoBlockBegin());
+                }
+            }
+
+            foreach(var methodBlock in this.GetCodeMethodBlocks())
+            {
+                if(this.FindCodeInfo(methodBlock, usedCodeinfo))
+                {
+                    foreach (string methodName in addHandledMethodNames)
+                    {
+                        if(((SourceCodeInfoBlockBeginMethod)methodBlock.GetSourceCodeInfoBlockBegin()).Name.Equals(methodName))
+                        {                            
+                        }
+                    }
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        public void test(SourceCodeInfo sourceCodeInfo)
+        {
+
+
+
+            // １．印刷関数を呼び出している関数、またはイベント関数を探す        FindCodeInfo
+            // ２－１．イベント関数が見つかった場合、それをトリガー関数として保持
+            // ２－２．関数が見つかった場合、それが動的に割り当てられたイベント関数か確認する
+            // ２－２－１．イベント関数であった場合は２－１と同じ処理を行う
+            // ２－２－２．それ以外は２－１から繰り返す 　※ この時関数名をマッピングオブジェクトとして保持する
+
         }
 
         /// <summary>
@@ -1040,23 +1170,6 @@ namespace OyuLib.Documents.Sources.Analysis
         
 
         #endregion
-
-
-
-        //     式コードを取得
-        //     コールメソッドコードを取得
-      
-//４．右辺式に○○オブジェクトが含まれる
-
-//     式コードを取得
-//     コールメソッドコードを取得
-     
-//     ※ 再起処理が必要?
-     
-//５．○○というオブジェクトが使用されている箇所を抽出
-//    コールメソッドの引数
-//    IF文の中身
-//    Whileの中身
 
         #region Abstract
 

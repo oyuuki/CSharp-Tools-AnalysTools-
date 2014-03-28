@@ -160,14 +160,7 @@ namespace OyuLib.Documents.Sources.Analysis
         // Withステートメントブロックを取得する
         public SourceCodeblockInfo[] GetCodeWithBlocks()
         {
-            var retCodeBlockList = new List<SourceCodeblockInfo>();
-
-            foreach (var block in this.GetSourceCodeblockInfo<SourceCodeInfoBlockBeginWithVB>(this.CodeObjects))
-            {
-                retCodeBlockList.Add(block);
-            }
-
-            return retCodeBlockList.ToArray();
+            return this.GetAllCodeBlocks<SourceCodeInfoBlockBeginWithVB>();
         }
 
         // Withステートメントブロックを取得する

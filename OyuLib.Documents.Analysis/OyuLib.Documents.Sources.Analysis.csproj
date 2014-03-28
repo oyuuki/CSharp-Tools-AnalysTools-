@@ -105,6 +105,7 @@
     <Compile Include="SourceCodePartsFactoryVBDotNetIf.cs" />
     <Compile Include="SourceCodePartsFactoryVBDotNetFomula.cs" />
     <Compile Include="SourceCodeTemplateFactory.cs" />
+    <Compile Include="TrackeInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OyuLib.Collection\OyuLib.Collection.csproj">
