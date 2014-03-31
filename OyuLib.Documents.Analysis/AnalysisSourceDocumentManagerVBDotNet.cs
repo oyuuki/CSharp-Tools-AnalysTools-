@@ -61,7 +61,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     isInsiteMethod = true;
                 }
-                else if (ArrayUtil.IsIncludeString(new string[] { "End Sub", "End Function" }, code.CodeString))
+                else if (codeInfo is SourceCodeInfoBlockEndMethod)
                 {
                     isInsiteMethod = false;
                 }

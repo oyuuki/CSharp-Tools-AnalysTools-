@@ -78,7 +78,7 @@ namespace CreateTestMatrix
 
             button1.Enabled = false; // いったんボタンを無効化
             //this.ExecuteReplace3();
-            this.ExecuteReplace10();
+            this.ExecuteReplace9();
             button1.Enabled = true; // いったんボタンを無効化
             //this.ExecuteReplaceCellsToRowsOrColumns();
         }
@@ -309,7 +309,7 @@ namespace CreateTestMatrix
                     continue;
                 }
 
-                strbu.AppendLine(dispIds);
+                strbu.Append(dispIds);
             }
 
             
@@ -958,6 +958,11 @@ namespace CreateTestMatrix
 
                 foreach (var codeInfo in mana2.GetSourceCodeInfoVariableByTypeLike("frm"))
                 {
+                    if (codeInfo.TypeName.Equals("frm001003"))
+                    {
+                        int a = 1;
+                    }
+
                     retValue.AppendLine(filename + "	" + codeInfo.TypeName);
                 }
             }

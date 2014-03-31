@@ -156,13 +156,13 @@ namespace OyuLib.Documents.Sources.Analysis
             {
                 return this.GetCodeInfoBlockBeginEventMethod(this.Code);
             }
-            else if (this.CheckCodeInfoVariable(this.Code))
-            {
-                return this.GetCodeInfoVariable(this.Code);
-            }
             else if (this.CheckCodeInfoMemberVariable(this.Code))
             {
                 return this.GetCodeInfoMemberVariable(this.Code);
+            }
+            else if (this.CheckCodeInfoVariable(this.Code))
+            {
+                return this.GetCodeInfoVariable(this.Code);
             }
             else if (this.CheckCodeInfoBlockBeginClass(this.Code))
             {

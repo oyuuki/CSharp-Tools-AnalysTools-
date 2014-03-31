@@ -308,7 +308,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     retList.AddRange(GetSourceCodeInfos<T>(((SourceCodeblockInfo)codeInfo).CodeObjects));
                 }
-                else if (codeInfo is T)
+                else if (codeInfo.GetType() == typeof(T))
                 {
                     retList.Add((T)codeInfo);
                 }
