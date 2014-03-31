@@ -119,37 +119,12 @@ namespace RepaceSource
 
         private void testCode()
         {
-            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"D:\test\test.vb");
+            var mana = new AnalysisSourceDocumentManagerVBDotNet(@"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\EnterDeTab.NET\frm004006.vb");
 
             foreach (var info in mana.GetAllCodeInfos())
             {
-                if (info is IParamater)
-                {
-                    var paramString = this.OutParamaterValue((IParamater)info);
-                    this.exListBox1.Items.Add(paramString);
-                    this.exListBox1.Items.Add(info.GetCodePartsOverWriteValues());
-                }
-            }
-
-            foreach (var info in mana.GetAllCodeInfos())
-            {
-                if (info is IParamater)
-                {
-                    this.ChasngeIndexParamaterValue((IParamater)info, 0);
-                }
-
-            }
-
-            foreach (var info in mana.GetAllCodeInfos())
-            {
-                if (info is IParamater)
-                {
-                    var paramString = this.OutParamaterValue((IParamater)info);
-
-
-                    this.exListBox2.Items.Add(paramString);
-                    this.exListBox2.Items.Add(info.GetCodePartsOverWriteValues());
-                }
+                this.exListBox1.Items.Add(info.ToString());
+                this.exListBox2.Items.Add(info.GetCodeString());
             }
         }
 
@@ -158,6 +133,8 @@ namespace RepaceSource
             this.exListBox1.Items.Clear();
             this.exListBox2.Items.Clear();
 
+
+             this.testCode();
 
                         
 

@@ -9,13 +9,13 @@ namespace OyuLib.Documents.Sources.Analysis
     {
         #region instanceVal
 
-        private string _eventObjectTypeName = string.Empty;
+        private string[] _eventObjectTypeName = null;
 
         #endregion
 
         #region Property
 
-        private string EventObjectTypeName
+        private string[] EventObjectTypeNames
         {
             get { return this._eventObjectTypeName; }
             set { this._eventObjectTypeName = value; }
@@ -31,7 +31,16 @@ namespace OyuLib.Documents.Sources.Analysis
             AnalysisSourceDocumentManagerVBDotNet designManager)
             : base(name, businessManager, designManager)
         {
-            this._eventObjectTypeName = eventObjectTypeName;
+            this._eventObjectTypeName = new string[]{eventObjectTypeName};
+        }
+
+        public ProfileAnalysisEvent(string name,
+            string[] eventObjectTypeNames,
+            AnalysisSourceDocumentManagerVBDotNet businessManager,
+            AnalysisSourceDocumentManagerVBDotNet designManager)
+            : base(name, businessManager, designManager)
+        {
+            this._eventObjectTypeName = eventObjectTypeNames;
         }
 
         #endregion
@@ -41,27 +50,52 @@ namespace OyuLib.Documents.Sources.Analysis
 
         public SourceCodeInfoMemberVariable[] GetMemberValiables()
         {                         
-            return this.GetMemberValiables(this.EventObjectTypeName);
+            return this.GetMemberValiables(this.EventObjectTypeNames);
+        }
+
+        public SourceCodeInfoMemberVariable[] GetMemberValiablesNotType()
+        {
+            return this.GetMemberValiablesNotType(this.EventObjectTypeNames);
         }
 
         public ProfileEventItem[] GetImplementEventName()
         {
-            var retValues = new List<ProfileEventItem>();
+            return this.GetImplementEventName(true);
+        }
 
-            foreach(var member in this.GetMemberValiables())
+        public ProfileEventItem[] GetImplementEventName(bool isMatch)
+        {
+            var retValues = new List<ProfileEventItem>();
+            SourceCodeInfoMemberVariable[] memberArray = null;
+
+            if(isMatch)
             {
-                foreach(var handler in this.BusinessManager.GetSourceCodeInfoVBDotnetAddHandleresForMiglation(member.Name))
+                memberArray = this.GetMemberValiables();
+            }
+            else
+            {
+                memberArray = this.GetMemberValiablesNotType();
+            }
+
+            foreach (var member in memberArray)
+            {
+                foreach (var handler in this.BusinessManager.GetSourceCodeInfoVBDotnetAddHandleresForMiglation(member.Name))
                 {
                     retValues.Add(new ProfileEventItem(member.Name, handler.GetEventName()));
                 }
 
                 foreach(var eventMethod in  this.BusinessManager.GetSourceCodeInfoBlockBeginEventMethodSuggestObjectName(member.Name))
                 {
-                    retValues.Add(new ProfileEventItem(eventMethod.EventObjectName, eventMethod.EventName));
+                    retValues.Add(new ProfileEventItem(member.Name, eventMethod.EventName));
                 }
             }
 
             return retValues.ToArray();
+        }
+
+        public ProfileEventItem[] GetImplementEventNameNotTypeName()
+        {
+            return this.GetImplementEventName(false);
         }
 
         public ProfileEventItem[] GetImplementEventNameMemberCaption()
@@ -94,11 +128,32 @@ namespace OyuLib.Documents.Sources.Analysis
             return retValues.ToArray();
         }
 
+        public Dictionary<string, ProfileEventItem[]> GetImplementEventNameByMemberNotType()
+        {
+            return this.GetImplementEventNameByMember(false);
+        }
+
         public Dictionary<string, ProfileEventItem[]> GetImplementEventNameByMember()
+        {
+            return this.GetImplementEventNameByMember(true);
+        }
+
+        public Dictionary<string, ProfileEventItem[]> GetImplementEventNameByMember(bool isMatch)
         {
             var retValues = new Dictionary<string, ProfileEventItem[]>();
 
-            foreach (var member in this.GetMemberValiables())
+            SourceCodeInfoMemberVariable[] memberArray = null;
+
+            if (isMatch)
+            {
+                memberArray = this.GetMemberValiables();
+            }
+            else
+            {
+                memberArray = this.GetMemberValiablesNotType();
+            }
+
+            foreach (var member in memberArray)
             {
                 var proftValues = new List<ProfileEventItem>();
 

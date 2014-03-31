@@ -78,7 +78,7 @@ namespace CreateTestMatrix
 
             button1.Enabled = false; // いったんボタンを無効化
             //this.ExecuteReplace3();
-            this.ExecuteReplace7();
+            this.ExecuteReplace10();
             button1.Enabled = true; // いったんボタンを無効化
             //this.ExecuteReplaceCellsToRowsOrColumns();
         }
@@ -201,6 +201,50 @@ namespace CreateTestMatrix
 
         }
 
+        private void ExecuteReplace9()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\test\";
+            // - VBReports (印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            //  - 印刷された紙
+            // - ActiveReports(印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            // - 印刷された紙
+            this.CreateShowDialogDispId(targetSourceDirectory);
+            MessageBox.Show("おわり★");
+
+
+
+            // ShowDialog
+            //       ・メッセージボックスによる処理の分岐  = MsgBox("新規       if MsgBox() = 
+            //     - Spread以外のイベント処理  （どのようなイベントがあるか項目単位で解析
+
+        }
+
+        private void ExecuteReplace10()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\test\";
+            // - VBReports (印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            //  - 印刷された紙
+            // - ActiveReports(印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            // - 印刷された紙
+            this.CreateMatrixSpreadEventByNotSpdControl(targetSourceDirectory);
+            MessageBox.Show("おわり★");
+
+
+
+            // ShowDialog
+            //       ・メッセージボックスによる処理の分岐  = MsgBox("新規       if MsgBox() = 
+            //     - Spread以外のイベント処理  （どのようなイベントがあるか項目単位で解析
+
+        }
+
+
+                
 
         
         
@@ -250,6 +294,26 @@ namespace CreateTestMatrix
                 strbu.AppendLine(str);
             }
             this.exTextBox1.Text = strbu.ToString();
+        }      
+
+        private void CreateShowDialogDispId(string targetSourceDirectory)
+        {
+            var strbu = new StringBuilder();
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                var dispIds = this.GetShowDialogDispId(source);
+
+                if(string.IsNullOrEmpty(dispIds))
+                {
+                    continue;
+                }
+
+                strbu.AppendLine(dispIds);
+            }
+
+            
+            this.exTextBox1.Text = strbu.ToString();
         }
 
         private void CreateMatrixContextMenuStripShow(string targetSourceDirectory)
@@ -279,6 +343,91 @@ namespace CreateTestMatrix
             
             this.exTextBox1.Text = strbu.ToString();
         }
+
+        private void CreateMatrixNotSpreadEvent(string targetSourceDirectory)
+        {
+            var headHash = new Hashtable();
+            var sourceHash = new Hashtable();
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                var itemArray = this.GetEventItemArrayNotSpread(source);
+
+                if (itemArray == null)
+                {
+                    continue;
+                }
+
+                sourceHash.Add(Path.GetFileNameWithoutExtension(source.BussinessClassFilePath), itemArray);
+
+                foreach (var item in itemArray)
+                {
+                    if (!headHash.ContainsKey(item.EventName))
+                    {
+                        headHash.Add(item.EventName, "");
+                    }
+                }
+            }
+
+            var strbu = new StringBuilder();
+
+            var headString = "	";
+
+            foreach (var key in headHash.Keys)
+            {
+                headString += key + "	";
+            }
+
+            strbu.AppendLine(headString);
+
+            foreach (var sourrceKey in sourceHash.Keys)
+            {
+                var itemArray = (ProfileAnalysisEvent.ProfileEventItem[])sourceHash[sourrceKey];
+                var objName = string.Empty;
+                var isNotSameObj = false;
+
+                foreach (var item in itemArray)
+                {
+                    if (string.IsNullOrEmpty(objName))
+                    {
+                        objName = item.EventObject;
+                    }
+                    else if (!objName.Equals(item.EventObject))
+                    {
+                        isNotSameObj = true;
+                        break;
+                    }
+                }
+
+                var str = sourrceKey + "	" + (isNotSameObj ? "有" : "-") + "	";
+
+                foreach (var key in headHash.Keys)
+                {
+                    var isExist = false;
+
+                    foreach (var item in itemArray)
+                    {
+                        if (item.EventName.Equals(key))
+                        {
+                            isExist = true;
+                            break;
+                        }
+                    }
+
+                    if (!isExist)
+                    {
+                        str += "-	";
+                    }
+                    else
+                    {
+                        str += "●	";
+                    }
+                }
+                strbu.AppendLine(str);
+            }
+            this.exTextBox1.Text = strbu.ToString();
+        }
+
 
         private void CreateMatrixSpreadEvent(string targetSourceDirectory)
         {
@@ -440,6 +589,87 @@ namespace CreateTestMatrix
             this.exTextBox1.Text = strbu.ToString();
         }
 
+        private void CreateMatrixSpreadEventByNotSpdControl(string targetSourceDirectory)
+        {
+            var headHash = new Hashtable();
+            var sourceHash = new Hashtable();
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                var itemArrayDic = this.GetEventItemArrayByMemberNotSpread(source);
+
+                if (itemArrayDic == null)
+                {
+                    continue;
+                }
+
+                sourceHash.Add(Path.GetFileNameWithoutExtension(source.BussinessClassFilePath), itemArrayDic);
+
+                foreach (var itemArray in itemArrayDic.Values)
+                {
+                    foreach (var item in itemArray)
+                    {
+                        if (!headHash.ContainsKey(item.EventName))
+                        {
+                            headHash.Add(item.EventName, "");
+                        }
+                    }
+                }
+            }
+
+            var strbu = new StringBuilder();
+
+            var headString = "	";
+
+            foreach (var key in headHash.Keys)
+            {
+                headString += key + "	";
+            }
+
+            strbu.AppendLine(headString);
+
+            foreach (var sourrceKey in sourceHash.Keys)
+            {
+                var itemArrayDic = (Dictionary<string, ProfileAnalysisEvent.ProfileEventItem[]>)sourceHash[sourrceKey];
+                foreach (var dickey in itemArrayDic.Keys)
+                {
+                    var itemArray = itemArrayDic[dickey];
+                    var str = sourrceKey + "	" + dickey + "	";
+                    foreach (var key in headHash.Keys)
+                    {
+                        var isExist = false;
+                        foreach (var item in itemArray)
+                        {
+
+
+                            if (item.EventName.Equals(key))
+                            {
+                                isExist = true;
+                                break;
+                            }
+                        }
+
+
+                        if (!isExist)
+                        {
+                            str += "-	";
+                        }
+                        else
+                        {
+                            str += "●	";
+                        }
+                    }
+
+                    if (str.IndexOf("●") >= 0)
+                    {
+                        strbu.AppendLine(str);
+                    }
+                    
+                }
+            }
+            this.exTextBox1.Text = strbu.ToString();
+        }
+
         private void CreateMatrixIsUsedinputMan(string targetSourceDirectory)
         {
             var sourceHash = new Hashtable();
@@ -529,6 +759,24 @@ namespace CreateTestMatrix
             return null;
         }
 
+        private ProfileAnalysisEvent.ProfileEventItem[] GetEventItemArrayNotTypeName(PartialClass source, string name, string typeName)
+        {
+            if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
+            {
+                string filename = Path.GetFileName(source.BussinessClassFilePath).Replace(".vb", "");
+                // デザイナコード解析
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                // ビジネスコード解析
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                var profile = new ProfileAnalysisEvent(name, typeName, mana2, mana);
+
+                return profile.GetImplementEventNameNotTypeName();
+            }
+
+            return null;
+        }
+
         private ProfileAnalysisEvent.ProfileEventItem[] GetEventItemArrayMemberCaption(PartialClass source, string name, string typeName)
         {
             if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
@@ -560,6 +808,24 @@ namespace CreateTestMatrix
                 var profile = new ProfileAnalysisEvent(name, typeName, mana2, mana);
 
                 return profile.GetImplementEventNameByMember();
+            }
+
+            return null;
+        }
+
+        private Dictionary<string, ProfileAnalysisEvent.ProfileEventItem[]> GetEventItemArrayByMemberNotType(PartialClass source, string name, string[] typeNames)
+        {
+            if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
+            {
+                string filename = Path.GetFileName(source.BussinessClassFilePath).Replace(".vb", "");
+                // デザイナコード解析
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                // ビジネスコード解析
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                var profile = new ProfileAnalysisEvent(name, typeNames, mana2, mana);
+
+                return profile.GetImplementEventNameByMemberNotType();
             }
 
             return null;
@@ -679,6 +945,26 @@ namespace CreateTestMatrix
             return false;
         }
 
+
+        private string GetShowDialogDispId(PartialClass source)
+        {
+            var retValue = new StringBuilder();
+
+            if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
+            {
+                string filename = Path.GetFileName(source.BussinessClassFilePath).Replace(".vb", "");
+                // ビジネスコード解析
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                foreach (var codeInfo in mana2.GetSourceCodeInfoVariableByTypeLike("frm"))
+                {
+                    retValue.AppendLine(filename + "	" + codeInfo.TypeName);
+                }
+            }
+
+            return retValue.ToString();
+        }
+
         private bool GetIsExistContextMenuStrip(PartialClass source)
         {
             if (!string.IsNullOrEmpty(source.DesinerClassFilePath))
@@ -708,11 +994,21 @@ namespace CreateTestMatrix
             return this.GetEventItemArray(source, "一覧表系", "FarPoint.Win.Spread.FpSpread");
         }
 
+        private ProfileAnalysisEvent.ProfileEventItem[] GetEventItemArrayNotSpread(PartialClass source)
+        {
+            return this.GetEventItemArrayNotTypeName(source, "一覧表系", "FarPoint.Win.Spread.FpSpread");
+        }
+
         private Dictionary<string, ProfileAnalysisEvent.ProfileEventItem[]> GetEventItemArrayByMemberSpread(PartialClass source)
         {
             return this.GetEventItemArrayByMember(source, "一覧表系", "FarPoint.Win.Spread.FpSpread");
         }
 
+        private Dictionary<string, ProfileAnalysisEvent.ProfileEventItem[]> GetEventItemArrayByMemberNotSpread(PartialClass source)
+        {
+            return this.GetEventItemArrayByMemberNotType(source, "一覧表系", new string[] { "FarPoint.Win.Spread.FpSpread", "System.Windows.Forms.Button" });
+        }
+        
         
         private ProfileAnalysisEvent.ProfileEventItem[] GetEventItemArrayButton(PartialClass source)
         {

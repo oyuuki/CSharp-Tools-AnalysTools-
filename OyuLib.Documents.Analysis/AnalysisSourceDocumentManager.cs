@@ -404,6 +404,55 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        protected T[] GetCodeInfoWithKeyName<T>(string[] keyNames, CheckWithKey<T> checkWithKey)
+           where T : SourceCodeInfo
+        {
+            return this.GetCodeInfoWithKeyName(keyNames, this.CodeObjects, checkWithKey);
+        }
+
+        protected T[] GetCodeInfoWithKeyName<T>(
+            string[] keyNames, SourceCodeblockInfo block, CheckWithKey<T> checkWithKey)
+            where T : SourceCodeInfo
+        {
+            return this.GetCodeInfoWithKeyName(keyNames, block.CodeObjects, checkWithKey);
+        }
+
+        protected T[] GetCodeInfoWithKeyName<T>(
+            string[] keyNames, object[] codeObjects, CheckWithKey<T> checkWithKey)
+            where T : SourceCodeInfo
+        {
+            var retList = new List<T>();
+
+            foreach (var codeInfo in this.GetSourceCodeInfos<T>(codeObjects))
+            {
+                if (checkWithKey == null)
+                {
+                    retList.Add(codeInfo);
+                }
+                else 
+                {
+
+                   var isAdd = true;
+
+                   foreach(var keyName in keyNames)
+                   {
+                       if (!checkWithKey(keyName, codeInfo))
+                       {
+                           isAdd = false;
+                           break;
+                       }
+                   }
+
+                   if (isAdd)
+                   {
+                       retList.Add(codeInfo);
+                   }
+                }
+            }
+
+            return retList.ToArray();
+        }
+
         protected T[] GetCodeInfoWithKeyNameNotRequiredInnerBlock<T>(string keyName, CheckWithKey<T> checkWithKey)
             where T : SourceCodeInfo
         {
@@ -887,15 +936,93 @@ namespace OyuLib.Documents.Sources.Analysis
         /// </summary>
         /// <param name="typeName">TypeName</param>
         /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoValiable[] GetSourceCodeInfoVariableByType(string typeName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoValiable>(
+                typeName,
+                delegate(string lockeyName, SourceCodeInfoValiable info)
+                {
+                    return info.TypeName.Equals(typeName);
+                }
+                );
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By TypeName
+        /// </summary>
+        /// <param name="typeName">TypeName</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoValiable[] GetSourceCodeInfoVariableByTypeLike(string typeName)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoValiable>(
+                typeName,
+                delegate(string lockeyName, SourceCodeInfoValiable info)
+                {
+                    return info.TypeName.IndexOf(typeName) >= 0;
+                }
+                );
+        }
+
         public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByType(string typeName)
+        {
+            return this.GetSourceCodeInfoMemberVariableByType(typeName, true);
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By TypeName
+        /// </summary>
+        /// <param name="typeName">TypeName</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByType(string typeName, bool isMatch)
         {
             return this.GetCodeInfoWithKeyName<SourceCodeInfoMemberVariable>(
                 typeName,
                 delegate(string lockeyName, SourceCodeInfoMemberVariable info)
                 {
-                    return info.TypeName.Equals(typeName);
+                    return isMatch == info.TypeName.Equals(typeName);
                 }
                 );
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By TypeName
+        /// </summary>
+        /// <param name="typeName">TypeName</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByNotType(string[] typeName)
+        {
+            return this.GetSourceCodeInfoMemberVariableByType(typeName, false);
+        }
+
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByType(string[] typeName)
+        {
+            return this.GetSourceCodeInfoMemberVariableByType(typeName, true);
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By TypeName
+        /// </summary>
+        /// <param name="typeName">TypeName</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByType(string[] typeName, bool isMatch)
+        {
+            return this.GetCodeInfoWithKeyName<SourceCodeInfoMemberVariable>(
+                typeName,
+                delegate(string lockeyName, SourceCodeInfoMemberVariable info)
+                {
+                    return isMatch == info.TypeName.Equals(lockeyName);
+                }
+                );
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By TypeName
+        /// </summary>
+        /// <param name="typeName">TypeName</param>
+        /// <returns>ValiableInfo</returns>
+        public SourceCodeInfoMemberVariable[] GetSourceCodeInfoMemberVariableByNotType(string typeName)
+        {
+            return this.GetSourceCodeInfoMemberVariableByType(typeName, false);
         }
 
         /// <summary>
@@ -922,7 +1049,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <returns>ValiableInfo</returns>
         public string[] GetValiableNameCollectionElse(string elseTypeName)
         {
-            return this.GetValiableNameCollection(elseTypeName, false);
+            return this.GetValiableNameCollection(elseTypeName, false, false);
         }
 
         /// <summary>
@@ -932,7 +1059,7 @@ namespace OyuLib.Documents.Sources.Analysis
         /// <returns>ValiableInfo</returns>
         public string[] GetValiableNameCollection(string typeName)
         {
-            return this.GetValiableNameCollection(typeName, true);
+            return this.GetValiableNameCollection(typeName, true, false);
         }
 
         /// <summary>
@@ -940,13 +1067,41 @@ namespace OyuLib.Documents.Sources.Analysis
         /// </summary>
         /// <param name="name">name</param>
         /// <returns>ValiableInfo</returns>
-        private string[] GetValiableNameCollection(string typeName, bool isMatch)
+        public string[] GetValiableNameCollectionElseLike(string elseTypeName)
+        {
+            return this.GetValiableNameCollection(elseTypeName, false, true);
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By Name
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <returns>ValiableInfo</returns>
+        public string[] GetValiableNameCollectionLike(string typeName)
+        {
+            return this.GetValiableNameCollection(typeName, true, true);
+        }
+
+        /// <summary>
+        /// Get ValiableInfo By Name
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <returns>ValiableInfo</returns>
+        private string[] GetValiableNameCollection(string typeName, bool isMatch, bool isLike)
         {
             var valiableList = this.GetCodeInfoWithKeyName<SourceCodeInfoValiable>(
                 typeName,
                 delegate(string lockeyName, SourceCodeInfoValiable info)
                 {
-                    return isMatch == info.TypeName.Equals(typeName);
+                    if(isLike)
+                    {
+                        return isMatch == (info.TypeName.IndexOf(typeName) >= 0);
+                    }
+                    else
+                    {
+                        return isMatch == info.TypeName.Equals(typeName);
+                    }
+                    
                 }
                 );
 

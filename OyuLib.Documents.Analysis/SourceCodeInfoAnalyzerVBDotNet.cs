@@ -292,7 +292,13 @@ namespace OyuLib.Documents.Sources.Analysis
             int accessModifier = coFac.GetIndexCodeParts(new SourceDocumentRuleVBDotNet().GetAccessModifiersString());
             bool isConst = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_CONST) >= 0;
             int name = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_AS) - 1;
+
             int typeName = coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_AS) + 1;
+
+            if (coFac.GetIndexCodeParts(SourceDocumentSyntaxVBDotNet.CONST_STATEMENT_NEW) >= 0)
+            {
+                typeName++;
+            }
 
             return new CommonCodeInfoValiableInfo(value, equals, isConst, name, typeName); 
         }

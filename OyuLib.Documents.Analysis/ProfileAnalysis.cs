@@ -59,6 +59,24 @@ namespace OyuLib.Documents.Sources.Analysis
             return this.DesignManager.GetSourceCodeInfoMemberVariableByType(eventObjectTypeName);
         }
 
+        public SourceCodeInfoMemberVariable[] GetMemberValiablesNotType(string eventObjectTypeName)
+        {
+            //"FarPoint.Win.Spread.FpSpread"
+            return this.DesignManager.GetSourceCodeInfoMemberVariableByNotType(eventObjectTypeName);
+        }
+
+        public SourceCodeInfoMemberVariable[] GetMemberValiables(string[] eventObjectTypeNames)
+        {
+            //"FarPoint.Win.Spread.FpSpread"
+            return this.DesignManager.GetSourceCodeInfoMemberVariableByType(eventObjectTypeNames);
+        }
+
+        public SourceCodeInfoMemberVariable[] GetMemberValiablesNotType(string[] eventObjectTypeNames)
+        {
+            //"FarPoint.Win.Spread.FpSpread"
+            return this.DesignManager.GetSourceCodeInfoMemberVariableByNotType(eventObjectTypeNames);
+        }
+
         #endregion
     }
 }
