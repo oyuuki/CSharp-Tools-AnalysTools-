@@ -1,0 +1,14 @@
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\obj\Debug\Fileutil.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\obj\Debug\FileUtil.Form1.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\obj\Debug\FileUtil.Properties.Resources.resources
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\obj\Debug\Fileutil.csproj.GenerateResource.Cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\Fileutil.exe
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\Fileutil.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\OyuLib.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\OyuLib.IO.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\OyuLib.Windows.Forms.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\OyuLib.IO.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\OyuLib.Windows.Forms.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\bin\Debug\OyuLib.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\obj\Debug\Fileutil.exe
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\Fileutil\obj\Debug\Fileutil.pdb

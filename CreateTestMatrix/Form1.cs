@@ -78,7 +78,7 @@ namespace CreateTestMatrix
 
             button1.Enabled = false; // いったんボタンを無効化
             //this.ExecuteReplace3();
-            this.ExecuteReplace9();
+            this.ExecuteReplace12();
             button1.Enabled = true; // いったんボタンを無効化
             //this.ExecuteReplaceCellsToRowsOrColumns();
         }
@@ -243,10 +243,52 @@ namespace CreateTestMatrix
 
         }
 
+        private void ExecuteReplace11()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\test\";
+            // - VBReports (印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            //  - 印刷された紙
+            // - ActiveReports(印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            // - 印刷された紙
+            this.GetCodeInfoInIf(targetSourceDirectory);
+            MessageBox.Show("おわり★");
+
+
+
+            // ShowDialog
+            //       ・メッセージボックスによる処理の分岐  = MsgBox("新規       if MsgBox() = 
+            //     - Spread以外のイベント処理  （どのようなイベントがあるか項目単位で解析
+
+        }
+
+         private void ExecuteReplace12()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\test\";
+            // - VBReports (印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            //  - 印刷された紙
+            // - ActiveReports(印刷プログラムのテスト)
+            // - プレビュー画面で確認
+            // - 印刷された紙
+            this.GetCodeInfoInIfIncludeElse(targetSourceDirectory);
+            MessageBox.Show("おわり★");
+
+
+
+            // ShowDialog
+            //       ・メッセージボックスによる処理の分岐  = MsgBox("新規       if MsgBox() = 
+            //     - Spread以外のイベント処理  （どのようなイベントがあるか項目単位で解析
+
+        }
+
 
                 
 
-        
+            
         
 
 
@@ -670,6 +712,182 @@ namespace CreateTestMatrix
             this.exTextBox1.Text = strbu.ToString();
         }
 
+        private void GetCodeInfoInIf(string targetSourceDirectory)
+        {
+            var headHash = new Hashtable();
+            var sourceHash = new Hashtable();
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                if(string.IsNullOrEmpty(source.DesinerClassFilePath))
+                {
+                    continue;
+                }
+
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                string tt = source.BussinessClassFilePath + "\n";
+
+                foreach(var codeInfo in mana.GetSourceCodeInfoMemberVariableByType("FarPoint.Win.Spread.FpSpread"))
+                {
+                    foreach (var innerCode in mana2.GetCodeInfosRoundWithBlockInnerIf(codeInfo.Name))
+                    {
+                        if(innerCode is SourceCodeInfoComment)
+                        {
+                            var commentInfo = (SourceCodeInfoComment) innerCode;
+                            var code = commentInfo.GetCodeString();
+
+                            if(code.IndexOf(".Row =") >= 0 || code.IndexOf(".Col =") >= 0)
+                            {
+                                tt += "行番号" + commentInfo.GetCodeLineNumber() + "：" + code + "\n";
+                            }
+                        }
+                    }
+                }
+
+                this.exTextBox1.Text += tt;
+            }
+        }
+
+        private void GetCodeInfoInIfIncludeElse(string targetSourceDirectory)
+        {
+            var headHash = new Hashtable();
+            var sourceHash = new Hashtable();
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                if (string.IsNullOrEmpty(source.DesinerClassFilePath))
+                {
+                    continue;
+                }
+
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                string codeInfoStringSource = source.BussinessClassFilePath + "\n";
+
+                foreach (var codeInfo in mana.GetSourceCodeInfoMemberVariableByType("FarPoint.Win.Spread.FpSpread"))
+                {
+                    string codeInfoStringIf = string.Empty;
+
+                    var stackIfState = new Stack<IfState>();
+
+                    foreach (var innerCode in mana2.GetCodeInfosRoundWithBlockInnerIf(codeInfo.Name))
+                    {
+                        if (innerCode is SourceCodeInfoBlockBeginIf)
+                        {
+                            stackIfState.Push(new IfState());
+                        }
+                        if (innerCode is SourceCodeInfoComment)
+                        {
+                            var commentInfo = (SourceCodeInfoComment)innerCode;
+                            var code = commentInfo.GetCodeString();
+
+                            if (code.IndexOf(".Row =") >= 0)
+                            {
+                                stackIfState.Peek().IsExistRow = true;
+                            }
+                            else if (code.IndexOf(".Col =") >= 0)
+                            {
+                                stackIfState.Peek().IsExistCol = true;
+                            }
+                        }
+                        else if(innerCode is SourceCodeInfoBlockEndIf)
+                        {
+                            if (stackIfState.Peek().IsElse)
+                            {
+                                codeInfoStringSource += codeInfoStringIf;
+                            }
+
+                            stackIfState.Pop();
+                            codeInfoStringIf = string.Empty;
+                        }
+                        else if(innerCode.GetCodeString().IndexOf("Else") >= 0)
+                        {
+                            stackIfState.Peek().IsElse = true;
+                        }
+                        else if (stackIfState.Peek().IsElse && innerCode.GetCodeString().IndexOf("ActiveSheet") >= 0 && (stackIfState.Peek().IsExistRow || stackIfState.Peek().IsExistCol))
+                        {
+                            codeInfoStringIf += "行番号" + innerCode.GetCodeLineNumber() + "：" + innerCode.GetCodeString() + "\n";
+                        }
+                        
+                    }
+                }
+
+                this.exTextBox1.Text += codeInfoStringSource;
+            }
+        }
+
+        private void GetCodeInfoInIfNotIncludeElse(string targetSourceDirectory)
+        {
+            var headHash = new Hashtable();
+            var sourceHash = new Hashtable();
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                if (string.IsNullOrEmpty(source.DesinerClassFilePath))
+                {
+                    continue;
+                }
+
+                var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+                var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
+
+                string codeInfoStringSource = source.BussinessClassFilePath + "\n";
+
+                foreach (var codeInfo in mana.GetSourceCodeInfoMemberVariableByType("FarPoint.Win.Spread.FpSpread"))
+                {
+                    string codeInfoStringIf = string.Empty;
+
+                    var stackIfState = new Stack<IfState>();
+
+                    foreach (var innerCode in mana2.GetCodeInfosRoundWithBlock(codeInfo.Name))
+                    {
+                        if (innerCode is SourceCodeInfoBlockBeginIf)
+                        {
+                            stackIfState.Push(new IfState());
+                        }
+                        if (innerCode is SourceCodeInfoComment)
+                        {
+                            var commentInfo = (SourceCodeInfoComment)innerCode;
+                            var code = commentInfo.GetCodeString();
+
+                            if (code.IndexOf(".Row =") >= 0)
+                            {
+                                stackIfState.Peek().IsExistRow = true;
+                            }
+                            else if (code.IndexOf(".Col =") >= 0)
+                            {
+                                stackIfState.Peek().IsExistCol = true;
+                            }
+                        }
+                        else if (innerCode is SourceCodeInfoBlockEndIf)
+                        {
+                            if (stackIfState.Peek().IsElse)
+                            {
+                                codeInfoStringSource += codeInfoStringIf;
+                            }
+
+                            stackIfState.Pop();
+                            codeInfoStringIf = string.Empty;
+                        }
+                        else if (innerCode.GetCodeString().IndexOf("Else") >= 0)
+                        {
+                            stackIfState.Peek().IsElse = true;
+                        }
+                        else if (stackIfState.Peek().IsElse && innerCode.GetCodeString().IndexOf("ActiveSheet") >= 0 && (stackIfState.Peek().IsExistRow || stackIfState.Peek().IsExistCol))
+                        {
+                            codeInfoStringIf += "行番号" + innerCode.GetCodeLineNumber() + "：" + innerCode.GetCodeString() + "\n";
+                        }
+
+                    }
+                }
+
+                this.exTextBox1.Text += codeInfoStringSource;
+            }
+        }
+
         private void CreateMatrixIsUsedinputMan(string targetSourceDirectory)
         {
             var sourceHash = new Hashtable();
@@ -956,14 +1174,32 @@ namespace CreateTestMatrix
                 // ビジネスコード解析
                 var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
 
-                foreach (var codeInfo in mana2.GetSourceCodeInfoVariableByTypeLike("frm"))
+                Hashtable hash = new Hashtable();
+
+                foreach (var codeInfo in mana2.GetCodeInfoWithBlocksLike("frm"))
                 {
-                    if (codeInfo.TypeName.Equals("frm001003"))
+                    if (codeInfo.StatementObject.IndexOf(".") >= 0)
                     {
-                        int a = 1;
+                        continue;
                     }
 
-                    retValue.AppendLine(filename + "	" + codeInfo.TypeName);
+                    if (!hash.ContainsKey(codeInfo.StatementObject))
+                    {
+                        hash.Add(codeInfo.StatementObject, string.Empty);
+                    }
+                }
+
+                foreach (var codeInfo in mana2.GetSourceCodeInfoVariableByTypeLike("frm"))
+                {
+                    if (!hash.ContainsKey(codeInfo.TypeName))
+                    {
+                        hash.Add(codeInfo.TypeName, string.Empty);
+                    }
+                }
+
+                foreach(var name in hash.Keys)
+                {
+                    retValue.AppendLine(filename + "	" + name);
                 }
             }
 

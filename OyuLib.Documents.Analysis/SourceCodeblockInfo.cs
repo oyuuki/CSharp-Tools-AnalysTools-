@@ -55,6 +55,25 @@ namespace OyuLib.Documents.Sources.Analysis
             return (SourceCodeInfoBlockBegin) this.CodeObjects[0];
         }
 
+        public SourceCodeInfo[] GetSourceCodeInfos()
+        {
+            var retList = new List<SourceCodeInfo>();
+
+            foreach (var codeInfo in this.CodeObjects)
+            {
+                if (codeInfo is SourceCodeInfo)
+                {
+                    retList.Add((SourceCodeInfo)codeInfo);
+                }
+                else if(codeInfo is SourceCodeblockInfo)
+                {
+                    retList.AddRange(((SourceCodeblockInfo)codeInfo).GetSourceCodeInfos());
+                }
+            }
+
+            return retList.ToArray();
+        }
+
         public SourceCodeInfo[] GetSourceCodeInfosNotIncludeInnerBlock()
         {
             var retList = new List<SourceCodeInfo>();

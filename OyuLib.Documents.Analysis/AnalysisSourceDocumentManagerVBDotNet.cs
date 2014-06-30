@@ -121,6 +121,18 @@ namespace OyuLib.Documents.Sources.Analysis
                  });
         }
 
+        // Withステートメントブロック内のコードを全て取得する
+        public SourceCodeInfo[] GetCodeInfosRoundWithBlockInnerIf(string blockName)
+        {
+            return GetInnerCodeInfoWithKeyNameRangeBlock<SourceCodeInfoBlockBeginWithVB, SourceCodeInfoBlockBeginIf>
+                (this.CodeObjects, "",
+                 blockName,
+                 delegate(string lockeyName, SourceCodeInfoBlockBeginWithVB info)
+                 {
+                     return info.Statement.Equals("With") && info.StatementObject.Equals(lockeyName);
+                 });
+        }
+
          // Withステートメントブロック内のコードを全て取得する
         public SourceCodeInfo[] GetCodeInfosRoundWithBlockNotRequiredInnerBlock(string blockName)
         {
@@ -169,6 +181,17 @@ namespace OyuLib.Documents.Sources.Analysis
         public SourceCodeblockInfo[] GetCodeWithBlocks()
         {
             return this.GetAllCodeBlocks<SourceCodeInfoBlockBeginWithVB>();
+        }
+        // Withステートメントブロックを取得する
+        public SourceCodeInfoBlockBeginWithVB[] GetCodeInfoWithBlocks(string statementObjName)
+        {
+            return this.GetCodeInfoBeginBlocks<SourceCodeInfoBlockBeginWithVB>(statementObjName);
+        }
+
+        // Withステートメントブロックを取得する
+        public SourceCodeInfoBlockBeginWithVB[] GetCodeInfoWithBlocksLike(string statementObjName)
+        {
+            return this.GetCodeInfoBeginBlocksLike<SourceCodeInfoBlockBeginWithVB>(statementObjName);
         }
 
         // Withステートメントブロックを取得する

@@ -572,6 +572,75 @@ namespace OyuLib.Documents.Sources.Analysis
             return retList.ToArray();
         }
 
+        protected SourceCodeInfo[]
+            GetInnerCodeInfoWithKeyNameRangeBlock<TBlock, CodeInfoBegin>(
+            string keyName,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
+            where TBlock : SourceCodeInfoBlockBegin
+            where CodeInfoBegin : SourceCodeInfoBlockBegin
+        {
+            return GetInnerCodeInfoWithKeyNameRangeBlock<TBlock, CodeInfoBegin>(this.CodeObjects, keyName, blockName, checkBlockMethod);
+        }
+
+        protected SourceCodeInfo[] GetInnerCodeInfoWithKeyNameRangeBlock<TBlock, CodeInfoBegin>(
+            SourceCodeblockInfo blockInfo,
+            string keyName,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
+            where TBlock : SourceCodeInfoBlockBegin
+            where CodeInfoBegin : SourceCodeInfoBlockBegin
+        {
+            return GetInnerCodeInfoWithKeyNameRangeBlock<TBlock, CodeInfoBegin>(blockInfo.CodeObjects, keyName, blockName, checkBlockMethod);
+        }
+
+        protected SourceCodeInfo[] GetInnerCodeInfoWithKeyNameRangeBlock<TBlock, CodeInfoBegin>(
+            object[] codeObjects,
+            string keyName,
+            string blockName,
+            CheckWithKey<TBlock> checkBlockMethod)
+            where TBlock : SourceCodeInfoBlockBegin
+            where CodeInfoBegin : SourceCodeInfoBlockBegin
+        {
+            var retList = new List<SourceCodeInfo>();
+
+            foreach (var block in this.GetSourceCodeblockInfo<TBlock>(codeObjects))
+            {
+                if (checkBlockMethod(blockName, (TBlock)block.CodeObjects[0]))
+                {
+                    foreach(var locBlock in this.GetSourceCodeblockInfoByBeginType<CodeInfoBegin>(block))
+                    {
+                        retList.AddRange(locBlock .GetSourceCodeInfos());
+                    }
+                }
+            }
+
+            return retList.ToArray();
+        }
+
+        private SourceCodeblockInfo[] GetSourceCodeblockInfoByBeginType<T>(SourceCodeblockInfo block)
+            where T : SourceCodeInfoBlockBegin
+        {
+            var retList = new List<SourceCodeblockInfo>();
+
+            foreach(var obj in block.CodeObjects)
+            {
+                if(obj is SourceCodeblockInfo)
+                {
+                    var locBoloc = (SourceCodeblockInfo)obj;
+
+                    if(locBoloc.GetSourceCodeInfoBlockBegin() is T)
+                    {
+                        retList.Add(locBoloc);
+                    }
+
+                    retList.AddRange(this.GetSourceCodeblockInfoByBeginType<T>(locBoloc));
+                }
+            }
+
+            return retList.ToArray();
+        }
+
         protected SourceCodeblockInfo[] GetCodeBlockInfoWithBlockName<TBlock>(
             object[] codeObjects,
             string blockName,
@@ -869,6 +938,49 @@ namespace OyuLib.Documents.Sources.Analysis
             }
 
             return retCodeBlockList.ToArray();
+        }
+
+        // Withステートメントブロックを取得する
+        public T[] GetCodeInfoBeginBlocks<T>(string statementObjName)
+            where T : SourceCodeInfoBlockBegin
+        {
+            return GetCodeInfoBeginBlocks<T>(statementObjName, false);
+        }
+
+        // Withステートメントブロックを取得する
+        public T[] GetCodeInfoBeginBlocksLike<T>(string statementObjName)
+            where T : SourceCodeInfoBlockBegin
+        {
+            return GetCodeInfoBeginBlocks<T>(statementObjName, true);
+        }
+
+        // Withステートメントブロックを取得する
+        protected T[] GetCodeInfoBeginBlocks<T>(string statementObjName, bool isLike)
+            where T : SourceCodeInfoBlockBegin
+        {
+            var retValue = new List<T>();
+
+            foreach(var codeInfoBlock in this.GetAllCodeBlocks<T>())
+            {
+                var codeInfo = codeInfoBlock.GetSourceCodeInfoBlockBegin();
+
+                if(isLike)
+                {
+                    if(codeInfo.StatementObject.IndexOf(statementObjName) >= 0)
+                    {
+                        retValue.Add((T)codeInfo);
+                    }
+                }
+                else
+                {
+                    if(codeInfo.StatementObject.Equals(statementObjName))
+                    {
+                        retValue.Add((T)codeInfo);
+                    }
+                }
+            }
+
+            return retValue.ToArray();
         }
 
         // メソッドブロックを取得する
