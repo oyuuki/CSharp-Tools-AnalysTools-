@@ -11,6 +11,8 @@ namespace OyuLib.Documents.Sources
     {
         #region InstanceVal
 
+        private string _codeStringNonModify = string.Empty;
+
         private string _codeString = string.Empty;
 
         private int _codeLineNumber = -1;
@@ -25,19 +27,20 @@ namespace OyuLib.Documents.Sources
         }
 
         public SourceCode(SourceCode code)
-            : this(code.CodeString, code.CodeLineNumber)
+            : this(code.CodeString, code.CodeLineNumber, code._codeStringNonModify)
         {
             
         }
 
-        public SourceCode(string codeLine, int codeIndex)
+        public SourceCode(string codeLine, int codeIndex, string codeStringNonModify)
         {
             this._codeString = codeLine;
             this._codeLineNumber = codeIndex;
+            this._codeStringNonModify = codeStringNonModify;
         }
 
         public SourceCode(string codeLine)
-           : this(codeLine, -1)
+            : this(codeLine, -1, codeLine)
         {
         }
 
@@ -55,6 +58,12 @@ namespace OyuLib.Documents.Sources
         {
             get { return this._codeLineNumber; }
             set { this._codeLineNumber = value; }
+        }
+
+        public string CodeStringNonModify
+        {
+            get { return this._codeStringNonModify; }
+            set { this._codeStringNonModify = value; }
         }
 
 

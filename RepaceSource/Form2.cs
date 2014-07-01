@@ -457,7 +457,54 @@ namespace RepaceSource
                     value.SetAllOverWriteString(replaceString, "", "");
                 }
             }
-        }                                              
+        }                 
+        
+        
+        private void ExecuteAddCodeSpreadScrollber()
+        {
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            var faileString = "";
+
+            foreach (var source in this.GetFilePaths(targetSourceDirectory))
+            {
+                if(string.IsNullOrEmpty(source.DesinerClassFilePath))
+                {
+                    continue;
+                }
+
+                try
+                {
+                    var mana = new AnalysisSourceDocumentManagerVBDotNet(source.DesinerClassFilePath);
+
+                    SourceCodeInfoMemberVariable[] memArray = mana.GetSourceCodeInfoMemberVariableByType("FarPoint.Win.Spread.FpSpread");
+
+                    if (memArray == null || memArray.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    var listStr = new List<string>();
+
+                    foreach (var mem in memArray)
+                    {
+                        listStr.Add("        Me." + mem.Name + ".ScrollBarTrackPolicy = FarPoint.Win.Spread.ScrollBarTrackPolicy.Both");
+                    }
+
+                    mana.AddSourceCodeInfoMethod("InitializeComponent", listStr.ToArray(), "Controls", "Add");
+                    mana.CreateAnalysisSourceFile(@"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\Test\" + Path.GetFileNameWithoutExtension(source.BussinessClassFilePath) + ".Designer.vb");
+                }
+                catch (Exception ex)
+                {
+                    faileString = faileString + source.DesinerClassFilePath + "\n";
+                }
+            }
+
+            if(!string.IsNullOrEmpty(faileString))
+            {
+                MessageBox.Show(faileString);
+            }
+        }
+
 
 
         private void ExecuteReplace1()
@@ -956,6 +1003,11 @@ namespace RepaceSource
             var form = new RepaceSource();
 
             form.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.ExecuteAddCodeSpreadScrollber();
         }
     }
 }
