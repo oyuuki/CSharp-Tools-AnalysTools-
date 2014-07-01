@@ -6,6 +6,8 @@ namespace OyuLib.Documents.Sources
 {
     public abstract class SourceDocument : Document, ISourceRule
     {
+        private const string CONST_KAIGYO = "\r\n";
+
         #region constractor
 
         protected SourceDocument()
@@ -41,10 +43,10 @@ namespace OyuLib.Documents.Sources
         {
             var retList = new List<SourceCode>();
 
-            
-            Func<string, string> proc = (string value) =>
+
+            Func<SourceStringItem, string> proc = (SourceStringItem value) =>
             {
-                retList.Add(new SourceCode(value, retList.Count + 1));
+                retList.Add(new SourceCode(value.BasicSource, retList.Count + 1, value.NonModifySource));
                 return "";
             };
 
@@ -57,25 +59,28 @@ namespace OyuLib.Documents.Sources
 
         }
 
-        public string[] GetCodeStringArray()
+        public SourceStringItem[] GetCodeStringArray()
         {
-            var retList = new List<string>();
+            var retList = new List<SourceStringItem>();
 
-            retList.Add(string.Empty);
+            retList.Add(new SourceStringItem("", ""));
 
             Func<string, string> proc = (string
                 value) =>
             {
-                retList[retList.Count - 1] += value;
+                retList[retList.Count - 1].BasicSource += value;
+                retList[retList.Count - 1].NonModifySource += value;
 
                 if (!ArrayUtil.IsIncludeStringEndsWith(this.GetSourceRule().GetCodeNextSeparatorStrings(), value))
                 {
-                    retList.Add(string.Empty);
+                    retList.Add(new SourceStringItem("", ""));
                 }
                 else
                 {
-                    retList[retList.Count - 1] = retList[retList.Count - 1].Substring(0,
-                        retList[retList.Count - 1].Length - 1);
+                    retList[retList.Count - 1].BasicSource = retList[retList.Count - 1].BasicSource.Substring(0,
+                        retList[retList.Count - 1].BasicSource.Length - 1);
+
+                    retList[retList.Count - 1].NonModifySource = retList[retList.Count - 1].NonModifySource + CONST_KAIGYO;
                 }
 
                 return string.Empty;
@@ -86,15 +91,16 @@ namespace OyuLib.Documents.Sources
                 proc(str);
             }
 
-            if (string.IsNullOrEmpty(retList[retList.Count - 1].Trim()))
+            if (string.IsNullOrEmpty(retList[retList.Count - 1].BasicSource.Trim()))
             {
                 retList.RemoveAt(retList.Count - 1);
             }
 
-            if (string.IsNullOrEmpty(retList[retList.Count - 2].Trim()))
+            if (string.IsNullOrEmpty(retList[retList.Count - 2].BasicSource.Trim()))
             {
                 retList.RemoveAt(retList.Count - 2);
             }
+
             
 
             return retList.ToArray();
@@ -102,7 +108,7 @@ namespace OyuLib.Documents.Sources
 
         private string[] GetArrayCodeString()
         {
-            return this.Text.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            return this.Text.Split(new string[] { CONST_KAIGYO }, StringSplitOptions.None);
         }
 
         #endregion

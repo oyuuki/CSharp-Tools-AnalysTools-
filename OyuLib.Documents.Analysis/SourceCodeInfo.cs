@@ -154,6 +154,11 @@ namespace OyuLib.Documents.Sources.Analysis
             return this._code.CodeString;
         }
 
+        public string GetNonModifyCodeString()
+        {
+            return this._code.CodeStringNonModify;
+        }
+
         public int GetCodeLineNumber()
         {
             return this._code.CodeLineNumber;

@@ -57,6 +57,7 @@
     <Compile Include="SourceDocumentSyntaxVBDotNet.cs" />
     <Compile Include="SourceDocumentVB6.cs" />
     <Compile Include="SourceDocumentVBDotNet.cs" />
+    <Compile Include="SourceStringItem.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

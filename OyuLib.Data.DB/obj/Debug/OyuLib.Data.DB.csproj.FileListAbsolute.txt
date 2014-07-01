@@ -7,3 +7,8 @@ C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Data.DB\bin\Deb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Data.DB\bin\Debug\OyuLib.Data.DB.pdb
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Data.DB\obj\Debug\OyuLib.Data.DB.dll
 C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools-\OyuLib.Data.DB\obj\Debug\OyuLib.Data.DB.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools--master\OyuLib.Data.DB\bin\Debug\OyuLib.Data.DB.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools--master\OyuLib.Data.DB\bin\Debug\OyuLib.Data.DB.pdb
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools--master\OyuLib.Data.DB\obj\Debug\OyuLib.Data.DB.csprojResolveAssemblyReference.cache
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools--master\OyuLib.Data.DB\obj\Debug\OyuLib.Data.DB.dll
+C:\Users\PASEO\Documents\GitHub\CSharp-Tools-AnalysTools--master\OyuLib.Data.DB\obj\Debug\OyuLib.Data.DB.pdb

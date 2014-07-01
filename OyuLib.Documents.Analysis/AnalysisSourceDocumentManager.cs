@@ -1355,7 +1355,7 @@ namespace OyuLib.Documents.Sources.Analysis
                     }
                     else 
                     {
-                        string str = codeinfo.GetCodeString();
+                        string str = codeinfo.GetNonModifyCodeString();
                         file.WriteLine(str);
                     }
                 }
