@@ -19,6 +19,8 @@ namespace RepaceSource
 
         private string _valiableName = string.Empty;
 
+        private int _lineIndex = 00;
+
         #endregion
 
         #region Constructor
@@ -27,12 +29,14 @@ namespace RepaceSource
             T sourceCodeInfo, 
             string comment, 
             string commentSeparator,
-            string valiableName)
+            string valiableName,
+            int lineIndex)
         {
             this._sourceCodeInfo = sourceCodeInfo;
             this._commentSeparator = commentSeparator;
             this._comment = comment;
             this._valiableName = valiableName;
+            this._lineIndex = lineIndex;
         }
 
         #endregion
@@ -58,6 +62,11 @@ namespace RepaceSource
         {
             get { return this._valiableName; }
             set { this._valiableName = value; }
+        }
+
+        public int LineIndex
+        {
+            get { return this._lineIndex; }
         }
 
         #endregion

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OyuLib.Documents.Sources.Analysis;
+using OyuLib.IO;
 
 namespace RepaceSource
 {
@@ -23,7 +24,7 @@ namespace RepaceSource
             string commentSeparator,
             SourceCodeInfoCallMethod value,
             SourceCodeInfoParamaterValueElementStrage elementStrage)
-            : base(value,  comment, commentSeparator, valiableName)
+            : base(value, comment, commentSeparator, valiableName, value.GetCodeLineNumber())
         {
             this._elementStrage = elementStrage;            
         }
@@ -33,7 +34,7 @@ namespace RepaceSource
             string comment,
             string commentSeparator,
             SourceCodeInfoCallMethod value)
-            : base(value, comment, commentSeparator, valiableName)
+            : base(value, comment, commentSeparator, valiableName, value.GetCodeLineNumber())
         {
             
         }
@@ -76,6 +77,7 @@ namespace RepaceSource
                 if (this.ElementStrage == null
                     || this.ElementStrage.AefLinkValue == null)
                 {
+                    LogOut.WriteTraceLog(".Value置換開始 " + this.LineIndex.ToString() + " " + subCodeInfo.GetCodeString());
                     subCodeInfo.SetAllOverWriteString(
                         this.SourceCodeInfo.ObjName + "." + subCodeInfo.CallmethodName + "(" +
                             subCodeInfo.GetSourceCodeInfoParamaters()[0].GetSourceCodeInfoParamaterValue()[0].ParamaterName + ")" + ".Value"
@@ -93,6 +95,14 @@ namespace RepaceSource
                     {
                         return;
                     }
+
+                    // 他のメソッド、またはプロパティﾒﾝﾊﾞ変数を参照している場合もしない
+                    if (aftElementValue.ParamaterName.StartsWith("."))
+                    {
+                        return;
+                    }
+
+                    LogOut.WriteTraceLog(".Value置換開始 " + this.LineIndex.ToString() + " " + subCodeInfo.GetCodeString());
 
                     var replacedAftElementParamaterName = aftElementValue.ParamaterName.Replace(".Value", string.Empty);
 

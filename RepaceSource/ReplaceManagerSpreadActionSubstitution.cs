@@ -16,10 +16,23 @@ namespace RepaceSource
             string spreadValiableName,
             string comment,
             string commentSeparator,
-            SourceCodeInfoSubstitution value)
-            : base(rowString, colString, spreadValiableName, comment, commentSeparator, value)
+            SourceCodeInfoSubstitution value,
+            int lineIndex)
+            : base(rowString, colString, spreadValiableName, comment, commentSeparator, value, lineIndex)
         {
             
+        }
+
+        public ReplaceManagerSpreadActionSubstitution(
+            string rowString,
+            string colString,
+            string spreadValiableName,
+            string comment,
+            string commentSeparator,
+            SourceCodeInfoSubstitution value)
+            : base(rowString, colString, spreadValiableName, comment, commentSeparator, value, value.GetCodeLineNumber())
+        {
+
         }
 
         #endregion

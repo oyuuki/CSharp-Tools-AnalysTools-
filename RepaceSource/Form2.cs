@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
 using OyuLib;
+using OyuLib.IO;
 using OyuLib.Documents.Sources;
 using OyuLib.Documents.Sources.Analysis;
 
@@ -297,7 +298,10 @@ namespace RepaceSource
 
         private void ExecuteReplace4()
         {
-            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\";
+            string targetSourceDirectory = @"C:\Users\PASEO\Desktop\新しいフォルダー (3)\新しいフォルダー";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.NET\Sample\";
+            //string targetSourceDirectory = @"C:\Users\PASEO\Desktop\Paseo\02_ソース\次期システム\Freemarket\FreeMarket.Common\";
             // this.GetFilePaths(targetSourceDirectory)
             // this.Test()
 
@@ -313,7 +317,13 @@ namespace RepaceSource
             {
                 // ビジネスコード解析
                 var mana2 = new AnalysisSourceDocumentManagerVBDotNet(source.BussinessClassFilePath);
-                this.ReplaceInputManADODBRecordSet(mana2);
+
+                if(mana2.IsError)
+                {
+                    continue;
+                }
+
+                this.ReplaceInputManADODBRecordSet(source.BussinessClassFilePath, mana2);
 
                 if (!Directory.Exists(outputDirctory))
                 {
@@ -661,10 +671,12 @@ namespace RepaceSource
         }
 
         private void ReplaceInputManADODBRecordSet(
+            string filename, 
             AnalysisSourceDocumentManagerVBDotNet manaBus)
         {
-            var adoDataList = manaBus.GetValiableNameCollection("Recordset");
+            var adoDataList = manaBus.GetValiableNameCollection("ADODB.Recordset");
 
+            LogOut.WriteTraceLog(filename);
 
             foreach (var codeInfo in manaBus.GetAllCodeInfos())
             {
@@ -684,6 +696,8 @@ namespace RepaceSource
                     }
                 }
             }
+
+            LogOut.WriteTraceLog("");
         }
 
         
@@ -989,7 +1003,8 @@ namespace RepaceSource
                 spreadValiableName,
                 "",
                 "",
-                (SourceCodeInfoSubstitution)codeInfo);
+                (SourceCodeInfoSubstitution)codeInfo,
+                codeInfo.GetCodeLineNumber());
 
             replaceManager.Replace();
 

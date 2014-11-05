@@ -23,6 +23,8 @@ namespace OyuLib.Documents.Sources.Analysis
 
         private SourceDocument _sourcedocument = null;
 
+        protected bool _isError = false;
+
         #endregion
 
         #region Property
@@ -37,6 +39,12 @@ namespace OyuLib.Documents.Sources.Analysis
         {
             get { return this._sourcedocument; }
             protected set { this._sourcedocument = value; }
+        }
+
+        public bool IsError
+        {
+            get { return this._isError; }
+            set { this._isError = value; }
         }
 
         #endregion
@@ -308,7 +316,8 @@ namespace OyuLib.Documents.Sources.Analysis
                 {
                     retList.AddRange(GetSourceCodeInfos<T>(((SourceCodeblockInfo)codeInfo).CodeObjects));
                 }
-                else if (codeInfo.GetType() == typeof(T))
+                // else if (codeInfo.GetType() == typeof(T))
+                else if(codeInfo is T)
                 {
                     retList.Add((T)codeInfo);
                 }
@@ -714,7 +723,15 @@ namespace OyuLib.Documents.Sources.Analysis
 
         protected void Init()
         {
-            this.SetCodeObjects();
+            try
+            {
+                this.SetCodeObjects();
+            }
+            catch(Exception ex)
+            {
+                LogOut.WriteTraceLog("解析失敗しました。" + ex.InnerException);
+                throw ex;
+            }    
         }
 
         #endregion

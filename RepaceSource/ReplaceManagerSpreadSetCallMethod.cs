@@ -16,10 +16,23 @@ namespace RepaceSource
             string spreadValiableName,
             string comment,
             string commentSeparator,
-            SourceCodeInfoCallMethod value)
-            : base(rowString, colString, spreadValiableName, comment, commentSeparator, value)
+            SourceCodeInfoCallMethod value,
+            int lineIndex)
+            : base(rowString, colString, spreadValiableName, comment, commentSeparator, value, lineIndex)
         {
             
+        }
+
+        public ReplaceManagerSpreadSetCallMethod(
+            string rowString,
+            string colString,
+            string spreadValiableName,
+            string comment,
+            string commentSeparator,
+            SourceCodeInfoCallMethod value)
+            : base(rowString, colString, spreadValiableName, comment, commentSeparator, value, value.GetCodeLineNumber())
+        {
+
         }
 
         #endregion

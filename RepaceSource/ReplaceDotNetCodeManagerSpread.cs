@@ -22,7 +22,7 @@ namespace RepaceSource
             string commentSeparator,
             SourceCodeInfoCallMethod value,
             SourceCodeInfoParamaterValueElementStrage elementStrage)
-            : base(value, comment, commentSeparator, string.Empty)
+            : base(value, comment, commentSeparator, string.Empty, value.GetCodeLineNumber())
         {
             this._elementStrage = elementStrage;            
         }
@@ -31,7 +31,7 @@ namespace RepaceSource
             string comment,
             string commentSeparator,
             SourceCodeInfoCallMethod value)
-            : base(value, comment, commentSeparator, string.Empty)
+            : base(value, comment, commentSeparator, string.Empty, value.GetCodeLineNumber())
         {
             
         }

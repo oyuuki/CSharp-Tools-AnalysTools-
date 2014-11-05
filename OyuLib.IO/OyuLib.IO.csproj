@@ -43,6 +43,7 @@
     <Compile Include="FileUtil.cs" />
     <Compile Include="CharSet.cs" />
     <Compile Include="CharSetValue.cs" />
+    <Compile Include="LogOut.cs" />
     <Compile Include="SeparateTextFile.cs" />
     <Compile Include="TextFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

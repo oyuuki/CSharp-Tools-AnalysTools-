@@ -17,7 +17,7 @@ namespace RepaceSource
             string comment,
             string commentSeparator,
             SourceCodeInfoSubstitution value)
-            : base(value, comment, commentSeparator, valiableName)
+            : base(value, comment, commentSeparator, valiableName, value.GetCodeLineNumber())
         {
             
         }

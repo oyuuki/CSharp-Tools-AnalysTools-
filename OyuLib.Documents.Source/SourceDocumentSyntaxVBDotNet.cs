@@ -67,7 +67,7 @@ namespace OyuLib.Documents.Sources
 
         public const string CONST_STATEMENT_CALL = "Call";
 
-        public const string CONST_STATEMENT_SELECT = "Select";
+        public const string CONST_STATEMENT_SELECT = "Select Case";
 
         public const string CONST_STATEMENT_CASE = "Case";
 

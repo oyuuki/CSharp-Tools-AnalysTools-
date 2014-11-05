@@ -34,7 +34,17 @@ namespace OyuLib.Documents.Sources.Analysis
         public AnalysisSourceDocumentManagerVBDotNet(string sourcefilepath, CharSet charactorSet)
         {
             this.Sourcedocument =  new SourceDocumentVBDotNet(sourcefilepath, charactorSet);
-            this.Init();
+            LogOut.WriteTraceLog(sourcefilepath + "　解析開始");
+            try
+            {
+                this.Init();
+            }
+            catch(Exception ex)
+            {
+                this.IsError = true;
+                LogOut.WriteTraceLog(sourcefilepath + "　解析異常終了");
+            }
+            
         }
 
         #endregion

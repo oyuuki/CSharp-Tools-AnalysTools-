@@ -24,8 +24,9 @@ namespace RepaceSource
             string spreadValiableName,
             string comment, 
             string commentSeparator,
-            T value)
-            : base(value, comment, commentSeparator, spreadValiableName)
+            T value,
+            int lineIndex)
+            : base(value, comment, commentSeparator, spreadValiableName, lineIndex)
         {
             this._rowString = rowString;
             this._colString = colString;

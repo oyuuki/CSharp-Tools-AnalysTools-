@@ -137,9 +137,9 @@ namespace OyuLib.Documents.Sources.Analysis
 
                     var paramIndex = sourceCodeString.IndexOf(paramKakko, startIndex);
                     var endIndex = paramIndex + paramKakko.Length;
-
+                    var sourceString = sourceCodeString.Substring(startIndex, endIndex - startIndex);
                     var paramSourceCode =
-                        new SourceCode(sourceCodeString.Substring(startIndex, endIndex - startIndex));
+                        new SourceCode(sourceString, sourceCode.CodeLineNumber);
                     var range = new StringRange(startIndex, endIndex, "", "", sourceCodeString);
 
                     startIndex = paramIndex + paramKakko.Length;
@@ -163,7 +163,7 @@ namespace OyuLib.Documents.Sources.Analysis
                 if (startIndex < sourceCodeString.Length)
                 {
                     var paramValueSourceCodeString = sourceCodeString.Substring(startIndex);
-                    var paramSourceCode = new SourceCode(paramValueSourceCodeString);
+                    var paramSourceCode = new SourceCode(paramValueSourceCodeString, sourceCode.CodeLineNumber);
 
                     var range = new StringRange(0, paramValueSourceCodeString.Length - 1, "", "", paramValueSourceCodeString);
 
